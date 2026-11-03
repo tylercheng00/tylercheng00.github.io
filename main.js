@@ -72,6 +72,8 @@
   var emailLink = document.getElementById('contact-email');
   var linkedinLink = document.getElementById('contact-linkedin');
   var email = emailLink.getAttribute('href').replace(/^mailto:/, '');
+  var workLink = document.getElementById('contact-email-work');
+  var workEmail = workLink ? workLink.getAttribute('href').replace(/^mailto:/, '') : '';
 
   document.getElementById('vcard-btn').addEventListener('click', function () {
     var vcf = [
@@ -79,13 +81,13 @@
       'VERSION:3.0',
       'N:Cheng;Tyler Tik Man;;;',
       'FN:Tyler Tik Man Cheng (鄭迪珉)',
-      'TITLE:US Equities Market Specialist; Co-founder & COO',
-      'ORG:Fuway 富輝集團',
-      'EMAIL;TYPE=INTERNET:' + email,
+      'TITLE:Co-founder (BTRDCC) / Co-founder & COO (Nanotech Innovation) / US Equities Market Specialist (Fuway)',
+      'EMAIL;TYPE=INTERNET,HOME:' + email,
+      (workEmail ? 'EMAIL;TYPE=INTERNET,WORK:' + workEmail : ''),
       'URL:' + location.origin + location.pathname,
       'URL;TYPE=LinkedIn:' + linkedinLink.href,
       'END:VCARD'
-    ].join('\r\n');
+    ].filter(Boolean).join('\r\n');
     var blob = new Blob([vcf], { type: 'text/vcard;charset=utf-8' });
     var a = document.createElement('a');
     a.href = URL.createObjectURL(blob);

@@ -4,4 +4,4 @@ Bilingual (English / 繁體中文) personal site for 鄭迪珉 Tyler Tik Man Che
 
 - `index.html` – content, SEO meta, schema.org Person markup
 - `styles.css`, `main.js` – styling and the EN / 中 toggle (`?lang=zh` also works)
-- To do: replace `contact@example.com` and the LinkedIn placeholder in `index.html`
+- Contact details (emails, LinkedIn) live in the `#contact` section of `index.html`; the vCard and copy buttons read them from there

@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>US Equities · IPO &amp; M&amp;A · 美股上市及併購 | 鄭迪珉 Tyler Tik Man Cheng</title>
+  <meta name="description" content="US equities IPO advisory and M&amp;A — an illustrative walkthrough of the US listing pathway for Asia-based companies and the M&amp;A process, by 鄭迪珉 Tyler Tik Man Cheng, US Equities Market Specialist at 富輝集團 Fuway. General information only.">
+  <link rel="canonical" href="https://tylercheng00.github.io/us-equities.html">
+  <meta name="theme-color" content="#0b1d33">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tylercheng00.github.io/us-equities.html">
+  <meta property="og:title" content="US Equities · IPO &amp; M&amp;A · 美股上市及併購">
+  <meta property="og:description" content="An illustrative, step-by-step walkthrough of a US listing and an M&amp;A process. General information only.">
+  <meta property="og:image" content="https://tylercheng00.github.io/assets/og-image.png">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    (function () {
+      var lang = null;
+      try {
+        var q = new URLSearchParams(location.search).get('lang');
+        if (q === 'zh' || q === 'en') lang = q;
+        if (!lang) lang = localStorage.getItem('lang');
+      } catch (e) {}
+      if (lang !== 'zh' && lang !== 'en') lang = /^zh/i.test(navigator.language || '') ? 'zh' : 'en';
+      var d = document.documentElement;
+      d.setAttribute('data-lang', lang);
+      d.lang = lang === 'zh' ? 'zh-Hant' : 'en';
+      d.classList.add('js');
+    })();
+  </script>
+</head>
+<body class="page-projects">
+  <a class="skip" href="#main"><span lang="en">Skip to content</span><span lang="zh-Hant">跳至內容</span></a>
+
+  <header class="topbar" id="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html" aria-label="Tyler Cheng — home">
+        <span class="brand-mark" aria-hidden="true">TC</span>
+        <span class="brand-text"><span class="brand-name">鄭迪珉</span><span class="brand-sub">Tyler Tik Man Cheng</span></span>
+      </a>
+      <nav class="nav" id="nav" aria-label="Primary">
+        <a href="index.html"><span lang="en">Home</span><span lang="zh-Hant">主頁</span></a>
+        <a href="projects.html"><span lang="en">Projects</span><span lang="zh-Hant">項目</span></a>
+        <a href="#ipo"><span lang="en">US IPO</span><span lang="zh-Hant">美股上市</span></a>
+        <a href="#ma"><span lang="en">M&amp;A</span><span lang="zh-Hant">併購</span></a>
+        <a href="#cases"><span lang="en">Case studies</span><span lang="zh-Hant">案例</span></a>
+        <a class="nav-cta" href="#enquire"><span lang="en">Enquire</span><span lang="zh-Hant">查詢</span></a>
+      </nav>
+      <div class="topbar-actions">
+        <div class="lang-toggle" role="group" aria-label="Language / 語言">
+          <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-set-lang="zh" aria-pressed="false">中</button>
+        </div>
+        <button class="menu-btn" id="menu-btn" type="button" aria-controls="nav" aria-expanded="false">
+          <span class="sr-only"><span lang="en">Menu</span><span lang="zh-Hant">選單</span></span>
+          <span class="menu-icon" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="p-hero" id="top">
+      <div class="hero-bg" aria-hidden="true"><span class="glow glow-1"></span><span class="glow glow-2"></span><span class="grid"></span></div>
+      <div class="container p-hero-inner">
+        <p class="eyebrow reveal"><span class="dot" aria-hidden="true"></span><span lang="en">Finance &amp; Investment · 富輝集團 Fuway</span><span lang="zh-Hant">金融投資 · 富輝集團 Fuway</span></p>
+        <h1 class="p-title reveal"><span lang="en">US Equities: IPO &amp; M&amp;A</span><span lang="zh-Hant">美股上市及併購</span></h1>
+        <p class="p-lede reveal">
+          <span lang="en">As a <b>US Equities Market Specialist at Fuway</b>, I help companies explore the US capital markets through <b>IPO advisory</b> and <b>M&amp;A</b>. This page walks through how a US listing and an M&amp;A process typically unfold — step by step.</span>
+          <span lang="zh-Hant">我在<b>富輝集團</b>擔任<b>美股市場專員</b>，透過 <b>IPO 上市顧問</b>及<b>併購</b>服務，協助企業探索美國資本市場。本頁逐步說明美股上市及併購一般如何進行。</span>
+        </p>
+        <div class="us-strip reveal">
+          <div><b>Nasdaq · NYSE</b><span lang="en">US listing venues</span><span lang="zh-Hant">美國上市交易所</span></div>
+          <div><b>F-1</b><span lang="en">SEC registration (foreign issuers)</span><span lang="zh-Hant">外國發行人向 SEC 註冊</span></div>
+          <div><b>IPO · M&amp;A</b><span lang="en">Advisory focus</span><span lang="zh-Hant">顧問重點</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IPO pathway -->
+    <section class="section" id="ipo">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">01 — <span lang="en">Illustrative walkthrough</span><span lang="zh-Hant">示意流程</span></p>
+          <h2 class="section-title"><span lang="en">The US IPO pathway</span><span lang="zh-Hant">赴美上市路徑</span></h2>
+          <p class="p-lede dark"><span lang="en">A typical sequence for an Asia-based company listing in the US. Click a stage, or press play. Actual timing, requirements and order vary by company and market conditions.</span><span lang="zh-Hant">一家亞洲企業赴美上市的典型流程。點擊任何階段，或按播放。實際時間、要求及次序因公司及市況而異。</span></p>
+        </div>
+
+        <div class="path-ui reveal" id="ipoPath" data-steps="ipo">
+          <div class="path-top">
+            <ol class="path-track" aria-label="IPO stages"></ol>
+            <button type="button" class="btn btn-gold sm path-play"><span class="pl-on"><span lang="en">▶ Play</span><span lang="zh-Hant">▶ 播放</span></span><span class="pl-off"><span lang="en">❚❚ Pause</span><span lang="zh-Hant">❚❚ 暫停</span></span></button>
+          </div>
+          <div class="path-progress"><i></i></div>
+          <div class="path-detail" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Venue comparison -->
+    <section class="section alt" id="venues">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">02 — <span lang="en">Choosing a route</span><span lang="zh-Hant">選擇路線</span></p>
+          <h2 class="section-title"><span lang="en">Routes to the US market</span><span lang="zh-Hant">進入美國市場的途徑</span></h2>
+        </div>
+        <div class="route-grid">
+          <article class="route reveal">
+            <p class="route-k">A</p>
+            <h3><span lang="en">Traditional IPO</span><span lang="zh-Hant">傳統 IPO</span></h3>
+            <p><span lang="en">New shares sold through underwriters after SEC registration; price set by book-building.</span><span lang="zh-Hant">完成 SEC 註冊後，經承銷商發行新股，以簿記建檔定價。</span></p>
+            <ul class="route-pc">
+              <li class="pro"><span lang="en">Raises new capital; established process</span><span lang="zh-Hant">可募集新資金；流程成熟</span></li>
+              <li class="con"><span lang="en">Longest preparation; full underwriting cost</span><span lang="zh-Hant">準備時間最長；承銷成本較高</span></li>
+            </ul>
+          </article>
+          <article class="route reveal">
+            <p class="route-k">B</p>
+            <h3><span lang="en">Direct listing</span><span lang="zh-Hant">直接上市</span></h3>
+            <p><span lang="en">Existing shares begin trading without a traditional underwritten offering.</span><span lang="zh-Hant">現有股份直接掛牌交易，不經傳統承銷發行。</span></p>
+            <ul class="route-pc">
+              <li class="pro"><span lang="en">Lower dilution; no lock-up by default</span><span lang="zh-Hant">攤薄較少；預設無禁售期</span></li>
+              <li class="con"><span lang="en">Suits well-known companies; less price support</span><span lang="zh-Hant">較適合知名企業；股價支持較少</span></li>
+            </ul>
+          </article>
+          <article class="route reveal">
+            <p class="route-k">C</p>
+            <h3><span lang="en">SPAC merger</span><span lang="zh-Hant">SPAC 合併</span></h3>
+            <p><span lang="en">The company merges with a listed special-purpose acquisition company and becomes public through the merger.</span><span lang="zh-Hant">企業與已上市的特殊目的收購公司合併，從而成為上市公司。</span></p>
+            <ul class="route-pc">
+              <li class="pro"><span lang="en">Negotiated valuation; potentially faster</span><span lang="zh-Hant">估值可協商；可能較快</span></li>
+              <li class="con"><span lang="en">Redemption risk; tighter regulatory scrutiny</span><span lang="zh-Hant">有贖回風險；監管審查趨嚴</span></li>
+            </ul>
+          </article>
+          <article class="route reveal">
+            <p class="route-k">D</p>
+            <h3><span lang="en">M&amp;A / reverse merger</span><span lang="zh-Hant">併購／反向合併</span></h3>
+            <p><span lang="en">Acquiring, merging with, or combining into an existing US-listed company.</span><span lang="zh-Hant">收購、合併或併入已在美國上市的公司。</span></p>
+            <ul class="route-pc">
+              <li class="pro"><span lang="en">Strategic fit; can combine growth and listing</span><span lang="zh-Hant">具策略協同；可結合增長與上市</span></li>
+              <li class="con"><span lang="en">Diligence-heavy; integration risk</span><span lang="zh-Hant">盡職審查繁重；有整合風險</span></li>
+            </ul>
+          </article>
+        </div>
+        <p class="p-note center-note reveal"><span lang="en">Exchange listing standards (financial, liquidity and governance tests) differ by venue and tier and change over time; they are assessed case by case.</span><span lang="zh-Hant">各交易所及板塊的上市標準（財務、流通量及管治要求）各有不同，亦會不時更新，須按個別情況評估。</span></p>
+      </div>
+    </section>
+
+    <!-- M&A -->
+    <section class="section" id="ma">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">03 — <span lang="en">Illustrative walkthrough</span><span lang="zh-Hant">示意流程</span></p>
+          <h2 class="section-title"><span lang="en">The M&amp;A process</span><span lang="zh-Hant">併購流程</span></h2>
+          <p class="p-lede dark"><span lang="en">From strategy to integration. Click a stage, or press play.</span><span lang="zh-Hant">由策略到整合。點擊任何階段，或按播放。</span></p>
+        </div>
+        <div class="path-ui reveal" id="maPath" data-steps="ma">
+          <div class="path-top">
+            <ol class="path-track" aria-label="M&amp;A stages"></ol>
+            <button type="button" class="btn btn-gold sm path-play"><span class="pl-on"><span lang="en">▶ Play</span><span lang="zh-Hant">▶ 播放</span></span><span class="pl-off"><span lang="en">❚❚ Pause</span><span lang="zh-Hant">❚❚ 暫停</span></span></button>
+          </div>
+          <div class="path-progress"><i></i></div>
+          <div class="path-detail" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Case studies -->
+    <section class="section alt" id="cases">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">04 — <span lang="en">Case studies</span><span lang="zh-Hant">案例</span></p>
+          <h2 class="section-title"><span lang="en">Selected engagements</span><span lang="zh-Hant">項目案例</span></h2>
+          <p class="p-lede dark"><span lang="en">Case studies are published only with the approval of the client and Fuway's compliance team, and are anonymised where required. Detailed references are available in conversation.</span><span lang="zh-Hant">案例只會在客戶及富輝合規部門同意後公開，並按需要匿名處理。如需詳細參考，歡迎直接查詢。</span></p>
+        </div>
+        <div class="case-grid" id="caseGrid">
+          <!-- Real, approved case studies are added here. Template:
+          <article class="case reveal">
+            <p class="case-tags"><span>Sector</span><span>Deal type</span><span>Year</span></p>
+            <h3>Anonymised title</h3>
+            <dl>
+              <dt>Challenge</dt><dd>…</dd>
+              <dt>My role</dt><dd>…</dd>
+              <dt>Outcome</dt><dd>Public, verifiable facts only</dd>
+            </dl>
+          </article>
+          -->
+          <article class="case placeholder reveal">
+            <div class="case-lock" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+            </div>
+            <h3><span lang="en">Case studies in preparation</span><span lang="zh-Hant">案例整理中</span></h3>
+            <p><span lang="en">Anonymised summaries — sector, deal type, challenge, my role and public outcome — will appear here once approved for publication.</span><span lang="zh-Hant">獲准公開後，這裏會列出匿名摘要：行業、項目類型、挑戰、我的角色及公開結果。</span></p>
+            <a class="btn btn-gold sm" href="#enquire"><span lang="en">Ask about relevant experience</span><span lang="zh-Hant">查詢相關經驗</span> →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact p-contact" id="enquire">
+      <div class="container contact-inner reveal">
+        <h2 class="contact-title"><span lang="en">Considering a US listing or a deal?</span><span lang="zh-Hant">考慮赴美上市或併購？</span></h2>
+        <p class="contact-text"><span lang="en">I'm happy to have an initial conversation about your situation.</span><span lang="zh-Hant">歡迎就你的情況作初步交流。</span></p>
+        <div class="contact-cards">
+          <a class="contact-card" href="mailto:zhengdimin@newbrilliance.com"><span class="cc-label"><span lang="en">Work email</span><span lang="zh-Hant">工作電郵</span></span><span class="cc-value">zhengdimin@newbrilliance.com</span></a>
+          <a class="contact-card" href="mailto:info@tylerfuture.com"><span class="cc-label"><span lang="en">Personal email</span><span lang="zh-Hant">個人電郵</span></span><span class="cc-value">info@tylerfuture.com</span></a>
+          <a class="contact-card" href="https://www.linkedin.com/in/tik-man-cheng" target="_blank" rel="noopener"><span class="cc-label">LinkedIn</span><span class="cc-value">in/tik-man-cheng</span></a>
+        </div>
+        <p class="us-disclaimer"><span lang="en">This page provides general information only. It is not an offer, solicitation or recommendation to buy or sell any security, and not legal, tax or investment advice. Listing routes, requirements and timelines depend on each company's circumstances and applicable rules.</span><span lang="zh-Hant">本頁只提供一般資料，並不構成任何證券的要約、招攬或買賣建議，亦非法律、稅務或投資意見。上市途徑、要求及時間視乎個別公司情況及適用規則。</span></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="brand-mark" aria-hidden="true">TC</span>
+        <div><p class="footer-name">鄭迪珉 Tyler Tik Man Cheng</p><p class="footer-tag">US Equities · Biotech · Patents · Startups</p></div>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="index.html"><span lang="en">Home</span><span lang="zh-Hant">主頁</span></a>
+        <a href="projects.html"><span lang="en">Projects</span><span lang="zh-Hant">項目</span></a>
+        <a href="#ipo"><span lang="en">US IPO</span><span lang="zh-Hant">美股上市</span></a>
+        <a href="#ma"><span lang="en">M&amp;A</span><span lang="zh-Hant">併購</span></a>
+      </nav>
+      <p class="footer-copy">© <span id="year">2026</span> Tyler Tik Man Cheng. <span lang="en">All rights reserved.</span><span lang="zh-Hant">版權所有。</span></p>
+    </div>
+  </footer>
+
+  <a class="to-top" id="to-top" href="#top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 19V5m0 0-6 6m6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+
+  <script src="main.js"></script>
+  <script src="us-equities.js"></script>
+</body>
+</html>

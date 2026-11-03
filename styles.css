@@ -705,3 +705,4 @@ html[data-lang="zh"] .path-detail h3 { font-family: var(--serif-zh); }
 @media (max-width: 520px) { .route-grid { grid-template-columns: minmax(0, 1fr); } }
 .xp-link { display: inline-block; margin-top: 14px; font-size: 14px; font-weight: 600; color: var(--gold-ink); text-decoration: none; border-bottom: 1px solid rgba(201, 163, 91, .45); }
 .xp-link:hover { border-color: var(--gold); }
+.learn-card .p-icon { background: linear-gradient(160deg, #1d3d36, var(--navy-950)); color: #7fd1a3; }

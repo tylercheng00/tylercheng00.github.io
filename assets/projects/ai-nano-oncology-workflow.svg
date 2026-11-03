@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 420" role="img" aria-label="Animated concept workflow: biological data feeds an AI model, which proposes nano-carrier designs that target tumour cells, followed by lab validation and patents">
+  <title>AI-integrated nano-targeting workflow — concept illustration</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#13325a"/><stop offset=".6" stop-color="#0b1d33"/><stop offset="1" stop-color="#071322"/></linearGradient>
+    <radialGradient id="np" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#fff6df"/><stop offset=".45" stop-color="#e2c88f"/><stop offset="1" stop-color="#8d6a28"/></radialGradient>
+    <radialGradient id="tumour" cx=".4" cy=".35" r=".75"><stop offset="0" stop-color="#e79a83"/><stop offset="1" stop-color="#a5432c"/></radialGradient>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e2c88f"/></marker>
+    <path id="flow" d="M95 335 H864"/>
+  </defs>
+  <style>
+    .card { fill: #0b1d33; stroke: #2a4566; stroke-width: 1.5; }
+    .t { font: 600 15px Inter, Arial, sans-serif; fill: #e9edf3; text-anchor: middle; }
+    .s { font: 500 12px Inter, Arial, sans-serif; fill: #93a2b5; text-anchor: middle; }
+    .k { font: 700 11px Inter, Arial, sans-serif; fill: #c9a35b; text-anchor: middle; letter-spacing: .12em; }
+    .link { fill: none; stroke: #e2c88f; stroke-width: 2; stroke-dasharray: 6 6; animation: dash 1s linear infinite; }
+    @keyframes dash { to { stroke-dashoffset: -12; } }
+    .node { fill: #4f86c6; animation: fire 1.6s ease-in-out infinite; }
+    .node.d1 { animation-delay: .2s; } .node.d2 { animation-delay: .4s; } .node.d3 { animation-delay: .6s; }
+    @keyframes fire { 0%, 100% { fill: #4f86c6; } 50% { fill: #e2c88f; } }
+    .edge { stroke: #6fa8dc; stroke-opacity: .35; stroke-width: 1.2; }
+    .cand { animation: pick 4s ease-in-out infinite; }
+    .cand.c2 { animation-delay: -1.3s; } .cand.c3 { animation-delay: -2.6s; }
+    @keyframes pick { 0%, 100% { opacity: .35; } 45%, 60% { opacity: 1; } }
+    .best { transform-box: fill-box; transform-origin: center; animation: best 4s ease-in-out infinite; }
+    @keyframes best { 0%, 40% { stroke-opacity: 0; transform: scale(.7); } 55%, 85% { stroke-opacity: 1; transform: scale(1); } 100% { stroke-opacity: 0; } }
+    .bind { transform-box: fill-box; transform-origin: center; animation: bind 3s ease-out infinite; }
+    @keyframes bind { 0% { transform: scale(.5); opacity: .8; } 100% { transform: scale(2.2); opacity: 0; } }
+    .seal { transform-box: fill-box; transform-origin: center; animation: seal 4s ease-in-out infinite; }
+    @keyframes seal { 0%, 60% { transform: scale(.85) rotate(-8deg); } 70%, 100% { transform: scale(1) rotate(0); } }
+    .packet { fill: #e2c88f; }
+  </style>
+
+  <rect width="1000" height="420" fill="url(#bg)"/>
+  <text x="500" y="44" class="t" style="font-size:17px">AI × nano-targeting workflow · AI 結合納米標靶流程</text>
+  <text x="500" y="66" class="s">Illustration — concept only, not experimental or clinical data · 示意圖，只作概念說明，並非實驗或臨床數據</text>
+
+  <!-- links -->
+  <path d="M168 210 H196" class="link" marker-end="url(#arr)"/>
+  <path d="M352 210 H380" class="link" marker-end="url(#arr)"/>
+  <path d="M536 210 H564" class="link" marker-end="url(#arr)"/>
+  <path d="M720 210 H748" class="link" marker-end="url(#arr)"/>
+  <path d="M95 335 H864" fill="none" stroke="#2a4566" stroke-width="2"/>
+
+  <!-- 1. data -->
+  <g>
+    <rect x="22" y="110" width="146" height="200" rx="14" class="card"/>
+    <text x="95" y="134" class="k">01</text>
+    <g transform="translate(46 150)">
+      <rect width="98" height="10" rx="3" fill="#6fa8dc" fill-opacity=".55"/><rect y="18" width="74" height="10" rx="3" fill="#6fa8dc" fill-opacity=".4"/>
+      <rect y="36" width="90" height="10" rx="3" fill="#6fa8dc" fill-opacity=".55"/><rect y="54" width="60" height="10" rx="3" fill="#6fa8dc" fill-opacity=".4"/>
+      <path d="M0 96 l14 -12 l14 6 l14 -20 l14 10 l14 -16 l14 8 l14 -14" fill="none" stroke="#e2c88f" stroke-width="2"/>
+    </g>
+    <text x="95" y="272" class="t">Biological data</text>
+    <text x="95" y="292" class="s">生物數據</text>
+  </g>
+
+  <!-- 2. AI model -->
+  <g>
+    <rect x="198" y="110" width="154" height="200" rx="14" class="card" style="stroke:#c9a35b"/>
+    <text x="275" y="134" class="k">02</text>
+    <g class="edge">
+      <path d="M232 160 L275 150 M232 160 L275 190 M232 160 L275 230 M232 200 L275 150 M232 200 L275 190 M232 200 L275 230 M232 240 L275 150 M232 240 L275 190 M232 240 L275 230"/>
+      <path d="M275 150 L318 175 M275 150 L318 215 M275 190 L318 175 M275 190 L318 215 M275 230 L318 175 M275 230 L318 215"/>
+    </g>
+    <circle cx="232" cy="160" r="7" class="node"/><circle cx="232" cy="200" r="7" class="node d1"/><circle cx="232" cy="240" r="7" class="node d2"/>
+    <circle cx="275" cy="150" r="7" class="node d1"/><circle cx="275" cy="190" r="7" class="node d2"/><circle cx="275" cy="230" r="7" class="node d3"/>
+    <circle cx="318" cy="175" r="7" class="node d2"/><circle cx="318" cy="215" r="7" class="node d3"/>
+    <text x="275" y="272" class="t">AI model</text>
+    <text x="275" y="292" class="s">AI 模型分析及預測</text>
+  </g>
+
+  <!-- 3. candidate designs -->
+  <g>
+    <rect x="382" y="110" width="154" height="200" rx="14" class="card"/>
+    <text x="459" y="134" class="k">03</text>
+    <g class="cand"><circle cx="420" cy="175" r="16" fill="url(#np)"/></g>
+    <g class="cand c2"><circle cx="459" cy="215" r="16" fill="url(#np)"/></g>
+    <g class="cand c3"><circle cx="498" cy="175" r="16" fill="url(#np)"/></g>
+    <circle cx="459" cy="215" r="24" fill="none" stroke="#e2c88f" stroke-width="2.5" class="best"/>
+    <text x="459" y="272" class="t">Nano-carrier designs</text>
+    <text x="459" y="292" class="s">篩選納米載體設計</text>
+  </g>
+
+  <!-- 4. targeting -->
+  <g>
+    <rect x="566" y="110" width="154" height="200" rx="14" class="card"/>
+    <text x="643" y="134" class="k">04</text>
+    <circle cx="643" cy="200" r="38" fill="url(#tumour)"/>
+    <g stroke="#e2c88f" stroke-width="3" stroke-linecap="round">
+      <path d="M643 162 v-8 M681 200 h8 M643 238 v8 M605 200 h-8 M670 173 l6 -6 M670 227 l6 6 M616 227 l-6 6 M616 173 l-6 -6"/>
+    </g>
+    <circle cx="643" cy="150" r="7" fill="url(#np)"/><circle cx="694" cy="200" r="7" fill="url(#np)"/>
+    <circle cx="643" cy="200" r="40" fill="none" stroke="#e2c88f" stroke-width="2" class="bind"/>
+    <text x="643" y="272" class="t">Tumour targeting</text>
+    <text x="643" y="292" class="s">標靶腫瘤細胞</text>
+  </g>
+
+  <!-- 5. validation & IP -->
+  <g>
+    <rect x="750" y="110" width="228" height="200" rx="14" class="card"/>
+    <text x="864" y="134" class="k">05</text>
+    <g transform="translate(782 150)">
+      <path d="M18 0 h20 M24 0 v28 L4 72 a8 8 0 0 0 7 11 h34 a8 8 0 0 0 7 -11 L32 28 V0" fill="none" stroke="#c2ccd8" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M12 58 h32 l8 16 a6 6 0 0 1 -5 9 H9 a6 6 0 0 1 -5 -9 z" fill="#c9a35b" fill-opacity=".8"/>
+    </g>
+    <g class="seal" transform="translate(0 0)">
+      <rect x="860" y="150" width="88" height="96" rx="8" fill="#f5f1e6"/>
+      <rect x="872" y="164" width="52" height="7" rx="3.5" fill="#0b1d33" fill-opacity=".7"/>
+      <rect x="872" y="180" width="64" height="5" rx="2.5" fill="#0b1d33" fill-opacity=".2"/>
+      <rect x="872" y="192" width="58" height="5" rx="2.5" fill="#0b1d33" fill-opacity=".2"/>
+      <circle cx="928" cy="226" r="13" fill="#c9a35b"/><path d="M922 226 l4 4 l8 -9" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <text x="864" y="272" class="t">Lab validation · patents</text>
+    <text x="864" y="292" class="s">實驗驗證 · 專利保護</text>
+  </g>
+
+  <!-- travelling packets -->
+  <circle r="5" class="packet"><animateMotion dur="4s" repeatCount="indefinite"><mpath href="#flow"/></animateMotion></circle>
+  <circle r="5" class="packet" style="fill:#6fa8dc"><animateMotion dur="4s" begin="1.33s" repeatCount="indefinite"><mpath href="#flow"/></animateMotion></circle>
+  <circle r="5" class="packet"><animateMotion dur="4s" begin="2.66s" repeatCount="indefinite"><mpath href="#flow"/></animateMotion></circle>
+
+  <text x="500" y="384" class="s" style="font-size:13px;fill:#c2ccd8">AI narrows the search; the lab decides. · AI 縮窄搜尋範圍，實驗作最終驗證。</text>
+</svg>

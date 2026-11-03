@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects · 項目 | 鄭迪珉 Tyler Tik Man Cheng</title>
+  <meta name="description" content="Projects of 鄭迪珉 Tyler Tik Man Cheng: biotech & medtech (BTRDCC, Nanotech Innovation, variable-stiffness catheter), finance & investment (Portfolio Optimization Lab), and interest projects (DAWN-2 concept rocket, AI Red-Teaming Lab).">
+  <link rel="canonical" href="https://tylercheng00.github.io/projects.html">
+  <link rel="alternate" hreflang="en" href="https://tylercheng00.github.io/projects.html">
+  <link rel="alternate" hreflang="zh-Hant" href="https://tylercheng00.github.io/projects.html?lang=zh">
+  <meta name="theme-color" content="#0b1d33">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tylercheng00.github.io/projects.html">
+  <meta property="og:title" content="Projects · 項目 — 鄭迪珉 Tyler Tik Man Cheng">
+  <meta property="og:description" content="Biotech & MedTech, Finance & Investment, and interest projects — with interactive demos.">
+  <meta property="og:image" content="https://tylercheng00.github.io/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    (function () {
+      var lang = null;
+      try {
+        var q = new URLSearchParams(location.search).get('lang');
+        if (q === 'zh' || q === 'en') lang = q;
+        if (!lang) lang = localStorage.getItem('lang');
+      } catch (e) {}
+      if (lang !== 'zh' && lang !== 'en') lang = /^zh/i.test(navigator.language || '') ? 'zh' : 'en';
+      var d = document.documentElement;
+      d.setAttribute('data-lang', lang);
+      d.lang = lang === 'zh' ? 'zh-Hant' : 'en';
+      d.classList.add('js');
+    })();
+  </script>
+</head>
+<body class="page-projects">
+  <a class="skip" href="#main"><span lang="en">Skip to content</span><span lang="zh-Hant">跳至內容</span></a>
+
+  <header class="topbar" id="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html" aria-label="Tyler Cheng — home">
+        <span class="brand-mark" aria-hidden="true">TC</span>
+        <span class="brand-text">
+          <span class="brand-name">鄭迪珉</span>
+          <span class="brand-sub">Tyler Tik Man Cheng</span>
+        </span>
+      </a>
+      <nav class="nav" id="nav" aria-label="Primary">
+        <a href="index.html"><span lang="en">Home</span><span lang="zh-Hant">主頁</span></a>
+        <a href="#biotech"><span lang="en">Biotech</span><span lang="zh-Hant">生物科技</span></a>
+        <a href="#finance"><span lang="en">Finance</span><span lang="zh-Hant">金融投資</span></a>
+        <a href="#interests"><span lang="en">Interests</span><span lang="zh-Hant">興趣</span></a>
+        <a class="nav-cta" href="index.html#contact"><span lang="en">Contact</span><span lang="zh-Hant">聯絡</span></a>
+      </nav>
+      <div class="topbar-actions">
+        <div class="lang-toggle" role="group" aria-label="Language / 語言">
+          <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-set-lang="zh" aria-pressed="false">中</button>
+        </div>
+        <button class="menu-btn" id="menu-btn" type="button" aria-controls="nav" aria-expanded="false">
+          <span class="sr-only"><span lang="en">Menu</span><span lang="zh-Hant">選單</span></span>
+          <span class="menu-icon" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="p-hero" id="top">
+      <div class="hero-bg" aria-hidden="true"><span class="glow glow-1"></span><span class="glow glow-2"></span><span class="grid"></span></div>
+      <div class="container p-hero-inner">
+        <p class="eyebrow reveal"><span class="dot" aria-hidden="true"></span><span lang="en">Projects</span><span lang="zh-Hant">項目</span></p>
+        <h1 class="p-title reveal"><span lang="en">What I'm building</span><span lang="zh-Hant">我正在做的事</span></h1>
+        <p class="p-lede reveal">
+          <span lang="en">Two focus areas — <b>biotechnology</b> and <b>finance &amp; investment</b> — plus two interest projects. Most projects have a live, interactive page.</span>
+          <span lang="zh-Hant">兩條主線：<b>生物科技</b>及<b>金融投資</b>，另加兩個興趣項目。大部分項目都有可互動的線上頁面。</span>
+        </p>
+        <div class="filters reveal" role="tablist" aria-label="Filter projects">
+          <button type="button" role="tab" class="on" data-filter="all" aria-selected="true"><span lang="en">All</span><span lang="zh-Hant">全部</span><b>7</b></button>
+          <button type="button" role="tab" data-filter="biotech" aria-selected="false"><span lang="en">Biotech</span><span lang="zh-Hant">生物科技</span><b>3</b></button>
+          <button type="button" role="tab" data-filter="finance" aria-selected="false"><span lang="en">Finance</span><span lang="zh-Hant">金融投資</span><b>2</b></button>
+          <button type="button" role="tab" data-filter="interest" aria-selected="false"><span lang="en">Interests</span><span lang="zh-Hant">興趣</span><b>2</b></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 01 Biotech -->
+    <section class="section p-group" id="biotech" data-group="biotech">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">01 — <span lang="en">Focus area</span><span lang="zh-Hant">主線</span></p>
+          <h2 class="section-title"><span lang="en">Biotech &amp; MedTech</span><span lang="zh-Hant">生物科技及醫療科技</span></h2>
+        </div>
+        <div class="p-grid">
+          <article class="p-card featured reveal" id="btrdcc">
+            <a class="p-media" href="biotech-medtech/#btrdcc"><img src="assets/projects/ai-nano-oncology-workflow.svg" alt="Animated AI × nano-targeting workflow" width="1000" height="420" loading="lazy"></a>
+            <div class="p-body">
+              <p class="p-meta"><span class="p-role"><span lang="en">Co-founder</span><span lang="zh-Hant">聯合創辦人</span></span><span class="p-status live"><span lang="en">Active</span><span lang="zh-Hant">進行中</span></span></p>
+              <h3>BTRDCC</h3>
+              <p class="p-sub">Biochemical Technology Research &amp; Development Consultation Centre</p>
+              <p><span lang="en">AI-integrated biotechnology: patented technologies combining nano-targeting with research into cancer-therapy technologies.</span><span lang="zh-Hant">結合 AI 的生物科技：以專利技術結合納米標靶，研發癌症治療技術。</span></p>
+              <ul class="chips"><li>AI × Biotech</li><li><span lang="en">Nano-targeting</span><span lang="zh-Hant">納米標靶</span></li><li><span lang="en">Cancer-therapy R&amp;D</span><span lang="zh-Hant">癌症治療研發</span></li><li><span lang="en">Patents</span><span lang="zh-Hant">專利</span></li></ul>
+              <div class="p-links">
+                <a class="btn btn-gold sm" href="biotech-medtech/#targeting-demo"><span lang="en">Interactive demo</span><span lang="zh-Hant">互動示範</span> →</a>
+                <a class="p-link" href="https://github.com/tylercheng00/biotech-medtech">GitHub ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="p-card reveal" id="nanotech">
+            <a class="p-media" href="biotech-medtech/#nanotech"><img src="assets/projects/targeted-nanoparticle.svg" alt="Animated targeted nanoparticle illustration" width="800" height="420" loading="lazy"></a>
+            <div class="p-body">
+              <p class="p-meta"><span class="p-role"><span lang="en">Co-founder &amp; COO · since 2021</span><span lang="zh-Hant">聯合創辦人兼營運總監 · 2021 年至今</span></span><span class="p-status live"><span lang="en">Ongoing</span><span lang="zh-Hant">持續發展</span></span></p>
+              <h3>Nanotech Innovation Limited</h3>
+              <p class="p-sub">納米科研技術有限公司</p>
+              <p><span lang="en">Nano-coatings and biomedical targeted technologies, supported by a patent portfolio. Founded at university.</span><span lang="zh-Hant">研發納米塗層及生物醫療標靶技術，並建立專利組合。於大學期間創立。</span></p>
+              <div class="p-links"><a class="btn btn-gold sm" href="biotech-medtech/#nanotech"><span lang="en">Showcase</span><span lang="zh-Hant">項目介紹</span> →</a></div>
+            </div>
+          </article>
+
+          <article class="p-card reveal" id="catheter">
+            <a class="p-media" href="biotech-medtech/#catheter"><img src="assets/projects/variable-stiffness-catheter.svg" alt="Animated variable-stiffness catheter illustration" width="800" height="420" loading="lazy"></a>
+            <div class="p-body">
+              <p class="p-meta"><span class="p-role"><span lang="en">Commercialisation &amp; fundraising</span><span lang="zh-Hant">商業化及融資</span></span><span class="p-status early"><span lang="en">Early-stage · seeking partners</span><span lang="zh-Hant">早期階段 · 尋求合作夥伴</span></span></p>
+              <h3><span lang="en">Variable-Stiffness Microsurgical Catheter</span><span lang="zh-Hant">可變剛度微創手術導管</span></h3>
+              <p><span lang="en">Commercialising a university-originated programmable-metamaterial technology (liquid metal / shape-memory alloy) for interventional catheters and soft robotic joints.</span><span lang="zh-Hant">把源自大學的可編程超材料技術（液態金屬／形狀記憶合金）商品化，應用於介入導管及軟體機械關節。</span></p>
+              <div class="p-links"><a class="btn btn-gold sm" href="biotech-medtech/#catheter"><span lang="en">Showcase</span><span lang="zh-Hant">項目介紹</span> →</a></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 Finance -->
+    <section class="section alt p-group" id="finance" data-group="finance">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">02 — <span lang="en">Focus area</span><span lang="zh-Hant">主線</span></p>
+          <h2 class="section-title"><span lang="en">Finance &amp; Investment</span><span lang="zh-Hant">金融投資</span></h2>
+        </div>
+        <div class="p-grid">
+          <article class="p-card featured reveal" id="portfolio-lab">
+            <a class="p-media" href="portfolio-optimization-lab/"><img src="assets/projects/efficient_frontier.gif" alt="Animated efficient frontier on synthetic data" width="768" height="368" loading="lazy"></a>
+            <div class="p-body">
+              <p class="p-meta"><span class="p-role"><span lang="en">Open source · Python</span><span lang="zh-Hant">開源 · Python</span></span><span class="p-status dev"><span lang="en">In development</span><span lang="zh-Hant">開發中</span></span></p>
+              <h3>Portfolio Optimization Lab</h3>
+              <p class="p-sub"><span lang="en">Mean-variance &amp; risk-parity optimization with CVXPY</span><span lang="zh-Hant">以 CVXPY 實現均值-方差及風險平價優化</span></p>
+              <p><span lang="en">Research direction: hardware acceleration (FPGA / ASIC) of convex optimization for low-latency rebalancing. Includes a fixed-iteration ADMM reference kernel with reduced-precision emulation.</span><span lang="zh-Hant">研究方向：以硬件加速（FPGA / ASIC）凸優化運算，實現低延遲再平衡。附固定迭代 ADMM 參考核心及低精度模擬。</span></p>
+              <ul class="chips"><li>CVXPY</li><li>Risk parity</li><li>ADMM</li><li>FPGA / ASIC</li></ul>
+              <div class="p-links">
+                <a class="btn btn-gold sm" href="portfolio-optimization-lab/"><span lang="en">Interactive demo</span><span lang="zh-Hant">互動示範</span> →</a>
+                <a class="p-link" href="https://github.com/tylercheng00/portfolio-optimization-lab">GitHub ↗</a>
+              </div>
+              <p class="p-note"><span lang="en">Synthetic data · research and education only · not investment advice</span><span lang="zh-Hant">模擬數據 · 僅供研究及教育用途 · 不構成投資建議</span></p>
+            </div>
+          </article>
+
+          <article class="p-card text-card reveal" id="fuway">
+            <div class="p-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 20h18M6 16V10M11 16V6M16 16v-4M21 16V8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div class="p-body">
+              <p class="p-meta"><span class="p-role"><span lang="en">Professional work</span><span lang="zh-Hant">專業工作</span></span><span class="p-status live"><span lang="en">Current</span><span lang="zh-Hant">現職</span></span></p>
+              <h3><span lang="en">US Equities Market Specialist</span><span lang="zh-Hant">美股市場專員</span></h3>
+              <p class="p-sub">富輝集團 · Fuway</p>
+              <p><span lang="en">Advising companies on the US equity markets, focusing on IPO advisory and M&amp;A.</span><span lang="zh-Hant">為企業提供美國股票市場相關顧問服務，專注 IPO 上市及併購。</span></p>
+              <ul class="chips"><li>IPO</li><li>M&amp;A</li><li><span lang="en">US Equities</span><span lang="zh-Hant">美股</span></li></ul>
+              <div class="p-links"><a class="p-link" href="index.html#contact"><span lang="en">Enquiries</span><span lang="zh-Hant">查詢</span> →</a></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 Interests -->
+    <section class="section p-group" id="interests" data-group="interest">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">03 — <span lang="en">Interests</span><span lang="zh-Hant">興趣</span></p>
+          <h2 class="section-title"><span lang="en">Side projects</span><span lang="zh-Hant">興趣項目</span></h2>
+          <p class="p-lede dark"><span lang="en">Built to learn, outside my two focus areas.</span><span lang="zh-Hant">主線以外、出於興趣而做的學習項目。</span></p>
+        </div>
+        <div class="p-grid two">
+          <article class="p-card compact reveal" id="dawn-2">
+            <a class="p-media" href="dawn-2/"><img src="assets/projects/dawn.jpg" alt="DAWN-2 concept launch vehicle 3D model, exploded view" width="898" height="556" loading="lazy"></a>
+            <div class="p-body">
+              <p class="p-meta"><span class="p-role"><span lang="en">Aerospace</span><span lang="zh-Hant">航天</span></span><span class="p-status dev"><span lang="en">Concept · no hardware</span><span lang="zh-Hant">概念 · 無實體硬件</span></span></p>
+              <h3><span lang="en">DAWN-2 Concept Launch Vehicle</span><span lang="zh-Hant">曙光二號概念火箭</span></h3>
+              <p><span lang="en">The full engineering logic of a reusable rocket — design, materials, manufacturing, recovery — as an interactive 3D model.</span><span lang="zh-Hant">以互動 3D 模型理解可重複使用火箭的完整工程邏輯：設計、選材、製造、回收。</span></p>
+              <div class="p-links">
+                <a class="btn btn-gold sm" href="dawn-2/"><span lang="en">3D model</span><span lang="zh-Hant">3D 模型</span> →</a>
+                <a class="p-link" href="https://github.com/tylercheng00/dawn-2">GitHub ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="p-card compact reveal" id="ai-redteam">
+            <a class="p-media" href="ai-redteam-lab/"><img src="assets/projects/redteam.jpg" alt="AI Red-Teaming Lab terminal showing the robustness matrix" width="592" height="331" loading="lazy"></a>
+            <div class="p-body">
+              <p class="p-meta"><span class="p-role"><span lang="en">AI security</span><span lang="zh-Hant">AI 資安</span></span><span class="p-status dev"><span lang="en">In development</span><span lang="zh-Hant">開發中</span></span></p>
+              <h3><span lang="en">AI Red-Teaming Lab</span><span lang="zh-Hant">AI 紅隊測試實驗室</span></h3>
+              <p><span lang="en">Prompt-injection and jailbreak robustness research, measured safely with canary secrets. Python harness and interactive playground.</span><span lang="zh-Hant">提示注入及越獄穩健性研究，以金絲雀暗號安全量度。附 Python 評估框架及互動測試。</span></p>
+              <div class="p-links">
+                <a class="btn btn-gold sm" href="ai-redteam-lab/"><span lang="en">Playground</span><span lang="zh-Hant">互動測試</span> →</a>
+                <a class="p-link" href="https://github.com/tylercheng00/ai-redteam-lab">GitHub ↗</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact p-contact">
+      <div class="container contact-inner reveal">
+        <h2 class="contact-title"><span lang="en">Interested in working together?</span><span lang="zh-Hant">有意合作？</span></h2>
+        <p class="contact-text"><span lang="en">I'm happy to talk about any of these projects.</span><span lang="zh-Hant">歡迎就以上任何項目與我聯絡。</span></p>
+        <div class="contact-cards">
+          <a class="contact-card" href="mailto:info@tylerfuture.com"><span class="cc-label"><span lang="en">Personal email</span><span lang="zh-Hant">個人電郵</span></span><span class="cc-value">info@tylerfuture.com</span></a>
+          <a class="contact-card" href="mailto:zhengdimin@newbrilliance.com"><span class="cc-label"><span lang="en">Work email</span><span lang="zh-Hant">工作電郵</span></span><span class="cc-value">zhengdimin@newbrilliance.com</span></a>
+          <a class="contact-card" href="https://www.linkedin.com/in/tik-man-cheng" target="_blank" rel="noopener"><span class="cc-label">LinkedIn</span><span class="cc-value">in/tik-man-cheng</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="brand-mark" aria-hidden="true">TC</span>
+        <div>
+          <p class="footer-name">鄭迪珉 Tyler Tik Man Cheng</p>
+          <p class="footer-tag">US Equities · Biotech · Patents · Startups</p>
+        </div>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="index.html"><span lang="en">Home</span><span lang="zh-Hant">主頁</span></a>
+        <a href="#biotech"><span lang="en">Biotech</span><span lang="zh-Hant">生物科技</span></a>
+        <a href="#finance"><span lang="en">Finance</span><span lang="zh-Hant">金融投資</span></a>
+        <a href="#interests"><span lang="en">Interests</span><span lang="zh-Hant">興趣</span></a>
+      </nav>
+      <p class="footer-copy">© <span id="year">2026</span> Tyler Tik Man Cheng. <span lang="en">All rights reserved.</span><span lang="zh-Hant">版權所有。</span></p>
+    </div>
+  </footer>
+
+  <a class="to-top" id="to-top" href="#top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 19V5m0 0-6 6m6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+
+  <script src="main.js"></script>
+</body>
+</html>

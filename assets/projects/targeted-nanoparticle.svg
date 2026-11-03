@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" role="img" aria-label="Animated illustration: a targeted nanoparticle travels to and binds a receptor on a cell membrane">
+  <title>Targeted nanoparticle — concept illustration</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#13325a"/><stop offset=".6" stop-color="#0b1d33"/><stop offset="1" stop-color="#071322"/></linearGradient>
+    <radialGradient id="np" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#fff6df"/><stop offset=".4" stop-color="#e2c88f"/><stop offset="1" stop-color="#8d6a28"/></radialGradient>
+    <radialGradient id="cell" cx=".5" cy="0" r="1"><stop offset="0" stop-color="#4f86c6" stop-opacity=".45"/><stop offset="1" stop-color="#4f86c6" stop-opacity="0"/></radialGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter>
+    <g id="particle">
+      <g stroke="#e2c88f" stroke-width="2">
+        <line x1="0" y1="-22" x2="0" y2="-34"/><line x1="15.6" y1="-15.6" x2="24" y2="-24"/><line x1="22" y1="0" x2="34" y2="0"/><line x1="15.6" y1="15.6" x2="24" y2="24"/>
+        <line x1="0" y1="22" x2="0" y2="34"/><line x1="-15.6" y1="15.6" x2="-24" y2="24"/><line x1="-22" y1="0" x2="-34" y2="0"/><line x1="-15.6" y1="-15.6" x2="-24" y2="-24"/>
+      </g>
+      <g fill="#4f86c6" stroke="#cfe0f5" stroke-width="1.5">
+        <circle cx="0" cy="-36" r="4.5"/><circle cx="25.5" cy="-25.5" r="4.5"/><circle cx="36" cy="0" r="4.5"/><circle cx="25.5" cy="25.5" r="4.5"/>
+        <circle cx="0" cy="36" r="4.5"/><circle cx="-25.5" cy="25.5" r="4.5"/><circle cx="-36" cy="0" r="4.5"/><circle cx="-25.5" cy="-25.5" r="4.5"/>
+      </g>
+      <circle r="22" fill="url(#np)"/>
+      <circle cx="-7" cy="-7" r="6" fill="#fff" fill-opacity=".45"/>
+    </g>
+    <g id="receptor"><path d="M0 0 V-18 M0 -18 L-8 -30 M0 -18 L8 -30" stroke="#c9a35b" stroke-width="4" stroke-linecap="round" fill="none"/></g>
+  </defs>
+  <style>
+    .drift { animation: drift 9s ease-in-out infinite alternate; }
+    .drift.b { animation-duration: 12s; animation-delay: -4s; }
+    @keyframes drift { to { transform: translate(-26px, 18px); } }
+    .pulse { transform-box: fill-box; transform-origin: center; animation: pulse 6s ease-out infinite; opacity: 0; }
+    @keyframes pulse { 0%, 62% { opacity: 0; transform: scale(.4); } 66% { opacity: .8; } 100% { opacity: 0; transform: scale(2.6); } }
+    .lbl { font: 600 15px Inter, Arial, sans-serif; fill: #e9edf3; }
+    .sub { font: 500 12px Inter, Arial, sans-serif; fill: #93a2b5; }
+  </style>
+
+  <rect width="800" height="420" fill="url(#bg)"/>
+  <g stroke="#fff" stroke-opacity=".05"><path d="M0 60H800M0 120H800M0 180H800M0 240H800M0 300H800M0 360H800M100 0V420M200 0V420M300 0V420M400 0V420M500 0V420M600 0V420M700 0V420"/></g>
+
+  <!-- floating molecules -->
+  <g class="drift" fill="#fff" fill-opacity=".3"><circle cx="120" cy="80" r="3"/><circle cx="230" cy="150" r="2"/><circle cx="640" cy="70" r="3.5"/><circle cx="720" cy="160" r="2"/><circle cx="560" cy="130" r="2.5"/></g>
+  <g class="drift b" fill="#8fb4e0" fill-opacity=".35"><circle cx="300" cy="60" r="2.5"/><circle cx="470" cy="90" r="3"/><circle cx="90" cy="200" r="2"/><circle cx="690" cy="230" r="3"/></g>
+
+  <!-- cell membrane (lipid bilayer) -->
+  <circle cx="400" cy="1060" r="760" fill="url(#cell)"/>
+  <circle cx="400" cy="1060" r="760" fill="none" stroke="#8fb4e0" stroke-width="10" stroke-dasharray="1 13" stroke-linecap="round" stroke-opacity=".9"/>
+  <circle cx="400" cy="1060" r="736" fill="none" stroke="#8fb4e0" stroke-width="10" stroke-dasharray="1 13" stroke-linecap="round" stroke-opacity=".55"/>
+
+  <!-- receptors -->
+  <use href="#receptor" x="250" y="314" transform="rotate(-11 250 314)"/>
+  <use href="#receptor" x="400" y="300"/>
+  <use href="#receptor" x="550" y="314" transform="rotate(11 550 314)"/>
+  <use href="#receptor" x="130" y="340" transform="rotate(-21 130 340)"/>
+  <use href="#receptor" x="670" y="340" transform="rotate(21 670 340)"/>
+
+  <!-- binding pulse at the central receptor -->
+  <circle class="pulse" cx="400" cy="262" r="30" fill="none" stroke="#e2c88f" stroke-width="3"/>
+
+  <!-- trajectory -->
+  <path id="track" d="M90 70 C 260 40, 360 120, 400 228" fill="none" stroke="#e2c88f" stroke-width="2" stroke-dasharray="4 9" stroke-opacity=".55"/>
+
+  <!-- the targeted particle -->
+  <g>
+    <circle r="40" fill="#c9a35b" opacity=".25" filter="url(#glow)"/>
+    <use href="#particle"/>
+    <animateMotion dur="6s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;.62;1" calcMode="spline" keySplines=".4 0 .2 1; 0 0 1 1" path="M90 70 C 260 40, 360 120, 400 228"/>
+  </g>
+
+  <!-- non-targeted particle drifting past -->
+  <g opacity=".55">
+    <use href="#particle" transform="scale(.6)"/>
+    <animateMotion dur="9s" repeatCount="indefinite" path="M820 120 C 660 60, 560 200, -40 150"/>
+  </g>
+
+  <text x="24" y="34" class="sub">Illustration — concept only · 示意圖，只作概念說明</text>
+  <text x="776" y="34" class="lbl" text-anchor="end">Targeted delivery · 標靶遞送</text>
+</svg>

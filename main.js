@@ -69,6 +69,7 @@
   }
 
   /* ---------- Contact helpers (read from the links in the page) ---------- */
+  if (document.getElementById('vcard-btn')) (function () {
   var emailLink = document.getElementById('contact-email');
   var linkedinLink = document.getElementById('contact-linkedin');
   var email = emailLink.getAttribute('href').replace(/^mailto:/, '');
@@ -111,6 +112,22 @@
     } else {
       window.prompt('Email', email);
     }
+  });
+
+  })();
+
+  /* ---------- Project filters (projects page) ---------- */
+  var filterBtns = document.querySelectorAll('[data-filter]');
+  filterBtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = b.getAttribute('data-filter');
+      filterBtns.forEach(function (o) { var on = o === b; o.classList.toggle('on', on); o.setAttribute('aria-selected', String(on)); });
+      document.querySelectorAll('.p-group').forEach(function (g) {
+        var hide = f !== 'all' && g.getAttribute('data-group') !== f;
+        g.classList.toggle('hidden', hide);
+        if (!hide) g.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+      });
+    });
   });
 
   /* ---------- Footer year ---------- */

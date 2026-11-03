@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" role="img" aria-label="Animated illustration: a catheter follows a curved vessel while soft, then becomes stiff to hold its shape">
+  <title>Variable-stiffness catheter — concept illustration</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#13325a"/><stop offset=".6" stop-color="#0b1d33"/><stop offset="1" stop-color="#071322"/></linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="5"/></filter>
+    <path id="vessel" d="M-20 300 C 140 300, 170 120, 330 120 S 520 330, 660 250 S 760 150, 830 160"/>
+  </defs>
+  <style>
+    .lbl { font: 600 15px Inter, Arial, sans-serif; fill: #e9edf3; }
+    .sub { font: 500 12px Inter, Arial, sans-serif; fill: #93a2b5; }
+    .cath { fill: none; stroke-width: 7; stroke-linecap: round; stroke-dasharray: 100 100; animation: insert 9s cubic-bezier(.45,0,.3,1) infinite, mode 9s steps(1) infinite; }
+    .cath-glow { fill: none; stroke-width: 16; stroke-linecap: round; stroke-dasharray: 100 100; filter: url(#glow); animation: insert 9s cubic-bezier(.45,0,.3,1) infinite, glow 9s ease-in-out infinite; }
+    @keyframes insert { 0% { stroke-dashoffset: 100; } 45%, 92% { stroke-dashoffset: 18; } 100% { stroke-dashoffset: 18; opacity: 0; } }
+    @keyframes mode { 0% { stroke: #6fa8dc; } 50% { stroke: #e2c88f; } 100% { stroke: #6fa8dc; } }
+    @keyframes glow { 0%, 48% { stroke: #6fa8dc; opacity: .25; } 52%, 90% { stroke: #e2c88f; opacity: .6; } 100% { opacity: 0; } }
+    .soft { animation: soft 9s steps(1) infinite; }
+    .stiff { animation: stiff 9s steps(1) infinite; }
+    @keyframes soft { 0% { opacity: 1; } 50% { opacity: 0; } }
+    @keyframes stiff { 0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 0; } }
+    .tool { animation: tool 9s ease-in-out infinite; opacity: 0; }
+    @keyframes tool { 0%, 58% { opacity: 0; } 66%, 90% { opacity: 1; } 100% { opacity: 0; } }
+  </style>
+
+  <rect width="800" height="420" fill="url(#bg)"/>
+
+  <!-- vessel walls -->
+  <use href="#vessel" fill="none" stroke="#5a2b3a" stroke-width="58" stroke-linecap="round" opacity=".7"/>
+  <use href="#vessel" fill="none" stroke="#2a1622" stroke-width="44" stroke-linecap="round"/>
+  <use href="#vessel" fill="none" stroke="#d9775a" stroke-width="1.2" stroke-dasharray="2 10" opacity=".35"/>
+
+  <!-- catheter -->
+  <path d="M-20 300 C 140 300, 170 120, 330 120 S 520 330, 660 250 S 760 150, 830 160" class="cath-glow" pathLength="100"/>
+  <path d="M-20 300 C 140 300, 170 120, 330 120 S 520 330, 660 250 S 760 150, 830 160" class="cath" pathLength="100"/>
+
+  <!-- tool deployed at the tip while stiff -->
+  <g class="tool"><circle cx="660" cy="250" r="12" fill="none" stroke="#e2c88f" stroke-width="2.5"/><circle cx="660" cy="250" r="22" fill="none" stroke="#e2c88f" stroke-width="1.2" stroke-dasharray="3 5"/></g>
+
+  <!-- mode labels -->
+  <g class="soft">
+    <rect x="24" y="22" width="300" height="58" rx="12" fill="#0b1d33" stroke="#6fa8dc"/>
+    <text x="42" y="47" class="lbl" fill="#6fa8dc">Soft mode · 柔軟模式</text>
+    <text x="42" y="67" class="sub">flexible — follows curved vessels</text>
+  </g>
+  <g class="stiff">
+    <rect x="24" y="22" width="300" height="58" rx="12" fill="#0b1d33" stroke="#e2c88f"/>
+    <text x="42" y="47" class="lbl" fill="#e2c88f">Stiff mode · 剛性模式</text>
+    <text x="42" y="67" class="sub">rigid — holds shape, supports instruments</text>
+  </g>
+
+  <text x="24" y="398" class="sub">Illustration — concept only, not a product · 示意圖，只作概念說明，並非產品</text>
+  <text x="776" y="34" class="lbl" text-anchor="end">Programmable stiffness · 可編程剛度</text>
+</svg>

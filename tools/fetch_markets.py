@@ -51,6 +51,13 @@ GROUPS = [
         ("NVDA", "NVIDIA"), ("AAPL", "Apple"), ("MSFT", "Microsoft"), ("AMZN", "Amazon"),
         ("GOOGL", "Alphabet"), ("META", "Meta Platforms"), ("TSLA", "Tesla"),
     ]),
+    # also priced into the Portfolio page (portfolio.js reads these symbols)
+    ("metals_fx", "Gold, silver & FX", "金銀及匯率", [
+        ("GOLD", "Gold futures (US$/oz)", "GC=F", "@GC.1", None),
+        ("SILVER", "Silver futures (US$/oz)", "SI=F", "@SI.1", None),
+        ("USD/HKD", "US dollar / HK dollar", "HKD=X", "HKD=", None),
+        ("USD/CNY", "US dollar / Chinese yuan", "CNY=X", "CNY=", None),
+    ]),
 ]
 
 

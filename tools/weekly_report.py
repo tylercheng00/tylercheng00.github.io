@@ -23,6 +23,9 @@ OUTDIR = ROOT / "content" / "insights"
 sys.path.insert(0, str(ROOT / "tools"))
 from fetch_markets import GROUPS  # noqa: E402
 
+# groups left out of the watchlist averages and the biggest-moves list
+NOT_WATCHLISTS = ("indices", "metals_fx")
+
 INDICES = ["S&P 500", "Nasdaq", "Dow 30", "Russell 2000"]
 ZH_NAME = {"S&P 500": "標普 500", "Nasdaq": "納斯達克", "Dow 30": "道瓊斯", "Russell 2000": "羅素 2000"}
 NAMES = {}
@@ -88,13 +91,13 @@ def main():
     if not idx:
         print("no index data; no report")
         return
-    stocks = [(s, p) for s, (p, _) in moves.items() if s in GROUP_OF and GROUP_OF[s][0] != "indices"]
+    stocks = [(s, p) for s, (p, _) in moves.items() if s in GROUP_OF and GROUP_OF[s][0] not in NOT_WATCHLISTS]
     stocks.sort(key=lambda x: x[1], reverse=True)
     up, down = stocks[:3], [s for s in stocks[::-1][:3] if s[1] < 0]
 
     groups = []
     for gid, en, zh, rows in GROUPS:
-        if gid == "indices":
+        if gid in NOT_WATCHLISTS:
             continue
         vals = [moves[r[0]][0] for r in rows if r[0] in moves]
         if vals:

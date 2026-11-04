@@ -11,6 +11,7 @@
       b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === lang));
     });
     if (save) { try { localStorage.setItem('lang', lang); } catch (e) {} }
+    try { document.dispatchEvent(new CustomEvent('langchange', { detail: lang })); } catch (e) {}
   }
   langButtons.forEach(function (b) {
     b.addEventListener('click', function () { setLang(b.getAttribute('data-set-lang'), true); });
@@ -126,6 +127,20 @@
         var hide = f !== 'all' && g.getAttribute('data-group') !== f;
         g.classList.toggle('hidden', hide);
         if (!hide) g.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+      });
+    });
+  });
+
+  /* ---------- Insights category filter ---------- */
+  var catBtns = document.querySelectorAll('[data-cat-filter]');
+  catBtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = b.getAttribute('data-cat-filter');
+      catBtns.forEach(function (o) { var on = o === b; o.classList.toggle('on', on); o.setAttribute('aria-pressed', String(on)); });
+      document.querySelectorAll('.ins-card[data-cats]').forEach(function (c) {
+        var hide = f !== 'all' && c.getAttribute('data-cats').split(' ').indexOf(f) < 0;
+        c.classList.toggle('hidden', hide);
+        if (!hide) c.classList.add('in');
       });
     });
   });

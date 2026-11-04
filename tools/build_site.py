@@ -335,9 +335,9 @@ DATA_NOTE = bi(
 BYLINE_DATA = bi("— Compiled automatically for 鄭迪珉 Tyler Tik Man Cheng", "—— 為鄭迪珉自動整理")
 
 DISCLAIMER = bi(
-    "Views are my own and do not represent Fuway, Nanotech Innovation Limited or any client. "
+    "Views are my own and do not represent Fuway Capital, Nanotech Innovation Limited or any client. "
     "This is general commentary, not investment, legal or medical advice.",
-    "以上純屬個人觀點，不代表富輝集團、Nanotech Innovation Limited 或任何客戶。"
+    "以上純屬個人觀點，不代表富輝資本、Nanotech Innovation Limited 或任何客戶。"
     "內容僅為一般評論，不構成投資、法律或醫療建議。",
 )
 

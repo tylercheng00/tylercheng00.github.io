@@ -105,7 +105,7 @@
       'VERSION:3.0',
       'N:Cheng;Tyler Tik Man;;;',
       'FN:Tyler Tik Man Cheng (鄭迪珉)',
-      'TITLE:Co-founder (BTRDCC) / Co-founder & COO (Nanotech Innovation) / US Equities Market Specialist (Fuway)',
+      'TITLE:Co-founder (BTRDCC) / Co-founder & COO (Nanotech Innovation) / US Equities Market Specialist (Fuway Capital)',
       'EMAIL;TYPE=INTERNET,HOME:' + email,
       (workEmail ? 'EMAIL;TYPE=INTERNET,WORK:' + workEmail : ''),
       'URL:' + location.origin + location.pathname,

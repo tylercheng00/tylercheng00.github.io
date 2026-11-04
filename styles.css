@@ -892,3 +892,81 @@ html[data-lang="zh"] .prose { font-size: 17.5px; line-height: 1.95; }
 .snap-table tr.stale { opacity: .55; }
 @media (max-width: 860px) { .snap-grid { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 420px) { .snap-chart { display: none; } .snap-table th small { max-width: 150px; } }
+
+/* =========================================================
+   Design elements carried over from tylerfuture.com
+   (desert hero, curved hero edge, oversized display type)
+   ========================================================= */
+:root { --display: "Space Grotesk", "Inter", "Noto Sans TC", system-ui, sans-serif; }
+
+/* Desert photo behind the hero, toned into the navy palette */
+.hero-photo { position: absolute; inset: 0; display: block; }
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%; opacity: .62; }
+.hero-photo::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg, rgba(7, 19, 34, .94) 0%, rgba(7, 19, 34, .78) 42%, rgba(7, 19, 34, .30) 100%),
+    linear-gradient(180deg, rgba(7, 19, 34, .55) 0%, transparent 30%, transparent 62%, var(--navy-950) 100%);
+}
+.hero .grid { opacity: .55; }
+
+/* Curved lower edge, as on the old home page */
+.highlights { padding-bottom: 28px; border-radius: 0 0 50% 50% / 0 0 72px 72px; }
+@media (max-width: 640px) { .highlights { padding-bottom: 40px; border-radius: 0 0 50% 50% / 0 0 36px 36px; } }
+
+/* Vision band */
+.vision {
+  position: relative; isolation: isolate; overflow: hidden; color: #fff;
+  background: var(--navy-950);
+  min-height: 86vh; min-height: 86svh; display: flex; align-items: flex-end;
+}
+.vision-bg { position: absolute; inset: 0; z-index: -1; }
+.vision-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; opacity: .78; }
+.vision-bg::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(7, 19, 34, .55) 0%, rgba(7, 19, 34, .05) 38%, rgba(7, 19, 34, .55) 72%, rgba(7, 19, 34, .96) 100%);
+}
+.vision-inner { padding-top: 160px; padding-bottom: 88px; }
+.vision-eyebrow {
+  font-family: var(--serif); font-style: italic; font-weight: 500;
+  font-size: clamp(18px, 2vw, 22px); color: var(--gold-soft);
+}
+html[data-lang="zh"] .vision-eyebrow { font-family: var(--serif-zh); font-style: normal; letter-spacing: .12em; font-size: 17px; }
+.vision-title {
+  margin-top: 14px; font-family: var(--display); font-weight: 500;
+  font-size: clamp(56px, 10.5vw, 156px); line-height: .94; letter-spacing: -.045em;
+  text-wrap: balance;
+}
+html[data-lang="zh"] .vision-title { font-family: "Noto Sans TC", var(--sans); font-weight: 700; letter-spacing: .02em; line-height: 1.08; font-size: clamp(48px, 8.4vw, 120px); }
+.vision-foot {
+  margin-top: 48px; padding-top: 26px; border-top: 1px solid rgba(255, 255, 255, .2);
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: end;
+}
+.vision-text { max-width: 540px; font-size: 18px; line-height: 1.7; color: rgba(255, 255, 255, .78); text-wrap: pretty; }
+.vision-motto {
+  font-family: var(--display); font-size: 13px; font-weight: 600; letter-spacing: .26em; text-transform: uppercase;
+  color: var(--gold); white-space: nowrap;
+}
+@media (max-width: 760px) {
+  .vision { min-height: 0; }
+  .vision-inner { padding-top: 120px; padding-bottom: 64px; }
+  .vision-foot { grid-template-columns: 1fr; gap: 18px; }
+  .vision-text { font-size: 16px; }
+}
+
+/* "Along the way" photo strip */
+.moments { margin-top: 56px; }
+.moments-k { font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-ink); }
+.moments-strip {
+  margin-top: 16px; display: flex; gap: 14px; overflow-x: auto; padding-bottom: 12px;
+  scroll-snap-type: x proximity; overscroll-behavior-x: contain;
+  scrollbar-width: thin; scrollbar-color: var(--line) transparent;
+}
+.moments-strip:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; border-radius: 6px; }
+.moments-strip figure { margin: 0; flex: none; scroll-snap-align: start; }
+.moments-strip img {
+  display: block; height: 280px; width: auto; border-radius: var(--radius-sm);
+  background: var(--bg-alt); box-shadow: var(--shadow-sm);
+}
+.moments-strip figcaption { margin-top: 8px; font-size: 13px; color: var(--muted); }
+@media (max-width: 640px) { .moments-strip img { height: 220px; } }

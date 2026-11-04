@@ -63,8 +63,8 @@ ul, ol { margin: 0; padding: 0; }
 ::selection { background: var(--gold); color: var(--navy-950); }
 
 /* Language switching */
-html[data-lang="en"] body [lang="zh-Hant"],
-html[data-lang="zh"] body [lang="en"] { display: none !important; }
+html[data-lang="en"] body [lang="zh-Hant"]:not(iframe),
+html[data-lang="zh"] body [lang="en"]:not(iframe) { display: none !important; }
 html[data-lang="zh"] .section-title,
 html[data-lang="zh"] .contact-title { font-family: var(--serif-zh); letter-spacing: .02em; }
 
@@ -831,7 +831,12 @@ html[data-lang="zh"] .prose { font-size: 17.5px; line-height: 1.95; }
 
 .mk-tape { min-height: 46px; background: var(--surface); border-bottom: 1px solid var(--line); }
 .mk-card { border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-sm); overflow: hidden; padding: 6px; }
-.mk-card .tradingview-widget-container, .mk-card .tradingview-widget-container__widget { width: 100%; height: 100%; }
+.mk-card .tradingview-widget-container { width: 100%; height: 100%; }
+.mk-card .tradingview-widget-container__widget { width: 100%; height: calc(100% - 32px); }
+.tradingview-widget-container iframe { display: block !important; visibility: visible !important; }
+.tradingview-widget-copyright { font-size: 12px; line-height: 32px; text-align: right; padding-right: 8px; color: var(--muted); }
+.tradingview-widget-copyright a { color: var(--muted); }
+.mk-tape .tradingview-widget-copyright { display: none; }
 .mk-card.tall { height: 460px; }
 .mk-card.heat { height: 560px; }
 .mk-card.mid { height: 560px; }

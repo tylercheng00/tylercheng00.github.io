@@ -83,11 +83,15 @@
       var inner = document.createElement('div');
       inner.className = 'tradingview-widget-container__widget';
       wrap.appendChild(inner);
+      var cr = document.createElement('div');
+      cr.className = 'tradingview-widget-copyright';
+      cr.innerHTML = '<a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">Track all markets on TradingView</a>';
+      wrap.appendChild(cr);
       var s = document.createElement('script');
+      s.type = 'text/javascript';
       s.src = BASE + kind + '.js';
       s.async = true;
-      s.type = 'text/javascript';
-      s.innerHTML = JSON.stringify(cfg[kind]);
+      s.text = JSON.stringify(cfg[kind]);
       s.onerror = function () { fail(host); };
       wrap.appendChild(s);
       host.appendChild(wrap);
@@ -98,7 +102,8 @@
     setTimeout(function () {
       if (token !== last) return;
       document.querySelectorAll('[data-tv]').forEach(function (host) {
-        if (!host.querySelector('iframe')) fail(host);
+        var f = host.querySelector('iframe');
+        if (!f || !f.offsetHeight) fail(host);
       });
     }, 12000);
   }

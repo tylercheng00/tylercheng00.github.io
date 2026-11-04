@@ -103,9 +103,10 @@ def parse_cnbc(data):
         quotes = [quotes]
     for q in quotes:
         price = num(q.get("last"))
-        prev = num(q.get("previous_day_closing"))
-        if prev is None and price is not None and num(q.get("change")) is not None:
-            prev = price - num(q.get("change"))
+        change = num(q.get("change"))
+        # Use the day's change: after the close CNBC rolls
+        # previous_day_closing forward to the latest close.
+        prev = price - change if price is not None and change is not None else num(q.get("previous_day_closing"))
         if price and prev:
             out[q["symbol"]] = (price, prev)
     return out
@@ -160,7 +161,7 @@ PROVIDERS = [("cnbc", "CNBC", cnbc), ("yahoo", "Yahoo Finance", yahoo), ("sina",
 
 # ---------------------------------------------------------------- main
 def selftest():
-    c = parse_cnbc(b'{"FormattedQuoteResult":{"FormattedQuote":[{"symbol":".SPX","last":"5,712.20","change":"-23.10","previous_day_closing":"5,735.30"},{"symbol":"AAPL","last":"227.48","change":"+1.23"}]}}')
+    c = parse_cnbc(b'{"FormattedQuoteResult":{"FormattedQuote":[{"symbol":".SPX","last":"5,712.20","change":"-23.10","previous_day_closing":"5,712.20"},{"symbol":"AAPL","last":"227.48","change":"+1.23"}]}}')
     assert c == {".SPX": (5712.2, 5735.3), "AAPL": (227.48, 226.25)}, c
     y = parse_yahoo(b'{"quoteResponse":{"result":[{"symbol":"^GSPC","regularMarketPrice":5712.2,"regularMarketPreviousClose":5735.3}]}}')
     assert y == {"^GSPC": (5712.2, 5735.3)}, y

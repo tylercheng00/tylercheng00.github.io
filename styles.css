@@ -63,8 +63,11 @@ ul, ol { margin: 0; padding: 0; }
 ::selection { background: var(--gold); color: var(--navy-950); }
 
 /* Language switching */
-html[data-lang="en"] body [lang="zh-Hant"]:not(iframe),
-html[data-lang="zh"] body [lang="en"]:not(iframe) { display: none !important; }
+html[data-lang="en"] body [lang="zh-Hant"]:not(iframe):not([data-tv] *),
+html[data-lang="zh"] body [lang="en"]:not(iframe):not([data-tv] *) { display: none !important; }
+/* the fallback note inside a widget host still switches language */
+html[data-lang="en"] .mk-fail [lang="zh-Hant"],
+html[data-lang="zh"] .mk-fail [lang="en"] { display: none !important; }
 html[data-lang="zh"] .section-title,
 html[data-lang="zh"] .contact-title { font-family: var(--serif-zh); letter-spacing: .02em; }
 

@@ -77,8 +77,9 @@
     };
   }
 
-  function mount(host) {
+  function mount(host, forceEn) {
     var st = settings();
+    if (forceEn) st.locale = 'en';
     var key = st.locale + st.theme;
     if (host.getAttribute('data-key') === key) return;
     host.setAttribute('data-key', key);
@@ -118,7 +119,10 @@
     setTimeout(function () {
       if (host.getAttribute('data-key') !== key) return;
       var f = host.querySelector('iframe');
-      if (!f || !f.offsetHeight) fail(host);
+      if (f && f.offsetHeight) return;
+      // Chinese locale did not render: retry once in English before giving up.
+      if (st.locale !== 'en') { host.removeAttribute('data-key'); mount(host, true); return; }
+      fail(host);
     }, 15000);
   }
 

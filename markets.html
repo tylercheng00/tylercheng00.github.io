@@ -94,12 +94,26 @@
       </div>
     </section>
 
-    <div class="mk-tape" data-tv="ticker-tape" aria-label="Ticker tape"></div>
-
-    <section class="section mk">
+    <section class="section mk" id="snapshot">
       <div class="container">
         <div class="section-head reveal">
-          <p class="kicker">01 — <span lang="en">Indices</span><span lang="zh-Hant">指數</span></p>
+          <p class="kicker">01 — <span lang="en">Snapshot</span><span lang="zh-Hant">快照</span></p>
+          <h2 class="section-title"><span lang="en">Market snapshot</span><span lang="zh-Hant">市場快照</span></h2>
+          <p class="p-lede dark"><span lang="en">A light, fast summary that loads anywhere, including mainland China. Refreshed about every 30 minutes during US trading hours, so prices are delayed. The live charts follow below.</span><span lang="zh-Hant">輕量快速的摘要，在任何地方（包括中國內地）都能載入。美股交易時段約每 30 分鐘更新一次，價格會有延遲。即時圖表在下方。</span></p>
+          <p class="mk-updated" id="snapUpdated" aria-live="polite"></p>
+        </div>
+        <div class="snap-grid" id="snapGrid">
+          <p class="news-empty"><span lang="en">Loading snapshot…</span><span lang="zh-Hant">正在載入快照…</span></p>
+        </div>
+      </div>
+    </section>
+
+    <div class="mk-tape" data-tv="ticker-tape" aria-label="Ticker tape"></div>
+
+    <section class="section alt mk">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">02 — <span lang="en">Indices</span><span lang="zh-Hant">指數</span></p>
           <h2 class="section-title"><span lang="en">Benchmarks</span><span lang="zh-Hant">大市基準</span></h2>
           <p class="p-lede dark"><span lang="en">ETFs that track the S&amp;P 500, Nasdaq-100, Dow and Russell 2000. Switch tabs to compare.</span><span lang="zh-Hant">追蹤標普 500、納指 100、道指及羅素 2000 的 ETF，可切換分頁比較。</span></p>
         </div>
@@ -107,10 +121,10 @@
       </div>
     </section>
 
-    <section class="section alt mk">
+    <section class="section mk">
       <div class="container">
         <div class="section-head reveal">
-          <p class="kicker">02 — <span lang="en">Breadth</span><span lang="zh-Hant">市場廣度</span></p>
+          <p class="kicker">03 — <span lang="en">Breadth</span><span lang="zh-Hant">市場廣度</span></p>
           <h2 class="section-title"><span lang="en">S&amp;P 500 heatmap</span><span lang="zh-Hant">標普 500 熱力圖</span></h2>
           <p class="p-lede dark"><span lang="en">Each block is a company, sized by market value and coloured by today's move. It shows quickly whether a day is broad or driven by a few giants.</span><span lang="zh-Hant">每個方塊代表一家公司，大小按市值、顏色按當日升跌。一眼看出當日是普遍上升，還是只靠幾隻巨頭帶動。</span></p>
         </div>
@@ -118,19 +132,19 @@
       </div>
     </section>
 
-    <section class="section mk">
+    <section class="section alt mk">
       <div class="container">
         <div class="mk-two">
           <div>
             <div class="section-head reveal">
-              <p class="kicker">03 — <span lang="en">Movers</span><span lang="zh-Hant">升跌榜</span></p>
+              <p class="kicker">04 — <span lang="en">Movers</span><span lang="zh-Hant">升跌榜</span></p>
               <h2 class="section-title"><span lang="en">Top movers</span><span lang="zh-Hant">當日異動</span></h2>
             </div>
             <div class="mk-card mid" data-tv="hotlists"></div>
           </div>
           <div>
             <div class="section-head reveal">
-              <p class="kicker">04 — <span lang="en">Watchlists</span><span lang="zh-Hant">觀察名單</span></p>
+              <p class="kicker">05 — <span lang="en">Watchlists</span><span lang="zh-Hant">觀察名單</span></p>
               <h2 class="section-title"><span lang="en">Biotech &amp; China ADRs</span><span lang="zh-Hant">生物科技及中概股</span></h2>
             </div>
             <div class="mk-card mid" data-tv="market-quotes"></div>

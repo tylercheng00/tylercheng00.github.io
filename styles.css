@@ -772,3 +772,10 @@ html[data-lang="zh"] .path-detail h3 { font-family: var(--serif-zh); }
 .case-steps li { counter-increment: cs; position: relative; padding: 10px 4px 8px; text-align: center; font-size: 12px; font-weight: 600; color: var(--ink-2); background: var(--bg-alt); border-radius: 8px; border-top: 3px solid var(--gold); }
 .case-steps li::before { content: counter(cs); display: block; font-family: var(--serif); font-size: 18px; color: var(--gold-ink); }
 .media-cover.yt { background: radial-gradient(400px 220px at 30% 20%, rgba(201, 163, 91, .3), transparent 70%), linear-gradient(150deg, var(--navy-800), var(--navy-950)); }
+.pt-holder { margin-top: 6px; font-size: 12px; font-weight: 600; color: var(--muted); }
+.pt-st.pending { color: #3b6ea8; border-color: rgba(59, 110, 168, .35); background: rgba(59, 110, 168, .08); }
+.yz-head { display: flex; align-items: center; gap: 12px; margin-top: 8px; }
+.yz-head img { width: 52px; height: 52px; border-radius: 12px; border: 1px solid var(--line); background: #fff; object-fit: contain; }
+.yz-head h4 { margin: 0; }
+.yz-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
+.yz-photos img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 10px; border: 1px solid var(--line); }

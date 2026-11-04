@@ -129,6 +129,8 @@ NAV = [
 # Header menu: a few categories, each opening a small list of pages/sections.
 # Shared by every page; the static pages (index, projects, us-equities) get it
 # written between their <!-- nav:start --> / <!-- nav:end --> markers.
+# separate project (github.com/tylercheng00/asset-tracker), linked from the Markets menu
+ASSET_BOOK = "https://tylercheng00.github.io/asset-tracker/"
 NAV_GROUPS = [
     ("about", "About", "關於", [
         ("about.html#about", "About me", "簡介"),
@@ -145,7 +147,10 @@ NAV_GROUPS = [
     ]),
     # a plain string instead of a list = a direct link with no dropdown
     ("capital", "Capital markets", "資本市場", "us-equities.html"),
-    ("markets", "Markets", "美股行情", "markets.html"),
+    ("markets", "Markets", "市場", [
+        ("markets.html", "US markets", "美股行情"),
+        (ASSET_BOOK, "Asset Book", "資產簿"),
+    ]),
     ("insights", "Insights", "觀點", [
         ("insights/", "Articles", "觀點文章"),
         ("news.html", "News", "新聞"),
@@ -177,7 +182,7 @@ def nav_menu(prefix="", page=None):
             target, _, anchor = href.partition("#")
             same = target == page
             group_cur = group_cur or (same and target != "index.html")
-            url = "#" + anchor if same and anchor else prefix + href
+            url = href if href.startswith("https://") else "#" + anchor if same and anchor else prefix + href
             links.append(f'            <a href="{url}"{" aria-current=\"page\"" if same and not anchor else ""}>'
                          f'{bi(html.escape(ien), izh)}</a>')
         out.append(

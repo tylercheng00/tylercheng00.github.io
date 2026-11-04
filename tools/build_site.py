@@ -489,7 +489,7 @@ def main():
         "markets",
         title="Markets · 美股行情 — Live US stock market overview | 鄭迪珉 Tyler Cheng",
         description="Live US market overview: major indices, S&P 500 heatmap, top movers, biotech and China ADR watchlists. Data by TradingView; not investment advice.",
-        og_type="website", scripts=("markets.js",),
+        og_type="website", scripts=("clock.js", "markets.js"),
         head_extra='\n  <link rel="preconnect" href="https://s3.tradingview.com">'
                    '\n  <link rel="preconnect" href="https://www.tradingview-widget.com">'
                    '\n  <link rel="dns-prefetch" href="https://www.tradingview.com">'), encoding="utf-8")
@@ -521,7 +521,7 @@ def main():
     print(f"built {len(arts)} articles, insights index, news, markets, privacy and 404 pages")
 
 
-ASSETS = ("styles.css", "main.js", "news.js", "markets.js", "us-equities.js", "contact.js", "assets/fonts/fonts.css")
+ASSETS = ("styles.css", "main.js", "news.js", "markets.js", "us-equities.js", "contact.js", "clock.js", "assets/fonts/fonts.css")
 
 
 def stamp_assets():

@@ -25,7 +25,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/fonts/fonts.css?v=1baa657b" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="assets/fonts/fonts.css?v=1baa657b"></noscript>
-  <link rel="stylesheet" href="styles.css?v=63f2a9b4">
+  <link rel="stylesheet" href="styles.css?v=1a430c06">
   <script>
     (function () {
       var lang = null;
@@ -126,6 +126,12 @@
           <p class="kicker">01 — <span lang="en">Book a meeting</span><span lang="zh-Hant">預約會面</span></p>
           <h2 class="section-title"><span lang="en">Pick a time</span><span lang="zh-Hant">選擇時間</span></h2>
           <p class="section-sub"><span lang="en">Times are shown in your own time zone. You will get a confirmation e-mail with the meeting link.</span><span lang="zh-Hant">時間會按你所在的時區顯示。預約後你會收到確認電郵及會議連結。</span></p>
+        </div>
+        <div class="tz-strip reveal" data-tz-strip>
+          <div class="tz-card is-me" data-tz="America/New_York"><p class="tz-place"><span lang="en">New York</span><span lang="zh-Hant">紐約</span> <em><span lang="en">· my time</span><span lang="zh-Hant">· 我所在地</span></em></p><p class="tz-time">–</p><p class="tz-day"></p></div>
+          <div class="tz-card" data-tz="Asia/Hong_Kong"><p class="tz-place"><span lang="en">Hong Kong / Beijing</span><span lang="zh-Hant">香港／北京</span></p><p class="tz-time">–</p><p class="tz-day"></p></div>
+          <div class="tz-card" data-tz="" hidden><p class="tz-place"><span class="tz-place-auto" data-auto></span> <em><span lang="en">· your time</span><span lang="zh-Hant">· 你的時間</span></em></p><p class="tz-time">–</p><p class="tz-day"></p></div>
+          <p class="tz-tip"><b><span lang="en">Best times to meet:</span><span lang="zh-Hant">最方便的會面時段：</span></b> <span class="tz-tip-times"></span></p>
         </div>
         <div class="cal-wrap reveal">
           <div id="cal-inline" class="cal-inline" aria-label="Booking calendar"></div>
@@ -232,6 +238,7 @@
     <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 19V5m0 0-6 6m6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </a>
 
+  <script src="clock.js?v=4bd68720"></script>
   <script src="contact.js?v=f91596be"></script>
   <script src="main.js?v=b0c06bb6"></script>
 </body>

@@ -156,14 +156,73 @@
   }
 
   function fail(host) {
+    if (host.classList.contains('mk-tape')) { host.style.display = 'none'; return; }
     if (host.querySelector('.mk-fail')) return;
     var box = document.createElement('div');
     box.className = 'mk-fail';
-    box.innerHTML = '<p><span lang="en">Live data could not load here. An ad or tracker blocker, or a network filter, may be blocking TradingView.</span>' +
-      '<span lang="zh-Hant">未能載入即時數據，可能是廣告／追蹤攔截器或網絡過濾阻擋了 TradingView。</span></p>' +
+    box.innerHTML = '<p><span lang="en">This live chart could not load (TradingView may be blocked on this network). The snapshot at the top of the page still works.</span>' +
+      '<span lang="zh-Hant">未能載入即時圖表（此網絡可能阻擋了 TradingView）。頁面頂部的市場快照仍可使用。</span></p>' +
       '<a class="p-link" href="https://www.tradingview.com/markets/stocks-usa/" target="_blank" rel="noopener">' +
       '<span lang="en">Open US markets on TradingView →</span><span lang="zh-Hant">在 TradingView 查看美股 →</span></a>';
     host.appendChild(box);
+  }
+
+
+  /* ---------- Snapshot (data/markets.json, works without TradingView) ---------- */
+  var snapGrid = document.getElementById('snapGrid');
+  var snapUpdated = document.getElementById('snapUpdated');
+  var snap = null;
+  var NS = 'http://www.w3.org/2000/svg';
+
+  function bi(en, zh) {
+    return '<span lang="en">' + en + '</span><span lang="zh-Hant">' + zh + '</span>';
+  }
+  function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function num(v) {
+    var d = Math.abs(v) >= 1000 ? 0 : 2;
+    return v.toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d });
+  }
+  function spark(vals, up) {
+    if (!vals || vals.length < 2) return '';
+    var w = 84, h = 26, min = Math.min.apply(null, vals), max = Math.max.apply(null, vals), r = max - min || 1;
+    var pts = vals.map(function (v, i) { return (i / (vals.length - 1) * w).toFixed(1) + ',' + (h - 2 - (v - min) / r * (h - 4)).toFixed(1); }).join(' ');
+    return '<svg class="snap-spark ' + (up ? 'up' : 'down') + '" viewBox="0 0 ' + w + ' ' + h + '" width="' + w + '" height="' + h + '" aria-hidden="true"><polyline points="' + pts + '" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></svg>';
+  }
+  function stamp(iso) {
+    var zh = root.getAttribute('data-lang') === 'zh';
+    try { return new Date(iso).toLocaleString(zh ? 'zh-HK' : 'en-GB', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Asia/Hong_Kong' }) + ' HKT'; }
+    catch (e) { return iso; }
+  }
+  function renderSnap() {
+    if (!snap || !snapGrid) return;
+    snapGrid.innerHTML = snap.groups.map(function (g) {
+      return '<div class="snap-card"><h3>' + bi(esc(g.name_en), esc(g.name_zh)) + '</h3><table class="snap-table"><tbody>' +
+        g.items.map(function (it) {
+          var up = it.change >= 0;
+          var sign = up ? '+' : '';
+          return '<tr' + (it.stale ? ' class="stale"' : '') + '><th scope="row"><b>' + esc(it.symbol) + '</b><small>' + esc(it.name) + '</small></th>' +
+            '<td class="snap-chart">' + spark(it.spark, up) + '</td>' +
+            '<td class="snap-px">' + num(it.price) + '</td>' +
+            '<td><span class="snap-pct ' + (up ? 'up' : 'down') + '">' + sign + it.pct.toFixed(2) + '%</span></td></tr>';
+        }).join('') + '</tbody></table></div>';
+    }).join('');
+    var srcs = {};
+    snap.groups.forEach(function (g) { g.items.forEach(function (it) { if (it.src) srcs[it.src] = 1; }); });
+    var src = Object.keys(srcs).join(', ');
+    snapUpdated.innerHTML = bi('Updated ' + stamp(snap.updated) + ' · Delayed · Source: ' + esc(src),
+      '更新時間：' + stamp(snap.updated) + ' · 延遲報價 · 來源：' + esc(src));
+  }
+  if (snapGrid) {
+    fetch('data/markets.json', { cache: 'no-cache' })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (j) {
+        if (!j.groups || !j.groups.length) throw new Error('empty');
+        snap = j; renderSnap();
+      })
+      .catch(function () {
+        snapGrid.innerHTML = '<p class="news-empty">' + bi('The snapshot is not available yet. Please check back later.', '快照暫時未有資料，請稍後再看。') + '</p>';
+      });
+    document.addEventListener('langchange', renderSnap);
   }
 
   if (io) hosts.forEach(function (h) { io.observe(h); }); else renderAll();

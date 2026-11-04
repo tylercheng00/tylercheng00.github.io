@@ -5,122 +5,173 @@ Standard library only; run by .github/workflows/markets.yml about every 30
 minutes during US trading hours. The Markets page shows this snapshot first,
 so it works even where TradingView cannot be reached (e.g. mainland China).
 
-Source: Yahoo Finance chart endpoint, with Stooq daily data as a fallback for
-any symbol that fails. Prices are delayed and for general information only.
+Several free public quote sources are tried in turn (CNBC, Yahoo Finance,
+Sina Finance); each one only fills in symbols the previous ones missed. The
+small trend line is built from this job's own successive snapshots during
+the trading day. Prices are delayed and for general information only.
 
-    python3 tools/fetch_markets.py                 # writes data/markets.json
-    python3 tools/fetch_markets.py --test f.json   # parse a saved Yahoo reply
+    python3 tools/fetch_markets.py            # writes data/markets.json
+    python3 tools/fetch_markets.py --selftest # parser checks, no network
 """
-import csv
 import datetime as dt
-import io
+import http.cookiejar
 import json
 import pathlib
+import re
 import sys
-import time
 import urllib.parse
 import urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "markets.json"
-UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
+UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36"
+SPARK_MAX = 40
 
-# (yahoo symbol, display symbol, stooq symbol, name)
+# display symbol, name, yahoo, cnbc, sina
 GROUPS = [
     ("indices", "Indices", "指數", [
-        ("^GSPC", "S&P 500", "^spx", "S&P 500"),
-        ("^IXIC", "Nasdaq", "^ndq", "Nasdaq Composite"),
-        ("^DJI", "Dow 30", "^dji", "Dow Jones Industrial"),
-        ("^RUT", "Russell 2000", None, "Russell 2000"),
-        ("^VIX", "VIX", None, "Volatility index"),
+        ("S&P 500", "S&P 500", "^GSPC", ".SPX", "gb_$inx"),
+        ("Nasdaq", "Nasdaq Composite", "^IXIC", ".IXIC", "gb_ixic"),
+        ("Dow 30", "Dow Jones Industrial", "^DJI", ".DJI", "gb_$dji"),
+        ("Russell 2000", "Russell 2000", "^RUT", ".RUT", None),
+        ("VIX", "Volatility index", "^VIX", ".VIX", None),
     ]),
     ("biotech", "Biotech", "生物科技", [
-        ("IBB", "IBB", "ibb.us", "iShares Biotechnology ETF"),
-        ("XBI", "XBI", "xbi.us", "SPDR S&P Biotech ETF"),
-        ("AMGN", "AMGN", "amgn.us", "Amgen"),
-        ("GILD", "GILD", "gild.us", "Gilead Sciences"),
-        ("VRTX", "VRTX", "vrtx.us", "Vertex Pharmaceuticals"),
-        ("REGN", "REGN", "regn.us", "Regeneron"),
-        ("LLY", "LLY", "lly.us", "Eli Lilly"),
-        ("MRNA", "MRNA", "mrna.us", "Moderna"),
+        ("IBB", "iShares Biotechnology ETF"), ("XBI", "SPDR S&P Biotech ETF"),
+        ("AMGN", "Amgen"), ("GILD", "Gilead Sciences"), ("VRTX", "Vertex Pharmaceuticals"),
+        ("REGN", "Regeneron"), ("LLY", "Eli Lilly"), ("MRNA", "Moderna"),
     ]),
     ("china", "China ADRs", "中概股", [
-        ("BABA", "BABA", "baba.us", "Alibaba"),
-        ("PDD", "PDD", "pdd.us", "PDD Holdings"),
-        ("JD", "JD", "jd.us", "JD.com"),
-        ("BIDU", "BIDU", "bidu.us", "Baidu"),
-        ("NIO", "NIO", "nio.us", "NIO"),
-        ("KWEB", "KWEB", "kweb.us", "KraneShares China Internet ETF"),
-        ("FXI", "FXI", "fxi.us", "iShares China Large-Cap ETF"),
+        ("BABA", "Alibaba"), ("PDD", "PDD Holdings"), ("JD", "JD.com"), ("BIDU", "Baidu"),
+        ("NIO", "NIO"), ("KWEB", "KraneShares China Internet ETF"), ("FXI", "iShares China Large-Cap ETF"),
     ]),
     ("tech", "Mega-cap tech", "大型科技股", [
-        ("NVDA", "NVDA", "nvda.us", "NVIDIA"),
-        ("AAPL", "AAPL", "aapl.us", "Apple"),
-        ("MSFT", "MSFT", "msft.us", "Microsoft"),
-        ("AMZN", "AMZN", "amzn.us", "Amazon"),
-        ("GOOGL", "GOOGL", "googl.us", "Alphabet"),
-        ("META", "META", "meta.us", "Meta Platforms"),
-        ("TSLA", "TSLA", "tsla.us", "Tesla"),
+        ("NVDA", "NVIDIA"), ("AAPL", "Apple"), ("MSFT", "Microsoft"), ("AMZN", "Amazon"),
+        ("GOOGL", "Alphabet"), ("META", "Meta Platforms"), ("TSLA", "Tesla"),
     ]),
 ]
 
 
-def get(url):
-    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "*/*"})
-    with urllib.request.urlopen(req, timeout=20) as r:
-        return r.read()
+def entries():
+    """(display, name, {provider: symbol}) for every row, in order."""
+    for gid, _, _, rows in GROUPS:
+        for r in rows:
+            if len(r) == 2:
+                d, n = r
+                ids = {"yahoo": d, "cnbc": d, "sina": "gb_" + d.lower()}
+            else:
+                d, n, y, c, s = r
+                ids = {"yahoo": y, "cnbc": c, "sina": s}
+            yield gid, d, n, ids
 
 
-def thin(values, n=40):
-    vals = [round(v, 4) for v in values if v is not None]
-    if len(vals) <= n:
-        return vals
-    step = (len(vals) - 1) / (n - 1)
-    return [vals[round(i * step)] for i in range(n)]
+def num(v):
+    if v is None:
+        return None
+    if isinstance(v, (int, float)):
+        return float(v)
+    v = str(v).replace(",", "").replace("%", "").replace("+", "").strip()
+    try:
+        return float(v)
+    except ValueError:
+        return None
+
+
+class Http:
+    def __init__(self):
+        self.jar = http.cookiejar.CookieJar()
+        self.op = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(self.jar))
+
+    def get(self, url, referer=None):
+        h = {"User-Agent": UA, "Accept": "*/*", "Accept-Language": "en-US,en;q=0.9"}
+        if referer:
+            h["Referer"] = referer
+        try:
+            with self.op.open(urllib.request.Request(url, headers=h), timeout=20) as r:
+                return r.read()
+        except urllib.error.HTTPError as e:
+            if e.code == 404 and "fc.yahoo.com" in url:   # only needed for its cookie
+                return b""
+            raise
+
+
+# ---------------------------------------------------------------- providers
+def parse_cnbc(data):
+    out = {}
+    quotes = json.loads(data)["FormattedQuoteResult"]["FormattedQuote"]
+    if isinstance(quotes, dict):
+        quotes = [quotes]
+    for q in quotes:
+        price = num(q.get("last"))
+        prev = num(q.get("previous_day_closing"))
+        if prev is None and price is not None and num(q.get("change")) is not None:
+            prev = price - num(q.get("change"))
+        if price and prev:
+            out[q["symbol"]] = (price, prev)
+    return out
+
+
+def cnbc(http, syms):
+    url = ("https://quote.cnbc.com/quote-html-webservice/restQuote/symbolType/symbol?symbols="
+           + urllib.parse.quote("|".join(syms), safe="")
+           + "&requestMethod=itv&noform=1&partnerId=2&fund=1&exthrs=0&output=json&events=0")
+    return parse_cnbc(http.get(url, "https://www.cnbc.com/"))
 
 
 def parse_yahoo(data):
-    res = json.loads(data)["chart"]["result"][0]
-    meta = res["meta"]
-    price = meta.get("regularMarketPrice")
-    prev = meta.get("chartPreviousClose") or meta.get("previousClose")
-    closes = ((res.get("indicators") or {}).get("quote") or [{}])[0].get("close") or []
-    if price is None or not prev:
-        raise ValueError("no price")
-    t = meta.get("regularMarketTime")
-    return {
-        "price": round(price, 4),
-        "prev": round(prev, 4),
-        "spark": thin(closes),
-        "time": dt.datetime.fromtimestamp(t, dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ") if t else None,
-        "src": "Yahoo Finance",
-    }
+    out = {}
+    for q in json.loads(data)["quoteResponse"]["result"]:
+        price = num(q.get("regularMarketPrice"))
+        prev = num(q.get("regularMarketPreviousClose"))
+        if price and prev:
+            out[q["symbol"]] = (price, prev)
+    return out
 
 
-def yahoo(sym):
-    url = ("https://query1.finance.yahoo.com/v8/finance/chart/" + urllib.parse.quote(sym)
-           + "?range=1d&interval=5m&includePrePost=false")
-    return parse_yahoo(get(url))
+def yahoo(http, syms):
+    http.get("https://fc.yahoo.com/")
+    crumb = http.get("https://query2.finance.yahoo.com/v1/test/getcrumb").decode().strip()
+    if not crumb or "<" in crumb:
+        raise ValueError("no crumb")
+    url = ("https://query2.finance.yahoo.com/v7/finance/quote?symbols="
+           + urllib.parse.quote(",".join(syms), safe=",") + "&crumb=" + urllib.parse.quote(crumb))
+    return parse_yahoo(http.get(url))
 
 
-def stooq(sym):
-    rows = list(csv.DictReader(io.StringIO(get(f"https://stooq.com/q/d/l/?s={urllib.parse.quote(sym)}&i=d").decode())))
-    rows = [r for r in rows if r.get("Close") not in (None, "", "N/D")]
-    if len(rows) < 2:
-        raise ValueError("not enough rows")
-    last, prev = rows[-1], rows[-2]
-    return {
-        "price": round(float(last["Close"]), 4),
-        "prev": round(float(prev["Close"]), 4),
-        "spark": thin([float(r["Close"]) for r in rows[-30:]]),
-        "time": last["Date"] + "T21:00:00Z",
-        "src": "Stooq (daily close)",
-    }
+def parse_sina(text):
+    out = {}
+    for sym, body in re.findall(r'var hq_str_([\w$]+)="([^"]*)"', text):
+        f = body.split(",")
+        if len(f) < 5:
+            continue
+        price, change = num(f[1]), num(f[4])
+        if price and change is not None:
+            out[sym] = (price, price - change)
+    return out
+
+
+def sina(http, syms):
+    url = "https://hq.sinajs.cn/list=" + ",".join(syms)
+    return parse_sina(http.get(url, "https://finance.sina.com.cn/").decode("gbk", "replace"))
+
+
+PROVIDERS = [("cnbc", "CNBC", cnbc), ("yahoo", "Yahoo Finance", yahoo), ("sina", "Sina Finance", sina)]
+
+
+# ---------------------------------------------------------------- main
+def selftest():
+    c = parse_cnbc(b'{"FormattedQuoteResult":{"FormattedQuote":[{"symbol":".SPX","last":"5,712.20","change":"-23.10","previous_day_closing":"5,735.30"},{"symbol":"AAPL","last":"227.48","change":"+1.23"}]}}')
+    assert c == {".SPX": (5712.2, 5735.3), "AAPL": (227.48, 226.25)}, c
+    y = parse_yahoo(b'{"quoteResponse":{"result":[{"symbol":"^GSPC","regularMarketPrice":5712.2,"regularMarketPreviousClose":5735.3}]}}')
+    assert y == {"^GSPC": (5712.2, 5735.3)}, y
+    s = parse_sina('var hq_str_gb_aapl="Apple,227.4800,0.54,2026-11-04 04:00:00,1.2300,226.1";\nvar hq_str_gb_x="";')
+    assert abs(s["gb_aapl"][1] - 226.25) < 1e-9, s
+    print("selftest ok")
 
 
 def main():
-    if len(sys.argv) == 3 and sys.argv[1] == "--test":
-        print(parse_yahoo(pathlib.Path(sys.argv[2]).read_bytes()))
+    if "--selftest" in sys.argv:
+        selftest()
         return
 
     old = {}
@@ -132,38 +183,55 @@ def main():
         except (ValueError, KeyError):
             pass
 
-    groups, ok, total = [], 0, 0
-    for gid, name_en, name_zh, syms in GROUPS:
-        items = []
-        for ysym, disp, ssym, name in syms:
-            total += 1
-            q = None
-            for fn, s in ((yahoo, ysym), (stooq, ssym)):
-                if not s:
-                    continue
-                try:
-                    q = fn(s)
-                    break
-                except Exception as e:  # noqa: BLE001 - try the next source
-                    print(f"{fn.__name__} {s}: {e}", file=sys.stderr)
-            time.sleep(0.3)
-            if q:
-                ok += 1
-                item = {"symbol": disp, "name": name, **q,
-                        "change": round(q["price"] - q["prev"], 4),
-                        "pct": round((q["price"] / q["prev"] - 1) * 100, 2)}
-            elif disp in old:
-                item = dict(old[disp], stale=True)   # keep the last good value
-            else:
-                continue
-            items.append(item)
-        groups.append({"id": gid, "name_en": name_en, "name_zh": name_zh, "items": items})
+    rows = list(entries())
+    got, src = {}, {}
+    http = Http()
+    for key, label, fn in PROVIDERS:
+        need = [(d, ids[key]) for _, d, _, ids in rows if d not in got and ids.get(key)]
+        if not need:
+            break
+        try:
+            res = fn(http, [s for _, s in need])
+        except Exception as e:  # noqa: BLE001 - try the next source
+            print(f"{label}: failed ({e})", file=sys.stderr)
+            continue
+        n = 0
+        for d, s in need:
+            if s in res:
+                got[d], src[d] = res[s], label
+                n += 1
+        print(f"{label}: {n}/{len(need)}", file=sys.stderr)
 
-    print(f"{ok}/{total} symbols fetched", file=sys.stderr)
-    if ok == 0:
+    print(f"{len(got)}/{len(rows)} symbols fetched", file=sys.stderr)
+    if not got:
         print("nothing fetched; keeping the existing file", file=sys.stderr)
         return
-    out = {"updated": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "groups": groups}
+
+    now = dt.datetime.now(dt.timezone.utc)
+    groups = {gid: {"id": gid, "name_en": en, "name_zh": zh, "items": []} for gid, en, zh, _ in GROUPS}
+    for gid, d, name, _ in rows:
+        prev_item = old.get(d)
+        if d in got:
+            price, prev = got[d]
+            # Trend line: this job's own snapshots, reset when the previous
+            # close changes (i.e. a new trading day has started).
+            spark = []
+            if prev_item and abs(prev_item.get("prev", 0) - prev) < 1e-6:
+                spark = list(prev_item.get("spark") or [])
+            if not spark:
+                spark = [round(prev, 4)]
+            if spark[-1] != round(price, 4):
+                spark.append(round(price, 4))
+            item = {"symbol": d, "name": name, "price": round(price, 4), "prev": round(prev, 4),
+                    "change": round(price - prev, 4), "pct": round((price / prev - 1) * 100, 2),
+                    "spark": spark[-SPARK_MAX:], "src": src[d]}
+        elif prev_item:
+            item = dict(prev_item, stale=True)
+        else:
+            continue
+        groups[gid]["items"].append(item)
+
+    out = {"updated": now.strftime("%Y-%m-%dT%H:%M:%SZ"), "groups": list(groups.values())}
     OUT.parent.mkdir(exist_ok=True)
     OUT.write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
 

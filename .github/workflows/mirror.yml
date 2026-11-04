@@ -1,0 +1,59 @@
+name: Mirror to Hong Kong
+
+# Copies the main site and the four project sites to an Alibaba Cloud OSS
+# bucket in Hong Kong, for visitors in mainland China. Does nothing until the
+# repository variables OSS_BUCKET / OSS_ENDPOINT and the secrets
+# OSS_ACCESS_KEY_ID / OSS_ACCESS_KEY_SECRET are set.
+
+on:
+  push:
+    branches: [main]
+  workflow_run:
+    workflows: ["Update news", "Update market snapshot"]
+    types: [completed]
+  schedule:
+    - cron: "41 3 * * *"   # daily, picks up changes in the project repos
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mirror
+  cancel-in-progress: true
+
+jobs:
+  mirror:
+    if: ${{ vars.OSS_BUCKET != '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { path: main, ref: main }
+      - uses: actions/checkout@v4
+        with: { repository: tylercheng00/biotech-medtech, path: biotech-medtech }
+      - uses: actions/checkout@v4
+        with: { repository: tylercheng00/dawn-2, path: dawn-2 }
+      - uses: actions/checkout@v4
+        with: { repository: tylercheng00/portfolio-optimization-lab, path: portfolio-optimization-lab }
+      - uses: actions/checkout@v4
+        with: { repository: tylercheng00/ai-redteam-lab, path: ai-redteam-lab }
+
+      - name: Assemble site
+        run: |
+          mkdir site
+          rsync -a --exclude '.git*' --exclude '.github' --exclude 'content' --exclude 'tools' main/ site/
+          rsync -a --exclude '.git*' --exclude '.github' biotech-medtech/ site/biotech-medtech/
+          rsync -a --exclude '.git*' --exclude '.github' dawn-2/ site/dawn-2/
+          rsync -a portfolio-optimization-lab/docs/ site/portfolio-optimization-lab/
+          rsync -a ai-redteam-lab/docs/ site/ai-redteam-lab/
+          find site -type f | wc -l
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install --quiet oss2
+      - name: Upload changed files
+        env:
+          OSS_ACCESS_KEY_ID: ${{ secrets.OSS_ACCESS_KEY_ID }}
+          OSS_ACCESS_KEY_SECRET: ${{ secrets.OSS_ACCESS_KEY_SECRET }}
+        run: python3 main/tools/sync_oss.py site "${{ vars.OSS_BUCKET }}" "${{ vars.OSS_ENDPOINT }}"

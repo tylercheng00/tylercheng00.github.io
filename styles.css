@@ -1098,3 +1098,15 @@ html[data-lang="zh"] .cal-note h3 { font-family: var(--serif-zh); font-size: 24p
   .cal-note { padding: 32px 20px; }
   .cal-inline { min-height: 560px; }
 }
+
+/* Social IDs (WeChat / Xiaohongshu copy buttons, X link) */
+.copy-id { appearance: none; background: none; border: 0; padding: 0; font: inherit; cursor: pointer; text-align: left; color: inherit; }
+.copy-hint { margin-left: 6px; font-size: 12px; font-weight: 600; letter-spacing: .04em; color: var(--gold-ink); border: 1px solid currentColor; border-radius: 999px; padding: 1px 8px; }
+.msg-direct .copy-id { color: var(--ink); font-weight: 500; }
+.msg-direct .copy-id:hover { color: var(--gold-ink); }
+.social-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 26px; margin-top: 22px; font-size: 15px; }
+.social-row a, .social-row .copy-id { color: rgba(255, 255, 255, .78); text-decoration: none; }
+.social-row a:hover, .social-row .copy-id:hover { color: #fff; }
+.social-row .copy-hint { color: var(--gold); }
+.consent a { color: var(--gold-ink); }
+.nf-links { padding-top: 72px; }

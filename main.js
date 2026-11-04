@@ -139,6 +139,25 @@
 
   })();
 
+  /* ---------- Copy an ID (WeChat / Xiaohongshu) ---------- */
+  document.querySelectorAll('.copy-id[data-copy]').forEach(function (b) {
+    var hint = b.querySelector('.copy-hint');
+    var original = hint ? hint.innerHTML : '';
+    b.addEventListener('click', function () {
+      var id = b.getAttribute('data-copy');
+      function done() {
+        if (!hint) return;
+        hint.textContent = root.getAttribute('data-lang') === 'zh' ? '已複製' : 'copied';
+        setTimeout(function () { hint.innerHTML = original; }, 1600);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(id).then(done, function () { window.prompt('ID', id); });
+      } else {
+        window.prompt('ID', id);
+      }
+    });
+  });
+
   /* ---------- Project filters (projects page) ---------- */
   var filterBtns = document.querySelectorAll('[data-filter]');
   filterBtns.forEach(function (b) {

@@ -31,6 +31,7 @@ SITE = "https://tylercheng00.github.io"
 CATS = {
     "capital": ("US capital markets", "美國資本市場"),
     "biotech": ("Biotech", "生物科技"),
+    "weekly": ("Weekly market data", "每週美股數據"),
 }
 
 ZH_MONTHS = "一二三四五六七八九十"
@@ -190,7 +191,8 @@ def nav_menu(prefix="", page=None):
 
 def footer_links(prefix=""):
     return "\n".join(f'        <a href="{prefix}{href}">{bi(en, zh)}</a>' for href, en, zh, _ in NAV) + \
-        f'\n        <a href="{prefix}contact.html">{bi("Contact", "聯絡")}</a>'
+        f'\n        <a href="{prefix}contact.html">{bi("Contact", "聯絡")}</a>' + \
+        f'\n        <a href="{prefix}privacy.html">{bi("Privacy", "私隱政策")}</a>'
 
 
 
@@ -323,10 +325,19 @@ def cat_labels(tags):
     return "".join(f'<span class="ins-tag">{bi(*CATS[t])}</span>' for t in tags)
 
 
+DATA_NOTE = bi(
+    "Generated automatically from delayed public quotes (CNBC, Yahoo Finance, Sina Finance). Data only; "
+    "not investment advice. Figures may contain errors from the data sources.",
+    "根據延遲的公開報價（CNBC、Yahoo Finance、新浪財經）自動生成，只列數據，不構成投資建議；"
+    "數字或因數據來源而有誤差。",
+)
+
+BYLINE_DATA = bi("— Compiled automatically for 鄭迪珉 Tyler Tik Man Cheng", "—— 為鄭迪珉自動整理")
+
 DISCLAIMER = bi(
-    "Views are my own and do not represent Fuway, Nanotech Innovation Limited or any client. "
+    "Views are my own and do not represent Fuway Capital, Nanotech Innovation Limited or any client. "
     "This is general commentary, not investment, legal or medical advice.",
-    "以上純屬個人觀點，不代表富輝集團、Nanotech Innovation Limited 或任何客戶。"
+    "以上純屬個人觀點，不代表富輝資本、Nanotech Innovation Limited 或任何客戶。"
     "內容僅為一般評論，不構成投資、法律或醫療建議。",
 )
 
@@ -355,8 +366,8 @@ def article_page(a, others):
           <div lang="zh-Hant">
 {a["html_zh"]}
           </div>
-          <p class="ins-byline">— 鄭迪珉 Tyler Tik Man Cheng</p>
-          <p class="ins-disclaimer">{DISCLAIMER}</p>
+          <p class="ins-byline">{BYLINE_DATA if "weekly" in a["tags"] else "— 鄭迪珉 Tyler Tik Man Cheng"}</p>
+          <p class="ins-disclaimer">{DATA_NOTE if "weekly" in a["tags"] else DISCLAIMER}</p>
         </article>
         <nav class="ins-more" aria-label="More insights">
           <p class="kicker">{bi("More insights", "更多觀點")}</p>
@@ -398,7 +409,7 @@ def card(a, prefix=""):
 def index_page(arts):
     counts = {k: sum(k in a["tags"] for a in arts) for k in CATS}
     btns = [f'<button type="button" class="on" data-cat-filter="all" aria-pressed="true">{bi("All", "全部")}<b>{len(arts)}</b></button>']
-    btns += [f'<button type="button" data-cat-filter="{k}" aria-pressed="false">{bi(*CATS[k])}<b>{counts[k]}</b></button>' for k in CATS]
+    btns += [f'<button type="button" data-cat-filter="{k}" aria-pressed="false">{bi(*CATS[k])}<b>{counts[k]}</b></button>' for k in CATS if counts[k]]
     extra = '\n        <div class="filters reveal" role="group" aria-label="Category">\n          ' + "\n          ".join(btns) + "\n        </div>"
     body = hero(
         bi("Insights · Personal views", "觀點 · 個人看法"),
@@ -449,12 +460,13 @@ def main():
     out = ROOT / "insights"
     out.mkdir(exist_ok=True)
     for a in arts:
-        others = [o for o in arts if o is not a][:3]
+        # "more reading": opinion pieces first, so weekly data pages don't crowd them out
+        others = sorted((o for o in arts if o is not a), key=lambda o: "weekly" in o["tags"])[:3]
         (out / f"{a['slug']}.html").write_text(article_page(a, others), encoding="utf-8")
     (out / "index.html").write_text(index_page(arts), encoding="utf-8")
 
-    # homepage teaser data (three latest)
-    teaser = "\n".join(card(a, "insights/") for a in arts[:3])
+    # homepage teaser: the three latest written pieces (weekly data reports are left out)
+    teaser = "\n".join(card(a, "insights/") for a in [x for x in arts if "weekly" not in x["tags"]][:3])
     home = ROOT / "index.html"
     h = home.read_text(encoding="utf-8")
     h2 = re.sub(r"(<!-- insights:start[^>]*-->).*?(<!-- insights:end -->)",
@@ -488,15 +500,39 @@ def main():
         "markets",
         title="Markets · 美股行情 — Live US stock market overview | 鄭迪珉 Tyler Cheng",
         description="Live US market overview: major indices, S&P 500 heatmap, top movers, biotech and China ADR watchlists. Data by TradingView; not investment advice.",
-        og_type="website", scripts=("markets.js",),
+        og_type="website", scripts=("clock.js", "markets.js"),
         head_extra='\n  <link rel="preconnect" href="https://s3.tradingview.com">'
                    '\n  <link rel="preconnect" href="https://www.tradingview-widget.com">'
                    '\n  <link rel="dns-prefetch" href="https://www.tradingview.com">'), encoding="utf-8")
+    (ROOT / "privacy.html").write_text(fragment_page(
+        "privacy",
+        title="Privacy policy · 私隱政策 | 鄭迪珉 Tyler Tik Man Cheng",
+        description="What tylercheng00.github.io / tylerfuture.com collects through its contact form, booking calendar and visit statistics, why, where it is stored, and how to ask for it to be deleted.",
+        og_type="website"), encoding="utf-8")
+    # 404 page: served for any missing path, so every link is root-relative
+    (ROOT / "404.html").write_text(page(
+        prefix="/", path="404.html",
+        title="Page not found · 找不到頁面 | 鄭迪珉 Tyler Tik Man Cheng",
+        description="This page does not exist.", og_type="website", active=None,
+        head_extra='\n  <meta name="robots" content="noindex">',
+        body=hero(bi("404", "404"), bi("Page not found", "找不到這一頁"),
+                  bi("The page may have moved, or the address may be mistyped.", "這一頁可能已經搬走，或者網址有誤。"),
+                  extra='\n        <div class="hero-cta reveal">'
+                        f'<a class="btn btn-gold" href="/">{bi("Home", "返回主頁")}</a>'
+                        f'<a class="btn btn-outline-light" href="/about.html">{bi("About me", "關於我")}</a>'
+                        f'<a class="btn btn-outline-light" href="/contact.html">{bi("Contact", "聯絡")}</a>'
+                        '</div>')
+        + '\n    <section class="section nf-links"><div class="container"><div class="engage-grid">'
+        + "".join(f'<a class="engage reveal" href="/{u}"><h3>{bi(en, zh)}</h3><span class="engage-link">{bi(ce, cz)} →</span></a>'
+                  for u, en, zh, ce, cz in (("ventures.html", "Ventures &amp; patents", "創業與專利", "Open", "前往"),
+                                            ("insights/", "Insights", "觀點文章", "Read", "閱讀"),
+                                            ("markets.html", "US markets", "美股行情", "Open", "前往")))
+        + '</div></div></section>'), encoding="utf-8")
     stamp_assets()
-    print(f"built {len(arts)} articles, insights index, news.html, markets.html")
+    print(f"built {len(arts)} articles, insights index, news, markets, privacy and 404 pages")
 
 
-ASSETS = ("styles.css", "main.js", "news.js", "markets.js", "us-equities.js", "contact.js", "assets/fonts/fonts.css")
+ASSETS = ("styles.css", "main.js", "news.js", "markets.js", "us-equities.js", "contact.js", "clock.js", "assets/fonts/fonts.css")
 
 
 def stamp_assets():
@@ -507,7 +543,7 @@ def stamp_assets():
         s = f.read_text(encoding="utf-8")
         s2 = s
         for a, v in ver.items():
-            s2 = re.sub(r'((?:href|src)="(?:\.\./)?' + re.escape(a) + r')(?:\?v=[0-9a-f]+)?"', r"\g<1>?v=" + v + '"', s2)
+            s2 = re.sub(r'((?:href|src)="(?:\.\./|/)?' + re.escape(a) + r')(?:\?v=[0-9a-f]+)?"', r"\g<1>?v=" + v + '"', s2)
         if s2 != s:
             f.write_text(s2, encoding="utf-8")
 

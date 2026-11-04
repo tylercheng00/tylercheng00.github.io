@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tyler Tik Man Cheng — Profile</title>
+<!-- Source of assets/tyler-cheng-profile.pdf. Rebuild with: node tools/build_profile_pdf.js -->
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: "Inter", "Noto Sans TC", sans-serif; color: #14202e; font-size: 9pt; line-height: 1.45; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { width: 210mm; height: 297mm; position: relative; overflow: hidden; page-break-after: always; display: flex; flex-direction: column; }
+  .page:last-child { page-break-after: auto; }
+  .head { background: #0b1d33; color: #fff; padding: 12mm 16mm 9mm; display: grid; grid-template-columns: 1fr 30mm; gap: 8mm; align-items: center; position: relative; }
+  .head::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1.2mm; background: linear-gradient(90deg, #c9a35b, #e2c88f 60%, #c9a35b); }
+  .eyebrow { font-size: 7.6pt; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: #e2c88f; }
+  .name-zh { font-family: "Noto Serif TC", serif; font-weight: 700; font-size: 30pt; letter-spacing: .08em; line-height: 1.1; margin-top: 3mm; }
+  .name-en { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 600; font-size: 19pt; color: #e2c88f; line-height: 1.1; }
+  .tagline { margin-top: 3mm; font-size: 9.6pt; color: rgba(255,255,255,.85); letter-spacing: .04em; }
+  .photo { width: 30mm; height: 37mm; border-radius: 3mm; object-fit: cover; object-position: 50% 20%; border: .6mm solid #c9a35b; }
+  .body { flex: 1 1 auto; min-height: 0; padding: 7mm 16mm 0; display: grid; grid-template-columns: 1.55fr 1fr; gap: 9mm; flex: 1; }
+  h2 { font-family: "Cormorant Garamond", "Noto Serif TC", serif; font-weight: 700; font-size: 13.5pt; color: #0b1d33; margin: 0 0 2.4mm; padding-bottom: 1.4mm; border-bottom: .35mm solid #e6e1d5; }
+  .zh h2 { font-family: "Noto Serif TC", serif; font-size: 12.5pt; letter-spacing: .06em; }
+  section + section { margin-top: 4.5mm; }
+  p { margin: 0; }
+  p + p { margin-top: 2mm; }
+  .lead { font-size: 9.8pt; color: #14202e; }
+  .item { margin-top: 2.3mm; }
+  .item:first-of-type { margin-top: 0; }
+  .role { font-weight: 600; color: #0b1d33; }
+  .org { color: #8d6a28; font-weight: 500; font-size: 8.8pt; }
+  .when { float: right; font-size: 8pt; color: #66758a; }
+  .desc { color: #3a4757; margin-top: .6mm; }
+  ul { margin: 0; padding-left: 4mm; color: #3a4757; }
+  li + li { margin-top: 1.2mm; }
+  li::marker { color: #c9a35b; }
+  .stat { display: flex; gap: 3mm; align-items: baseline; }
+  .stat b { font-family: "Cormorant Garamond", serif; font-size: 18pt; color: #8d6a28; line-height: 1; min-width: 7mm; }
+  .side { background: #f3f0e8; border-radius: 3mm; padding: 5mm 5mm; align-self: start; }
+  .contact { margin-top: auto; flex: none; background: #071322; color: #fff; padding: 5mm 16mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm 6mm; font-size: 8.6pt; }
+  .contact span { display: block; font-size: 6.8pt; letter-spacing: .14em; text-transform: uppercase; color: #c9a35b; font-weight: 600; }
+  .zh .contact span { letter-spacing: .1em; }
+  .note { padding: 3mm 16mm 0; font-size: 7.2pt; color: #66758a; }
+  .zh { font-family: "Noto Sans TC", "Inter", sans-serif; line-height: 1.55; }
+</style>
+</head>
+<body>
+
+<!-- ======================= English ======================= -->
+<div class="page">
+  <header class="head">
+    <div>
+      <p class="eyebrow">Capital Markets × Science Ventures</p>
+      <p class="name-zh">鄭迪珉</p>
+      <p class="name-en">Tyler Tik Man Cheng</p>
+      <p class="tagline">US Equities · Biotech · Patents · Startups</p>
+    </div>
+    <img class="photo" src="../../assets/media/tyler-portrait.jpg" alt="">
+  </header>
+
+  <div class="body">
+    <div>
+      <section>
+        <h2>Profile</h2>
+        <p class="lead">I work across capital markets and science-based ventures: advising companies on the US equity markets through IPO advisory and M&amp;A, and turning university research into patented, commercial technology.</p>
+        <p class="desc">Born and raised in Hong Kong, I started my first company at 20 and expanded it to other countries by 22. Having built a technology company and helped companies raise capital, I understand what founders need to explain to investors, and what investors need to see.</p>
+      </section>
+
+      <section>
+        <h2>Experience</h2>
+        <div class="item"><span class="when">Current</span><p class="role">US Equities Market Specialist</p><p class="org">Fuway Capital 富輝資本 (part of New Brilliance Holdings)</p><p class="desc">Advising companies on the US equity markets, focusing on IPO advisory and M&amp;A.</p></div>
+        <div class="item"><span class="when">Current</span><p class="role">Co-founder</p><p class="org">BTRDCC · Biochemical Technology R&amp;D Consultation Centre</p><p class="desc">AI-integrated biotechnology: patented nano-targeting combined with cancer-therapy R&amp;D. A project of Nanotech Innovation Limited.</p></div>
+        <div class="item"><span class="when">Since 2021</span><p class="role">Co-founder &amp; COO</p><p class="org">Nanotech Innovation Limited 納米科研技術有限公司</p><p class="desc">Co-founded at university (originally Master Masker Technology Company Limited). Nano-coatings and biomedical targeted technologies, protected by patents.</p></div>
+        <div class="item"><span class="when">2024–2025</span><p class="role">Founder</p><p class="org">YOUZHI MIAO 柚汁喵</p><p class="desc">Founded and ran a pet-services business for cats: customers, suppliers, staff and day-to-day P&amp;L.</p></div>
+        <div class="item"><p class="role">Associate Fellow</p><p class="org">Social Enterprise Research Academy (SERA)</p></div>
+      </section>
+    </div>
+
+    <aside class="side">
+      <section>
+        <h2>Patents</h2>
+        <div class="stat"><b>3</b><p>granted Hong Kong patents (2022), held by Nanotech Innovation</p></div>
+        <div class="stat"><b>2</b><p>mainland China utility-model applications (2024)</p></div>
+        <div class="stat"><b>2</b><p>further filings reported, pending registration</p></div>
+      </section>
+      <section>
+        <h2>Recognition</h2>
+        <ul>
+          <li>The Best High-tech Biochemical-related Cleaning and Protective Solutions of the Year — Business Innovator 2023 Most Innovative Enterprise Awards (Master Masker Technology)</li>
+          <li>Associate Fellow, SERA</li>
+          <li>Case feature on Nanotech Innovation, HKYBA</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Education</h2>
+        <ul>
+          <li>The Hong Kong University of Science and Technology (HKUST) — graduate</li>
+          <li>The University of Queensland — master's studies</li>
+          <li>Fudan University — admitted to MBA programme</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Languages</h2>
+        <p>English · Chinese</p>
+      </section>
+    </aside>
+  </div>
+
+  <p class="note">Patent status as listed by the applicant; details on the Hong Kong IPD and CNIPA registers.</p>
+  <footer class="contact">
+    <p><span>E-mail</span>info@tylerfuture.com</p>
+    <p><span>Work e-mail</span>zhengdimin@newbrilliance.com</p>
+    <p><span>Website</span>tylercheng00.github.io</p>
+    <p><span>LinkedIn</span>in/tik-man-cheng</p>
+    <p><span>WeChat · X · Xiaohongshu</span>tyler_capital</p>
+    <p><span>Book a meeting</span>tylercheng00.github.io/contact.html</p>
+  </footer>
+</div>
+
+<!-- ======================= 中文 ======================= -->
+<div class="page zh">
+  <header class="head">
+    <div>
+      <p class="eyebrow">資本市場 × 科研創業</p>
+      <p class="name-zh">鄭迪珉</p>
+      <p class="name-en">Tyler Tik Man Cheng</p>
+      <p class="tagline">美股 · 生物科技 · 專利 · 初創企業</p>
+    </div>
+    <img class="photo" src="../../assets/media/tyler-portrait.jpg" alt="">
+  </header>
+
+  <div class="body">
+    <div>
+      <section>
+        <h2>簡介</h2>
+        <p class="lead">我的工作橫跨資本市場與科研創業：透過 IPO 顧問及併購業務，協助企業進入美國股票市場；並把大學科研轉化為具專利的商業技術。</p>
+        <p class="desc">我在香港出生和長大，20 歲創辦第一間公司，22 歲時業務已拓展至其他國家。同時經歷過「創辦科技公司」與「協助企業融資」兩個角色，令我明白創辦人需要向投資者說清楚甚麼，也明白投資者希望看到甚麼。</p>
+      </section>
+
+      <section>
+        <h2>工作經歷</h2>
+        <div class="item"><span class="when">現職</span><p class="role">美股市場專員</p><p class="org">富輝資本 Fuway Capital（新輝控股旗下）</p><p class="desc">為企業提供美國股票市場相關顧問服務，專注 IPO 上市及併購。</p></div>
+        <div class="item"><span class="when">現職</span><p class="role">聯合創辦人</p><p class="org">BTRDCC · Biochemical Technology R&amp;D Consultation Centre</p><p class="desc">結合 AI 的生物科技：以專利納米標靶技術結合癌症治療研發，為納米科研技術有限公司旗下項目。</p></div>
+        <div class="item"><span class="when">2021 年至今</span><p class="role">聯合創辦人兼營運總監</p><p class="org">納米科研技術有限公司 Nanotech Innovation Limited</p><p class="desc">於大學期間聯合創辦，前身為 Master Masker Technology Company Limited。研發納米塗層及生物醫療標靶技術，並以專利保護。</p></div>
+        <div class="item"><span class="when">2024–2025</span><p class="role">創辦人</p><p class="org">柚汁喵 YOUZHI MIAO</p><p class="desc">創辦並經營貓咪寵物服務業務，親身管理顧客、供應商、員工及日常收支。</p></div>
+        <div class="item"><p class="role">準院士</p><p class="org">社會企業研究院（SERA）</p></div>
+      </section>
+    </div>
+
+    <aside class="side">
+      <section>
+        <h2>專利</h2>
+        <div class="stat"><b>3</b><p>項香港已授權專利（2022），由納米科研技術持有</p></div>
+        <div class="stat"><b>2</b><p>項中國內地實用新型專利申請（2024）</p></div>
+        <div class="stat"><b>2</b><p>項已報備，待正式註冊</p></div>
+      </section>
+      <section>
+        <h2>獎項及認可</h2>
+        <ul>
+          <li>年度最卓越高新生物科技相關清潔及防護解決方案大獎 —— BUSINESS INNOVATOR《2023 年度卓越創新企業大獎》（Master Masker Technology）</li>
+          <li>社會企業研究院準院士</li>
+          <li>HKYBA 案例專題：Nanotech Innovation</li>
+        </ul>
+      </section>
+      <section>
+        <h2>學歷</h2>
+        <ul>
+          <li>香港科技大學 —— 畢業</li>
+          <li>昆士蘭大學 —— 碩士課程修讀</li>
+          <li>復旦大學 —— 獲 MBA 課程錄取</li>
+        </ul>
+      </section>
+      <section>
+        <h2>語言</h2>
+        <p>中文 · 英文</p>
+      </section>
+    </aside>
+  </div>
+
+  <p class="note">專利狀態按申請人記錄列出，詳情可於香港知識產權署及國家知識產權局查詢。</p>
+  <footer class="contact">
+    <p><span>電郵</span>info@tylerfuture.com</p>
+    <p><span>工作電郵</span>zhengdimin@newbrilliance.com</p>
+    <p><span>網站</span>tylercheng00.github.io</p>
+    <p><span>LinkedIn</span>in/tik-man-cheng</p>
+    <p><span>微信 · X · 小紅書</span>tyler_capital</p>
+    <p><span>預約會面</span>tylercheng00.github.io/contact.html</p>
+  </footer>
+</div>
+
+</body>
+</html>

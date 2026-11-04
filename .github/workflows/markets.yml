@@ -27,12 +27,12 @@ jobs:
         run: python3 tools/fetch_markets.py
       - name: Commit if changed
         run: |
-          if [ -z "$(git status --porcelain data/markets.json)" ]; then
+          if [ -z "$(git status --porcelain data/markets.json data/markets-history.json)" ]; then
             echo "No changes."; exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/markets.json
+          git add data/markets.json data/markets-history.json
           git commit -m "markets: update snapshot"
           git pull --rebase origin main
           git push

@@ -9,7 +9,7 @@ on:
   push:
     branches: [main]
   workflow_run:
-    workflows: ["Update news", "Update market snapshot"]
+    workflows: ["Update news", "Update market snapshot", "Weekly market report"]
     types: [completed]
   schedule:
     - cron: "41 3 * * *"   # daily, picks up changes in the project repos

@@ -88,9 +88,30 @@
       s.async = true;
       s.type = 'text/javascript';
       s.innerHTML = JSON.stringify(cfg[kind]);
+      s.onerror = function () { fail(host); };
       wrap.appendChild(s);
       host.appendChild(wrap);
     });
+    // If a widget has not produced its iframe after a while (blocked script,
+    // ad blocker, network filter), say so instead of leaving an empty box.
+    var token = last;
+    setTimeout(function () {
+      if (token !== last) return;
+      document.querySelectorAll('[data-tv]').forEach(function (host) {
+        if (!host.querySelector('iframe')) fail(host);
+      });
+    }, 12000);
+  }
+
+  function fail(host) {
+    if (host.querySelector('.mk-fail')) return;
+    var box = document.createElement('div');
+    box.className = 'mk-fail';
+    box.innerHTML = '<p><span lang="en">Live data could not load here. An ad or tracker blocker, or a network filter, may be blocking TradingView.</span>' +
+      '<span lang="zh-Hant">未能載入即時數據，可能是廣告／追蹤攔截器或網絡過濾阻擋了 TradingView。</span></p>' +
+      '<a class="p-link" href="https://www.tradingview.com/markets/stocks-usa/" target="_blank" rel="noopener">' +
+      '<span lang="en">Open US markets on TradingView →</span><span lang="zh-Hant">在 TradingView 查看美股 →</span></a>';
+    host.appendChild(box);
   }
 
   renderAll();

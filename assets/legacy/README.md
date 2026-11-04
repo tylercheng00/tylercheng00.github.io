@@ -27,7 +27,7 @@ Not copied here (third-party copyright, other people's portraits or partner logo
 | photos | tyler-dinner.jpg | Tyler at dinner | WechatIMG337.jpg |
 | photos | tyler-with-guest.jpg | Tyler with a guest at an event | WechatIMG338.jpg |
 | photos | award-2023-enterprise.jpg | 2023 Most Innovative Enterprise award trophy | WechatIMG340.jpg |
-| photos | tv-interview-1.jpg | TV interview (caption: Cheng Tik Man, Master Maker Technology) | WechatIMG341.jpg |
+| photos | tv-interview-1.jpg | TV interview (caption: Cheng Tik Man, Master Masker Technology) | WechatIMG341.jpg |
 | photos | tv-interview-2.jpg | TV interview, two-shot | WechatIMG342.jpg |
 | photos | tyler-koala.jpg | Tyler holding a koala | WechatIMG343.jpg |
 | photos | tyler-helicopter.jpg | Tyler in a helicopter | WechatIMG344.jpg |

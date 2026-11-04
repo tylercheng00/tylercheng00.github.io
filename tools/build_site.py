@@ -139,10 +139,9 @@ NAV_GROUPS = [
         ("index.html#patents", "Patents", "專利"),
         ("projects.html", "All projects", "所有項目"),
     ]),
-    ("markets", "Capital markets", "資本市場", [
-        ("us-equities.html", "US IPO & M&A", "美股上市及併購"),
-        ("markets.html", "Live markets", "美股行情"),
-    ]),
+    # a plain string instead of a list = a direct link with no dropdown
+    ("capital", "Capital markets", "資本市場", "us-equities.html"),
+    ("markets", "Markets", "美股行情", "markets.html"),
     ("insights", "Insights", "觀點", [
         ("insights/", "Articles", "觀點文章"),
         ("news.html", "News", "新聞"),
@@ -161,6 +160,11 @@ def nav_menu(prefix="", active=None, home=False):
     cur = CURRENT.get(active)
     out = []
     for key, en, zh, items in NAV_GROUPS:
+        if isinstance(items, str):
+            here = items == cur
+            out.append(f'        <a class="nav-link{" is-current" if here else ""}" href="{prefix}{items}"'
+                       f'{" aria-current=\"page\"" if here else ""}>{bi(en, zh)}</a>')
+            continue
         links = []
         group_cur = False
         for href, ien, izh in items:
@@ -473,7 +477,24 @@ def main():
         head_extra='\n  <link rel="preconnect" href="https://s3.tradingview.com">'
                    '\n  <link rel="preconnect" href="https://www.tradingview-widget.com">'
                    '\n  <link rel="dns-prefetch" href="https://www.tradingview.com">'), encoding="utf-8")
+    stamp_assets()
     print(f"built {len(arts)} articles, insights index, news.html, markets.html")
+
+
+ASSETS = ("styles.css", "main.js", "news.js", "markets.js", "us-equities.js", "assets/fonts/fonts.css")
+
+
+def stamp_assets():
+    """Add ?v=<content hash> to CSS/JS links so browsers never mix a new page with an old cached file."""
+    import hashlib
+    ver = {a: hashlib.md5((ROOT / a).read_bytes()).hexdigest()[:8] for a in ASSETS if (ROOT / a).exists()}
+    for f in [*ROOT.glob("*.html"), *(ROOT / "insights").glob("*.html")]:
+        s = f.read_text(encoding="utf-8")
+        s2 = s
+        for a, v in ver.items():
+            s2 = re.sub(r'((?:href|src)="(?:\.\./)?' + re.escape(a) + r')(?:\?v=[0-9a-f]+)?"', r"\g<1>?v=" + v + '"', s2)
+        if s2 != s:
+            f.write_text(s2, encoding="utf-8")
 
 
 if __name__ == "__main__":

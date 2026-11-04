@@ -1025,3 +1025,13 @@ html[data-lang="zh"] .vision-quote p { font-family: var(--serif-zh); font-style:
   .nav .nav-menu a { padding: 11px 8px; font-size: 15px; border-bottom: 0; }
 }
 @media (max-width: 640px) { .nav { max-height: calc(100vh - 64px); } }
+/* direct links in the grouped header menu */
+.nav a.nav-link { font-size: 14px; }
+.nav a.nav-link.is-current { color: #fff; }
+.nav a.nav-link.is-current::after { content: ""; position: absolute; left: 12px; right: 12px; bottom: 2px; height: 2px; background: var(--gold); border-radius: 2px; }
+@media (max-width: 1100px) and (min-width: 861px) { .nav a.nav-link { padding: 8px 9px; font-size: 13.5px; } }
+@media (max-width: 860px) {
+  .nav a.nav-link { padding: 14px 4px; font-size: 16px; }
+  .nav a.nav-link.is-current { color: var(--gold-soft); }
+  .nav a.nav-link.is-current::after { display: none; }
+}

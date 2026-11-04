@@ -2,21 +2,39 @@
   var root = document.documentElement;
   var body = document.body;
 
-  /* ---------- Language toggle ---------- */
+  /* ---------- Language toggle: EN / 繁 / 简 ---------- */
+  // 简 shows the Traditional text converted by sc.js, which is loaded only when needed.
+  var SC_SRC = 'sc.js?v=fd9d4562';
+  var mainSrc = (document.currentScript && document.currentScript.src) || location.href;
+  var scLoading = false;
+  function scWanted(on) {
+    window.__scWanted = on;
+    if (!on) { if (window.SC) window.SC.disable(); root.classList.remove('sc-pending'); return; }
+    if (window.SC) { window.SC.enable(); root.classList.remove('sc-pending'); return; }
+    if (scLoading) return;
+    scLoading = true;
+    var s = document.createElement('script');
+    s.src = new URL(SC_SRC, mainSrc).href;
+    s.onload = s.onerror = function () { root.classList.remove('sc-pending'); };
+    document.head.appendChild(s);
+  }
   var langButtons = document.querySelectorAll('[data-set-lang]');
   function setLang(lang, save) {
-    root.setAttribute('data-lang', lang);
-    root.lang = lang === 'zh' ? 'zh-Hant' : 'en';
+    var sc = lang === 'sc';
+    root.setAttribute('data-lang', sc ? 'zh' : lang);
+    if (sc) root.setAttribute('data-script', 'sc'); else root.removeAttribute('data-script');
+    root.lang = sc ? 'zh-Hans' : lang === 'zh' ? 'zh-Hant' : 'en';
     langButtons.forEach(function (b) {
       b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === lang));
     });
     if (save) { try { localStorage.setItem('lang', lang); } catch (e) {} }
     try { document.dispatchEvent(new CustomEvent('langchange', { detail: lang })); } catch (e) {}
+    scWanted(sc);
   }
   langButtons.forEach(function (b) {
     b.addEventListener('click', function () { setLang(b.getAttribute('data-set-lang'), true); });
   });
-  setLang(root.getAttribute('data-lang') === 'zh' ? 'zh' : 'en', false);
+  setLang(root.getAttribute('data-script') === 'sc' ? 'sc' : root.getAttribute('data-lang') === 'zh' ? 'zh' : 'en', false);
 
   /* ---------- Header state + back-to-top ---------- */
   var topbar = document.getElementById('topbar');

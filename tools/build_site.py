@@ -242,13 +242,14 @@ def page(*, prefix, path, title, description, og_type, body, active,
       var lang = null;
       try {{
         var q = new URLSearchParams(location.search).get('lang');
-        if (q === 'zh' || q === 'en') lang = q;
+        if (q === 'zh' || q === 'en' || q === 'sc') lang = q;
         if (!lang) lang = localStorage.getItem('lang');
       }} catch (e) {{}}
-      if (lang !== 'zh' && lang !== 'en') lang = /^zh/i.test(navigator.language || '') ? 'zh' : 'en';
+      if (lang !== 'zh' && lang !== 'en' && lang !== 'sc') {{ var nl = navigator.language || ''; lang = /^zh-(cn|sg|hans)/i.test(nl) ? 'sc' : (/^zh/i.test(nl) ? 'zh' : 'en'); }}
       var d = document.documentElement;
-      d.setAttribute('data-lang', lang);
-      d.lang = lang === 'zh' ? 'zh-Hant' : 'en';
+      d.setAttribute('data-lang', lang === 'sc' ? 'zh' : lang);
+      d.lang = lang === 'zh' ? 'zh-Hant' : lang === 'sc' ? 'zh-Hans' : 'en';
+      if (lang === 'sc') {{ d.setAttribute('data-script', 'sc'); d.classList.add('sc-pending'); setTimeout(function () {{ d.classList.remove('sc-pending'); }}, 2500); }}
       d.classList.add('js');
     }})();
   </script>
@@ -273,7 +274,8 @@ def page(*, prefix, path, title, description, og_type, body, active,
       <div class="topbar-actions">
         <div class="lang-toggle" role="group" aria-label="Language / 語言">
           <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
-          <button type="button" data-set-lang="zh" aria-pressed="false">中</button>
+          <button type="button" data-set-lang="zh" aria-pressed="false" title="繁體中文">繁</button>
+          <button type="button" data-set-lang="sc" aria-pressed="false" title="简体中文">简</button>
         </div>
         <button class="menu-btn" id="menu-btn" type="button" aria-controls="nav" aria-expanded="false">
           <span class="sr-only">{bi("Menu", "選單")}</span>
@@ -538,6 +540,15 @@ ASSETS = ("styles.css", "main.js", "news.js", "markets.js", "us-equities.js", "c
 def stamp_assets():
     """Add ?v=<content hash> to CSS/JS links so browsers never mix a new page with an old cached file."""
     import hashlib
+    # main.js loads sc.js itself, so its reference is stamped inside main.js first
+    sc = ROOT / "sc.js"
+    if sc.exists():
+        m = ROOT / "main.js"
+        js = m.read_text(encoding="utf-8")
+        js2 = re.sub(r"var SC_SRC = 'sc\.js(?:\?v=[0-9a-f]+)?';",
+                     f"var SC_SRC = 'sc.js?v={hashlib.md5(sc.read_bytes()).hexdigest()[:8]}';", js)
+        if js2 != js:
+            m.write_text(js2, encoding="utf-8")
     ver = {a: hashlib.md5((ROOT / a).read_bytes()).hexdigest()[:8] for a in ASSETS if (ROOT / a).exists()}
     for f in [*ROOT.glob("*.html"), *(ROOT / "insights").glob("*.html")]:
         s = f.read_text(encoding="utf-8")

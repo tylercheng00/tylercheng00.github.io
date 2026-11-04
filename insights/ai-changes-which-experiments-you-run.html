@@ -26,7 +26,7 @@
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../assets/fonts/fonts.css?v=1baa657b" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="../assets/fonts/fonts.css?v=1baa657b"></noscript>
-  <link rel="stylesheet" href="../styles.css?v=1a430c06">
+  <link rel="stylesheet" href="../styles.css?v=5ef10207">
 
   <!-- Structured data -->
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AI won't replace the lab. It changes which experiments you run.", "alternativeHeadline": "AI 不會取代實驗室，但會改變你做哪些實驗", "description": "In biotech, AI is most useful as a filter. It narrows the search; the lab still decides.", "datePublished": "2026-11-04", "inLanguage": ["en", "zh-Hant"], "author": {"@type": "Person", "name": "Tyler Tik Man Cheng", "alternateName": "鄭迪珉", "url": "https://tylercheng00.github.io/"}, "mainEntityOfPage": "https://tylercheng00.github.io/insights/ai-changes-which-experiments-you-run.html", "image": "https://tylercheng00.github.io/assets/og-image.png"}</script>
@@ -37,13 +37,14 @@
       var lang = null;
       try {
         var q = new URLSearchParams(location.search).get('lang');
-        if (q === 'zh' || q === 'en') lang = q;
+        if (q === 'zh' || q === 'en' || q === 'sc') lang = q;
         if (!lang) lang = localStorage.getItem('lang');
       } catch (e) {}
-      if (lang !== 'zh' && lang !== 'en') lang = /^zh/i.test(navigator.language || '') ? 'zh' : 'en';
+      if (lang !== 'zh' && lang !== 'en' && lang !== 'sc') { var nl = navigator.language || ''; lang = /^zh-(cn|sg|hans)/i.test(nl) ? 'sc' : (/^zh/i.test(nl) ? 'zh' : 'en'); }
       var d = document.documentElement;
-      d.setAttribute('data-lang', lang);
-      d.lang = lang === 'zh' ? 'zh-Hant' : 'en';
+      d.setAttribute('data-lang', lang === 'sc' ? 'zh' : lang);
+      d.lang = lang === 'zh' ? 'zh-Hant' : lang === 'sc' ? 'zh-Hans' : 'en';
+      if (lang === 'sc') { d.setAttribute('data-script', 'sc'); d.classList.add('sc-pending'); setTimeout(function () { d.classList.remove('sc-pending'); }, 2500); }
       d.classList.add('js');
     })();
   </script>
@@ -95,7 +96,8 @@
       <div class="topbar-actions">
         <div class="lang-toggle" role="group" aria-label="Language / 語言">
           <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
-          <button type="button" data-set-lang="zh" aria-pressed="false">中</button>
+          <button type="button" data-set-lang="zh" aria-pressed="false" title="繁體中文">繁</button>
+          <button type="button" data-set-lang="sc" aria-pressed="false" title="简体中文">简</button>
         </div>
         <button class="menu-btn" id="menu-btn" type="button" aria-controls="nav" aria-expanded="false">
           <span class="sr-only"><span lang="en">Menu</span><span lang="zh-Hant">選單</span></span>
@@ -186,6 +188,6 @@
     <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 19V5m0 0-6 6m6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </a>
 
-  <script src="../main.js?v=eeb0fa2f"></script>
+  <script src="../main.js?v=7b437852"></script>
 </body>
 </html>

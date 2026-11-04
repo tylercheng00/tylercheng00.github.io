@@ -72,7 +72,7 @@
   // into view, so the heavy heatmap does not slow down the top of the page.
   function settings() {
     return {
-      locale: root.getAttribute('data-lang') === 'zh' ? 'zh_TW' : 'en',
+      locale: root.getAttribute('data-lang') === 'zh' ? (root.getAttribute('data-script') === 'sc' ? 'zh_CN' : 'zh_TW') : 'en',
       theme: dark && dark.matches ? 'dark' : 'light'
     };
   }

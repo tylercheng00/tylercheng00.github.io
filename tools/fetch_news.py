@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fetch recent finance and US / China politics headlines into data/news.json.
+"""Fetch recent finance, US / China politics and biotech / health headlines into data/news.json.
 
 Standard library only; run by .github/workflows/news.yml every few hours.
 Only the headline, a short excerpt, the source name, the date and a link to
@@ -33,12 +33,24 @@ FEEDS = [
     ("BBC News", "china", "https://feeds.bbci.co.uk/news/world/asia/china/rss.xml"),
     ("SCMP", "china", "https://www.scmp.com/rss/4/feed"),                                 # China
     ("SCMP", "china", "https://www.scmp.com/rss/318421/feed"),                            # China economy
+    # International biotech, pharma, medical research and public-health news
+    ("STAT News", "biotech", "https://www.statnews.com/feed/"),
+    ("Fierce Biotech", "biotech", "https://www.fiercebiotech.com/rss/xml"),
+    ("BioPharma Dive", "biotech", "https://www.biopharmadive.com/feeds/news/"),
+    ("GEN", "biotech", "https://www.genengnews.com/feed/"),                              # Genetic Engineering & Biotechnology News
+    ("Nature Biotechnology", "biotech", "https://www.nature.com/nbt.rss"),
+    ("ScienceDaily", "biotech", "https://www.sciencedaily.com/rss/health_medicine.xml"), # new research findings
+    ("BBC News", "biotech", "https://feeds.bbci.co.uk/news/health/rss.xml"),
+    ("NIH", "biotech", "https://www.nih.gov/news-releases/feed.xml"),
+    ("US FDA", "biotech", "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/press-releases/rss.xml"),
+    ("WHO", "biotech", "https://www.who.int/rss-feeds/news-english.xml"),
 ]
 
-PER_FEED = 8          # newest items kept from each feed
-MAX_ITEMS = 48        # total kept
-MAX_AGE_DAYS = 4      # drop anything older
+PER_FEED = {"biotech": 5}   # newest items kept from each feed (default 8)
+QUOTA = {"finance": 18, "us": 14, "china": 14, "biotech": 26}   # most items kept per feed category
+MAX_AGE_DAYS = {"biotech": 10}   # drop anything older (default 4); journals and agencies post less often
 CHINA_RE = re.compile(r"\b(China|Chinese|Beijing|Xi Jinping|Hong Kong|Taiwan|Shanghai|Shenzhen|Yuan|PBOC)\b", re.I)
+BIO_RE = re.compile(r"\b(biotech\w*|pharma\w*|drug ?maker|FDA|vaccine\w*|clinical trial|gene therapy|oncology|Moderna|Pfizer|Eli Lilly|Novo Nordisk|AstraZeneca|Merck|GLP-1)\b", re.I)
 US_POL_RE = re.compile(r"\b(Trump|White House|Congress|Senate|Republican|Democrat|tariff|Fed\b|Federal Reserve|Treasury)\b", re.I)
 UA = "Mozilla/5.0 (compatible; tylercheng00-site-newsbot/1.0; +https://tylercheng00.github.io/news.html)"
 
@@ -124,7 +136,6 @@ def main():
         return
 
     now = dt.datetime.now(dt.timezone.utc)
-    cutoff = now - dt.timedelta(days=MAX_AGE_DAYS)
     seen, items, ok = set(), [], 0
     for source, cat, url in FEEDS:
         try:
@@ -133,6 +144,7 @@ def main():
         except Exception as e:  # noqa: BLE001 - any failure just skips the feed
             print(f"skip {url}: {e}", file=sys.stderr)
             continue
+        cutoff = now - dt.timedelta(days=MAX_AGE_DAYS.get(cat, 4))
         got = [g for g in got if g["date"] is None or g["date"] >= cutoff]
         got.sort(key=lambda g: g["date"] or now, reverse=True)
         n = 0
@@ -147,6 +159,8 @@ def main():
                 cats.add("china")
             if cat == "finance" and US_POL_RE.search(text):
                 cats.add("us")
+            if cat == "finance" and BIO_RE.search(text):
+                cats.add("biotech")
             items.append({
                 "title": g["title"],
                 "summary": g["summary"],
@@ -154,9 +168,10 @@ def main():
                 "source": source,
                 "cats": sorted(cats),
                 "date": (g["date"] or now).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "_feed": cat,
             })
             n += 1
-            if n >= PER_FEED:
+            if n >= PER_FEED.get(cat, 8):
                 break
         print(f"ok   {url}: {n} items", file=sys.stderr)
 
@@ -164,11 +179,18 @@ def main():
         print("no feeds succeeded; keeping the existing file", file=sys.stderr)
         return
 
-    items.sort(key=lambda i: i["date"], reverse=True)
+    # newest first within each feed category, up to its quota, then merge
+    kept = []
+    for cat, n in QUOTA.items():
+        mine = sorted((i for i in items if i["_feed"] == cat), key=lambda i: i["date"], reverse=True)
+        kept += mine[:n]
+    for i in kept:
+        del i["_feed"]
+    kept.sort(key=lambda i: i["date"], reverse=True)
     out = {
         "updated": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "sources": sorted({s for s, _, _ in FEEDS}),
-        "items": items[:MAX_ITEMS],
+        "items": kept,
     }
     OUT.parent.mkdir(exist_ok=True)
     old = OUT.read_text(encoding="utf-8") if OUT.exists() else ""

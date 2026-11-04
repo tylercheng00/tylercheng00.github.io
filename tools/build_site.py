@@ -117,6 +117,8 @@ def parse_article(path):
 # Footer links (flat).
 NAV = [
     ("index.html", "Home", "主頁", "home"),
+    ("about.html", "About", "關於", "about"),
+    ("ventures.html", "Ventures", "創業", "ventures"),
     ("projects.html", "Projects", "項目", "projects"),
     ("insights/", "Insights", "觀點", "insights"),
     ("news.html", "News", "新聞", "news"),
@@ -128,15 +130,16 @@ NAV = [
 # written between their <!-- nav:start --> / <!-- nav:end --> markers.
 NAV_GROUPS = [
     ("about", "About", "關於", [
-        ("index.html#about", "About me", "簡介"),
-        ("index.html#experience", "Experience", "工作經歷"),
-        ("index.html#education", "Education", "學歷"),
-        ("index.html#media", "Media & recognition", "媒體及認可"),
+        ("about.html#about", "About me", "簡介"),
+        ("about.html#experience", "Experience", "工作經歷"),
+        ("about.html#education", "Education", "學歷"),
+        ("about.html#media", "Media & recognition", "媒體及認可"),
         ("index.html#vision", "Vision", "願景"),
     ]),
     ("ventures", "Ventures", "創業", [
-        ("index.html#venture", "Nanotech Innovation", "納米科研技術"),
-        ("index.html#patents", "Patents", "專利"),
+        ("ventures.html#entrepreneurship", "Entrepreneurship", "創業經歷"),
+        ("ventures.html#venture", "Nanotech Innovation", "納米科研技術"),
+        ("ventures.html#patents", "Patents", "專利"),
         ("projects.html", "All projects", "所有項目"),
     ]),
     # a plain string instead of a list = a direct link with no dropdown
@@ -147,31 +150,34 @@ NAV_GROUPS = [
         ("news.html", "News", "新聞"),
     ]),
 ]
-# page key -> the menu entry for that page
-CURRENT = {"insights": "insights/", "news": "news.html", "markets": "markets.html",
-           "projects": "projects.html", "us-equities": "us-equities.html"}
+# page key of the generated pages -> their file
+CURRENT = {"insights": "insights/", "news": "news.html", "markets": "markets.html"}
 CARET = ('<svg class="nav-caret" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true">'
          '<path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" '
          'stroke-linecap="round" stroke-linejoin="round"/></svg>')
 
 
-def nav_menu(prefix="", active=None, home=False):
-    """Grouped header menu. home=True links the home-page sections as #anchors."""
-    cur = CURRENT.get(active)
+def nav_menu(prefix="", page=None):
+    """Grouped header menu for the page `page` (e.g. "about.html", "insights/").
+
+    Entries pointing into the current page are written as plain #anchors so the
+    scroll highlighter in main.js can follow them."""
+    page = CURRENT.get(page, page)
     out = []
     for key, en, zh, items in NAV_GROUPS:
         if isinstance(items, str):
-            here = items == cur
+            here = items == page
             out.append(f'        <a class="nav-link{" is-current" if here else ""}" href="{prefix}{items}"'
                        f'{" aria-current=\"page\"" if here else ""}>{bi(en, zh)}</a>')
             continue
         links = []
         group_cur = False
         for href, ien, izh in items:
-            here = href == cur
-            group_cur = group_cur or here
-            url = href[len("index.html"):] if home and href.startswith("index.html#") else prefix + href
-            links.append(f'            <a href="{url}"{" aria-current=\"page\"" if here else ""}>'
+            target, _, anchor = href.partition("#")
+            same = target == page
+            group_cur = group_cur or (same and target != "index.html")
+            url = "#" + anchor if same and anchor else prefix + href
+            links.append(f'            <a href="{url}"{" aria-current=\"page\"" if same and not anchor else ""}>'
                          f'{bi(html.escape(ien), izh)}</a>')
         out.append(
             f'        <div class="nav-group{" is-current" if group_cur else ""}">\n'
@@ -182,13 +188,17 @@ def nav_menu(prefix="", active=None, home=False):
     return "\n".join(out)
 
 
+def footer_links(prefix=""):
+    return "\n".join(f'        <a href="{prefix}{href}">{bi(en, zh)}</a>' for href, en, zh, _ in NAV) + \
+        f'\n        <a href="{prefix}index.html#contact">{bi("Contact", "聯絡")}</a>'
+
+
+
 def page(*, prefix, path, title, description, og_type, body, active,
          body_class="page-projects", scripts=(), jsonld=None, head_extra=""):
     url = f"{SITE}/{path}"
     nav = nav_menu(prefix, active)
-    foot = "\n".join(
-        f'        <a href="{prefix}{href}">{bi(en, zh)}</a>' for href, en, zh, _ in NAV
-    )
+    foot = footer_links(prefix)
     ld = ""
     if jsonld:
         ld = ('\n  <!-- Structured data -->\n  <script type="application/ld+json">'
@@ -454,14 +464,15 @@ def main():
     home.write_text(h2, encoding="utf-8")
 
     # grouped header menu on the hand-written pages
-    for name, active, is_home in (("index.html", None, True), ("projects.html", "projects", False),
-                                  ("us-equities.html", "us-equities", False)):
+    for name in ("index.html", "about.html", "ventures.html", "projects.html", "us-equities.html"):
         f = ROOT / name
         s = f.read_text(encoding="utf-8")
         s2, n = re.subn(r"(<!-- nav:start -->).*?(\n\s*<!-- nav:end -->)",
-                        lambda m: m.group(1) + "\n" + nav_menu("", active, is_home) + m.group(2), s, flags=re.S)
+                        lambda m: m.group(1) + "\n" + nav_menu("", name) + m.group(2), s, flags=re.S)
         if not n:
             raise SystemExit(f"{name}: nav markers missing")
+        s2 = re.sub(r'(<nav class="footer-nav" aria-label="Footer">\n).*?(\n      </nav>)',
+                    lambda m: m.group(1) + footer_links() + m.group(2), s2, flags=re.S)
         f.write_text(s2, encoding="utf-8")
 
     (ROOT / "news.html").write_text(fragment_page(

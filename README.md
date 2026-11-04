@@ -2,11 +2,13 @@
 
 Bilingual (English / 繁體中文) personal site for 鄭迪珉 Tyler Tik Man Cheng, served by GitHub Pages from the `main` branch root. Plain HTML/CSS/JS, no build step.
 
-- `index.html` – content, SEO meta, schema.org Person markup
+- `index.html` – home page (summary), SEO meta, schema.org Person markup
+- `about.html` – background, experience, education, media & recognition
+- `ventures.html` – entrepreneurship, Nanotech Innovation, patents, selected projects
 - `projects.html` – projects page (biotech, finance, interests) linking to each live project page
 - `us-equities.html` + `us-equities.js` – illustrative US IPO and M&A walkthroughs; approved case studies go in `#caseGrid` (template in the HTML comment)
 - `styles.css`, `main.js` – styling and the EN / 中 toggle (`?lang=zh` also works)
-- Contact details (emails, LinkedIn) live in the `#contact` section of `index.html`; the vCard and copy buttons read them from there
+- Contact details (emails, LinkedIn) live in the `#contact` section of `index.html` (and the contact cards at the bottom of the other pages); the vCard and copy buttons read them from there
 - Fonts are self-hosted in `assets/fonts/` (Google Fonts is blocked in mainland China); `tools/vendor_fonts.py` refreshes them
 - After editing `styles.css` or any `.js` file, run `python3 tools/build_site.py`: it adds `?v=<hash>` to the CSS/JS links on every page so visitors never get a new page with an old cached stylesheet
 - The header menu is defined once in `NAV_GROUPS` (`tools/build_site.py`) and written into every page

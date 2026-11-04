@@ -1,0 +1,76 @@
+name: Monthly article draft
+
+# On the 1st of each month, Claude drafts one bilingual Insights article and
+# this workflow opens a pull request with it. Nothing goes live until the
+# pull request is reviewed and merged. Needs the repository secret
+# ANTHROPIC_API_KEY, and Settings → Actions → General → "Allow GitHub Actions
+# to create and approve pull requests".
+
+on:
+  schedule:
+    - cron: "23 1 1 * *"   # 1st of the month, 01:23 UTC
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: "Optional topic suggestion"
+        required: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check the API key is set
+        id: key
+        env:
+          KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -z "$KEY" ]; then echo "ANTHROPIC_API_KEY is not set; skipping."; echo "ok=false" >> "$GITHUB_OUTPUT"; else echo "ok=true" >> "$GITHUB_OUTPUT"; fi
+      - uses: actions/checkout@v4
+        if: steps.key.outputs.ok == 'true'
+      - uses: actions/setup-python@v5
+        if: steps.key.outputs.ok == 'true'
+        with:
+          python-version: "3.12"
+      - name: Draft the article
+        if: steps.key.outputs.ok == 'true'
+        id: draft
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TOPIC: ${{ github.event.inputs.topic }}
+        run: |
+          pip install --quiet anthropic
+          if [ -n "$TOPIC" ]; then FILE=$(python3 tools/draft_article.py --topic "$TOPIC"); else FILE=$(python3 tools/draft_article.py); fi
+          echo "file=$FILE" >> "$GITHUB_OUTPUT"
+          python3 tools/build_site.py
+      - name: Open a pull request for review
+        if: steps.key.outputs.ok == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          FILE: ${{ steps.draft.outputs.file }}
+        run: |
+          BRANCH="draft/$(date -u +%Y-%m)-$(basename "$FILE" .md)"
+          TITLE=$(grep -m1 '^title_zh:' "$FILE" | cut -d: -f2- | sed 's/^ *//')
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add content/insights insights index.html
+          git commit -m "Draft article for review: $TITLE"
+          git push -u origin "$BRANCH"
+          gh pr create --draft --base main --head "$BRANCH" \
+            --title "文章草稿（待審閱）：$TITLE" \
+            --body "$(cat <<BODY
+          Claude 為本月起草的觀點文章。**merge 前不會發佈。**
+
+          審閱清單：
+          - [ ] 內容符合我的真實看法，可以用我的名義發佈
+          - [ ] 沒有虛構的經歷、客戶、交易或數字
+          - [ ] 沒有投資建議或股價預測
+          - [ ] 中英文意思一致
+
+          要修改：直接在 PR 的 Files changed 編輯 \`$FILE\`。不採用：關閉這個 PR 即可。
+          BODY
+          )"

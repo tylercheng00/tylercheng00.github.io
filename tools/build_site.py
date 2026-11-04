@@ -31,6 +31,7 @@ SITE = "https://tylercheng00.github.io"
 CATS = {
     "capital": ("US capital markets", "美國資本市場"),
     "biotech": ("Biotech", "生物科技"),
+    "weekly": ("Weekly market data", "每週美股數據"),
 }
 
 ZH_MONTHS = "一二三四五六七八九十"
@@ -324,6 +325,15 @@ def cat_labels(tags):
     return "".join(f'<span class="ins-tag">{bi(*CATS[t])}</span>' for t in tags)
 
 
+DATA_NOTE = bi(
+    "Generated automatically from delayed public quotes (CNBC, Yahoo Finance, Sina Finance). Data only; "
+    "not investment advice. Figures may contain errors from the data sources.",
+    "根據延遲的公開報價（CNBC、Yahoo Finance、新浪財經）自動生成，只列數據，不構成投資建議；"
+    "數字或因數據來源而有誤差。",
+)
+
+BYLINE_DATA = bi("— Compiled automatically for 鄭迪珉 Tyler Tik Man Cheng", "—— 為鄭迪珉自動整理")
+
 DISCLAIMER = bi(
     "Views are my own and do not represent Fuway, Nanotech Innovation Limited or any client. "
     "This is general commentary, not investment, legal or medical advice.",
@@ -356,8 +366,8 @@ def article_page(a, others):
           <div lang="zh-Hant">
 {a["html_zh"]}
           </div>
-          <p class="ins-byline">— 鄭迪珉 Tyler Tik Man Cheng</p>
-          <p class="ins-disclaimer">{DISCLAIMER}</p>
+          <p class="ins-byline">{BYLINE_DATA if "weekly" in a["tags"] else "— 鄭迪珉 Tyler Tik Man Cheng"}</p>
+          <p class="ins-disclaimer">{DATA_NOTE if "weekly" in a["tags"] else DISCLAIMER}</p>
         </article>
         <nav class="ins-more" aria-label="More insights">
           <p class="kicker">{bi("More insights", "更多觀點")}</p>
@@ -399,7 +409,7 @@ def card(a, prefix=""):
 def index_page(arts):
     counts = {k: sum(k in a["tags"] for a in arts) for k in CATS}
     btns = [f'<button type="button" class="on" data-cat-filter="all" aria-pressed="true">{bi("All", "全部")}<b>{len(arts)}</b></button>']
-    btns += [f'<button type="button" data-cat-filter="{k}" aria-pressed="false">{bi(*CATS[k])}<b>{counts[k]}</b></button>' for k in CATS]
+    btns += [f'<button type="button" data-cat-filter="{k}" aria-pressed="false">{bi(*CATS[k])}<b>{counts[k]}</b></button>' for k in CATS if counts[k]]
     extra = '\n        <div class="filters reveal" role="group" aria-label="Category">\n          ' + "\n          ".join(btns) + "\n        </div>"
     body = hero(
         bi("Insights · Personal views", "觀點 · 個人看法"),
@@ -450,12 +460,13 @@ def main():
     out = ROOT / "insights"
     out.mkdir(exist_ok=True)
     for a in arts:
-        others = [o for o in arts if o is not a][:3]
+        # "more reading": opinion pieces first, so weekly data pages don't crowd them out
+        others = sorted((o for o in arts if o is not a), key=lambda o: "weekly" in o["tags"])[:3]
         (out / f"{a['slug']}.html").write_text(article_page(a, others), encoding="utf-8")
     (out / "index.html").write_text(index_page(arts), encoding="utf-8")
 
-    # homepage teaser data (three latest)
-    teaser = "\n".join(card(a, "insights/") for a in arts[:3])
+    # homepage teaser: the three latest written pieces (weekly data reports are left out)
+    teaser = "\n".join(card(a, "insights/") for a in [x for x in arts if "weekly" not in x["tags"]][:3])
     home = ROOT / "index.html"
     h = home.read_text(encoding="utf-8")
     h2 = re.sub(r"(<!-- insights:start[^>]*-->).*?(<!-- insights:end -->)",

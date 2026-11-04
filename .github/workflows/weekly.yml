@@ -1,0 +1,49 @@
+name: Weekly market report
+
+# Every Saturday: turn the week's recorded closes (data/markets-history.json,
+# kept by "Update market snapshot") into a data-only Insights article and
+# publish it. Skips quietly when the week has fewer than two trading days.
+
+on:
+  schedule:
+    - cron: "17 3 * * 6"   # Saturday 03:17 UTC, after Friday's close and the last snapshot
+  workflow_dispatch:
+    inputs:
+      week:
+        description: "Friday of the week to report (YYYY-MM-DD); empty = latest"
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-commit
+  cancel-in-progress: false
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Write the report
+        run: |
+          if [ -n "${{ github.event.inputs.week }}" ]; then
+            python3 tools/weekly_report.py --week "${{ github.event.inputs.week }}"
+          else
+            python3 tools/weekly_report.py
+          fi
+      - name: Build and publish
+        run: |
+          if [ -z "$(git status --porcelain content/insights)" ]; then
+            echo "No new report."; exit 0
+          fi
+          python3 tools/build_site.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/insights insights index.html
+          git commit -m "insights: weekly market data report"
+          git pull --rebase origin main
+          git push

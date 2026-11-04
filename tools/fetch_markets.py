@@ -24,6 +24,8 @@ import urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "markets.json"
+HISTORY = ROOT / "data" / "markets-history.json"   # daily closes, for the weekly report
+HISTORY_DAYS = 140
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36"
 SPARK_MAX = 40
 
@@ -235,6 +237,35 @@ def main():
     out = {"updated": now.strftime("%Y-%m-%dT%H:%M:%SZ"), "groups": list(groups.values())}
     OUT.parent.mkdir(exist_ok=True)
     OUT.write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
+    record_history(groups, now)
+
+
+def record_history(groups, now):
+    """Keep the latest price of each New York trading day (the last run of the
+    day, after the close, leaves the closing price) plus the previous close."""
+    from zoneinfo import ZoneInfo
+    sys.path.insert(0, str(ROOT / "tools"))
+    from nyse_calendar import is_trading_day
+
+    day = now.astimezone(ZoneInfo("America/New_York")).date()
+    if not is_trading_day(day):
+        return
+    hist = {}
+    if HISTORY.exists():
+        try:
+            hist = json.loads(HISTORY.read_text(encoding="utf-8"))
+        except ValueError:
+            hist = {}
+    days = hist.setdefault("days", {})
+    rec = days.setdefault(day.isoformat(), {})
+    for g in groups.values():
+        for it in g["items"]:
+            if not it.get("stale"):
+                rec[it["symbol"]] = {"c": it["price"], "p": it["prev"]}
+    for old_day in sorted(days)[:-HISTORY_DAYS]:
+        del days[old_day]
+    hist["days"] = dict(sorted(days.items()))
+    HISTORY.write_text(json.dumps(hist, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
 
 
 if __name__ == "__main__":

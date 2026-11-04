@@ -10,17 +10,10 @@ import urllib.parse
 import urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-OUT = ROOT / "_img-candidates"
+OUT = ROOT / "_img-candidates" / "round2"
 UA = "tylercheng00-site-images/1.0 (https://tylercheng00.github.io; hero photos)"
 QUERIES = {
-    "markets": ["New York Stock Exchange facade", "New York Stock Exchange trading floor"],
-    "capital": ["Wall Street sign New York", "Wall Street Manhattan financial district"],
-    "ventures": ["vaccine vials laboratory", "biotechnology laboratory pipette", "bioreactor laboratory"],
-    "projects": ["laboratory microscope research", "scientist laboratory"],
-    "about": ["Victoria Harbour Hong Kong skyline night", "Hong Kong skyline"],
-    "insights": ["open book desk reading", "notebook pen desk"],
-    "news": ["newspapers stack", "newspaper printing press"],
-    "contact": ["Manhattan skyline dusk", "Hong Kong Central skyline dusk"],
+    "vaccine": ["COVID-19 vaccine vials", "vaccine vials", "vaccine syringe vial", "mRNA vaccine vial", "vaccine production laboratory"],
 }
 OK_LIC = re.compile(r"^(cc0|public domain|pd|cc by(-sa)? \d(\.\d)?)", re.I)
 
@@ -36,7 +29,7 @@ def text(v):
 
 
 def main():
-    OUT.mkdir(exist_ok=True)
+    OUT.mkdir(parents=True, exist_ok=True)
     meta = {}
     for topic, qs in QUERIES.items():
         n = 0
@@ -68,7 +61,7 @@ def main():
                               "license": lic, "license_url": em.get("LicenseUrl", {}).get("value", ""),
                               "page": ii.get("descriptionurl"), "size": [w, h]}
                 print("ok", name, lic, p["title"])
-                if n >= 6 * len(qs) or sum(1 for k in meta if k.startswith(topic + "-")) >= 8:
+                if sum(1 for k in meta if k.startswith(topic + "-")) >= 12:
                     break
     (OUT / "meta.json").write_text(json.dumps(meta, ensure_ascii=False, indent=1), encoding="utf-8")
 

@@ -407,7 +407,10 @@ def main():
         "markets",
         title="Markets · 美股行情 — Live US stock market overview | 鄭迪珉 Tyler Cheng",
         description="Live US market overview: major indices, S&P 500 heatmap, top movers, biotech and China ADR watchlists. Data by TradingView; not investment advice.",
-        og_type="website", scripts=("markets.js",)), encoding="utf-8")
+        og_type="website", scripts=("markets.js",),
+        head_extra='\n  <link rel="preconnect" href="https://s3.tradingview.com">'
+                   '\n  <link rel="preconnect" href="https://www.tradingview-widget.com">'
+                   '\n  <link rel="dns-prefetch" href="https://www.tradingview.com">'), encoding="utf-8")
     print(f"built {len(arts)} articles, insights index, news.html, markets.html")
 
 

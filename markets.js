@@ -68,44 +68,74 @@
     };
   }
 
-  var last = '';
-  function renderAll() {
-    var locale = root.getAttribute('data-lang') === 'zh' ? 'zh_TW' : 'en';
-    var theme = dark && dark.matches ? 'dark' : 'light';
-    if (locale + theme === last) return;
-    last = locale + theme;
-    var cfg = configs(locale, theme);
-    document.querySelectorAll('[data-tv]').forEach(function (host) {
-      var kind = host.getAttribute('data-tv');
-      host.textContent = '';
-      var wrap = document.createElement('div');
-      wrap.className = 'tradingview-widget-container';
-      var inner = document.createElement('div');
-      inner.className = 'tradingview-widget-container__widget';
-      wrap.appendChild(inner);
-      var cr = document.createElement('div');
-      cr.className = 'tradingview-widget-copyright';
-      cr.innerHTML = '<a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">Track all markets on TradingView</a>';
-      wrap.appendChild(cr);
-      var s = document.createElement('script');
-      s.type = 'text/javascript';
-      s.src = BASE + kind + '.js';
-      s.async = true;
-      s.text = JSON.stringify(cfg[kind]);
-      s.onerror = function () { fail(host); };
-      wrap.appendChild(s);
-      host.appendChild(wrap);
-    });
-    // If a widget has not produced its iframe after a while (blocked script,
-    // ad blocker, network filter), say so instead of leaving an empty box.
-    var token = last;
-    setTimeout(function () {
-      if (token !== last) return;
-      document.querySelectorAll('[data-tv]').forEach(function (host) {
+  // Widgets load lazily: the ones on screen first, the rest as they scroll
+  // into view, so the heavy heatmap does not slow down the top of the page.
+  function settings() {
+    return {
+      locale: root.getAttribute('data-lang') === 'zh' ? 'zh_TW' : 'en',
+      theme: dark && dark.matches ? 'dark' : 'light'
+    };
+  }
+
+  function mount(host) {
+    var st = settings();
+    var key = st.locale + st.theme;
+    if (host.getAttribute('data-key') === key) return;
+    host.setAttribute('data-key', key);
+    host.classList.remove('ready');
+    var kind = host.getAttribute('data-tv');
+    var cfg = configs(st.locale, st.theme)[kind];
+    host.textContent = '';
+    var wrap = document.createElement('div');
+    wrap.className = 'tradingview-widget-container';
+    var inner = document.createElement('div');
+    inner.className = 'tradingview-widget-container__widget';
+    wrap.appendChild(inner);
+    var cr = document.createElement('div');
+    cr.className = 'tradingview-widget-copyright';
+    cr.innerHTML = '<a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">Track all markets on TradingView</a>';
+    wrap.appendChild(cr);
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.src = BASE + kind + '.js';
+    s.async = true;
+    s.text = JSON.stringify(cfg);
+    s.onerror = function () { fail(host); };
+    wrap.appendChild(s);
+    host.appendChild(wrap);
+
+    // Hide the loading shimmer once the widget's frame has loaded.
+    if ('MutationObserver' in window) {
+      var mo = new MutationObserver(function () {
         var f = host.querySelector('iframe');
-        if (!f || !f.offsetHeight) fail(host);
+        if (!f) return;
+        mo.disconnect();
+        f.addEventListener('load', function () { setTimeout(function () { host.classList.add('ready'); }, 400); });
       });
-    }, 12000);
+      mo.observe(host, { childList: true, subtree: true });
+    }
+    // Blocked script, ad blocker or network filter: say so, not an empty box.
+    setTimeout(function () {
+      if (host.getAttribute('data-key') !== key) return;
+      var f = host.querySelector('iframe');
+      if (!f || !f.offsetHeight) fail(host);
+    }, 15000);
+  }
+
+  var hosts = Array.prototype.slice.call(document.querySelectorAll('[data-tv]'));
+  var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      io.unobserve(en.target);
+      en.target.setAttribute('data-seen', '1');
+      mount(en.target);
+    });
+  }, { rootMargin: '400px 0px' }) : null;
+
+  function renderAll() {
+    hosts.forEach(function (h) {
+      if (!io || h.getAttribute('data-seen')) mount(h);
+    });
   }
 
   function fail(host) {
@@ -119,7 +149,7 @@
     host.appendChild(box);
   }
 
-  renderAll();
+  if (io) hosts.forEach(function (h) { io.observe(h); }); else renderAll();
   document.addEventListener('langchange', renderAll);
   if (dark && dark.addEventListener) dark.addEventListener('change', renderAll);
 })();

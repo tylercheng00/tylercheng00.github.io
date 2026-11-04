@@ -856,3 +856,12 @@ html[data-lang="zh"] .prose { font-size: 17.5px; line-height: 1.95; }
 .mk-card, .mk-tape { position: relative; }
 .mk-fail { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 20px; text-align: center; font-size: 14px; color: var(--muted); background: var(--surface); }
 .mk-tape .mk-fail { flex-direction: row; flex-wrap: wrap; font-size: 13px; padding: 8px 16px; }
+/* loading shimmer for market widgets */
+.mk-card::before, .mk-tape::before { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background: linear-gradient(100deg, transparent 30%, rgba(201, 163, 91, .10) 50%, transparent 70%) var(--surface);
+  background-size: 200% 100%; animation: mk-shimmer 1.4s linear infinite; }
+.mk-card.ready::before, .mk-tape.ready::before { display: none; }
+.mk-card > .tradingview-widget-container, .mk-tape > .tradingview-widget-container { position: relative; z-index: 1; }
+.mk-fail { z-index: 2; }
+@keyframes mk-shimmer { from { background-position: 150% 0; } to { background-position: -50% 0; } }
+@media (prefers-reduced-motion: reduce) { .mk-card::before, .mk-tape::before { animation: none; } }

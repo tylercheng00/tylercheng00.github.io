@@ -105,25 +105,38 @@
     wrap.appendChild(s);
     host.appendChild(wrap);
 
-    // Hide the loading shimmer once the widget's frame has loaded.
+    // Mark the widget ready once its frame has loaded. If the "could not
+    // load" note was shown because the network was slow, remove it again.
+    var loaded = false;
+    function onFrame(f) {
+      f.addEventListener('load', function () {
+        loaded = true;
+        setTimeout(function () {
+          host.classList.add('ready');
+          var note = host.querySelector('.mk-fail');
+          if (note && f.offsetHeight) note.remove();
+        }, 400);
+      });
+    }
     if ('MutationObserver' in window) {
       var mo = new MutationObserver(function () {
         var f = host.querySelector('iframe');
         if (!f) return;
         mo.disconnect();
-        f.addEventListener('load', function () { setTimeout(function () { host.classList.add('ready'); }, 400); });
+        onFrame(f);
       });
       mo.observe(host, { childList: true, subtree: true });
     }
-    // Blocked script, ad blocker or network filter: say so, not an empty box.
+    // Still nothing after a generous wait (slow mobile networks included):
+    // show the note, but keep waiting in case the widget arrives later.
     setTimeout(function () {
       if (host.getAttribute('data-key') !== key) return;
       var f = host.querySelector('iframe');
-      if (f && f.offsetHeight) return;
-      // Chinese locale did not render: retry once in English before giving up.
-      if (st.locale !== 'en') { host.removeAttribute('data-key'); mount(host, true); return; }
-      fail(host);
-    }, 15000);
+      if (f && f.offsetHeight && loaded) return;
+      // Loaded but rendered nothing in Chinese: retry once in English.
+      if (loaded && f && !f.offsetHeight && st.locale !== 'en') { host.removeAttribute('data-key'); mount(host, true); return; }
+      if (!f || !loaded) fail(host);
+    }, 25000);
   }
 
   var hosts = Array.prototype.slice.call(document.querySelectorAll('[data-tv]'));

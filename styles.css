@@ -974,3 +974,54 @@ html[data-lang="zh"] .vision-title { font-family: "Noto Sans TC", var(--sans); f
 .vision-quote p { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: clamp(22px, 2.6vw, 32px); line-height: 1.35; color: #fff; }
 html[data-lang="zh"] .vision-quote p { font-family: var(--serif-zh); font-style: normal; font-size: clamp(20px, 2.2vw, 26px); }
 .vision-quote cite { display: block; margin-top: 10px; font-style: normal; font-size: 13px; letter-spacing: .08em; color: rgba(255, 255, 255, .6); }
+
+/* =================== Grouped header menu =================== */
+.nav-group { position: relative; }
+.nav-top {
+  appearance: none; background: none; border: 0; cursor: pointer; font: inherit;
+  display: inline-flex; align-items: center; gap: 6px; position: relative;
+  font-size: 14px; font-weight: 500; color: rgba(255, 255, 255, .72);
+  padding: 8px 12px; border-radius: 8px; transition: color .2s;
+}
+.nav-top:hover, .nav-group.open .nav-top, .nav-group.is-current .nav-top, .nav-group.has-active .nav-top { color: #fff; }
+.nav-group.is-current .nav-top::after, .nav-group.has-active .nav-top::after {
+  content: ""; position: absolute; left: 12px; right: 26px; bottom: 2px; height: 2px; background: var(--gold); border-radius: 2px;
+}
+.nav-top:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.nav-caret { opacity: .7; transition: transform .2s var(--ease); }
+.nav-group.open .nav-caret { transform: rotate(180deg); }
+.nav-menu {
+  position: absolute; top: calc(100% + 10px); left: 50%; z-index: 5;
+  display: flex; flex-direction: column; min-width: 220px; padding: 8px;
+  background: rgba(9, 22, 40, .98); border: 1px solid rgba(255, 255, 255, .1); border-radius: 14px;
+  box-shadow: var(--shadow-lg);
+  opacity: 0; visibility: hidden; transform: translate(-50%, 6px);
+  transition: opacity .18s var(--ease), transform .18s var(--ease), visibility .18s;
+}
+.nav-menu::before { content: ""; position: absolute; left: 0; right: 0; top: -12px; height: 12px; } /* hover bridge */
+.nav-group.open .nav-menu { opacity: 1; visibility: visible; transform: translate(-50%, 0); transition: opacity .18s var(--ease), transform .18s var(--ease), visibility 0s; }
+@media (hover: hover) and (min-width: 861px) {
+  .nav-group:hover .nav-menu { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+  .nav-group:hover .nav-caret { transform: rotate(180deg); }
+}
+.nav .nav-menu a { padding: 9px 12px; border-radius: 8px; white-space: nowrap; color: rgba(255, 255, 255, .78); font-size: 14px; }
+.nav .nav-menu a:hover { background: rgba(255, 255, 255, .07); color: #fff; }
+.nav .nav-menu a[aria-current="page"], .nav .nav-menu a.active { color: var(--gold-soft); background: rgba(201, 163, 91, .1); }
+.nav .nav-menu a::after, .nav .nav-menu a[aria-current="page"]::after { display: none; }
+@media (max-width: 1100px) and (min-width: 861px) { .nav-top { padding: 8px 9px; font-size: 13.5px; } }
+
+@media (max-width: 860px) {
+  .nav { max-height: calc(100vh - 72px); overflow-y: auto; }
+  .nav-group { border-bottom: 1px solid rgba(255, 255, 255, .06); }
+  .nav-top { width: 100%; justify-content: space-between; padding: 14px 4px; font-size: 16px; border-radius: 0; }
+  .nav-group.is-current .nav-top::after, .nav-group.has-active .nav-top::after { display: none; }
+  .nav-group.is-current .nav-top, .nav-group.has-active .nav-top { color: var(--gold-soft); }
+  .nav-menu {
+    position: static; display: none; min-width: 0; padding: 0 0 10px 12px; transform: none;
+    opacity: 1; visibility: visible; background: none; border: 0; border-radius: 0; box-shadow: none;
+  }
+  .nav-menu::before { display: none; }
+  .nav-group.open .nav-menu { display: flex; transform: none; }
+  .nav .nav-menu a { padding: 11px 8px; font-size: 15px; border-bottom: 0; }
+}
+@media (max-width: 640px) { .nav { max-height: calc(100vh - 64px); } }

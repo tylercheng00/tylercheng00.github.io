@@ -114,6 +114,7 @@ def parse_article(path):
 
 
 # ---------------------------------------------------------------- template
+# Footer links (flat).
 NAV = [
     ("index.html", "Home", "主頁", "home"),
     ("projects.html", "Projects", "項目", "projects"),
@@ -122,14 +123,65 @@ NAV = [
     ("markets.html", "Markets", "美股行情", "markets"),
 ]
 
+# Header menu: a few categories, each opening a small list of pages/sections.
+# Shared by every page; the static pages (index, projects, us-equities) get it
+# written between their <!-- nav:start --> / <!-- nav:end --> markers.
+NAV_GROUPS = [
+    ("about", "About", "關於", [
+        ("index.html#about", "About me", "簡介"),
+        ("index.html#experience", "Experience", "工作經歷"),
+        ("index.html#education", "Education", "學歷"),
+        ("index.html#media", "Media & recognition", "媒體及認可"),
+        ("index.html#vision", "Vision", "願景"),
+    ]),
+    ("ventures", "Ventures", "創業", [
+        ("index.html#venture", "Nanotech Innovation", "納米科研技術"),
+        ("index.html#patents", "Patents", "專利"),
+        ("projects.html", "All projects", "所有項目"),
+    ]),
+    ("markets", "Capital markets", "資本市場", [
+        ("us-equities.html", "US IPO & M&A", "美股上市及併購"),
+        ("markets.html", "Live markets", "美股行情"),
+    ]),
+    ("insights", "Insights", "觀點", [
+        ("insights/", "Articles", "觀點文章"),
+        ("news.html", "News", "新聞"),
+    ]),
+]
+# page key -> the menu entry for that page
+CURRENT = {"insights": "insights/", "news": "news.html", "markets": "markets.html",
+           "projects": "projects.html", "us-equities": "us-equities.html"}
+CARET = ('<svg class="nav-caret" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true">'
+         '<path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" '
+         'stroke-linecap="round" stroke-linejoin="round"/></svg>')
+
+
+def nav_menu(prefix="", active=None, home=False):
+    """Grouped header menu. home=True links the home-page sections as #anchors."""
+    cur = CURRENT.get(active)
+    out = []
+    for key, en, zh, items in NAV_GROUPS:
+        links = []
+        group_cur = False
+        for href, ien, izh in items:
+            here = href == cur
+            group_cur = group_cur or here
+            url = href[len("index.html"):] if home and href.startswith("index.html#") else prefix + href
+            links.append(f'            <a href="{url}"{" aria-current=\"page\"" if here else ""}>'
+                         f'{bi(html.escape(ien), izh)}</a>')
+        out.append(
+            f'        <div class="nav-group{" is-current" if group_cur else ""}">\n'
+            f'          <button type="button" class="nav-top" aria-expanded="false" aria-controls="nav-{key}">'
+            f'{bi(en, zh)}{CARET}</button>\n'
+            f'          <div class="nav-menu" id="nav-{key}">\n' + "\n".join(links) + "\n"
+            f'          </div>\n        </div>')
+    return "\n".join(out)
+
 
 def page(*, prefix, path, title, description, og_type, body, active,
          body_class="page-projects", scripts=(), jsonld=None, head_extra=""):
     url = f"{SITE}/{path}"
-    nav = "\n".join(
-        f'        <a href="{prefix}{href}"{" aria-current=\"page\"" if key == active else ""}>{bi(en, zh)}</a>'
-        for href, en, zh, key in NAV
-    )
+    nav = nav_menu(prefix, active)
     foot = "\n".join(
         f'        <a href="{prefix}{href}">{bi(en, zh)}</a>' for href, en, zh, _ in NAV
     )
@@ -396,6 +448,17 @@ def main():
     if h2 == h and "<!-- insights:start" not in h:
         raise SystemExit("index.html: insights markers missing")
     home.write_text(h2, encoding="utf-8")
+
+    # grouped header menu on the hand-written pages
+    for name, active, is_home in (("index.html", None, True), ("projects.html", "projects", False),
+                                  ("us-equities.html", "us-equities", False)):
+        f = ROOT / name
+        s = f.read_text(encoding="utf-8")
+        s2, n = re.subn(r"(<!-- nav:start -->).*?(\n\s*<!-- nav:end -->)",
+                        lambda m: m.group(1) + "\n" + nav_menu("", active, is_home) + m.group(2), s, flags=re.S)
+        if not n:
+            raise SystemExit(f"{name}: nav markers missing")
+        f.write_text(s2, encoding="utf-8")
 
     (ROOT / "news.html").write_text(fragment_page(
         "news",

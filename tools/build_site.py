@@ -530,8 +530,45 @@ def main():
                                             ("insights/", "Insights", "觀點文章", "Read", "閱讀"),
                                             ("markets.html", "US markets", "美股行情", "Open", "前往")))
         + '</div></div></section>'), encoding="utf-8")
+    apply_hero_photos()
     stamp_assets()
     print(f"built {len(arts)} articles, insights index, news, markets, privacy and 404 pages")
+
+
+def apply_hero_photos():
+    """Put each main page's photo behind its title, with a credit line.
+
+    The photos and their licence data are listed in assets/hero/credits.json
+    (Wikimedia Commons; CC0 / CC BY / CC BY-SA). Safe to run repeatedly."""
+    cfg = ROOT / "assets" / "hero" / "credits.json"
+    if not cfg.exists():
+        return
+    for page, c in json.loads(cfg.read_text(encoding="utf-8")).items():
+        f = ROOT / page
+        if not f.exists():
+            continue
+        prefix = "../" * page.count("/")
+        s = f.read_text(encoding="utf-8")
+        s = re.sub(r'\s*<picture class="hero-photo" data-hero>.*?</picture>', "", s, flags=re.S)
+        s = re.sub(r'\s*<a class="hero-credit"[^>]*>.*?</a>', "", s, flags=re.S)
+        i = s.find('<section class="p-hero"')
+        if i < 0:
+            continue
+        bg = '<div class="hero-bg" aria-hidden="true">'
+        j = s.find(bg, i)
+        end = s.find("</section>", i)
+        if j < 0 or j > end:
+            continue
+        w, h = c["size"]
+        pic = (f'\n        <picture class="hero-photo" data-hero><img src="{prefix}{c["file"]}" alt="" '
+               f'width="{w}" height="{h}" style="object-position: {c["position"]}" fetchpriority="high"></picture>')
+        s = s[:j + len(bg)] + pic + s[j + len(bg):]
+        end = s.find("</section>", i)
+        artist = c["artist"] if len(c["artist"]) <= 40 else c["artist"][:38] + "…"
+        credit = (f'  <a class="hero-credit" href="{html.escape(c["source"])}" target="_blank" rel="noopener">'
+                  f'{bi("Photo", "相片")}: {html.escape(artist)} · {html.escape(c["license"])} · Wikimedia Commons</a>\n    ')
+        s = s[:end] + credit + s[end:]
+        f.write_text(s, encoding="utf-8")
 
 
 ASSETS = ("styles.css", "main.js", "news.js", "markets.js", "us-equities.js", "contact.js", "clock.js", "assets/fonts/fonts.css")

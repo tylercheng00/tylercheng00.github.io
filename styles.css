@@ -1143,3 +1143,20 @@ html[data-script="sc"] {
 html.sc-pending body { visibility: hidden; }
 .lang-toggle button { min-width: 34px; padding: 5px 10px; }
 @media (max-width: 640px) { .lang-toggle button { min-width: 30px; padding: 5px 8px; font-size: 12.5px; } }
+
+/* Page photos behind the titles (assets/hero, see credits.json) */
+.p-hero .hero-photo img { opacity: .85; }
+.p-hero .hero-photo::after {
+  background:
+    linear-gradient(90deg, rgba(7, 19, 34, .92) 0%, rgba(7, 19, 34, .72) 40%, rgba(7, 19, 34, .25) 75%, rgba(7, 19, 34, .1) 100%),
+    linear-gradient(180deg, rgba(7, 19, 34, .55) 0%, transparent 30%, transparent 72%, rgba(7, 19, 34, .7) 100%);
+}
+@media (max-width: 760px) {
+  .p-hero .hero-photo::after { background: linear-gradient(180deg, rgba(7, 19, 34, .7) 0%, rgba(7, 19, 34, .78) 55%, rgba(7, 19, 34, .9) 100%); }
+}
+.hero-credit {
+  position: absolute; right: 16px; bottom: 10px; z-index: 1; max-width: calc(100% - 32px);
+  font-size: 11px; line-height: 1.4; color: rgba(255, 255, 255, .5); text-decoration: none;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.hero-credit:hover { color: rgba(255, 255, 255, .85); text-decoration: underline; }

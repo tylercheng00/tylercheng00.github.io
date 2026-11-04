@@ -9,7 +9,8 @@
   var CAT = {
     finance: ['Finance', '金融'],
     us: ['US politics', '美國政治'],
-    china: ['China', '中國']
+    china: ['China', '中國'],
+    biotech: ['Biotech & health', '生物科技及醫療']
   };
 
   function el(tag, cls, text) {
@@ -44,7 +45,7 @@
   function render() {
     if (!data) return;
     var items = data.items || [];
-    ['all', 'finance', 'us', 'china'].forEach(function (k) {
+    ['all', 'finance', 'us', 'china', 'biotech'].forEach(function (k) {
       var n = k === 'all' ? items.length : items.filter(function (i) { return i.cats.indexOf(k) >= 0; }).length;
       var b = document.querySelector('[data-count="' + k + '"]');
       if (b) b.textContent = n;

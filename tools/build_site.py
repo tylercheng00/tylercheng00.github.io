@@ -495,8 +495,8 @@ def main():
 
     (ROOT / "news.html").write_text(fragment_page(
         "news",
-        title="News · 新聞 — Finance and US–China politics | 鄭迪珉 Tyler Cheng",
-        description="Headlines on markets, finance and US–China politics, gathered automatically from public news feeds. Links go to the original publishers.",
+        title="News · 新聞 — Markets, US–China and biotech | 鄭迪珉 Tyler Cheng",
+        description="Headlines on markets, US–China politics and international biotech and medical research, gathered automatically from public news feeds. Links go to the original publishers.",
         og_type="website", scripts=("news.js",)), encoding="utf-8")
     (ROOT / "markets.html").write_text(fragment_page(
         "markets",

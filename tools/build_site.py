@@ -147,7 +147,7 @@ NAV_GROUPS = [
     ]),
     # a plain string instead of a list = a direct link with no dropdown
     ("capital", "Capital markets", "資本市場", "us-equities.html"),
-    ("markets", "Markets", "市場", [
+    ("markets", "US investing", "美股投資", [
         ("markets.html", "US markets", "美股行情"),
         (ASSET_BOOK, "Asset Book", "資產簿"),
     ]),

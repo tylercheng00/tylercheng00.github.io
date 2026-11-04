@@ -190,7 +190,7 @@ def nav_menu(prefix="", page=None):
 
 def footer_links(prefix=""):
     return "\n".join(f'        <a href="{prefix}{href}">{bi(en, zh)}</a>' for href, en, zh, _ in NAV) + \
-        f'\n        <a href="{prefix}index.html#contact">{bi("Contact", "聯絡")}</a>'
+        f'\n        <a href="{prefix}contact.html">{bi("Contact", "聯絡")}</a>'
 
 
 
@@ -266,7 +266,7 @@ def page(*, prefix, path, title, description, og_type, body, active,
       </a>
       <nav class="nav" id="nav" aria-label="Primary">
 {nav}
-        <a class="nav-cta" href="{prefix}index.html#contact">{bi("Contact", "聯絡")}</a>
+        <a class="nav-cta" href="{prefix}contact.html">{bi("Contact", "聯絡")}</a>
       </nav>
       <div class="topbar-actions">
         <div class="lang-toggle" role="group" aria-label="Language / 語言">
@@ -464,13 +464,17 @@ def main():
     home.write_text(h2, encoding="utf-8")
 
     # grouped header menu on the hand-written pages
-    for name in ("index.html", "about.html", "ventures.html", "projects.html", "us-equities.html"):
+    for name in ("index.html", "about.html", "ventures.html", "projects.html", "us-equities.html", "contact.html"):
         f = ROOT / name
         s = f.read_text(encoding="utf-8")
         s2, n = re.subn(r"(<!-- nav:start -->).*?(\n\s*<!-- nav:end -->)",
                         lambda m: m.group(1) + "\n" + nav_menu("", name) + m.group(2), s, flags=re.S)
         if not n:
             raise SystemExit(f"{name}: nav markers missing")
+        # the Contact button: to the contact page (us-equities keeps its own "Enquire" button)
+        cta = ' aria-current="page"' if name == "contact.html" else ""
+        s2 = re.sub(r'<a class="nav-cta" href="(?:index\.html)?#contact"[^>]*>|<a class="nav-cta" href="contact\.html"[^>]*>',
+                    f'<a class="nav-cta" href="contact.html"{cta}>', s2)
         s2 = re.sub(r'(<nav class="footer-nav" aria-label="Footer">\n).*?(\n      </nav>)',
                     lambda m: m.group(1) + footer_links() + m.group(2), s2, flags=re.S)
         f.write_text(s2, encoding="utf-8")
@@ -492,7 +496,7 @@ def main():
     print(f"built {len(arts)} articles, insights index, news.html, markets.html")
 
 
-ASSETS = ("styles.css", "main.js", "news.js", "markets.js", "us-equities.js", "assets/fonts/fonts.css")
+ASSETS = ("styles.css", "main.js", "news.js", "markets.js", "us-equities.js", "contact.js", "assets/fonts/fonts.css")
 
 
 def stamp_assets():

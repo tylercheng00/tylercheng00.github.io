@@ -12,3 +12,4 @@ Bilingual (English / 繁體中文) personal site for 鄭迪珉 Tyler Tik Man Che
 - Fonts are self-hosted in `assets/fonts/` (Google Fonts is blocked in mainland China); `tools/vendor_fonts.py` refreshes them
 - After editing `styles.css` or any `.js` file, run `python3 tools/build_site.py`: it adds `?v=<hash>` to the CSS/JS links on every page so visitors never get a new page with an old cached stylesheet
 - The header menu is defined once in `NAV_GROUPS` (`tools/build_site.py`) and written into every page
+- `contact.html` + `contact.js` – booking calendar (Cal.com) and message form (Web3Forms); set `calLink` and `web3formsKey` at the top of `contact.js`. Until then (or if a service is blocked) the form falls back to the visitor's e-mail app

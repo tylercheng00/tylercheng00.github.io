@@ -1044,3 +1044,57 @@ html[data-lang="zh"] .vision-quote p { font-family: var(--serif-zh); font-style:
 .more-link:hover { color: var(--ink); }
 .ventures.ventures-page { margin-top: 0; }
 @media (max-width: 760px) { .about-short .about-photo { max-width: 240px; } }
+
+/* =================== Contact page: booking + message form =================== */
+.section-sub { margin-top: 14px; max-width: 620px; font-size: 17px; color: var(--ink-2); }
+.page-contact .hero-cta { margin-top: 30px; }
+.cal-wrap { border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-sm); overflow: hidden; }
+.cal-inline { width: 100%; min-height: 640px; }
+.cal-note { padding: 44px 40px; text-align: center; }
+.cal-note h3 { font-family: var(--serif); font-size: 28px; font-weight: 600; color: var(--ink); }
+html[data-lang="zh"] .cal-note h3 { font-family: var(--serif-zh); font-size: 24px; }
+.cal-note p { margin: 12px auto 24px; max-width: 520px; color: var(--ink-2); }
+.cal-note a:not(.btn) { color: var(--gold-ink); }
+
+.msg-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 64px; align-items: start; }
+.msg-grid .section-head { margin-bottom: 0; position: sticky; top: 110px; }
+.msg-direct { margin-top: 32px; display: flex; flex-direction: column; gap: 8px; }
+.msg-direct a { color: var(--ink); text-decoration: none; font-weight: 500; overflow-wrap: anywhere; }
+.msg-direct a:hover { color: var(--gold-ink); }
+.msg-direct .cc-label { color: var(--gold-ink); margin-bottom: 4px; }
+
+.msg-form { display: grid; gap: 18px; padding: 32px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.field { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+.field-label { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.field-label i, .req-note i { font-style: normal; color: var(--gold-ink); }
+.field input, .field select, .field textarea {
+  width: 100%; font: inherit; font-size: 16px; color: var(--ink); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 10px; padding: 11px 13px; transition: border-color .15s, box-shadow .15s;
+}
+.field textarea { resize: vertical; min-height: 140px; line-height: 1.6; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201, 163, 91, .22); }
+.field input::placeholder, .field textarea::placeholder { color: var(--muted); }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.consent { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--ink-2); line-height: 1.6; }
+.consent input { margin-top: 4px; width: 17px; height: 17px; accent-color: var(--gold); flex: none; }
+.msg-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+.msg-actions .btn[disabled] { opacity: .6; cursor: progress; }
+.req-note { font-size: 13px; color: var(--muted); }
+.msg-status { padding: 14px 16px; border-radius: 10px; font-size: 15px; line-height: 1.6; border: 1px solid var(--line); background: var(--bg-alt); color: var(--ink); }
+.msg-status p + p { margin-top: 6px; }
+.msg-status a { color: var(--gold-ink); }
+.msg-status.ok { border-color: rgba(46, 139, 87, .45); background: rgba(46, 139, 87, .09); }
+.msg-status.warn { border-color: rgba(201, 163, 91, .6); background: rgba(201, 163, 91, .1); }
+.contact .contact-book { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 34px; }
+
+@media (max-width: 900px) {
+  .msg-grid { grid-template-columns: 1fr; gap: 36px; }
+  .msg-grid .section-head { position: static; }
+}
+@media (max-width: 640px) {
+  .field-row { grid-template-columns: 1fr; }
+  .msg-form { padding: 22px 18px; }
+  .cal-note { padding: 32px 20px; }
+  .cal-inline { min-height: 560px; }
+}

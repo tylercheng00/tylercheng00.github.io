@@ -22,6 +22,7 @@ mimetypes.add_type("application/javascript", ".js")
 mimetypes.add_type("image/svg+xml", ".svg")
 mimetypes.add_type("application/manifest+json", ".webmanifest")
 mimetypes.add_type("text/plain", ".md")
+mimetypes.add_type("font/woff2", ".woff2")
 
 
 def cache_control(key):

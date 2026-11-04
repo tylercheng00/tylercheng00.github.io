@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-04T14:53:59Z",
+ "updated": "2026-11-04T16:15:48Z",
  "sources": [
   "BBC News",
   "BioPharma Dive",
@@ -17,6 +17,16 @@
  ],
  "items": [
   {
+   "title": "Integrated health service delivery through medical mobile units helped to reduce deaths among individuals at risk for HIV who also inject drugs",
+   "summary": "NIH-funded clinical trial shows mobile units may help overcome significant barriers to accessing HIV and addiction treatment, but replication is needed.",
+   "link": "https://www.nih.gov/news-events/news-releases/integrated-health-service-delivery-through-medical-mobile-units-helped-reduce-deaths-among-individuals-risk-hiv-who-also-inject-drugs",
+   "source": "NIH",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-04T16:15:48Z"
+  },
+  {
    "title": "An extra year of secondary school lowered dementia diagnoses later in life",
    "summary": "NIH-funded study showed the effect was profound, especially among those at elevated genetic risk.",
    "link": "https://www.nih.gov/news-events/news-releases/extra-year-secondary-school-lowered-dementia-diagnoses-later-life",
@@ -24,7 +34,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-04T14:53:59Z"
+   "date": "2026-11-04T16:15:48Z"
   },
   {
    "title": "A precision T-cell therapy stalls treatment-resistant cancers in clinical trial",
@@ -34,7 +44,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-04T14:53:59Z"
+   "date": "2026-11-04T16:15:48Z"
   },
   {
    "title": "A blood-pressure drug may activate health-promoting brown fat",
@@ -44,7 +54,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-04T14:53:59Z"
+   "date": "2026-11-04T16:15:48Z"
   },
   {
    "title": "Patients engage with epilepsy monitor in real time, improving seizure detection",
@@ -54,28 +64,129 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-04T14:53:59Z"
+   "date": "2026-11-04T16:15:48Z"
   },
   {
-   "title": "Deep learning model using ECGs during sleep studies can predict cardiovascular outcomes",
-   "summary": "Integrating ECGs into sleep disorder screening could enhance detection and guide clinical decision-making.",
-   "link": "https://www.nih.gov/news-events/news-releases/deep-learning-model-using-ecgs-during-sleep-studies-can-predict-cardiovascular-outcomes",
-   "source": "NIH",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-04T14:53:59Z"
-  },
-  {
-   "title": "10-year Treasury yield slips after Democrats win House and Senate majorities",
-   "summary": "Treasury yields moved lower on Wednesday as investors weighed big wins from Democrats in the U.S. midterm elections.",
+   "title": "10-year Treasury yield is little changed as traders mull over Democrats' midterm victories",
+   "summary": "Treasury yields were last little changed Wednesday as investors weighed big wins from Democrats in the U.S. midterm elections.",
    "link": "https://www.cnbc.com/2026/11/03/treasury-yields-fall-as-democrats-win-big-in-us-midterm-elections.html",
    "source": "CNBC",
    "cats": [
     "finance",
     "us"
    ],
-   "date": "2026-11-04T14:53:00Z"
+   "date": "2026-11-04T16:07:16Z"
+  },
+  {
+   "title": "US Congress welcomes record number of lawmakers of Chinese descent",
+   "summary": "The incoming US Congress is set to include a record six lawmakers of Chinese descent after Democrat Richard Pan won a California House race. Pan defeated incumbent Kevin Kiley in California’s 6th Congressional District…",
+   "link": "https://www.scmp.com/news/us/us-elections/article/3373313/us-congress-welcomes-record-number-lawmakers-chinese-descent",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-04T16:01:13Z"
+  },
+  {
+   "title": "STAT+: A looming deadline to fund the government will shape Congress’ unusual lame duck session",
+   "summary": "Before Democrats take control, Congress must fund expiring health care programs, confirm HHS nominees",
+   "link": "https://www.statnews.com/2026/11/04/lame-duck-session-congress-health-policy-aca-subsidies-medicaid-funding/?utm_campaign=rss",
+   "source": "STAT News",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-04T15:55:54Z"
+  },
+  {
+   "title": "Elon Musk's millions fail to deliver Texas for the Republicans in fierce midterms",
+   "summary": "The billionaire's political action committee (Pac) contributed $47m (£35m) to Ken Paxton's campaign.",
+   "link": "https://www.bbc.co.uk/news/articles/cv8ez3p3ge5ko?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-04T15:51:37Z"
+  },
+  {
+   "title": "Trump hammers Fox News, blaming network for GOP losses as ratings slide",
+   "summary": "Trump is a frequent critic of media companies, especially broadcasters that he views as being biased against him.",
+   "link": "https://www.cnbc.com/2026/11/04/trump-fox-news-gop-midterm-losses.html",
+   "source": "CNBC",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-04T15:45:51Z"
+  },
+  {
+   "title": "Poundland owner in crunch talks as retailer's collapse looms",
+   "summary": "Gordon Brothers will meet Jonathan Reynolds on Wednesday as the investment firm faces scrutiny over Poundland.",
+   "link": "https://www.bbc.co.uk/news/articles/ck240mm3e42do?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-04T15:45:11Z"
+  },
+  {
+   "title": "Elon Musk’s record election bet backfired. The backlash may reach beyond one billionaire",
+   "summary": "Elon Musk's $474 million election gamble falters as Democrats threaten his Texas empire.",
+   "link": "https://www.cnbc.com/2026/11/04/elon-musk-midterms-ai-data-centers.html",
+   "source": "CNBC",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-04T15:29:01Z"
+  },
+  {
+   "title": "Trump reacts to midterm election results",
+   "summary": "President Trump made the 2026 midterms all about him - and the Iran war and economic undertow took their toll.",
+   "link": "https://www.npr.org/2026/11/04/nx-s1-6028729/trump-reacts-to-midterm-election-results",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-04T15:28:46Z"
+  },
+  {
+   "title": "Biopharma likely to climb higher after ‘blue wave,’ analysts say",
+   "summary": "Historical data suggests the sector outperforms after midterm elections. And Democrats, newly in control of Congress, have “bigger fish to fry” than drug pricing, analysts said.",
+   "link": "https://www.biopharmadive.com/news/biotech-pharma-midterm-elections-impact/873667/",
+   "source": "BioPharma Dive",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-04T15:28:00Z"
+  },
+  {
+   "title": "STAT+: Five midterm winners and losers: MAHA mowed down, Dem docs scrub in, Medicare for All returns",
+   "summary": "Democratic doctors were among the winners in the midterm elections, while the MAHA movement and President Trump's health agenda were losers.",
+   "link": "https://www.statnews.com/2026/11/04/midterm-health-policy-winners-losers-medicare-for-all-rfk-jr/?utm_campaign=rss",
+   "source": "STAT News",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-04T15:15:21Z"
+  },
+  {
+   "title": "Kellogg's admits snap, crackle and pop is quieter after uproar over Rice Krispies recipe change",
+   "summary": "The cereal giant has changed the recipes for Rice Krispies and Coco Pops, sparking a backlash online.",
+   "link": "https://www.bbc.co.uk/news/articles/cqvg0y44ym7vo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-04T15:13:14Z"
+  },
+  {
+   "title": "Analysis: The Democrats have one chance to extract concessions from Trump. Markets will hate it",
+   "summary": "The next debt-ceiling confrontation could reverse Washington's traditional political roles, raising the possibility of spending concessions, market volatility and a damaging default.",
+   "link": "https://www.cnbc.com/2026/11/04/democrats-trump-debt-ceiling-fight.html",
+   "source": "CNBC",
+   "cats": [
+    "finance",
+    "us"
+   ],
+   "date": "2026-11-04T15:05:19Z"
   },
   {
    "title": "STAT+: Ultragenyx cuts staff after another study fails",
@@ -86,16 +197,6 @@
     "biotech"
    ],
    "date": "2026-11-04T14:46:46Z"
-  },
-  {
-   "title": "Kellogg's admits snap, crackle and pop is quieter after uproar over Rice Krispies recipe change",
-   "summary": "The cereal giant has changed the recipes for Rice Krispies and Coco Pops, sparking a backlash online.",
-   "link": "https://www.bbc.co.uk/news/articles/cqvg0y44ym7vo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-04T14:25:39Z"
   },
   {
    "title": "STAT+: Pharmalittle: We’re reading about CVS plans to split up, FDA inspections in India and China and more",
@@ -199,17 +300,7 @@
    "date": "2026-11-04T13:43:31Z"
   },
   {
-   "title": "Elon Musk's millions fail to deliver Texas for the Republicans in fierce midterms",
-   "summary": "The billionaire's political action committee (Pac) contributed $47m (£35m) to Ken Paxton's campaign.",
-   "link": "https://www.bbc.co.uk/news/articles/cv8ez3p3ge5ko?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-04T13:43:16Z"
-  },
-  {
-   "title": "STAT+: Sens. Wyden and Sanders, backers of Medicare for All, set to take charge of key committees",
+   "title": "STAT+: Sens. Wyden and Sanders, backers of ‘Medicare for All,’ set to take charge of key committees",
    "summary": "The Democratic flip of the Senate is expected to put two Democrats who support Medicare for All in charge of key committees.",
    "link": "https://www.statnews.com/2026/11/04/democratic-wins-medicare-for-all-momentum/?utm_campaign=rss",
    "source": "STAT News",
@@ -217,6 +308,16 @@
     "biotech"
    ],
    "date": "2026-11-04T13:38:17Z"
+  },
+  {
+   "title": "Abdul El-Sayed welcomes Trump's plan to cut Israel aid, calls for end to arms sales",
+   "summary": "Michigan's first Muslim senator-elect, Abdul El-Sayed, discusses his historic victory, an unlikely agreement with Trump on Israel military aid and the political divisions that remain.",
+   "link": "https://www.npr.org/2026/11/04/nx-s1-6028702/abdul-el-sayed-michigan-senate-israel-aid",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-04T13:38:09Z"
   },
   {
    "title": "'This is a disaster': Angry Republicans blame Trump for midterms defeat",
@@ -259,16 +360,6 @@
    "date": "2026-11-04T13:02:32Z"
   },
   {
-   "title": "STAT+: The biotech startups skipping AI for drug discovery",
-   "summary": "In this edition of AI Prognosis: These biotech startups don't think drug discovery is where AI can make the biggest difference.",
-   "link": "https://www.statnews.com/2026/11/04/the-biotech-startups-skipping-ai-for-drug-discovery-ai-prognosis/?utm_campaign=rss",
-   "source": "STAT News",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-04T13:01:33Z"
-  },
-  {
    "title": "What is the one big thing that could stop Xi, Putin and Trump meeting at Apec?",
    "summary": "With just a fortnight until the Apec summit in Shenzhen, preparations are reportedly under way for the first meeting between the leaders of China, Russia and the United States. If the talks go ahead, they could bolster…",
    "link": "https://www.scmp.com/news/china/diplomacy/article/3373292/what-one-big-thing-could-stop-xi-putin-and-trump-meeting-apec",
@@ -309,7 +400,7 @@
    "date": "2026-11-04T12:44:19Z"
   },
   {
-   "title": "The world is reacting to the Democrats' midterm elections victory",
+   "title": "The world is reacting to the Democrats' sweeping midterm elections victory",
    "summary": "From Kyiv to Moscow, and Tehran to Tel Aviv, all eyes were on the Democrats big win as foreign powers weigh how a flipped Congress will affect international relations.",
    "link": "https://www.npr.org/2026/11/04/nx-s1-6028664/world-reacts-midterm-elections",
    "source": "NPR",
@@ -317,26 +408,6 @@
     "us"
    ],
    "date": "2026-11-04T12:34:35Z"
-  },
-  {
-   "title": "STAT+: Former Madrigal Pharmaceuticals executive alleges coverup of safety issues tied to its drug",
-   "summary": "A top former executive at Madrigal Pharmaceuticals has filed a lawsuit in federal court alleging a coverup of drug safety issues.",
-   "link": "https://www.statnews.com/2026/11/04/former-madrigal-pharmaceuticals-executive-rezdiffra-lawsuit/?utm_campaign=rss",
-   "source": "STAT News",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-04T12:30:43Z"
-  },
-  {
-   "title": "Poundland owner in crunch talks as retailer's collapse looms",
-   "summary": "Gordon Brothers will meet Jonathan Reynolds on Wednesday as the investment firm faces scrutiny over Poundland.",
-   "link": "https://www.bbc.co.uk/news/articles/ck240mm3e42do?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-04T12:20:42Z"
   },
   {
    "title": "Democrats seize full control of Congress. And, which candidates made history last night",
@@ -357,46 +428,6 @@
     "us"
    ],
    "date": "2026-11-04T12:02:38Z"
-  },
-  {
-   "title": "Eric Holder on how the GOP's redistricting efforts affected the midterms",
-   "summary": "NPR's Michel Martin speaks to Eric Holder, chairman of the National Democratic Redistricting Committee, about how mid-decade redistricting affected the results of the midterms.",
-   "link": "https://www.npr.org/2026/11/04/nx-s1-6022531/eric-holder-on-how-the-gops-redistricting-efforts-affected-the-midterms",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-04T11:57:51Z"
-  },
-  {
-   "title": "Votes are still being counted to see who will represent Mississippi in the Senate",
-   "summary": "Votes are still being counted to determine who will represent Mississippi in the U.S. Senate. Democrat Scott Colom was only a handful of votes ahead of Republican Cindy Hyde-Smith early Wednesday.",
-   "link": "https://www.npr.org/2026/11/04/nx-s1-6028618/votes-are-still-being-counted-in-mississippi-u-s-senate-race",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-04T11:57:23Z"
-  },
-  {
-   "title": "A look at results for state legislatures around the country",
-   "summary": "NPR's Michel Martin speaks to West Chester University political science professor John Kennedy about the balance of state legislatures as midterm election results come in.",
-   "link": "https://www.npr.org/2026/11/04/nx-s1-6026708/a-look-at-results-for-state-legislatures-around-the-country",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-04T11:43:02Z"
-  },
-  {
-   "title": "Midterm results become a referendum on Trump's record",
-   "summary": "President Trump's touted his record at rallies across the country before the midterms. But voters didn't agree with his assessment on the state of the economy.",
-   "link": "https://www.npr.org/2026/11/04/nx-s1-6028586/midterm-results-become-a-referendum-on-trumps-record",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-04T11:42:45Z"
   },
   {
    "title": "In Asia, midterms spark worries about diplomatic uncertainty, economic pressure",
@@ -487,16 +518,6 @@
     "china"
    ],
    "date": "2026-11-04T08:30:07Z"
-  },
-  {
-   "title": "Taiwan flags massive PLA naval mobilisation, spike in air sorties",
-   "summary": "Taiwan expressed concern on Tuesday over more than 100 People’s Liberation Army naval vessels and mainland Chinese coastguard ships sailing across the western Pacific, including the Liaoning strike group conducting…",
-   "link": "https://www.scmp.com/news/china/military/article/3373249/taiwan-flags-massive-pla-naval-mobilisation-spike-air-sorties",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-04T08:26:37Z"
   },
   {
    "title": "AI helps Stanford scientists discover a “natural Ozempic” with a surprising advantage",
@@ -678,16 +699,6 @@
     "biotech"
    ],
    "date": "2026-11-03T17:32:00Z"
-  },
-  {
-   "title": "No babies to be born at hospital from end of November",
-   "summary": "A pregnant woman is to lodge Judicial Review papers to attempt to delay the implementation of the plan.",
-   "link": "https://www.bbc.co.uk/news/articles/cq4g1ddw2k0po?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-03T16:58:26Z"
   },
   {
    "title": "Texas governor race tightens in prediction markets, but Abbott remains favored",

@@ -506,13 +506,6 @@ def main():
         head_extra='\n  <link rel="preconnect" href="https://s3.tradingview.com">'
                    '\n  <link rel="preconnect" href="https://www.tradingview-widget.com">'
                    '\n  <link rel="dns-prefetch" href="https://www.tradingview.com">'), encoding="utf-8")
-    # personal portfolio tracker: holdings stay in the visitor's browser; kept out of search results
-    (ROOT / "portfolio.html").write_text(fragment_page(
-        "portfolio",
-        title="Portfolio · 投資組合 — Stocks, funds, gold, silver and property | 鄭迪珉 Tyler Cheng",
-        description="A private portfolio tracker for stocks, funds, gold, silver, property and cash. Holdings are saved only in your browser.",
-        og_type="website", scripts=("portfolio.js",),
-        head_extra='\n  <meta name="robots" content="noindex">'), encoding="utf-8")
     (ROOT / "privacy.html").write_text(fragment_page(
         "privacy",
         title="Privacy policy · 私隱政策 | 鄭迪珉 Tyler Tik Man Cheng",
@@ -538,10 +531,10 @@ def main():
                                             ("markets.html", "US markets", "美股行情", "Open", "前往")))
         + '</div></div></section>'), encoding="utf-8")
     stamp_assets()
-    print(f"built {len(arts)} articles, insights index, news, markets, portfolio, privacy and 404 pages")
+    print(f"built {len(arts)} articles, insights index, news, markets, privacy and 404 pages")
 
 
-ASSETS = ("styles.css", "main.js", "news.js", "markets.js", "portfolio.js", "us-equities.js", "contact.js", "clock.js", "assets/fonts/fonts.css")
+ASSETS = ("styles.css", "main.js", "news.js", "markets.js", "us-equities.js", "contact.js", "clock.js", "assets/fonts/fonts.css")
 
 
 def stamp_assets():

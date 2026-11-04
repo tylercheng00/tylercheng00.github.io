@@ -8,3 +8,5 @@ Bilingual (English / 繁體中文) personal site for 鄭迪珉 Tyler Tik Man Che
 - `styles.css`, `main.js` – styling and the EN / 中 toggle (`?lang=zh` also works)
 - Contact details (emails, LinkedIn) live in the `#contact` section of `index.html`; the vCard and copy buttons read them from there
 - Fonts are self-hosted in `assets/fonts/` (Google Fonts is blocked in mainland China); `tools/vendor_fonts.py` refreshes them
+- After editing `styles.css` or any `.js` file, run `python3 tools/build_site.py`: it adds `?v=<hash>` to the CSS/JS links on every page so visitors never get a new page with an old cached stylesheet
+- The header menu is defined once in `NAV_GROUPS` (`tools/build_site.py`) and written into every page

@@ -44,6 +44,27 @@
   nav.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closeMenu); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
 
+  /* ---------- Grouped header menu (dropdowns; accordion inside the mobile menu) ---------- */
+  var groups = Array.prototype.slice.call(nav.querySelectorAll('.nav-group'));
+  function setOpen(g, open) {
+    g.classList.toggle('open', open);
+    g.querySelector('.nav-top').setAttribute('aria-expanded', String(open));
+  }
+  function closeGroups(except) { groups.forEach(function (g) { if (g !== except) setOpen(g, false); }); }
+  groups.forEach(function (g) {
+    g.querySelector('.nav-top').addEventListener('click', function () {
+      var open = !g.classList.contains('open');
+      closeGroups(g);
+      setOpen(g, open);
+    });
+    g.addEventListener('focusout', function (e) {
+      if (!g.contains(e.relatedTarget) && !body.classList.contains('menu-open')) setOpen(g, false);
+    });
+  });
+  nav.querySelectorAll('.nav-menu a').forEach(function (a) { a.addEventListener('click', function () { closeGroups(); }); });
+  document.addEventListener('click', function (e) { if (!nav.contains(e.target)) closeGroups(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeGroups(); });
+
   /* ---------- Reveal on scroll + active nav ---------- */
   if ('IntersectionObserver' in window) {
     var revealer = new IntersectionObserver(function (entries) {
@@ -62,6 +83,7 @@
       entries.forEach(function (en) {
         if (!en.isIntersecting) return;
         Object.keys(links).forEach(function (id) { links[id].classList.toggle('active', id === en.target.id); });
+        nav.querySelectorAll('.nav-group').forEach(function (g) { g.classList.toggle('has-active', !!g.querySelector('a.active')); });
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
     document.querySelectorAll('main section[id]').forEach(function (s) { spy.observe(s); });

@@ -1,1 +1,494 @@
-{"updated": null, "sources": [], "items": []}
+{
+ "updated": "2026-11-04T07:16:43Z",
+ "sources": [
+  "BBC News",
+  "CNBC",
+  "NPR",
+  "SCMP"
+ ],
+ "items": [
+  {
+   "title": "Florida Republicans fend off Democrats as state elects first black governor",
+   "summary": "Republican Byron Donalds, who was backed by President Donald Trump, will be the first black governor of Florida.",
+   "link": "https://www.bbc.co.uk/news/articles/c9146d88pl32o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-04T07:12:21Z"
+  },
+  {
+   "title": "‘Fake democracy’ or a plus for Beijing? Chinese internet users on the US midterms",
+   "summary": "Follow the SCMP’s live coverage here Chinese social media users have voiced mixed views on the US midterm elections, criticising American politics while debating the implications of President Donald Trump’s political…",
+   "link": "https://www.scmp.com/news/china/diplomacy/article/3373236/fake-democracy-or-plus-beijing-chinese-internet-users-us-midterms",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-04T07:11:12Z"
+  },
+  {
+   "title": "Amy Acton wins Ohio governor after bitter race with billionaire Ramaswamy",
+   "summary": "The raced heated up in its final weeks after the Republican contender released an ad featuring Acton's mother.",
+   "link": "https://www.bbc.co.uk/news/articles/cmx2dlz8574jo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-04T07:10:03Z"
+  },
+  {
+   "title": "Midterm Takeaways: Tech billionaires suffer horrible night as Democrats drub Republicans",
+   "summary": "Elon Musk's spending may have become a liability as voters in exit polls raised concerns about government corruption and the growing influence of billionaires.",
+   "link": "https://www.cnbc.com/2026/11/04/midterm-election-blue-wave-trump-billionaires.html",
+   "source": "CNBC",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-04T07:03:48Z"
+  },
+  {
+   "title": "US voters name economy and state of democracy as top issues, poll says",
+   "summary": "A major election day survey suggests voters are the most unhappy with the economy.",
+   "link": "https://www.bbc.co.uk/news/articles/c39wz0970eypo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-04T06:57:00Z"
+  },
+  {
+   "title": "Anthony Zurcher: Democrats tear up Trump's political map on historic night",
+   "summary": "Two Senate races that a year ago were thought to be battlegrounds turned out to be slam-dunks for the Democrats.",
+   "link": "https://www.bbc.co.uk/news/articles/cwz0v5lv30lyo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-04T06:53:56Z"
+  },
+  {
+   "title": "House Democratic Leader Hakeem Jeffries declares \"America is back\"",
+   "summary": "Jeffries, who addressed supporters after House control was called for Democrats , argued voters have sent Congress a message to end extremism and \"corruption.\"",
+   "link": "https://www.npr.org/2026/11/04/nx-s1-6028572/hakeem-jeffries-midterms-house",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-04T06:50:28Z"
+  },
+  {
+   "title": "Treasury yields fall as investors crowd into bonds for safety amid election stock sell-off",
+   "summary": "Treasury yields fell on Tuesday night, as investors sought shelter from a sell-off in equity futures sparked by big victories from Democrats in the U.S. midterm elections.",
+   "link": "https://www.cnbc.com/2026/11/03/treasury-yields-fall-as-democrats-win-big-in-us-midterm-elections.html",
+   "source": "CNBC",
+   "cats": [
+    "finance",
+    "us"
+   ],
+   "date": "2026-11-04T06:50:22Z"
+  },
+  {
+   "title": "Democratic-led US Congress to turn up heat on Beijing over AI, Taiwan: analyst",
+   "summary": "Follow the SCMP’s live coverage here A Democratic-controlled US Congress will ramp up pressure on Beijing over Taiwan, artificial intelligence (AI) and export controls, even if the US midterm results leave Washington’s…",
+   "link": "https://www.scmp.com/news/china/diplomacy/article/3373232/democratic-led-us-congress-turn-heat-beijing-over-ai-taiwan-analyst",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-04T06:49:33Z"
+  },
+  {
+   "title": "Americans have said 'NO TO WAR,' Iran speaker says as Democrats take Congress",
+   "summary": "Ghalibaf said that \"Conscience or the cost of living, Americans said NO TO WAR, and we endorse this message.\"",
+   "link": "https://www.cnbc.com/2026/11/04/us-midterm-elections-iran-war-speaker.html",
+   "source": "CNBC",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-04T06:45:36Z"
+  },
+  {
+   "title": "House Minority Leader Hakeem Jeffries speaks as Democrats projected to win House",
+   "summary": "House Minority Leader Hakeem Jeffries, D-N.Y., to give press conference amid blue wave.",
+   "link": "https://www.cnbc.com/2026/11/03/leader-hakeem-jeffries-speaker.html",
+   "source": "CNBC",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-04T06:39:36Z"
+  },
+  {
+   "title": "Leisure centre price hikes on the way",
+   "summary": "The rises would impact Perdiswell, St John's Sports Centre and Nunnery Wood Sports Complex.",
+   "link": "https://www.bbc.co.uk/news/articles/c6pvgw8gz1k4o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-04T06:13:19Z"
+  },
+  {
+   "title": "Ecstatic scenes and historic moments: What's happened so far in the midterms",
+   "summary": "Democrats have taken control of Congress for the rest of Donald Trump's presidency - proving moments of celebration.",
+   "link": "https://www.bbc.co.uk/news/articles/cmr4y92rgd9po?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-04T06:13:09Z"
+  },
+  {
+   "title": "Republican Susan Collins loses seat to Democrat, ending nearly 30 years in the Senate",
+   "summary": "Maine's Senate race was mired in controversy after Democratic nominee Graham Planter withdrew following multiple scandals.",
+   "link": "https://www.bbc.co.uk/news/articles/cred3jj69jvqo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-04T06:09:45Z"
+  },
+  {
+   "title": "Troy Jackson wins Maine Senate race over Susan Collins, in major coup for Democrats",
+   "summary": "The result is a crucial victory for Democrats in their push to retake the Senate majority, flipping a seat that Collins has held for nearly 30 years.",
+   "link": "https://www.npr.org/2026/11/04/g-s1-148952/maine-senate-race-susan-collins-troy-jackson",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-04T06:02:31Z"
+  },
+  {
+   "title": "U.S. midterm elections in pictures: Democrats' sweeping victories deliver rebuke to Trump",
+   "summary": "Democrats scored sweeping victories in the U.S. midterm elections on Wednesday, flipping key Republican-held seats in Congress.",
+   "link": "https://www.cnbc.com/2026/11/04/us-midterm-elections-in-pictures-democrats-republicans-trump.html",
+   "source": "CNBC",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-04T05:53:30Z"
+  },
+  {
+   "title": "‘I wasn’t on the ballot’: Trump deflects blame as Democrats on track to control Congress",
+   "summary": "Follow the SCMP’s live coverage here In what appears to be an early attempt to distance himself from the Democrats’ historic gains, US President Donald Trump has sought to shift attention away from his party’s…",
+   "link": "https://www.scmp.com/news/china/diplomacy/article/3373226/i-wasnt-ballot-trump-deflects-blame-democrats-track-control-congress",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-04T05:48:42Z"
+  },
+  {
+   "title": "Here's how some key demographic groups voted in the midterms",
+   "summary": "These charts show how various demographic groups voted in the midterm election. The data comes from a poll of tens of thousands of voters, conducted by the firm SSRS for a number of news outlets.",
+   "link": "https://www.npr.org/2026/11/04/nx-s1-6028080/voter-polls-midterms-demographics",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-04T05:43:42Z"
+  },
+  {
+   "title": "James Talarico becomes first Democrat to win Texas Senate seat since 1988",
+   "summary": "\"This wasn't just a tsunami, not just a referendum, but this was a bloodbath,\" one expert told the BBC on Democrats' historic wins in Texas.",
+   "link": "https://www.bbc.co.uk/news/articles/c6n8dnn09jg7o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-04T05:39:36Z"
+  },
+  {
+   "title": "US voters unleash blue wave, handing Congress to Democrats and rebuking Trump",
+   "summary": "Follow the SCMP’s live coverage here After weeks of insults, fearmongering and eye-popping spending on advertising, Americans settled down to vote on Tuesday, unleashing a blue wave that saw Democrats projected to take…",
+   "link": "https://www.scmp.com/news/us/politics/article/3373224/us-voters-unleash-blue-wave-handing-congress-democrats-and-rebuking-trump",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-04T05:33:25Z"
+  },
+  {
+   "title": "Former Arkansas governor says Democrats' gains are 'more significant than ever anticipated'",
+   "summary": "NPR's Scott Detrow speaks with former Arkansas Gov. Asa Hutchinson about Democratic victories in states typically considered Republican strongholds.",
+   "link": "https://www.npr.org/2026/11/04/nx-s1-6028116/former-arkansas-governor-says-democrats-gains-are-more-significant-than-ever-anticipated",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-04T05:14:01Z"
+  },
+  {
+   "title": "What the Democratic takeover of the Senate means for Trump",
+   "summary": "The BBC's North America editor Sarah Smith explains how Democratic control of both chambers could affect the last two years of Donald Trump's presidency.",
+   "link": "https://www.bbc.co.uk/news/videos/cr5ynex46j75o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-04T04:53:35Z"
+  },
+  {
+   "title": "Democrats win full control of Congress, ushering in a new era of divided government",
+   "summary": "The victories in the House and Senate return Democrats to full control of Congress for the first time since 2023 and deepens the level of expected friction between them and President Trump.",
+   "link": "https://www.npr.org/2026/11/03/g-s1-149526/2026-midterms-congress-balance-of-power",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-04T04:44:55Z"
+  },
+  {
+   "title": "Democrat Josh Turek wins the Senate seat in Iowa",
+   "summary": "Democrat Josh Turek has defeated Sen. Ashley Hinson in Iowa, according to a race call by the Associated Press.",
+   "link": "https://www.npr.org/2026/11/03/g-s1-148956/iowa-senate-race-josh-turek",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-04T04:37:55Z"
+  },
+  {
+   "title": "On a historic night for democratic socialists, Mamdani says midterms show power of working-class voters",
+   "summary": "The New York mayor tells NPR's Juana Summers that newly elected democratic socialists need to seize this moment and show voters what politics can deliver.",
+   "link": "https://www.npr.org/2026/11/03/nx-s1-6028105/on-a-historic-night-for-democratic-socialists-mamdani-says-midterms-show-power-of-working-class-voters",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-04T04:37:44Z"
+  },
+  {
+   "title": "Democrat David Crowley will be Wisconsin's first Black governor",
+   "summary": "Democrat David Crowley defeated Republican Congressman Tom Tiffany in a campaign that focused on \"lowering costs for working families\" and bringing more jobs to Wisconsin.",
+   "link": "https://www.npr.org/2026/11/03/g-s1-151235/democrat-david-crowley-will-be-wisconsins-first-black-governor",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-04T04:28:24Z"
+  },
+  {
+   "title": "Weapon or wine bottle? China disputes reports of artillery shell in Papua New Guinea",
+   "summary": "Papua New Guinea police had earlier dismissed speculation that the 32kg object was \"merely a dummy\".",
+   "link": "https://www.bbc.co.uk/news/articles/cm0qkxzv3j99o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-04T03:46:10Z"
+  },
+  {
+   "title": "Frequently labelled as communists, who are the Democratic Socialists of America?",
+   "summary": "Follow the SCMP’s live coverage here For years, the Democratic Socialists of America (DSA) had little influence over the machinery of the Democratic Party. That is beginning to change. The organisation has more than…",
+   "link": "https://www.scmp.com/news/china/diplomacy/article/3373209/frequently-labelled-communists-who-are-democratic-socialists-america",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-04T03:41:25Z"
+  },
+  {
+   "title": "Midterm elections could jolt stocks as Democrats look poised to sweep Congress",
+   "summary": "Wall Street weighs how the 2026 midterms could affect stocks, Treasury yields, artificial intelligence, energy prices, banks, defense and healthcare.",
+   "link": "https://www.cnbc.com/2026/11/03/midterm-election-stock-market.html",
+   "source": "CNBC",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-04T03:38:08Z"
+  },
+  {
+   "title": "Chinese scientists discover thickening ground ice in parts of warming Tibet",
+   "summary": "The Tibetan Plateau, home to the world’s largest expanse of alpine permafrost, is warming at about twice the global average but, counter-intuitively,researchers have found that ice in parts of the Tibet autonomous…",
+   "link": "https://www.scmp.com/news/china/science/article/3373097/chinese-scientists-discover-thickening-ground-ice-parts-warming-tibet",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-04T02:00:12Z"
+  },
+  {
+   "title": "No more rice grains in Kellogg's Rice Krispies due to changing weather",
+   "summary": "The new recipes mean cereal packaging will now include a 'contains wheat gluten' warning.",
+   "link": "https://www.bbc.co.uk/news/articles/cqvg0y44ym7vo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-04T01:36:06Z"
+  },
+  {
+   "title": "Will US midterm results lead to disruption in Washington’s ties with China?",
+   "summary": "Follow the SCMP’s live coverage here The United States’ midterm elections are unlikely to deliver a “disruptive” shock to relations between Beijing and Washington despite potential volatility over the issue of Taiwan…",
+   "link": "https://www.scmp.com/news/china/diplomacy/article/3373194/will-us-midterm-results-lead-disruption-washingtons-ties-china",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-04T01:35:14Z"
+  },
+  {
+   "title": "Debt fears swirling around state giant shine a light on China’s post-property reality",
+   "summary": "As concerns over the financial health of a state-owned conglomerate rattled China’s bond market over the past week, analysts said its challenges reflected the lasting toll of the country’s prolonged property crisis…",
+   "link": "https://www.scmp.com/economy/china-economy/article/3373162/debt-fears-swirling-around-state-giant-shine-light-chinas-post-property-reality",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-04T01:00:13Z"
+  },
+  {
+   "title": "Canva announces major job cuts after 'our hardest year yet'",
+   "summary": "CEO Melanie Perkins says more than 1,000 staff will either lose their jobs or be asked to change roles.",
+   "link": "https://www.bbc.co.uk/news/articles/cw77pg7neydmo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-04T00:09:35Z"
+  },
+  {
+   "title": "Graduates are managing AI - but are they learning much else?",
+   "summary": "Graduates are spending more time managing AI, but are they missing out on other work experience?",
+   "link": "https://www.bbc.co.uk/news/articles/c820vz6wyp65o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-04T00:04:35Z"
+  },
+  {
+   "title": "Poundland supplier 'will lose millions' if retailer collapses",
+   "summary": "One of Poundland's suppliers will lose millions if it collapses, while other suppliers have said they would go under.",
+   "link": "https://www.bbc.co.uk/news/articles/ck240mm3e42do?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-04T00:03:17Z"
+  },
+  {
+   "title": "China training Solomon Islands police to use water cannons under security pact",
+   "summary": "China is helping to train Solomon Islands police to use water cannons as part of an ongoing security partnership that is viewed with scepticism by the West. The Chinese embassy said on Tuesday that six officers from the…",
+   "link": "https://www.scmp.com/news/china/diplomacy/article/3373153/china-training-solomon-islands-police-use-water-cannons-under-security-pact",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-04T00:00:19Z"
+  },
+  {
+   "title": "Strand bookstore to pay nearly $1.5 million over Covid loan tied to Sen. Wyden's wife",
+   "summary": "Nancy Bass Wyden, whose grandfather founded the New York City bookstore, had signed off on the PPP, which was off-limits because she is a senator's wife.",
+   "link": "https://www.cnbc.com/2026/11/03/strand-bookstore-ppp-loan-ron-wyden-wife-settlement.html",
+   "source": "CNBC",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-03T23:28:01Z"
+  },
+  {
+   "title": "Trump DOJ sends target letters to Democrats in Alaska Senate criminal probe: Reports",
+   "summary": "\"There's no doubt that the threats are threats to our democracy,\" said John Cusick, assistant counsel at the Legal Defense Fund.",
+   "link": "https://www.cnbc.com/2026/11/03/trump-doj-election-lawsuits-monitors-2026-midterms.html",
+   "source": "CNBC",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-03T23:26:39Z"
+  },
+  {
+   "title": "China’s scrap dealers are scrambling for waste. So why is the recycling sector booming?",
+   "summary": "Shanghai scrap collector Li Jie has a problem, one which would appear unusual to most: trash is getting too valuable. “Ordinary recyclables like cardboard and plastic are now hard to come by,” he said. “Their prices…",
+   "link": "https://www.scmp.com/economy/china-economy/article/3373130/chinas-scrap-dealers-are-scrambling-waste-so-why-recycling-sector-booming",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-03T22:00:14Z"
+  },
+  {
+   "title": "UK and EU agree draft deal to scrap Brexit red tape over food exports",
+   "summary": "The food deal, ahead of a UK-EU summit later this month, is the most significant part of the so-called Brexit reset agreed so far.",
+   "link": "https://www.bbc.co.uk/news/articles/cmp3grwre9xdo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-03T20:53:03Z"
+  },
+  {
+   "title": "Sen. Chris Murphy still hospitalized after suffering a stroke over the weekend",
+   "summary": "Sen. Chris Murphy, a Connecticut Democrat, was still in the hospital as of Tuesday, his office confirmed.",
+   "link": "https://www.cnbc.com/2026/11/03/chris-murphy-hospitalized-stroke.html",
+   "source": "CNBC",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-03T19:36:16Z"
+  },
+  {
+   "title": "Job openings posted big September gain in positive sign for labor market ahead of payrolls report",
+   "summary": "The BLS reported job openings at 7.52 million, up 333,000 from August and well above the Dow Jones consensus outlook for 7.15 million",
+   "link": "https://www.cnbc.com/2026/11/03/job-openings-posted-big-september-gain-in-positive-sign-for-labor-market-ahead-of-payrolls-report.html",
+   "source": "CNBC",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-03T19:15:21Z"
+  },
+  {
+   "title": "Stock market after midterm elections: What S&P 500 history shows",
+   "summary": "Midterms historically precede a strong year for the S&P 500. What to know if Democrats win back Congress",
+   "link": "https://www.cnbc.com/2026/11/02/stock-market-after-midterm-elections-sp-500-history.html",
+   "source": "CNBC",
+   "cats": [
+    "finance",
+    "us"
+   ],
+   "date": "2026-11-03T18:21:05Z"
+  },
+  {
+   "title": "Keeping mortgage interest relief approved",
+   "summary": "Homeowners can get tax relief of £3,500 on the money spent on the interstate of a mortgage.",
+   "link": "https://www.bbc.co.uk/news/articles/c6vgj0ljx01jo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-03T16:44:20Z"
+  },
+  {
+   "title": "Binance says fake job interviews used as part of $6.3bn crypto hack",
+   "summary": "An engineer was contacted through a legitimate job-hunting platform and invited to bogus job interviews with fake company representatives, Binance says.",
+   "link": "https://www.bbc.co.uk/news/articles/ck5ynwz9gy67o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-03T16:19:29Z"
+  },
+  {
+   "title": "Texas governor race tightens in prediction markets, but Abbott remains favored",
+   "summary": "Prediction markets still show the Republican incumbent favored to win a fourth term, but the odds have narrowed in recent weeks.",
+   "link": "https://www.cnbc.com/2026/11/02/texas-governor-prediction-markets-abbott-hinojosa.html",
+   "source": "CNBC",
+   "cats": [
+    "finance",
+    "us"
+   ],
+   "date": "2026-11-03T13:33:11Z"
+  },
+  {
+   "title": "PBOC pledges support for stocks as China’s market slide defies rescue efforts",
+   "summary": "China’s central bank governor has reaffirmed support for the country’s beleaguered stock market after a series of rescue measures failed to put a floor under plummeting share prices. Pan Gongsheng, governor of the…",
+   "link": "https://www.scmp.com/business/china-business/article/3373166/pboc-pledges-support-stocks-chinas-market-slide-defies-rescue-efforts",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-03T12:50:16Z"
+  }
+ ]
+}

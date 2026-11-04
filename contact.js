@@ -7,7 +7,7 @@
 (function () {
   var CONFIG = {
     // Web3Forms access key (https://web3forms.com). It is meant to be public.
-    web3formsKey: '',
+    web3formsKey: '9a2c8e9a-6319-44d2-8fe8-fcd2d9c07a55',
     // Cal.com booking link without the domain, e.g. 'tylercheng/30min'.
     calLink: '',
     // Where messages go when the form falls back to e-mail.

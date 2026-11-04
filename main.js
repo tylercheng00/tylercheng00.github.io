@@ -130,6 +130,31 @@
     });
   });
 
+  /* ---------- Patent filter ---------- */
+  var ptBtns = document.querySelectorAll('[data-pt]');
+  ptBtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = b.getAttribute('data-pt');
+      ptBtns.forEach(function (o) { o.classList.toggle('on', o === b); });
+      document.querySelectorAll('.pt-card').forEach(function (c) {
+        var hide = f !== 'all' && c.getAttribute('data-st') !== f;
+        c.classList.toggle('hide', hide);
+        if (!hide) c.classList.add('in');
+      });
+    });
+  });
+
+  /* ---------- Click-to-load YouTube player (privacy-enhanced embed, loaded on play) ---------- */
+  document.querySelectorAll('.yt[data-yt]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + b.getAttribute('data-yt') + '?autoplay=1&rel=0';
+      f.title = 'Video'; f.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'; f.allowFullscreen = true;
+      var wrap = document.createElement('div'); wrap.className = 'media-cover'; wrap.appendChild(f);
+      b.replaceWith(wrap);
+    });
+  });
+
   /* ---------- Footer year ---------- */
   var year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();

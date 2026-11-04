@@ -1035,3 +1035,12 @@ html[data-lang="zh"] .vision-quote p { font-family: var(--serif-zh); font-style:
   .nav a.nav-link.is-current { color: var(--gold-soft); }
   .nav a.nav-link.is-current::after { display: none; }
 }
+
+/* =================== Split pages (about / ventures) =================== */
+.about-short .section-head { position: static; }
+.about-short .about-photo { max-width: 340px; }
+.more-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin-top: 34px !important; }
+.more-link { font-size: 15px; font-weight: 600; color: var(--gold-ink); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 1px; }
+.more-link:hover { color: var(--ink); }
+.ventures.ventures-page { margin-top: 0; }
+@media (max-width: 760px) { .about-short .about-photo { max-width: 240px; } }

@@ -28,7 +28,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/fonts/fonts.css?v=1baa657b" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="assets/fonts/fonts.css?v=1baa657b"></noscript>
-  <link rel="stylesheet" href="styles.css?v=295dc944">
+  <link rel="stylesheet" href="styles.css?v=01ae906b">
 
   <!-- Structured data (schema.org Person) -->
   <script type="application/ld+json">
@@ -77,6 +77,16 @@
     })();
   </script>
 
+  <script>
+    /* Sections that moved to their own pages: keep old links working */
+    (function () {
+      var moved = { experience: 'about.html', education: 'about.html', media: 'about.html',
+                    venture: 'ventures.html', patents: 'ventures.html', projects: 'ventures.html' };
+      var id = location.hash.slice(1);
+      if (moved[id]) location.replace(moved[id] + location.search + '#' + id);
+    })();
+  </script>
+
   <!-- Visitor statistics (GoatCounter: cookie-free, no personal data) -->
   <script data-goatcounter="https://tylercheng00.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
@@ -99,18 +109,19 @@
         <div class="nav-group">
           <button type="button" class="nav-top" aria-expanded="false" aria-controls="nav-about"><span lang="en">About</span><span lang="zh-Hant">關於</span><svg class="nav-caret" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <div class="nav-menu" id="nav-about">
-            <a href="#about"><span lang="en">About me</span><span lang="zh-Hant">簡介</span></a>
-            <a href="#experience"><span lang="en">Experience</span><span lang="zh-Hant">工作經歷</span></a>
-            <a href="#education"><span lang="en">Education</span><span lang="zh-Hant">學歷</span></a>
-            <a href="#media"><span lang="en">Media &amp; recognition</span><span lang="zh-Hant">媒體及認可</span></a>
+            <a href="about.html#about"><span lang="en">About me</span><span lang="zh-Hant">簡介</span></a>
+            <a href="about.html#experience"><span lang="en">Experience</span><span lang="zh-Hant">工作經歷</span></a>
+            <a href="about.html#education"><span lang="en">Education</span><span lang="zh-Hant">學歷</span></a>
+            <a href="about.html#media"><span lang="en">Media &amp; recognition</span><span lang="zh-Hant">媒體及認可</span></a>
             <a href="#vision"><span lang="en">Vision</span><span lang="zh-Hant">願景</span></a>
           </div>
         </div>
         <div class="nav-group">
           <button type="button" class="nav-top" aria-expanded="false" aria-controls="nav-ventures"><span lang="en">Ventures</span><span lang="zh-Hant">創業</span><svg class="nav-caret" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <div class="nav-menu" id="nav-ventures">
-            <a href="#venture"><span lang="en">Nanotech Innovation</span><span lang="zh-Hant">納米科研技術</span></a>
-            <a href="#patents"><span lang="en">Patents</span><span lang="zh-Hant">專利</span></a>
+            <a href="ventures.html#entrepreneurship"><span lang="en">Entrepreneurship</span><span lang="zh-Hant">創業經歷</span></a>
+            <a href="ventures.html#venture"><span lang="en">Nanotech Innovation</span><span lang="zh-Hant">納米科研技術</span></a>
+            <a href="ventures.html#patents"><span lang="en">Patents</span><span lang="zh-Hant">專利</span></a>
             <a href="projects.html"><span lang="en">All projects</span><span lang="zh-Hant">所有項目</span></a>
           </div>
         </div>
@@ -177,7 +188,7 @@
               <span lang="en">Start a conversation</span><span lang="zh-Hant">與我聯絡</span>
               <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
-            <a class="btn btn-outline-light" href="#experience">
+            <a class="btn btn-outline-light" href="about.html#experience">
               <span lang="en">View experience</span><span lang="zh-Hant">查看經歷</span>
             </a>
           </div>
@@ -240,7 +251,7 @@
 
     <!-- ============ About ============ -->
     <section class="section" id="about">
-      <div class="container about-grid">
+      <div class="container about-grid about-short">
         <div class="section-head reveal">
           <p class="kicker">01 — <span lang="en">About</span><span lang="zh-Hant">關於</span></p>
           <h2 class="section-title">
@@ -262,24 +273,13 @@
             協助企業進入美國股票市場；在創業方面，我於大學期間聯合創辦納米科研技術有限公司，
             研發具專利的納米塗層及生物醫療標靶技術。
           </p>
-          <p lang="en">
-            Having been on both sides — building a technology company and helping companies
-            raise capital — I understand what founders need to explain to investors, and what
-            investors need to see from founders.
-          </p>
-          <p lang="zh-Hant">
-            同時經歷過「創辦科技公司」與「協助企業融資」兩個角色，令我明白創辦人需要向投資者說清楚甚麼，
-            也明白投資者希望從創辦人身上看到甚麼。
-          </p>
-          <p lang="en">
-            I was born and raised in Hong Kong. I started my first company at 20 with little more
-            than a laptop, and by 22 the business had expanded to other countries. Outside work I
-            volunteer, give talks to students, have helped organise cultural exchanges, have worked
-            with NGOs on sustainability projects, and have spoken on international stages.
-          </p>
-          <p lang="zh-Hant">
-            我在香港出生和長大。20 歲時創辦第一間公司，起步時差不多只有一部手提電腦；到 22 歲，業務已拓展至其他國家。工作以外，我參與義工服務、到學校為學生演講，曾協辦文化交流活動、與非政府組織合作推動可持續發展項目，也曾在國際舞台上演講。
-          </p>
+          <div class="more-row">
+            <a class="btn btn-gold" href="about.html"><span lang="en">More about me</span><span lang="zh-Hant">了解更多</span>
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="more-link" href="about.html#experience"><span lang="en">Experience</span><span lang="zh-Hant">工作經歷</span> →</a>
+            <a class="more-link" href="about.html#media"><span lang="en">Media &amp; awards</span><span lang="zh-Hant">媒體及獎項</span> →</a>
+          </div>
         </div>
       </div>
     </section>
@@ -362,316 +362,31 @@
       </div>
     </section>
 
-    <!-- ============ Experience ============ -->
-    <section class="section" id="experience">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="kicker">03 — <span lang="en">Experience</span><span lang="zh-Hant">經歷</span></p>
-          <h2 class="section-title">
-            <span lang="en">Professional experience</span>
-            <span lang="zh-Hant">工作經歷</span>
-          </h2>
-        </div>
-
-        <ol class="xp">
-          <li class="xp-item reveal">
-            <div class="xp-badge" aria-hidden="true">富</div>
-            <div class="xp-body">
-              <div class="xp-head">
-                <h3><span lang="en">US Equities Market Specialist</span><span lang="zh-Hant">美股市場專員</span></h3>
-                <span class="tag"><span lang="en">Current</span><span lang="zh-Hant">現職</span></span>
-              </div>
-              <p class="xp-org">富輝集團 · Fuway</p>
-              <p><span lang="en">Advising companies on the US equity markets, focusing on IPO advisory and M&amp;A.</span><span lang="zh-Hant">為企業提供美國股票市場相關顧問服務，專注 IPO 上市及併購。</span></p>
-              <ul class="chips">
-                <li>IPO</li><li>M&amp;A</li><li><span lang="en">US Equities</span><span lang="zh-Hant">美股</span></li>
-              </ul>
-              <a class="xp-link" href="us-equities.html"><span lang="en">US IPO &amp; M&amp;A walkthrough</span><span lang="zh-Hant">美股上市及併購流程</span> →</a>
-            </div>
-          </li>
-
-          <li class="xp-item reveal">
-            <div class="xp-badge" aria-hidden="true">B</div>
-            <div class="xp-body">
-              <div class="xp-head">
-                <h3><span lang="en">Co-founder</span><span lang="zh-Hant">聯合創辦人</span></h3>
-                <span class="tag"><span lang="en">Current</span><span lang="zh-Hant">現職</span></span>
-              </div>
-              <p class="xp-org">BTRDCC · Biochemical Technology Research &amp; Development Consultation Centre <span class="muted">— <span lang="en">a project of Nanotech Innovation Limited</span><span lang="zh-Hant">納米科研技術有限公司旗下項目</span></span></p>
-              <p><span lang="en">AI-integrated biotechnology: patented technologies combining nano-targeting with research into cancer-therapy technologies.</span><span lang="zh-Hant">結合 AI 的生物科技：以專利技術結合納米標靶，研發癌症治療技術。</span></p>
-              <ul class="chips">
-                <li>AI × Biotech</li>
-                <li><span lang="en">Nano-targeting</span><span lang="zh-Hant">納米標靶</span></li>
-                <li><span lang="en">Cancer-therapy R&amp;D</span><span lang="zh-Hant">癌症治療研發</span></li>
-                <li><span lang="en">Patents</span><span lang="zh-Hant">專利</span></li>
-              </ul>
-            </div>
-          </li>
-
-          <li class="xp-item reveal">
-            <div class="xp-badge" aria-hidden="true">N</div>
-            <div class="xp-body">
-              <div class="xp-head">
-                <h3><span lang="en">Co-founder &amp; COO</span><span lang="zh-Hant">聯合創辦人兼營運總監</span></h3>
-                <span class="tag"><span lang="en">Since 2021</span><span lang="zh-Hant">2021 年至今</span></span>
-              </div>
-              <p class="xp-org">Nanotech Innovation Limited · 納米科研技術有限公司</p>
-              <p><span lang="en">Co-founded the company in 2021 while at university; it began as Master Masker Technology Company Limited. Leading operations for R&amp;D in nano-coatings and biomedical targeted technologies, with patented technologies.</span><span lang="zh-Hant">2021 年於大學期間聯合創辦，前身為 Master Masker Technology Company Limited。負責公司營運，研發納米塗層及生物醫療標靶技術，並擁有相關專利。</span></p>
-              <ul class="chips">
-                <li><span lang="en">Nano-coatings</span><span lang="zh-Hant">納米塗層</span></li>
-                <li><span lang="en">Biomedical</span><span lang="zh-Hant">生物醫療</span></li>
-                <li><span lang="en">Patents</span><span lang="zh-Hant">專利</span></li>
-              </ul>
-            </div>
-          </li>
-
-          <li class="xp-item reveal">
-            <div class="xp-badge" aria-hidden="true">S</div>
-            <div class="xp-body">
-              <div class="xp-head">
-                <h3><span lang="en">Associate Fellow</span><span lang="zh-Hant">準院士</span></h3>
-              </div>
-              <p class="xp-org">Social Enterprise Research Academy · SERA</p>
-              <ul class="chips">
-                <li><span lang="en">Social enterprise</span><span lang="zh-Hant">社會企業</span></li>
-              </ul>
-            </div>
-          </li>
-        </ol>
-
-        <div class="ventures reveal">
-          <h3 class="ventures-title"><span lang="en">Entrepreneurship</span><span lang="zh-Hant">創業經歷</span></h3>
-          <div class="venture-grid">
-            <div class="venture">
-              <p class="venture-role"><span lang="en">Co-founder</span><span lang="zh-Hant">聯合創辦人</span></p>
-              <h4>BTRDCC</h4>
-              <p><span lang="en">AI-integrated biotechnology, nano-targeting and cancer-therapy R&amp;D — a project of Nanotech Innovation Limited.</span><span lang="zh-Hant">結合 AI 的生物科技、納米標靶及癌症治療研發，為納米科研技術有限公司旗下項目。</span></p>
-            </div>
-            <div class="venture">
-              <p class="venture-role"><span lang="en">Co-founder &amp; COO · since 2021</span><span lang="zh-Hant">聯合創辦人兼營運總監 · 2021 年至今</span></p>
-              <h4>Nanotech Innovation Limited</h4>
-              <p><span lang="en">Nano-coatings and biomedical targeted technologies; founded at university. Holder of three granted Hong Kong patents; runs the BTRDCC project.</span><span lang="zh-Hant">納米塗層及生物醫療標靶技術；於大學期間創立。持有三項香港已授權專利，並營運 BTRDCC 項目。</span></p>
-            </div>
-            <div class="venture">
-              <p class="venture-role"><span lang="en">Founder · 2024–2025</span><span lang="zh-Hant">創辦人 · 2024–2025</span></p>
-              <div class="yz-head"><img src="assets/media/youzhimiao-logo.jpg" alt="柚汁喵 YOUZHI MIAO logo" width="360" height="360" loading="lazy"><h4>柚汁喵 <span class="muted">YOUZHI MIAO</span></h4></div>
-              <p><span lang="en">Founded and ran a pet-services business for cats: customers, suppliers, staff and day-to-day P&amp;L.</span><span lang="zh-Hant">創辦並經營貓咪寵物服務業務，親身管理顧客、供應商、員工及日常收支。</span></p>
-              <div class="yz-photos">
-                <img src="assets/media/youzhimiao-cat-rooms.jpg" alt="柚汁喵 cat rooms with glass enclosures and cat trees" width="1200" height="800" loading="lazy">
-                <img src="assets/media/youzhimiao-lounge.jpg" alt="柚汁喵 customer lounge with cat artwork" width="1200" height="800" loading="lazy">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ Venture spotlight ============ -->
-    <section class="spotlight" id="venture">
-      <div class="spotlight-bg" aria-hidden="true"></div>
-      <div class="container spotlight-inner">
-        <div class="spotlight-copy reveal">
-          <p class="kicker light">04 — <span lang="en">Venture</span><span lang="zh-Hant">創業</span></p>
-          <h2 class="section-title light">Nanotech Innovation Limited</h2>
-          <p class="spotlight-zh">納米科研技術有限公司</p>
-          <p class="spotlight-text">
-            <span lang="en">Founded in 2021 at university, Nanotech Innovation develops nano-scale technologies with real-world applications — from advanced surface coatings to targeted biomedical solutions — and protects its work through patents.</span>
-            <span lang="zh-Hant">公司於 2021 年在大學期間創立，研發具實際應用價值的納米技術，範圍由先進表面塗層到生物醫療標靶方案，並以專利保護研發成果。</span>
-          </p>
-          <p class="spotlight-role"><span lang="en">Role: Co-founder &amp; COO</span><span lang="zh-Hant">職位：聯合創辦人兼營運總監</span></p>
-        </div>
-        <div class="spotlight-side">
-          <figure class="spotlight-visual reveal">
-            <img src="assets/img/nanocoating.svg" alt="Nano-coating layer with water droplets beading on the surface" width="800" height="520" loading="lazy">
-            <figcaption><span lang="en">Illustration: nano-coating surface</span><span lang="zh-Hant">示意圖：納米塗層表面</span></figcaption>
-          </figure>
-        <div class="spotlight-cards">
-          <div class="s-card reveal">
-            <span class="s-num">01</span>
-            <h3><span lang="en">Nano-coatings</span><span lang="zh-Hant">納米塗層</span></h3>
-            <p><span lang="en">Research and development of nano-scale surface coatings.</span><span lang="zh-Hant">研發納米級表面塗層技術。</span></p>
-          </div>
-          <div class="s-card reveal">
-            <span class="s-num">02</span>
-            <h3><span lang="en">Biomedical targeting</span><span lang="zh-Hant">生物醫療標靶</span></h3>
-            <p><span lang="en">Targeted technologies for biomedical applications.</span><span lang="zh-Hant">應用於生物醫療的標靶技術。</span></p>
-          </div>
-          <div class="s-card reveal">
-            <span class="s-num">03</span>
-            <h3><span lang="en">Patents</span><span lang="zh-Hant">專利</span></h3>
-            <p><span lang="en">Intellectual property protecting the company's technologies.</span><span lang="zh-Hant">以知識產權保護公司技術。</span></p>
-          </div>
-        </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ Patents ============ -->
-    <section class="section alt" id="patents">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="kicker"><span lang="en">Intellectual property</span><span lang="zh-Hant">知識產權</span></p>
-          <h2 class="section-title">
-            <span lang="en">Patents &amp; applications</span>
-            <span lang="zh-Hant">專利及專利申請</span>
-          </h2>
-        </div>
-        <div class="pt-stats reveal">
-          <div><b>3</b><span lang="en">granted in Hong Kong (2022) · held by Nanotech Innovation</span><span lang="zh-Hant">項香港已授權（2022）· 由納米科研技術持有</span></div>
-          <div><b>2</b><span lang="en">applications in mainland China (2024)</span><span lang="zh-Hant">項中國內地申請（2024）</span></div>
-          <div><b>2</b><span lang="en">reported, pending registration</span><span lang="zh-Hant">項已報備，待正式註冊</span></div>
-        </div>
-        <div class="pt-filters reveal" role="group" aria-label="Filter patents">
-          <button type="button" class="on" data-pt="all"><span lang="en">All</span><span lang="zh-Hant">全部</span></button>
-          <button type="button" data-pt="granted"><span lang="en">Granted</span><span lang="zh-Hant">已授權</span></button>
-          <button type="button" data-pt="filed"><span lang="en">Applications &amp; reported</span><span lang="zh-Hant">申請中及已報備</span></button>
-        </div>
-        <div class="pt-grid" id="ptGrid">
-          <article class="pt-card reveal" data-st="granted">
-            <div class="pt-top"><span class="pt-st granted"><span lang="en">Granted</span><span lang="zh-Hant">已授權</span></span><span class="pt-j">HK</span></div>
-            <p class="pt-holder">Nanotech Innovation Limited</p>
-            <h3 class="pt-zh">一種具有補水保濕功效的組合物及其應用</h3>
-            <p class="pt-en">Composition with moisturising and hydrating effects, and its use</p>
-            <p class="pt-meta"><span class="mono">HK30065582</span></p>
-            <p class="pt-date"><span lang="en">Issued 5 Jul 2022</span><span lang="zh-Hant">2022 年 7 月 5 日發出</span> · <span lang="en">Formulation</span><span lang="zh-Hant">配方</span></p>
-          </article>
-          <article class="pt-card reveal" data-st="granted">
-            <div class="pt-top"><span class="pt-st granted"><span lang="en">Granted</span><span lang="zh-Hant">已授權</span></span><span class="pt-j">HK</span></div>
-            <p class="pt-holder">Nanotech Innovation Limited</p>
-            <h3 class="pt-zh">一種具有快速美白效果的組合物及其應用</h3>
-            <p class="pt-en">Composition with a rapid skin-brightening effect, and its use</p>
-            <p class="pt-meta"><span class="mono">HK30064890</span></p>
-            <p class="pt-date"><span lang="en">Issued 5 Jul 2022</span><span lang="zh-Hant">2022 年 7 月 5 日發出</span> · <span lang="en">Formulation</span><span lang="zh-Hant">配方</span></p>
-          </article>
-          <article class="pt-card reveal" data-st="granted">
-            <div class="pt-top"><span class="pt-st granted"><span lang="en">Granted</span><span lang="zh-Hant">已授權</span></span><span class="pt-j">HK</span></div>
-            <p class="pt-holder">Nanotech Innovation Limited</p>
-            <h3 class="pt-zh">一種具有除皺抗衰功能的組合物及其應用</h3>
-            <p class="pt-en">Composition with anti-wrinkle and anti-ageing functions, and its use</p>
-            <p class="pt-meta"><span class="mono">HK30064891</span></p>
-            <p class="pt-date"><span lang="en">Issued 5 Jul 2022</span><span lang="zh-Hant">2022 年 7 月 5 日發出</span> · <span lang="en">Formulation</span><span lang="zh-Hant">配方</span></p>
-          </article>
-          <article class="pt-card reveal" data-st="filed">
-            <div class="pt-top"><span class="pt-st filed"><span lang="en">Application</span><span lang="zh-Hant">申請中</span></span><span class="pt-j">CN</span></div>
-            <h3 class="pt-zh">一种纳米材料纯化装置</h3>
-            <p class="pt-en">Nanomaterial purification device</p>
-            <p class="pt-meta"><span class="mono">202422178473.2</span></p>
-            <p class="pt-date"><span lang="en">Filed 3 Sep 2024 · utility model</span><span lang="zh-Hant">2024 年 9 月 3 日申請 · 實用新型</span> · <span lang="en">Process equipment</span><span lang="zh-Hant">工藝設備</span></p>
-          </article>
-          <article class="pt-card reveal" data-st="filed">
-            <div class="pt-top"><span class="pt-st filed"><span lang="en">Application</span><span lang="zh-Hant">申請中</span></span><span class="pt-j">CN</span></div>
-            <h3 class="pt-zh">一种片剂制作用筛分机</h3>
-            <p class="pt-en">Sieving machine for tablet production</p>
-            <p class="pt-meta"><span class="mono">202422178475.1</span></p>
-            <p class="pt-date"><span lang="en">Filed 3 Sep 2024 · utility model</span><span lang="zh-Hant">2024 年 9 月 3 日申請 · 實用新型</span> · <span lang="en">Process equipment</span><span lang="zh-Hant">工藝設備</span></p>
-          </article>
-          <article class="pt-card reveal" data-st="filed">
-            <div class="pt-top"><span class="pt-st pending"><span lang="en">Reported</span><span lang="zh-Hant">已報備</span></span><span class="pt-j">CN</span></div>
-            <h3 class="pt-zh">一种卧式离心装置</h3>
-            <p class="pt-en">Horizontal centrifuge device</p>
-            <p class="pt-meta"><span lang="en">Not yet registered</span><span lang="zh-Hant">尚未正式註冊</span></p>
-            <p class="pt-date"><span lang="en">Reported Sep 2024</span><span lang="zh-Hant">2024 年 9 月報備</span> · <span lang="en">Process equipment</span><span lang="zh-Hant">工藝設備</span></p>
-          </article>
-          <article class="pt-card reveal" data-st="filed">
-            <div class="pt-top"><span class="pt-st pending"><span lang="en">Reported</span><span lang="zh-Hant">已報備</span></span><span class="pt-j">CN</span></div>
-            <h3 class="pt-zh">一种药液配制罐</h3>
-            <p class="pt-en">Drug-solution preparation tank</p>
-            <p class="pt-meta"><span lang="en">Not yet registered</span><span lang="zh-Hant">尚未正式註冊</span></p>
-            <p class="pt-date"><span lang="en">Reported Sep 2024</span><span lang="zh-Hant">2024 年 9 月報備</span> · <span lang="en">Process equipment</span><span lang="zh-Hant">工藝設備</span></p>
-          </article>
-        </div>
-        <p class="pt-note reveal"><span lang="en">Titles are the official Chinese titles; English titles are informal translations. Status is as listed by the applicant; details can be checked on the <a href="https://esearch.ipd.gov.hk/" target="_blank" rel="noopener">Hong Kong IPD</a> and <a href="https://pss-system.cponline.cnipa.gov.cn/" target="_blank" rel="noopener">CNIPA</a> registers.</span><span lang="zh-Hant">名稱為官方中文名稱，英文名稱為非正式翻譯。狀態按申請人記錄列出，詳情可於<a href="https://esearch.ipd.gov.hk/" target="_blank" rel="noopener">香港知識產權署</a>及<a href="https://pss-system.cponline.cnipa.gov.cn/" target="_blank" rel="noopener">國家知識產權局</a>查詢。</span></p>
-      </div>
-    </section>
-
-    <!-- ============ Media & recognition ============ -->
-    <section class="section" id="media">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="kicker"><span lang="en">Media &amp; recognition</span><span lang="zh-Hant">媒體及認可</span></p>
-          <h2 class="section-title">
-            <span lang="en">Featured</span>
-            <span lang="zh-Hant">報道及活動</span>
-          </h2>
-        </div>
-        <div class="media-grid">
-          <article class="media-card reveal">
-            <button type="button" class="media-cover yt" data-yt="WWayUYHRCLw" aria-label="Play video · 播放影片">
-              <img src="https://i.ytimg.com/vi/WWayUYHRCLw/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" onerror="this.remove()">
-              <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 68 48" width="68" height="48"><path d="M66.5 7.7c-.8-2.9-2.5-5.4-5.4-6.2C55.8.1 34 0 34 0S12.2.1 6.9 1.6C4 2.4 2.3 4.8 1.5 7.7 0 13 0 24 0 24s0 11 1.5 16.3c.8 2.9 2.5 5.4 5.4 6.2C12.2 47.9 34 48 34 48s21.8-.1 27.1-1.6c2.9-.8 4.6-3.2 5.4-6.2C68 35 68 24 68 24s0-11-1.5-16.3z" fill="#c9a35b"/><path d="M45 24 27 14v20" fill="#071322"/></svg></span>
-            </button>
-            <div class="media-body">
-              <p class="media-k"><span lang="en">Video · YouTube</span><span lang="zh-Hant">影片 · YouTube</span></p>
-              <h3><span lang="en">Video feature</span><span lang="zh-Hant">影片報道</span></h3>
-              <p><span lang="en">The video player loads only when you press play.</span><span lang="zh-Hant">按下播放後才會載入影片播放器。</span></p>
-              <a class="xp-link" href="https://www.youtube.com/watch?v=WWayUYHRCLw" target="_blank" rel="noopener"><span lang="en">Watch on YouTube</span><span lang="zh-Hant">在 YouTube 觀看</span> ↗</a>
-            </div>
-          </article>
-          <article class="media-card reveal">
-            <a class="media-cover hkyba" href="https://www.hkyba.org.hk/case/nanotech-innovation" target="_blank" rel="noopener" aria-label="HKYBA case: Nanotech Innovation">
-              <span class="cover-k">HKYBA</span><span class="cover-t">Nanotech Innovation</span><span class="cover-s"><span lang="en">Case feature</span><span lang="zh-Hant">案例專題</span> ↗</span>
-            </a>
-            <div class="media-body">
-              <p class="media-k"><span lang="en">Case feature</span><span lang="zh-Hant">案例專題</span></p>
-              <h3><span lang="en">Nanotech Innovation on HKYBA</span><span lang="zh-Hant">HKYBA 專題：Nanotech Innovation</span></h3>
-              <p><span lang="en">A case feature on the company I co-founded at university.</span><span lang="zh-Hant">介紹我於大學期間聯合創辦的公司。</span></p>
-              <a class="xp-link" href="https://www.hkyba.org.hk/case/nanotech-innovation" target="_blank" rel="noopener"><span lang="en">Read the case</span><span lang="zh-Hant">閱讀案例</span> ↗</a>
-            </div>
-          </article>
-          <article class="media-card reveal">
-            <figure class="media-cover photo"><img src="assets/media/sera-fellowship.jpg" alt="Tyler Cheng in academic dress at the Social Enterprise Research Academy 10th-anniversary event" width="1200" height="900" loading="lazy"></figure>
-            <div class="media-body">
-              <p class="media-k"><span lang="en">Recognition</span><span lang="zh-Hant">認可</span></p>
-              <h3><span lang="en">Associate Fellow, SERA</span><span lang="zh-Hant">社會企業研究院準院士</span></h3>
-              <p><span lang="en">At the Social Enterprise Research Academy's 10th-anniversary event.</span><span lang="zh-Hant">攝於社會企業研究院十周年活動。</span></p>
-            </div>
-          </article>
-          <article class="media-card reveal">
-            <figure class="media-cover photo"><img src="assets/media/award-2023-master-masker.jpg" alt="Tyler Cheng with the 2023 Most Innovative Enterprise Award trophy presented by Business Innovator" width="1200" height="900" loading="lazy"></figure>
-            <div class="media-body">
-              <p class="media-k"><span lang="en">Award · 2023</span><span lang="zh-Hant">獎項 · 2023</span></p>
-              <h3><span lang="en">Best High-tech Biochemical-related Cleaning and Protective Solutions of the Year</span><span lang="zh-Hant">年度最卓越高新生物科技相關清潔及防護解決方案大獎</span></h3>
-              <p><span lang="en">Awarded to Master Masker Technology Company Limited (now Nanotech Innovation Limited) at Business Innovator's 2023 Most Innovative Enterprise Awards.</span><span lang="zh-Hant">Master Masker Technology Company Limited（現為納米科研技術有限公司）於商業創意多媒體平台 BUSINESS INNOVATOR 主辦的《2023 年度卓越創新企業大獎》中獲頒此獎。</span></p>
-            </div>
-          </article>
-        </div>
-
-        <div class="moments reveal">
-          <p class="moments-k"><span lang="en">Along the way</span><span lang="zh-Hant">一路走來</span></p>
-          <div class="moments-strip" tabindex="0" aria-label="Photos · 相片">
-            <figure><img src="assets/media/moments/youth-development-summit.jpg" alt="Tyler Cheng with a group at the Youth Development Summit, Hong Kong" width="900" height="675" loading="lazy"><figcaption><span lang="en">Youth Development Summit, Hong Kong</span><span lang="zh-Hant">香港青年發展高峰會</span></figcaption></figure>
-            <figure><img src="assets/media/moments/tv-interview.jpg" alt="Tyler Cheng in a TV studio interview, captioned as founder of Master Masker Technology Company Limited" width="900" height="507" loading="lazy"><figcaption><span lang="en">TV interview, as founder of Master Masker Technology</span><span lang="zh-Hant">電視訪問：Master Masker Technology 創辦人</span></figcaption></figure>
-            <figure><img src="assets/media/moments/tyler-ehang.jpg" alt="Tyler Cheng seated in a passenger drone" width="675" height="900" loading="lazy"><figcaption><span lang="en">In a passenger drone</span><span lang="zh-Hant">試坐載人無人機</span></figcaption></figure>
-            <figure><img src="assets/media/moments/gba-forum-2023.jpg" alt="Tyler Cheng at a 2023 Greater Bay Area youth forum" width="900" height="675" loading="lazy"><figcaption><span lang="en">Greater Bay Area youth forum, 2023</span><span lang="zh-Hant">大灣區青年論壇 2023</span></figcaption></figure>
-            <figure><img src="assets/media/moments/rocket-garden.jpg" alt="Rockets on display outdoors" width="900" height="855" loading="lazy"><figcaption><span lang="en">Rocket garden</span><span lang="zh-Hant">火箭園</span></figcaption></figure>
-            <figure><img src="assets/media/moments/tyler-helicopter.jpg" alt="Tyler Cheng wearing a headset in a helicopter" width="675" height="900" loading="lazy"><figcaption><span lang="en">Up in the air</span><span lang="zh-Hant">在空中</span></figcaption></figure>
-            <figure><img src="assets/media/moments/tyler-koala.jpg" alt="Tyler Cheng holding a koala" width="678" height="900" loading="lazy"><figcaption><span lang="en">Australia</span><span lang="zh-Hant">澳洲</span></figcaption></figure>
-            <figure><img src="assets/media/moments/tyler-sea-ice.jpg" alt="Tyler Cheng standing in front of a frozen sea" width="675" height="900" loading="lazy"><figcaption><span lang="en">Frozen sea</span><span lang="zh-Hant">冰封的海</span></figcaption></figure>
-            <figure><img src="assets/media/moments/tyler-harbour.jpg" alt="Tyler Cheng at a harbour with a tall ship" width="900" height="675" loading="lazy"><figcaption><span lang="en">Harbour with a tall ship</span><span lang="zh-Hant">帆船港口</span></figcaption></figure>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ Projects teaser ============ -->
-    <section class="section alt" id="projects">
+    <!-- ============ Ventures teaser ============ -->
+    <section class="section alt" id="explore">
       <div class="container">
         <div class="section-head center reveal">
-          <p class="kicker"><span lang="en">Projects</span><span lang="zh-Hant">項目</span></p>
+          <p class="kicker">03 — <span lang="en">Ventures</span><span lang="zh-Hant">創業</span></p>
           <h2 class="section-title">
-            <span lang="en">Selected projects</span>
-            <span lang="zh-Hant">精選項目</span>
+            <span lang="en">What I have built</span>
+            <span lang="zh-Hant">我創辦的事業</span>
           </h2>
         </div>
-        <div class="teaser-grid">
-          <a class="teaser reveal" href="projects.html#btrdcc"><img src="assets/projects/ai-nano-oncology-workflow.svg" alt="" width="1000" height="420" loading="lazy"><div><small><span lang="en">Biotech</span><span lang="zh-Hant">生物科技</span></small><b>BTRDCC</b></div></a>
-          <a class="teaser reveal" href="projects.html#portfolio-lab"><img src="assets/projects/efficient_frontier.gif" alt="" width="768" height="368" loading="lazy"><div><small><span lang="en">Finance</span><span lang="zh-Hant">金融投資</span></small><b>Portfolio Optimization Lab</b></div></a>
-          <a class="teaser reveal" href="projects.html#dawn-2"><img src="assets/projects/dawn.jpg" alt="" width="898" height="556" loading="lazy"><div><small><span lang="en">Interest · Aerospace</span><span lang="zh-Hant">興趣 · 航天</span></small><b><span lang="en">DAWN-2 concept rocket</span><span lang="zh-Hant">曙光二號概念火箭</span></b></div></a>
-          <a class="teaser reveal" href="projects.html#ai-redteam"><img src="assets/projects/redteam.jpg" alt="" width="592" height="331" loading="lazy"><div><small><span lang="en">Interest · AI security</span><span lang="zh-Hant">興趣 · AI 資安</span></small><b><span lang="en">AI Red-Teaming Lab</span><span lang="zh-Hant">AI 紅隊測試實驗室</span></b></div></a>
-        </div>
-        <div class="teaser-cta reveal">
-          <a class="btn btn-gold" href="projects.html"><span lang="en">View all projects</span><span lang="zh-Hant">查看全部項目</span>
-            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="engage-grid">
+          <a class="engage reveal" href="ventures.html#venture">
+            <h3>Nanotech Innovation</h3>
+            <p><span lang="en">Co-founder &amp; COO since 2021. Nano-coatings and biomedical targeted technologies.</span><span lang="zh-Hant">2021 年起任聯合創辦人兼營運總監，研發納米塗層及生物醫療標靶技術。</span></p>
+            <span class="engage-link"><span lang="en">Read more</span><span lang="zh-Hant">了解更多</span> →</span>
+          </a>
+          <a class="engage reveal" href="ventures.html#patents">
+            <h3><span lang="en">Patents</span><span lang="zh-Hant">專利</span></h3>
+            <p><span lang="en">3 granted Hong Kong patents, plus applications in mainland China.</span><span lang="zh-Hant">3 項香港已授權專利，另有中國內地專利申請。</span></p>
+            <span class="engage-link"><span lang="en">See the list</span><span lang="zh-Hant">查看列表</span> →</span>
+          </a>
+          <a class="engage reveal" href="projects.html">
+            <h3><span lang="en">Projects</span><span lang="zh-Hant">項目</span></h3>
+            <p><span lang="en">BTRDCC, Portfolio Optimization Lab, DAWN-2, AI Red-Teaming Lab and more.</span><span lang="zh-Hant">BTRDCC、投資組合優化實驗室、曙光二號、AI 紅隊測試實驗室等。</span></p>
+            <span class="engage-link"><span lang="en">All projects</span><span lang="zh-Hant">所有項目</span> →</span>
           </a>
         </div>
       </div>
@@ -681,7 +396,7 @@
     <section class="section home-ins" id="insights">
       <div class="container">
         <div class="section-head center reveal">
-          <p class="kicker"><span lang="en">Insights</span><span lang="zh-Hant">觀點</span></p>
+          <p class="kicker">04 — <span lang="en">Insights</span><span lang="zh-Hant">觀點</span></p>
           <h2 class="section-title">
             <span lang="en">Latest writing</span>
             <span lang="zh-Hant">最新文章</span>
@@ -718,41 +433,11 @@
       </div>
     </section>
 
-    <!-- ============ Education ============ -->
-    <section class="section alt" id="education">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="kicker">05 — <span lang="en">Education</span><span lang="zh-Hant">學歷</span></p>
-          <h2 class="section-title">
-            <span lang="en">Education</span>
-            <span lang="zh-Hant">學歷</span>
-          </h2>
-        </div>
-        <div class="edu-grid">
-          <article class="edu reveal">
-            <p class="edu-abbr">HKUST</p>
-            <h3><span lang="en">The Hong Kong University of Science and Technology</span><span lang="zh-Hant">香港科技大學</span></h3>
-            <p class="edu-status"><span lang="en">Graduate</span><span lang="zh-Hant">畢業</span></p>
-          </article>
-          <article class="edu reveal">
-            <p class="edu-abbr">UQ</p>
-            <h3><span lang="en">The University of Queensland</span><span lang="zh-Hant">昆士蘭大學</span></h3>
-            <p class="edu-status"><span lang="en">Master's studies</span><span lang="zh-Hant">碩士課程修讀</span></p>
-          </article>
-          <article class="edu reveal">
-            <p class="edu-abbr">FUDAN</p>
-            <h3><span lang="en">Fudan University</span><span lang="zh-Hant">復旦大學</span></h3>
-            <p class="edu-status"><span lang="en">Admitted to MBA program</span><span lang="zh-Hant">獲 MBA 課程錄取</span></p>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <!-- ============ Work with me ============ -->
-    <section class="section" id="engage">
+    <section class="section alt" id="engage">
       <div class="container">
         <div class="section-head center reveal">
-          <p class="kicker">06 — <span lang="en">Work with me</span><span lang="zh-Hant">合作</span></p>
+          <p class="kicker">05 — <span lang="en">Work with me</span><span lang="zh-Hant">合作</span></p>
           <h2 class="section-title">
             <span lang="en">How I can help</span>
             <span lang="zh-Hant">合作方向</span>
@@ -781,7 +466,7 @@
     <!-- ============ Contact ============ -->
     <section class="contact" id="contact">
       <div class="container contact-inner reveal">
-        <p class="kicker light">07 — <span lang="en">Contact</span><span lang="zh-Hant">聯絡</span></p>
+        <p class="kicker light">06 — <span lang="en">Contact</span><span lang="zh-Hant">聯絡</span></p>
         <h2 class="contact-title">
           <span lang="en">Let's talk.</span>
           <span lang="zh-Hant">歡迎聯絡。</span>
@@ -828,14 +513,14 @@
         </div>
       </div>
       <nav class="footer-nav" aria-label="Footer">
-        <a href="#about"><span lang="en">About</span><span lang="zh-Hant">關於</span></a>
-        <a href="#experience"><span lang="en">Experience</span><span lang="zh-Hant">經歷</span></a>
-        <a href="#patents"><span lang="en">Patents</span><span lang="zh-Hant">專利</span></a>
+        <a href="index.html"><span lang="en">Home</span><span lang="zh-Hant">主頁</span></a>
+        <a href="about.html"><span lang="en">About</span><span lang="zh-Hant">關於</span></a>
+        <a href="ventures.html"><span lang="en">Ventures</span><span lang="zh-Hant">創業</span></a>
         <a href="projects.html"><span lang="en">Projects</span><span lang="zh-Hant">項目</span></a>
         <a href="insights/"><span lang="en">Insights</span><span lang="zh-Hant">觀點</span></a>
         <a href="news.html"><span lang="en">News</span><span lang="zh-Hant">新聞</span></a>
         <a href="markets.html"><span lang="en">Markets</span><span lang="zh-Hant">美股行情</span></a>
-        <a href="#contact"><span lang="en">Contact</span><span lang="zh-Hant">聯絡</span></a>
+        <a href="index.html#contact"><span lang="en">Contact</span><span lang="zh-Hant">聯絡</span></a>
       </nav>
       <p class="footer-copy"><span lang="en">Privacy-friendly visitor counts by GoatCounter (no cookies, no personal data).</span><span lang="zh-Hant">以 GoatCounter 作私隱友善的訪客統計（不使用 cookie，不收集個人資料）。</span><br>© <span id="year">2026</span> Tyler Tik Man Cheng. <span lang="en">All rights reserved.</span><span lang="zh-Hant">版權所有。</span></p>
     </div>

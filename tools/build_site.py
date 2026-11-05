@@ -139,6 +139,7 @@ NAV_GROUPS = [
         ("about.html#education", "Education", "學歷"),
         ("about.html#media", "Media & recognition", "媒體及認可"),
         ("index.html#vision", "Vision", "願景"),
+        ("game.html", "🎮 My life game", "🎮 我的人生遊戲"),
     ]),
     ("ventures", "Ventures", "創業", [
         ("ventures.html#entrepreneurship", "Entrepreneurship", "創業經歷"),

@@ -185,7 +185,7 @@
     border-radius: 6px;
     white-space: nowrap;
     box-shadow: 0 2px 10px rgba(15, 42, 46, .12);
-    transition: opacity .2s, background .2s;
+    transition: opacity .2s;
     will-change: transform;
     pointer-events: auto; cursor: pointer;
   }
@@ -273,7 +273,10 @@
     .brand svg { width: 30px; height: 30px; }
     .brand .t1 { font-size: 16px; }
     .brand .t2 { font-size: 11px; }
-    .brand .sheet-toggle { display: block; }
+    .brand .sheet-toggle { display: block; white-space: nowrap; }
+    .brand .t3 { font-size: 10.5px; }
+    .brand .zh-loc { display: none; }
+    #controls .b-en { display: none; }
     #panelBody { padding: 0 16px 24px; }
     #hint { display: none; }
     #controls { left: 12px; right: 12px; top: 12px; justify-content: center; flex-wrap: wrap; }
@@ -301,7 +304,7 @@
     <div>
       <div class="t1">BTRDCC</div>
       <div class="t2">生物科技園區 · Biotech Campus</div>
-      <div class="t3">📍 Nusantara, Indonesia · 印尼努山塔拉</div>
+      <div class="t3">📍 Nusantara, Indonesia<span class="zh-loc"> · 印尼努山塔拉</span></div>
     </div>
     <button class="sheet-toggle" id="sheetToggle" type="button" aria-expanded="false">簡介 About ▲</button>
   </div>
@@ -322,12 +325,12 @@
     <div><i style="background:#E0A43A"></i>地標及重點 <em>Landmarks</em></div>
   </div>
   <div id="controls" class="hud">
-    <button id="btnDayNight" class="primary" type="button" aria-pressed="false">🌙 夜間 Night</button>
-    <button id="btnTour" type="button">▶ 導覽 Tour</button>
+    <button id="btnDayNight" class="primary" type="button" aria-pressed="false">🌙 夜間<span class="b-en"> Night</span></button>
+    <button id="btnTour" type="button">▶ 導覽<span class="b-en"> Tour</span></button>
     <span class="sep"></span>
-    <button id="btnPins" class="toggle" type="button" aria-pressed="true">標籤 Labels</button>
-    <button id="btnMotion" class="toggle" type="button" aria-pressed="true">動態 Motion</button>
-    <button id="btnReset" type="button">重設 Reset</button>
+    <button id="btnPins" class="toggle" type="button" aria-pressed="true">標籤<span class="b-en"> Labels</span></button>
+    <button id="btnMotion" class="toggle" type="button" aria-pressed="true">動態<span class="b-en"> Motion</span></button>
+    <button id="btnReset" type="button">重設<span class="b-en"> Reset</span></button>
   </div>
   <div id="tourBar" class="hud"><span id="tourText">導覽中 Touring</span><span class="prog"><i id="tourProg"></i></span></div>
   <div id="hint" class="hud"><div>拖曳旋轉 · 滾輪縮放 · 右鍵／Shift 拖曳平移 · 點擊建築查看詳情</div><div class="h-en">Drag to rotate · Scroll to zoom · Right-drag / Shift-drag to pan · Click a building for details</div></div>
@@ -1822,6 +1825,14 @@
       items.forEach(p => { p.x = Math.max(8, Math.min(W - p.w - 8, p.x)); p.y = Math.max(8, Math.min(H - p.h - 8, p.y)); });
       if (!moved) break;
     }
+    // anything still under a HUD panel is hidden rather than drawn on top of it
+    for (let i = items.length - 1; i >= 0; i--) {
+      const p = items[i];
+      if (obstacles.some(o => p.x < o.x + o.w && o.x < p.x + p.w && p.y < o.y + o.h && o.y < p.y + p.h)) {
+        p.z.pinEl.classList.add('hidden');
+        items.splice(i, 1);
+      }
+    }
     lctx.clearRect(0, 0, W, H);
     const night = document.body.classList.contains('night');
     const focus = hovered || selected;
@@ -1852,7 +1863,7 @@
   function setNight(n) {
     night = n;
     document.body.classList.toggle('night', n);
-    btnDN.textContent = n ? '☀️ 日間 Day' : '🌙 夜間 Night';
+    btnDN.innerHTML = n ? '☀️ 日間<span class="b-en"> Day</span>' : '🌙 夜間<span class="b-en"> Night</span>';
     btnDN.setAttribute('aria-pressed', String(n));
   }
   function applyDayNight(t) {
@@ -1879,7 +1890,7 @@
   let tour = null;
   function startTour() {
     tour = { i: -1, t0: 0 };
-    btnTour.textContent = '■ 停止 Stop';
+    btnTour.innerHTML = '■ 停止<span class="b-en"> Stop</span>';
     tourBar.classList.add('show');
     nextTourStop();
   }
@@ -1896,7 +1907,7 @@
   function stopTour() {
     if (!tour) return;
     tour = null;
-    btnTour.textContent = '▶ 導覽 Tour';
+    btnTour.innerHTML = '▶ 導覽<span class="b-en"> Tour</span>';
     tourBar.classList.remove('show');
   }
   btnTour.addEventListener('click', () => tour ? stopTour() : startTour());

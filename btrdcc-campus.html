@@ -25,6 +25,32 @@
     --panel-w: 400px;
     --font: "Inter", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
   }
+  /* follow the viewer's theme until the day/night button is used */
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+    --paper: #0a1719;
+    --surface: #0f2326;
+    --surface-2: #142d31;
+    --ink: #EEE7D8;
+    --ink-2: #c9d3cf;
+    --muted: #93a8a7;
+    --line: rgba(224, 164, 58, 0.18);
+    --hud: rgba(15, 35, 38, 0.92);
+    --shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+    color-scheme: dark;
+  } }
+  :root[data-theme="dark"] {
+    --paper: #0a1719;
+    --surface: #0f2326;
+    --surface-2: #142d31;
+    --ink: #EEE7D8;
+    --ink-2: #c9d3cf;
+    --muted: #93a8a7;
+    --line: rgba(224, 164, 58, 0.18);
+    --hud: rgba(15, 35, 38, 0.92);
+    --shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+    color-scheme: dark;
+  }
+  /* the day/night button sets one of these on body, which wins over the theme */
   body.night {
     --paper: #0a1719;
     --surface: #0f2326;
@@ -35,6 +61,17 @@
     --line: rgba(224, 164, 58, 0.18);
     --hud: rgba(15, 35, 38, 0.92);
     --shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+  }
+  body.day {
+    --paper: #F4EFE4;
+    --surface: #FBF8F2;
+    --surface-2: #F1EBDF;
+    --ink: #0F2A2E;
+    --ink-2: #3c5558;
+    --muted: #6b7f80;
+    --line: rgba(15, 42, 46, 0.12);
+    --hud: rgba(251, 248, 242, 0.94);
+    --shadow: 0 6px 24px rgba(15, 42, 46, 0.10);
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; height: 100%; overflow: hidden; }
@@ -1863,6 +1900,7 @@
   function setNight(n) {
     night = n;
     document.body.classList.toggle('night', n);
+    document.body.classList.toggle('day', !n);
     btnDN.innerHTML = n ? '☀️ 日間<span class="b-en"> Day</span>' : '🌙 夜間<span class="b-en"> Night</span>';
     btnDN.setAttribute('aria-pressed', String(n));
   }
@@ -1959,7 +1997,12 @@
   };
   resize();
   applyCamera();
-  applyDayNight(0);
+  // start in the viewer's theme: dark host or OS theme opens in night mode
+  const themeAttr = document.documentElement.getAttribute('data-theme');
+  const startNight = themeAttr ? themeAttr === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+  setNight(startNight);
+  tNight = startNight ? 1 : 0;
+  applyDayNight(tNight);
   requestAnimationFrame(frame);
 })();
 </script>

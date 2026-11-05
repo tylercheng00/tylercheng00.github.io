@@ -6,7 +6,7 @@ Bilingual (English / 繁體中文) personal site for 鄭迪珉 Tyler Tik Man Che
 - `about.html` – background, experience, education, media & recognition
 - `ventures.html` – entrepreneurship, Nanotech Innovation, patents, selected projects
 - `projects.html` – projects page (biotech, finance, interests) linking to each live project page
-- `btrdcc-campus.html` – interactive 3D concept model of the BTRDCC biotech campus in Nusantara (bilingual, self-contained). Uses the self-hosted Three.js r128 in `assets/vendor/three-r128.min.js` and the site fonts; linked from the BTRDCC and Tyler’s Future City cards on `projects.html`. Share image: `assets/projects/btrdcc-campus.jpg`
+- `btrdcc-campus.html` – interactive 3D concept model of the BTRDCC biotech campus in Nusantara (bilingual, self-contained). Uses the self-hosted Three.js r128 in `assets/vendor/three-r128.min.js` and the site fonts; linked from the BTRDCC and Tyler’s Future City cards on `projects.html`. Each building (except the outdoor entrance zone) also has an interior bird’s-eye view — an exploded floor stack built on first open from the `FAC` data in the page (rooms as `[id, x0, z0, w, d, type, zh, en, desc zh, desc en]`, furniture from the `GEN` generators). Share image: `assets/projects/btrdcc-campus.jpg`
 - `us-equities.html` + `us-equities.js` – illustrative US IPO and M&A walkthroughs; approved case studies go in `#caseGrid` (template in the HTML comment)
 - `styles.css`, `main.js` – styling and the EN / 中 toggle (`?lang=zh` also works)
 - Contact details (emails, LinkedIn) live in the `#contact` section of `index.html` (and the contact cards at the bottom of the other pages); the vCard and copy buttons read them from there

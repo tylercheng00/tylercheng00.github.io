@@ -1,5 +1,5 @@
 /* 《夢想家之路》Dreamer's Road: story and actions.
-   Based on Tyler's real life; some scenes are dramatised. Edit text here; the engine is game.js.
+   Inspired by a real life story; names are generic and some scenes are dramatised. Edit text here; the engine is game.js.
    fx: changes to the five stats. money can go below zero (debt); energy blocks actions when too low. */
 window.GAME_DATA = (function () {
   function t(en, zh) { return { en: en, zh: zh }; }
@@ -20,16 +20,24 @@ window.GAME_DATA = (function () {
     rooftop: { name: t('Rooftop', '天台'), note: t('Looking up at the sky, wondering how far a person can go.', '望着天空，想一個人可以走多遠。') },
     studio: { name: t('First company', '第一間公司'), note: t('Started at 20 with little more than a laptop.', '20 歲創業，起步時差不多只有一部手提電腦。') },
     harbor: { name: t('Going overseas', '走出海外'), note: t('By 22, the business had reached other countries.', '22 歲時，業務已拓展至其他國家。') },
-    store: { name: t('Convenience store', '便利店'), note: t('My convenience store, 便利歡. It taught me cash flow the hard way.', '我以前開的便利店「便利歡」。它用最痛的方式教會我現金流。') },
-    factory: { name: t('Master Masker', 'Master Masker'), note: t('The protection company that later became Nanotech Innovation.', '做防護產品的公司，後來發展成納米科研技術。') },
-    university: { name: t('University', '大學'), note: t('HKUST graduate; later UQ in Australia and an MBA offer from Fudan.', '香港科技大學畢業，後來到澳洲昆士蘭大學修讀，並獲復旦大學 MBA 錄取。') },
-    nanolab: { name: t('Nanotech lab', '納米實驗室'), note: t('Nanotech Innovation, co-founded at university in 2021: nano-coatings and biomedical targeting.', '2021 年大學期間聯合創辦的納米科研技術：納米塗層及生物醫療標靶。') },
-    patent: { name: t('Patent office', '專利局'), note: t('3 Hong Kong patents granted, plus applications in mainland China.', '3 項香港專利獲授權，另有中國內地專利申請。') },
-    exchange: { name: t('New York tower', '紐約大樓'), note: t('US equities market specialist at Fuway Capital: IPOs and M&A.', '在富輝資本擔任美股市場專員：IPO 上市及併購。') },
-    btrdcc: { name: t('BTRDCC', 'BTRDCC 研究中心'), note: t('Co-founder: AI-assisted biotech, nano-targeting and cancer therapy research.', '聯合創辦人：結合 AI 的生物科技、納米標靶及癌症治療研發。') },
-    cat: { name: t('YOUZHI MIAO', '柚汁喵'), note: t('The cat café and pet service I founded and ran myself.', '我親手創辦並經營的貓咪寵物服務店。') },
-    youth: { name: t('Youth hall', '青年中心'), note: t('Talks at schools, volunteering, youth forums in Hong Kong and the Greater Bay Area.', '回校演講、做義工、參與香港及大灣區青年論壇。') },
+    store: { name: t('Convenience store', '便利店'), note: t('The first shop of my own. It taught me cash flow the hard way.', '第一間自己的店。它用最痛的方式教會我現金流。') },
+    factory: { name: t('Protection factory', '防護用品工廠'), note: t('Making better protection when people needed it most. It later grew into a nanotech company.', '在大家最需要的時候做出更好的防護。後來發展成一間納米科技公司。') },
+    university: { name: t('University', '大學'), note: t('Learning science properly, in Hong Kong and abroad.', '在香港和海外，認真地學科學。') },
+    nanolab: { name: t('Nanotech lab', '納米實驗室'), note: t('A nanotech company co-founded at university: nano-coatings and biomedical targeting.', '大學期間聯合創辦的納米科技公司：納米塗層及生物醫療標靶。') },
+    patent: { name: t('Patent office', '專利局'), note: t('Granted patents protect years of research.', '獲授權的專利，保護多年的研發成果。') },
+    exchange: { name: t('New York tower', '紐約大樓'), note: t('Helping companies reach the US capital market: IPOs and M&A.', '協助企業走進美國資本市場：IPO 上市及併購。') },
+    btrdcc: { name: t('Biotech research centre', '生物科技研究中心'), note: t('AI-assisted biotech, nano-targeting and cancer therapy research.', '結合 AI 的生物科技、納米標靶及癌症治療研發。') },
+    cat: { name: t('Cat café', '貓咪咖啡店'), note: t('A cat café and pet service, founded and run by hand.', '親手創辦並經營的貓咪寵物服務店。') },
+    youth: { name: t('Youth hall', '青年中心'), note: t('Talks at schools, volunteering and youth forums.', '回校演講、做義工、參與青年論壇。') },
     rocket: { name: t('Rocket pad', '火箭發射台'), note: t('The childhood dream that never left: rockets and space.', '從小到大都沒有放下的夢：火箭和太空。') },
+    hospital: { name: t('Hospital', '醫院'), note: t('Where the research finally meets patients.', '研究成果終於走到病人身邊的地方。') },
+    apartments: { name: t('Homes for young families', '青年家庭住宅'), note: t('Affordable flats, so the next dreamer has a place to start.', '可負擔的住宅，讓下一個追夢的人有起步的地方。') },
+    incubator: { name: t('Founders\' hub', '創業孵化中心'), note: t('Desks, mentors and a first cheque for young founders.', '給年輕創業者的辦公桌、導師和第一筆資金。') },
+    museum: { name: t('Science museum', '科學館'), note: t('Free entry for every kid who wants to know how things work.', '每個想知道世界怎樣運作的孩子，都可以免費入場。') },
+    station: { name: t('Train station', '火車站'), note: t('Connecting the city to everywhere else.', '把城市連接到世界各地。') },
+    stadium: { name: t('Stadium', '運動場'), note: t('A place to cheer together.', '一個大家一起歡呼的地方。') },
+    solar: { name: t('Solar farm', '太陽能發電場'), note: t('Clean power for the whole city.', '為整座城市提供潔淨能源。') },
+    park: { name: t('Park', '公園'), note: t('Trees, a fountain and benches for old friends.', '樹、噴水池，還有給老朋友坐的長椅。') },
     dome: { name: t('City of the future', '未來之城'), note: t('"I don\'t just want to build a city. I want to build a future."', '「我不只想建造一座城市，我想建造一個未來。」') }
   };
 
@@ -45,17 +53,25 @@ window.GAME_DATA = (function () {
     harbor: { build: 'harbor', icon: '🚢', name: t('Go overseas', '走出海外'), desc: t('Take the business to other countries.', '把生意帶到其他國家。'), fx: { energy: -20, money: 10, impact: 12 } },
     store: { build: 'store', icon: '🏪', name: t('Open a store', '開便利店'), desc: t('A shop of your own. What could go wrong?', '開一間自己的店，會有甚麼問題？'), fx: { energy: -15, money: -15, dream: 5 } },
     nightshift: { icon: '🌙', name: t('Night shifts', '通宵兼職'), desc: t('Pay it back, one night at a time.', '一晚一晚，慢慢還。'), fx: { energy: -25, money: 15 }, repeat: true },
-    factory: { build: 'factory', icon: '😷', name: t('Master Masker', 'Master Masker'), desc: t('People need better protection. Build it.', '大家需要更好的防護，那就做出來。'), fx: { energy: -20, money: 15, impact: 10 } },
+    factory: { build: 'factory', icon: '😷', name: t('Protection factory', '防護用品工廠'), desc: t('People need better protection. Build it.', '大家需要更好的防護，那就做出來。'), fx: { energy: -20, money: 15, impact: 10 } },
     university: { build: 'university', icon: '🎓', name: t('University', '大學'), desc: t('Study science, properly this time.', '這一次，認真讀科學。'), fx: { energy: -15, dream: 8, impact: 5 } },
-    nanolab: { build: 'nanolab', icon: '🧪', name: t('Nanotech lab', '納米實驗室'), desc: t('Co-found Nanotech Innovation.', '聯合創辦納米科研技術。'), fx: { energy: -20, money: -10, dream: 10, impact: 8 } },
+    nanolab: { build: 'nanolab', icon: '🧪', name: t('Nanotech lab', '納米實驗室'), desc: t('Co-found a nanotech company.', '聯合創辦一間納米科技公司。'), fx: { energy: -20, money: -10, dream: 10, impact: 8 } },
     patent: { build: 'patent', icon: '📜', name: t('File patents', '申請專利'), desc: t('Protect the work with patents.', '用專利保護研發成果。'), fx: { energy: -10, money: 8, impact: 12 } },
     exchange: { build: 'exchange', icon: '🏙️', name: t('New York', '紐約'), desc: t('Help companies reach the US capital market.', '協助企業走進美國資本市場。'), fx: { energy: -20, money: 20, impact: 10 } },
-    btrdcc: { build: 'btrdcc', icon: '🧬', name: t('BTRDCC', 'BTRDCC'), desc: t('AI + nano-targeting, aimed at cancer.', 'AI 加納米標靶，對準癌症。'), fx: { energy: -20, money: -10, dream: 12, impact: 12 } },
-    cat: { build: 'cat', icon: '🐱', name: t('YOUZHI MIAO', '柚汁喵'), desc: t('A cat café. Because why not.', '開一間貓咪店。為甚麼不？'), fx: { energy: -10, money: 5, family: 5 } },
+    btrdcc: { build: 'btrdcc', icon: '🧬', name: t('AI biotech centre', 'AI 生物科技中心'), desc: t('AI + nano-targeting, aimed at cancer.', 'AI 加納米標靶，對準癌症。'), fx: { energy: -20, money: -10, dream: 12, impact: 12 } },
+    cat: { build: 'cat', icon: '🐱', name: t('Cat café', '貓咪咖啡店'), desc: t('A cat café. Because why not.', '開一間貓咪店。為甚麼不？'), fx: { energy: -10, money: 5, family: 5 } },
     listing: { icon: '📈', name: t('Help a company list', '協助企業上市'), desc: t('Long nights, tight timetables, one bell.', '無數個通宵、緊湊的時間表，換來一下敲鐘。'), fx: { energy: -25, money: 15, impact: 10 }, repeat: true },
     youth: { build: 'youth', icon: '🎤', name: t('Youth hall', '青年中心'), desc: t('Give talks. Mentor. Volunteer.', '演講、做導師、做義工。'), fx: { energy: -15, impact: 15 } },
     volunteer: { icon: '🤲', name: t('Volunteer', '做義工'), desc: t('Give back to the city that raised you.', '回饋養大你的城市。'), fx: { energy: -10, impact: 10, family: 3 }, repeat: true },
     rocket: { build: 'rocket', icon: '🚀', name: t('Rocket pad', '火箭發射台'), desc: t('The childhood drawing, for real.', '把小時候的畫變成真的。'), fx: { energy: -15, money: -15, dream: 20 } },
+    hospital: { build: 'hospital', icon: '🏥', name: t('Hospital', '醫院'), desc: t('Bring the research to patients.', '把研究帶到病人身邊。'), fx: { energy: -20, money: -15, impact: 18 } },
+    apartments: { build: 'apartments', icon: '🏢', name: t('Affordable homes', '青年住宅'), desc: t('A start for the next dreamer.', '給下一個追夢者一個起點。'), fx: { energy: -15, money: 10, family: 8 } },
+    incubator: { build: 'incubator', icon: '🚪', name: t('Founders\' hub', '創業孵化中心'), desc: t('Open the door you once knocked on.', '打開你當年敲過的那道門。'), fx: { energy: -15, money: -10, impact: 15, dream: 5 } },
+    museum: { build: 'museum', icon: '🔬', name: t('Science museum', '科學館'), desc: t('Free entry for curious kids.', '好奇的孩子免費入場。'), fx: { energy: -15, money: -10, dream: 10, impact: 10 } },
+    station: { build: 'station', icon: '🚆', name: t('Train station', '火車站'), desc: t('Connect the city to the world.', '把城市連接到世界。'), fx: { energy: -15, money: 12, impact: 8 } },
+    stadium: { build: 'stadium', icon: '🏟️', name: t('Stadium', '運動場'), desc: t('A place to cheer together.', '大家一起歡呼的地方。'), fx: { energy: -15, money: 8, family: 8 } },
+    solar: { build: 'solar', icon: '☀️', name: t('Solar farm', '太陽能發電場'), desc: t('Clean power for everyone.', '給每個人的潔淨能源。'), fx: { energy: -10, money: 6, impact: 10 } },
+    park: { build: 'park', icon: '🌳', name: t('Park', '公園'), desc: t('Trees and a fountain.', '種樹，建個噴水池。'), fx: { energy: -5, family: 8, dream: 4 } },
     dome: { build: 'dome', icon: '🌐', name: t('City of the future', '未來之城'), desc: t('Not just a city. A future.', '不只是一座城市，而是一個未來。'), fx: { energy: -20, money: -15, dream: 15, impact: 15 } }
   };
 
@@ -168,8 +184,8 @@ window.GAME_DATA = (function () {
     },
     {
       age: t('Getting back up', '重新站起'), title: t('Science', '科研'), ap: 4,
-      intro: [t('Then the pandemic. People need better protection. You and your team start Master Masker.',
-                '然後，疫情來了。大家需要更好的防護。你和團隊創辦了 Master Masker。')],
+      intro: [t('Then the pandemic. People need better protection. You and your team start a company making protective products.',
+                '然後，疫情來了。大家需要更好的防護。你和團隊創辦了一間做防護用品的公司。')],
       story: {
         text: t('A TV station asks you for an interview. Under the studio lights, you think of everyone who laughed.',
                 '電視台邀請你做訪問。攝影棚的燈打在臉上，你想起每一個笑過你的人。'),
@@ -182,8 +198,8 @@ window.GAME_DATA = (function () {
       },
       mid: {
         after: 2,
-        text: t('At university you co-found Nanotech Innovation. Your work wins the 2023 award for the most innovative biotech cleaning and protection solution.',
-                '大學期間，你聯合創辦了納米科研技術。公司獲頒 2023 年度最卓越生物科技相關清潔及防護解決方案大獎。'),
+        text: t('At university you co-found a nanotech company. Your work wins the 2023 award for the most innovative biotech cleaning and protection solution.',
+                '大學期間，你聯合創辦了一間納米科技公司。公司獲頒 2023 年度最卓越生物科技相關清潔及防護解決方案大獎。'),
         opts: [{ t: t('Call Mum first.', '第一個打給媽媽。'), fx: { family: 10, impact: 10 },
                  r: t('She cries. Dad pretends he isn\'t.', '她哭了。爸爸假裝沒有。') }]
       },
@@ -193,8 +209,8 @@ window.GAME_DATA = (function () {
     },
     {
       age: t('Two worlds', '兩個世界'), title: t('New York', '紐約'), ap: 4,
-      intro: [t('You move to New York and join Fuway Capital, helping companies reach the US capital market. You also co-found BTRDCC.',
-                '你來到紐約，加入富輝資本，協助企業走進美國資本市場。同時，你聯合創辦了 BTRDCC。')],
+      intro: [t('You move to New York and join a capital markets firm, helping companies reach the US market. You also co-found an AI biotech research project.',
+                '你來到紐約，加入一間資本市場顧問公司，協助企業走進美國市場。同時，你聯合創辦了一個 AI 生物科技研發項目。')],
       story: {
         text: t('An investor leans back: "You\'re young. What do you know about capital markets?"',
                 '會議室裏，一位投資者靠在椅背上：「你這麼年輕，懂資本市場嗎？」'),
@@ -225,7 +241,112 @@ window.GAME_DATA = (function () {
       actions: ['youth', 'rocket', 'dome', 'volunteer', 'family'],
       milestone: t('The kid who was laughed at built a city, and opened its doors to everyone.',
                    '那個被笑的孩子，建了一座城市，然後把門打開給每一個人。')
+    },
+    {
+      age: t('The future (fiction)', '未來篇（虛構）'), title: t('The storm', '風暴'), ap: 3, future: true,
+      intro: [t('Years later. The markets crash overnight. A deal you spent a year on falls apart, and the phone goes quiet again.',
+                '多年後。市場一夜之間急跌，你花了一年的交易告吹，電話又再安靜下來。')],
+      story: {
+        text: t('Your team gathers in the office. Someone finally asks: "Do we keep going?"', '團隊在辦公室集合。終於有人問：「我哋仲要唔要繼續？」'),
+        opts: [
+          { t: t('"We\'ve been here before. We keep going."', '「我哋以前都經歷過，繼續。」'), fx: { dream: 12, energy: -10 },
+            r: t('Nobody leaves. Somebody orders noodles for everyone.', '沒有人離開。有人幫大家叫了外賣。') },
+          { t: t('Cut costs, protect the team, wait for the turn.', '節省開支、保住團隊，等待轉機。'), fx: { money: 12, family: 5 },
+            r: t('Boring decisions. They save the company.', '很悶的決定，但保住了公司。') }
+        ]
+      },
+      mid: {
+        after: 1,
+        text: t('An old classmate, the one who used to laugh at you, sends a message: "I saw your story. Sorry for back then. Are you hiring?"',
+                '一個以前笑過你的舊同學傳來訊息：「我睇到你嘅故事。當年對唔住。你哋請唔請人？」'),
+        opts: [
+          { t: t('"Come for an interview."', '「嚟面試吧。」'), fx: { impact: 10, family: 5 },
+            r: t('People change. You did too.', '人是會變的。你也一樣。') },
+          { t: t('"Thanks. I wish you well."', '「多謝你。祝你一切順利。」'), fx: { dream: 8 },
+            r: t('You close the chat and smile.', '你關掉對話，笑了一笑。') }
+        ]
+      },
+      actions: ['hospital', 'apartments', 'listing', 'family', 'rest'],
+      milestone: t('Storms pass. The ones who stay standing are the ones who learned to fall.', '風暴總會過去。站得住的，都是學會了跌倒的人。')
+    },
+    {
+      age: t('The future (fiction)', '未來篇（虛構）'), title: t('Passing it on', '傳承'), ap: 3, future: true,
+      intro: [t('Young founders start knocking on your door, the way you once knocked on everyone else\'s.', '年輕的創業者開始來敲你的門，就像當年你敲每一個人的門。')],
+      story: {
+        text: t('A 20-year-old with one laptop and a big idea sits across from you. Everyone else told her it was impossible.', '一個 20 歲、只有一部手提電腦和一個大想法的女孩坐在你對面。其他人都說她不可能成功。'),
+        opts: [
+          { t: t('Invest in her.', '投資她。'), fx: { impact: 12, money: -10, dream: 5 },
+            r: t('"Why me?" she asks. "Because someone once bet on me," you say.', '她問：「點解揀我？」你說：「因為當年都有人肯賭我一次。」') },
+          { t: t('Teach her to write the plan properly.', '教她把計劃書寫好。'), fx: { impact: 10, energy: -5 },
+            r: t('Three weeks later, she raises her first round.', '三個星期後，她完成了第一輪融資。') }
+        ]
+      },
+      actions: ['incubator', 'museum', 'volunteer', 'family', 'rest'],
+      milestone: t('The best thing you can build is someone else\'s start.', '你能建造最好的東西，是別人的起點。')
+    },
+    {
+      age: t('The future (fiction)', '未來篇（虛構）'), title: t('Liftoff', '升空'), ap: 3, future: true,
+      intro: [t('The whole city gathers by the sea. Tonight, the rocket from your childhood notebook is ready.', '整座城市的人都聚在海邊。今晚，你小時候筆記簿上的那枚火箭準備好了。')],
+      story: {
+        text: t('Your parents stand next to you. Dad\'s hand is on your shoulder. Mum is already crying.', '爸媽站在你身邊。爸爸的手搭在你的肩上，媽媽已經在哭了。'),
+        opts: [
+          { t: t('Count down together.', '一起倒數。'), fx: { family: 15, dream: 10 },
+            r: t('Ten, nine, eight… the kid who was called a loser is watching his dream go up.', '十、九、八……那個被叫做「廢柴」的孩子，看着自己的夢升空。') },
+          { t: t('Hand the button to the youngest founder.', '把按鈕交給最年輕的創業者。'), fx: { impact: 15, dream: 8 },
+            r: t('She presses it. The whole city cheers.', '她按下了。整座城市都在歡呼。') }
+        ]
+      },
+      actions: ['stadium', 'station', 'solar', 'family'],
+      milestone: t('From a small flat in Hong Kong to a city that launches dreams. And the road keeps going.', '由香港一個小小的家，到一座讓夢想升空的城市。而這條路，還在繼續。')
     }
+  ];
+
+  // Free play after the story: one of these each "year", forever
+  var FREE = {
+    actions: ['park', 'hospital', 'apartments', 'incubator', 'museum', 'station', 'stadium', 'solar', 'listing', 'volunteer', 'family', 'rest'],
+    events: [
+      { text: t('A typhoon warning goes up. Half the city loses power for a night.', '颱風訊號高掛，半個城市停電一晚。'),
+        opts: [{ t: t('Open your buildings as shelters.', '開放大樓做臨時避難所。'), fx: { impact: 12, money: -8 }, r: t('By morning, strangers are sharing breakfast in your lobby.', '天亮時，陌生人在大堂一起吃早餐。') },
+               { t: t('Help the repair crews.', '幫手搶修。'), fx: { impact: 8, energy: -15 }, r: t('Lights come back on, street by street.', '燈一條街一條街地亮回來。') }] },
+      { text: t('A big company offers to buy everything you have built.', '一間大公司開價收購你建立的一切。'),
+        opts: [{ t: t('Sell, and fund ten new founders.', '賣掉，再資助十個新創業者。'), fx: { money: 20, impact: 10, dream: -5 }, r: t('Ten new doors open.', '十道新的門打開了。') },
+               { t: t('Say no. Not yet.', '拒絕。還未是時候。'), fx: { dream: 12 }, r: t('Some dreams aren\'t for sale.', '有些夢想是不賣的。') }] },
+      { text: t('Your mum asks when you last took a holiday.', '媽媽問你上一次放假是甚麼時候。'),
+        opts: [{ t: t('Take the family away for a week.', '帶家人去旅行一星期。'), fx: { family: 15, energy: 30, money: -8 }, r: t('Nobody checks email. Almost nobody.', '沒有人覆電郵。差不多沒有人。') },
+               { t: t('Promise next month.', '答應下個月。'), fx: { money: 8, family: -5 }, r: t('She has heard that before.', '這句話她聽過很多次了。') }] },
+      { text: t('A breakthrough at the lab: early results look promising.', '實驗室有新突破：初步結果很有希望。'),
+        opts: [{ t: t('Stay humble. Run it again.', '保持謙虛，再做一次實驗。'), fx: { dream: 8, impact: 6 }, r: t('It holds up. Then the hard part starts.', '結果站得住。然後，困難的部分才開始。') },
+               { t: t('Tell investors right away.', '立即通知投資者。'), fx: { money: 12, dream: -3 }, r: t('Money comes in fast. So do expectations.', '錢來得很快，期望也是。') }] },
+      { text: t('A school invites you back. The kids want to hear about failure.', '一間學校邀請你回去。孩子們想聽關於失敗的故事。'),
+        opts: [{ t: t('Tell them about the debt.', '講欠債的那段。'), fx: { impact: 12 }, r: t('The quietest kid asks the best question.', '最安靜的孩子問了最好的問題。') },
+               { t: t('Tell them about being bullied.', '講被欺負的那段。'), fx: { impact: 10, family: 3 }, r: t('One kid stays behind to say: "Me too."', '一個孩子留下來說：「我都係。」') }] },
+      { text: t('A rival copies your best idea and launches first.', '對手抄了你最好的點子，還搶先推出。'),
+        opts: [{ t: t('Build something better.', '做一個更好的。'), fx: { dream: 10, energy: -10 }, r: t('Six months later, nobody remembers theirs.', '半年後，已經沒有人記得他們的版本。') },
+               { t: t('Call your patent lawyer.', '找專利律師。'), fx: { money: 8, impact: 4 }, r: t('This is what the patents were for.', '專利就是為了這一天。') }] }
+    ],
+    milestone: t('Another year, another street. The city keeps growing with you.', '又一年，又多一條街。城市跟着你一起成長。')
+  };
+
+  // People standing in the city who talk to you (no real names)
+  var TALKERS = [
+    [{ who: t('Mum', '媽媽'), at: 'home', look: 'mum', line: t('"Don\'t be scared. Mum\'s here."', '「唔使驚，媽媽喺度。」') },
+     { who: t('Classmate', '同學'), at: 'school', look: 'kid', line: t('"Oi, loser! Ha ha!"', '「喂，廢柴！哈哈！」') }],
+    [{ who: t('Dad', '爸爸'), at: 'home', look: 'dad', line: t('"Business is tough… but if you want to try, go and try."', '「做生意好辛苦㗎……不過你想試，就去試吓啦。」') },
+     { who: t('Mum', '媽媽'), at: 'home', look: 'mum', line: t('"Dinner\'s ready. Come and eat."', '「食飯喇！」') }],
+    [{ who: t('Man at dinner', '飯局上的人'), at: 'studio', look: 'suitold', line: t('"You\'re a kid. Who would trust you?"', '「咁後生，邊個會信你？」') },
+     { who: t('First customer', '第一位客人'), at: 'studio', look: 'woman', line: t('"Your plan is actually interesting."', '「你份計劃書幾有意思喎。」') }],
+    [{ who: t('Landlord', '業主'), at: 'store', look: 'suitold', line: t('"Rent is due. No more excuses."', '「租要交喇，唔好再拖。」') },
+     { who: t('Old "friend"', '舊「朋友」'), at: 'store', look: 'kid', line: t('"Told you he couldn\'t do it."', '「早就話佢唔得啦。」') },
+     { who: t('Mum', '媽媽'), at: 'home', look: 'mum', line: t('"Come home and eat first."', '「返嚟食飯先。」') }],
+    [{ who: t('Reporter', '記者'), at: 'factory', look: 'woman', line: t('"Can you tell us how it all started?"', '「可以講吓你點樣開始嗎？」') },
+     { who: t('Professor', '教授'), at: 'university', look: 'suitold', line: t('"Science is slow. Don\'t give up on it."', '「科學係慢嘅，但唔好放棄。」') }],
+    [{ who: t('Investor', '投資者'), at: 'exchange', look: 'suitold', line: t('"You\'re young. What do you know about capital markets?"', '「你咁後生，識資本市場咩？」') },
+     { who: t('Researcher', '研究員'), at: 'btrdcc', look: 'lab', line: t('"AI narrows the search. The lab decides."', '「AI 幫我哋收窄範圍，最後由實驗決定。」') }],
+    [{ who: t('Kid in the back row', '最後一排的孩子'), at: 'youth', look: 'kid', line: t('"Can… can I really do it too?"', '「我……真係都得嗎？」') }],
+    [{ who: t('Teammate', '團隊成員'), at: 'exchange', look: 'woman', line: t('"Do we keep going?"', '「我哋仲要唔要繼續？」') }],
+    [{ who: t('Young founder', '年輕創業者'), at: 'incubator', look: 'woman', line: t('"Can you show me how to write a business plan?"', '「可唔可以教我寫計劃書？」') }],
+    [{ who: t('Dad', '爸爸'), at: 'rocket', look: 'dad', line: t('"We\'ve always been proud of you."', '「我哋一直都以你為榮。」') },
+     { who: t('Mum', '媽媽'), at: 'rocket', look: 'mum', line: t('"Eat properly up there, OK?"', '「上到去都要食飽飯呀。」') }]
   ];
 
   var ENDINGS = {
@@ -237,8 +358,7 @@ window.GAME_DATA = (function () {
 
   var UI = {
     title: t('Dreamer\'s Road', '夢想家之路'),
-    sub: t('A life-sim based on Tyler Cheng\'s real story', '根據鄭迪珉真實經歷改編的人生模擬遊戲'),
-    note: t('About 5 minutes · some scenes are dramatised', '約 5 分鐘 · 部分情節經戲劇化處理'),
+    sub: t('A life-sim inspired by a true story', '根據真實經歷改編的人生模擬遊戲'),
     start: t('Start', '開始'),
     resume: t('Continue', '繼續上次'),
     restart: t('Start over', '重新開始'),
@@ -269,7 +389,12 @@ window.GAME_DATA = (function () {
     joy: t('Move: joystick, or tap the ground', '移動：搖桿，或點擊地面'),
     view: t('Map view', '全景'),
     follow: t('Follow', '跟隨'),
-    shareText: t('I just played Tyler Cheng\'s life-sim, Dreamer\'s Road.', '我剛玩了鄭迪珉的人生模擬遊戲《夢想家之路》。')
+    freePlay: t('Keep living (free play)', '繼續人生（自由模式）'),
+    year: t('Year', '第'), yearSuffix: t('', '年'),
+    freeTitle: t('Free play', '自由人生'),
+    future: t('The story continues in fiction from here.', '以下是虛構的未來篇。'),
+    note: t('About 10 minutes · names are fictional · some scenes are dramatised', '約 10 分鐘 · 名稱均為虛構 · 部分情節經戲劇化處理'),
+    shareText: t('I just played the life-sim Dreamer\'s Road.', '我剛玩了人生模擬遊戲《夢想家之路》。')
   };
 
   // characters to pick from (original designs)
@@ -282,5 +407,5 @@ window.GAME_DATA = (function () {
     { id: 'astro', name: t('The astronaut', '太空人'), skin: '#f1c7a0', hair: '#1d1a19', top: '#eef1f5', bottom: '#eef1f5', shoes: '#9aa3ad', helmet: true }
   ];
 
-  return { LOOKS: LOOKS, STATS: STATS, BUILD: BUILD, ACT: ACT, CHAPTERS: CHAPTERS, ENDINGS: ENDINGS, UI: UI };
+  return { FREE: FREE, TALKERS: TALKERS, LOOKS: LOOKS, STATS: STATS, BUILD: BUILD, ACT: ACT, CHAPTERS: CHAPTERS, ENDINGS: ENDINGS, UI: UI };
 })();

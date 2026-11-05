@@ -139,3 +139,6 @@
   .game-joy { width: 104px; height: 104px; left: 14px; bottom: 26px; }
   .g-looks { gap: 8px; }
 }
+.game-talk { background: #13294a; color: #fff; border: 1px solid rgba(226, 200, 143, .6); }
+.game-talk b { color: #e2c88f; }
+.game-talk span { font-size: 14px; }

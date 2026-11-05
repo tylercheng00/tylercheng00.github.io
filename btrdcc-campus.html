@@ -431,7 +431,7 @@
     <button id="btnReset" type="button">重設<span class="b-en"> Reset</span></button>
   </div>
   <div id="tourBar" class="hud"><span id="tourText">導覽中 Touring</span><span class="prog"><i id="tourProg"></i></span></div>
-  <div id="hint" class="hud"><div>拖曳旋轉 · 滾輪縮放 · 右鍵／Shift 拖曳平移 · 點擊建築查看詳情</div><div class="h-en">Drag to rotate · Scroll to zoom · Right-drag / Shift-drag to pan · Click a building for details</div></div>
+  <div id="hint" class="hud"><div>拖曳旋轉 · 滾輪縮放 · 右鍵／Shift 拖曳平移 · 點擊建築查看詳情 · 雙擊進入內部</div><div class="h-en">Drag to rotate · Scroll to zoom · Right-drag / Shift-drag to pan · Click a building for details · Double-click to go inside</div></div>
   <div id="compass" class="hud" title="指北">
     <svg viewBox="-22 -22 44 44" aria-hidden="true">
       <g id="needle">
@@ -645,7 +645,7 @@
         principle(ICON.flow, '人車分流', 'Separated traffic', '物流經環園道路直達廠房，與中軸人流分開。', 'Freight uses the ring road to reach the plant, away from pedestrians.') +
         principle(ICON.leaf, '綠色園區', 'Green campus', '天台綠化、太陽能車棚與雨水花園減少碳排放。', 'Roof gardens, solar carports and rain gardens cut emissions.') +
       '</div>' +
-      '<p class="note">' + NOTE + '<br><br>操作：拖曳旋轉、滾輪縮放、右鍵平移；點擊建築或列表查看詳情。<br>Drag to rotate, scroll to zoom, right-drag to pan; click a building or list item for details.</p>';
+      '<p class="note">' + NOTE + '<br><br>操作：拖曳旋轉、滾輪縮放、右鍵平移；點擊建築或列表查看詳情；雙擊建築（手機上連按兩下）直接進入內部。<br>Drag to rotate, scroll to zoom, right-drag to pan; click a building or list item for details; double-click a building (double-tap on a phone) to go inside.</p>';
     panelBody.scrollTop = 0;
     bindZoneButtons();
   }
@@ -1786,10 +1786,31 @@
     canvas.classList.remove('dragging');
     if (wasTap) {
       const z = pick(p.x, p.y);
+      // second tap close in time and place: use the building from the first tap, because the
+      // first tap already opened the bottom panel and started moving the camera
+      if (!interior && e.pointerType !== 'mouse' && lastTap && lastTap.zone && performance.now() - lastTap.t < 600 &&
+          Math.hypot(e.clientX - lastTap.x, e.clientY - lastTap.y) < 40) {
+        const target = lastTap.zone; lastTap = null; hideCard(); goInside(target); return;
+      }
+      lastTap = { zone: z, t: performance.now(), x: e.clientX, y: e.clientY };
       if (interior) clickRoom(z); else select(z, true);
       if (e.pointerType !== 'mouse') hideCard(); else hover(p.x, p.y);
     }
   }
+  // double-click (or double-tap) a building to go straight to its interior view
+  let lastTap = null;
+  function goInside(z) {
+    if (!z || interior || !INTERIOR_IDS.includes(z.id)) return;
+    selected = null; select(z, false);
+    enterInterior(z.id);
+  }
+  canvas.addEventListener('dblclick', e => {
+    if (interior) return;
+    const p = local(e);
+    // after the first click the camera starts flying, so fall back to the building that was clicked first
+    const recent = lastTap && performance.now() - lastTap.t < 1500 ? lastTap.zone : null;
+    goInside(recent || pick(p.x, p.y));
+  });
   canvas.addEventListener('pointerup', endPointer);
   canvas.addEventListener('pointercancel', e => { pointers.delete(e.pointerId); dragging = null; pinchStart = null; canvas.classList.remove('dragging'); });
   canvas.addEventListener('pointerleave', () => { if (!dragging) hideCard(); });
@@ -1836,7 +1857,8 @@
           '<div class="en">' + zone.en + '</div>' +
           '<div class="use">' + zone.short + '</div>' +
           '<div class="use-en">' + zone.shortEn + '</div>' +
-          (zone === selected ? '' : '<div class="cta">點擊查看詳細介紹 · Click for details →</div>');
+          (INTERIOR_IDS.includes(zone.id) ? '<div class="cta">' + (zone === selected ? '' : '點擊查看詳情 · ') + '雙擊進入內部<br>' + (zone === selected ? '' : 'Click for details · ') + 'Double-click to go inside →</div>'
+            : (zone === selected ? '' : '<div class="cta">點擊查看詳細介紹 · Click for details →</div>'));
         card.classList.add('show'); card.setAttribute('aria-hidden', 'false');
       } else {
         card.classList.remove('show'); card.setAttribute('aria-hidden', 'true');
@@ -1888,7 +1910,14 @@
     const el = document.createElement('div');
     el.className = 'pin';
     el.innerHTML = '<span class="n">' + z.no + '</span><span class="l"><b>' + z.zh + '</b><span>' + z.en + '</span></span>';
-    el.addEventListener('click', () => { stopTour(); select(z, true); });
+    el.addEventListener('click', e => {
+      stopTour();
+      const now = performance.now();
+      if (lastTap && lastTap.zone === z && now - lastTap.t < 600) { lastTap = null; goInside(z); return; }
+      lastTap = { zone: z, t: now, x: e.clientX, y: e.clientY };
+      select(z, true);
+    });
+    el.addEventListener('dblclick', () => goInside(z));
     el.addEventListener('mouseenter', () => { panelHover = z; refreshOutlines(); });
     el.addEventListener('mouseleave', () => { panelHover = null; refreshOutlines(); });
     pinLayer.appendChild(el);

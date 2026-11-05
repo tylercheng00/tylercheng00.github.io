@@ -258,8 +258,10 @@
     #compass { right: 12px; bottom: 12px; width: 46px; height: 46px; }
     #compass svg { width: 36px; height: 36px; }
     #tourBar { top: 62px; }
-    .pin span { display: none; }
+    .pin .l span { display: none; }
     .pin b { font-size: 11px; }
+    .pin { padding: 3px 8px 3px 3px; gap: 5px; }
+    .pin .n { width: 18px; height: 18px; font-size: 11px; }
   }
 </style>
 </head>
@@ -1450,6 +1452,7 @@
   // Camera (custom orbit for orthographic)
   // ===========================================================================
   const DEFAULT = { az: Math.PI / 4 + 0.15, polar: Math.PI / 2 - Math.atan(1 / Math.SQRT2), zoom: 1, target: new THREE.Vector3(-2, 4, 10) };
+  if (stage.clientWidth < stage.clientHeight) DEFAULT.zoom = 1.2;
   const view = { az: DEFAULT.az, polar: DEFAULT.polar, zoom: DEFAULT.zoom, target: DEFAULT.target.clone() };
   const DIST = 300;
   let tween = null;
@@ -1818,7 +1821,7 @@
     stepTween(now);
     const target = night ? 1 : 0;
     if (tNight !== target) {
-      tNight += (target - tNight) * 0.1;
+      tNight += (target - tNight) * Math.min(1, dt * 6);
       if (Math.abs(target - tNight) < 0.002) tNight = target;
       applyDayNight(tNight);
     }

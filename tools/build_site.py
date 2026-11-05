@@ -228,7 +228,7 @@ def page(*, prefix, path, title, description, og_type, body, active,
   <meta property="og:url" content="{url}">
   <meta property="og:title" content="{html.escape(title)}">
   <meta property="og:description" content="{html.escape(description)}">
-  <meta property="og:image" content="{SITE}/assets/og-image.png">
+  <meta property="og:image" content="{SITE}/assets/og-image-2026.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="en_US">
@@ -393,7 +393,7 @@ def article_page(a, others):
         "inLanguage": ["en", "zh-Hant"],
         "author": {"@type": "Person", "name": "Tyler Tik Man Cheng", "alternateName": "鄭迪珉", "url": SITE + "/"},
         "mainEntityOfPage": f"{SITE}/insights/{a['slug']}.html",
-        "image": f"{SITE}/assets/og-image.png",
+        "image": f"{SITE}/assets/og-image-2026.jpg",
     }
     return page(
         prefix="../", path=f"insights/{a['slug']}.html",

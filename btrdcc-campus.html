@@ -201,6 +201,44 @@
   .fullname { margin: 0 0 12px; font-size: 13px; font-weight: 600; line-height: 1.45; color: var(--ink); }
   .fullname span { display: block; font-size: 11.5px; font-weight: 400; color: var(--muted); margin-top: 3px; }
 
+  /* interior diagrams */
+  .interior-btn { display: grid; grid-template-columns: 38px 1fr 14px; gap: 12px; align-items: center; width: 100%; margin-top: 14px; padding: 12px 14px; border-radius: 8px; border: 1px solid var(--teal); background: var(--teal); color: #F4EFE4; cursor: pointer; text-align: left; }
+  .interior-btn:hover, .interior-btn:focus-visible { border-color: var(--gold); }
+  body.night .interior-btn { background: var(--surface-2); border-color: var(--gold); color: var(--ink); }
+  .interior-btn .ib-ic { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: rgba(224, 164, 58, .18); color: var(--gold); }
+  .interior-btn .ib-ic svg { width: 21px; height: 21px; }
+  .interior-btn b { display: block; font-size: 14px; }
+  .interior-btn small { display: block; font-size: 11.5px; opacity: .8; margin-top: 2px; }
+  .interior-btn .arr { color: var(--gold); font-size: 18px; }
+  .has-int { display: inline-flex; align-items: center; gap: 4px; margin-top: 5px; font-size: 10.5px; font-weight: 600; color: var(--green); }
+  body.night .has-int { color: var(--gold); }
+  .has-int svg { width: 12px; height: 12px; }
+  .int-tag { display: inline-block; margin-left: 8px; padding: 2px 8px; border-radius: 10px; background: var(--gold); color: var(--teal); font-size: 11px; font-weight: 600; vertical-align: 3px; }
+  .cat-key { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 12px; font-size: 11.5px; color: var(--ink-2); }
+  .cat-key span { display: inline-flex; align-items: center; gap: 6px; }
+  .cat-key i { width: 12px; height: 12px; border-radius: 3px; border: 1px solid rgba(15, 42, 46, .25); }
+  .floor-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+  .floor-chips button { padding: 6px 11px; border-radius: 16px; border: 1px solid var(--line); background: none; cursor: pointer; font-size: 12px; font-weight: 600; color: var(--ink-2); }
+  .floor-chips button:hover { border-color: var(--gold); }
+  .floor-chips button.on { background: var(--teal); border-color: var(--teal); color: #F4EFE4; }
+  body.night .floor-chips button.on { background: var(--gold); border-color: var(--gold); color: var(--teal); }
+  .floor-sec h3 { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center; margin: 22px 0 10px; font-size: 14px; }
+  .floor-sec h3 .tag { padding: 3px 8px; border-radius: 5px; background: var(--teal); color: var(--gold); font-size: 12px; white-space: nowrap; }
+  body.night .floor-sec h3 .tag { background: var(--gold); color: var(--teal); }
+  .floor-sec h3 small { display: block; font-size: 11.5px; font-weight: 400; color: var(--muted); margin-top: 2px; }
+  .room-list { display: grid; gap: 6px; }
+  .room-item { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start; width: 100%; text-align: left; padding: 9px 10px; border-radius: 8px; background: var(--surface-2); border: 1px solid transparent; cursor: pointer; color: var(--ink); }
+  .room-item:hover, .room-item.hl { border-color: var(--gold); }
+  .room-item.on { border-color: var(--teal); box-shadow: inset 3px 0 0 var(--gold); }
+  body.night .room-item.on { border-color: var(--gold); }
+  .room-item .code { min-width: 34px; height: 22px; padding: 0 6px; border-radius: 5px; display: grid; place-items: center; background: var(--teal); color: var(--gold); font-weight: 700; font-size: 11.5px; }
+  body.night .room-item .code { background: var(--gold); color: var(--teal); }
+  .room-item b { display: block; font-size: 13.5px; font-weight: 600; }
+  .room-item i { display: block; font-style: normal; font-size: 11.5px; color: var(--muted); margin-top: 1px; }
+  .room-item .rd { display: block; font-size: 12.5px; line-height: 1.5; color: var(--ink-2); margin-top: 5px; }
+  .room-item .rd span { display: block; font-size: 11.5px; color: var(--muted); margin-top: 2px; }
+  .pin.wide .n, #card .n { width: auto; min-width: 22px; padding: 0 5px; flex: 0 0 auto; white-space: nowrap; }
+
   /* bilingual text */
   .brand .t3 { font-size: 11.5px; color: var(--gold); margin-top: 4px; letter-spacing: .03em; }
   .en-p { font-size: 12.5px; line-height: 1.65; color: var(--muted); margin: 8px 0 0; }
@@ -542,6 +580,10 @@
     }
   ];
 
+  // buildings that have an interior bird's-eye diagram
+  const INTERIOR_IDS = ['main', 'lab', 'plant', 'farm', 'tower'];
+  const INT_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3 3 7.5l9 4.5 9-4.5L12 3Z"/><path d="m3 12 9 4.5 9-4.5"/><path d="m3 16.5 9 4.5 9-4.5"/></svg>';
+
   const CHAIN = [
     { z: 'main', t: '研發構思', tEn: 'Ideation', s: '研發團隊與顧問共同定義項目與商業路線', sEn: 'Researchers and advisors define projects and routes to market' },
     { z: 'lab', t: '實驗驗證', tEn: 'Validation', s: '在共享濕實驗室完成概念驗證', sEn: 'Proof of concept in the shared wet labs' },
@@ -594,7 +636,7 @@
       }).join('') + '</div>' +
       '<div class="eyebrow">功能分區 · Zones</div>' +
       '<div class="zone-list">' + ZONES.map(z =>
-        '<button class="zone-item" data-zone="' + z.id + '"><span class="no">' + z.no + '</span><span><div class="zh">' + z.zh + '</div><div class="en">' + z.en + '</div></span><span class="arr">›</span></button>'
+        '<button class="zone-item" data-zone="' + z.id + '"><span class="no">' + z.no + '</span><span><div class="zh">' + z.zh + '</div><div class="en">' + z.en + '</div>' + (INTERIOR_IDS.includes(z.id) ? '<span class="has-int">' + INT_ICON + '內部圖 Interior</span>' : '') + '</span><span class="arr">›</span></button>'
       ).join('') + '</div>' +
       '<div class="eyebrow">規劃理念 · Planning Principles</div>' +
       '<div class="principles">' +
@@ -617,6 +659,7 @@
       '<button class="back" id="btnBack">‹ 園區概覽 Overview</button>' +
       '<div class="d-head"><span class="no">' + z.no + '</span><div><h2>' + z.zh + '</h2><div class="en">' + z.en + '</div></div></div>' +
       '<div class="tagline">' + z.tag + '<span>' + z.tagEn + '</span></div>' +
+      (INTERIOR_IDS.includes(z.id) ? '<button type="button" class="interior-btn" id="btnInterior"><span class="ib-ic">' + INT_ICON + '</span><span><b>查看內部鳥瞰圖</b><small>View the interior bird’s-eye diagram</small></span><span class="arr">›</span></button>' : '') +
       '<div class="eyebrow">簡介 · About</div>' +
       '<p class="body">' + z.desc + '</p>' +
       '<p class="en-p">' + z.descEn + '</p>' +
@@ -633,6 +676,8 @@
       '<p class="note">' + NOTE + '</p>';
     panelBody.scrollTop = 0;
     document.getElementById('btnBack').addEventListener('click', () => { stopTour(); select(null); });
+    const ib = document.getElementById('btnInterior');
+    if (ib) ib.addEventListener('click', () => enterInterior(z.id));
     bindZoneButtons();
   }
   function bindZoneButtons() {
@@ -1595,18 +1640,19 @@
   buildOutlines();
 
   // sRGB → linear for authored hex colours
-  (function linearise() {
-    const seen = new Set();
-    scene.traverse(o => {
+  const seenMats = new Set();
+  function linearise(root) {
+    root.traverse(o => {
       const ms = o.material ? (Array.isArray(o.material) ? o.material : [o.material]) : [];
       ms.forEach(m => {
-        if (seen.has(m)) return; seen.add(m);
+        if (seenMats.has(m)) return; seenMats.add(m);
         if (m.color && !m.map) m.color.convertSRGBToLinear();
         if (m.emissive && !m.emissiveMap) m.emissive.convertSRGBToLinear();
       });
     });
-    dayNightColor.forEach(d => { d.day.convertSRGBToLinear(); d.night.convertSRGBToLinear(); });
-  })();
+  }
+  linearise(scene);
+  dayNightColor.forEach(d => { d.day.convertSRGBToLinear(); d.night.convertSRGBToLinear(); });
 
   // night ambience lights
   [[0, 6, 60, 0xffc87a, 1.6], [0, 7, -2, 0xffc87a, 1.6], [-30, 4, 16, 0xc77dff, 1.8], [22, 6, 36, 0xffc87a, 1.2], [44, 8, 44, 0xffc87a, 1.2], [26, 6, -20, 0xffd8a0, 1.0]].forEach(p => {
@@ -1740,7 +1786,7 @@
     canvas.classList.remove('dragging');
     if (wasTap) {
       const z = pick(p.x, p.y);
-      select(z, true);
+      if (interior) clickRoom(z); else select(z, true);
       if (e.pointerType !== 'mouse') hideCard(); else hover(p.x, p.y);
     }
   }
@@ -1765,18 +1811,26 @@
   function pick(x, y) {
     ndc.set(x / SW * 2 - 1, -(y / SH) * 2 + 1);
     raycaster.setFromCamera(ndc, camera);
+    if (interior) {
+      const h = raycaster.intersectObjects(interior.activePick, false)[0];
+      return h ? h.object.userData.room : null;
+    }
     const hit = raycaster.intersectObjects(pickables, false)[0];
     return hit ? hit.object.userData.zone : null;
   }
   function refreshOutlines() {
-    zones.forEach(z => z.outlines.forEach(o => o.visible = (z === hovered || z === selected || z === panelHover)));
+    zones.forEach(z => z.outlines.forEach(o => o.visible = !interior && (z === hovered || z === selected || z === panelHover)));
+    if (interior) interior.rooms.forEach(r => { r.outline.visible = r === hovered || r === interior.selRoom || r === panelHover; });
   }
   function hover(x, y) {
     lastMouse = { x, y };
     const zone = pick(x, y);
     if (zone !== hovered) {
       hovered = zone;
-      if (zone) {
+      if (zone && zone.isRoom) {
+        card.innerHTML = roomCard(zone);
+        card.classList.add('show'); card.setAttribute('aria-hidden', 'false');
+      } else if (zone) {
         card.innerHTML =
           '<div class="top"><span class="n">' + zone.no + '</span><span class="zh">' + zone.zh + '</span></div>' +
           '<div class="en">' + zone.en + '</div>' +
@@ -1811,6 +1865,7 @@
     panelBody.querySelectorAll('.zone-item').forEach(el => el.classList.toggle('hl', !!z && el.getAttribute('data-zone') === z.id));
   }
   function select(z, fly) {
+    if (interior) { leaveInterior(); selected = null; }
     if (z === selected && z) return;
     selected = z;
     refreshOutlines();
@@ -1843,7 +1898,9 @@
   function layoutPins() {
     const W = SW, H = SH;
     const items = [];
-    zones.forEach(z => {
+    const owners = activePinOwners();
+    zones.concat(...builtInteriors.map(f => f.pinOwners)).forEach(o => { if (!owners.includes(o)) o.pinEl.classList.add('hidden'); });
+    owners.forEach(z => {
       z.pinEl.classList.toggle('hidden', !showPins);
       if (!showPins) return;
       tmp.copy(z.anchor).project(camera);
@@ -1897,12 +1954,14 @@
     }
     lctx.clearRect(0, 0, W, H);
     const night = document.body.classList.contains('night');
-    const focus = hovered || selected;
+    const selNow = interior ? interior.selRoom : selected;
+    const focus = hovered || panelHover || selNow;
     items.forEach(p => {
       p.z.pinEl.style.transform = 'translate(' + Math.round(p.x) + 'px,' + Math.round(p.y) + 'px)';
-      p.z.pinEl.classList.toggle('dim', !!focus && focus !== p.z);
-      p.z.pinEl.classList.toggle('sel', selected === p.z);
-      const alpha = focus && focus !== p.z ? 0.25 : 0.85;
+      const dimmed = !!focus && focus !== p.z && focus.floor !== p.z;
+      p.z.pinEl.classList.toggle('dim', dimmed);
+      p.z.pinEl.classList.toggle('sel', selNow === p.z);
+      const alpha = dimmed ? 0.25 : 0.85;
       const ex = Math.max(p.x + 8, Math.min(p.x + p.w - 8, p.ax));
       const ey = p.y + p.h / 2 < p.ay ? p.y + p.h : p.y;
       lctx.strokeStyle = night ? 'rgba(224,164,58,' + alpha + ')' : 'rgba(15,42,46,' + (alpha * 0.75) + ')';
@@ -1915,6 +1974,962 @@
     });
     window.__pinRects = items.map(p => ({ id: p.z.id, x: p.x, y: p.y, w: p.w, h: p.h }));
     window.__hudRects = obstacles;
+  }
+
+  // ===========================================================================
+  // Interior bird's-eye diagrams (one per building, built on first open)
+  // room rows: [id, x0, z0, w, d, type, zh, en, desc zh, desc en]
+  // x0/z0 are the room's corner relative to the floor plate centre
+  // ===========================================================================
+  const FAC = {
+    main: {
+      W: 30, D: 20, gap: 18, core: [-3, -10, 6, 6],
+      intro: '5 層建築拆層顯示：地面大堂、2 樓顧問中心、3–4 樓研發辦公、5 樓會議培訓及天台花園。',
+      introEn: 'An exploded view of all five floors: the ground-floor lobby, the level-2 advisory centre, the level-3–4 R&D offices, the level-5 conference floor and the roof garden.',
+      floors: [
+        { tag: 'G', short: 'G', zh: '地面層 · 大堂及展示', en: 'Ground floor · Lobby & showcase', env: 'glass', rooms: [
+          ['gallery', -15, -10, 9, 20, 'gallery', '成果展示廊', 'Showcase gallery', '展示進駐企業及園區研發成果的常設展區。', 'A permanent exhibition of research results from campus companies.'],
+          ['lobby', -6, -4, 15, 14, 'lobby', '雙層高大堂及接待', 'Double-height lobby & reception', '訪客登記、接待及等候區，設 BTRDCC 品牌牆。', 'Visitor check-in, reception and waiting area with the BTRDCC brand wall.'],
+          ['security', -6, -10, 3, 6, 'security', '保安控制室', 'Security office', '閉路電視監察及門禁管理。', 'CCTV monitoring and access control.'],
+          ['mail', 3, -10, 6, 6, 'storage', '收發室', 'Mail & deliveries', '包裹收發及訪客寄存。', 'Parcel handling and visitor storage.'],
+          ['cafe', 9, -10, 6, 10, 'cafe', '咖啡角', 'Coffee corner', '輕食及非正式會面。', 'Light meals and informal meetings.'],
+          ['visitor', 9, 0, 6, 10, 'meeting', '訪客中心', 'Visitor centre', '園區簡介及導覽集合點。', 'Campus briefings and the meeting point for tours.']
+        ] },
+        { tag: '2F', short: '2', zh: '2 樓 · 顧問及商業化中心', en: 'Level 2 · Advisory & commercialisation', env: 'glass', rooms: [
+          ['consult', -15, -10, 9, 10, 'meetings3', '顧問會談室', 'Consultation rooms', '三間獨立會談室，供技術及商業顧問與企業會面。', 'Three private rooms where advisors meet companies.'],
+          ['bizdev', -15, 0, 9, 10, 'desks', '商業化輔導團隊', 'Commercialisation team', '協助企業制定市場策略、申請資助及對接投資者。', 'Helps companies with market strategy, grant applications and investor introductions.'],
+          ['print', -6, -10, 3, 6, 'storage', '文印室', 'Print room', '打印及文具。', 'Printing and supplies.'],
+          ['advisory', -6, -4, 15, 14, 'desks', '顧問團隊辦公區', 'Advisory team office', '技術、法規及知識產權顧問的開放式辦公區。', 'Open-plan office for technical, regulatory and IP advisors.'],
+          ['project', 3, -10, 6, 6, 'meeting', '項目室', 'Project room', '跨團隊項目工作坊。', 'Workshops for cross-team projects.'],
+          ['bridge', 9, -10, 6, 20, 'lounge', '天橋連接及交流區', 'Skybridge lounge', '兩條天橋由此通往共享濕實驗室，兼作交流區。', 'Both skybridges to the wet labs start here; it doubles as a breakout space.']
+        ] },
+        { tag: '3–4F', short: '3', zh: '3–4 樓 · 企業研發辦公（標準層）', en: 'Levels 3–4 · Corporate R&D offices (typical floor)', env: 'glass', rooms: [
+          ['suiteA', -15, -10, 12, 20, 'desks', '研發套房 A', 'R&D suite A', '可按企業規模分隔的研發辦公套房。', 'An R&D office suite that can be divided to suit each company.'],
+          ['pantry', -3, -4, 6, 14, 'lounge', '茶水及交流區', 'Pantry & breakout', '各企業共用的茶水間及休息區。', 'Shared pantry and breakout area.'],
+          ['meet3', 3, -10, 12, 6, 'meetings2', '共享會議室', 'Shared meeting rooms', '兩間可預約的會議室。', 'Two bookable meeting rooms.'],
+          ['suiteB', 3, -4, 12, 14, 'desks', '研發套房 B', 'R&D suite B', '另一間研發套房，設獨立入口。', 'A second R&D suite with its own entrance.']
+        ] },
+        { tag: '5F', short: '5', zh: '5 樓 · 會議及培訓', en: 'Level 5 · Conference & training', env: 'glass', rooms: [
+          ['hall', -15, -10, 12, 20, 'auditorium', '多功能會議廳', 'Conference hall', '約 150 座位，用於研討會、發佈會及路演。', 'About 150 seats for seminars, launches and pitch events.'],
+          ['foyer', -3, -4, 6, 14, 'lounge', '會議前廳', 'Pre-function foyer', '茶歇及登記區。', 'Coffee breaks and registration.'],
+          ['board', 3, -10, 12, 10, 'meeting', '董事會議室', 'Boardroom', '董事會及投資者會議。', 'Board and investor meetings.'],
+          ['training', 3, 0, 12, 10, 'classroom', '培訓室', 'Training room', 'GMP、實驗室安全及創業課程。', 'Courses on GMP, lab safety and entrepreneurship.']
+        ] },
+        { tag: 'RF', short: 'R', zh: '天台 · 綠化花園及太陽能', en: 'Roof · Garden & solar', env: 'parapet', rooms: [
+          ['solar', -15, -10, 12, 10, 'solar', '太陽能板陣列', 'Solar array', '為大樓公共區域供電。', 'Powers the building’s common areas.'],
+          ['plant', 3, -10, 12, 10, 'plantroom', '機電設備房', 'Plant room', '空調及通風設備。', 'Air-conditioning and ventilation equipment.'],
+          ['garden', -15, 0, 30, 10, 'garden', '天台綠化花園', 'Roof garden', '交流及活動場地，種植本地熱帶植物。', 'A social and event space planted with local tropical species.']
+        ] }
+      ]
+    },
+    lab: {
+      W: 24, D: 20, gap: 16, core: [-12, -10, 5, 6],
+      intro: 'A 座地面支援層、A 座實驗樓層及 B 座分析平台拆層顯示；兩座均以 2 樓天橋連接主樓。',
+      introEn: 'An exploded view of Lab A’s support floor, Lab A’s lab floors and Lab B’s analytical cores. Both buildings link to the main building at level 2.',
+      floors: [
+        { tag: 'A · G', short: 'AG', zh: 'A 座地面層 · 支援設施', en: 'Lab A, ground floor · Support', env: 'wall', rooms: [
+          ['gown', -12, -4, 5, 5, 'airlock', '更衣及入口', 'Gowning & entry', '更換實驗袍，經門禁進入實驗區。', 'Change into lab coats and pass access control into the lab zone.'],
+          ['wash', -7, -10, 11, 9, 'autoclave', '洗滌及滅菌', 'Glass-wash & autoclave', '玻璃器皿清洗及高壓滅菌。', 'Glassware washing and autoclave sterilisation.'],
+          ['waste', 4, -10, 8, 9, 'waste', '廢物處理間', 'Waste handling', '化學品及生物廢物分類暫存。', 'Sorted temporary storage for chemical and biological waste.'],
+          ['goods', -12, 1, 8, 9, 'storage', '收貨及物料倉', 'Goods-in & stores', '耗材及試劑的收貨、儲存及分發。', 'Receiving, storing and issuing consumables and reagents.'],
+          ['cold', -4, 1, 8, 9, 'cold', '冷庫及樣本庫', 'Cold rooms & sample bank', '4°C 冷房及 −80°C 超低溫冰箱。', 'A 4 °C cold room and −80 °C freezers.'],
+          ['ln2', 4, 1, 8, 9, 'ln2', '液氮儲存', 'Liquid-nitrogen store', '細胞株長期保存及液氮供應。', 'Long-term cell-line storage and liquid-nitrogen supply.']
+        ] },
+        { tag: 'A · 2–3F', short: 'A2', zh: 'A 座 2–3 樓 · 分子生物及細胞培養', en: 'Lab A, levels 2–3 · Molecular & cell biology', env: 'wall', rooms: [
+          ['equip', -12, -4, 5, 5, 'instrument', '儀器小間', 'Equipment bay', '共用 PCR 儀及讀板機。', 'Shared thermal cyclers and plate readers.'],
+          ['tc', -7, -10, 11, 9, 'bsc', '細胞培養室', 'Cell-culture suite', '生物安全櫃、CO₂ 培養箱及離心機。', 'Biosafety cabinets, CO₂ incubators and centrifuges.'],
+          ['write', 4, -10, 8, 9, 'desks', '實驗記錄辦公位', 'Write-up desks', '實驗區外的記錄及數據整理座位。', 'Desks outside the lab for notes and data.'],
+          ['open', -12, 1, 16, 9, 'bench', '開放式共享實驗台', 'Open shared benches', '按月或按日租用的標準實驗台，配試劑架及水槽。', 'Standard benches with reagent shelves and sinks, hired monthly or daily.'],
+          ['pcr', 4, 1, 8, 9, 'bench', 'PCR 及分子生物室', 'PCR & molecular room', '獨立分區，避免交叉污染。', 'Kept separate to avoid cross-contamination.']
+        ] },
+        { tag: 'B', short: 'B', zh: 'B 座 · 分析測試平台', en: 'Lab B · Analytical cores', env: 'wall', rooms: [
+          ['prep', -12, -4, 5, 5, 'bench', '樣本前處理', 'Sample prep', '樣本接收及前處理。', 'Sample reception and preparation.'],
+          ['img', -7, -10, 11, 9, 'microscope', '影像分析室', 'Imaging suite', '共聚焦及高內涵顯微鏡。', 'Confocal and high-content microscopes.'],
+          ['data', 4, -10, 8, 9, 'desks', '數據分析室', 'Data analysis room', '生物資訊及 AI 分析工作站。', 'Bioinformatics and AI analysis workstations.'],
+          ['seq', -12, 1, 12, 9, 'instrument', '基因測序平台', 'Sequencing core', '高通量測序儀及文庫製備。', 'High-throughput sequencers and library preparation.'],
+          ['ms', 0, 1, 12, 9, 'massspec', '質譜分析', 'Mass spectrometry', '蛋白質組及代謝物分析。', 'Proteomics and metabolite analysis.']
+        ] }
+      ]
+    },
+    plant: {
+      W: 40, D: 28, gap: 0, core: null,
+      intro: '移除屋頂後的單層廠房平面：北面上游發酵、中段下游純化、東面潔淨灌裝，物料與人流分開。',
+      introEn: 'The single-storey plant with its roof removed: upstream fermentation to the north, downstream purification in the middle and clean fill–finish to the east, with materials and people kept apart.',
+      floors: [
+        { tag: '', short: '', zh: '廠房平面', en: 'Plant floor', env: 'wall', rooms: [
+          ['ferm', -20, -14, 16, 16, 'reactor', '發酵及細胞培養區', 'Fermentation & cell culture', '由 50 L、200 L 至 2,000 L 生物反應器組成的放大線。', 'A scale-up train of 50 L, 200 L and 2,000 L bioreactors.'],
+          ['dsp', -4, -14, 14, 16, 'skid', '下游純化區', 'Downstream purification', '離心、層析及超濾系統。', 'Centrifugation, chromatography and ultrafiltration.'],
+          ['fill', 10, -14, 10, 12, 'cleanroom', 'GMP 潔淨灌裝', 'GMP fill–finish', 'A/B 級潔淨區內的隔離器灌裝線。', 'An isolator filling line in a Grade A/B cleanroom.'],
+          ['gown2', 10, -2, 10, 4, 'airlock', '更衣及氣閘', 'Gowning & airlocks', '進入潔淨區前的分級更衣。', 'Staged gowning before entering the cleanroom.'],
+          ['wh', -20, 4, 14, 10, 'storage', '原料及成品倉', 'Warehouse', '溫控倉儲，西側直通卸貨區。', 'Temperature-controlled storage opening onto the west loading docks.'],
+          ['util', -6, 4, 14, 10, 'utility', '公用工程', 'Utilities', '純化水、注射用水、蒸汽及壓縮空氣。', 'Purified water, water for injection, steam and compressed air.'],
+          ['qc', 8, 4, 12, 10, 'bench', '品質控制實驗室', 'QC laboratory', '原料、中間品及成品的檢測放行。', 'Testing and release of materials, intermediates and product.']
+        ] }
+      ]
+    },
+    farm: {
+      W: 36, D: 24, gap: 0, core: null,
+      intro: '西端工作站與一座研究溫室的內部：由育苗、栽培、表型分析到樣本處理。',
+      introEn: 'Inside the west headhouse and one research greenhouse: propagation, growing, phenotyping and sample preparation.',
+      floors: [
+        { tag: '', short: '', zh: '工作站及溫室', en: 'Headhouse & greenhouse', env: 'none', rooms: [
+          ['prop', -18, -12, 10, 10, 'propagation', '育苗室', 'Propagation room', '多層 LED 育苗架，培育試驗用幼苗。', 'Multi-tier LED racks for raising seedlings for trials.'],
+          ['seed', -18, -2, 10, 6, 'seedstore', '種子庫', 'Seed store', '低溫低濕的種質資源庫。', 'A cool, dry store for seed collections.'],
+          ['prep2', -18, 4, 10, 8, 'bench', '樣本處理實驗室', 'Sample-prep lab', '收穫樣本的稱重、乾燥及前處理。', 'Weighing, drying and preparing harvested samples.'],
+          ['gh', -6, -12, 24, 12, 'greenhouse', '研究溫室', 'Research greenhouse', '獨立控制溫濕度並以 LED 補光的試驗栽培區。', 'A trial growing area with its own climate control and LED lighting.'],
+          ['pheno', -6, 2, 24, 10, 'pheno', '表型分析通道', 'Phenotyping line', '輸送帶把植株送經影像站，自動記錄生長數據。', 'A conveyor carries plants through an imaging station that logs growth automatically.']
+        ] }
+      ]
+    },
+    tower: {
+      W: 16, D: 16, gap: 14, core: [-2.5, -2.5, 5, 5],
+      intro: '8 層塔樓拆層顯示：地面公共層、技術轉移樓層、空中花園、共享辦公及頂層創投基金。',
+      introEn: 'An exploded view of the eight-storey tower: the public ground floor, the tech-transfer floors, the sky garden, co-working and the venture-fund floor at the top.',
+      floors: [
+        { tag: 'G', short: 'G', zh: '地面層 · 大堂、咖啡廳及路演廳', en: 'Ground · Lobby, café & pitch hall', env: 'glass', rooms: [
+          ['cafeT', -8, -8, 5.5, 10.5, 'cafe', '咖啡廳', 'Café', '面向入口廣場，開放予公眾。', 'Faces the entrance plaza and is open to the public.'],
+          ['pitch', 2.5, -8, 5.5, 10.5, 'auditorium', '路演廳', 'Pitch hall', '初創企業向投資者路演的場地。', 'Where start-ups pitch to investors.'],
+          ['lobbyT', -8, 2.5, 16, 5.5, 'lobby', '大堂及接待', 'Lobby & reception', '對外接待及訪客登記。', 'Reception and visitor check-in.']
+        ] },
+        { tag: '2–4F', short: '2', zh: '2–4 樓 · 技術轉移及知識產權', en: 'Levels 2–4 · Tech transfer & IP', env: 'glass', rooms: [
+          ['tto', -8, -8, 5.5, 16, 'desks', '技術轉移辦公室', 'Technology transfer office', '評估研究成果、安排授權及成立衍生公司。', 'Assesses research results, arranges licences and sets up spin-offs.'],
+          ['ip', 2.5, -8, 5.5, 10.5, 'offices', '知識產權及法律服務', 'IP & legal services', '專利檢索、申請及合約服務。', 'Patent searches, filings and contract work.'],
+          ['lic', 2.5, 2.5, 5.5, 5.5, 'meeting', '授權洽談室', 'Licensing room', '與企業洽談技術授權。', 'Licence negotiations with companies.']
+        ] },
+        { tag: '5F', short: '5', zh: '5 樓 · 空中花園', en: 'Level 5 · Sky garden', env: 'parapet', rooms: [
+          ['sky', -8, -8, 16, 16, 'garden', '空中花園', 'Sky garden', '半戶外交流平台，可眺望整個園區。', 'A semi-outdoor meeting deck with views across the campus.']
+        ] },
+        { tag: '6–7F', short: '6', zh: '6–7 樓 · 初創共享辦公', en: 'Levels 6–7 · Start-up co-working', env: 'glass', rooms: [
+          ['cowork', -8, -8, 5.5, 16, 'desks', '共享辦公區', 'Co-working floor', '按座位租用的開放式辦公位。', 'Open desks rented by the seat.'],
+          ['pods', 2.5, -8, 5.5, 10.5, 'pods', '電話間及小會議室', 'Phone booths & huddle rooms', '私人通話及小組討論。', 'Private calls and small-group discussions.'],
+          ['community', 2.5, 2.5, 5.5, 5.5, 'lounge', '社群活動區', 'Community space', '交流活動及導師時段。', 'Events and mentor office hours.']
+        ] },
+        { tag: '8F', short: '8', zh: '8 樓 · 創投基金', en: 'Level 8 · Venture funds', env: 'glass', rooms: [
+          ['vc', -8, -8, 5.5, 16, 'offices', '基金辦公室', 'Fund offices', '創投及天使基金的獨立辦公室。', 'Private offices for venture and angel funds.'],
+          ['icr', 2.5, -8, 5.5, 10.5, 'meeting', '投資委員會會議室', 'Investment committee room', '投資決策會議。', 'Where investment decisions are made.'],
+          ['vlounge', 2.5, 2.5, 5.5, 5.5, 'lounge', '投資者酒廊', 'Investor lounge', '接待投資者及合作夥伴。', 'Hosting investors and partners.']
+        ] }
+      ]
+    }
+  };
+
+  // room categories → floor colour + legend label
+  const CATS = {
+    office: [0xEDE6D6, '#EDE6D6', '辦公', 'Office'],
+    public: [0xF3E3C0, '#F3E3C0', '公共', 'Public'],
+    lab: [0xCFE7DE, '#CFE7DE', '實驗', 'Laboratory'],
+    clean: [0xD8E7F2, '#D8E7F2', '潔淨區', 'Cleanroom'],
+    support: [0xE2DDD2, '#E2DDD2', '支援', 'Support'],
+    industrial: [0xD5D9D6, '#D5D9D6', '生產', 'Production'],
+    ag: [0xD6E8C2, '#D6E8C2', '農業', 'Agriculture'],
+    garden: [0x9DC985, '#9DC985', '綠化', 'Garden']
+  };
+  const TYPE_CAT = {
+    desks: 'office', offices: 'office', meeting: 'office', meetings2: 'office', meetings3: 'office', classroom: 'office', pods: 'office',
+    lounge: 'public', lobby: 'public', gallery: 'public', cafe: 'public', auditorium: 'public',
+    bench: 'lab', bsc: 'lab', instrument: 'lab', massspec: 'lab', microscope: 'lab',
+    security: 'support', storage: 'support', cold: 'support', ln2: 'support', waste: 'support', autoclave: 'support', seedstore: 'support', solar: 'support', plantroom: 'support',
+    airlock: 'clean', cleanroom: 'clean',
+    reactor: 'industrial', skid: 'industrial', utility: 'industrial',
+    propagation: 'ag', greenhouse: 'ag', pheno: 'ag', garden: 'garden'
+  };
+  const OPEN_TYPES = new Set(['lobby', 'lounge', 'garden', 'solar', 'greenhouse', 'pheno', 'cafe']);
+  const GLASS_TYPES = new Set(['meeting', 'meetings2', 'meetings3', 'cleanroom', 'pods', 'offices', 'classroom']);
+
+  const IM = {
+    slab: mat(0xF3EEE3), wall: mat(0xFBF8F1), desk: mat(0xE6DCC6), wood: mat(0xB68B5E), chair: mat(0x2c4f53),
+    screen: mat(0x1b2a2c), white: mat(0xF6F5F0), cream: mat(0xEDE7DA), sofa: mat(0x17775A), sofa2: mat(0x3d6a6e),
+    pot: mat(0xD7CDB9), carton: mat(0xC9A46B), yellow: mat(0xE3BE3A), red: mat(0xC0504D), core: mat(0x24474b),
+    coldroom: mat(0xD6E6EE), benchTop: mat(0x2f4b4f), seedling: mat(0x5DB06E), conveyor: mat(0x3c4a4c),
+    colGlass: new THREE.MeshStandardMaterial({ color: 0xa9d8d2, roughness: 0.15, metalness: 0.2, transparent: true, opacity: 0.8 }),
+    led: glow(0xf3e6ff, 0xc77dff, 1.4), dash: new THREE.LineDashedMaterial({ color: C.teal, dashSize: 0.8, gapSize: 0.6, transparent: true, opacity: 0.45 })
+  };
+  const floorMats = {};
+  const floorMat = cat => floorMats[cat] || (floorMats[cat] = glow(CATS[cat][0], CATS[cat][0], 0.22, { roughness: 0.9, flatShading: true }));
+
+  // small helpers: fb = furniture box (no outline), fc = furniture cylinder
+  const fb = (w, h, d, m, x, y, z, g) => { const o = box(w, h, d, m, x, y, z, g); o.userData.noEdge = true; return o; };
+  const fc = (rt, rb, h, seg, m, x, y, z, g) => { const o = cyl(rt, rb, h, seg, m, x, y, z, g); o.userData.noEdge = true; return o; };
+  const rect = (x0, z0, w, d) => ({ x0, z0, w, d, cx: x0 + w / 2, cz: z0 + d / 2 });
+  function grid(r, sx, sz, pad, cb) {
+    const nx = Math.max(1, Math.floor((r.w - 2 * pad) / sx)), nz = Math.max(1, Math.floor((r.d - 2 * pad) / sz));
+    const ox = r.cx - (nx - 1) * sx / 2, oz = r.cz - (nz - 1) * sz / 2;
+    for (let i = 0; i < nx; i++) for (let j = 0; j < nz; j++) cb(ox + i * sx, oz + j * sz, i, j, nx, nz);
+  }
+  // axis helper for long thin layouts: t runs along the long side, o across it
+  function axes(r) {
+    const along = r.w >= r.d;
+    const long = along ? r.w : r.d, across = along ? r.d : r.w;
+    const o0 = along ? r.z0 : r.x0;
+    const ab = (L, h, W, m, t, y, o, g) => along ? fb(L, h, W, m, r.cx + t, y, o, g) : fb(W, h, L, m, o, y, r.cz + t, g);
+    const ac = (rad, h, seg, m, t, y, o, g) => along ? fc(rad, rad, h, seg, m, r.cx + t, y, o, g) : fc(rad, rad, h, seg, m, o, y, r.cz + t, g);
+    const ap = (t, o, y, g) => along ? person(r.cx + t, o, y || 0, g) : person(o, r.cz + t, y || 0, g);
+    return { along, long, across, o0, ab, ac, ap };
+  }
+  function pot(g, x, z, s) {
+    s = s || 1;
+    fc(0.32 * s, 0.25 * s, 0.5 * s, 8, IM.pot, x, 0, z, g);
+    const m = new THREE.Mesh(new THREE.IcosahedronGeometry(0.55 * s, 0), M.leaf[1]);
+    m.position.set(x, 0.95 * s, z); m.castShadow = true; m.userData.noEdge = true; g.add(m);
+  }
+  function dome(rad, m, x, y, z, g) {
+    const d = new THREE.Mesh(new THREE.SphereGeometry(rad, 16, 6, 0, Math.PI * 2, 0, Math.PI / 2), m);
+    d.position.set(x, y, z); d.castShadow = true; d.userData.noEdge = true; g.add(d);
+  }
+  const m4 = new THREE.Matrix4();
+  function inst(geo, m, pts, g) {
+    const im = new THREE.InstancedMesh(geo, m, pts.length);
+    pts.forEach((p, i) => { m4.makeTranslation(p[0], p[1], p[2]); im.setMatrixAt(i, m4); });
+    im.castShadow = true; im.receiveShadow = true; im.userData.noEdge = true;
+    g.add(im); return im;
+  }
+  function split(r, n) {
+    const along = r.w >= r.d, out = [];
+    for (let k = 0; k < n; k++) out.push(along ? rect(r.x0 + k * r.w / n, r.z0, r.w / n, r.d) : rect(r.x0, r.z0 + k * r.d / n, r.w, r.d / n));
+    return out;
+  }
+  function partitions(g, r, n) {
+    const along = r.w >= r.d;
+    for (let k = 1; k < n; k++) {
+      if (along) fb(0.08, 1.5, r.d - 0.4, M.glass, r.x0 + k * r.w / n, 0, r.cz, g);
+      else fb(r.w - 0.4, 1.5, 0.08, M.glass, r.cx, 0, r.z0 + k * r.d / n, g);
+    }
+  }
+  function meetingTable(g, r) {
+    const along = r.w >= r.d;
+    const L = Math.max(1.6, (along ? r.w : r.d) * 0.55), T = Math.min(1.5, Math.max(0.9, (along ? r.d : r.w) * 0.32));
+    fb(along ? L : T, 0.75, along ? T : L, IM.wood, r.cx, 0, r.cz, g);
+    const n = Math.max(2, Math.floor(L / 0.95)), off = T / 2 + 0.42;
+    for (let k = 0; k < n; k++) {
+      const t = -L / 2 + (k + 0.5) * L / n;
+      [-1, 1].forEach(s => along ? fb(0.48, 0.48, 0.48, IM.chair, r.cx + t, 0, r.cz + s * off, g) : fb(0.48, 0.48, 0.48, IM.chair, r.cx + s * off, 0, r.cz + t, g));
+    }
+    if (along) fb(Math.min(2.2, r.w * 0.4), 1.0, 0.08, IM.screen, r.cx, 1.0, r.z0 + 0.3, g);
+    else fb(0.08, 1.0, Math.min(2.2, r.d * 0.4), IM.screen, r.x0 + 0.3, 1.0, r.cz, g);
+    if (along) person(r.cx - L * 0.2, r.cz + off, 0, g); else person(r.cx + off, r.cz - L * 0.2, 0, g);
+  }
+
+  const GEN = {
+    desks(g, r) {
+      grid(r, 3.4, 3.0, 0.9, (x, z, i, j) => {
+        fb(2.4, 0.75, 1.3, IM.desk, x, 0, z, g);
+        fb(0.55, 0.34, 0.05, IM.screen, x - 0.6, 0.75, z - 0.12, g);
+        fb(0.55, 0.34, 0.05, IM.screen, x + 0.6, 0.75, z + 0.12, g);
+        fb(0.48, 0.48, 0.48, IM.chair, x - 0.6, 0, z - 0.95, g);
+        fb(0.48, 0.48, 0.48, IM.chair, x + 0.6, 0, z + 0.95, g);
+        if ((i + j) % 3 === 0) person(x - 0.6, z - 1.0, 0, g);
+      });
+    },
+    meeting(g, r) { meetingTable(g, r); },
+    meetings2(g, r) { split(r, 2).forEach(s => meetingTable(g, s)); partitions(g, r, 2); },
+    meetings3(g, r) { split(r, 3).forEach(s => meetingTable(g, s)); partitions(g, r, 3); },
+    lounge(g, r) {
+      grid(r, 5.2, 4.6, 1.0, (x, z, i, j) => {
+        fb(2.2, 0.42, 0.85, IM.sofa, x, 0, z - 1.0, g);
+        fb(2.2, 0.45, 0.22, IM.sofa, x, 0.42, z - 1.33, g);
+        fb(0.85, 0.42, 1.6, IM.sofa2, x - 1.55, 0, z - 0.1, g);
+        fc(0.45, 0.45, 0.4, 10, IM.wood, x + 0.1, 0, z + 0.2, g);
+        pot(g, x + 1.6, z + 1.0, 0.9);
+        if ((i + j) % 2 === 0) person(x + 0.8, z + 0.7, 0, g);
+      });
+    },
+    lobby(g, r) {
+      const wl = Math.min(r.w - 2, 7);
+      box(wl, 2.6, 0.3, M.teal, r.cx, 0, r.z0 + 0.5, g);
+      const s = signPlane('BTRDCC', wl * 0.62, wl * 0.62 * 0.17, { fg: '#E0A43A', spacing: '20px', glow: 1.1 });
+      s.position.set(r.cx, 1.7, r.z0 + 0.67); g.add(s);
+      const dl = Math.min(4.5, r.w * 0.4), dz = r.z0 + Math.min(2.4, r.d * 0.42);
+      fb(dl, 1.1, 1.0, IM.white, r.cx, 0, dz, g);
+      fb(dl + 0.04, 0.16, 1.04, M.gold, r.cx, 0.78, dz, g);
+      person(r.cx - 0.6, dz - 0.8, 0, g);
+      if (r.d > 8) {
+        const zz = r.z0 + r.d * 0.72;
+        fb(2.4, 0.42, 0.85, IM.sofa, r.cx - 2.6, 0, zz, g); fb(2.4, 0.42, 0.85, IM.sofa, r.cx + 2.6, 0, zz, g);
+        fc(0.5, 0.5, 0.4, 10, IM.wood, r.cx, 0, zz, g);
+        for (let k = 0; k < 4; k++) person(r.x0 + 1.5 + rnd() * (r.w - 3), r.z0 + r.d * 0.5 + rnd() * r.d * 0.4, 0, g);
+      } else {
+        fb(2.2, 0.42, 0.8, IM.sofa, r.x0 + 2, 0, r.z0 + r.d - 1, g); fb(2.2, 0.42, 0.8, IM.sofa, r.x0 + r.w - 2, 0, r.z0 + r.d - 1, g);
+        person(r.x0 + 4.5, r.z0 + r.d - 1.4, 0, g);
+      }
+      pot(g, r.x0 + 1, r.z0 + 1); pot(g, r.x0 + r.w - 1, r.z0 + 1);
+    },
+    gallery(g, r) {
+      box(0.25, 2.4, r.d - 1.2, M.teal, r.x0 + 0.45, 0, r.cz, g);
+      const pm = [M.gold, IM.cream, M.green];
+      for (let k = 0, z = r.z0 + 1.6; z < r.z0 + r.d - 1.4; k++, z += 2.6) fb(0.06, 1.2, 1.8, pm[k % 3], r.x0 + 0.6, 0.7, z, g);
+      grid(rect(r.x0 + 1.4, r.z0, r.w - 1.4, r.d), 2.6, 3.0, 0.9, (x, z, i, j) => {
+        fb(1.1, 0.9, 1.1, IM.white, x, 0, z, g);
+        if ((i + j) % 2) fb(0.5, 0.5, 0.5, M.teal, x, 0.9, z, g);
+        else { const s = new THREE.Mesh(new THREE.SphereGeometry(0.32, 12, 8), M.gold); s.position.set(x, 1.25, z); s.castShadow = true; s.userData.noEdge = true; g.add(s); }
+      });
+      for (let k = 0; k < 3; k++) person(r.x0 + 2 + rnd() * (r.w - 3), r.z0 + 1.5 + rnd() * (r.d - 3), 0, g);
+    },
+    cafe(g, r) {
+      const a = axes(r);
+      a.ab(a.long * 0.6, 1.05, 0.8, IM.wood, 0, 0, a.o0 + 0.7, g);
+      a.ab(a.long * 0.6 + 0.04, 0.06, 0.84, M.gold, 0, 1.05, a.o0 + 0.7, g);
+      a.ap(a.long * 0.1, a.o0 + 0.1, 0, g);
+      const inner = a.along ? rect(r.x0, r.z0 + 1.8, r.w, r.d - 1.8) : rect(r.x0 + 1.8, r.z0, r.w - 1.8, r.d);
+      grid(inner, 2.3, 2.3, 0.7, (x, z, i, j) => {
+        fc(0.42, 0.42, 0.75, 10, IM.white, x, 0, z, g);
+        fc(0.2, 0.2, 0.45, 8, IM.chair, x - 0.62, 0, z, g);
+        fc(0.2, 0.2, 0.45, 8, IM.chair, x + 0.62, 0, z, g);
+        if ((i + j) % 2 === 0) person(x - 0.62, z + 0.1, 0, g);
+      });
+    },
+    auditorium(g, r) {
+      const a = axes(r);
+      a.ab(a.long - 1.2, 0.4, 1.8, IM.wood, 0, 0, a.o0 + 1.2, g);
+      a.ab(Math.min(a.long * 0.6, 7), 2.0, 0.12, IM.screen, 0, 0.9, a.o0 + 0.4, g);
+      a.ab(0.6, 1.1, 0.5, IM.wood, a.long * 0.25, 0.4, a.o0 + 1.4, g);
+      const pts = [];
+      for (let o = a.o0 + 3.2; o < a.o0 + a.across - 0.6; o += 1.0) {
+        for (let t = -a.long / 2 + 0.8; t <= a.long / 2 - 0.8; t += 0.72) {
+          if (Math.abs(t) < 0.5) continue;
+          pts.push(a.along ? [r.cx + t, 0.25, o] : [o, 0.25, r.cz + t]);
+        }
+      }
+      inst(new THREE.BoxGeometry(0.55, 0.5, 0.5), IM.chair, pts, g);
+      pts.forEach((p, k) => { if (k % 9 === 4) person(p[0], p[2], 0, g); });
+    },
+    classroom(g, r) {
+      const a = axes(r);
+      a.ab(Math.min(a.long * 0.5, 5), 1.5, 0.1, IM.screen, 0, 0.8, a.o0 + 0.35, g);
+      for (let o = a.o0 + 2.4; o < a.o0 + a.across - 0.8; o += 1.7) {
+        for (let t = -a.long / 2 + 1.8; t <= a.long / 2 - 1.8; t += 3.0) {
+          a.ab(2.4, 0.75, 0.6, IM.desk, t, 0, o, g);
+          [-0.8, 0, 0.8].forEach(dt => a.ab(0.45, 0.45, 0.45, IM.chair, t + dt, 0, o + 0.65, g));
+        }
+      }
+      a.ap(-a.long / 2 + 1.5, a.o0 + 1.2, 0, g);
+      a.ap(1.2, a.o0 + 3.1, 0, g);
+    },
+    security(g, r) {
+      fb(r.w * 0.7, 0.8, 0.8, IM.desk, r.cx, 0, r.cz, g);
+      fb(r.w * 0.7, 1.0, 0.1, IM.screen, r.cx, 1.0, r.z0 + 0.3, g);
+      person(r.cx, r.cz + 0.9, 0, g);
+    },
+    storage(g, r) {
+      const a = axes(r);
+      const L = a.long - 2.0, rows = Math.max(1, Math.floor((a.across - 1.6) / 2.6));
+      for (let k = 0; k < rows; k++) {
+        const o = a.o0 + 1.2 + k * 2.6;
+        [0.1, 1.0, 1.9].forEach(y => {
+          a.ab(L, 0.06, 1.0, M.steel, 0, y, o, g);
+          for (let t = -L / 2 + 0.5; t < L / 2 - 0.3; t += 1.0) if (rnd() < 0.7) a.ab(0.8, 0.6, 0.8, IM.carton, t, y + 0.06, o, g);
+        });
+        [-L / 2, 0, L / 2].forEach(t => a.ab(0.08, 2.5, 1.0, M.gold, t, 0, o, g));
+      }
+      if (r.w * r.d > 80) {
+        const t = L / 2 - 1.5, o = a.o0 + a.across - 1.0;
+        a.ab(1.4, 1.0, 0.9, M.gold, t, 0, o, g);
+        a.ab(0.12, 2.2, 0.7, IM.screen, t + 0.8, 0, o, g);
+      }
+      a.ap(-L / 4, a.o0 + a.across - 0.8, 0, g);
+    },
+    bench(g, r) {
+      const a = axes(r);
+      const L = a.long - 3.2, rows = Math.max(1, Math.floor((a.across - 0.8) / 3.2));
+      const first = a.o0 + (a.across - (rows - 1) * 3.2) / 2;
+      for (let k = 0; k < rows; k++) {
+        const o = first + k * 3.2, t0 = -0.9;
+        a.ab(L, 0.9, 1.5, IM.white, t0, 0, o, g);
+        a.ab(L + 0.04, 0.05, 1.54, IM.benchTop, t0, 0.9, o, g);
+        a.ab(L, 0.06, 0.35, M.steel, t0, 1.75, o, g);
+        [-L / 2, L / 2].forEach(dt => a.ab(0.06, 0.85, 0.06, M.steel, t0 + dt, 0.95, o, g));
+        for (let t = -L / 2 + 0.6; t < L / 2; t += 1.1) if (rnd() < 0.6) a.ac(0.09, 0.28, 8, rnd() < 0.5 ? IM.colGlass : IM.white, t0 + t, 1.81, o, g);
+        for (let t = -L / 2 + 0.8; t < L / 2; t += 1.7) { a.ac(0.2, 0.62, 8, IM.chair, t0 + t, 0, o - 1.05, g); a.ac(0.2, 0.62, 8, IM.chair, t0 + t, 0, o + 1.05, g); }
+        // fume hood at the end of each bench
+        a.ab(1.3, 2.2, 1.6, IM.white, t0 + L / 2 + 1.25, 0, o, g);
+        a.ab(0.06, 0.8, 1.3, M.glass, t0 + L / 2 + 0.57, 1.0, o, g);
+      }
+      a.ap(-L / 3, first - 1.1, 0, g);
+      if (rows > 1) a.ap(L / 4, first + 3.2 + 1.1, 0, g);
+    },
+    bsc(g, r) {
+      const a = axes(r);
+      const n = Math.max(1, Math.floor((a.long - 1.2) / 2.0)), back = a.o0 + 0.6;
+      for (let k = 0; k < n; k++) {
+        const t = -a.long / 2 + 1.2 + k * 2.0;
+        a.ab(1.6, 0.9, 0.8, IM.white, t, 0, back, g);
+        a.ab(1.6, 1.1, 0.8, IM.cream, t, 0.9, back, g);
+        a.ab(1.4, 0.55, 0.05, M.glass, t, 1.2, back + 0.43, g);
+        if (k % 2 === 0) a.ap(t, back + 1.0, 0, g);
+      }
+      const front = a.o0 + a.across - 0.6;
+      for (let k = 0; k < n; k++) {
+        const t = -a.long / 2 + 1.2 + k * 2.0;
+        a.ab(0.9, 0.85, 0.8, M.steel, t, 0, front, g);
+        a.ab(0.9, 0.85, 0.8, M.steel, t, 0.86, front, g);
+      }
+      const mid = a.o0 + a.across / 2 + 0.2;
+      a.ab(a.long - 3.4, 0.9, 1.3, IM.white, 0, 0, mid, g);
+      a.ab(a.long - 3.36, 0.05, 1.34, IM.benchTop, 0, 0.9, mid, g);
+      a.ac(0.35, 0.4, 12, IM.white, -1.5, 0.95, mid, g);
+      a.ac(0.35, 0.4, 12, IM.white, 1.5, 0.95, mid, g);
+    },
+    instrument(g, r) {
+      const a = axes(r);
+      const back = a.o0 + 0.6, L = a.long - 1.4;
+      a.ab(L, 0.9, 0.9, IM.white, 0, 0, back, g);
+      for (let t = -L / 2 + 0.8, k = 0; t < L / 2 - 0.5; t += 1.6, k++) {
+        a.ab(1.1, 0.75, 0.75, k % 2 ? M.teal : IM.cream, t, 0.9, back, g);
+        a.ab(0.45, 0.3, 0.04, IM.screen, t, 1.2, back + 0.4, g);
+      }
+      if (a.across > 6) {
+        const mid = a.o0 + a.across / 2 + 1;
+        const n = Math.max(1, Math.floor((a.long - 2) / 3.2));
+        for (let k = 0; k < n; k++) {
+          const t = -((n - 1) * 3.2) / 2 + k * 3.2;
+          box(2.2, 1.5, 1.2, IM.white, a.along ? r.cx + t : mid, 0, a.along ? mid : r.cz + t, g);
+          a.ab(2.22, 0.18, 1.22, M.green, t, 1.1, mid, g);
+        }
+        a.ap(0, mid + 1.2, 0, g);
+      } else a.ap(0, back + 1.0, 0, g);
+    },
+    massspec(g, r) {
+      const a = axes(r);
+      const n = Math.max(1, Math.floor((a.long - 1.6) / 3.6)), mid = a.o0 + a.across * 0.4;
+      for (let k = 0; k < n; k++) {
+        const t = -((n - 1) * 3.6) / 2 + k * 3.6;
+        box(2.6, 1.2, 1.0, IM.white, a.along ? r.cx + t : mid, 0, a.along ? mid : r.cz + t, g);
+        a.ac(0.26, 1.2, 12, M.steel, t - 0.8, 1.2, mid, g);
+        a.ab(0.6, 1.4, 0.6, IM.cream, t + 1.7, 0, mid, g);
+        a.ab(1.4, 0.75, 0.7, IM.desk, t, 0, mid + 1.9, g);
+        a.ab(0.5, 0.32, 0.05, IM.screen, t, 0.75, mid + 1.75, g);
+        a.ab(0.48, 0.48, 0.48, IM.chair, t, 0, mid + 2.6, g);
+      }
+      a.ap(-0.6, mid + 2.6, 0, g);
+    },
+    microscope(g, r) {
+      grid(r, 2.8, 2.7, 0.9, (x, z, i, j) => {
+        fb(1.6, 0.75, 0.8, IM.desk, x, 0, z, g);
+        fb(0.45, 0.08, 0.4, IM.screen, x - 0.25, 0.75, z, g);
+        fc(0.05, 0.05, 0.5, 6, IM.screen, x - 0.25, 0.83, z - 0.12, g);
+        fb(0.28, 0.22, 0.3, IM.white, x - 0.25, 1.22, z, g);
+        fb(0.45, 0.32, 0.05, IM.screen, x + 0.45, 0.75, z - 0.2, g);
+        fb(0.48, 0.48, 0.48, IM.chair, x, 0, z + 0.75, g);
+        if (j === 0 && i % 2 === 0) person(x, z + 0.8, 0, g);
+      });
+    },
+    cold(g, r) {
+      const cw = r.w * 0.5, cd = r.d * 0.55;
+      box(cw, 2.4, cd, IM.coldroom, r.x0 + cw / 2 + 0.4, 0, r.z0 + cd / 2 + 0.4, g);
+      fb(1.0, 2.0, 0.06, M.gold, r.x0 + cw / 2 + 0.4, 0, r.z0 + cd + 0.43, g);
+      for (let x = r.x0 + 0.9; x < r.x0 + r.w - 0.5; x += 1.0) {
+        fb(0.85, 1.95, 0.8, IM.white, x, 0, r.z0 + r.d - 0.6, g);
+        fb(0.3, 0.12, 0.03, IM.screen, x, 1.55, r.z0 + r.d - 1.02, g);
+      }
+      person(r.x0 + r.w * 0.7, r.z0 + r.d - 1.6, 0, g);
+    },
+    ln2(g, r) {
+      cyl(1.1, 1.1, 2.8, 16, IM.white, r.x0 + 1.8, 0, r.z0 + 1.8, g);
+      dome(1.1, IM.white, r.x0 + 1.8, 2.8, r.z0 + 1.8, g);
+      fb(0.12, 0.12, r.d - 1.2, M.gold, r.x0 + 0.4, 2.4, r.cz, g);
+      grid(rect(r.x0 + 3.4, r.z0, r.w - 3.4, r.d), 1.4, 1.4, 0.7, (x, z) => {
+        fc(0.42, 0.42, 1.0, 12, M.steel, x, 0, z, g);
+        fc(0.15, 0.15, 0.2, 8, IM.screen, x, 1.0, z, g);
+      });
+    },
+    waste(g, r) {
+      const ms = [IM.yellow, IM.red, M.teal];
+      grid(r, 1.7, 1.7, 0.9, (x, z, i, j) => {
+        fc(0.42, 0.38, 0.95, 10, ms[(i + j) % 3], x, 0, z, g);
+        fc(0.44, 0.44, 0.06, 10, IM.screen, x, 0.95, z, g);
+      });
+    },
+    autoclave(g, r) {
+      const a = axes(r), back = a.o0 + 0.9;
+      [-2.4, 0].forEach(t => box(1.8, 2.0, 1.4, M.steel, a.along ? r.cx + t : back, 0, a.along ? back : r.cz + t, g));
+      [2.2, 3.2, 4.2].forEach(t => a.ab(0.9, 1.0, 0.85, IM.white, t - 1, 0, back - 0.2, g));
+      const front = a.o0 + a.across - 1.0;
+      [-2.5, 0, 2.5].forEach(t => { a.ab(1.2, 0.08, 0.6, M.steel, t, 0.3, front, g); a.ab(1.2, 0.08, 0.6, M.steel, t, 0.9, front, g); a.ab(1.2, 0.08, 0.6, M.steel, t, 1.5, front, g); });
+      a.ap(1.2, a.o0 + a.across / 2, 0, g);
+    },
+    airlock(g, r) {
+      const a = axes(r), back = a.o0 + 0.35;
+      for (let t = -a.long / 2 + 0.6; t < a.long / 2 - 0.4; t += 0.55) a.ab(0.5, 1.9, 0.5, M.teal, t, 0, back, g);
+      a.ab(a.long * 0.55, 0.45, 0.4, IM.wood, 0, 0, a.o0 + a.across * 0.62, g);
+      a.ab(0.08, 0.02, a.across - 0.6, M.gold, a.long * 0.32, 0, a.o0 + a.across / 2, g);
+      a.ap(-a.long * 0.2, a.o0 + a.across * 0.8, 0, g);
+    },
+    reactor(g, r) {
+      [[r.x0 + 4, r.z0 + 4], [r.x0 + 10.5, r.z0 + 4]].forEach(p => {
+        cyl(1.6, 1.6, 4.4, 18, M.steel, p[0], 0, p[1], g);
+        dome(1.6, M.steel, p[0], 4.4, p[1], g);
+        fc(0.35, 0.35, 0.6, 10, IM.screen, p[0], 5.9, p[1], g);
+        fb(4.4, 0.15, 1.2, M.gold, p[0], 3.0, p[1] + 2.3, g);
+        fb(4.4, 0.9, 0.06, M.gold, p[0], 3.15, p[1] + 2.9, g);
+      });
+      [r.x0 + 3, r.x0 + 7.5, r.x0 + 12].forEach(x => {
+        cyl(0.85, 0.85, 2.3, 16, M.steel, x, 0, r.z0 + 9.6, g);
+        dome(0.85, M.steel, x, 2.3, r.z0 + 9.6, g);
+        fb(0.8, 1.6, 0.4, IM.white, x + 1.35, 0, r.z0 + 9.6, g);
+      });
+      fb(r.w - 3, 0.9, 1.2, IM.white, r.cx, 0, r.z0 + 13.6, g);
+      for (let k = 0; k < 4; k++) {
+        fc(0.34, 0.34, 0.9, 12, IM.colGlass, r.x0 + 2.8 + k * 3.3, 0.9, r.z0 + 13.6, g);
+        fb(0.5, 0.6, 0.5, IM.cream, r.x0 + 3.7 + k * 3.3, 0.9, r.z0 + 13.6, g);
+      }
+      fb(r.w - 2, 0.16, 0.16, M.gold, r.cx, 3.9, r.z0 + 7.0, g);
+      fb(r.w - 2, 0.16, 0.16, M.green, r.cx, 3.6, r.z0 + 7.4, g);
+      person(r.x0 + 4.5, r.z0 + 7.2, 0, g); person(r.x0 + 9, r.z0 + 12.2, 0, g); person(r.x0 + 7, r.z0 + 6.4, 3.15, g);
+    },
+    skid(g, r) {
+      grid(r, 3.8, 3.6, 1.2, (x, z, i, j) => {
+        const k = (i + j) % 3;
+        if (k === 0) {
+          box(2.2, 0.9, 1.2, M.steel, x, 0, z, g);
+          fc(0.22, 0.22, 1.5, 12, IM.colGlass, x - 0.5, 0.9, z, g);
+          fc(0.22, 0.22, 1.5, 12, IM.colGlass, x + 0.3, 0.9, z, g);
+          fb(0.6, 0.5, 0.06, IM.screen, x + 0.85, 1.2, z + 0.5, g);
+        } else if (k === 1) {
+          cyl(0.75, 0.75, 1.1, 16, IM.white, x, 0, z, g);
+          fc(0.5, 0.5, 0.1, 12, IM.screen, x, 1.1, z, g);
+        } else {
+          box(1.8, 1.3, 1.0, IM.cream, x, 0, z, g);
+          fc(0.15, 0.15, 1.3, 8, M.steel, x - 0.5, 1.3, z, g);
+          fc(0.15, 0.15, 1.3, 8, M.steel, x + 0.5, 1.3, z, g);
+        }
+        if (j === 1 && i % 2 === 0) person(x, z + 1.2, 0, g);
+      });
+    },
+    cleanroom(g, r) {
+      const a = axes(r), mid = a.o0 + a.across / 2, L = a.long - 4.0;
+      a.ab(L, 1.0, 1.4, IM.white, -1.2, 0, mid, g);
+      a.ab(L, 1.0, 1.4, M.glass, -1.2, 1.0, mid, g);
+      for (let t = -L / 2 + 0.6; t < L / 2 - 0.3; t += 0.9) a.ac(0.07, 0.25, 6, IM.screen, t - 1.2, 1.25, mid + 0.75, g);
+      box(a.along ? 2.2 : 1.8, 2.2, a.along ? 1.8 : 2.2, IM.white, a.along ? r.cx + a.long / 2 - 1.5 : mid, 0, a.along ? mid : r.cz + a.long / 2 - 1.5, g);
+      a.ap(-1.5, mid + 1.4, 0, g); a.ap(1.5, mid - 1.4, 0, g);
+    },
+    utility(g, r) {
+      [0, 1, 2].forEach(k => {
+        cyl(1.0, 1.0, 3.2, 16, IM.white, r.x0 + 1.8 + k * 2.6, 0, r.z0 + 2.0, g);
+        dome(1.0, IM.white, r.x0 + 1.8 + k * 2.6, 3.2, r.z0 + 2.0, g);
+      });
+      box(3.0, 2.0, 1.6, M.teal, r.x0 + r.w - 2.3, 0, r.z0 + 2.2, g);
+      [r.x0 + 2.4, r.x0 + 5].forEach(x => box(1.6, 1.2, 1.0, M.steel, x, 0, r.z0 + r.d - 1.6, g));
+      fb(r.w - 1.5, 0.18, 0.18, M.gold, r.cx, 3.4, r.cz, g);
+      fb(r.w - 1.5, 0.18, 0.18, M.green, r.cx, 3.1, r.cz + 0.4, g);
+      [r.x0 + 1, r.cx, r.x0 + r.w - 1].forEach(x => fb(0.15, 3.5, 0.15, M.darkSteel, x, 0, r.cz + 0.2, g));
+      person(r.x0 + r.w - 3.5, r.z0 + r.d - 2, 0, g);
+    },
+    propagation(g, r) {
+      const a = axes(r), L = a.long - 1.8, rows = Math.max(1, Math.floor((a.across - 1) / 2.0));
+      for (let k = 0; k < rows; k++) {
+        const o = a.o0 + 1.1 + k * 2.0;
+        [0.3, 1.05, 1.8].forEach(y => {
+          a.ab(L, 0.05, 0.8, M.steel, 0, y, o, g);
+          a.ab(L - 0.2, 0.09, 0.7, IM.seedling, 0, y + 0.05, o, g);
+          a.ab(L - 0.2, 0.04, 0.14, IM.led, 0, y + 0.62, o, g);
+        });
+        [-L / 2, L / 2].forEach(t => a.ab(0.05, 2.5, 0.05, M.steel, t, 0, o, g));
+      }
+      a.ap(0, a.o0 + a.across - 0.6, 0, g);
+    },
+    seedstore(g, r) {
+      const a = axes(r), back = a.o0 + 0.45;
+      for (let t = -a.long / 2 + 0.7; t < a.long / 2 - 0.5; t += 1.0) a.ab(0.9, 1.9, 0.6, IM.white, t, 0, back, g);
+      a.ab(a.long * 0.35, 2.2, a.across * 0.35, IM.coldroom, a.long * 0.25, 0, a.o0 + a.across - a.across * 0.35 / 2 - 0.4, g);
+    },
+    greenhouse(g, r) {
+      const L = r.w - 2.4;
+      for (let z = r.z0 + 1.4; z < r.z0 + r.d - 0.8; z += 2.3) {
+        fb(L, 0.8, 1.4, M.steel, r.cx, 0, z, g);
+        fb(L - 0.2, 0.35, 1.2, M.leaf[0], r.cx, 0.8, z, g);
+        for (let x = r.x0 + 2; x < r.x0 + r.w - 2; x += 2.2) if (rnd() < 0.45) fb(0.4, 0.22, 0.4, M.gold, x, 1.15, z, g);
+        fb(L, 0.06, 0.16, IM.led, r.cx, 3.1, z, g);
+      }
+      for (let x = r.x0 + 1.2; x < r.x0 + r.w; x += 6) fb(0.08, 3.1, 0.08, M.steel, x, 0, r.cz, g);
+      person(r.x0 + 4, r.z0 + 2.55, 0, g); person(r.x0 + r.w - 6, r.z0 + r.d - 1.9, 0, g);
+    },
+    pheno(g, r) {
+      const lx = r.w - 4, lz = r.d - 4, zA = r.z0 + 2, zB = r.z0 + r.d - 2, xA = r.x0 + 2, xB = r.x0 + r.w - 2;
+      fb(lx + 0.6, 0.7, 0.6, IM.conveyor, r.cx, 0, zA, g); fb(lx + 0.6, 0.7, 0.6, IM.conveyor, r.cx, 0, zB, g);
+      fb(0.6, 0.7, lz, IM.conveyor, xA, 0, r.cz, g); fb(0.6, 0.7, lz, IM.conveyor, xB, 0, r.cz, g);
+      const pots = [], leaves = [];
+      for (let x = xA; x <= xB; x += 1.0) { pots.push([x, 0.85, zA], [x, 0.85, zB]); }
+      for (let z = zA + 1; z < zB; z += 1.0) { pots.push([xA, 0.85, z], [xB, 0.85, z]); }
+      pots.forEach(p => leaves.push([p[0], p[1] + 0.42, p[2]]));
+      inst(new THREE.CylinderGeometry(0.22, 0.18, 0.3, 8), IM.pot, pots, g);
+      inst(new THREE.IcosahedronGeometry(0.32, 0), M.leaf[2], leaves, g);
+      box(0.3, 3.0, 0.3, M.teal, r.cx, 0, zA - 0.9, g); box(0.3, 3.0, 0.3, M.teal, r.cx, 0, zA + 0.9, g);
+      box(0.7, 0.4, 2.1, M.teal, r.cx, 3.0, zA, g);
+      fb(0.4, 0.3, 0.4, M.gold, r.cx, 2.7, zA, g);
+      fb(2.4, 0.75, 0.9, IM.desk, r.cx, 0, r.cz, g);
+      fb(0.55, 0.34, 0.05, IM.screen, r.cx - 0.5, 0.75, r.cz - 0.2, g); fb(0.55, 0.34, 0.05, IM.screen, r.cx + 0.5, 0.75, r.cz - 0.2, g);
+      person(r.cx, r.cz + 0.8, 0, g);
+    },
+    garden(g, r) {
+      fb(r.w - 2, 0.05, 1.6, IM.wood, r.cx, 0, r.cz, g);
+      const ix = r.w / 2 - 2, iz = r.d / 2 - 2;
+      const spots = [[-ix, -iz], [ix, -iz], [-ix, iz], [ix, iz]];
+      if (r.w > 20) spots.push([-ix / 3, -iz], [ix / 3, iz], [-ix / 3, iz], [ix / 3, -iz]);
+      spots.forEach(p => {
+        const x = r.cx + p[0], z = r.cz + p[1];
+        box(2.2, 0.6, 2.2, M.concrete, x, 0, z, g);
+        tree(x, z, 0.7, g).position.y = 0.6;
+      });
+      fb(r.w * 0.3, 0.3, 1.0, M.leaf[2], r.cx - r.w * 0.2, 0, r.cz + iz * 0.55, g);
+      bench(r.cx + r.w * 0.18, r.cz + 1.6, 0, g); bench(r.cx - r.w * 0.18, r.cz - 1.6, Math.PI, g);
+      for (let k = 0; k < 3; k++) person(r.cx + (rnd() - 0.5) * r.w * 0.6, r.cz + (rnd() - 0.5) * 1.2, 0, g);
+    },
+    solar(g, r) {
+      for (let z = r.z0 + 1.6; z < r.z0 + r.d - 0.8; z += 2.4) {
+        const p = new THREE.Mesh(new THREE.BoxGeometry(r.w - 2, 0.1, 1.6), M.solar);
+        p.position.set(r.cx, 0.9, z); p.rotation.x = -0.35; p.castShadow = true; p.userData.noEdge = true; g.add(p);
+        fb(0.1, 0.8, 0.1, M.darkSteel, r.x0 + 1.4, 0, z + 0.4, g); fb(0.1, 0.8, 0.1, M.darkSteel, r.x0 + r.w - 1.4, 0, z + 0.4, g);
+      }
+    },
+    plantroom(g, r) {
+      box(r.w * 0.5, 2.2, r.d * 0.55, M.louvre, r.cx - r.w * 0.15, 0, r.cz, g);
+      cyl(0.8, 0.8, 0.5, 14, M.darkSteel, r.cx + r.w * 0.3, 0, r.cz - 1.6, g);
+      cyl(0.8, 0.8, 0.5, 14, M.darkSteel, r.cx + r.w * 0.3, 0, r.cz + 1.6, g);
+      fb(0.6, 0.6, r.d * 0.7, M.steel, r.cx + r.w * 0.13, 1.4, r.cz, g);
+    },
+    pods(g, r) {
+      const a = axes(r), back = a.o0 + 0.8;
+      for (let t = -a.long / 2 + 1.0, k = 0; t < a.long / 2 - 0.8; t += 1.6, k++) {
+        a.ab(1.3, 2.2, 1.3, M.glass, t, 0, back, g);
+        a.ab(0.8, 0.45, 0.4, IM.sofa, t, 0, back - 0.3, g);
+        if (k % 2 === 0) a.ap(t, back, 0, g);
+      }
+      const o = a.o0 + a.across - 1.6;
+      a.ac(0.5, 0.75, 10, IM.white, 0, 0, o, g);
+      [-0.8, 0.8].forEach(dt => a.ac(0.2, 0.45, 8, IM.chair, dt, 0, o, g));
+    },
+    offices(g, r) {
+      const a = axes(r), n = Math.max(2, Math.floor(a.long / 3.2));
+      split(r, n).forEach((s, k) => {
+        fb(1.6, 0.75, 0.8, IM.desk, s.cx, 0, s.cz - 0.3, g);
+        fb(0.5, 0.32, 0.05, IM.screen, s.cx, 0.75, s.cz - 0.55, g);
+        fb(0.48, 0.48, 0.48, IM.chair, s.cx, 0, s.cz + 0.45, g);
+        fb(0.5, 1.2, 1.0, IM.cream, s.x0 + 0.4, 0, s.z0 + 0.7, g);
+        if (k % 2 === 0) person(s.cx, s.cz + 0.5, 0, g);
+      });
+      partitions(g, r, n);
+    }
+  };
+
+  // ---------------------------------------------------------------------------
+  const interiorRoot = new THREE.Group();
+  scene.add(interiorRoot);
+  const builtInteriors = [];
+  let interior = null, campusObjs = null;
+
+  function makePin(cls, code, zh, en) {
+    const el = document.createElement('div');
+    el.className = 'pin wide ' + cls + ' hidden';
+    el.innerHTML = '<span class="n">' + code + '</span><span class="l"><b>' + zh + '</b><span>' + en + '</span></span>';
+    pinLayer.appendChild(el);
+    return el;
+  }
+
+  function buildInterior(id) {
+    const fac = FAC[id];
+    fac.id = id;
+    fac.zone = zoneById(id);
+    fac.root = new THREE.Group();
+    interiorRoot.add(fac.root);
+    fac.multi = fac.floors.length > 1;
+    fac.rooms = []; fac.pickables = []; fac.pinOwners = [];
+    const W = fac.W, D = fac.D, EW = W / 2 + 1.5, ED = D / 2 + 1.5;
+
+    fac.floors.forEach((fl, i) => {
+      fl.fac = fac; fl.index = i; fl.y = i * fac.gap;
+      fl.group = new THREE.Group(); fl.group.position.y = fl.y; fac.root.add(fl.group);
+      // slab + floor tab
+      const slab = box(W + 3, 0.6, D + 3, IM.slab, 0, -0.6, 0, fl.group); slab.castShadow = false;
+      if (fl.tag) {
+        box(4.6, 0.62, 2.4, M.teal, -EW + 2.3, -0.61, ED + 1.2, fl.group);
+        const t = signPlane(fl.tag, 4.2, 2.0, { fg: '#E0A43A', size: 0.6, glow: 1 });
+        t.rotation.x = -Math.PI / 2; t.position.set(-EW + 2.3, 0.03, ED + 1.2); fl.group.add(t);
+      }
+      // envelope (cut at low height so the rooms stay visible)
+      const envMat = fl.env === 'glass' ? M.glass : fl.env === 'parapet' ? IM.cream : M.teal;
+      const envH = fl.env === 'glass' ? 1.6 : fl.env === 'parapet' ? 0.8 : 1.2;
+      if (fl.env !== 'none') {
+        const t = 0.3, ex = W / 2 + 0.7, ez = D / 2 + 0.7;
+        [[W + 1.7, t, 0, -ez], [W + 1.7, t, 0, ez], [t, D + 1.7, -ex, 0], [t, D + 1.7, ex, 0]].forEach(s => {
+          const w = box(s[0], envH, s[1], envMat, s[2], 0, s[3], fl.group);
+          if (fl.env === 'glass') { w.userData.noEdge = true; w.castShadow = false; }
+        });
+        if (fl.env === 'glass') [[-ex, -ez], [ex, -ez], [-ex, ez], [ex, ez]].forEach(p => box(0.35, envH + 0.1, 0.35, M.teal, p[0], 0, p[1], fl.group));
+      }
+      // rooms
+      const list = fl.rooms.slice();
+      if (fac.core) list.unshift(['core', fac.core[0], fac.core[1], fac.core[2], fac.core[3], 'core', '核心筒（電梯及樓梯）', 'Core · lifts & stairs', '電梯、樓梯、洗手間及機電豎井。', 'Lifts, stairs, toilets and service risers.']);
+      let n = 0;
+      fl.rooms_ = [];
+      list.forEach(row => {
+        const [rid, x0, z0, w, d, type, zh, en, desc, descEn] = row;
+        const r = Object.assign(rect(x0, z0, w, d), { id: id + '-' + i + '-' + rid, type, zh, en, desc, descEn, floor: fl, fac, isRoom: true });
+        r.isCore = type === 'core';
+        r.code = r.isCore ? '' : (fac.multi ? fl.short + '.' + (++n) : String(++n));
+        r.group = new THREE.Group(); fl.group.add(r.group);
+        if (r.isCore) {
+          box(w - 0.2, 2.8, d - 0.2, IM.core, r.cx, 0, r.cz, r.group);
+          const fz = r.z0 + d - 0.08;
+          [-0.7, 0.7].forEach(dx => fb(1.0, 2.0, 0.06, M.gold, r.cx + dx, 0, fz, r.group));
+        } else {
+          const cat = TYPE_CAT[type] || 'office';
+          r.cat = cat;
+          const tile = box(w - 0.1, 0.06, d - 0.1, floorMat(cat), r.cx, 0, r.cz, r.group);
+          tile.castShadow = false; tile.userData.noEdge = true;
+          if (!OPEN_TYPES.has(type)) roomWalls(r);
+          (GEN[type] || GEN.desks)(r.group, r);
+        }
+        r.group.traverse(o => { if (o.isMesh) { o.userData.room = r; fac.pickables.push(o); } });
+        // hover outline
+        const ol = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(w, 1.8, d)), OUTLINE);
+        ol.position.set(r.cx, 0.9, r.cz); ol.visible = false; ol.renderOrder = 10; ol.raycast = () => {};
+        fl.group.add(ol); r.outline = ol;
+        r.anchor = new THREE.Vector3(r.cx, fl.y + (r.isCore ? 3 : 2.2), r.cz);
+        if (!r.isCore) {
+          r.pinEl = makePin('room', r.code, zh, en);
+          r.pinEl.addEventListener('click', () => clickRoom(r));
+          r.pinEl.addEventListener('mouseenter', () => setRoomHover(r));
+          r.pinEl.addEventListener('mouseleave', () => setRoomHover(null));
+          fac.pinOwners.push(r);
+        }
+        fac.rooms.push(r); fl.rooms_.push(r);
+      });
+      // floor pin (used in the all-floors view)
+      fl.anchor = new THREE.Vector3(-EW, fl.y + 0.4, ED);
+      fl.id = id + '-floor-' + i;
+      if (fac.multi) {
+        fl.pinEl = makePin('floor', fl.tag, fl.zh, fl.en);
+        fl.pinEl.addEventListener('click', () => setFloor(fl));
+        fac.pinOwners.push(fl);
+      }
+      addEdges(fl.group);
+    });
+
+    // dashed lines linking the exploded floors
+    fac.dashes = [];
+    if (fac.multi) {
+      const top = (fac.floors.length - 1) * fac.gap;
+      [[-EW, -ED], [EW, -ED], [-EW, ED], [EW, ED]].forEach(p => {
+        const geo = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(p[0], 0, p[1]), new THREE.Vector3(p[0], top, p[1])]);
+        const l = new THREE.Line(geo, IM.dash); l.computeLineDistances(); l.raycast = () => {};
+        fac.root.add(l); fac.dashes.push(l);
+      });
+    }
+    const extra = INTERIOR_EXTRAS[id];
+    if (extra) extra(fac);
+    linearise(fac.root);
+    builtInteriors.push(fac);
+    fac.built = true;
+  }
+
+  function roomWalls(r) {
+    const glass = GLASS_TYPES.has(r.type);
+    const m = glass ? M.glass : IM.wall, h = glass ? 1.6 : 1.5, t = 0.16, gap = 1.6;
+    const g = r.group, fac = r.fac;
+    // door on the side facing the middle of the floor
+    let side;
+    if (Math.abs(r.cx) / fac.W > Math.abs(r.cz) / fac.D) side = r.cx > 0 ? 'w' : 'e';
+    else side = r.cz > 0 ? 'n' : 's';
+    const edges = {
+      n: [r.cx, r.z0 + t / 2, r.w, true], s: [r.cx, r.z0 + r.d - t / 2, r.w, true],
+      w: [r.x0 + t / 2, r.cz, r.d, false], e: [r.x0 + r.w - t / 2, r.cz, r.d, false]
+    };
+    Object.keys(edges).forEach(k => {
+      const [x, z, len, horiz] = edges[k];
+      const segs = k === side && len > gap + 1 ? [[-len / 2, -gap / 2], [gap / 2, len / 2]] : [[-len / 2, len / 2]];
+      segs.forEach(sg => {
+        const L = sg[1] - sg[0] - 0.02, c = (sg[0] + sg[1]) / 2;
+        const w = horiz ? box(L, h, t, m, x + c, 0, z, g) : box(t, h, L, m, x, 0, z + c, g);
+        if (glass) { w.userData.noEdge = true; w.castShadow = false; }
+      });
+    });
+  }
+
+  const INTERIOR_EXTRAS = {
+    main(fac) {
+      const fl = fac.floors[1], x = fac.W / 2 + 1.5 + 2;
+      [-5.5, 5.5].forEach(z => { box(4, 2.4, 2.6, M.glassLit, x, 0.2, z, fl.group); box(4, 0.3, 2.9, M.teal, x, -0.1, z, fl.group); });
+    },
+    lab(fac) {
+      const fl = fac.floors[1], x = -(fac.W / 2 + 1.5 + 2);
+      box(4, 2.4, 2.6, M.glassLit, x, 0.2, 2, fl.group); box(4, 0.3, 2.9, M.teal, x, -0.1, 2, fl.group);
+    },
+    plant(fac) {
+      const g = fac.floors[0].group, x = -fac.W / 2 - 0.8;
+      for (let k = 0; k < 3; k++) box(0.3, 3.6, 2.8, M.gold, x, 0, 5.5 + k * 3.2, g);
+      const t = new THREE.Group();
+      box(7, 2.8, 2.4, mat(0xf2f2ee), 0, 0.6, 0, t); box(2.2, 2.4, 2.4, M.green, -4.8, 0.4, 0, t);
+      t.position.set(x - 5.2, 0, 8.7); t.rotation.y = Math.PI; g.add(t);
+      addEdges(t);
+    },
+    farm(fac) {
+      const g = fac.floors[0].group;
+      const vaultMat = new THREE.MeshStandardMaterial({ color: 0xeaf6ef, roughness: 0.08, metalness: 0.05, transparent: true, opacity: 0.22, side: THREE.DoubleSide, depthWrite: false });
+      const R = 12, L = 24, cx = 6;
+      // half cylinder (local x >= 0), turned so its axis runs east–west and flattened in height
+      const v = new THREE.Mesh(new THREE.CylinderGeometry(R, R, L, 24, 1, true, 0, Math.PI), vaultMat);
+      v.rotation.set(0, 0, Math.PI / 2);
+      v.scale.set(0.42, 1, 1);
+      v.position.set(cx, 0, 0); v.renderOrder = 2; v.userData.noEdge = true; v.raycast = () => {};
+      g.add(v);
+      const ribMat = mat(0xffffff, { roughness: 0.4 });
+      for (let k = 0; k <= 6; k++) {
+        const rib = new THREE.Mesh(new THREE.TorusGeometry(R, 0.08, 4, 24, Math.PI), ribMat);
+        rib.rotation.y = Math.PI / 2; rib.scale.set(1, 0.42, 1); rib.position.set(cx - L / 2 + k * L / 6, 0, 0); rib.raycast = () => {};
+        g.add(rib);
+      }
+      // headhouse outer wall (low, cut)
+      box(0.3, 1.2, 24, M.green, -18.6, 0, 0, g);
+      box(10.6, 1.2, 0.3, M.green, -13.3, 0, -12.15, g); box(10.6, 1.2, 0.3, M.green, -13.3, 0, 12.15, g);
+    }
+  };
+
+  // ---------------------------------------------------------------------------
+  // entering / leaving, floors, rooms
+  // ---------------------------------------------------------------------------
+  const legendEl = document.getElementById('legend');
+  const legendCampus = legendEl.innerHTML;
+
+  function enterInterior(id) {
+    if (!FAC[id]) return;
+    stopTour();
+    if (!FAC[id].built) buildInterior(id);
+    const fac = FAC[id];
+    if (!campusObjs) campusObjs = scene.children.filter(o => !o.isLight && o !== groundMesh && o !== interiorRoot);
+    if (!interior) campusObjs.forEach(o => { o.userData.pv = o.visible; o.visible = false; });
+    groundMesh.visible = false; // floating floors would throw large shadows on it
+    builtInteriors.forEach(f => f.root.visible = f === fac);
+    interior = fac;
+    fac.selRoom = null; hovered = null; panelHover = null;
+    card.classList.remove('show');
+    const cats = [...new Set(fac.rooms.filter(r => r.cat).map(r => r.cat))];
+    legendEl.innerHTML = cats.map(c => '<div><i style="background:' + CATS[c][1] + ';border:1px solid rgba(15,42,46,.25)"></i>' + CATS[c][2] + ' <em>' + CATS[c][3] + '</em></div>').join('');
+    setFloor('all', false);
+    if (isMobile()) setSheet(true);
+    fitInterior(1300);
+  }
+  function leaveInterior() {
+    if (!interior) return;
+    interior.root.visible = false;
+    interior = null;
+    campusObjs.forEach(o => { o.visible = o.userData.pv; });
+    groundMesh.visible = true;
+    legendEl.innerHTML = legendCampus;
+    hovered = null; panelHover = null;
+    card.classList.remove('show');
+    refreshOutlines();
+  }
+  function exitInterior() {
+    if (!interior) return;
+    const id = interior.id;
+    leaveInterior();
+    selected = null;
+    select(Z(id), true);
+  }
+  function setFloor(fl, fly) {
+    const fac = interior;
+    fac.floorSel = fac.multi ? fl : 'all';
+    fac.floors.forEach(f => { f.group.visible = fac.floorSel === 'all' || f === fac.floorSel; });
+    fac.dashes.forEach(l => { l.visible = fac.floorSel === 'all'; });
+    fac.activePick = fac.pickables.filter(m => m.userData.room.floor.group.visible);
+    if (fac.selRoom && !fac.selRoom.floor.group.visible) fac.selRoom = null;
+    refreshOutlines();
+    renderInterior();
+    if (fly !== false) fitInterior(900);
+  }
+  // fit the camera to the visible floor slabs (their corners, at slab and furniture height)
+  function fitInterior(ms) {
+    const fac = interior, pts = [], ex = fac.W / 2 + 1.5, ez = fac.D / 2 + 1.5;
+    fac.floors.forEach(f => {
+      if (!f.group.visible) return;
+      [-1, 1].forEach(sx => [-1, 1].forEach(sz => [f.y - 0.6, f.y + 3].forEach(y => pts.push(new THREE.Vector3(sx * ex, y, sz * ez)))));
+    });
+    const polar = fac.multi && fac.floorSel === 'all' ? 1.05 : 0.86;
+    const to = fitView(pts, polar, view.az);
+    if (isMobile()) to.zoom *= 0.92;
+    flyTo(to, ms);
+  }
+  function fitView(pts, polar, az) {
+    const c = new THREE.Box3().setFromPoints(pts).getCenter(new THREE.Vector3());
+    const saved = { az: view.az, polar: view.polar, zoom: view.zoom, target: view.target.clone() };
+    view.az = az; view.polar = polar; view.zoom = 1; view.target.copy(c); applyCamera();
+    camera.updateMatrixWorld(); // project() needs the new pose now, not the last rendered one
+    let m = 0.01;
+    pts.forEach(q => { tmp.copy(q).project(camera); m = Math.max(m, Math.abs(tmp.x), Math.abs(tmp.y)); });
+    view.az = saved.az; view.polar = saved.polar; view.zoom = saved.zoom; view.target.copy(saved.target); applyCamera();
+    return { az, polar, zoom: THREE.MathUtils.clamp(0.8 / m, 0.5, 4.5), target: c };
+  }
+  function clickRoom(r) {
+    const fac = interior;
+    if (!fac) return;
+    if (!r || r.isCore) { fac.selRoom = null; refreshOutlines(); renderInterior(); return; }
+    if (fac.multi && fac.floorSel !== r.floor) setFloor(r.floor, true);
+    fac.selRoom = r;
+    refreshOutlines();
+    renderInterior();
+    if (isMobile()) setSheet(true);
+    const el = panelBody.querySelector('[data-room="' + r.id + '"]');
+    if (el) el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }
+  function setRoomHover(r) {
+    panelHover = r; refreshOutlines();
+    panelBody.querySelectorAll('.room-item').forEach(el => el.classList.toggle('hl', !!r && el.getAttribute('data-room') === r.id));
+  }
+  function roomCard(r) {
+    const fl = r.floor;
+    return '<div class="top"><span class="n">' + (r.code || '·') + '</span><span class="zh">' + r.zh + '</span></div>' +
+      '<div class="en">' + r.en + '</div>' +
+      '<div class="use">' + r.desc + '</div>' +
+      '<div class="use-en">' + r.descEn + '</div>' +
+      (fl.tag ? '<div class="cta">' + fl.tag + ' · ' + fl.zh + '</div>' : '');
+  }
+  function activePinOwners() {
+    if (!interior) return zones;
+    const fac = interior;
+    if (fac.multi && fac.floorSel === 'all') return fac.floors;
+    return fac.rooms.filter(r => r.pinEl && r.floor.group.visible);
+  }
+
+  function renderInterior() {
+    const fac = interior, z = fac.zone;
+    const sel = fac.floorSel;
+    const showFloors = fac.multi && sel !== 'all' ? [sel] : fac.floors;
+    const cats = [...new Set(fac.rooms.filter(r => r.cat).map(r => r.cat))];
+    panelBody.innerHTML =
+      '<button class="back" id="btnIntBack">‹ ' + z.zh + ' ' + z.en + '</button>' +
+      '<div class="d-head"><span class="no">' + z.no + '</span><div><h2>' + z.zh + '<span class="int-tag">內部 Interior</span></h2><div class="en">' + z.en + ' · Interior bird’s-eye view</div></div></div>' +
+      '<p class="body" style="margin-top:14px">' + fac.intro + '</p>' +
+      '<p class="en-p">' + fac.introEn + '</p>' +
+      '<div class="cat-key">' + cats.map(c => '<span><i style="background:' + CATS[c][1] + '"></i>' + CATS[c][2] + ' ' + CATS[c][3] + '</span>').join('') + '</div>' +
+      (fac.multi ? '<div class="floor-chips" role="tablist" aria-label="樓層 Floors">' +
+        '<button type="button" data-floor="all" class="' + (sel === 'all' ? 'on' : '') + '">全部樓層 All floors</button>' +
+        fac.floors.map((f, i) => '<button type="button" data-floor="' + i + '" class="' + (sel === f ? 'on' : '') + '">' + f.tag + '</button>').join('') +
+      '</div>' : '') +
+      showFloors.map(f =>
+        '<div class="floor-sec">' +
+          (f.tag ? '<h3><span class="tag">' + f.tag + '</span><span>' + f.zh + '<small>' + f.en + '</small></span></h3>' : '') +
+          '<div class="room-list">' + f.rooms_.filter(r => !r.isCore).map(r =>
+            '<button type="button" class="room-item' + (fac.selRoom === r ? ' on' : '') + '" data-room="' + r.id + '">' +
+              '<span class="code">' + r.code + '</span>' +
+              '<span><b>' + r.zh + '</b><i>' + r.en + '</i>' +
+              '<span class="rd">' + r.desc + '<span>' + r.descEn + '</span></span></span>' +
+            '</button>').join('') +
+          '</div>' +
+        '</div>').join('') +
+      '<p class="note">' + NOTE + '<br><br>點擊房間或標籤查看位置；Esc 返回上一層。<br>Click a room or label to locate it; press Esc to go back.</p>' +
+      '<button type="button" class="back" id="btnIntCampus">‹ 返回園區 Back to campus</button>';
+    document.getElementById('btnIntBack').addEventListener('click', exitInterior);
+    document.getElementById('btnIntCampus').addEventListener('click', () => { leaveInterior(); selected = null; select(null); });
+    panelBody.querySelectorAll('[data-floor]').forEach(b => b.addEventListener('click', () => {
+      const v = b.getAttribute('data-floor');
+      setFloor(v === 'all' ? 'all' : fac.floors[+v]);
+    }));
+    panelBody.querySelectorAll('[data-room]').forEach(b => {
+      const r = fac.rooms.find(x => x.id === b.getAttribute('data-room'));
+      b.addEventListener('click', () => clickRoom(r));
+      b.addEventListener('mouseenter', () => setRoomHover(r));
+      b.addEventListener('mouseleave', () => setRoomHover(null));
+    });
   }
 
   // ===========================================================================
@@ -1977,6 +2992,7 @@
 
   document.getElementById('btnReset').addEventListener('click', () => {
     stopTour();
+    leaveInterior();
     selected = null; refreshOutlines(); renderOverview();
     flyTo({ az: DEFAULT.az, polar: DEFAULT.polar, zoom: DEFAULT.zoom, target: DEFAULT.target.clone() });
   });
@@ -1987,7 +3003,9 @@
   btnMotion.setAttribute('aria-pressed', String(motion));
   btnMotion.addEventListener('click', () => { motion = !motion; btnMotion.setAttribute('aria-pressed', String(motion)); });
   window.addEventListener('keydown', e => {
-    if (e.key === 'Escape') { stopTour(); select(null); }
+    if (e.key !== 'Escape') return;
+    if (interior) { if (interior.multi && interior.floorSel !== 'all') setFloor('all'); else exitInterior(); return; }
+    stopTour(); select(null);
   });
 
   // ===========================================================================
@@ -2018,7 +3036,13 @@
     setNight, select: id => select(id ? Z(id) : null, true), zones: () => zones.map(z => z.id),
     screenOf: id => { const z = Z(id); tmp.copy(z.anchor).project(camera); return { x: (tmp.x + 1) / 2 * SW, y: (1 - tmp.y) / 2 * SH }; },
     rotate: (daz, dpolar, zoom) => { tween = null; view.az += daz || 0; view.polar = THREE.MathUtils.clamp(view.polar + (dpolar || 0), 0.18, 1.35); if (zoom) view.zoom = zoom; applyCamera(); },
-    startTour, stopTour
+    startTour, stopTour,
+    enterInterior, exitInterior,
+    camera: () => ({ zoom: view.zoom, polar: view.polar, target: view.target.toArray(), tweening: !!tween }),
+    setFloor: i => setFloor(i === 'all' ? 'all' : interior.floors[i]),
+    rooms: () => interior ? interior.rooms.filter(r => !r.isCore).map(r => r.id) : [],
+    clickRoom: id => clickRoom(interior.rooms.find(r => r.id === id)),
+    roomScreen: id => { const r = interior.rooms.find(q => q.id === id); tmp.set(r.cx, r.floor.y + 0.1, r.cz).project(camera); return { x: (tmp.x + 1) / 2 * SW, y: (1 - tmp.y) / 2 * SH }; }
   };
   resize();
   applyCamera();

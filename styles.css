@@ -1172,3 +1172,25 @@ html.sc-pending body { visibility: hidden; }
   text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .pillar-credit:hover { text-decoration: underline; }
+
+/* ---------- Game entry points (home) ---------- */
+.hero-game {
+  display: inline-flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 22px; padding: 10px 16px 10px 10px;
+  border-radius: 999px; border: 1px solid rgba(226, 200, 143, .45); background: rgba(7, 19, 34, .55); backdrop-filter: blur(6px);
+  color: #fff; font-size: 14.5px; text-decoration: none; transition: border-color .2s, background .2s, transform .2s;
+}
+.hero-game:hover { border-color: var(--gold-soft); background: rgba(201, 163, 91, .18); transform: translateY(-1px); }
+.hero-game b { color: var(--gold-soft); font-weight: 600; }
+.hero-game-new { padding: 3px 8px; border-radius: 999px; background: var(--gold); color: var(--navy-950); font-size: 11px; font-weight: 800; letter-spacing: .08em; }
+.game-promo { background: linear-gradient(180deg, #0b1d33, #071322); color: #fff; }
+.game-promo-inner { display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center; }
+.game-promo-shot { display: block; border-radius: 22px; overflow: hidden; border: 1px solid rgba(226, 200, 143, .3); box-shadow: var(--shadow-lg); transition: transform .3s var(--ease); }
+.game-promo-shot:hover { transform: translateY(-4px) rotate(-.4deg); }
+.game-promo-shot img { display: block; width: 100%; height: auto; }
+.game-promo .kicker { color: var(--gold); }
+.game-promo .section-title { color: #fff; }
+.game-promo-text { color: rgba(255, 255, 255, .78); font-size: 17px; line-height: 1.75; margin: 0 0 28px; }
+@media (max-width: 860px) {
+  .game-promo-inner { grid-template-columns: 1fr; gap: 28px; }
+  .hero-game { font-size: 13.5px; }
+}

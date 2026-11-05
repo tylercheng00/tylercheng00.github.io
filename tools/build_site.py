@@ -124,6 +124,7 @@ NAV = [
     ("insights/", "Insights", "觀點", "insights"),
     ("news.html", "News", "新聞", "news"),
     ("markets.html", "Markets", "美股行情", "markets"),
+    ("game.html", "Play: Dreamer's Road", "遊戲：夢想家之路", "game"),
 ]
 
 # Header menu: a few categories, each opening a small list of pages/sections.
@@ -511,6 +512,12 @@ def main():
         head_extra='\n  <link rel="preconnect" href="https://s3.tradingview.com">'
                    '\n  <link rel="preconnect" href="https://www.tradingview-widget.com">'
                    '\n  <link rel="dns-prefetch" href="https://www.tradingview.com">'), encoding="utf-8")
+    (ROOT / "game.html").write_text(fragment_page(
+        "game",
+        title="Dreamer's Road · 夢想家之路 — a life-sim game | 鄭迪珉 Tyler Cheng",
+        description="A short city-building life-sim based on Tyler Cheng's real story: bullied at school, debt, being laughed at, and getting back up to build a city of dreams. Plays in the browser in about 5 minutes.",
+        og_type="website", body_class="page-game", scripts=("assets/vendor/three-r128.min.js", "game-data.js", "game.js"),
+        head_extra='\n  <link rel="stylesheet" href="game.css">'), encoding="utf-8")
     (ROOT / "privacy.html").write_text(fragment_page(
         "privacy",
         title="Privacy policy · 私隱政策 | 鄭迪珉 Tyler Tik Man Cheng",
@@ -576,7 +583,7 @@ def apply_hero_photos():
         f.write_text(s, encoding="utf-8")
 
 
-ASSETS = ("styles.css", "main.js", "news.js", "markets.js", "us-equities.js", "contact.js", "clock.js", "assets/fonts/fonts.css")
+ASSETS = ("styles.css", "main.js", "game.css", "game.js", "game-data.js", "news.js", "markets.js", "us-equities.js", "contact.js", "clock.js", "assets/fonts/fonts.css")
 
 
 def stamp_assets():

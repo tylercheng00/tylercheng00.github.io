@@ -1,0 +1,1091 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BTRDCC 生物科技園區</title>
+<meta name="description" content="BTRDCC 生物科技園區 3D 等距鳥瞰模型：研發與顧問中心、共享濕實驗室、中試廠房、生物農殖場及技術轉移與創投大樓。">
+<style>
+  :root {
+    --teal: #0F2A2E;
+    --green: #17775A;
+    --gold: #E0A43A;
+    --paper: #F4EFE4;
+    --ink: #0F2A2E;
+    --muted: #4c6466;
+    --panel: rgba(255, 252, 245, 0.92);
+    --panel-border: rgba(15, 42, 46, 0.12);
+  }
+  body.night {
+    --ink: #EDE6D6;
+    --muted: #a9bcbb;
+    --panel: rgba(12, 30, 33, 0.9);
+    --panel-border: rgba(224, 164, 58, 0.25);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; overflow: hidden; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+    transition: background .6s;
+  }
+  body.night { background: #0a1719; }
+  #scene { position: fixed; inset: 0; display: block; touch-action: none; cursor: grab; }
+  #scene.dragging { cursor: grabbing; }
+  #scene.hovering { cursor: pointer; }
+  #leaders { position: fixed; inset: 0; pointer-events: none; }
+  #pins { position: fixed; inset: 0; pointer-events: none; }
+
+  .pin {
+    position: absolute; left: 0; top: 0;
+    padding: 4px 9px 5px;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-left: 3px solid var(--gold);
+    border-radius: 4px;
+    white-space: nowrap;
+    line-height: 1.15;
+    box-shadow: 0 2px 8px rgba(15, 42, 46, .12);
+    transition: opacity .2s;
+    will-change: transform;
+  }
+  .pin b { display: block; font-size: 12.5px; font-weight: 600; }
+  .pin span { display: block; font-size: 10px; color: var(--muted); letter-spacing: .02em; }
+  .pin.dim { opacity: .28; }
+  .pin.hidden { display: none; }
+
+  #card {
+    position: fixed; left: 0; top: 0; z-index: 10;
+    width: 280px; max-width: calc(100vw - 32px);
+    padding: 12px 14px 13px;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-top: 3px solid var(--gold);
+    border-radius: 6px;
+    box-shadow: 0 10px 30px rgba(15, 42, 46, .22);
+    pointer-events: none;
+    opacity: 0; transform: translateY(4px);
+    transition: opacity .15s, transform .15s;
+    backdrop-filter: blur(6px);
+  }
+  #card.show { opacity: 1; transform: none; }
+  #card .zh { font-size: 16px; font-weight: 700; }
+  #card .en { font-size: 12px; color: var(--muted); margin-top: 1px; }
+  #card .spec { display: inline-block; margin-top: 8px; font-size: 11px; padding: 2px 7px; border-radius: 10px; background: var(--green); color: #fff; }
+  #card .use { margin-top: 8px; font-size: 12.5px; line-height: 1.5; }
+  #card .use-en { margin-top: 4px; font-size: 11px; line-height: 1.45; color: var(--muted); }
+
+  .hud {
+    position: fixed; z-index: 5;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(15, 42, 46, .1);
+    backdrop-filter: blur(6px);
+  }
+  #title { left: 16px; top: 16px; padding: 12px 16px 13px; max-width: calc(100vw - 32px); }
+  #title h1 { margin: 0; font-size: 18px; letter-spacing: .04em; }
+  #title h1 em { font-style: normal; color: var(--gold); }
+  #title p { margin: 3px 0 0; font-size: 11.5px; color: var(--muted); }
+
+  #controls { right: 16px; top: 16px; padding: 6px; display: flex; gap: 6px; }
+  #controls button {
+    font: inherit; font-size: 13px; font-weight: 600;
+    padding: 7px 12px; border-radius: 6px; cursor: pointer;
+    border: 1px solid var(--panel-border);
+    background: transparent; color: var(--ink);
+  }
+  #controls button:hover { border-color: var(--gold); }
+  #controls button.primary { background: var(--teal); color: #fff; border-color: var(--teal); }
+  body.night #controls button.primary { background: var(--gold); color: var(--teal); border-color: var(--gold); }
+  #controls button[aria-pressed="false"] { opacity: .6; }
+
+  #hint { left: 50%; bottom: 16px; transform: translateX(-50%); padding: 7px 14px; font-size: 12px; color: var(--muted); white-space: nowrap; }
+  #compass { right: 16px; bottom: 16px; width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center; }
+  #compass svg { width: 40px; height: 40px; transition: transform .05s linear; }
+
+  #error { position: fixed; inset: 0; display: none; place-items: center; text-align: center; padding: 16px; font-size: 14px; }
+
+  @media (max-width: 640px) {
+    #title { padding: 9px 12px; }
+    #title h1 { font-size: 15px; }
+    #title p { display: none; }
+    #controls { top: auto; bottom: 16px; right: auto; left: 16px; }
+    #hint { display: none; }
+    .pin b { font-size: 11px; }
+    .pin span { display: none; }
+  }
+</style>
+</head>
+<body>
+<canvas id="scene"></canvas>
+<canvas id="leaders"></canvas>
+<div id="pins"></div>
+<div id="card" role="tooltip" aria-hidden="true"></div>
+
+<div id="title" class="hud">
+  <h1><em>BTRDCC</em> 生物科技園區</h1>
+  <p>Biotech Campus · 3D 等距鳥瞰模型</p>
+</div>
+<div id="controls" class="hud">
+  <button id="btnDayNight" class="primary" type="button">🌙 夜間</button>
+  <button id="btnPins" type="button" aria-pressed="true">標籤</button>
+  <button id="btnReset" type="button">重設視角</button>
+</div>
+<div id="hint" class="hud">拖曳旋轉 · 滾輪／雙指縮放 · 右鍵或 Shift＋拖曳平移 · 移到建築查看資料</div>
+<div id="compass" class="hud" title="北">
+  <svg viewBox="-20 -20 40 40" aria-hidden="true">
+    <polygon points="0,-16 5,0 0,-3 -5,0" fill="#E0A43A"/>
+    <polygon points="0,16 5,0 0,3 -5,0" fill="currentColor" opacity=".35"/>
+  </svg>
+</div>
+<div id="error">無法載入 Three.js，請檢查網絡連線後重新整理。</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function () {
+  'use strict';
+  if (!window.THREE) { document.getElementById('error').style.display = 'grid'; return; }
+
+  // ---------------------------------------------------------------------------
+  // Palette
+  // ---------------------------------------------------------------------------
+  const C = {
+    teal: 0x0F2A2E, green: 0x17775A, gold: 0xE0A43A,
+    ground: 0xF2ECDF, plate: 0xEAE2D2, paving: 0xE4DCCB,
+    road: 0x9a9f9c, roadNight: 0x3a4446, lane: 0xF7F2E6,
+    cream: 0xEFE9DC, concrete: 0xD8D2C4, steel: 0xB9C0BE,
+    leaf1: 0x17775A, leaf2: 0x2E8F63, leaf3: 0x4FA36E, trunk: 0x7a5a3c
+  };
+
+  // ---------------------------------------------------------------------------
+  // Renderer, scene, camera
+  // ---------------------------------------------------------------------------
+  const canvas = document.getElementById('scene');
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.05;
+
+  const scene = new THREE.Scene();
+  const DAY_BG = new THREE.Color(0xF4EFE4), NIGHT_BG = new THREE.Color(0x0a1719);
+  scene.background = DAY_BG.clone();
+
+  const VIEW = 120; // world units visible vertically at zoom 1
+  const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 1, 2000);
+
+  // Lights
+  const hemi = new THREE.HemisphereLight(0xfffaf0, 0xcfc4ad, 0.75);
+  scene.add(hemi);
+  const sun = new THREE.DirectionalLight(0xfff1dc, 1.55);
+  sun.position.set(-70, 120, 55);
+  sun.castShadow = true;
+  sun.shadow.mapSize.set(2048, 2048);
+  sun.shadow.camera.left = -95; sun.shadow.camera.right = 95;
+  sun.shadow.camera.top = 95; sun.shadow.camera.bottom = -95;
+  sun.shadow.camera.near = 10; sun.shadow.camera.far = 400;
+  sun.shadow.bias = -0.0006;
+  sun.shadow.normalBias = 0.03;
+  sun.shadow.radius = 4;
+  scene.add(sun);
+  const fill = new THREE.DirectionalLight(0xdfeeff, 0.3);
+  fill.position.set(80, 60, -60);
+  scene.add(fill);
+
+  // ---------------------------------------------------------------------------
+  // Material helpers
+  // ---------------------------------------------------------------------------
+  const nightMats = [];   // { mat, intensity } — emissive switched on at night
+  const nightLights = []; // { light, intensity }
+  const dayNightColor = []; // { mat, day, night }
+
+  function mat(color, opts) {
+    return new THREE.MeshStandardMaterial(Object.assign({ color, roughness: 0.85, metalness: 0.0, flatShading: true }, opts || {}));
+  }
+  const M = {
+    plate: mat(C.plate), ground: mat(C.ground), paving: mat(C.paving),
+    road: mat(C.road, { roughness: 0.95 }), lane: mat(C.lane),
+    teal: mat(C.teal, { roughness: 0.6 }), green: mat(C.green), gold: mat(C.gold, { roughness: 0.45, metalness: 0.35 }),
+    cream: mat(C.cream), concrete: mat(C.concrete), steel: mat(C.steel, { roughness: 0.4, metalness: 0.5 }),
+    roof: mat(0xDDD6C6), roofDark: mat(0x3c5153),
+    grass: mat(0x8fbf7a), lawn: mat(0xA9C98C),
+    trunk: mat(C.trunk),
+    leaf: [mat(C.leaf1), mat(C.leaf2), mat(C.leaf3)],
+    glassBridge: new THREE.MeshStandardMaterial({ color: 0x8fc7c4, roughness: 0.15, metalness: 0.3, transparent: true, opacity: 0.55 }),
+    water: new THREE.MeshStandardMaterial({ color: 0x5aa7a5, roughness: 0.1, metalness: 0.2 })
+  };
+  dayNightColor.push({ mat: M.road, day: new THREE.Color(C.road), night: new THREE.Color(C.roadNight) });
+
+  // Seeded random so the model looks the same every load
+  let seed = 7;
+  function rnd() { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
+
+  // Facade texture: day map + night emissive map (lit windows)
+  function facadeTextures(wMeters, hMeters, floors, style) {
+    const ppm = 12;
+    const W = Math.max(32, Math.min(1024, Math.round(wMeters * ppm)));
+    const H = Math.max(32, Math.min(1024, Math.round(hMeters * ppm)));
+    const day = document.createElement('canvas'); day.width = W; day.height = H;
+    const nite = document.createElement('canvas'); nite.width = W; nite.height = H;
+    const d = day.getContext('2d'), n = nite.getContext('2d');
+    n.fillStyle = '#000'; n.fillRect(0, 0, W, H);
+    const fh = H / floors;
+    const s = style;
+    const bay = (s.bay || 3) * ppm;
+    const cols = Math.max(1, Math.round(W / bay));
+    const cw = W / cols;
+
+    if (s.kind === 'glass') {
+      const g = d.createLinearGradient(0, 0, W, H);
+      g.addColorStop(0, s.glassA || '#2f6b70'); g.addColorStop(1, s.glassB || '#173f44');
+      d.fillStyle = g; d.fillRect(0, 0, W, H);
+      // sky reflection streaks
+      d.globalAlpha = 0.12; d.fillStyle = '#ffffff';
+      for (let i = 0; i < 3; i++) { const x = rnd() * W; d.beginPath(); d.moveTo(x, 0); d.lineTo(x + W * 0.25, 0); d.lineTo(x - W * 0.1, H); d.lineTo(x - W * 0.35, H); d.fill(); }
+      d.globalAlpha = 1;
+      for (let r = 0; r < floors; r++) {
+        for (let c = 0; c < cols; c++) {
+          if (rnd() < (s.lit || 0.7)) {
+            const warm = rnd() < 0.8;
+            n.fillStyle = warm ? 'rgba(255, 206, 128,' + (0.65 + rnd() * 0.35) + ')' : 'rgba(200, 235, 255, 0.8)';
+            n.fillRect(c * cw + 1, r * fh + 2, cw - 2, fh - 4);
+          }
+        }
+      }
+      // mullions + floor slabs
+      d.fillStyle = s.mullion || '#d9e0da';
+      n.fillStyle = '#000';
+      for (let c = 0; c <= cols; c++) { d.fillRect(c * cw - 1, 0, 2, H); n.fillRect(c * cw - 1, 0, 2, H); }
+      d.fillStyle = s.slab || '#e9e3d4';
+      for (let r = 0; r <= floors; r++) { d.fillRect(0, r * fh - 2, W, 4); n.fillRect(0, r * fh - 2, W, 4); }
+      if (s.fins) {
+        d.fillStyle = s.fins;
+        for (let c = 0; c <= cols; c += 2) d.fillRect(c * cw - 3, 0, 6, H);
+      }
+    } else {
+      d.fillStyle = s.wall || '#efe9dc'; d.fillRect(0, 0, W, H);
+      const winH = fh * (s.winH || 0.45);
+      for (let r = 0; r < floors; r++) {
+        const y = r * fh + (fh - winH) * (s.winY != null ? s.winY : 0.45);
+        if (s.ribbon) {
+          d.fillStyle = s.win || '#2b4d52';
+          d.fillRect(cw * 0.25, y, W - cw * 0.5, winH);
+          for (let c = 0; c < cols; c++) {
+            if (rnd() < (s.lit || 0.65)) {
+              n.fillStyle = 'rgba(255, 214, 140,' + (0.6 + rnd() * 0.4) + ')';
+              n.fillRect(Math.max(cw * 0.25, c * cw), y, cw, winH);
+            }
+          }
+          d.fillStyle = s.wall || '#efe9dc';
+          for (let c = 1; c < cols; c++) d.fillRect(c * cw - 1, y, 2, winH);
+        } else {
+          for (let c = 0; c < cols; c++) {
+            const x = c * cw + cw * 0.18, ww = cw * 0.64;
+            d.fillStyle = s.win || '#2b4d52';
+            d.fillRect(x, y, ww, winH);
+            if (rnd() < (s.lit || 0.65)) {
+              n.fillStyle = 'rgba(255, 214, 140,' + (0.6 + rnd() * 0.4) + ')';
+              n.fillRect(x, y, ww, winH);
+            }
+          }
+        }
+        if (s.band) { d.fillStyle = s.band; d.fillRect(0, r * fh + fh - 3, W, 3); }
+      }
+    }
+    const tDay = new THREE.CanvasTexture(day); tDay.encoding = THREE.sRGBEncoding; tDay.anisotropy = 4;
+    const tNight = new THREE.CanvasTexture(nite); tNight.encoding = THREE.sRGBEncoding;
+    return { map: tDay, emissiveMap: tNight };
+  }
+
+  function facadeMaterial(wMeters, hMeters, floors, style) {
+    const t = facadeTextures(wMeters, hMeters, floors, style);
+    const m = new THREE.MeshStandardMaterial({
+      map: t.map, emissiveMap: t.emissiveMap, emissive: 0xffffff, emissiveIntensity: 0,
+      roughness: style.kind === 'glass' ? 0.25 : 0.8, metalness: style.kind === 'glass' ? 0.35 : 0.0
+    });
+    nightMats.push({ mat: m, intensity: style.nightIntensity || 1.25 });
+    return m;
+  }
+
+  // Box with facade on 4 sides and a roof material on top. BoxGeometry face order: +x, -x, +y, -y, +z, -z
+  function facadeBox(w, h, d, floors, style, roofMat) {
+    const sideX = facadeMaterial(d, h, floors, style);
+    const sideZ = facadeMaterial(w, h, floors, style);
+    const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), [sideX, sideX, roofMat || M.roof, M.concrete, sideZ, sideZ]);
+    m.castShadow = true; m.receiveShadow = true;
+    return m;
+  }
+
+  function box(w, h, d, material, x, y, z, parent) {
+    const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), material);
+    m.position.set(x, y + h / 2, z);
+    m.castShadow = true; m.receiveShadow = true;
+    (parent || scene).add(m);
+    return m;
+  }
+  function cyl(rt, rb, h, seg, material, x, y, z, parent) {
+    const m = new THREE.Mesh(new THREE.CylinderGeometry(rt, rb, h, seg), material);
+    m.position.set(x, y + h / 2, z);
+    m.castShadow = true; m.receiveShadow = true;
+    (parent || scene).add(m);
+    return m;
+  }
+
+  function tree(x, z, s, parent) {
+    s = s || (0.8 + rnd() * 0.5);
+    const g = new THREE.Group();
+    const trunk = cyl(0.18 * s, 0.25 * s, 1.4 * s, 5, M.trunk, 0, 0, 0, g);
+    trunk.castShadow = true;
+    const leaf = M.leaf[Math.floor(rnd() * 3)];
+    let crown;
+    if (rnd() < 0.55) {
+      crown = new THREE.Mesh(new THREE.IcosahedronGeometry(1.25 * s, 0), leaf);
+      crown.position.y = 2.4 * s;
+    } else {
+      crown = new THREE.Mesh(new THREE.ConeGeometry(1.1 * s, 3.2 * s, 6), leaf);
+      crown.position.y = 2.7 * s;
+    }
+    crown.rotation.y = rnd() * Math.PI;
+    crown.castShadow = true; crown.receiveShadow = true;
+    g.add(crown);
+    g.position.set(x, 0, z);
+    (parent || scene).add(g);
+    return g;
+  }
+
+  function lamp(x, z) {
+    const g = new THREE.Group();
+    cyl(0.08, 0.1, 4, 5, M.teal, 0, 0, 0, g);
+    const headMat = new THREE.MeshStandardMaterial({ color: 0xf6efe0, emissive: 0xffd28a, emissiveIntensity: 0, roughness: 0.4 });
+    nightMats.push({ mat: headMat, intensity: 2.2 });
+    const head = new THREE.Mesh(new THREE.SphereGeometry(0.32, 8, 6), headMat);
+    head.position.y = 4.1; g.add(head);
+    g.position.set(x, 0, z);
+    scene.add(g);
+  }
+
+  // ---------------------------------------------------------------------------
+  // Zones (interactive buildings)
+  // ---------------------------------------------------------------------------
+  const zones = [];
+  const pickables = [];
+  function makeZone(def) {
+    const zone = Object.assign({ groups: [], outlines: [], pin: true }, def);
+    zones.push(zone);
+    return zone;
+  }
+  function register(zone, group) {
+    scene.add(group);
+    zone.groups.push(group);
+    group.traverse(o => { if (o.isMesh) { o.userData.zone = zone; pickables.push(o); } });
+  }
+  function buildOutlines() {
+    const lineMat = new THREE.LineBasicMaterial({ color: C.gold, transparent: true, opacity: 0.95, depthTest: false });
+    zones.forEach(zone => {
+      zone.groups.forEach(g => {
+        g.updateMatrixWorld(true);
+        const b = new THREE.Box3().setFromObject(g);
+        const size = b.getSize(new THREE.Vector3()).addScalar(0.8);
+        const center = b.getCenter(new THREE.Vector3());
+        const line = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(size.x, size.y, size.z)), lineMat);
+        line.position.copy(center);
+        line.visible = false;
+        line.renderOrder = 10;
+        scene.add(line);
+        zone.outlines.push(line);
+      });
+    });
+  }
+
+  // ---------------------------------------------------------------------------
+  // Ground, campus plate, roads
+  // ---------------------------------------------------------------------------
+  const groundMesh = new THREE.Mesh(new THREE.PlaneGeometry(900, 900), M.ground);
+  groundMesh.rotation.x = -Math.PI / 2; groundMesh.position.y = -0.6; groundMesh.receiveShadow = true;
+  scene.add(groundMesh);
+  dayNightColor.push({ mat: M.ground, day: new THREE.Color(C.ground), night: new THREE.Color(0x1a2a2c) });
+  dayNightColor.push({ mat: M.plate, day: new THREE.Color(C.plate), night: new THREE.Color(0x4a5654) });
+  dayNightColor.push({ mat: M.paving, day: new THREE.Color(C.paving), night: new THREE.Color(0x56605c) });
+
+  // Model base (architectural model plinth)
+  const plinth = box(140, 0.6, 122, M.plate, -4, -0.6, 7);
+  plinth.castShadow = false;
+  const plinthEdge = box(141, 0.25, 123, M.teal, -4, -0.85, 7); plinthEdge.castShadow = false;
+
+  // Plaza in front of main building
+  const plaza = box(40, 0.06, 12, M.paving, 0, 0, -6); plaza.castShadow = false;
+  const fountain = cyl(3.2, 3.4, 0.5, 16, M.concrete, 0, 0, -6); fountain.castShadow = false;
+  const water = cyl(2.8, 2.8, 0.52, 16, M.water, 0, 0.02, -6); water.castShadow = false;
+  // Lawns
+  [[-30, -4, 34, 10], [30, -4, 34, 10], [36, 14, 30, 16], [-30, 50, 50, 10]].forEach(a => {
+    const l = box(a[2], 0.05, a[3], M.lawn, a[0], 0, a[1]); l.castShadow = false;
+  });
+  dayNightColor.push({ mat: M.lawn, day: new THREE.Color(0xA9C98C), night: new THREE.Color(0x2c4a3c) });
+
+  function road(x1, z1, x2, z2, w) {
+    const horiz = Math.abs(x2 - x1) > Math.abs(z2 - z1);
+    const len = horiz ? Math.abs(x2 - x1) : Math.abs(z2 - z1);
+    const cx = (x1 + x2) / 2, cz = (z1 + z2) / 2;
+    const r = box(horiz ? len : w, 0.08, horiz ? w : len, M.road, cx, 0, cz); r.castShadow = false;
+    // dashed centre line
+    for (let t = -len / 2 + 2; t < len / 2 - 2; t += 5) {
+      const dsh = box(horiz ? 2.4 : 0.22, 0.02, horiz ? 0.22 : 2.4, M.lane, horiz ? cx + t : cx, 0.08, horiz ? cz : cz + t);
+      dsh.castShadow = false; dsh.receiveShadow = false;
+    }
+  }
+  road(-74, 4, 66, 4, 7);       // main east–west road
+  road(0, 7.5, 0, 68, 7);       // southern avenue to the gate
+  road(-74, -40, 66, -40, 6);   // northern service road
+  road(56, -37, 56, 0.5, 6);    // east connector
+  road(-66, -37, -66, 0.5, 6);  // west connector (to plant logistics)
+
+  // ---------------------------------------------------------------------------
+  // 1. R&D and Advisory Centre (centre, north)
+  // ---------------------------------------------------------------------------
+  const zMain = makeZone({
+    id: 'main', zh: '研發與顧問中心', en: 'R&D and Advisory Centre', spec: '5 層 · 玻璃幕牆 · 綠化天台',
+    use: '企業研發辦公、技術顧問及商業化輔導、會議與成果展示。',
+    useEn: 'Corporate R&D offices, technical advisory and commercialisation support, conference & showcase.',
+    anchor: new THREE.Vector3(0, 23, -20)
+  });
+  (function () {
+    const g = new THREE.Group();
+    const W = 24, H = 20, D = 16;
+    const body = facadeBox(W, H, D, 5, { kind: 'glass', bay: 2, glassA: '#2f6f73', glassB: '#163c40', lit: 0.75 }, M.roofDark);
+    body.position.set(0, H / 2, 0); g.add(body);
+    // podium canopy and gold entrance band
+    box(W + 1.2, 0.5, D + 1.2, M.teal, 0, 4, 0, g);
+    box(10, 0.4, 3, M.gold, 0, 4.1, D / 2 + 1.5, g);
+    cyl(0.2, 0.2, 4, 6, M.teal, -4.5, 0, D / 2 + 2.6, g);
+    cyl(0.2, 0.2, 4, 6, M.teal, 4.5, 0, D / 2 + 2.6, g);
+    // roof garden
+    box(W + 0.4, 0.9, D + 0.4, M.teal, 0, H, 0, g);              // parapet ring
+    box(W - 1, 0.95, D - 1, M.green, 0, H, 0, g);                // planted roof
+    const gardenTop = H + 0.95;
+    box(W - 6, 0.05, 1.6, M.paving, 0, gardenTop, 0, g);         // walkway
+    box(1.6, 0.05, D - 4, M.paving, 0, gardenTop, 0, g);
+    [[-8, -4.5], [-8, 4.5], [8, -4.5], [8, 4.5], [-4, 4.5], [4, -4.5]].forEach(p => {
+      const t = tree(p[0], p[1], 0.6, g); t.position.y = gardenTop;
+    });
+    // pergola
+    for (let i = -1; i <= 1; i += 2) for (let j = -1; j <= 1; j += 2) cyl(0.1, 0.1, 2.2, 5, M.gold, 6 + i * 1.8, gardenTop, -2 + j * 1.2, g);
+    box(4.4, 0.18, 3.2, M.gold, 6, gardenTop + 2.2, -2, g);
+    // planters
+    [[-6, 0], [-3, -5], [3, 5]].forEach(p => box(2, 0.5, 1, M.leaf[2], p[0], gardenTop, p[1], g));
+    g.position.set(0, 0, -20);
+    register(zMain, g);
+  })();
+
+  // ---------------------------------------------------------------------------
+  // 2. Shared Wet Labs (east of main) + skybridges
+  // ---------------------------------------------------------------------------
+  const zLab = makeZone({
+    id: 'lab', zh: '共享濕實驗室', en: 'Shared Wet Laboratories', spec: '2 座 · 3 層 · 天橋連接主樓',
+    use: 'BSL-2 共享實驗台、細胞培養室、分子生物及分析儀器平台。',
+    useEn: 'Shared BSL-2 benches, cell-culture suites, molecular biology and analytical instrument cores.',
+    anchor: new THREE.Vector3(27, 15, -20)
+  });
+  [-27.5, -12.5].forEach((z, idx) => {
+    const g = new THREE.Group();
+    const W = 12, H = 12, D = 10;
+    const body = facadeBox(W, H, D, 3, { kind: 'wall', wall: '#ece6d8', win: '#24484d', winH: 0.48, ribbon: true, band: '#17775A', bay: 2.5 }, M.roof);
+    body.position.set(0, H / 2, 0); g.add(body);
+    box(W + 0.3, 0.6, D + 0.3, M.green, 0, H, 0, g);           // green cornice
+    box(W - 0.6, 0.6, D - 0.6, M.roof, 0, H + 0.01, 0, g);
+    // rooftop air handling + exhaust fans
+    box(4.5, 1.6, 3, M.steel, -2.5, H + 0.6, -1, g);
+    cyl(0.6, 0.6, 1.2, 8, M.steel, 3, H + 0.6, 2, g);
+    cyl(0.6, 0.6, 1.2, 8, M.steel, 3, H + 0.6, -2, g);
+    box(0.4, H, 1.6, M.gold, W / 2 + 0.2, 0, D / 2 - 2, g);     // gold stair fin
+    g.position.set(26, 0, z);
+    register(zLab, g);
+    // skybridge from main building east face (x=12) to lab west face (x=20) at level 2
+    const b = new THREE.Group();
+    const bridge = box(8.4, 2.6, 2.6, M.glassBridge, 0, 0, 0, b);
+    bridge.castShadow = true;
+    box(8.4, 0.35, 2.9, M.teal, 0, -0.3, 0, b);
+    box(8.4, 0.25, 2.9, M.teal, 0, 2.6, 0, b);
+    b.position.set(16, 8, z + (idx === 0 ? 2 : -2));
+    register(zLab, b);
+  });
+
+  // ---------------------------------------------------------------------------
+  // 3. Pilot & Biomanufacturing Plant (west of main)
+  // ---------------------------------------------------------------------------
+  const zPlant = makeZone({
+    id: 'plant', zh: '中試與生物製造廠房', en: 'Pilot & Biomanufacturing Plant', spec: '單層大跨度廠房 · 屋頂排氣',
+    use: '發酵放大、GMP 中試生產線、下游純化及灌裝。',
+    useEn: 'Fermentation scale-up, GMP pilot lines, downstream purification and fill–finish.',
+    anchor: new THREE.Vector3(-34, 15, -20)
+  });
+  (function () {
+    const g = new THREE.Group();
+    const W = 30, H = 8, D = 22;
+    const body = facadeBox(W, H, D, 1, { kind: 'wall', wall: '#1d3b3f', win: '#7fb2ad', winH: 0.22, winY: 0.12, ribbon: true, bay: 3, band: '#E0A43A', lit: 0.85 }, M.roofDark);
+    body.position.set(0, H / 2, 0); g.add(body);
+    // shallow barrel roof spanning the full width
+    const roofGeo = new THREE.CylinderGeometry(D / 2, D / 2, W + 0.6, 16, 1, false);
+    const roof = new THREE.Mesh(roofGeo, mat(0xcfd6d2, { roughness: 0.5, metalness: 0.3 }));
+    // rotated so the axis runs east–west; local x then maps to world y, so scaling it flattens the vault
+    roof.rotation.z = Math.PI / 2;
+    roof.scale.set(0.22, 1, 1);
+    roof.position.set(0, H, 0);
+    roof.castShadow = true; roof.receiveShadow = true;
+    g.add(roof);
+    // roof ridge skylight strip
+    box(W - 2, 0.3, 1.8, M.glassBridge, 0, H + D / 2 * 0.22 - 0.1, 0, g);
+    // exhaust stacks
+    [[-10, -4], [-4, 5], [3, -5], [9, 4], [12, -3]].forEach((p, i) => {
+      const h = 7 + (i % 2) * 3;
+      cyl(0.65, 0.75, h, 10, M.steel, p[0], H, p[1], g);
+      cyl(0.78, 0.78, 0.5, 10, M.gold, p[0], H + h - 0.6, p[1], g);
+    });
+    // loading docks (west side)
+    for (let i = 0; i < 4; i++) box(0.4, 3.8, 3.2, M.gold, -W / 2 - 0.2, 0, -7 + i * 4.6, g);
+    // bioreactor / tank farm on north side
+    [-9, -4, 1].forEach(x => {
+      cyl(1.6, 1.6, 7.5, 12, M.steel, x, 0, -D / 2 - 3, g);
+      const dome = new THREE.Mesh(new THREE.SphereGeometry(1.6, 12, 6, 0, Math.PI * 2, 0, Math.PI / 2), M.steel);
+      dome.position.set(x, 7.5, -D / 2 - 3); dome.castShadow = true; g.add(dome);
+    });
+    box(14, 0.3, 0.4, M.gold, -4, 5, -D / 2 - 1.2, g); // pipe rack
+    g.position.set(-34, 0, -20);
+    register(zPlant, g);
+  })();
+
+  // ---------------------------------------------------------------------------
+  // 4. Bio-Agriculture Farm (south-west): 6 greenhouses + trial fields
+  // ---------------------------------------------------------------------------
+  const zFarm = makeZone({
+    id: 'farm', zh: '生物農殖場', en: 'Bio-Agriculture Farm', spec: '6 座研究溫室 · 試驗田',
+    use: '作物育種、生物肥料與生物防治試驗、可控環境栽培研究。',
+    useEn: 'Crop breeding, bio-fertiliser and bio-control trials, controlled-environment agriculture.',
+    anchor: new THREE.Vector3(-29, 9, 16)
+  });
+  (function () {
+    const g = new THREE.Group();
+    const ghMat = new THREE.MeshStandardMaterial({
+      color: 0xeaf6ef, roughness: 0.1, metalness: 0.05, transparent: true, opacity: 0.38,
+      side: THREE.DoubleSide, depthWrite: false, emissive: 0xc77dff, emissiveIntensity: 0
+    });
+    nightMats.push({ mat: ghMat, intensity: 0.55 });
+    const plantMat = mat(0x2f8f5b);
+    const ribMat = mat(0xffffff, { roughness: 0.4 });
+    const R = 3.6, L = 14;
+    for (let i = 0; i < 6; i++) {
+      const gx = -51 + i * 9;
+      const gh = new THREE.Group();
+      box(R * 2 + 0.3, 0.8, L + 0.3, M.concrete, 0, 0, 0, gh);
+      const vault = new THREE.Mesh(new THREE.CylinderGeometry(R, R, L, 14, 1, true, Math.PI / 2, Math.PI), ghMat);
+      vault.rotation.x = Math.PI / 2; vault.position.y = 0.8; vault.castShadow = true;
+      vault.renderOrder = 2;
+      gh.add(vault);
+      [-1, 1].forEach(s => {
+        const cap = new THREE.Mesh(new THREE.CircleGeometry(R, 14, 0, Math.PI), ghMat);
+        cap.position.set(0, 0.8, s * L / 2); cap.renderOrder = 2; gh.add(cap);
+      });
+      for (let k = 0; k <= 5; k++) {
+        const rib = new THREE.Mesh(new THREE.TorusGeometry(R, 0.07, 4, 14, Math.PI), ribMat);
+        rib.position.set(0, 0.8, -L / 2 + k * L / 5); gh.add(rib);
+      }
+      // grow benches inside
+      [-1.6, 0, 1.6].forEach(px => {
+        const bench = box(0.9, 0.7, L - 2, plantMat, px, 0.8, 0, gh); bench.castShadow = false;
+      });
+      gh.position.set(gx, 0, 16);
+      g.add(gh);
+    }
+    // trial field grid (patchwork)
+    const fieldCols = [0x8fbf5a, 0xb7c96a, 0x5f9e55, 0xd8c27a, 0x9e7b52, 0x7fb069, 0xc9d68a];
+    const fx0 = -55, fz0 = 27, cell = 7.6, gap = 1.0;
+    for (let r = 0; r < 3; r++) {
+      for (let c = 0; c < 6; c++) {
+        const col = fieldCols[Math.floor(rnd() * fieldCols.length)];
+        const fm = mat(col);
+        dayNightColor.push({ mat: fm, day: new THREE.Color(col), night: new THREE.Color(col).multiplyScalar(0.35) });
+        const x = fx0 + c * (cell + gap) + cell / 2, z = fz0 + r * (cell + gap) + cell / 2;
+        const plot = box(cell, 0.25, cell, fm, x, 0, z, g); plot.castShadow = false;
+        // crop rows
+        const rowMat = mat(new THREE.Color(col).multiplyScalar(0.78).getHex());
+        dayNightColor.push({ mat: rowMat, day: rowMat.color.clone(), night: rowMat.color.clone().multiplyScalar(0.35) });
+        const along = (r + c) % 2 === 0;
+        for (let k = 0; k < 5; k++) {
+          const off = -cell / 2 + 0.9 + k * (cell - 1.8) / 4;
+          const rw = box(along ? cell - 0.8 : 0.35, 0.12, along ? 0.35 : cell - 0.8, rowMat, along ? x : x + off, 0.25, along ? z + off : z, g);
+          rw.castShadow = false;
+        }
+        // small marker flag
+        if (rnd() < 0.5) { cyl(0.04, 0.04, 1.2, 4, M.teal, x - cell / 2 + 0.5, 0.25, z - cell / 2 + 0.5, g); box(0.5, 0.3, 0.04, M.gold, x - cell / 2 + 0.75, 1.15, z - cell / 2 + 0.5, g); }
+      }
+    }
+    register(zFarm, g);
+  })();
+
+  // ---------------------------------------------------------------------------
+  // 5. Technology Transfer & Venture Tower (south-east corner)
+  // ---------------------------------------------------------------------------
+  const zTower = makeZone({
+    id: 'tower', zh: '技術轉移與創投大樓', en: 'Tech Transfer & Venture Tower', spec: '8 層細長塔樓',
+    use: '知識產權授權、技術轉移辦公室、創投基金及初創企業辦公。',
+    useEn: 'IP licensing, technology-transfer office, venture funds and start-up suites.',
+    anchor: new THREE.Vector3(44, 39, 36)
+  });
+  (function () {
+    const g = new THREE.Group();
+    const W = 8.5, H = 32, D = 8.5;
+    box(12, 4, 12, M.teal, 0, 0, 0, g); // lobby podium
+    const body = facadeBox(W, H - 4, D, 7, { kind: 'glass', bay: 1.4, glassA: '#2c6468', glassB: '#102f33', fins: '#E0A43A', lit: 0.7 }, M.roofDark);
+    body.position.set(0, 4 + (H - 4) / 2, 0); g.add(body);
+    // crown
+    box(W + 0.6, 0.5, D + 0.6, M.gold, 0, H, 0, g);
+    [[-1, -1], [-1, 1], [1, -1], [1, 1]].forEach(p => box(0.35, 3, 0.35, M.gold, p[0] * (W / 2), H + 0.5, p[1] * (D / 2), g));
+    box(W + 0.4, 0.3, D + 0.4, M.gold, 0, H + 3.5, 0, g);
+    box(3, 1.2, 3, M.steel, 0, H + 0.5, 0, g);
+    g.position.set(44, 0, 36);
+    register(zTower, g);
+  })();
+
+  // ---------------------------------------------------------------------------
+  // 6. Parking, entrance gate, trees, lamps
+  // ---------------------------------------------------------------------------
+  const zPark = makeZone({
+    id: 'park', zh: '停車場', en: 'Parking', spec: '約 60 個車位 · 電動車充電',
+    use: '員工及訪客停車，設電動車充電位。',
+    useEn: 'Staff and visitor parking with EV charging bays.',
+    anchor: new THREE.Vector3(21, 3, 36), pin: false
+  });
+  (function () {
+    const g = new THREE.Group();
+    const lot = box(20, 0.1, 22, mat(0x7d8582, { roughness: 0.95 }), 0, 0, 0, g); lot.castShadow = false;
+    dayNightColor.push({ mat: lot.material, day: new THREE.Color(0x7d8582), night: new THREE.Color(0x2e3637) });
+    const carCols = [C.teal, C.green, C.gold, 0xf2f2ee, 0x9aa5a3, 0x2d5b8a];
+    for (let side = -1; side <= 1; side += 2) {
+      for (let i = 0; i < 8; i++) {
+        const z = -9.5 + i * 2.7;
+        const x = side * 6;
+        const stripe = box(4.6, 0.02, 0.12, M.lane, x, 0.1, z - 1.35, g); stripe.castShadow = false;
+        if (rnd() < 0.72) {
+          const cm = mat(carCols[Math.floor(rnd() * carCols.length)], { roughness: 0.4, metalness: 0.2 });
+          box(3.6, 0.8, 1.7, cm, x + side * 0.2, 0.1, z, g);
+          box(2, 0.6, 1.5, cm, x + side * 0.4, 0.9, z, g);
+        }
+      }
+    }
+    // EV chargers
+    for (let i = 0; i < 4; i++) box(0.4, 1.2, 0.3, M.green, 9.6, 0.1, -9.5 + i * 2.7, g);
+    g.position.set(21, 0, 36);
+    register(zPark, g);
+  })();
+
+  const zGate = makeZone({
+    id: 'gate', zh: '入口牌坊', en: 'Main Entrance Gate', spec: 'BTRDCC',
+    use: '園區主入口及訪客登記處。',
+    useEn: 'Main campus entrance and visitor check-in.',
+    anchor: new THREE.Vector3(0, 12, 62)
+  });
+  (function () {
+    const g = new THREE.Group();
+    const span = 16;
+    [-1, 1].forEach(s => {
+      box(1.6, 8, 1.6, M.teal, s * span / 2, 0, 0, g);
+      box(2.2, 0.6, 2.2, M.gold, s * span / 2, 0, 0, g);
+      box(2.2, 0.4, 2.2, M.gold, s * span / 2, 8, 0, g);
+    });
+    // sign texture
+    const c = document.createElement('canvas'); c.width = 1024; c.height = 160;
+    const x = c.getContext('2d');
+    x.fillStyle = '#0F2A2E'; x.fillRect(0, 0, 1024, 160);
+    x.strokeStyle = '#E0A43A'; x.lineWidth = 6; x.strokeRect(10, 10, 1004, 140);
+    x.fillStyle = '#E0A43A'; x.font = '700 104px Georgia, "Times New Roman", serif';
+    x.textAlign = 'center'; x.textBaseline = 'middle';
+    if (x.letterSpacing !== undefined) x.letterSpacing = '18px';
+    x.fillText('BTRDCC', 512, 86);
+    const signTex = new THREE.CanvasTexture(c); signTex.encoding = THREE.sRGBEncoding; signTex.anisotropy = 8;
+    const signMat = new THREE.MeshStandardMaterial({ map: signTex, emissiveMap: signTex, emissive: 0xffffff, emissiveIntensity: 0, roughness: 0.5 });
+    nightMats.push({ mat: signMat, intensity: 0.9 });
+    const beamGeo = new THREE.BoxGeometry(span + 3, 2.5, 1.4);
+    const beam = new THREE.Mesh(beamGeo, [M.teal, M.teal, M.gold, M.teal, signMat, signMat]);
+    beam.position.set(0, 8.4 + 1.25, 0); beam.castShadow = true; g.add(beam);
+    // fix mirrored text on the north-facing side
+    const uv = beamGeo.attributes.uv;
+    // face 5 (-z) occupies vertices 20..23; flip u so text reads correctly from the north
+    for (let i = 20; i < 24; i++) uv.setX(i, 1 - uv.getX(i));
+    uv.needsUpdate = true;
+    box(span + 4, 0.5, 2.2, M.gold, 0, 10.9, 0, g);   // cap
+    box(span + 2.4, 0.25, 1.8, M.teal, 0, 11.4, 0, g);
+    // guard house
+    box(3, 3, 3, M.cream, 12, 0, 2, g);
+    box(3.6, 0.3, 3.6, M.teal, 12, 3, 2, g);
+    g.position.set(0, 0, 62);
+    register(zGate, g);
+  })();
+
+  // Trees along roads and around buildings
+  function avoid(x, z) {
+    const blocks = [
+      [-13, 13, -29, -10], [19, 33, -33, -7], [-51, -17, -36, -7], [-56, -2, 8, 52], [37, 51, 29, 43], [10, 32, 24, 48],
+      [-4, 4, -80, 80], [-80, 80, 0, 8], [-80, 80, -43, -37], [53, 59, -40, 4], [-69, -63, -40, 4], [-14, 22, 56, 68], [-20, 20, -12, 0], [-4.5, 4.5, 0, 80], [12, 22, -24, -16]
+    ];
+    return blocks.some(b => x > b[0] && x < b[1] && z > b[2] && z < b[3]);
+  }
+  for (let x = -70; x <= 62; x += 6) {
+    [-0.5, 8.5, -44, -35.5].forEach(z => { if (!avoid(x, z)) tree(x + (rnd() - 0.5), z + (rnd() - 0.5)); });
+  }
+  for (let z = 12; z <= 54; z += 6) { [-6, 6].forEach(x => { if (!avoid(x, z)) tree(x, z, 0.9); }); }
+  for (let i = 0; i < 70; i++) {
+    const x = -72 + rnd() * 134, z = -46 + rnd() * 116;
+    if (!avoid(x, z) && Math.abs(x) < 70 && z < 66) tree(x, z);
+  }
+  // Street lamps
+  for (let z = 12; z <= 56; z += 8) { lamp(-4.4, z); lamp(4.4, z); }
+  for (let x = -66; x <= 60; x += 12) { if (Math.abs(x) > 6) lamp(x, 8.2); }
+
+  buildOutlines();
+
+  // Hex colours above are authored in sRGB; convert once to linear so the palette renders true
+  (function linearise() {
+    const seen = new Set();
+    scene.traverse(o => {
+      const ms = o.material ? (Array.isArray(o.material) ? o.material : [o.material]) : [];
+      ms.forEach(m => {
+        if (seen.has(m)) return; seen.add(m);
+        if (m.color && !m.map) m.color.convertSRGBToLinear();
+      });
+    });
+    dayNightColor.forEach(d => { d.day.convertSRGBToLinear(); d.night.convertSRGBToLinear(); });
+  })();
+
+  // ---------------------------------------------------------------------------
+  // Camera controls (custom orbit for orthographic camera)
+  // ---------------------------------------------------------------------------
+  const DEFAULT = { az: Math.PI / 4 + 0.15, polar: Math.PI / 2 - Math.atan(1 / Math.SQRT2), zoom: 1, target: new THREE.Vector3(-2, 4, 10) };
+  const view = { az: DEFAULT.az, polar: DEFAULT.polar, zoom: DEFAULT.zoom, target: DEFAULT.target.clone() };
+  const DIST = 300;
+
+  function applyCamera() {
+    const sp = Math.sin(view.polar);
+    camera.position.set(
+      view.target.x + DIST * sp * Math.sin(view.az),
+      view.target.y + DIST * Math.cos(view.polar),
+      view.target.z + DIST * sp * Math.cos(view.az)
+    );
+    camera.zoom = view.zoom;
+    camera.lookAt(view.target);
+    camera.updateProjectionMatrix();
+    compassSvg.style.transform = 'rotate(' + (view.az * 180 / Math.PI) + 'deg)';
+  }
+  const compassSvg = document.querySelector('#compass svg');
+
+  function resize() {
+    const w = window.innerWidth, h = window.innerHeight;
+    renderer.setSize(w, h, false);
+    const aspect = w / h;
+    // fit campus on narrow screens too
+    const v = aspect < 1 ? 175 / aspect : VIEW;
+    camera.left = -v * aspect / 2; camera.right = v * aspect / 2;
+    camera.top = v / 2; camera.bottom = -v / 2;
+    camera.updateProjectionMatrix();
+    const dpr = Math.min(window.devicePixelRatio, 2);
+    leaders.width = w * dpr; leaders.height = h * dpr;
+    leaders.style.width = w + 'px'; leaders.style.height = h + 'px';
+    lctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    requestRender();
+  }
+
+  let dragging = null;
+  const pointers = new Map();
+  let pinchStart = null;
+
+  canvas.addEventListener('contextmenu', e => e.preventDefault());
+  canvas.addEventListener('pointerdown', e => {
+    canvas.setPointerCapture(e.pointerId);
+    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (pointers.size === 2) {
+      const p = [...pointers.values()];
+      pinchStart = { d: Math.hypot(p[0].x - p[1].x, p[0].y - p[1].y), zoom: view.zoom };
+      dragging = null;
+      return;
+    }
+    dragging = { x: e.clientX, y: e.clientY, mode: (e.button === 2 || e.shiftKey) ? 'pan' : 'rotate', moved: 0 };
+    canvas.classList.add('dragging');
+  });
+  canvas.addEventListener('pointermove', e => {
+    if (pointers.has(e.pointerId)) pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (pinchStart && pointers.size === 2) {
+      const p = [...pointers.values()];
+      const d = Math.hypot(p[0].x - p[1].x, p[0].y - p[1].y);
+      view.zoom = THREE.MathUtils.clamp(pinchStart.zoom * d / pinchStart.d, 0.6, 5);
+      applyCamera(); requestRender();
+      return;
+    }
+    if (dragging) {
+      const dx = e.clientX - dragging.x, dy = e.clientY - dragging.y;
+      dragging.x = e.clientX; dragging.y = e.clientY;
+      dragging.moved += Math.abs(dx) + Math.abs(dy);
+      if (dragging.mode === 'rotate') {
+        view.az -= dx * 0.008;
+        view.polar = THREE.MathUtils.clamp(view.polar - dy * 0.006, 0.18, 1.35);
+      } else {
+        const scale = (camera.top - camera.bottom) / camera.zoom / window.innerHeight;
+        const right = new THREE.Vector3(Math.cos(view.az), 0, -Math.sin(view.az));
+        const fwd = new THREE.Vector3(-Math.sin(view.az), 0, -Math.cos(view.az));
+        view.target.addScaledVector(right, -dx * scale);
+        view.target.addScaledVector(fwd, dy * scale / Math.cos(view.polar) * 0.6);
+        view.target.x = THREE.MathUtils.clamp(view.target.x, -90, 90);
+        view.target.z = THREE.MathUtils.clamp(view.target.z, -70, 90);
+      }
+      applyCamera(); requestRender();
+      hideCard();
+      return;
+    }
+    hover(e.clientX, e.clientY);
+  });
+  function endPointer(e) {
+    pointers.delete(e.pointerId);
+    if (pointers.size < 2) pinchStart = null;
+    const wasTap = dragging && dragging.moved < 6;
+    dragging = null;
+    canvas.classList.remove('dragging');
+    if (wasTap && e.pointerType !== 'mouse') hover(e.clientX, e.clientY, true);
+  }
+  canvas.addEventListener('pointerup', endPointer);
+  canvas.addEventListener('pointercancel', endPointer);
+  canvas.addEventListener('pointerleave', () => { if (!dragging) hideCard(); });
+  canvas.addEventListener('wheel', e => {
+    e.preventDefault();
+    view.zoom = THREE.MathUtils.clamp(view.zoom * Math.exp(-e.deltaY * 0.0015), 0.6, 5);
+    applyCamera(); requestRender();
+    if (lastMouse) hover(lastMouse.x, lastMouse.y);
+  }, { passive: false });
+
+  // ---------------------------------------------------------------------------
+  // Hover picking + floating info card
+  // ---------------------------------------------------------------------------
+  const raycaster = new THREE.Raycaster();
+  const ndc = new THREE.Vector2();
+  const card = document.getElementById('card');
+  let hovered = null, lastMouse = null;
+
+  function hover(mx, my, sticky) {
+    lastMouse = { x: mx, y: my };
+    ndc.set(mx / window.innerWidth * 2 - 1, -(my / window.innerHeight) * 2 + 1);
+    raycaster.setFromCamera(ndc, camera);
+    const hit = raycaster.intersectObjects(pickables, false)[0];
+    const zone = hit ? hit.object.userData.zone : null;
+    if (zone !== hovered) {
+      if (hovered) hovered.outlines.forEach(o => o.visible = false);
+      hovered = zone;
+      if (zone) {
+        zone.outlines.forEach(o => o.visible = true);
+        card.innerHTML =
+          '<div class="zh">' + zone.zh + '</div>' +
+          '<div class="en">' + zone.en + '</div>' +
+          '<span class="spec">' + zone.spec + '</span>' +
+          '<div class="use">' + zone.use + '</div>' +
+          '<div class="use-en">' + zone.useEn + '</div>';
+        card.classList.add('show'); card.setAttribute('aria-hidden', 'false');
+      } else {
+        hideCard();
+      }
+      canvas.classList.toggle('hovering', !!zone);
+      requestRender();
+    }
+    if (zone) placeCard(mx, my);
+  }
+  function hideCard() {
+    if (hovered) hovered.outlines.forEach(o => o.visible = false);
+    hovered = null;
+    card.classList.remove('show'); card.setAttribute('aria-hidden', 'true');
+    canvas.classList.remove('hovering');
+    requestRender();
+  }
+  function placeCard(mx, my) {
+    const w = card.offsetWidth, h = card.offsetHeight, pad = 16;
+    let x = mx + 18, y = my + 18;
+    if (x + w > window.innerWidth - pad) x = mx - w - 18;
+    if (y + h > window.innerHeight - pad) y = my - h - 18;
+    x = Math.max(pad, x); y = Math.max(pad, y);
+    card.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+    card.style.left = '0'; card.style.top = '0';
+  }
+
+  // ---------------------------------------------------------------------------
+  // Persistent name pins with overlap resolution + leader lines
+  // ---------------------------------------------------------------------------
+  const pinLayer = document.getElementById('pins');
+  const leaders = document.getElementById('leaders');
+  const lctx = leaders.getContext('2d');
+  let showPins = true;
+  zones.forEach(z => {
+    if (!z.pin) return;
+    const el = document.createElement('div');
+    el.className = 'pin';
+    el.innerHTML = '<b>' + z.zh + '</b><span>' + z.en + '</span>';
+    pinLayer.appendChild(el);
+    z.pinEl = el;
+  });
+
+  const tmp = new THREE.Vector3();
+  function layoutPins() {
+    const W = window.innerWidth, H = window.innerHeight;
+    const items = [];
+    zones.forEach(z => {
+      if (!z.pinEl) return;
+      z.pinEl.classList.toggle('hidden', !showPins);
+      if (!showPins) return;
+      tmp.copy(z.anchor).project(camera);
+      const ax = (tmp.x + 1) / 2 * W, ay = (1 - tmp.y) / 2 * H;
+      const off = ax < 0 || ax > W || ay < 0 || ay > H;
+      z.pinEl.classList.toggle('hidden', off);
+      if (off) return;
+      const w = z.pinEl.offsetWidth, h = z.pinEl.offsetHeight;
+      items.push({ z, ax, ay, w, h, x: ax - w / 2, y: ay - h - 18 });
+    });
+    // fixed obstacles: the HUD panels
+    const obstacles = [...document.querySelectorAll('.hud')].map(e => e.getBoundingClientRect()).filter(r => r.width > 0)
+      .map(r => ({ x: r.left, y: r.top, w: r.width, h: r.height }));
+    // relax overlaps (keep 6px gap)
+    const GAP = 6;
+    for (let it = 0; it < 60; it++) {
+      let moved = false;
+      for (let i = 0; i < items.length; i++) {
+        for (let j = i + 1; j < items.length; j++) {
+          const a = items[i], b = items[j];
+          const ox = Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x) + GAP;
+          const oy = Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y) + GAP;
+          if (ox > 0 && oy > 0) {
+            moved = true;
+            if (oy <= ox) {
+              const s = (a.y + a.h / 2 <= b.y + b.h / 2) ? -1 : 1;
+              a.y += s * oy / 2; b.y -= s * oy / 2;
+            } else {
+              const s = (a.x + a.w / 2 <= b.x + b.w / 2) ? -1 : 1;
+              a.x += s * ox / 2; b.x -= s * ox / 2;
+            }
+          }
+        }
+      }
+      // push pins out of HUD panels (pins move, panels stay)
+      items.forEach(p => obstacles.forEach(o => {
+        const ox = Math.min(p.x + p.w, o.x + o.w) - Math.max(p.x, o.x) + GAP;
+        const oy = Math.min(p.y + p.h, o.y + o.h) - Math.max(p.y, o.y) + GAP;
+        if (ox > 0 && oy > 0) {
+          moved = true;
+          const below = o.y + o.h + GAP, above = o.y - p.h - GAP;
+          const candidates = [
+            { d: Math.abs(below - p.y), x: p.x, y: below },
+            { d: Math.abs(above - p.y), x: p.x, y: above },
+            { d: Math.abs(o.x + o.w + GAP - p.x), x: o.x + o.w + GAP, y: p.y },
+            { d: Math.abs(o.x - p.w - GAP - p.x), x: o.x - p.w - GAP, y: p.y }
+          ].filter(c => c.x >= 8 && c.y >= 8 && c.x + p.w <= W - 8 && c.y + p.h <= H - 8);
+          candidates.sort((a, b) => a.d - b.d);
+          if (candidates[0]) { p.x = candidates[0].x; p.y = candidates[0].y; }
+        }
+      }));
+      // keep on-screen
+      items.forEach(p => {
+        p.x = Math.max(8, Math.min(W - p.w - 8, p.x));
+        p.y = Math.max(8, Math.min(H - p.h - 8, p.y));
+      });
+      if (!moved) break;
+    }
+    lctx.clearRect(0, 0, W, H);
+    const night = document.body.classList.contains('night');
+    items.forEach(p => {
+      p.z.pinEl.style.transform = 'translate(' + Math.round(p.x) + 'px,' + Math.round(p.y) + 'px)';
+      p.z.pinEl.classList.toggle('dim', !!hovered && hovered !== p.z);
+      const alpha = hovered && hovered !== p.z ? 0.25 : 0.9;
+      const ex = Math.max(p.x + 6, Math.min(p.x + p.w - 6, p.ax));
+      const ey = p.y + p.h / 2 < p.ay ? p.y + p.h : p.y;
+      lctx.strokeStyle = night ? 'rgba(224,164,58,' + alpha + ')' : 'rgba(15,42,46,' + (alpha * 0.7) + ')';
+      lctx.lineWidth = 1;
+      lctx.beginPath(); lctx.moveTo(p.ax, p.ay); lctx.lineTo(ex, ey); lctx.stroke();
+      lctx.fillStyle = 'rgba(224,164,58,' + alpha + ')';
+      lctx.beginPath(); lctx.arc(p.ax, p.ay, 3, 0, Math.PI * 2); lctx.fill();
+    });
+    window.__pinRects = items.map(p => ({ id: p.z.id, x: p.x, y: p.y, w: p.w, h: p.h }));
+  }
+
+  // ---------------------------------------------------------------------------
+  // Day / night
+  // ---------------------------------------------------------------------------
+  // a few soft point lights at night for ambience
+  [[0, 6, 60, 0xffc87a], [0, 6, 0, 0xffc87a], [-30, 4, 16, 0xc77dff], [22, 5, 36, 0xffc87a]].forEach(p => {
+    const l = new THREE.PointLight(p[3], 0, 45, 2);
+    l.position.set(p[0], p[1], p[2]);
+    scene.add(l);
+    nightLights.push({ light: l, intensity: 1.6 });
+  });
+
+  let night = false, tNight = 0, animating = false;
+  const btnDN = document.getElementById('btnDayNight');
+  function setNight(n) {
+    night = n;
+    document.body.classList.toggle('night', n);
+    btnDN.textContent = n ? '☀️ 日間' : '🌙 夜間';
+    btnDN.setAttribute('aria-pressed', String(n));
+    animating = true; requestRender();
+  }
+  function applyDayNight(t) {
+    scene.background.copy(DAY_BG).lerp(NIGHT_BG, t);
+    sun.intensity = THREE.MathUtils.lerp(1.55, 0.28, t);
+    sun.color.setHex(0xfff1dc).lerp(new THREE.Color(0x9fb8ff), t);
+    hemi.intensity = THREE.MathUtils.lerp(0.75, 0.22, t);
+    hemi.color.setHex(0xfffaf0).lerp(new THREE.Color(0x6c86a8), t);
+    hemi.groundColor.setHex(0xcfc4ad).lerp(new THREE.Color(0x1a2224), t);
+    fill.intensity = THREE.MathUtils.lerp(0.3, 0.1, t);
+    nightMats.forEach(n => n.mat.emissiveIntensity = n.intensity * t);
+    nightLights.forEach(n => n.light.intensity = n.intensity * t);
+    dayNightColor.forEach(d => d.mat.color.copy(d.day).lerp(d.night, t));
+    renderer.toneMappingExposure = THREE.MathUtils.lerp(1.05, 1.25, t);
+  }
+  btnDN.addEventListener('click', () => setNight(!night));
+  document.getElementById('btnReset').addEventListener('click', () => {
+    view.az = DEFAULT.az; view.polar = DEFAULT.polar; view.zoom = DEFAULT.zoom; view.target.copy(DEFAULT.target);
+    applyCamera(); requestRender();
+  });
+  const btnPins = document.getElementById('btnPins');
+  btnPins.addEventListener('click', () => {
+    showPins = !showPins;
+    btnPins.setAttribute('aria-pressed', String(showPins));
+    requestRender();
+  });
+
+  // ---------------------------------------------------------------------------
+  // Render loop (on demand)
+  // ---------------------------------------------------------------------------
+  let pending = false;
+  function requestRender() { if (!pending) { pending = true; requestAnimationFrame(frame); } }
+  function frame() {
+    pending = false;
+    if (animating) {
+      const target = night ? 1 : 0;
+      tNight += (target - tNight) * 0.12;
+      if (Math.abs(target - tNight) < 0.002) { tNight = target; animating = false; }
+      applyDayNight(tNight);
+      if (animating) requestRender();
+    }
+    renderer.render(scene, camera);
+    layoutPins();
+  }
+
+  window.addEventListener('resize', resize);
+  // expose a tiny hook for automated checks
+  window.__campus = {
+    setNight, zones: () => zones.map(z => z.id),
+    screenOf: id => { const z = zones.find(q => q.id === id); tmp.copy(z.anchor).project(camera); return { x: (tmp.x + 1) / 2 * innerWidth, y: (1 - tmp.y) / 2 * innerHeight }; },
+    rotate: (daz, dpolar, zoom) => { view.az += daz || 0; view.polar = THREE.MathUtils.clamp(view.polar + (dpolar || 0), 0.18, 1.35); if (zoom) view.zoom = zoom; applyCamera(); requestRender(); }
+  };
+  resize();
+  applyCamera();
+  applyDayNight(0);
+  requestRender();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(requestRender);
+})();
+</script>
+</body>
+</html>

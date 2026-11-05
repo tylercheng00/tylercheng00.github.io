@@ -483,7 +483,9 @@ html[data-lang="zh"] .hl-big { font-family: var(--serif-zh); font-size: 28px; }
   .container { padding: 0 18px; }
   .topbar-inner { height: 64px; gap: 12px; }
   .nav { inset: 64px 0 auto 0; }
-  .brand-sub { display: none; }
+  .brand { gap: 10px; min-width: 0; }
+  .brand-text { min-width: 0; }
+  .brand-sub { font-size: 11px; letter-spacing: 0; white-space: nowrap; }
   .hero-inner { padding-top: 112px; padding-bottom: 96px; }
   .hero-intro { font-size: 16px; }
   .hero-cta .btn { flex: 1 1 auto; }

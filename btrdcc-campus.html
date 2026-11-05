@@ -5,9 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BTRDCC Nusantara Biotech Campus</title>
 <meta name="description" content="BTRDCC 生物科技園區（印尼努山塔拉）3D 鳥瞰模型 · 3D isometric model of the BTRDCC biotech campus project in Nusantara, Indonesia.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://tylercheng00.github.io/btrdcc-campus.html">
+<meta name="theme-color" content="#0F2A2E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tyler Cheng 鄭迪珉">
+<meta property="og:title" content="BTRDCC Nusantara Biotech Campus · 3D model">
+<meta property="og:description" content="Interactive 3D concept model of the BTRDCC biotech campus in Nusantara, Indonesia · 印尼努山塔拉 BTRDCC 生物科技園區 3D 概念模型">
+<meta property="og:url" content="https://tylercheng00.github.io/btrdcc-campus.html">
+<meta property="og:image" content="https://tylercheng00.github.io/assets/projects/btrdcc-campus.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<!-- fonts are self-hosted (Google Fonts is blocked in mainland China) -->
+<link rel="stylesheet" href="assets/fonts/fonts.css?v=1baa657b">
 <style>
   :root {
     --teal: #0F2A2E;
@@ -182,6 +193,14 @@
   .pager small { display: block; font-size: 11px; color: var(--muted); }
   .pager b { display: block; font-size: 13px; font-weight: 600; margin-top: 2px; }
 
+  /* link back to the personal site */
+  .sitebar { display: flex; justify-content: space-between; gap: 12px; padding: 9px 22px; font-size: 12px; border-bottom: 1px solid var(--line); background: var(--surface-2); flex: 0 0 auto; }
+  .sitebar a { color: var(--ink-2); text-decoration: none; font-weight: 500; }
+  .sitebar a:hover, .sitebar a:focus-visible { color: var(--green); text-decoration: underline; }
+  body.night .sitebar a:hover { color: var(--gold); }
+  .fullname { margin: 0 0 12px; font-size: 13px; font-weight: 600; line-height: 1.45; color: var(--ink); }
+  .fullname span { display: block; font-size: 11.5px; font-weight: 400; color: var(--muted); margin-top: 3px; }
+
   /* bilingual text */
   .brand .t3 { font-size: 11.5px; color: var(--gold); margin-top: 4px; letter-spacing: .03em; }
   .en-p { font-size: 12.5px; line-height: 1.65; color: var(--muted); margin: 8px 0 0; }
@@ -345,6 +364,10 @@
     </div>
     <button class="sheet-toggle" id="sheetToggle" type="button" aria-expanded="false">簡介 About ▲</button>
   </div>
+  <nav class="sitebar" aria-label="Tyler Cheng site">
+    <a href="projects.html#btrdcc">‹ 項目 Projects</a>
+    <a href="index.html">Tyler Cheng 鄭迪珉</a>
+  </nav>
   <div id="panelBody"></div>
 </aside>
 
@@ -383,7 +406,8 @@
   <div id="error">無法載入 Three.js，請檢查網絡連線後重新整理。<br>Could not load Three.js — please check your connection and reload.</div>
 </main>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<!-- Three.js r128 (MIT), self-hosted so the model also loads where public CDNs are blocked -->
+<script src="assets/vendor/three-r128.min.js"></script>
 <script>
 (function () {
   'use strict';
@@ -547,6 +571,7 @@
   function renderOverview() {
     panelBody.innerHTML =
       '<div class="eyebrow">園區概覽 · Overview</div>' +
+      '<p class="fullname">Biochemical Technology Research &amp; Development Consultation Centre<span>納米科研技術有限公司旗下項目 · A project of Nanotech Innovation Limited</span></p>' +
       '<p class="lead">BTRDCC 生物科技園區是位於印尼新首都<b>努山塔拉（Nusantara）</b>的生物科技項目，以「由實驗室到市場」為核心，把研發辦公、共享實驗、中試生產、農業試驗與技術轉移集中在同一園區，為生物科技企業提供由構思、驗證、放大到融資的完整支援。</p>' +
       '<p class="en-p">BTRDCC is a biotechnology campus project in <b>Nusantara</b>, Indonesia’s new capital city. Built around a “lab-to-market” model, it brings R&amp;D offices, shared labs, pilot manufacturing, agricultural trials and technology transfer onto one site, supporting biotech companies from first idea and validation through scale-up to investment.</p>' +
       '<div class="loc">' +

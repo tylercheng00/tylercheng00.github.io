@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BTRDCC 生物科技園區</title>
-<meta name="description" content="BTRDCC 生物科技園區 3D 等距鳥瞰模型：由研發、共享實驗、中試生產、農業試驗到技術轉移與創投的一站式園區。">
+<title>BTRDCC Nusantara Biotech Campus</title>
+<meta name="description" content="BTRDCC 生物科技園區（印尼努山塔拉）3D 鳥瞰模型 · 3D isometric model of the BTRDCC biotech campus project in Nusantara, Indonesia.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
@@ -145,6 +145,29 @@
   .pager small { display: block; font-size: 11px; color: var(--muted); }
   .pager b { display: block; font-size: 13px; font-weight: 600; margin-top: 2px; }
 
+  /* bilingual text */
+  .brand .t3 { font-size: 11.5px; color: var(--gold); margin-top: 4px; letter-spacing: .03em; }
+  .en-p { font-size: 12.5px; line-height: 1.65; color: var(--muted); margin: 8px 0 0; }
+  .lead b, .en-p b { font-weight: 600; color: var(--ink); }
+  h2.sec small { display: block; font-size: 12px; font-weight: 500; color: var(--muted); margin-top: 3px; }
+  .chain-step .txt i { display: block; font-style: normal; font-size: 11.5px; font-weight: 500; color: var(--ink-2); margin-top: 1px; }
+  .stat em { display: block; font-style: normal; font-size: 10.5px; color: var(--muted); opacity: .8; margin-top: 2px; line-height: 1.3; }
+  .principle i { display: block; font-style: normal; font-size: 11px; font-weight: 500; color: var(--ink-2); }
+  .principle .pe { opacity: .85; margin-top: 4px; }
+  .tagline span { display: block; margin-top: 6px; font-size: 12.5px; font-weight: 400; color: var(--muted); }
+  .spec-table small, .fac small, .tags small { display: block; font-size: 11.5px; font-weight: 400; color: var(--muted); margin-top: 1px; }
+  .tags span { line-height: 1.35; border-radius: 10px; padding: 5px 10px; }
+  .loc { display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: center; margin-top: 16px; padding: 12px 14px; border-radius: 8px; background: var(--teal); color: #F4EFE4; }
+  .loc-ic { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: rgba(224,164,58,.15); color: var(--gold); }
+  .loc-ic svg { width: 20px; height: 20px; }
+  .loc-k { font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+  .loc-v { font-size: 14px; font-weight: 600; margin-top: 3px; }
+  .loc-e { font-size: 12px; opacity: .8; margin-top: 1px; }
+  body.night .loc { background: var(--surface-2); border: 1px solid var(--line); }
+  #legend em { font-style: normal; color: var(--muted); font-size: 10.5px; }
+  #hint .h-en { font-size: 10.5px; opacity: .85; margin-top: 2px; }
+  #card .use-en { margin-top: 3px; font-size: 11.5px; line-height: 1.45; color: var(--muted); }
+
   /* ---------------- Stage ---------------- */
   #stage { order: 1; position: relative; flex: 1 1 auto; height: 100%; overflow: hidden; }
   #scene { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; cursor: grab; }
@@ -278,8 +301,9 @@
     <div>
       <div class="t1">BTRDCC</div>
       <div class="t2">生物科技園區 · Biotech Campus</div>
+      <div class="t3">📍 Nusantara, Indonesia · 印尼努山塔拉</div>
     </div>
-    <button class="sheet-toggle" id="sheetToggle" type="button" aria-expanded="false">簡介 ▲</button>
+    <button class="sheet-toggle" id="sheetToggle" type="button" aria-expanded="false">簡介 About ▲</button>
   </div>
   <div id="panelBody"></div>
 </aside>
@@ -291,22 +315,22 @@
   <div id="card" role="tooltip" aria-hidden="true"></div>
 
   <div id="legend" class="hud" aria-hidden="true">
-    <div><i style="background:#0F2A2E"></i>研發及辦公</div>
-    <div><i style="background:#ece6d8;border:1px solid #17775A"></i>實驗設施</div>
-    <div><i style="background:#cfd6d2"></i>生產廠房</div>
-    <div><i style="background:#8fbf5a"></i>農業試驗</div>
-    <div><i style="background:#E0A43A"></i>地標及重點</div>
+    <div><i style="background:#0F2A2E"></i>研發及辦公 <em>R&amp;D / Office</em></div>
+    <div><i style="background:#ece6d8;border:1px solid #17775A"></i>實驗設施 <em>Laboratories</em></div>
+    <div><i style="background:#cfd6d2"></i>生產廠房 <em>Production</em></div>
+    <div><i style="background:#8fbf5a"></i>農業試驗 <em>Agriculture</em></div>
+    <div><i style="background:#E0A43A"></i>地標及重點 <em>Landmarks</em></div>
   </div>
   <div id="controls" class="hud">
-    <button id="btnDayNight" class="primary" type="button" aria-pressed="false">🌙 夜間</button>
-    <button id="btnTour" type="button">▶ 導覽</button>
+    <button id="btnDayNight" class="primary" type="button" aria-pressed="false">🌙 夜間 Night</button>
+    <button id="btnTour" type="button">▶ 導覽 Tour</button>
     <span class="sep"></span>
-    <button id="btnPins" class="toggle" type="button" aria-pressed="true">標籤</button>
-    <button id="btnMotion" class="toggle" type="button" aria-pressed="true">動態</button>
-    <button id="btnReset" type="button">重設視角</button>
+    <button id="btnPins" class="toggle" type="button" aria-pressed="true">標籤 Labels</button>
+    <button id="btnMotion" class="toggle" type="button" aria-pressed="true">動態 Motion</button>
+    <button id="btnReset" type="button">重設 Reset</button>
   </div>
-  <div id="tourBar" class="hud"><span id="tourText">導覽中</span><span class="prog"><i id="tourProg"></i></span></div>
-  <div id="hint" class="hud">拖曳旋轉 · 滾輪縮放 · 右鍵／Shift 拖曳平移 · 點擊建築查看詳情</div>
+  <div id="tourBar" class="hud"><span id="tourText">導覽中 Touring</span><span class="prog"><i id="tourProg"></i></span></div>
+  <div id="hint" class="hud"><div>拖曳旋轉 · 滾輪縮放 · 右鍵／Shift 拖曳平移 · 點擊建築查看詳情</div><div class="h-en">Drag to rotate · Scroll to zoom · Right-drag / Shift-drag to pan · Click a building for details</div></div>
   <div id="compass" class="hud" title="指北">
     <svg viewBox="-22 -22 44 44" aria-hidden="true">
       <g id="needle">
@@ -316,7 +340,7 @@
       </g>
     </svg>
   </div>
-  <div id="error">無法載入 Three.js，請檢查網絡連線後重新整理。</div>
+  <div id="error">無法載入 Three.js，請檢查網絡連線後重新整理。<br>Could not load Three.js — please check your connection and reload.</div>
 </main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -327,75 +351,139 @@
   // ===========================================================================
   // Content
   // ===========================================================================
+  // Each text field has a Chinese value and an English value (suffix En).
+  // specs rows: [label zh, label en, value zh, value en]
   const ZONES = [
     {
       id: 'main', no: 1, zh: '研發與顧問中心', en: 'R&D and Advisory Centre',
       short: '研發辦公、技術顧問與產業對接樞紐',
+      shortEn: 'Hub for R&D offices, advisory services and industry partnerships',
       tag: '園區的大腦：研發團隊、顧問專家與產業夥伴在同一屋簷下協作。',
-      desc: '位於園區中軸北端，是整個園區的核心建築。5 層玻璃幕牆配合垂直遮陽鰭片，在保持通透的同時減少西曬。地面層為雙層高大堂及成果展示廊；2 至 4 樓為企業研發辦公及顧問服務中心；5 樓設會議及培訓設施。天台綠化花園兼作交流及活動場地，北半部設太陽能板。',
-      specs: [['樓層', '5 層'], ['建築高度', '約 22 米'], ['外牆', '玻璃幕牆＋垂直遮陽鰭片'], ['天台', '綠化花園＋太陽能板'], ['連接', '2 樓天橋通往共享濕實驗室']],
+      tagEn: 'The campus brain: R&D teams, advisors and industry partners working under one roof.',
+      desc: '位於園區中軸北端，是整個園區的核心建築。5 層玻璃幕牆配合垂直遮陽鰭片，在保持通透的同時遮擋熱帶強烈日照。地面層為雙層高大堂及成果展示廊；2 至 4 樓為企業研發辦公及顧問服務中心；5 樓設會議及培訓設施。天台綠化花園兼作交流及活動場地，北半部設太陽能板。',
+      descEn: 'At the northern end of the campus axis, this is the heart of the site. A five-storey glass curtain wall with vertical sun fins stays open and bright while screening the strong tropical sun. The ground floor holds a double-height lobby and showcase gallery; levels 2–4 house corporate R&D offices and advisory services; level 5 hosts conference and training facilities. The roof garden doubles as a social and event space, with solar panels on its northern half.',
+      specs: [
+        ['樓層', 'Floors', '5 層', '5 storeys'],
+        ['建築高度', 'Height', '約 22 米', 'approx. 22 m'],
+        ['外牆', 'Façade', '玻璃幕牆＋垂直遮陽鰭片', 'Glass curtain wall + vertical sun fins'],
+        ['天台', 'Roof', '綠化花園＋太陽能板', 'Roof garden + solar panels'],
+        ['連接', 'Links', '2 樓天橋通往共享濕實驗室', 'Level-2 skybridges to the wet labs']
+      ],
       fac: ['企業研發辦公室（可按需分隔）', '技術顧問及商業化輔導中心', '多功能會議廳及培訓室', '成果展示廊及訪客中心', '天台綠化交流花園'],
+      facEn: ['Corporate R&D offices (flexible layouts)', 'Technical advisory & commercialisation centre', 'Multi-function conference hall & training rooms', 'Showcase gallery & visitor centre', 'Rooftop garden for networking'],
       users: ['進駐企業研發團隊', '技術顧問機構', '政府及合作夥伴', '訪客及投資者'],
+      usersEn: ['Resident R&D teams', 'Advisory firms', 'Government & partners', 'Visitors & investors'],
       anchor: [0, 24, -20]
     },
     {
       id: 'lab', no: 2, zh: '共享濕實驗室', en: 'Shared Wet Laboratories',
       short: 'BSL-2 共享實驗台與儀器平台',
+      shortEn: 'Shared BSL-2 benches and instrument cores',
       tag: '即租即用的專業實驗平台，大幅降低初創企業的研發門檻。',
+      tagEn: 'Ready-to-use lab space that lowers the barrier to R&D for start-ups.',
       desc: '兩座 3 層實驗樓位於主樓東面，均以 2 樓玻璃天橋與主樓相連，研究人員無需出戶即可往返辦公室與實驗室。A 座以分子生物及細胞培養為主，B 座設分析測試及大型儀器共享平台。屋頂設機電設備層及獨立排風系統，實驗廢氣經高空排放。',
-      specs: [['規模', '2 座 × 3 層'], ['安全級別', 'BSL-2'], ['連接', '玻璃天橋 × 2'], ['屋頂', '機電層＋實驗排風塔']],
+      descEn: 'Two three-storey lab buildings east of the main building, each linked to it by a level-2 glass skybridge, so researchers can move between office and lab without going outdoors. Lab A focuses on molecular biology and cell culture; Lab B houses analytical testing and shared major instruments. Rooftop plant rooms and dedicated exhaust stacks discharge lab air at height.',
+      specs: [
+        ['規模', 'Scale', '2 座 × 3 層', '2 buildings × 3 storeys'],
+        ['安全級別', 'Biosafety', 'BSL-2', 'BSL-2'],
+        ['連接', 'Links', '玻璃天橋 × 2', '2 glass skybridges'],
+        ['屋頂', 'Roof', '機電層＋實驗排風塔', 'Plant room + lab exhaust stacks']
+      ],
       fac: ['共享實驗台（按月或按日租用）', '細胞培養室及生物安全櫃', '基因測序、質譜及影像分析平台', '冷庫、樣本庫及液氮儲存', '化學品及生物廢物處理間'],
+      facEn: ['Shared benches (monthly or daily hire)', 'Cell-culture suites & biosafety cabinets', 'Sequencing, mass-spec & imaging cores', 'Cold rooms, sample bank & liquid-nitrogen storage', 'Chemical & biological waste handling'],
       users: ['初創企業', '大學衍生公司', '合約研究機構', '跨機構研究項目'],
+      usersEn: ['Start-ups', 'University spin-offs', 'Contract research organisations', 'Cross-institution projects'],
       anchor: [26, 16, -20]
     },
     {
       id: 'plant', no: 3, zh: '中試與生物製造廠房', en: 'Pilot & Biomanufacturing Plant',
       short: '由實驗室規模放大至中試生產',
+      shortEn: 'Scaling lab results up to pilot production',
       tag: '跨越「死亡之谷」：讓實驗室成果走向可量產的工藝。',
+      tagEn: 'Crossing the "valley of death": turning lab results into manufacturable processes.',
       desc: '主樓西面的單層大跨度鋼結構廠房，室內無柱，生產線可靈活重組。淺拱形屋頂中央設採光帶，屋頂排氣管連接廢氣處理系統。北側為發酵罐、原料儲罐及冷卻塔等公用設施區；西側卸貨區直通物流道路，與園區人流完全分隔。',
-      specs: [['結構', '單層鋼結構'], ['室內淨高', '約 8 米'], ['跨度', '約 22 米無柱空間'], ['標準', '按 GMP 要求設計'], ['物流', '西側 4 個卸貨位']],
+      descEn: 'A single-storey, long-span steel building west of the main building. Its column-free interior lets production lines be reconfigured freely. A rooflight runs along the shallow barrel roof, and the exhaust stacks connect to off-gas treatment. The north yard holds fermenters, raw-material tanks and cooling towers; west-side loading bays open straight onto the service road, fully separate from pedestrian routes.',
+      specs: [
+        ['結構', 'Structure', '單層鋼結構', 'Single-storey steel frame'],
+        ['室內淨高', 'Clear height', '約 8 米', 'approx. 8 m'],
+        ['跨度', 'Span', '約 22 米無柱空間', 'approx. 22 m column-free'],
+        ['標準', 'Standard', '按 GMP 要求設計', 'Designed to GMP requirements'],
+        ['物流', 'Logistics', '西側 4 個卸貨位', '4 loading bays (west side)']
+      ],
       fac: ['發酵及細胞培養放大線', '下游分離純化車間', 'GMP 潔淨灌裝區', '品質控制實驗室', '公用工程：純水、蒸汽、壓縮空氣、冷卻水'],
+      facEn: ['Fermentation & cell-culture scale-up lines', 'Downstream separation & purification', 'GMP clean fill–finish area', 'Quality-control laboratory', 'Utilities: purified water, steam, compressed air, cooling water'],
       users: ['需要工藝開發的企業', '小批量臨床或試產', '合約生產（CDMO）合作'],
+      usersEn: ['Companies needing process development', 'Small-batch clinical or trial production', 'CDMO partnerships'],
       anchor: [-34, 17, -20]
     },
     {
       id: 'farm', no: 4, zh: '生物農殖場', en: 'Bio-Agriculture Farm',
       short: '6 座研究溫室與 18 格試驗田',
+      shortEn: '6 research greenhouses and 18 trial plots',
       tag: '農業生物技術的戶外實驗場：由溫室驗證到田間試驗。',
-      desc: '園區南面的農業研究區。6 座半透明拱頂溫室各自獨立控制溫度、濕度及光照，夜間以 LED 補光延長生長期；西端的工作站負責育苗、收穫處理及樣本分析。南側 18 格試驗田用作田間對照試驗，配備滴灌系統、氣象站及太陽能發電陣列。',
-      specs: [['溫室', '6 座拱頂研究溫室'], ['試驗田', '18 格（3 × 6）'], ['環境控制', '溫濕度、光照、灌溉自動化'], ['能源', '太陽能陣列＋雨水回收']],
+      tagEn: 'An outdoor lab for agri-biotech: from greenhouse validation to field trials.',
+      desc: '園區南面的農業研究區，以加里曼丹豐富的熱帶生物資源為研究基礎。6 座半透明拱頂溫室各自獨立控制溫度、濕度及光照，夜間以 LED 補光延長生長期；西端的工作站負責育苗、收穫處理及樣本分析。南側 18 格試驗田用作田間對照試驗，配備滴灌系統、氣象站及太陽能發電陣列。',
+      descEn: 'The agricultural research zone in the south of the campus, drawing on the rich tropical biodiversity of Kalimantan. Each of the six translucent arched greenhouses controls its own temperature, humidity and light, with LED grow lights extending the growing day; a headhouse at the west end handles propagation, harvest processing and sample analysis. The 18 plots to the south host controlled field trials, served by drip irrigation, a weather station and a solar array.',
+      specs: [
+        ['溫室', 'Greenhouses', '6 座拱頂研究溫室', '6 arched research greenhouses'],
+        ['試驗田', 'Trial plots', '18 格（3 × 6）', '18 plots (3 × 6)'],
+        ['環境控制', 'Climate control', '溫濕度、光照、灌溉自動化', 'Automated temperature, humidity, light & irrigation'],
+        ['能源', 'Energy', '太陽能陣列＋雨水回收', 'Solar array + rainwater harvesting']
+      ],
       fac: ['環境可控研究溫室（LED 補光）', '作物育種及表型分析', '生物肥料及生物農藥田間試驗', '育苗及收穫處理工作站', '氣象監測站及智能滴灌'],
+      facEn: ['Climate-controlled greenhouses (LED grow lights)', 'Crop breeding & phenotyping', 'Bio-fertiliser & bio-pesticide field trials', 'Propagation & harvest headhouse', 'Weather station & smart drip irrigation'],
       users: ['農業科技企業', '育種研究團隊', '食品及營養研究'],
+      usersEn: ['Agri-tech companies', 'Breeding research teams', 'Food & nutrition research'],
       anchor: [-29, 9, 16]
     },
     {
       id: 'tower', no: 5, zh: '技術轉移與創投大樓', en: 'Tech Transfer & Venture Tower',
       short: '知識產權、資金與市場的交匯點',
+      shortEn: 'Where IP, capital and markets meet',
       tag: '把研究成果變成企業：知識產權、資金與市場在這裡相遇。',
+      tagEn: 'Turning research into companies: IP, capital and markets meet here.',
       desc: '位於園區東南角、緊靠入口的 8 層細長塔樓，是園區地標及對外窗口。低層為咖啡廳及路演廳；中段設空中花園作非正式交流；中層為技術轉移辦公室及知識產權服務；高層為創投基金及初創企業辦公空間。金色立面鰭片呼應園區主色。',
-      specs: [['樓層', '8 層'], ['建築高度', '約 36 米（含頂冠）'], ['特色', '空中花園、金色鰭片'], ['低層', '咖啡廳＋路演廳']],
+      descEn: 'A slender eight-storey tower in the south-east corner beside the entrance — the campus landmark and its public face. The lower floors hold a café and pitch hall; a mid-level sky garden offers space for informal meetings; the middle floors house the technology-transfer office and IP services; the upper floors are home to venture funds and start-up offices. Gold façade fins echo the campus palette.',
+      specs: [
+        ['樓層', 'Floors', '8 層', '8 storeys'],
+        ['建築高度', 'Height', '約 36 米（含頂冠）', 'approx. 36 m incl. crown'],
+        ['特色', 'Features', '空中花園、金色鰭片', 'Sky garden, gold fins'],
+        ['低層', 'Podium', '咖啡廳＋路演廳', 'Café + pitch hall']
+      ],
       fac: ['技術轉移及授權辦公室', '知識產權及法律服務', '創投及天使基金辦公室', '路演廳及投資者會議室', '初創企業共享辦公空間'],
+      facEn: ['Technology transfer & licensing office', 'IP & legal services', 'Venture capital & angel fund offices', 'Pitch hall & investor meeting rooms', 'Start-up co-working space'],
       users: ['投資者及基金', '初創企業', '科研機構技術轉移團隊', '專業服務機構'],
+      usersEn: ['Investors & funds', 'Start-ups', 'University tech-transfer teams', 'Professional service firms'],
       anchor: [44, 40, 36]
     },
     {
       id: 'site', no: 6, zh: '入口及配套設施', en: 'Entrance & Amenities',
       short: '入口牌坊、林蔭大道、停車場與景觀',
+      shortEn: 'Gateway, tree-lined avenue, parking and landscape',
       tag: '中軸林蔭大道由入口牌坊直達研發主樓，人車分流、步行友善。',
-      desc: '園區主入口位於南端，牌坊上書「BTRDCC」，旁設訪客登記處、旗桿及巴士站。中軸林蔭大道兩側設行人路及路燈，直達主樓前的噴泉廣場。東南面為太陽能車棚停車場，配備電動車充電位；東面雨水花園收集地面徑流，兼作休憩景觀。',
-      specs: [['入口', '牌坊＋訪客登記處'], ['停車', '太陽能車棚＋電動車充電'], ['交通', '巴士站、環園道路'], ['景觀', '噴泉廣場、雨水花園']],
+      tagEn: 'A tree-lined central avenue leads from the gateway to the main building, with cars and pedestrians kept apart.',
+      desc: '園區主入口位於南端，牌坊上書「BTRDCC」，旁設訪客登記處、旗桿及巴士站。中軸林蔭大道兩側設行人路及路燈，直達主樓前的噴泉廣場。東南面為太陽能車棚停車場，配備電動車充電位；東面雨水花園收集地面徑流，應對熱帶暴雨，兼作休憩景觀。',
+      descEn: 'The main entrance is at the south end, marked by a gateway bearing "BTRDCC", with a visitor check-in, flagpoles and a bus stop alongside. The central avenue has footpaths and street lights on both sides and leads to the fountain plaza in front of the main building. Solar-carport parking with EV charging sits to the south-east, and a rain garden to the east collects run-off from tropical downpours while doubling as a place to relax.',
+      specs: [
+        ['入口', 'Entrance', '牌坊＋訪客登記處', 'Gateway + visitor check-in'],
+        ['停車', 'Parking', '太陽能車棚＋電動車充電', 'Solar carports + EV charging'],
+        ['交通', 'Transport', '巴士站、環園道路', 'Bus stop, ring road'],
+        ['景觀', 'Landscape', '噴泉廣場、雨水花園', 'Fountain plaza, rain garden']
+      ],
       fac: ['入口牌坊及訪客登記處', '太陽能車棚停車場及電動車充電', '巴士站及單車停泊處', '中軸林蔭大道及噴泉廣場', '雨水花園及景觀水池'],
+      facEn: ['Entrance gateway & visitor check-in', 'Solar-carport parking & EV charging', 'Bus stop & bicycle parking', 'Tree-lined central avenue & fountain plaza', 'Rain garden & landscaped pond'],
       users: ['全體員工及訪客'],
+      usersEn: ['All staff and visitors'],
       anchor: [0, 13, 62]
     }
   ];
 
   const CHAIN = [
-    { z: 'main', t: '研發構思', s: '研發團隊與顧問共同定義項目與商業路線' },
-    { z: 'lab', t: '實驗驗證', s: '在共享濕實驗室完成概念驗證' },
-    { z: 'farm', t: '田間試驗', s: '農業項目於溫室及試驗田實地驗證' },
-    { z: 'plant', t: '中試放大', s: '工藝放大與 GMP 小批量生產' },
-    { z: 'tower', t: '轉化投資', s: '知識產權授權、融資與企業成立' }
+    { z: 'main', t: '研發構思', tEn: 'Ideation', s: '研發團隊與顧問共同定義項目與商業路線', sEn: 'Researchers and advisors define projects and routes to market' },
+    { z: 'lab', t: '實驗驗證', tEn: 'Validation', s: '在共享濕實驗室完成概念驗證', sEn: 'Proof of concept in the shared wet labs' },
+    { z: 'farm', t: '田間試驗', tEn: 'Field trials', s: '農業項目於溫室及試驗田實地驗證', sEn: 'Agri projects tested in greenhouses and trial plots' },
+    { z: 'plant', t: '中試放大', tEn: 'Scale-up', s: '工藝放大與 GMP 小批量生產', sEn: 'Process scale-up and small-batch GMP production' },
+    { z: 'tower', t: '轉化投資', tEn: 'Commercialisation', s: '知識產權授權、融資與企業成立', sEn: 'IP licensing, financing and company formation' }
   ];
 
   // ===========================================================================
@@ -411,61 +499,73 @@
     axis: '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v18M5 7h14M7 12h10M5 17h14"/></svg>',
     flow: '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h13l-3-3M21 16H8l3 3"/></svg>',
     leaf: '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 19c0-8 5-14 15-14 0 10-6 15-14 15M5 19l8-8"/></svg>',
-    link: '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="9" width="7" height="11"/><rect x="14" y="5" width="7" height="15"/><path d="M10 12h4"/></svg>'
+    link: '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="9" width="7" height="11"/><rect x="14" y="5" width="7" height="15"/><path d="M10 12h4"/></svg>',
+    pin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>'
   };
+  const NOTE = '本模型為概念規劃示意，建築規模、設施配置及數據僅供參考。<br>Concept model for illustration only; building sizes, facilities and figures are indicative.';
 
   function renderOverview() {
     panelBody.innerHTML =
       '<div class="eyebrow">園區概覽 · Overview</div>' +
-      '<p class="lead">BTRDCC 生物科技園區以「由實驗室到市場」為核心，把研發辦公、共享實驗、中試生產、農業試驗與技術轉移集中在同一園區，為生物科技企業提供由構思、驗證、放大到融資的完整支援。</p>' +
+      '<p class="lead">BTRDCC 生物科技園區是位於印尼新首都<b>努山塔拉（Nusantara）</b>的生物科技項目，以「由實驗室到市場」為核心，把研發辦公、共享實驗、中試生產、農業試驗與技術轉移集中在同一園區，為生物科技企業提供由構思、驗證、放大到融資的完整支援。</p>' +
+      '<p class="en-p">BTRDCC is a biotechnology campus project in <b>Nusantara</b>, Indonesia’s new capital city. Built around a “lab-to-market” model, it brings R&amp;D offices, shared labs, pilot manufacturing, agricultural trials and technology transfer onto one site, supporting biotech companies from first idea and validation through scale-up to investment.</p>' +
+      '<div class="loc">' +
+        '<span class="loc-ic">' + ICON.pin + '</span>' +
+        '<div><div class="loc-k">項目位置 · Project Location</div>' +
+        '<div class="loc-v">印尼 · 東加里曼丹 · 努山塔拉首都（IKN）</div>' +
+        '<div class="loc-e">Nusantara Capital City (IKN), East Kalimantan, Indonesia</div></div>' +
+      '</div>' +
+      '<p class="body" style="margin-top:12px">園區規劃呼應努山塔拉「森林城市」的可持續發展願景：低密度佈局、大量綠化、可再生能源，並以加里曼丹的熱帶生物多樣性作為研究資源。</p>' +
+      '<p class="en-p">The plan follows Nusantara’s “forest city” vision for sustainable growth — low-density layout, generous greenery and renewable energy — and treats Kalimantan’s tropical biodiversity as a research resource.</p>' +
       '<div class="stats">' +
-        stat('6', '', '功能分區') + stat('5', '層', '研發主樓') + stat('2', '座', '共享實驗樓') +
-        stat('6', '座', '研究溫室') + stat('18', '格', '試驗田') + stat('8', '層', '創投塔樓') +
+        stat('6', '', '功能分區', 'Zones') + stat('5', '層', '研發主樓', 'Storeys, R&amp;D centre') + stat('2', '座', '共享實驗樓', 'Shared lab blocks') +
+        stat('6', '座', '研究溫室', 'Greenhouses') + stat('18', '格', '試驗田', 'Trial plots') + stat('8', '層', '創投塔樓', 'Storeys, venture tower') +
       '</div>' +
       '<div class="eyebrow">創新價值鏈 · Value Chain</div>' +
-      '<h2 class="sec">一個園區，走完創新全流程</h2>' +
+      '<h2 class="sec">一個園區，走完創新全流程<small>One campus, the whole innovation journey</small></h2>' +
       '<div class="chain">' + CHAIN.map(c => {
         const z = zoneById(c.z);
-        return '<button class="chain-step" data-zone="' + z.id + '"><span class="dot">' + z.no + '</span><span class="txt"><b>' + c.t + ' · ' + z.zh + '</b><span>' + c.s + '</span></span></button>';
+        return '<button class="chain-step" data-zone="' + z.id + '"><span class="dot">' + z.no + '</span><span class="txt"><b>' + c.t + ' · ' + z.zh + '</b><i>' + c.tEn + ' · ' + z.en + '</i><span>' + c.s + '<br>' + c.sEn + '</span></span></button>';
       }).join('') + '</div>' +
       '<div class="eyebrow">功能分區 · Zones</div>' +
       '<div class="zone-list">' + ZONES.map(z =>
         '<button class="zone-item" data-zone="' + z.id + '"><span class="no">' + z.no + '</span><span><div class="zh">' + z.zh + '</div><div class="en">' + z.en + '</div></span><span class="arr">›</span></button>'
       ).join('') + '</div>' +
-      '<div class="eyebrow">規劃理念 · Principles</div>' +
+      '<div class="eyebrow">規劃理念 · Planning Principles</div>' +
       '<div class="principles">' +
-        principle(ICON.axis, '中軸佈局', '入口、大道、廣場與主樓連成南北中軸，空間秩序清晰。') +
-        principle(ICON.link, '研發集群', '主樓與實驗樓以天橋相連，辦公與實驗無縫往返。') +
-        principle(ICON.flow, '人車分流', '物流經環園道路直達廠房，與中軸人流分開。') +
-        principle(ICON.leaf, '綠色園區', '天台綠化、太陽能車棚與雨水花園減少碳排放。') +
+        principle(ICON.axis, '中軸佈局', 'Central axis', '入口、大道、廣場與主樓連成南北中軸，空間秩序清晰。', 'Gateway, avenue, plaza and main building line up on one north–south axis.') +
+        principle(ICON.link, '研發集群', 'R&amp;D cluster', '主樓與實驗樓以天橋相連，辦公與實驗無縫往返。', 'Skybridges link the main building and labs for easy movement.') +
+        principle(ICON.flow, '人車分流', 'Separated traffic', '物流經環園道路直達廠房，與中軸人流分開。', 'Freight uses the ring road to reach the plant, away from pedestrians.') +
+        principle(ICON.leaf, '綠色園區', 'Green campus', '天台綠化、太陽能車棚與雨水花園減少碳排放。', 'Roof gardens, solar carports and rain gardens cut emissions.') +
       '</div>' +
-      '<p class="note">本模型為概念規劃示意，建築規模、設施配置及數據僅供參考。<br>操作：拖曳旋轉、滾輪縮放、右鍵平移；點擊建築或列表查看詳情。</p>';
+      '<p class="note">' + NOTE + '<br><br>操作：拖曳旋轉、滾輪縮放、右鍵平移；點擊建築或列表查看詳情。<br>Drag to rotate, scroll to zoom, right-drag to pan; click a building or list item for details.</p>';
     panelBody.scrollTop = 0;
     bindZoneButtons();
   }
-  function stat(n, unit, label) { return '<div class="stat"><b>' + n + (unit ? '<small>' + unit + '</small>' : '') + '</b><span>' + label + '</span></div>'; }
-  function principle(ic, t, s) { return '<div class="principle">' + ic + '<b>' + t + '</b><span>' + s + '</span></div>'; }
+  function stat(n, unit, label, labelEn) { return '<div class="stat"><b>' + n + (unit ? '<small>' + unit + '</small>' : '') + '</b><span>' + label + '</span><em>' + labelEn + '</em></div>'; }
+  function principle(ic, t, tEn, s, sEn) { return '<div class="principle">' + ic + '<b>' + t + '</b><i>' + tEn + '</i><span>' + s + '</span><span class="pe">' + sEn + '</span></div>'; }
 
   function renderDetail(z) {
     const i = ZONES.indexOf(z);
     const prev = ZONES[i - 1], next = ZONES[i + 1];
     panelBody.innerHTML =
-      '<button class="back" id="btnBack">‹ 園區概覽</button>' +
+      '<button class="back" id="btnBack">‹ 園區概覽 Overview</button>' +
       '<div class="d-head"><span class="no">' + z.no + '</span><div><h2>' + z.zh + '</h2><div class="en">' + z.en + '</div></div></div>' +
-      '<p class="tagline">' + z.tag + '</p>' +
+      '<div class="tagline">' + z.tag + '<span>' + z.tagEn + '</span></div>' +
       '<div class="eyebrow">簡介 · About</div>' +
       '<p class="body">' + z.desc + '</p>' +
+      '<p class="en-p">' + z.descEn + '</p>' +
       '<div class="eyebrow">建築概要 · Key Facts</div>' +
-      '<table class="spec-table">' + z.specs.map(s => '<tr><th>' + s[0] + '</th><td>' + s[1] + '</td></tr>').join('') + '</table>' +
+      '<table class="spec-table">' + z.specs.map(s => '<tr><th>' + s[0] + '<small>' + s[1] + '</small></th><td>' + s[2] + (s[3] !== s[2] ? '<small>' + s[3] + '</small>' : '') + '</td></tr>').join('') + '</table>' +
       '<div class="eyebrow">主要設施 · Facilities</div>' +
-      '<ul class="fac">' + z.fac.map(f => '<li><span>' + f + '</span></li>').join('') + '</ul>' +
-      '<div class="eyebrow">服務對象 · For</div>' +
-      '<div class="tags">' + z.users.map(u => '<span>' + u + '</span>').join('') + '</div>' +
+      '<ul class="fac">' + z.fac.map((f, k) => '<li><span>' + f + '<small>' + z.facEn[k] + '</small></span></li>').join('') + '</ul>' +
+      '<div class="eyebrow">服務對象 · Who It Serves</div>' +
+      '<div class="tags">' + z.users.map((u, k) => '<span>' + u + '<small>' + z.usersEn[k] + '</small></span>').join('') + '</div>' +
       '<div class="pager">' +
-        '<button data-zone="' + (prev ? prev.id : '') + '"' + (prev ? '' : ' disabled') + '><small>‹ 上一個</small><b>' + (prev ? prev.no + ' ' + prev.zh : '—') + '</b></button>' +
-        '<button data-zone="' + (next ? next.id : '') + '"' + (next ? '' : ' disabled') + '><small>下一個 ›</small><b>' + (next ? next.no + ' ' + next.zh : '—') + '</b></button>' +
+        '<button data-zone="' + (prev ? prev.id : '') + '"' + (prev ? '' : ' disabled') + '><small>‹ 上一個 Previous</small><b>' + (prev ? prev.no + ' ' + prev.zh : '—') + '</b></button>' +
+        '<button data-zone="' + (next ? next.id : '') + '"' + (next ? '' : ' disabled') + '><small>下一個 Next ›</small><b>' + (next ? next.no + ' ' + next.zh : '—') + '</b></button>' +
       '</div>' +
-      '<p class="note">本模型為概念規劃示意，建築規模、設施配置及數據僅供參考。</p>';
+      '<p class="note">' + NOTE + '</p>';
     panelBody.scrollTop = 0;
     document.getElementById('btnBack').addEventListener('click', () => { stopTour(); select(null); });
     bindZoneButtons();
@@ -482,7 +582,7 @@
   function setSheet(open) {
     panel.classList.toggle('open', open);
     sheetToggle.setAttribute('aria-expanded', String(open));
-    sheetToggle.textContent = open ? '收起 ▼' : '簡介 ▲';
+    sheetToggle.textContent = open ? '收起 Close ▼' : '簡介 About ▲';
   }
   sheetToggle.addEventListener('click', () => setSheet(!panel.classList.contains('open')));
   renderOverview();
@@ -859,8 +959,11 @@
   addEdges(plinth); addEdges(plinthBase);
 
   // north arrow engraved on the plinth corner
-  const plinthSign = signPlane('BTRDCC  BIOTECH CAMPUS', 40, 2.4, { fg: '#0F2A2E', size: 0.55, weight: 600, spacing: '10px', glow: 0 });
+  const plinthSign = signPlane('BTRDCC  BIOTECH CAMPUS  ·  NUSANTARA, INDONESIA', 64, 2.4, { fg: '#0F2A2E', size: 0.55, weight: 600, spacing: '10px', glow: 0 });
   plinthSign.position.set(-4, -0.6, 68.02);
+  const plinthSign2 = signPlane('努山塔拉 · 東加里曼丹 · 印尼', 34, 2.2, { fg: '#0F2A2E', size: 0.55, weight: 500, font: '"Noto Sans TC", "PingFang TC", sans-serif', glow: 0 });
+  plinthSign2.position.set(66.02, -0.6, 7); plinthSign2.rotation.y = Math.PI / 2;
+  scene.add(plinthSign2);
   scene.add(plinthSign);
 
   // plaza in front of main building
@@ -1613,7 +1716,8 @@
           '<div class="top"><span class="n">' + zone.no + '</span><span class="zh">' + zone.zh + '</span></div>' +
           '<div class="en">' + zone.en + '</div>' +
           '<div class="use">' + zone.short + '</div>' +
-          (zone === selected ? '' : '<div class="cta">點擊查看詳細介紹 →</div>');
+          '<div class="use-en">' + zone.shortEn + '</div>' +
+          (zone === selected ? '' : '<div class="cta">點擊查看詳細介紹 · Click for details →</div>');
         card.classList.add('show'); card.setAttribute('aria-hidden', 'false');
       } else {
         card.classList.remove('show'); card.setAttribute('aria-hidden', 'true');
@@ -1748,7 +1852,7 @@
   function setNight(n) {
     night = n;
     document.body.classList.toggle('night', n);
-    btnDN.textContent = n ? '☀️ 日間' : '🌙 夜間';
+    btnDN.textContent = n ? '☀️ 日間 Day' : '🌙 夜間 Night';
     btnDN.setAttribute('aria-pressed', String(n));
   }
   function applyDayNight(t) {
@@ -1775,7 +1879,7 @@
   let tour = null;
   function startTour() {
     tour = { i: -1, t0: 0 };
-    btnTour.textContent = '■ 停止';
+    btnTour.textContent = '■ 停止 Stop';
     tourBar.classList.add('show');
     nextTourStop();
   }
@@ -1787,12 +1891,12 @@
     selected = null;
     select(z, false);
     flyTo({ az: view.az + 0.55, polar: 0.92, zoom: z.focusZoom * (isMobile() ? 0.8 : 1), target: z.center.clone() }, 1600);
-    tourText.textContent = '導覽 ' + z.no + ' / ' + zones.length + ' · ' + z.zh;
+    tourText.textContent = '導覽 Tour ' + z.no + ' / ' + zones.length + ' · ' + z.zh + ' ' + z.en;
   }
   function stopTour() {
     if (!tour) return;
     tour = null;
-    btnTour.textContent = '▶ 導覽';
+    btnTour.textContent = '▶ 導覽 Tour';
     tourBar.classList.remove('show');
   }
   btnTour.addEventListener('click', () => tour ? stopTour() : startTour());

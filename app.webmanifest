@@ -1,0 +1,19 @@
+{
+  "name": "上市準備度 Listing Readiness",
+  "short_name": "上市準備度",
+  "description": "A free listing-readiness self-check for founders: ten questions, a score by area and the gaps to fix first.",
+  "id": "/app.html",
+  "start_url": "/app.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b1d33",
+  "theme_color": "#0b1d33",
+  "lang": "zh-Hant",
+  "categories": ["business", "finance", "productivity"],
+  "icons": [
+    { "src": "assets/app/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/app/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/app/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

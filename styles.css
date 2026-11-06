@@ -1215,6 +1215,8 @@ html.sc-pending body { visibility: hidden; }
 .rc-result ul { margin-top: 10px; padding-left: 1.2em; display: grid; gap: 6px; }
 .rc-result .hero-cta { margin-top: 24px; }
 .rc-note { max-width: 820px; margin: 28px auto 0; font-size: 13px; color: var(--muted); }
+.app-mode .nav, .app-mode .menu-btn, .app-mode .footer-nav, .app-mode .hero-photo-credit { display: none !important; }
+.app-mode .app-hero { min-height: 100svh; display: flex; align-items: center; padding-top: 90px; padding-bottom: 48px; }
 .rc-profile { border: 1px solid var(--line); border-radius: 14px; padding: 16px 20px 20px; margin: 0 0 24px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 16px; background: #fff; }
 .rc-profile legend { padding: 0 6px; font-weight: 600; color: var(--ink); font-size: 15px; }
 .rc-profile label { display: grid; gap: 6px; font-size: 14px; color: var(--ink-2); }

@@ -18,6 +18,10 @@
   var PRICE = ["HK$980", "HK$980"];             // shown on the button [en, zh]
   var WA = "85298229572";
   var KEY_STATE = "rc-state", KEY_PAID = "rc-paid";
+  // Inside the Android app (Google Play) the full report is not sold: Play only allows
+  // its own billing for digital content, so the app offers the free check and the call.
+  var APP = !!window.RC_APP;
+  try { APP = APP || sessionStorage.getItem("rc-app") === "1" || matchMedia("(display-mode: standalone)").matches; } catch (e) {}
 
   // [en, zh, dimension]
   var Q = [
@@ -208,6 +212,7 @@
     var unlock = STRIPE_LINK
       ? '<button type="button" class="btn btn-gold" id="rc-buy">' + bi("Unlock the full report · " + PRICE[0], "解鎖完整報告 · " + PRICE[1]) + '</button>'
       : '<a class="btn btn-gold" href="' + waLink(r.score, true) + '" target="_blank" rel="noopener">' + bi("Request the full report", "索取完整報告") + '</a>';
+    if (APP) unlock = "";
     out.innerHTML =
       '<p class="kicker">' + bi("Your result", "你的結果") + '</p>' +
       '<p class="rc-score">' + r.score + '<span>/20</span></p>' +
@@ -215,6 +220,11 @@
       (r.missing ? '<p class="rc-miss">' + bi(r.missing + " question(s) left blank count as gaps.", "有 " + r.missing + " 條未作答，已當作缺口。") + '</p>' : "") +
       bars(r) +
       (r.gaps.length ? '<h3>' + bi("Your gaps", "你的缺口") + ' (' + r.gaps.length + ')</h3><ul>' + r.gaps.map(function (i) { return '<li>' + b(FIX[i].t) + '</li>'; }).join("") + '</ul>' : "") +
+      (APP ? '<div class="rc-pay"><h3>' + bi("Talk it through", "一起討論") + '</h3>' +
+        '<p>' + bi("Go through your gaps with Tyler on a 30-minute call: which to fix first, how long it takes and whether the US or Hong Kong suits you better.",
+                   "與 Tyler 進行 30 分鐘通話，一起看你的缺口：先處理哪一個、需時多久，以及美國還是香港較適合你。") + '</p>' +
+        '<div class="hero-cta"><a class="btn btn-gold" href="contact.html#book">' + bi("Book a 30-minute call", "預約 30 分鐘通話") + '</a>' +
+        '<a class="btn rc-reset" href="' + waLink(r.score, false) + '" target="_blank" rel="noopener">WhatsApp</a></div></div>' :
       '<div class="rc-pay">' +
         '<h3>' + bi("Get the full report", "取得完整報告") + '</h3>' +
         '<ul class="rc-incl">' +
@@ -227,7 +237,7 @@
         '<div class="hero-cta">' + unlock +
           '<a class="btn rc-reset" href="contact.html#book">' + bi("Book a 30-minute call", "預約 30 分鐘通話") + '</a></div>' +
         (STRIPE_LINK ? '<p class="rc-miss">' + bi("Secure payment by Stripe. Your answers stay in this browser and the report opens straight after payment.", "由 Stripe 安全付款。答案只留在此瀏覽器，付款後報告即時開啟。") + '</p>' : "") +
-      '</div>';
+      '</div>');
     var buy = document.getElementById("rc-buy");
     if (buy) buy.addEventListener("click", function () {
       store(KEY_STATE, st);
@@ -327,12 +337,13 @@
     e.preventDefault();
     var st = readForm();
     store(KEY_STATE, st);
-    if (load(KEY_PAID)) renderFull(st); else renderFree(st);
+    if (load(KEY_PAID) && !APP) renderFull(st); else renderFree(st);
   });
 
   // Back from Stripe Checkout: ?paid={CHECKOUT_SESSION_ID}
   var paid = null;
   try { paid = new URLSearchParams(location.search).get("paid"); } catch (e) {}
+  if (APP) paid = null;
   if (paid && /^cs_(test|live)_/.test(paid)) {
     store(KEY_PAID, { id: paid, at: Date.now() });
     try { var u = new URL(location.href); u.searchParams.delete("paid"); history.replaceState(null, "", u.pathname + u.search + "#check"); } catch (e) {}
@@ -340,7 +351,7 @@
   var saved = load(KEY_STATE);
   if (saved && saved.a) {
     fillForm(saved);
-    if (load(KEY_PAID)) setTimeout(function () { renderFull(saved); }, 0);
+    if (load(KEY_PAID) && !APP) setTimeout(function () { renderFull(saved); }, 0);
   } else if (paid) {
     out.innerHTML = '<p>' + bi("Payment received, thank you. Your answers were not found in this browser: please answer the questions again and press “See my result” to open your full report.",
       "已收到付款，謝謝。此瀏覽器找不到你的答案：請重新作答並按「查看結果」開啟完整報告。") + '</p>';

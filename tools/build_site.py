@@ -156,10 +156,11 @@ NAV_GROUPS = [
     ("insights", "Insights", "觀點", [
         ("insights/", "Articles", "觀點文章"),
         ("news.html", "News", "新聞"),
+        ("listing-readiness.html", "Listing readiness check", "上市準備自我評估"),
     ]),
 ]
 # page key of the generated pages -> their file
-CURRENT = {"insights": "insights/", "news": "news.html", "markets": "markets.html"}
+CURRENT = {"insights": "insights/", "news": "news.html", "markets": "markets.html", "listing-readiness": "listing-readiness.html"}
 CARET = ('<svg class="nav-caret" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true">'
          '<path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" '
          'stroke-linecap="round" stroke-linejoin="round"/></svg>')
@@ -519,6 +520,11 @@ def main():
         description="A 3D life adventure from Hong Kong to New York, the Moon and Mars, based on Tyler Cheng's story: bullied at school, debt, being laughed at, and getting back up. Plays in the browser.",
         og_type="website", body_class="page-game", scripts=("assets/vendor/three-r128.min.js", "game-data.js", "game-kit.js", "game-worlds.js", "game.js"),
         head_extra='\n  <link rel="stylesheet" href="game.css">'), encoding="utf-8")
+    (ROOT / "listing-readiness.html").write_text(fragment_page(
+        "listing-readiness",
+        title="US listing readiness check · 赴美上市準備自我評估 | 鄭迪珉 Tyler Cheng",
+        description="A free 10-question self-check for Hong Kong and mainland founders considering a US listing after Nasdaq's US$25 million threshold. Runs in your browser; nothing is sent.",
+        og_type="website", scripts=("readiness.js",)), encoding="utf-8")
     (ROOT / "privacy.html").write_text(fragment_page(
         "privacy",
         title="Privacy policy · 私隱政策 | 鄭迪珉 Tyler Tik Man Cheng",

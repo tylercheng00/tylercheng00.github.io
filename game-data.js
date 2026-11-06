@@ -1,411 +1,413 @@
-/* 《夢想家之路》Dreamer's Road: story and actions.
-   Inspired by a real life story; names are generic and some scenes are dramatised. Edit text here; the engine is game.js.
-   fx: changes to the five stats. money can go below zero (debt); energy blocks actions when too low. */
+/* 《交叉點》Crossroads (交叉點): the story, told as quests across Hong Kong, New York and space.
+   Names are generic and some scenes are dramatised. The engine is game.js; the places are in game-worlds.js.
+   A step: { type: 'go' | 'build' | 'travel' | 'outdoor', place, label, room, cast, shots, choice, fx }
+   A shot: { cam: 'wide' | actor, say: [who, text], pose: { actor: pose }, put: { actor: slot }, fx, t } */
 window.GAME_DATA = (function () {
   function t(en, zh) { return { en: en, zh: zh }; }
+  var N = t('', '');
+  var ME = t('You', '你'), MUM = t('Mum', '媽媽'), DAD = t('Dad', '爸爸');
 
   var STATS = [
     { k: 'family', icon: '❤️', name: t('Family', '家人') },
     { k: 'dream', icon: '✨', name: t('Dream', '夢想') },
     { k: 'impact', icon: '🌍', name: t('Impact', '影響力') },
-    { k: 'energy', icon: '⚡', name: t('Energy', '精力') },
     { k: 'money', icon: '💰', name: t('Funds', '資金'), debt: t('Debt', '負債') }
   ];
 
-  // Buildings: name, the true story behind them (shown when tapped)
-  var BUILD = {
-    home: { name: t('Home', '家'), note: t('Where it all started: a small flat in Hong Kong.', '一切的起點：香港一個小小的家。') },
-    school: { name: t('School', '學校'), note: t('Bullied here as a kid, and still walked in every morning.', '小時候在這裏被欺負，但每天都照樣走進校門。') },
-    library: { name: t('Library', '圖書館'), note: t('Where the rockets and cities in my notebooks came from.', '筆記簿上那些火箭和城市，都是在這裏畫出來的。') },
-    rooftop: { name: t('Rooftop', '天台'), note: t('Looking up at the sky, wondering how far a person can go.', '望着天空，想一個人可以走多遠。') },
-    studio: { name: t('First company', '第一間公司'), note: t('Started at 20 with little more than a laptop.', '20 歲創業，起步時差不多只有一部手提電腦。') },
-    harbor: { name: t('Going overseas', '走出海外'), note: t('By 22, the business had reached other countries.', '22 歲時，業務已拓展至其他國家。') },
-    store: { name: t('Convenience store', '便利店'), note: t('The first shop of my own. It taught me cash flow the hard way.', '第一間自己的店。它用最痛的方式教會我現金流。') },
-    factory: { name: t('Protection factory', '防護用品工廠'), note: t('Making better protection when people needed it most. It later grew into a nanotech company.', '在大家最需要的時候做出更好的防護。後來發展成一間納米科技公司。') },
-    university: { name: t('University', '大學'), note: t('Learning science properly, in Hong Kong and abroad.', '在香港和海外，認真地學科學。') },
-    nanolab: { name: t('Nanotech lab', '納米實驗室'), note: t('A nanotech company co-founded at university: nano-coatings and biomedical targeting.', '大學期間聯合創辦的納米科技公司：納米塗層及生物醫療標靶。') },
-    patent: { name: t('Patent office', '專利局'), note: t('Granted patents protect years of research.', '獲授權的專利，保護多年的研發成果。') },
-    exchange: { name: t('New York tower', '紐約大樓'), note: t('Helping companies reach the US capital market: IPOs and M&A.', '協助企業走進美國資本市場：IPO 上市及併購。') },
-    btrdcc: { name: t('Biotech research centre', '生物科技研究中心'), note: t('AI-assisted biotech, nano-targeting and cancer therapy research.', '結合 AI 的生物科技、納米標靶及癌症治療研發。') },
-    cat: { name: t('Cat café', '貓咪咖啡店'), note: t('A cat café and pet service, founded and run by hand.', '親手創辦並經營的貓咪寵物服務店。') },
-    youth: { name: t('Youth hall', '青年中心'), note: t('Talks at schools, volunteering and youth forums.', '回校演講、做義工、參與青年論壇。') },
-    rocket: { name: t('Rocket pad', '火箭發射台'), note: t('The childhood dream that never left: rockets and space.', '從小到大都沒有放下的夢：火箭和太空。') },
-    hospital: { name: t('Hospital', '醫院'), note: t('Where the research finally meets patients.', '研究成果終於走到病人身邊的地方。') },
-    apartments: { name: t('Homes for young families', '青年家庭住宅'), note: t('Affordable flats, so the next dreamer has a place to start.', '可負擔的住宅，讓下一個追夢的人有起步的地方。') },
-    incubator: { name: t('Founders\' hub', '創業孵化中心'), note: t('Desks, mentors and a first cheque for young founders.', '給年輕創業者的辦公桌、導師和第一筆資金。') },
-    museum: { name: t('Science museum', '科學館'), note: t('Free entry for every kid who wants to know how things work.', '每個想知道世界怎樣運作的孩子，都可以免費入場。') },
-    station: { name: t('Train station', '火車站'), note: t('Connecting the city to everywhere else.', '把城市連接到世界各地。') },
-    stadium: { name: t('Stadium', '運動場'), note: t('A place to cheer together.', '一個大家一起歡呼的地方。') },
-    solar: { name: t('Solar farm', '太陽能發電場'), note: t('Clean power for the whole city.', '為整座城市提供潔淨能源。') },
-    park: { name: t('Park', '公園'), note: t('Trees, a fountain and benches for old friends.', '樹、噴水池，還有給老朋友坐的長椅。') },
-    dome: { name: t('City of the future', '未來之城'), note: t('"I don\'t just want to build a city. I want to build a future."', '「我不只想建造一座城市，我想建造一個未來。」') }
+  var PLACES = {
+    home: t('Home', '家'), school: t('School', '學校'), library: t('Library', '圖書館'), rooftop: t('Rooftop', '天台'),
+    studio: t('Your first office', '第一間公司'), restaurant: t('Harbour Restaurant', '海景酒家'), harbor: t('The pier', '碼頭'),
+    store: t('Your convenience store', '你的便利店'), factory: t('Protection factory', '防護用品廠'), tv: t('TV station', '電視台'),
+    university: t('University lab', '大學實驗室'), airport: t('Airport', '機場'),
+    nyoffice: t('Dream Tower', '夢想大廈'), nyexchange: t('Stock exchange', '證券交易所'), biolab: t('AI biotech lab', 'AI 生物科技中心'),
+    nyschool: t('Public school', '公立學校'), park: t('The park', '公園'), incubator: t('Founders\' hub', '創業中心'), spaceport: t('Spaceport', '太空港'),
+    lander: t('Your rocket', '你的火箭'), moonbase: t('Moon base', '月球基地'), flag: t('Flag site', '插旗地點'),
+    marshab: t('Mars habitat', '火星基地'), city: t('City site', '城市預定地')
   };
-
-  var ACT = {
-    rest: { icon: '😴', name: t('Rest', '休息一下'), desc: t('Sleep. Tomorrow is another day.', '睡一覺，明天再戰。'), fx: { energy: 35 }, repeat: true },
-    family: { icon: '🍲', name: t('Dinner at home', '回家食飯'), desc: t('Mum\'s soup fixes most things.', '媽媽的湯，可以治好大部分事情。'), fx: { family: 10, energy: 10 }, repeat: true },
-    school: { build: 'school', icon: '🏫', name: t('Go to school', '上學去'), desc: t('Even on the bad days, walk through the gate.', '就算是難受的日子，也走進校門。'), fx: { energy: -15, dream: 5, impact: 3 } },
-    library: { build: 'library', icon: '📚', name: t('The library', '圖書館'), desc: t('Fill notebooks with rockets and cities.', '在筆記簿上畫滿火箭和城市。'), fx: { energy: -10, dream: 12 } },
-    rooftop: { build: 'rooftop', icon: '🔭', name: t('Rooftop nights', '天台的晚上'), desc: t('Look at the stars and plan.', '望着星星，想自己的計劃。'), fx: { energy: -10, dream: 12 } },
-    parttime: { icon: '🧋', name: t('Part-time job', '打工儲錢'), desc: t('Save every dollar for the dream.', '每一蚊都儲起來，留給夢想。'), fx: { energy: -20, money: 12 }, repeat: true },
-    studio: { build: 'studio', icon: '💻', name: t('Start a company', '成立公司'), desc: t('One laptop. One idea. Age 20.', '一部手提電腦，一個想法。20 歲。'), fx: { energy: -20, money: -5, dream: 12 } },
-    clients: { icon: '🤝', name: t('Find customers', '見客跑生意'), desc: t('Knock on doors until one opens.', '一道一道門去敲，直到有一道打開。'), fx: { energy: -20, money: 18, impact: 4 }, repeat: true },
-    harbor: { build: 'harbor', icon: '🚢', name: t('Go overseas', '走出海外'), desc: t('Take the business to other countries.', '把生意帶到其他國家。'), fx: { energy: -20, money: 10, impact: 12 } },
-    store: { build: 'store', icon: '🏪', name: t('Open a store', '開便利店'), desc: t('A shop of your own. What could go wrong?', '開一間自己的店，會有甚麼問題？'), fx: { energy: -15, money: -15, dream: 5 } },
-    nightshift: { icon: '🌙', name: t('Night shifts', '通宵兼職'), desc: t('Pay it back, one night at a time.', '一晚一晚，慢慢還。'), fx: { energy: -25, money: 15 }, repeat: true },
-    factory: { build: 'factory', icon: '😷', name: t('Protection factory', '防護用品工廠'), desc: t('People need better protection. Build it.', '大家需要更好的防護，那就做出來。'), fx: { energy: -20, money: 15, impact: 10 } },
-    university: { build: 'university', icon: '🎓', name: t('University', '大學'), desc: t('Study science, properly this time.', '這一次，認真讀科學。'), fx: { energy: -15, dream: 8, impact: 5 } },
-    nanolab: { build: 'nanolab', icon: '🧪', name: t('Nanotech lab', '納米實驗室'), desc: t('Co-found a nanotech company.', '聯合創辦一間納米科技公司。'), fx: { energy: -20, money: -10, dream: 10, impact: 8 } },
-    patent: { build: 'patent', icon: '📜', name: t('File patents', '申請專利'), desc: t('Protect the work with patents.', '用專利保護研發成果。'), fx: { energy: -10, money: 8, impact: 12 } },
-    exchange: { build: 'exchange', icon: '🏙️', name: t('New York', '紐約'), desc: t('Help companies reach the US capital market.', '協助企業走進美國資本市場。'), fx: { energy: -20, money: 20, impact: 10 } },
-    btrdcc: { build: 'btrdcc', icon: '🧬', name: t('AI biotech centre', 'AI 生物科技中心'), desc: t('AI + nano-targeting, aimed at cancer.', 'AI 加納米標靶，對準癌症。'), fx: { energy: -20, money: -10, dream: 12, impact: 12 } },
-    cat: { build: 'cat', icon: '🐱', name: t('Cat café', '貓咪咖啡店'), desc: t('A cat café. Because why not.', '開一間貓咪店。為甚麼不？'), fx: { energy: -10, money: 5, family: 5 } },
-    listing: { icon: '📈', name: t('Help a company list', '協助企業上市'), desc: t('Long nights, tight timetables, one bell.', '無數個通宵、緊湊的時間表，換來一下敲鐘。'), fx: { energy: -25, money: 15, impact: 10 }, repeat: true },
-    youth: { build: 'youth', icon: '🎤', name: t('Youth hall', '青年中心'), desc: t('Give talks. Mentor. Volunteer.', '演講、做導師、做義工。'), fx: { energy: -15, impact: 15 } },
-    volunteer: { icon: '🤲', name: t('Volunteer', '做義工'), desc: t('Give back to the city that raised you.', '回饋養大你的城市。'), fx: { energy: -10, impact: 10, family: 3 }, repeat: true },
-    rocket: { build: 'rocket', icon: '🚀', name: t('Rocket pad', '火箭發射台'), desc: t('The childhood drawing, for real.', '把小時候的畫變成真的。'), fx: { energy: -15, money: -15, dream: 20 } },
-    hospital: { build: 'hospital', icon: '🏥', name: t('Hospital', '醫院'), desc: t('Bring the research to patients.', '把研究帶到病人身邊。'), fx: { energy: -20, money: -15, impact: 18 } },
-    apartments: { build: 'apartments', icon: '🏢', name: t('Affordable homes', '青年住宅'), desc: t('A start for the next dreamer.', '給下一個追夢者一個起點。'), fx: { energy: -15, money: 10, family: 8 } },
-    incubator: { build: 'incubator', icon: '🚪', name: t('Founders\' hub', '創業孵化中心'), desc: t('Open the door you once knocked on.', '打開你當年敲過的那道門。'), fx: { energy: -15, money: -10, impact: 15, dream: 5 } },
-    museum: { build: 'museum', icon: '🔬', name: t('Science museum', '科學館'), desc: t('Free entry for curious kids.', '好奇的孩子免費入場。'), fx: { energy: -15, money: -10, dream: 10, impact: 10 } },
-    station: { build: 'station', icon: '🚆', name: t('Train station', '火車站'), desc: t('Connect the city to the world.', '把城市連接到世界。'), fx: { energy: -15, money: 12, impact: 8 } },
-    stadium: { build: 'stadium', icon: '🏟️', name: t('Stadium', '運動場'), desc: t('A place to cheer together.', '大家一起歡呼的地方。'), fx: { energy: -15, money: 8, family: 8 } },
-    solar: { build: 'solar', icon: '☀️', name: t('Solar farm', '太陽能發電場'), desc: t('Clean power for everyone.', '給每個人的潔淨能源。'), fx: { energy: -10, money: 6, impact: 10 } },
-    park: { build: 'park', icon: '🌳', name: t('Park', '公園'), desc: t('Trees and a fountain.', '種樹，建個噴水池。'), fx: { energy: -5, family: 8, dream: 4 } },
-    dome: { build: 'dome', icon: '🌐', name: t('City of the future', '未來之城'), desc: t('Not just a city. A future.', '不只是一座城市，而是一個未來。'), fx: { energy: -20, money: -15, dream: 15, impact: 15 } }
+  var NOTES = {
+    home: t('A small flat in Hong Kong, where it all started.', '香港一個小小的家，一切的起點。'),
+    school: t('Bullied here, and still walked in every morning.', '在這裏被欺負過，但每天都照樣走進校門。'),
+    library: t('Where the rockets in your notebook came from.', '筆記簿上的火箭，都是在這裏畫出來的。'),
+    rooftop: t('Looking at the stars, wondering how far a person can go.', '望着星星，想一個人可以走多遠。'),
+    studio: t('Age 20, one laptop, one idea.', '20 歲，一部手提電腦，一個想法。'),
+    store: t('The shop that taught you cash flow the hard way.', '用最痛的方式教會你現金流的店。'),
+    factory: t('Better protection, when people needed it most.', '在大家最需要的時候，做出更好的防護。'),
+    university: t('Nano-coatings, patents and a second start.', '納米塗層、專利，還有第二次起步。'),
+    nyoffice: t('Helping companies reach the US market.', '協助企業走進美國市場。'),
+    nyexchange: t('Where a listing becomes real.', '上市成真的地方。'),
+    biolab: t('AI-assisted biotech and cancer research.', '結合 AI 的生物科技和癌症研究。'),
+    incubator: t('Open the door you once knocked on.', '打開你當年敲過的那道門。')
   };
 
   var CHAPTERS = [
-    {
-      age: t('Childhood', '童年'), title: t('Hong Kong', '香港'), ap: 2,
-      intro: [t('A small flat in Hong Kong. You love staring at the sky, imagining rockets flying out of the city.',
-                '香港，一個小小的家。你最喜歡望着天空，幻想火箭從城市飛出去的樣子。')],
-      story: {
-        text: t('At school, a group of "friends" throw your schoolbag into the bin. Everyone laughs. Someone shouts: "Loser!"',
-                '學校裏，幾個所謂的「朋友」把你的書包丟進垃圾桶。全班都在笑。有人大叫：「廢柴！」'),
-        opts: [
-          { t: t('Come back tomorrow anyway.', '明天照樣上學。'), fx: { dream: 10, energy: -10 },
-            r: t('You don\'t run. That stubbornness will save you many times later.', '你沒有逃。這份倔強，後來救了你很多次。') },
-          { t: t('Go home and tell Mum and Dad.', '回家告訴爸媽。'), fx: { family: 15 },
-            r: t('Mum doesn\'t scold you. She just holds you and says: "You did nothing wrong."', '媽媽沒有罵你，只是抱着你說：「你冇做錯。」') },
-          { t: t('Hide in the library and draw.', '躲進圖書館，把夢想畫下來。'), fx: { dream: 15 },
-            r: t('Your notebook fills with rockets and cities. A world of your own.', '筆記簿上畫滿了火箭和城市。那是只屬於你的世界。') }
-        ]
-      },
-      actions: ['school', 'library', 'family', 'rest'],
-      milestone: t('You didn\'t give up. Being bullied taught you something early: what others think of you is not who you are.',
-                   '你沒有放棄。被欺負的日子很早就教會你：別人怎樣看你，不等於你是誰。')
-    },
-    {
-      age: t('Teenage years', '少年'), title: t('Home', '家'), ap: 3,
-      intro: [t('You tell your parents you want to start a business one day.', '你跟爸媽說，將來想自己做生意。')],
-      story: {
-        text: t('Dinner turns into a fight. "Business? Do you know how hard it is out there?" Dad puts down his chopsticks. A door slams.',
-                '晚飯變成了吵架。「做生意？你知唔知出面幾難？」爸爸放下筷子。房門被大力關上。'),
-        opts: [
-          { t: t('"I\'ll prove it to you."', '「我會證明給你們看。」'), fx: { dream: 15, family: -10 },
-            r: t('You lie awake, angry and sure of yourself.', '那一晚你睡不着，又氣，又更加肯定自己。') },
-          { t: t('Sit down and explain the plan.', '坐下來，好好解釋你的計劃。'), fx: { family: 10, dream: 5 },
-            r: t('They don\'t agree. But they listen to the end.', '他們沒有同意，但都聽完了。') },
-          { t: t('Study first. Dream later.', '先讀好書，夢想遲啲再講。'), fx: { energy: 10, impact: 5 },
-            r: t('You put the dream in a drawer. You never lock it.', '你把夢想放進抽屜，但從來沒有上鎖。') }
-        ]
-      },
-      mid: {
-        after: 1,
-        text: t('Late that night, your parents knock on your door. "We\'re not against you. We\'re just scared you\'ll get hurt. If you want to try, go and try."',
-                '那天深夜，爸媽敲門進來。「我哋唔係反對你，只係驚你辛苦。你想做，就去試吓啦。」'),
-        opts: [{ t: t('Hug them.', '抱住他們。'), fx: { family: 15, dream: 5 },
-                 r: t('Whatever happens next, you know where home is.', '以後無論發生甚麼事，你都知道家在哪裏。') }]
-      },
-      actions: ['rooftop', 'parttime', 'family', 'rest'],
-      milestone: t('Families argue because they care. Yours ended up being your biggest supporter.',
-                   '家人會吵，是因為在乎。你的家，最後成了你最大的支持。')
-    },
-    {
-      age: t('Age 20', '20 歲'), title: t('One laptop', '一部手提電腦'), ap: 3,
-      intro: [t('You\'re 20. You have a laptop, an idea and not much else. You register your first company.',
-                '20 歲。你有一部手提電腦、一個想法，除此之外甚麼都沒有。你註冊了人生第一間公司。')],
-      story: {
-        text: t('How all-in are you?', '你準備投入多少？'),
-        opts: [
-          { t: t('All in. Full time.', '全職投入，破釜沉舟。'), fx: { dream: 15, money: -10, energy: -10 },
-            r: t('No safety net. Exactly how you wanted it.', '沒有後路，正合你意。') },
-          { t: t('Study and build at the same time.', '一邊讀書，一邊創業。'), fx: { dream: 8, impact: 5, energy: -10 },
-            r: t('Lectures by day, emails until 3 a.m.', '白天上課，凌晨三點還在回電郵。') }
-        ]
-      },
-      mid: {
-        after: 1,
-        text: t('At a dinner, someone laughs: "You\'re a kid. Who would ever trust you?" The whole table laughs with him. You grip your glass.',
-                '飯局上，有人笑你：「咁後生，邊個會信你？」全枱人跟着一起笑。你握緊了手中的杯。'),
-        opts: [
-          { t: t('Laugh along. Results will answer.', '笑吧，結果會說話。'), fx: { dream: 10 },
-            r: t('You write his words down. You\'ll need them later.', '你把那句話記下來。以後會用得着。') },
-          { t: t('Go home and rewrite the business plan.', '回家，把計劃書改到最好。'), fx: { money: 8, impact: 5, energy: -5 },
-            r: t('By sunrise, the plan is twice as good.', '天亮時，計劃書好了一倍。') }
-        ]
-      },
-      actions: ['studio', 'clients', 'harbor', 'family', 'rest'],
-      milestone: t('By 22, the business had reached other countries. The people who laughed went quiet.',
-                   '22 歲，你的生意已經走到其他國家。當年笑你的人，安靜了。')
-    },
-    {
-      age: t('The fall', '跌倒'), title: t('Debt', '欠債'), ap: 3,
-      intro: [t('Things are going well. Maybe too well. You decide to open a convenience store.',
-                '一切看起來很順利，也許太順利了。你決定開一間便利店。')],
-      story: {
-        text: t('Rent, stock, wages… The account goes negative. You owe money. At 3 a.m. you sit outside the shop, not knowing who to call.',
-                '租金、貨款、人工……戶口變成負數，你欠下了一筆債。凌晨三點，你坐在店門口，不知道可以打給誰。'),
-        fx: { money: -40, energy: -10 },
-        opts: [
-          { t: t('Call home.', '打電話回家。'), fx: { family: 20, energy: 20 },
-            r: t('Mum says only: "Come home and eat first." Dad says: "Money can be earned again. You\'re what matters."',
-                 '電話那頭，媽媽只說了一句：「返嚟食飯先。」爸爸說：「錢可以再搵，你冇事就得。」') },
-          { t: t('Carry it alone.', '一個人扛。'), fx: { dream: 5, energy: -15, family: 10 },
-            r: t('You carry it alone for a long time. Later you learn your parents were waiting, the whole time, for you to ask.',
-                 '你一個人扛了很久。後來才知道，爸媽一直都在等你開口。') }
-        ]
-      },
-      mid: {
-        after: 1,
-        text: t('An old "friend" posts: "Told you he couldn\'t do it." Some people stop replying to your messages. Some look straight through you.',
-                '以前的「朋友」說：「早就話佢唔得啦。」有人不再回你的訊息，有人在街上當作看不見你。'),
-        opts: [
-          { t: t('Write it on the wall. Read it every day.', '把這句話寫在牆上，每天看一次。'), fx: { dream: 15 },
-            r: t('Being looked down on becomes fuel.', '被看不起，變成了燃料。') },
-          { t: t('Don\'t explain. Just pay it back.', '不解釋，慢慢還。'), fx: { money: 10, impact: 5 },
-            r: t('Quietly, one payment at a time.', '靜靜地，一筆一筆還。') }
-        ]
-      },
-      actions: ['store', 'nightshift', 'family', 'rest'],
-      milestone: t('Falling wasn\'t the end. You learned cash flow, humility, and that home would always take you back.',
-                   '跌倒不是終點。你學會了現金流、學會了低頭，也知道家永遠會接住你。')
-    },
-    {
-      age: t('Getting back up', '重新站起'), title: t('Science', '科研'), ap: 4,
-      intro: [t('Then the pandemic. People need better protection. You and your team start a company making protective products.',
-                '然後，疫情來了。大家需要更好的防護。你和團隊創辦了一間做防護用品的公司。')],
-      story: {
-        text: t('A TV station asks you for an interview. Under the studio lights, you think of everyone who laughed.',
-                '電視台邀請你做訪問。攝影棚的燈打在臉上，你想起每一個笑過你的人。'),
-        opts: [
-          { t: t('Tell the real story, debts and all.', '講真話，包括欠債的那段。'), fx: { impact: 15, dream: 5 },
-            r: t('Strangers message you afterwards: "Thank you. I needed that."', '節目播出後，有陌生人傳訊息給你：「多謝你，我需要聽到這些。」') },
-          { t: t('Talk about the product and the team.', '專心講產品和團隊。'), fx: { impact: 10, money: 10 },
-            r: t('Orders come in the next morning.', '第二天早上，訂單來了。') }
-        ]
-      },
-      mid: {
-        after: 2,
-        text: t('At university you co-found a nanotech company. Your work wins the 2023 award for the most innovative biotech cleaning and protection solution.',
-                '大學期間，你聯合創辦了一間納米科技公司。公司獲頒 2023 年度最卓越生物科技相關清潔及防護解決方案大獎。'),
-        opts: [{ t: t('Call Mum first.', '第一個打給媽媽。'), fx: { family: 10, impact: 10 },
-                 r: t('She cries. Dad pretends he isn\'t.', '她哭了。爸爸假裝沒有。') }]
-      },
-      actions: ['factory', 'university', 'nanolab', 'patent', 'rest'],
-      milestone: t('From a debt-ridden shop to granted patents. Science gave you a second start.',
-                   '由欠債的小店，到獲授權的專利。科研給了你第二次起步。')
-    },
-    {
-      age: t('Two worlds', '兩個世界'), title: t('New York', '紐約'), ap: 4,
-      intro: [t('You move to New York and join a capital markets firm, helping companies reach the US market. You also co-found an AI biotech research project.',
-                '你來到紐約，加入一間資本市場顧問公司，協助企業走進美國市場。同時，你聯合創辦了一個 AI 生物科技研發項目。')],
-      story: {
-        text: t('An investor leans back: "You\'re young. What do you know about capital markets?"',
-                '會議室裏，一位投資者靠在椅背上：「你這麼年輕，懂資本市場嗎？」'),
-        opts: [
-          { t: t('Open the numbers. Walk through every page.', '打開數據，一頁一頁講。'), fx: { impact: 10, money: 10 },
-            r: t('An hour later, he\'s the one taking notes.', '一小時後，抄筆記的人變成了他。') },
-          { t: t('Smile. "Let me tell you where I started."', '微笑：「讓我先講講我是怎樣開始的。」'), fx: { impact: 8, dream: 8 },
-            r: t('The story of the laptop, the debt and the store. The room goes quiet.', '手提電腦、欠債、便利店的故事。會議室安靜下來。') }
-        ]
-      },
-      actions: ['exchange', 'btrdcc', 'cat', 'listing', 'rest'],
-      milestone: t('Capital markets on one side, science on the other. You learned to speak both languages.',
-                   '一邊是資本市場，一邊是科研。你學會了說兩種語言。')
-    },
-    {
-      age: t('Giving back', '回饋'), title: t('City of dreams', '夢想之城'), ap: 3,
-      intro: [t('You go back to a school to give a talk. In the back row sits a kid with his head down. He looks a lot like you once did.',
-                '你回到學校演講。最後一排坐着一個低着頭的孩子，很像當年的你。')],
-      story: {
-        text: t('What do you do?', '你會怎樣做？'),
-        opts: [
-          { t: t('Walk down and tell him: "You can do this."', '走下台，跟他說：「你可以的。」'), fx: { impact: 15, family: 5 },
-            r: t('He looks up. That\'s enough.', '他抬起了頭。這樣就夠了。') },
-          { t: t('Tell the whole room about being bullied.', '向全場講出被欺負的故事。'), fx: { impact: 10, dream: 10 },
-            r: t('Afterwards, three kids queue up to talk to you.', '演講後，有三個孩子排隊等着跟你說話。') }
-        ]
-      },
-      actions: ['youth', 'rocket', 'dome', 'volunteer', 'family'],
-      milestone: t('The kid who was laughed at built a city, and opened its doors to everyone.',
-                   '那個被笑的孩子，建了一座城市，然後把門打開給每一個人。')
-    },
-    {
-      age: t('The future (fiction)', '未來篇（虛構）'), title: t('The storm', '風暴'), ap: 3, future: true,
-      intro: [t('Years later. The markets crash overnight. A deal you spent a year on falls apart, and the phone goes quiet again.',
-                '多年後。市場一夜之間急跌，你花了一年的交易告吹，電話又再安靜下來。')],
-      story: {
-        text: t('Your team gathers in the office. Someone finally asks: "Do we keep going?"', '團隊在辦公室集合。終於有人問：「我哋仲要唔要繼續？」'),
-        opts: [
-          { t: t('"We\'ve been here before. We keep going."', '「我哋以前都經歷過，繼續。」'), fx: { dream: 12, energy: -10 },
-            r: t('Nobody leaves. Somebody orders noodles for everyone.', '沒有人離開。有人幫大家叫了外賣。') },
-          { t: t('Cut costs, protect the team, wait for the turn.', '節省開支、保住團隊，等待轉機。'), fx: { money: 12, family: 5 },
-            r: t('Boring decisions. They save the company.', '很悶的決定，但保住了公司。') }
-        ]
-      },
-      mid: {
-        after: 1,
-        text: t('An old classmate, the one who used to laugh at you, sends a message: "I saw your story. Sorry for back then. Are you hiring?"',
-                '一個以前笑過你的舊同學傳來訊息：「我睇到你嘅故事。當年對唔住。你哋請唔請人？」'),
-        opts: [
-          { t: t('"Come for an interview."', '「嚟面試吧。」'), fx: { impact: 10, family: 5 },
-            r: t('People change. You did too.', '人是會變的。你也一樣。') },
-          { t: t('"Thanks. I wish you well."', '「多謝你。祝你一切順利。」'), fx: { dream: 8 },
-            r: t('You close the chat and smile.', '你關掉對話，笑了一笑。') }
-        ]
-      },
-      actions: ['hospital', 'apartments', 'listing', 'family', 'rest'],
-      milestone: t('Storms pass. The ones who stay standing are the ones who learned to fall.', '風暴總會過去。站得住的，都是學會了跌倒的人。')
-    },
-    {
-      age: t('The future (fiction)', '未來篇（虛構）'), title: t('Passing it on', '傳承'), ap: 3, future: true,
-      intro: [t('Young founders start knocking on your door, the way you once knocked on everyone else\'s.', '年輕的創業者開始來敲你的門，就像當年你敲每一個人的門。')],
-      story: {
-        text: t('A 20-year-old with one laptop and a big idea sits across from you. Everyone else told her it was impossible.', '一個 20 歲、只有一部手提電腦和一個大想法的女孩坐在你對面。其他人都說她不可能成功。'),
-        opts: [
-          { t: t('Invest in her.', '投資她。'), fx: { impact: 12, money: -10, dream: 5 },
-            r: t('"Why me?" she asks. "Because someone once bet on me," you say.', '她問：「點解揀我？」你說：「因為當年都有人肯賭我一次。」') },
-          { t: t('Teach her to write the plan properly.', '教她把計劃書寫好。'), fx: { impact: 10, energy: -5 },
-            r: t('Three weeks later, she raises her first round.', '三個星期後，她完成了第一輪融資。') }
-        ]
-      },
-      actions: ['incubator', 'museum', 'volunteer', 'family', 'rest'],
-      milestone: t('The best thing you can build is someone else\'s start.', '你能建造最好的東西，是別人的起點。')
-    },
-    {
-      age: t('The future (fiction)', '未來篇（虛構）'), title: t('Liftoff', '升空'), ap: 3, future: true,
-      intro: [t('The whole city gathers by the sea. Tonight, the rocket from your childhood notebook is ready.', '整座城市的人都聚在海邊。今晚，你小時候筆記簿上的那枚火箭準備好了。')],
-      story: {
-        text: t('Your parents stand next to you. Dad\'s hand is on your shoulder. Mum is already crying.', '爸媽站在你身邊。爸爸的手搭在你的肩上，媽媽已經在哭了。'),
-        opts: [
-          { t: t('Count down together.', '一起倒數。'), fx: { family: 15, dream: 10 },
-            r: t('Ten, nine, eight… the kid who was called a loser is watching his dream go up.', '十、九、八……那個被叫做「廢柴」的孩子，看着自己的夢升空。') },
-          { t: t('Hand the button to the youngest founder.', '把按鈕交給最年輕的創業者。'), fx: { impact: 15, dream: 8 },
-            r: t('She presses it. The whole city cheers.', '她按下了。整座城市都在歡呼。') }
-        ]
-      },
-      actions: ['stadium', 'station', 'solar', 'family'],
-      milestone: t('From a small flat in Hong Kong to a city that launches dreams. And the road keeps going.', '由香港一個小小的家，到一座讓夢想升空的城市。而這條路，還在繼續。')
-    }
-  ];
+    /* ---------------- Hong Kong ---------------- */
+    { world: 'hk', grow: [-1, 1, -1, 1], age: t('Childhood', '童年'), title: t('Hong Kong', '香港'),
+      intro: t('A small flat in Hong Kong. You love staring at the sky and drawing rockets.', '香港，一個小小的家。你最喜歡望着天空，畫火箭。'),
+      steps: [
+        { type: 'go', place: 'school', room: 'classroom', label: t('Go to school', '去學校'),
+          cast: { bully1: 'kid', bully2: 'kid2', bully3: 'kid', kid1: 'kid2', kid2: 'kid' },
+          shots: [
+            { cam: 'wide', say: [N, t('Break time. The classroom is loud.', '小息，課室裏很吵。')], t: 2.6 },
+            { cam: 'bully1', say: [t('Classmate', '同學'), t('"Oi, loser! What\'s with your ugly bag?"', '「喂，廢柴！你個書包好核突呀！」')], pose: { bully1: 'point', bully2: 'laugh', bully3: 'laugh', me: 'sad' }, t: 3 },
+            { cam: 'wide', say: [N, t('They throw your bag in the bin. The whole class laughs.', '他們把你的書包丟進垃圾桶。全班都在笑。')], pose: { kid1: 'laugh', kid2: 'laugh', bully1: 'laugh' }, t: 3.2 },
+            { cam: 'me', say: [ME, t('"…"', '「……」')], pose: { me: 'cry' }, t: 2.4 }
+          ],
+          choice: [
+            { t: t('Come back tomorrow anyway.', '明天照樣上學。'), fx: { dream: 6 }, r: t('You don\'t run. That stubbornness will save you many times.', '你沒有逃。這份倔強，後來救了你很多次。') },
+            { t: t('Go home and tell Mum.', '回家告訴媽媽。'), fx: { family: 8 }, r: t('You walk home with your bag in your arms.', '你抱着書包走回家。') },
+            { t: t('Pick up the bag and smile.', '拾起書包，笑一笑。'), fx: { impact: 4, dream: 3 }, r: t('They stop laughing. They don\'t know what to do with a smile.', '他們笑不下去了。他們不知道怎樣對付一個微笑。') }
+          ] },
+        { type: 'go', place: 'home', room: 'home', label: t('Go home', '回家'),
+          cast: { mum: 'mum' },
+          shots: [
+            { cam: 'wide', say: [N, t('Mum sees your red eyes the moment you walk in.', '你一進門，媽媽就看見你紅了的眼。')], pose: { me: 'sad' }, put: { me: 'stand1', mum: 'stand2' }, t: 2.8 },
+            { cam: 'mum', say: [MUM, t('"You did nothing wrong. Mum is always here."', '「你冇做錯。媽媽永遠喺度。」')], pose: { mum: 'hug', me: 'hug' }, t: 3.2 },
+            { cam: 'wide', say: [N, t('Dinner tastes better than usual tonight.', '那晚的飯，特別好吃。')], put: { me: 'me', mum: 'mum' }, pose: { me: 'sit', mum: 'sit' }, t: 2.6 }
+          ], fx: { family: 6 } },
+        { type: 'go', place: 'library', room: 'library', label: t('Go to the library', '去圖書館'),
+          cast: { librarian: 'woman', kid1: 'kid2' },
+          shots: [
+            { cam: 'wide', say: [N, t('You fill your notebook with rockets and cities.', '你在筆記簿上畫滿了火箭和城市。')], pose: { me: 'type' }, t: 2.8 },
+            { cam: 'librarian', say: [t('Librarian', '圖書館姨姨'), t('"Lovely drawings. What do you want to be?"', '「畫得好靚喎。你大個想做咩？」')], pose: { librarian: 'talk' }, t: 3 },
+            { cam: 'me', say: [ME, t('"I\'ll build a city. Then fly a rocket to space!"', '「我要建一座城市，再坐火箭去太空！」')], pose: { me: 'cheer' }, t: 3 }
+          ], fx: { dream: 8 } }
+      ],
+      milestone: t('Being bullied taught you early: what others think of you is not who you are.', '被欺負的日子很早就教會你：別人怎樣看你，不等於你是誰。') },
 
-  // Free play after the story: one of these each "year", forever
-  var FREE = {
-    actions: ['park', 'hospital', 'apartments', 'incubator', 'museum', 'station', 'stadium', 'solar', 'listing', 'volunteer', 'family', 'rest'],
-    events: [
-      { text: t('A typhoon warning goes up. Half the city loses power for a night.', '颱風訊號高掛，半個城市停電一晚。'),
-        opts: [{ t: t('Open your buildings as shelters.', '開放大樓做臨時避難所。'), fx: { impact: 12, money: -8 }, r: t('By morning, strangers are sharing breakfast in your lobby.', '天亮時，陌生人在大堂一起吃早餐。') },
-               { t: t('Help the repair crews.', '幫手搶修。'), fx: { impact: 8, energy: -15 }, r: t('Lights come back on, street by street.', '燈一條街一條街地亮回來。') }] },
-      { text: t('A big company offers to buy everything you have built.', '一間大公司開價收購你建立的一切。'),
-        opts: [{ t: t('Sell, and fund ten new founders.', '賣掉，再資助十個新創業者。'), fx: { money: 20, impact: 10, dream: -5 }, r: t('Ten new doors open.', '十道新的門打開了。') },
-               { t: t('Say no. Not yet.', '拒絕。還未是時候。'), fx: { dream: 12 }, r: t('Some dreams aren\'t for sale.', '有些夢想是不賣的。') }] },
-      { text: t('Your mum asks when you last took a holiday.', '媽媽問你上一次放假是甚麼時候。'),
-        opts: [{ t: t('Take the family away for a week.', '帶家人去旅行一星期。'), fx: { family: 15, energy: 30, money: -8 }, r: t('Nobody checks email. Almost nobody.', '沒有人覆電郵。差不多沒有人。') },
-               { t: t('Promise next month.', '答應下個月。'), fx: { money: 8, family: -5 }, r: t('She has heard that before.', '這句話她聽過很多次了。') }] },
-      { text: t('A breakthrough at the lab: early results look promising.', '實驗室有新突破：初步結果很有希望。'),
-        opts: [{ t: t('Stay humble. Run it again.', '保持謙虛，再做一次實驗。'), fx: { dream: 8, impact: 6 }, r: t('It holds up. Then the hard part starts.', '結果站得住。然後，困難的部分才開始。') },
-               { t: t('Tell investors right away.', '立即通知投資者。'), fx: { money: 12, dream: -3 }, r: t('Money comes in fast. So do expectations.', '錢來得很快，期望也是。') }] },
-      { text: t('A school invites you back. The kids want to hear about failure.', '一間學校邀請你回去。孩子們想聽關於失敗的故事。'),
-        opts: [{ t: t('Tell them about the debt.', '講欠債的那段。'), fx: { impact: 12 }, r: t('The quietest kid asks the best question.', '最安靜的孩子問了最好的問題。') },
-               { t: t('Tell them about being bullied.', '講被欺負的那段。'), fx: { impact: 10, family: 3 }, r: t('One kid stays behind to say: "Me too."', '一個孩子留下來說：「我都係。」') }] },
-      { text: t('A rival copies your best idea and launches first.', '對手抄了你最好的點子，還搶先推出。'),
-        opts: [{ t: t('Build something better.', '做一個更好的。'), fx: { dream: 10, energy: -10 }, r: t('Six months later, nobody remembers theirs.', '半年後，已經沒有人記得他們的版本。') },
-               { t: t('Call your patent lawyer.', '找專利律師。'), fx: { money: 8, impact: 4 }, r: t('This is what the patents were for.', '專利就是為了這一天。') }] }
-    ],
-    milestone: t('Another year, another street. The city keeps growing with you.', '又一年，又多一條街。城市跟着你一起成長。')
-  };
+    { world: 'hk', grow: [-1, 2, -1, 2], age: t('Teenage years', '少年'), title: t('Home', '家'),
+      intro: t('You tell your parents you want to start a business one day.', '你跟爸媽說，將來想自己做生意。'),
+      steps: [
+        { type: 'go', place: 'home', room: 'home', label: t('Go home for dinner', '回家食飯'),
+          cast: { mum: 'mum', dad: 'dad' },
+          shots: [
+            { cam: 'wide', say: [N, t('Dinner. You finally say it out loud.', '晚飯時，你終於說了出口。')], pose: { me: 'sit', mum: 'sit', dad: 'sit' }, t: 2.6 },
+            { cam: 'dad', say: [DAD, t('"Business? Do you know how hard it is out there?"', '「做生意？你知唔知出面幾難？」')], pose: { dad: 'point' }, t: 3 },
+            { cam: 'mum', say: [MUM, t('"Your dad is just worried about you."', '「你爸爸只係擔心你。」')], pose: { mum: 'sad' }, t: 2.8 },
+            { cam: 'me', say: [ME, t('"I want to try!"', '「我想試吓！」')], pose: { me: 'talk' }, t: 2.4 }
+          ],
+          choice: [
+            { t: t('"I\'ll prove it to you."', '「我會證明畀你哋睇。」'), fx: { dream: 8, family: -4 }, r: t('A door slams. You lie awake, angry and sure.', '房門被大力關上。你一夜沒睡，又氣，又更加肯定。') },
+            { t: t('Explain the plan calmly.', '冷靜地解釋你的計劃。'), fx: { family: 6, dream: 3 }, r: t('They don\'t agree. But they listen to the end.', '他們沒有同意，但都聽完了。') }
+          ] },
+        { type: 'go', place: 'rooftop', room: 'rooftop', label: t('Go up to the rooftop', '上天台'),
+          cast: {},
+          shots: [
+            { cam: 'wide', say: [N, t('That night you climb to the roof alone.', '那晚，你一個人上了天台。')], pose: { me: 'lookup' }, t: 3 },
+            { cam: 'me', say: [ME, t('"One day, I\'ll go really far."', '「總有一日，我會去到好遠。」')], pose: { me: 'lookup' }, t: 3 }
+          ], fx: { dream: 6 } },
+        { type: 'go', place: 'home', room: 'home', label: t('Go home', '回家'),
+          cast: { mum: 'mum', dad: 'dad' },
+          shots: [
+            { cam: 'wide', say: [N, t('Late at night, your parents knock on your door.', '深夜，爸媽敲門進來。')], put: { me: 'door', dad: 'stand1', mum: 'stand2' }, t: 2.6 },
+            { cam: 'dad', say: [DAD, t('"We\'re not against you. We\'re just scared you\'ll get hurt. If you want to try, go and try."', '「我哋唔係反對你，只係驚你辛苦。你想做，就去試吓啦。」')], pose: { dad: 'talk' }, t: 4 },
+            { cam: 'wide', say: [N, t('Whatever happens next, you know where home is.', '以後無論發生甚麼事，你都知道家在哪裏。')], pose: { me: 'hug', mum: 'hug', dad: 'hug' }, t: 3 }
+          ], fx: { family: 10 } }
+      ],
+      milestone: t('Families argue because they care. Yours became your biggest supporter.', '家人會吵，是因為在乎。你的家，成了你最大的支持。') },
 
-  // People standing in the city who talk to you (no real names)
-  var TALKERS = [
-    [{ who: t('Mum', '媽媽'), at: 'home', look: 'mum', line: t('"Don\'t be scared. Mum\'s here."', '「唔使驚，媽媽喺度。」') },
-     { who: t('Classmate', '同學'), at: 'school', look: 'kid', line: t('"Oi, loser! Ha ha!"', '「喂，廢柴！哈哈！」') }],
-    [{ who: t('Dad', '爸爸'), at: 'home', look: 'dad', line: t('"Business is tough… but if you want to try, go and try."', '「做生意好辛苦㗎……不過你想試，就去試吓啦。」') },
-     { who: t('Mum', '媽媽'), at: 'home', look: 'mum', line: t('"Dinner\'s ready. Come and eat."', '「食飯喇！」') }],
-    [{ who: t('Man at dinner', '飯局上的人'), at: 'studio', look: 'suitold', line: t('"You\'re a kid. Who would trust you?"', '「咁後生，邊個會信你？」') },
-     { who: t('First customer', '第一位客人'), at: 'studio', look: 'woman', line: t('"Your plan is actually interesting."', '「你份計劃書幾有意思喎。」') }],
-    [{ who: t('Landlord', '業主'), at: 'store', look: 'suitold', line: t('"Rent is due. No more excuses."', '「租要交喇，唔好再拖。」') },
-     { who: t('Old "friend"', '舊「朋友」'), at: 'store', look: 'kid', line: t('"Told you he couldn\'t do it."', '「早就話佢唔得啦。」') },
-     { who: t('Mum', '媽媽'), at: 'home', look: 'mum', line: t('"Come home and eat first."', '「返嚟食飯先。」') }],
-    [{ who: t('Reporter', '記者'), at: 'factory', look: 'woman', line: t('"Can you tell us how it all started?"', '「可以講吓你點樣開始嗎？」') },
-     { who: t('Professor', '教授'), at: 'university', look: 'suitold', line: t('"Science is slow. Don\'t give up on it."', '「科學係慢嘅，但唔好放棄。」') }],
-    [{ who: t('Investor', '投資者'), at: 'exchange', look: 'suitold', line: t('"You\'re young. What do you know about capital markets?"', '「你咁後生，識資本市場咩？」') },
-     { who: t('Researcher', '研究員'), at: 'btrdcc', look: 'lab', line: t('"AI narrows the search. The lab decides."', '「AI 幫我哋收窄範圍，最後由實驗決定。」') }],
-    [{ who: t('Kid in the back row', '最後一排的孩子'), at: 'youth', look: 'kid', line: t('"Can… can I really do it too?"', '「我……真係都得嗎？」') }],
-    [{ who: t('Teammate', '團隊成員'), at: 'exchange', look: 'woman', line: t('"Do we keep going?"', '「我哋仲要唔要繼續？」') }],
-    [{ who: t('Young founder', '年輕創業者'), at: 'incubator', look: 'woman', line: t('"Can you show me how to write a business plan?"', '「可唔可以教我寫計劃書？」') }],
-    [{ who: t('Dad', '爸爸'), at: 'rocket', look: 'dad', line: t('"We\'ve always been proud of you."', '「我哋一直都以你為榮。」') },
-     { who: t('Mum', '媽媽'), at: 'rocket', look: 'mum', line: t('"Eat properly up there, OK?"', '「上到去都要食飽飯呀。」') }]
+    { world: 'hk', grow: [-2, 2, -2, 2], age: t('Age 20', '20 歲'), title: t('One laptop', '一部手提電腦'),
+      intro: t('You\'re 20. One laptop, one idea, and nothing else.', '20 歲。一部手提電腦、一個想法，除此之外甚麼都沒有。'),
+      steps: [
+        { type: 'build', build: 'studio', label: t('Pick an empty plot for your first office', '揀一塊空地，開你的第一間公司') },
+        { type: 'go', place: 'studio', room: 'studio', label: t('Go into your office', '走進你的公司'),
+          cast: {},
+          shots: [
+            { cam: 'wide', say: [N, t('An empty office. One desk is enough.', '空空的辦公室，一張枱已經足夠。')], pose: { me: 'type' }, t: 2.8 },
+            { cam: 'me', say: [ME, t('"From today I\'m the boss. And the only staff."', '「由今日開始，我係老闆，亦都係唯一嘅員工。」')], pose: { me: 'type' }, t: 3.2 }
+          ],
+          choice: [
+            { t: t('All in. Full time.', '全職投入，破釜沉舟。'), fx: { dream: 8, money: -10 }, r: t('No safety net. Exactly how you wanted it.', '沒有後路，正合你意。') },
+            { t: t('Study and build at the same time.', '一邊讀書，一邊創業。'), fx: { dream: 5, impact: 3 }, r: t('Lectures by day, emails until 3 a.m.', '白天上課，凌晨三點還在回電郵。') }
+          ] },
+        { type: 'go', place: 'restaurant', room: 'restaurant', label: t('Dinner with "friends"', '去飯局'),
+          cast: { laugher: 'suitold', g1: 'woman', g2: 'kid2', g3: 'dad' },
+          shots: [
+            { cam: 'wide', say: [N, t('A big dinner. Someone asks what you do.', '一個大飯局。有人問你在做甚麼。')], pose: { me: 'sit', laugher: 'sit', g1: 'sit', g2: 'sit', g3: 'sit' }, t: 2.6 },
+            { cam: 'laugher', say: [t('Man at dinner', '飯局上的人'), t('"You\'re a kid. Who would ever trust you?"', '「咁後生，邊個會信你？」')], pose: { laugher: 'laugh' }, t: 3 },
+            { cam: 'wide', say: [N, t('The whole table laughs. You grip your glass.', '全枱人一起笑。你握緊了手中的杯。')], pose: { g1: 'laugh', g2: 'laugh', g3: 'laugh', me: 'sad' }, t: 3 }
+          ],
+          choice: [
+            { t: t('Laugh along. Results will answer.', '笑吧，結果會說話。'), fx: { dream: 6 }, r: t('You write his words down. You\'ll need them.', '你把那句話記下來。以後會用得着。') },
+            { t: t('Go home and rewrite the plan.', '回家，把計劃書改到最好。'), fx: { money: 8, impact: 3 }, r: t('By sunrise, the plan is twice as good.', '天亮時，計劃書好了一倍。') }
+          ] },
+        { type: 'build', build: 'harbor', label: t('Take the business overseas: build a pier', '把生意帶出海外：建一個碼頭') },
+        { type: 'outdoor', place: 'harbor', label: t('Go to the pier', '去碼頭'), cast: { worker: ['suitold', [2.2, 3.8], Math.PI] }, me: [0, 3.8, Math.PI],
+          shots: [
+            { cam: 'wide', say: [N, t('At 22, your first shipment leaves for another country.', '22 歲，第一批貨運往其他國家。')], pose: { me: 'wave', worker: 'wave' }, t: 3.4 },
+            { cam: 'me', say: [ME, t('"This is only the start."', '「呢個只係開始。」')], pose: { me: 'cheer' }, t: 2.6 }
+          ], fx: { impact: 8, money: 15 } }
+      ],
+      milestone: t('By 22, the business had reached other countries. The people who laughed went quiet.', '22 歲，生意已經走到其他國家。當年笑你的人，安靜了。') },
+
+    { world: 'hk', grow: [-2, 3, -2, 3], age: t('The fall', '跌倒'), title: t('Debt', '欠債'),
+      intro: t('Things are going well. Maybe too well. You decide to open a convenience store.', '一切看起來很順利，也許太順利了。你決定開一間便利店。'),
+      steps: [
+        { type: 'build', build: 'store', label: t('Open a convenience store', '開一間便利店') },
+        { type: 'go', place: 'store', room: 'store', label: t('Go to your store', '去你的便利店'), fx: { money: -40 },
+          cast: { landlord: 'suitold', friend: 'kid' },
+          shots: [
+            { cam: 'wide', say: [N, t('Rent, stock, wages… the bills pile up on the counter.', '租金、貨款、人工……帳單堆滿了櫃台。')], pose: { me: 'think' }, t: 3 },
+            { cam: 'landlord', say: [t('Landlord', '業主'), t('"Rent is due. No more excuses."', '「租要交喇，唔好再拖。」')], pose: { landlord: 'point' }, t: 3 },
+            { cam: 'friend', say: [t('Old "friend"', '舊「朋友」'), t('"Told you he couldn\'t do it."', '「早就話佢唔得啦。」')], pose: { friend: 'laugh' }, t: 2.8 },
+            { cam: 'me', say: [N, t('The account goes negative. At 3 a.m. you sit by the door, not knowing who to call.', '戶口變成負數。凌晨三點，你坐在店門口，不知道可以打給誰。')], pose: { me: 'sad' }, t: 3.6 }
+          ],
+          choice: [
+            { t: t('Call home.', '打電話回家。'), fx: { family: 10 }, r: t('Mum says only: "Come home and eat first."', '電話那頭，媽媽只說了一句：「返嚟食飯先。」') },
+            { t: t('Carry it alone.', '一個人扛。'), fx: { dream: 4 }, r: t('You carry it alone for a long time. Later you learn your parents were waiting for you to ask.', '你一個人扛了很久。後來才知道，爸媽一直在等你開口。') }
+          ] },
+        { type: 'go', place: 'home', room: 'home', label: t('Go home', '回家'),
+          cast: { mum: 'mum', dad: 'dad' },
+          shots: [
+            { cam: 'wide', say: [N, t('A hot meal is waiting on the table.', '飯枱上，熱騰騰的飯菜在等你。')], pose: { me: 'sit', mum: 'sit', dad: 'sit' }, t: 2.6 },
+            { cam: 'dad', say: [DAD, t('"Money can be earned again. You\'re what matters."', '「錢可以再搵，你冇事就得。」')], pose: { dad: 'talk' }, t: 3.2 },
+            { cam: 'mum', say: [MUM, t('"Eat first. We\'ll figure it out together."', '「食飽先，我哋一齊諗辦法。」')], pose: { mum: 'talk' }, t: 3 }
+          ], fx: { family: 10, money: 15 } }
+      ],
+      milestone: t('Falling wasn\'t the end. You learned cash flow, humility, and that home would always catch you.', '跌倒不是終點。你學會了現金流、學會了低頭，也知道家永遠會接住你。') },
+
+    { world: 'hk', grow: [-3, 3, -3, 3], age: t('Getting back up', '重新站起'), title: t('Science', '科研'),
+      intro: t('Then the pandemic. People need better protection.', '然後，疫情來了。大家需要更好的防護。'),
+      steps: [
+        { type: 'build', build: 'factory', label: t('Build a protection factory', '建一間防護用品廠') },
+        { type: 'go', place: 'factory', room: 'factory', label: t('Go into the factory', '走進工廠'),
+          cast: { w1: 'lab', w2: 'woman', w3: 'kid2', team: 'dad' },
+          shots: [
+            { cam: 'wide', say: [N, t('Day and night, the lines keep running.', '日日夜夜，生產線沒有停過。')], t: 3 },
+            { cam: 'team', say: [t('Teammate', '團隊'), t('"Together, we protect everyone!"', '「我哋一齊守護大家！」')], pose: { team: 'cheer', me: 'cheer', w3: 'clap', w1: 'clap' }, t: 3 }
+          ], fx: { impact: 10, money: 15 } },
+        { type: 'go', place: 'tv', room: 'tvstudio', label: t('TV interview at the station', '去電視台接受訪問'),
+          cast: { host: 'woman', crew: 'kid2' },
+          shots: [
+            { cam: 'wide', say: [N, t('Studio lights. Cameras rolling.', '攝影棚燈光亮起，鏡頭開始拍攝。')], t: 2.4 },
+            { cam: 'host', say: [t('Host', '主持'), t('"Tell us how it all started."', '「可以講吓你點樣開始嗎？」')], pose: { host: 'talk' }, t: 3 },
+            { cam: 'me', say: [N, t('You think of everyone who laughed.', '你想起每一個笑過你的人。')], pose: { me: 'talk' }, t: 2.8 }
+          ],
+          choice: [
+            { t: t('Tell the real story, debt and all.', '講真話，包括欠債的那段。'), fx: { impact: 10 }, r: t('Strangers write afterwards: "Thank you. I needed that."', '節目播出後，有陌生人留言：「多謝你，我需要聽到這些。」') },
+            { t: t('Talk about the product and the team.', '專心講產品和團隊。'), fx: { impact: 6, money: 10 }, r: t('Orders come in the next morning.', '第二天早上，訂單來了。') }
+          ] },
+        { type: 'go', place: 'university', room: 'lab', label: t('Go to the university lab', '去大學實驗室'),
+          cast: { prof: 'suitold', sci1: 'lab', sci2: 'woman' },
+          shots: [
+            { cam: 'prof', say: [t('Professor', '教授'), t('"The nano-coating results look promising."', '「納米塗層嘅結果好有希望。」')], pose: { prof: 'talk' }, t: 3 },
+            { cam: 'wide', say: [N, t('You co-found a nanotech company. Your patents are granted.', '你聯合創辦了一間納米科技公司，專利獲得授權。')], pose: { sci1: 'clap', sci2: 'clap', me: 'cheer' }, fx: 'confetti', t: 3.4 },
+            { cam: 'me', say: [N, t('Then the call: your company wins an innovation award.', '然後電話響起：公司獲得了創新大獎。')], pose: { me: 'phone' }, t: 3 }
+          ], fx: { impact: 12, dream: 6 } }
+      ],
+      milestone: t('From a debt-ridden shop to granted patents. Science gave you a second start.', '由欠債的小店，到獲授權的專利。科研給了你第二次起步。') },
+
+    /* ---------------- New York ---------------- */
+    { world: 'ny', age: t('Two worlds', '兩個世界'), title: t('New York', '紐約'),
+      intro: t('A new chapter, on the other side of the world.', '新的篇章，在地球的另一邊。'),
+      steps: [
+        { type: 'travel', from: 'hk', place: 'airport', to: 'ny', via: 'flight', label: t('Go to the airport and fly to New York', '去機場，飛往紐約') },
+        { type: 'go', place: 'nyoffice', room: 'meeting', label: t('Meeting in Dream Tower', '去夢想大廈開會'),
+          cast: { inv1: 'suitold', inv2: 'woman', inv3: 'dad', team: 'kid2' },
+          shots: [
+            { cam: 'wide', say: [N, t('Your first big meeting in New York.', '你在紐約的第一個大會議。')], pose: { inv1: 'sit', inv2: 'sit', inv3: 'sit', team: 'sit' }, t: 2.6 },
+            { cam: 'inv1', say: [t('Investor', '投資者'), t('"You\'re young. What do you know about capital markets?"', '「你咁後生，識資本市場咩？」')], pose: { inv1: 'talk' }, t: 3.2 }
+          ],
+          choice: [
+            { t: t('Open the numbers. Walk through every page.', '打開數據，一頁一頁講。'), fx: { impact: 8, money: 10 }, r: t('An hour later, he\'s the one taking notes.', '一小時後，抄筆記的人變成了他。') },
+            { t: t('"Let me tell you where I started."', '「讓我先講講我是怎樣開始的。」'), fx: { impact: 6, dream: 6 }, r: t('The laptop, the debt, the store. The room goes quiet.', '手提電腦、欠債、便利店。會議室安靜下來。') }
+          ] },
+        { type: 'go', place: 'biolab', room: 'lab', label: t('Visit the AI biotech lab', '參觀 AI 生物科技中心'),
+          cast: { sci1: 'lab', sci2: 'woman', prof: 'dad' },
+          shots: [
+            { cam: 'sci1', say: [t('Researcher', '研究員'), t('"AI narrows the search. The lab decides."', '「AI 幫我哋收窄範圍，最後由實驗決定。」')], pose: { sci1: 'talk' }, t: 3.2 },
+            { cam: 'me', say: [ME, t('"Then let\'s aim it at cancer."', '「咁就對準癌症啦。」')], pose: { me: 'point' }, t: 2.8 }
+          ], fx: { impact: 8, dream: 8 } }
+      ],
+      milestone: t('Capital markets on one side, science on the other. You learned both languages.', '一邊是資本市場，一邊是科研。你學會了兩種語言。') },
+
+    { world: 'ny', age: t('Ring the bell', '敲鐘'), title: t('Listing day', '上市成功'),
+      intro: t('A company you helped for two years is about to list.', '一間你協助了兩年的企業，準備上市。'),
+      steps: [
+        { type: 'go', place: 'nyoffice', room: 'nyoffice', label: t('Final night in the office', '上市前夜，回到辦公室'),
+          cast: { p1: 'woman', p2: 'kid2', p3: 'lab', boss: 'suitold' },
+          shots: [
+            { cam: 'wide', say: [N, t('Countless all-nighters. One last check of every page.', '無數個通宵。最後一次檢查每一頁文件。')], pose: { me: 'type', p1: 'type', p2: 'type', p3: 'type' }, t: 3 },
+            { cam: 'boss', say: [t('Client CEO', '客戶 CEO'), t('"We couldn\'t have done this without you."', '「冇你哋，我哋做唔到。」')], pose: { boss: 'talk' }, t: 3 }
+          ] },
+        { type: 'go', place: 'nyexchange', room: 'exchange', label: t('Go to the stock exchange', '去證券交易所'),
+          cast: { vip: 'suitold', host: 'woman', c1: 'kid2', c3: 'lab', c4: 'woman', c5: 'kid' },
+          shots: [
+            { cam: 'wide', say: [N, t('The trading floor goes quiet. Everyone looks at the bell.', '交易大堂安靜下來，所有人望着那個鐘。')], put: { me: 'c2' }, t: 3 },
+            { cam: 'vip', say: [t('Client CEO', '客戶 CEO'), t('"Three, two, one…"', '「三、二、一……」')], pose: { vip: 'bell' }, t: 3 },
+            { cam: 'wide', say: [N, t('The bell rings. The ticker turns green. The floor erupts.', '鐘聲響起，股價變綠，全場歡呼。')], pose: { c1: 'cheer', c3: 'cheer', c4: 'clap', c5: 'cheer', me: 'cheer', host: 'clap', vip: 'cheer' }, fx: 'confetti', t: 3.6 }
+          ],
+          choice: [
+            { t: t('Celebrate with the team.', '和團隊一起慶祝。'), fx: { impact: 10, money: 12 }, r: t('Someone opens champagne. You remember the empty office.', '有人開香檳。你想起那間空空的辦公室。') },
+            { t: t('Step outside and call your parents.', '走出去，打電話給爸媽。'), fx: { family: 12 }, r: t('"We saw it on the news," Dad says. His voice shakes a little.', '爸爸說：「我哋喺新聞見到喇。」他的聲音有點抖。') }
+          ] }
+      ],
+      milestone: t('The bell rang for them. Part of it rang for every person who once said no.', '鐘聲為他們而響，也為每一個曾經說「不」的人而響。') },
+
+    { world: 'ny', age: t('Giving back', '回饋'), title: t('The kid in the back row', '最後一排的孩子'),
+      intro: t('A school invites you to speak.', '一間學校邀請你去演講。'),
+      steps: [
+        { type: 'go', place: 'nyschool', room: 'talk', label: t('Give a talk at the school', '到學校演講'),
+          cast: { a1: 'kid', a2: 'kid2', a3: 'kid', a4: 'kid2', kid: 'kid', host: 'woman' },
+          shots: [
+            { cam: 'wide', say: [N, t('A hall full of students.', '禮堂坐滿了學生。')], pose: { me: 'talk', a1: 'sit', a2: 'sit', a3: 'sit', a4: 'sit' }, t: 2.6 },
+            { cam: 'kid', say: [N, t('In the back row, a kid sits with his head down. He looks a lot like you once did.', '最後一排，一個孩子低着頭，很像當年的你。')], pose: { kid: 'sad' }, t: 3.4 }
+          ],
+          choice: [
+            { t: t('Walk down and tell him: "You can do this."', '走下台，跟他說：「你可以的。」'), fx: { impact: 10, family: 3 }, r: t('He looks up. That\'s enough.', '他抬起了頭。這樣就夠了。') },
+            { t: t('Tell the whole hall about being bullied.', '向全場講出被欺負的故事。'), fx: { impact: 8, dream: 6 }, r: t('Afterwards, three kids queue to talk to you.', '演講後，有三個孩子排隊等着跟你說話。') }
+          ] }
+      ],
+      milestone: t('The kid who was laughed at now tells other kids they can.', '那個被笑的孩子，現在告訴其他孩子：你們可以的。') },
+
+    { world: 'ny', age: t('Years later', '多年後'), title: t('The storm', '風暴'),
+      intro: t('The markets crash overnight. A deal you spent a year on falls apart.', '市場一夜之間急跌，你花了一年的交易告吹。'),
+      steps: [
+        { type: 'go', place: 'nyoffice', room: 'meeting', label: t('Emergency team meeting', '團隊緊急會議'),
+          cast: { inv1: 'kid2', inv2: 'woman', inv3: 'lab', team: 'dad' },
+          shots: [
+            { cam: 'wide', say: [N, t('Nobody touches the coffee.', '沒有人碰過桌上的咖啡。')], pose: { inv1: 'sit', inv2: 'sit', inv3: 'sit', team: 'sit' }, t: 2.6 },
+            { cam: 'inv2', say: [t('Teammate', '團隊成員'), t('"Do we keep going?"', '「我哋仲要唔要繼續？」')], pose: { inv2: 'talk' }, t: 2.8 }
+          ],
+          choice: [
+            { t: t('"We\'ve been here before. We keep going."', '「我哋以前都經歷過，繼續。」'), fx: { dream: 8 }, r: t('Nobody leaves. Someone orders noodles for everyone.', '沒有人離開。有人幫大家叫了外賣。') },
+            { t: t('Cut costs, protect the team, wait for the turn.', '節省開支、保住團隊，等待轉機。'), fx: { money: 12, family: 3 }, r: t('Boring decisions. They save the company.', '很悶的決定，但保住了公司。') }
+          ] }
+      ],
+      milestone: t('Storms pass. The ones still standing learned how to fall.', '風暴總會過去。站得住的，都是學會了跌倒的人。') },
+
+    { world: 'ny', age: t('Love', '愛'), title: t('The wedding', '婚禮'),
+      intro: t('In the middle of everything, you found someone who believes in you too.', '在一切之中，你遇到了一個同樣相信你的人。'),
+      steps: [
+        { type: 'outdoor', place: 'park', label: t('Go to the park: it\'s your wedding day', '去公園：今天是你的婚禮'),
+          cast: { partner: ['partner', [0.6, 3.4], Math.PI], mum: ['mum', [-2.0, 5.6], Math.PI], dad: ['dad', [-1.2, 5.8], Math.PI], g1: ['woman', [1.6, 5.8], Math.PI], g2: ['kid2', [2.4, 5.6], Math.PI], officiant: ['suitold', [0, 1.9], 0] },
+          me: [-0.6, 3.4, Math.PI],
+          shots: [
+            { cam: 'wide', say: [N, t('Family and friends under the white arch.', '家人和朋友，聚在白色拱門下。')], pose: { mum: 'clap', g1: 'clap' }, t: 3 },
+            { cam: 'officiant', say: [t('Officiant', '證婚人'), t('"Do you promise to keep dreaming, together?"', '「你們願意一起繼續追夢嗎？」')], pose: { officiant: 'talk' }, t: 3.2 },
+            { cam: 'me', say: [ME, t('"I do."', '「我願意。」')], pose: { me: 'hug', partner: 'hug' }, t: 2.6 },
+            { cam: 'wide', say: [N, t('Mum cries. Dad pretends he isn\'t.', '媽媽哭了。爸爸假裝沒有。')], pose: { mum: 'cry', dad: 'clap', g1: 'cheer', g2: 'cheer', me: 'dance', partner: 'dance' }, fx: 'confetti', t: 3.6 }
+          ], fx: { family: 15 } }
+      ],
+      milestone: t('Two dreamers now. The road is wider.', '現在是兩個追夢的人。路，更寬了。') },
+
+    { world: 'ny', age: t('Passing it on', '傳承'), title: t('The next founder', '下一個創業者'),
+      intro: t('Young founders start knocking on your door, the way you once did.', '年輕的創業者開始來敲你的門，就像當年的你。'),
+      steps: [
+        { type: 'go', place: 'incubator', room: 'incubator', label: t('Go to the founders\' hub', '去創業中心'),
+          cast: { boss: 'woman', p1: 'kid2', p2: 'kid', p3: 'lab' },
+          shots: [
+            { cam: 'boss', say: [t('Young founder', '年輕創業者'), t('"I\'m 20. I have one laptop. Everyone says it\'s impossible."', '「我 20 歲，得一部手提電腦。人人都話冇可能。」')], pose: { boss: 'talk', p1: 'type', p2: 'type', p3: 'type' }, t: 3.4 },
+            { cam: 'me', say: [ME, t('"I know exactly how that feels."', '「我完全明白嗰種感覺。」')], pose: { me: 'talk' }, t: 2.8 }
+          ],
+          choice: [
+            { t: t('Invest in her.', '投資她。'), fx: { impact: 10, money: -8 }, r: t('"Why me?" "Because someone once bet on me."', '「點解揀我？」「因為當年都有人肯賭我一次。」') },
+            { t: t('Teach her to write the plan.', '教她把計劃書寫好。'), fx: { impact: 8, dream: 4 }, r: t('Three weeks later, she raises her first round.', '三個星期後，她完成了第一輪融資。') }
+          ] }
+      ],
+      milestone: t('The best thing you can build is someone else\'s start.', '你能建造最好的東西，是別人的起點。') },
+
+    { world: 'ny', age: t('The dream', '夢想'), title: t('Liftoff', '升空'),
+      intro: t('The rocket from your childhood notebook is ready.', '你小時候筆記簿上的那枚火箭，準備好了。'),
+      steps: [
+        { type: 'outdoor', place: 'spaceport', label: t('Go to the spaceport', '去太空港'),
+          cast: { mum: ['mum', [-1.6, 4.4], Math.PI], dad: ['dad', [-0.8, 4.6], Math.PI], partner: ['partner', [1.6, 4.4], Math.PI], kid: ['kid', [2.4, 4.6], Math.PI] },
+          me: [0.4, 3.8, Math.PI],
+          shots: [
+            { cam: 'wide', say: [N, t('Your family came to see you off.', '家人都來送你。')], pose: { mum: 'wave', kid: 'wave' }, t: 2.8 },
+            { cam: 'dad', say: [DAD, t('"We\'ve always been proud of you."', '「我哋一直都以你為榮。」')], pose: { dad: 'talk' }, t: 3 },
+            { cam: 'mum', say: [MUM, t('"Eat properly up there, OK?"', '「上到去都要食飽飯呀。」')], pose: { mum: 'cry' }, t: 2.8 }
+          ],
+          choice: [
+            { t: t('Count down together.', '一起倒數。'), fx: { family: 8, dream: 8 }, r: t('Ten, nine, eight… the kid called a loser is going to space.', '十、九、八……那個被叫做「廢柴」的孩子，要上太空了。') },
+            { t: t('Salute, and climb aboard.', '敬一個禮，登上火箭。'), fx: { dream: 12 }, r: t('The hatch closes. The engines start to roar.', '艙門關上，引擎開始咆哮。') }
+          ] },
+        { type: 'travel', from: 'ny', place: 'spaceport', to: 'moon', via: 'moon', label: t('Launch!', '發射！'), launch: true }
+      ],
+      milestone: t('Leaving Earth with everyone you love watching.', '在所有愛你的人注視下，離開地球。') },
+
+    /* ---------------- Space ---------------- */
+    { world: 'moon', age: t('The Moon', '月球'), title: t('One small step', '一小步'),
+      intro: t('Grey dust, black sky, and the Earth hanging above you. Try jumping!', '灰色的塵土、黑色的天空，地球就掛在頭頂。試試跳起來！'),
+      steps: [
+        { type: 'outdoor', place: 'flag', label: t('Plant the flag at the glowing ring', '到發光的圓圈插旗'), cast: {}, me: [0.8, 0.6, Math.PI],
+          shots: [
+            { cam: 'wide', say: [N, t('You plant the flag of every dreamer.', '你插上了屬於所有追夢者的旗。')], fx: 'flag', pose: { me: 'salute' }, t: 3.4 },
+            { cam: 'me', say: [ME, t('"Mum, Dad… I made it."', '「爸、媽……我做到了。」')], pose: { me: 'lookup' }, t: 3 }
+          ], fx: { dream: 12 } },
+        { type: 'go', place: 'moonbase', room: 'moonbase', label: t('Go to the moon base', '去月球基地'),
+          cast: { crew: 'astro' },
+          shots: [
+            { cam: 'wide', say: [N, t('A video call to Earth.', '你和地球視像通話。')], pose: { me: 'phone' }, t: 2.6 },
+            { cam: 'me', say: [MUM, t('"Have you eaten?"', '「食咗飯未呀？」')], pose: { me: 'laugh' }, t: 2.8 },
+            { cam: 'crew', say: [t('Crew', '隊員'), t('"Next stop: Mars."', '「下一站：火星。」')], pose: { crew: 'point' }, t: 2.6 }
+          ], fx: { family: 8 } },
+        { type: 'travel', from: 'moon', place: 'lander', to: 'mars', via: 'mars', label: t('Back to the rocket: on to Mars', '回到火箭：出發去火星') }
+      ],
+      milestone: t('The Moon was the first drawing in your notebook. Now there\'s a footprint on it.', '月球是你筆記簿上第一幅畫。現在，上面有了你的腳印。') },
+
+    { world: 'mars', age: t('Mars', '火星'), title: t('City of dreams', '夢想之城'),
+      intro: t('Red sky, red sand. Somewhere here, a city is waiting to be built.', '紅色的天空，紅色的沙。這裏有一座城市等着被建造。'),
+      steps: [
+        { type: 'go', place: 'marshab', room: 'marshab', label: t('Go into the Mars habitat', '走進火星基地'),
+          cast: { crew: 'astro', kid: 'kid' },
+          shots: [
+            { cam: 'wide', say: [N, t('The first greenhouse on Mars. The first leaves.', '火星上第一個溫室，第一片葉。')], t: 2.8 },
+            { cam: 'kid', say: [t('Kid', '孩子'), t('"When I grow up, I want to build a city too!"', '「我大個都要建一座城市！」')], pose: { kid: 'cheer' }, t: 3 },
+            { cam: 'me', say: [ME, t('"Then let\'s build it together."', '「咁我哋一齊建。」')], pose: { me: 'talk' }, t: 2.6 }
+          ], fx: { impact: 10 } },
+        { type: 'outdoor', place: 'city', label: t('Go to the city site', '去城市預定地'), cast: { crew: ['astro', [1.6, 1.2], Math.PI], kid: ['kid', [-1.4, 1.4], Math.PI] }, me: [0, 1.6, Math.PI],
+          shots: [
+            { cam: 'wide', say: [N, t('"I don\'t just want to build a city. I want to build a future."', '「我不只想建造一座城市，我想建造一個未來。」')], fx: 'city', pose: { me: 'cheer', kid: 'cheer', crew: 'clap' }, t: 4.4 },
+            { cam: 'me', say: [N, t('From a small flat in Hong Kong, to a city on Mars.', '由香港一個小小的家，到火星上的一座城市。')], pose: { me: 'lookup' }, t: 3.4 }
+          ], fx: { dream: 15, impact: 10 } }
+      ],
+      milestone: t('The kid who was laughed at built a city, and opened its doors to everyone.', '那個被笑的孩子，建了一座城市，然後把門打開給每一個人。') }
   ];
 
   var ENDINGS = {
-    dream: { title: t('The Dream Architect', '夢想建築師'), text: t('You never stopped drawing rockets. Now other people get to live in your drawings.', '你從來沒有停止畫火箭。現在，別人可以住進你的畫裏。') },
+    dream: { title: t('The Dream Architect', '夢想建築師'), text: t('You never stopped drawing rockets. Now other people live in your drawings.', '你從來沒有停止畫火箭。現在，別人住進了你的畫裏。') },
     impact: { title: t('The Changemaker', '改變世界的人'), text: t('Every fall became something you could hand to someone else.', '每一次跌倒，都變成了你可以送給別人的東西。') },
     family: { title: t('The Founder with a Home', '有家可歸的創業家'), text: t('Whatever you built, the best thing was always the light on at home.', '無論建了甚麼，最好的始終是家裏那盞為你留着的燈。') },
     money: { title: t('The Builder', '實幹的建造者'), text: t('You paid back every debt and turned it into foundations.', '你還清了每一筆債，再把它們變成地基。') }
   };
 
-  var UI = {
-    title: t('Dreamer\'s Road', '夢想家之路'),
-    sub: t('A life-sim inspired by a true story', '根據真實經歷改編的人生模擬遊戲'),
-    start: t('Start', '開始'),
-    resume: t('Continue', '繼續上次'),
-    restart: t('Start over', '重新開始'),
-    chapter: t('Chapter', '第'), chapterSuffix: t('', '章'),
-    actionsLeft: t('actions left in this chapter', '個行動'), actionsLeftPre: t('', '這一章還有 '),
-    next: t('Continue', '繼續'),
-    expand: t('Grow the city', '擴展城市'),
-    place: t('Tap a glowing plot to build', '點地圖上發光的空地來建造'),
-    auto: t('Pick for me', '幫我選'),
-    cancel: t('Cancel', '取消'),
-    tired: t('Too tired. Rest first.', '太累了，先休息吧。'),
-    milestone: t('Milestone', '里程碑'),
-    yourPath: t('Your path', '你的人生'),
-    built: t('buildings built', '座建築'),
-    endNote: t('This game is based on my real life, with some scenes dramatised. I was bullied, I fell into debt, I was laughed at and looked down on. Each time, I chose to get back up. What will your road look like?',
-               '這個遊戲根據我的真實經歷改編，部分情節經戲劇化處理。我被欺負過、欠過債、被人笑過、被人看不起過。每一次，我都選擇再站起來。你的路，會是怎樣的？'),
-    playAgain: t('Play again', '再玩一次'),
-    meet: t('The real story', '認識真實的我'),
-    contact: t('Say hello', '聯絡我'),
-    share: t('Share', '分享'),
-    copied: t('Link copied', '已複製連結'),
-    tapHint: t('Tap a building to see its true story', '點一下建築，看看背後的真實故事'),
-    pick: t('Choose your character', '選擇你的角色'),
-    pickNote: t('Walk around, meet people, and build your life one plot at a time.', '在小島上走動、遇見不同的人，一塊地一塊地建立你的人生。'),
-    buildHere: t('Build here', '在這裏建造'),
-    walkTo: t('Walk to a glowing plot, or tap one', '走到發光的空地，或直接點一下'),
-    keys: t('Move: WASD / arrow keys, or tap the ground', '移動：WASD／方向鍵，或點擊地面'),
-    joy: t('Move: joystick, or tap the ground', '移動：搖桿，或點擊地面'),
-    view: t('Map view', '全景'),
-    follow: t('Follow', '跟隨'),
-    freePlay: t('Keep living (free play)', '繼續人生（自由模式）'),
-    year: t('Year', '第'), yearSuffix: t('', '年'),
-    freeTitle: t('Free play', '自由人生'),
-    future: t('The story continues in fiction from here.', '以下是虛構的未來篇。'),
-    note: t('About 10 minutes · names are fictional · some scenes are dramatised', '約 10 分鐘 · 名稱均為虛構 · 部分情節經戲劇化處理'),
-    shareText: t('I just played the life-sim Dreamer\'s Road.', '我剛玩了人生模擬遊戲《夢想家之路》。')
-  };
-
-  // characters to pick from (original designs)
   var LOOKS = [
-    { id: 'suit', name: t('The founder', '創業家'), skin: '#f1c7a0', hair: '#1d1a19', top: '#1f3557', bottom: '#2a2d36', shoes: '#1b1b1b', shirt: '#ffffff', glasses: true },
+    { id: 'suit', name: t('The founder', '創業家'), skin: '#f1c7a0', hair: '#1d1a19', top: '#1f3557', bottom: '#23262e', shoes: '#141414', shirt: '#ffffff', tie: '#1f3d63', jacket: true, glasses: true, side: true },
     { id: 'lab', name: t('The scientist', '科研人'), skin: '#f3cdaa', hair: '#2b211c', top: '#f5f6f8', bottom: '#3d5a80', shoes: '#4a4a4a', coat: true, glasses: true },
-    { id: 'hoodie', name: t('The dreamer', '追夢少年'), skin: '#e9b98f', hair: '#3a2a20', top: '#d6453d', bottom: '#33507a', shoes: '#f2f2f2', hood: true },
-    { id: 'blazer', name: t('The leader', '領袖'), skin: '#f4d0b0', hair: '#2a1b14', top: '#7a2e3b', bottom: '#2a2a33', shoes: '#2a1a1a', longHair: true, skirt: true },
-    { id: 'sport', name: t('The runner', '永不放棄'), skin: '#d9a47c', hair: '#151515', top: '#2f9e6a', bottom: '#1f2a24', shoes: '#ffffff', cap: '#c9a35b' },
+    { id: 'hoodie', name: t('The dreamer', '追夢少年'), skin: '#e9b98f', hair: '#3a2a20', top: '#d6453d', bottom: '#33507a', shoes: '#f2f2f2', hood: true, side: true },
+    { id: 'blazer', name: t('The leader', '領袖'), skin: '#f4d0b0', hair: '#2a1b14', top: '#7a2e3b', bottom: '#2a2a33', shoes: '#2a1a1a', longHair: true, skirt: true, jacket: true, shirt: '#ffffff', tie: '#7a2e3b' },
+    { id: 'sport', name: t('The runner', '永不放棄'), skin: '#d9a47c', hair: '#151515', top: '#2f9e6a', bottom: '#1f2a24', shoes: '#ffffff', cap: '#c9a35b', short: true },
     { id: 'astro', name: t('The astronaut', '太空人'), skin: '#f1c7a0', hair: '#1d1a19', top: '#eef1f5', bottom: '#eef1f5', shoes: '#9aa3ad', helmet: true }
   ];
 
-  return { FREE: FREE, TALKERS: TALKERS, LOOKS: LOOKS, STATS: STATS, BUILD: BUILD, ACT: ACT, CHAPTERS: CHAPTERS, ENDINGS: ENDINGS, UI: UI };
+  var UI = {
+    title: t('Crossroads', '交叉點'),
+    sub: t('A 3D life adventure from Hong Kong to Mars', '由香港到火星的 3D 人生冒險'),
+    note: t('About 15 minutes · names are fictional', '約 15 分鐘 · 名稱均為虛構'),
+    start: t('Start', '開始'), resume: t('Continue', '繼續上次'), restart: t('Start over', '重新開始'),
+    chapter: t('Chapter', '第'), chapterSuffix: t('', '章'),
+    next: t('Continue', '繼續'), skip: t('Skip', '跳過'),
+    goal: t('Goal', '目標'), enter: t('Enter', '進入'), leave: t('Leave', '離開'),
+    buildHere: t('Build here', '在這裏建造'), auto: t('Pick for me', '幫我選'),
+    walkTo: t('Walk to a glowing plot, or tap one', '走到發光的空地，或直接點一下'),
+    milestone: t('Milestone', '里程碑'),
+    nextChapter: t('Next chapter', '下一章'),
+    yourPath: t('Your path', '你的人生'),
+    endNote: t('This game is based on my life. I was bullied, I fell into debt, I was laughed at and looked down on. Each time, I chose to get back up. What will your road look like?',
+               '這個遊戲根據我的人生改編。我被欺負過、欠過債、被人笑過、被人看不起過。每一次，我都選擇再站起來。你的路，會是怎樣的？'),
+    playAgain: t('Play again', '再玩一次'), meet: t('The real story', '認識真實的我'), contact: t('Say hello', '聯絡我'),
+    share: t('Share', '分享'), copied: t('Link copied', '已複製連結'),
+    freeRoam: t('Free roam: visit any world', '自由探索：隨意前往各地'),
+    worlds: { hk: t('Hong Kong', '香港'), ny: t('New York', '紐約'), moon: t('Moon', '月球'), mars: t('Mars', '火星') },
+    pick: t('Choose your character', '選擇你的角色'),
+    pickNote: t('Walk the streets, step inside, meet people, and fly all the way to Mars.', '走在街上、走進建築、遇見不同的人，一直飛到火星。'),
+    keys: t('Move: WASD / arrows · Jump: Space · Look: drag', '移動：WASD／方向鍵 · 跳：空白鍵 · 轉鏡頭：拖動'),
+    joy: t('Move: joystick · Look: drag', '移動：搖桿 · 轉鏡頭：拖動畫面'),
+    jump: t('Jump', '跳'),
+    view: t('Map view', '全景'), follow: t('Follow', '跟隨'),
+    travelling: t('Travelling…', '旅程中……'),
+    shareText: t('I just played Crossroads, a life adventure from Hong Kong to Mars.', '我剛玩了《交叉點》，一場由香港到火星的人生冒險。')
+  };
+
+  return { STATS: STATS, PLACES: PLACES, NOTES: NOTES, CHAPTERS: CHAPTERS, ENDINGS: ENDINGS, LOOKS: LOOKS, UI: UI };
 })();

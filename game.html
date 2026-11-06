@@ -4,8 +4,8 @@
   <!-- Basics -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dreamer&#x27;s Road · 夢想家之路 — a life-sim game | 鄭迪珉 Tyler Cheng</title>
-  <meta name="description" content="A short city-building life-sim based on Tyler Cheng&#x27;s real story: bullied at school, debt, being laughed at, and getting back up to build a city of dreams. Plays in the browser in about 5 minutes.">
+  <title>Crossroads · 交叉點 — a 3D life adventure | 鄭迪珉 Tyler Cheng</title>
+  <meta name="description" content="A 3D life adventure from Hong Kong to New York, the Moon and Mars, based on Tyler Cheng&#x27;s story: bullied at school, debt, being laughed at, and getting back up. Plays in the browser.">
   <link rel="canonical" href="https://tylercheng00.github.io/game.html">
   <meta name="author" content="鄭迪珉 Tyler Tik Man Cheng">
   <meta name="theme-color" content="#0b1d33">
@@ -13,8 +13,8 @@
   <!-- Social preview (Open Graph; also used by X / Twitter) -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://tylercheng00.github.io/game.html">
-  <meta property="og:title" content="Dreamer&#x27;s Road · 夢想家之路 — a life-sim game | 鄭迪珉 Tyler Cheng">
-  <meta property="og:description" content="A short city-building life-sim based on Tyler Cheng&#x27;s real story: bullied at school, debt, being laughed at, and getting back up to build a city of dreams. Plays in the browser in about 5 minutes.">
+  <meta property="og:title" content="Crossroads · 交叉點 — a 3D life adventure | 鄭迪珉 Tyler Cheng">
+  <meta property="og:description" content="A 3D life adventure from Hong Kong to New York, the Moon and Mars, based on Tyler Cheng&#x27;s story: bullied at school, debt, being laughed at, and getting back up. Plays in the browser.">
   <meta property="og:image" content="https://tylercheng00.github.io/assets/og-image-2026.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="assets/fonts/fonts.css?v=1baa657b" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="assets/fonts/fonts.css?v=1baa657b"></noscript>
   <link rel="stylesheet" href="styles.css?v=eb05881d">
-  <link rel="stylesheet" href="game.css?v=e370e245">
+  <link rel="stylesheet" href="game.css?v=645417d4">
 
   <!-- Language (before first paint, to avoid a flash of the wrong language) -->
   <script>
@@ -113,17 +113,19 @@
   </header>
 
   <main id="main">
-    <section class="game" id="game" data-step="title" aria-label="Dreamer's Road · 夢想家之路">
+    <section class="game" id="game" data-step="title" aria-label="Crossroads · 交叉點">
       <div class="game-stage">
-        <canvas id="game-canvas" aria-label="City / 城市"></canvas>
+        <canvas id="game-canvas" aria-label="Game view / 遊戲畫面"></canvas>
         <div class="game-hud" id="game-hud"></div>
         <canvas class="game-mini" id="game-mini" width="220" height="220" aria-hidden="true"></canvas>
         <button type="button" class="game-view" id="game-view"></button>
+        <div class="game-goal" id="game-goal" hidden></div>
         <div class="game-fx" id="game-fx" aria-live="polite"></div>
         <div class="game-tip" id="game-tip" hidden></div>
-        <div class="game-tip game-talk" id="game-talk" hidden></div>
         <div class="game-joy" id="game-joy" aria-hidden="true"><i></i></div>
+        <button type="button" class="game-jump" id="game-jump" aria-label="Jump / 跳">⤒</button>
         <p class="game-help" id="game-help"></p>
+        <div class="game-fade" id="game-fade" aria-hidden="true"></div>
       </div>
       <div class="game-panel" id="game-panel" aria-live="polite"></div>
       <noscript><p class="game-noscript"><span lang="en">This game needs JavaScript.</span><span lang="zh-Hant">這個遊戲需要啟用 JavaScript。</span></p></noscript>
@@ -144,7 +146,7 @@
         <a href="insights/"><span lang="en">Insights</span><span lang="zh-Hant">觀點</span></a>
         <a href="news.html"><span lang="en">News</span><span lang="zh-Hant">新聞</span></a>
         <a href="markets.html"><span lang="en">Markets</span><span lang="zh-Hant">美股行情</span></a>
-        <a href="game.html"><span lang="en">Play: Dreamer's Road</span><span lang="zh-Hant">遊戲：夢想家之路</span></a>
+        <a href="game.html"><span lang="en">Play: Crossroads</span><span lang="zh-Hant">遊戲：交叉點</span></a>
         <a href="contact.html"><span lang="en">Contact</span><span lang="zh-Hant">聯絡</span></a>
         <a href="privacy.html"><span lang="en">Privacy</span><span lang="zh-Hant">私隱政策</span></a>
       </nav>
@@ -158,7 +160,9 @@
 
   <script src="main.js?v=7b437852"></script>
   <script src="assets/vendor/three-r128.min.js"></script>
-  <script src="game-data.js?v=99b22a82"></script>
-  <script src="game.js?v=625d3544"></script>
+  <script src="game-data.js?v=caf04572"></script>
+  <script src="game-kit.js?v=1e79d5ed"></script>
+  <script src="game-worlds.js?v=3e104179"></script>
+  <script src="game.js?v=723e7085"></script>
 </body>
 </html>

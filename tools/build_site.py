@@ -124,7 +124,7 @@ NAV = [
     ("insights/", "Insights", "觀點", "insights"),
     ("news.html", "News", "新聞", "news"),
     ("markets.html", "Markets", "美股行情", "markets"),
-    ("game.html", "Play: Dreamer's Road", "遊戲：夢想家之路", "game"),
+    ("game.html", "Play: Crossroads", "遊戲：交叉點", "game"),
 ]
 
 # Header menu: a few categories, each opening a small list of pages/sections.
@@ -515,9 +515,9 @@ def main():
                    '\n  <link rel="dns-prefetch" href="https://www.tradingview.com">'), encoding="utf-8")
     (ROOT / "game.html").write_text(fragment_page(
         "game",
-        title="Dreamer's Road · 夢想家之路 — a life-sim game | 鄭迪珉 Tyler Cheng",
-        description="A short city-building life-sim based on Tyler Cheng's real story: bullied at school, debt, being laughed at, and getting back up to build a city of dreams. Plays in the browser in about 5 minutes.",
-        og_type="website", body_class="page-game", scripts=("assets/vendor/three-r128.min.js", "game-data.js", "game.js"),
+        title="Crossroads · 交叉點 — a 3D life adventure | 鄭迪珉 Tyler Cheng",
+        description="A 3D life adventure from Hong Kong to New York, the Moon and Mars, based on Tyler Cheng's story: bullied at school, debt, being laughed at, and getting back up. Plays in the browser.",
+        og_type="website", body_class="page-game", scripts=("assets/vendor/three-r128.min.js", "game-data.js", "game-kit.js", "game-worlds.js", "game.js"),
         head_extra='\n  <link rel="stylesheet" href="game.css">'), encoding="utf-8")
     (ROOT / "privacy.html").write_text(fragment_page(
         "privacy",
@@ -584,7 +584,7 @@ def apply_hero_photos():
         f.write_text(s, encoding="utf-8")
 
 
-ASSETS = ("styles.css", "main.js", "game.css", "game.js", "game-data.js", "news.js", "markets.js", "us-equities.js", "contact.js", "clock.js", "assets/fonts/fonts.css")
+ASSETS = ("styles.css", "main.js", "game.css", "game.js", "game-data.js", "game-kit.js", "game-worlds.js", "news.js", "markets.js", "us-equities.js", "contact.js", "clock.js", "assets/fonts/fonts.css")
 
 
 def stamp_assets():

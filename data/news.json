@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-05T16:26:55Z",
+ "updated": "2026-11-06T00:57:10Z",
  "sources": [
   "BBC News",
   "BioPharma Dive",
@@ -17,6 +17,16 @@
  ],
  "items": [
   {
+   "title": "Two ‘forever chemicals’ associated with higher risk of aggressive breast cancer in NIH analysis",
+   "summary": "Evidence continues to grow on how environmental factors affect women’s health.&nbsp;",
+   "link": "https://www.nih.gov/news-events/news-releases/two-forever-chemicals-associated-higher-risk-aggressive-breast-cancer-nih-analysis",
+   "source": "NIH",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-06T00:57:10Z"
+  },
+  {
    "title": "Integrated health service delivery through medical mobile units helped to reduce deaths among individuals at risk for HIV who also inject drugs",
    "summary": "NIH-funded clinical trial shows mobile units may help overcome significant barriers to accessing HIV and addiction treatment, but replication is needed.",
    "link": "https://www.nih.gov/news-events/news-releases/integrated-health-service-delivery-through-medical-mobile-units-helped-reduce-deaths-among-individuals-risk-hiv-who-also-inject-drugs",
@@ -24,7 +34,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-05T16:26:55Z"
+   "date": "2026-11-06T00:57:10Z"
   },
   {
    "title": "An extra year of secondary school lowered dementia diagnoses later in life",
@@ -34,7 +44,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-05T16:26:55Z"
+   "date": "2026-11-06T00:57:10Z"
   },
   {
    "title": "A precision T-cell therapy stalls treatment-resistant cancers in clinical trial",
@@ -44,7 +54,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-05T16:26:55Z"
+   "date": "2026-11-06T00:57:10Z"
   },
   {
    "title": "A blood-pressure drug may activate health-promoting brown fat",
@@ -54,27 +64,428 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-05T16:26:55Z"
+   "date": "2026-11-06T00:57:10Z"
   },
   {
-   "title": "Patients engage with epilepsy monitor in real time, improving seizure detection",
-   "summary": "NIH-funded clinical study shows that conversational SI can facilitate two-way communication.",
-   "link": "https://www.nih.gov/news-events/news-releases/patients-engage-epilepsy-monitor-real-time-improving-seizure-detection",
-   "source": "NIH",
+   "title": "Tempted by snacks before bed? Here's why - and what you can do about it",
+   "summary": "There are biological reasons why you may reach for sweet treats before bed, but you can change the habit.",
+   "link": "https://www.bbc.co.uk/news/articles/cq2e9v3030gyo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-05T16:26:55Z"
+   "date": "2026-11-06T00:42:05Z"
   },
   {
-   "title": "STAT+: A possible comeback for a failed sickle cell gene therapy",
-   "summary": "Three years ago, a trial for a sickle cell gene-editing therapy a decade in the making ended abruptly after the first patient suffered a serious adverse event. Now, the therapy…",
-   "link": "https://www.statnews.com/2026/11/05/biotech-news-a-possible-comeback-for-failed-sickle-cell-gene-therapy/?utm_campaign=rss",
+   "title": "Major tech stocks plunge as US midterms add to fears of AI slowdown",
+   "summary": "Markets have been reacting to possible tougher scrutiny of data centre construction and the AI industry following the US midterms.",
+   "link": "https://www.bbc.co.uk/news/articles/cmn04705rd8jo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-06T00:41:15Z"
+  },
+  {
+   "title": "The engine parts that 'fight the laws of the universe'",
+   "summary": "Investment has surged into the making of jet turbine blades - an extremely difficult component to make.",
+   "link": "https://www.bbc.co.uk/news/articles/cwe9lmp1pyyxo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-06T00:06:06Z"
+  },
+  {
+   "title": "These are the races in the House and Senate that haven't been called yet",
+   "summary": "Democrats are poised to have a strong majority in the upcoming Congress. The final numbers are still being determined. Here's where things stand in the races that are waiting to be called by the AP.",
+   "link": "https://www.npr.org/2026/11/05/g-s1-152127/house-senate-uncalled-races",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-06T00:03:45Z"
+  },
+  {
+   "title": "'I was asked if I was a crier': Your worst job interviews revealed",
+   "summary": "Bad job interviews can be horrible to experience in the moment, but there is a lot they can teach us about the world of work",
+   "link": "https://www.bbc.co.uk/news/articles/c3j4751pqnj8o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-06T00:02:52Z"
+  },
+  {
+   "title": "Melania Trump touts rare agreement she brokered between Russia and Ukraine",
+   "summary": "The six-day pause from the Russian-occupied city of Oleshky comes as the administration ramps up efforts to secure an agreement to end the war in Ukraine.",
+   "link": "https://www.npr.org/2026/11/05/nx-s1-6030662/melania-trump-touts-rare-agreement-she-brokered-between-russia-and-ukraine",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-05T23:52:48Z"
+  },
+  {
+   "title": "Mississippi Senate election: Democrat Scott Colom narrowly leads Republican Cindy Hyde-Smith",
+   "summary": "The Mississippi Senate election could be determined by the mail-in ballots received after Election Day, whose legality was upheld by the Supreme Court.",
+   "link": "https://www.cnbc.com/2026/11/05/mississippi-senate-election-scott-colom-hyde-smith.html",
+   "source": "CNBC",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-05T23:40:00Z"
+  },
+  {
+   "title": "How North Carolina Democrats flipped several House seats in historically GOP districts",
+   "summary": "All of these seats were in districts redrawn in 2023 to favor Republican candidates.",
+   "link": "https://www.npr.org/2026/11/05/nx-s1-6031719/north-carolina-democrats-flip-house-seats-republican-districts",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-05T23:34:36Z"
+  },
+  {
+   "title": "What the blue wave looked like in North Carolina",
+   "summary": "Democrats have flipped five Republican-held congressional seats in North Carolina. The surprising results were just one part of the blue wave in a swing state that President Trump won three times.",
+   "link": "https://www.npr.org/2026/11/05/nx-s1-6030848/what-the-blue-wave-looked-like-in-north-carolina",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-05T23:17:52Z"
+  },
+  {
+   "title": "Newsom announces he will commute sentences of inmates on California's death row",
+   "summary": "California Gov. Gavin Newsom announced that he's commuting the sentences of all inmates on the state's Death Row. The governor says at 548 people, it's the largest death row in the Western Hemisphere.",
+   "link": "https://www.npr.org/2026/11/05/nx-s1-6030961/newsom-announces-he-will-commute-sentences-of-inmates-on-californias-death-row",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-05T23:11:43Z"
+  },
+  {
+   "title": "California governor commutes sentences for state's 548 death row inmates",
+   "summary": "California has historically had the largest population of people on death row in the US.",
+   "link": "https://www.bbc.co.uk/news/articles/cqrkyyd2j8mvo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-05T23:09:33Z"
+  },
+  {
+   "title": "Canada's federal budget includes billions for sovereignty and tackling homelessness",
+   "summary": "Prime Minister Mark Carney plans to use an oil revenue windfall to bolster Canada's economic and cultural sovereignty and address cost of living concerns.",
+   "link": "https://www.bbc.co.uk/news/articles/cwdr87r8pjlvo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-05T22:40:33Z"
+  },
+  {
+   "title": "Firms told to publish salaries in job adverts ahead of new law",
+   "summary": "The goverment argues the change will help jobseekers and could help to prevent pay discrimination.",
+   "link": "https://www.bbc.co.uk/news/articles/cmd9343z3zw2o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-05T22:32:02Z"
+  },
+  {
+   "title": "Nasdaq drops into correction territory — here’s what typically happens next",
+   "summary": "Nasdaq’s slide into correction territory puts its history of recoveries in focus. Here's what history shows.",
+   "link": "https://www.cnbc.com/2026/11/05/nasdaq-drops-into-correction-territory-heres-what-typically-happens-next.html",
+   "source": "CNBC",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-05T22:31:24Z"
+  },
+  {
+   "title": "FDA Grants Accelerated Approval to a New Treatment for Head and Neck Squamous Cell Carcinoma",
+   "summary": "The U.S. Food and Drug Administration today granted accelerated approval to Rybrevant Faspro (amivantamab and hyaluronidase-lpuj) for the treatment of adults with recurrent or metastatic head and neck squamous cell…",
+   "link": "http://www.fda.gov/news-events/press-announcements/fda-grants-accelerated-approval-new-treatment-head-and-neck-squamous-cell-carcinoma",
+   "source": "US FDA",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-05T22:30:38Z"
+  },
+  {
+   "title": "How Democrats plan to investigate the Trump administration after their midterm wins",
+   "summary": "With their new majorities, Democrats will have at their disposal the full investigatory powers of the Congress, which include the ability to subpoena records and compel individuals to testify.",
+   "link": "https://www.npr.org/2026/11/05/nx-s1-6029639/how-democrats-plan-to-investigate-the-trump-administration-after-their-midterm-wins",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-05T22:28:50Z"
+  },
+  {
+   "title": "Nvidia's Huang is asked to brief Congress on reported Chinese spy relationship",
+   "summary": "President Donald Trump was briefed about a year ago about those intelligence findings, The New York Times reported.",
+   "link": "https://www.cnbc.com/2026/11/05/nvidia-jensen-huang-china-spy-congress.html",
+   "source": "CNBC",
+   "cats": [
+    "china",
+    "us"
+   ],
+   "date": "2026-11-05T22:21:29Z"
+  },
+  {
+   "title": "Is Lula’s upset win also a victory for Chinese firms in Brazil?",
+   "summary": "With domestic profits narrowing and production capacity expanding, China’s firms are continuing to widen their overseas footprints in search of new, more lucrative markets. In this series, we examine China Inc.’s next…",
+   "link": "https://www.scmp.com/economy/global-economy/article/3373387/lulas-upset-win-also-victory-chinese-firms-brazil",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-05T22:00:07Z"
+  },
+  {
+   "title": "STAT+: Pharma’s trade group spent heavily on search ads to sway public opinion",
+   "summary": "PhRMA spent an estimated $59 million on search advertising over a recent seven-year period to influence how Americans view prescription drug costs.",
+   "link": "https://www.statnews.com/pharmalot/2026/11/05/phrma-blamed-pbms-high-drug-prices-search-ads/?utm_campaign=rss",
    "source": "STAT News",
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-05T16:22:53Z"
+   "date": "2026-11-05T21:36:52Z"
+  },
+  {
+   "title": "The October jobs report is out Friday. Here's everything to expect",
+   "summary": "The Bureau of Labor Statistics releases the October nonfarm payrolls report Friday at 8:30 a.m. ET.",
+   "link": "https://www.cnbc.com/2026/11/05/october-jobs-report-preview.html",
+   "source": "CNBC",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-05T21:32:52Z"
+  },
+  {
+   "title": "Defiant Hegseth tells US Democrats their impeachment push ‘won’t work’",
+   "summary": "US Secretary of Defence Pete Hegseth said he will “not back down” against a “lame duck” US Congress, and that the calls for his impeachment will “not work” in his first reaction after the Democrats’ landslide victory in…",
+   "link": "https://www.scmp.com/news/us/us-elections/article/3373466/defiant-hegseth-tells-democrats-their-impeachment-push-wont-work",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-05T21:31:34Z"
+  },
+  {
+   "title": "UK doctor infected with Ebola being treated at London hospital",
+   "summary": "The doctor tested positive in DR Congo, where there is an outbreak. The government says the risk to the public remains low.",
+   "link": "https://www.bbc.co.uk/news/articles/cqj34d3l0zlmo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-05T21:26:09Z"
+  },
+  {
+   "title": "Boehringer Ingelheim Inks Up-to-$7.4B+ Cancer Drug Collaboration with Sino Biopharmaceutical",
+   "summary": "The latest collaboration will encompass six biologic preclinical programs. Five programs focus on treatments originating with a wholly owned SBP Group subsidiary, LaNova Medicines. The sixth comes from another SBP Group…",
+   "link": "https://www.genengnews.com/topics/bioprocessing/boehringer-ingelheim-inks-up-to-7-4b-cancer-drug-collaboration-with-sino-biopharmaceutical/",
+   "source": "GEN",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-05T21:20:38Z"
+  },
+  {
+   "title": "Medicare will cut billions from 340B, expand site-neutral payments in 2027",
+   "summary": "Regulators finalized a rule Wednesday that would slash payments for drugs in the controversial 340B program and equalize some payments between care sites. Hospitals railed against the rule.",
+   "link": "https://www.biopharmadive.com/news/medicare-will-cut-billions-from-340b-expand-site-neutral-payments-in-2027/873909/",
+   "source": "BioPharma Dive",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-05T21:06:00Z"
+  },
+  {
+   "title": "Ballot measures affirm divisions over abortion and transgender issues",
+   "summary": "Voters in 2026 midterm elections decided state health policy ballot measures on abortion rights, marijuana laws, science bonds, and transgender youth care.",
+   "link": "https://www.statnews.com/2026/11/05/state-health-ballot-measures-abortion-marijuana-transgender-issues/?utm_campaign=rss",
+   "source": "STAT News",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-05T20:49:33Z"
+  },
+  {
+   "title": "Inside Mississippi's ballot counting in tight Senate race",
+   "summary": "The BBC's Carl Nasman goes inside a county election commission building as votes are counted in the race between Democrat Scott Colom and Republican Cindy Hyde-Smith.",
+   "link": "https://www.bbc.co.uk/news/videos/cmj477d0dyxqo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-05T20:31:38Z"
+  },
+  {
+   "title": "Child dies of measles in Wisconsin’s first such death since 1990",
+   "summary": "An infant in southwestern Wisconsin has died after contracting measles, the state’s first death from the disease in 36 years.",
+   "link": "https://www.statnews.com/2026/11/05/child-dies-measles-wisconsin-first-death-since-1990/?utm_campaign=rss",
+   "source": "STAT News",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-05T20:31:24Z"
+  },
+  {
+   "title": "Top Democrats call to rein in AI buildout after midterms sweep: 'National data center moratorium now'",
+   "summary": "Democratic winners and progressive lawmakers are calling for tougher limits on AI and data centers after the 2026 midterm elections.",
+   "link": "https://www.cnbc.com/2026/11/05/democrats-data-center-restrictions-midterms.html",
+   "source": "CNBC",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-05T20:17:16Z"
+  },
+  {
+   "title": "US sanctions Chinese firms over alleged military supplies to Cuba",
+   "summary": "The United States has imposed sanctions on two Chinese companies it accuses of supplying equipment and components to Cuba’s military, as Washington intensifies pressure on Havana’s foreign suppliers and expands its…",
+   "link": "https://www.scmp.com/news/china/diplomacy/article/3373462/us-sanctions-chinese-firms-over-alleged-military-supplies-cuba",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-05T20:13:47Z"
+  },
+  {
+   "title": "Bird Flu Vaccine Developed Using AI Outperforms Current Stockpiled Vaccines in Preclinical Tests",
+   "summary": "Researchers used an AI-guided engineering approach to create a broadly protective bird flu vaccine that is designed to remain effective across a wide range of existing and future H5Nx variants. The post Bird Flu Vaccine…",
+   "link": "https://www.genengnews.com/topics/infectious-diseases/bird-flu-vaccine-developed-using-ai-outperforms-current-stockpiled-vaccines-in-preclinical-tests/",
+   "source": "GEN",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-05T19:57:23Z"
+  },
+  {
+   "title": "Melania Trump calls for lasting Ukraine truce as she hosts Russian and Ukrainian officials",
+   "summary": "The US first lady was credited by all for playing a key though unspecified role in the ceasefire.",
+   "link": "https://www.bbc.co.uk/news/articles/c9p8g085mz07o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-05T19:08:08Z"
+  },
+  {
+   "title": "Boebert, billionaires' tax and other midterms races still to watch",
+   "summary": "Democrats have taken control of the House and Senate, and are eyeing some more with several key races still too close to call.",
+   "link": "https://www.bbc.co.uk/news/articles/c6vg0y2nr445o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-05T19:02:17Z"
+  },
+  {
+   "title": "Chinese scientists chill atoms to record low on Tiangong space station",
+   "summary": "Chinese scientists have chilled atoms aboard the Tiangong space station to the lowest temperature ever measured, smashing US and German records and paving the way for ultra-precise space sensors that could find hidden…",
+   "link": "https://www.scmp.com/news/china/science/article/3373343/chinese-scientists-chill-atoms-record-low-tiangong-space-station",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-05T19:00:07Z"
+  },
+  {
+   "title": "STAT+: Novartis cites cases of previously unknown tumors possibly tied to its SMA gene therapy",
+   "summary": "Novartis has acknowledged seven previously unknown instances in which tumors were found in children who were treated with its spinal muscular atrophy therapy, Zolgensma.",
+   "link": "https://www.statnews.com/pharmalot/2026/11/05/novartis-sma-zolgensma-tumor-case-reports/?utm_campaign=rss",
+   "source": "STAT News",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-05T18:53:34Z"
+  },
+  {
+   "title": "Voters rejected AI data centers over resource concerns. Here's why measuring water usage is hard",
+   "summary": "AI data centers are facing national outcry for draining local water and power supply. The truth about how they use water to stay cool is far more complicated.",
+   "link": "https://www.cnbc.com/2026/11/05/meta-spacex-ai-data-centers-use-millions-of-gallons-of-water-a-day.html",
+   "source": "CNBC",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-05T18:52:21Z"
+  },
+  {
+   "title": "Orphan Therapeutics Accelerator In-Licenses Its First Gene Therapy, Eyes Pipeline Expansion",
+   "summary": "The nonprofit biotech evaluates potential therapies based on unmet medical need, clinical evidence of safety and efficacy, and the compatibility of institutional partners. Its funding model combines initial seed…",
+   "link": "https://www.genengnews.com/topics/translational-medicine/orphan-therapeutics-accelerator-in-licenses-its-first-gene-therapy-eyes-pipeline-expansion/",
+   "source": "GEN",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-05T18:29:40Z"
+  },
+  {
+   "title": "STAT+: Stunning $6M defamation verdict reverberates at MIT campus, global scientific community",
+   "summary": "The explosive court battle between a former star scientist at the Massachusetts Institute of Technology and a younger colleague continues to roil the campus community.",
+   "link": "https://www.statnews.com/2026/11/05/david-sabatini-defamation-verdict-reverberates-mit-scientific-community/?utm_campaign=rss",
+   "source": "STAT News",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-05T18:19:08Z"
+  },
+  {
+   "title": "Interest rates hiked to 4% in first increase in over three years",
+   "summary": "Most analysts expected the increase from 3.75% to 4%.",
+   "link": "https://www.bbc.co.uk/news/articles/ck5ynw45jrgqo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-05T17:09:55Z"
+  },
+  {
+   "title": "At ASH, drugmakers to showcase early data for three-pronged cancer therapies",
+   "summary": "J&J and AbbVie are among the companies advancing “trispecific” antibodies that could become another step forward in treatment for multiple myeloma.",
+   "link": "https://www.biopharmadive.com/news/ash-2026-trispecific-multiple-myeloma-johnson-johnson-abbvie/873852/",
+   "source": "BioPharma Dive",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-05T17:09:00Z"
+  },
+  {
+   "title": "Tissue Engineering Takes Shape",
+   "summary": "Personalized grafts, bioinks, and off-the-shelf tissues are advancing regenerative medicine toward broader clinical use. The post Tissue Engineering Takes Shape appeared first on GEN - Genetic Engineering and…",
+   "link": "https://www.genengnews.com/topics/translational-medicine/tissue-engineering-takes-shape/",
+   "source": "GEN",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-05T17:05:03Z"
+  },
+  {
+   "title": "Beyond Conventional CRISPR",
+   "summary": "Genome editing is not designed to replace neurons or retinal cells that have already been lost. In this article, experts from four companies—eGenesis, Epicrispr, KOMO Biosciences, and Sumitomo Pharma America—discuss how…",
+   "link": "https://www.genengnews.com/insights/beyond-conventional-crispr/",
+   "source": "GEN",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-05T17:04:30Z"
+  },
+  {
+   "title": "Barkin sees interest rate hikes ahead, but at a gradual pace",
+   "summary": "In a CNBC interview, the policymaker expressed concern over inflation and said monetary policy will need to adjust.",
+   "link": "https://www.cnbc.com/2026/11/05/barkin-sees-interest-rate-hikes-ahead-but-at-a-gradual-pace.html",
+   "source": "CNBC",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-05T16:34:33Z"
   },
   {
    "title": "Revolution’s Rasonque off to best cancer drug launch ‘in history’",
@@ -87,16 +498,6 @@
    "date": "2026-11-05T16:21:00Z"
   },
   {
-   "title": "Russell Brand is convicted of rape, and judge says he'll get a prison term",
-   "summary": "A prosecutor described Brand as a ruthless, calculating, manipulative \"sexual predator.\" Brand, 51, denied the charges, saying he had never forced anyone to do something against their will.",
-   "link": "https://www.npr.org/2026/11/05/nx-s1-6030720/russell-brand-rape-sexual-assault-prison",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-05T16:15:02Z"
-  },
-  {
    "title": "Brothers warned health trust days before man's death",
    "summary": "Barnaby Spicer died in December 2024, weeks after being discharged from a mental health hospital.",
    "link": "https://www.bbc.co.uk/news/videos/crvg9yg0k274o?at_medium=RSS&at_campaign=rss",
@@ -105,16 +506,6 @@
     "biotech"
    ],
    "date": "2026-11-05T16:10:10Z"
-  },
-  {
-   "title": "Interest rates hiked to 4% in first increase in over three years",
-   "summary": "Most analysts expected the increase from 3.75% to 4%.",
-   "link": "https://www.bbc.co.uk/news/articles/ck5ynw45jrgqo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-05T16:08:54Z"
   },
   {
    "title": "Voters say the economy drove them to the polls — and blame Trump for their troubles",
@@ -128,16 +519,6 @@
    "date": "2026-11-05T16:07:59Z"
   },
   {
-   "title": "What Biotech Licensing Really Buys",
-   "summary": "In this Point of View Sun Chau Siu, PhD, and Kaisong Zhou, PhD, give insights on the hidden challenges of transferring intellectual property. The post What Biotech Licensing Really Buys appeared first on GEN - Genetic…",
-   "link": "https://www.genengnews.com/insights/what-biotech-licensing-really-buys/",
-   "source": "GEN",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-05T16:04:03Z"
-  },
-  {
    "title": "Bank of England hikes interest rate for the first time since Iran war, warns inflation will near 5%",
    "summary": "One policymaker voted to raise the bank's key interest rate to 4.25%.",
    "link": "https://www.cnbc.com/2026/11/05/interest-rates-inflation-uk.html",
@@ -146,46 +527,6 @@
     "finance"
    ],
    "date": "2026-11-05T16:01:47Z"
-  },
-  {
-   "title": "How America voted in maps and charts",
-   "summary": "See the maps and charts that show how America voted in the US midterm elections.",
-   "link": "https://www.bbc.co.uk/news/articles/cm4g1j0n92qdo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-05T15:52:04Z"
-  },
-  {
-   "title": "STAT+: Winners, losers, and MAHA",
-   "summary": "Democratic doctors won big, MAHA faces an uncertain future, and what the election could mean for Medicare for All.",
-   "link": "https://www.statnews.com/2026/11/05/midterm-election-health-care-takeaways-maha-rfk-medicare-for-all/?utm_campaign=rss",
-   "source": "STAT News",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-05T15:41:24Z"
-  },
-  {
-   "title": "Modernizing the Western Blot for the 21st Century: More Than Just Automation",
-   "summary": "Traditional Western blotting can confirm whether a protein is present, but it is often treated as semi-quantitative. It can be difficult to determine how much protein is present, compare results across experiments, or…",
-   "link": "https://www.genengnews.com/sponsored/modernizing-the-western-blot-for-the-21st-century-more-than-just-automation/",
-   "source": "GEN",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-05T15:31:46Z"
-  },
-  {
-   "title": "Barkin sees interest rate hikes ahead, but at a gradual pace",
-   "summary": "In a CNBC interview, the policymaker expressed concern over inflation and said monetary policy will need to adjust.",
-   "link": "https://www.cnbc.com/2026/11/05/barkin-sees-interest-rate-hikes-ahead-but-at-a-gradual-pace.html",
-   "source": "CNBC",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-05T15:27:57Z"
   },
   {
    "title": "Drunk and dangerous e-bike riders face on-the-spot fines under crackdown",
@@ -198,16 +539,6 @@
    "date": "2026-11-05T15:27:09Z"
   },
   {
-   "title": "Bomb threats disrupt flights across Europe for the second time. Here’s what we know",
-   "summary": "Dozens of flights across Europe reported bomb threats on Thursday for the second time this week, disrupting air travel across London, Dublin, and Helsinki.",
-   "link": "https://www.cnbc.com/2026/11/05/bomb-threats-flights-europe.html",
-   "source": "CNBC",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-05T15:26:06Z"
-  },
-  {
    "title": "Why do veterinary fees and sausage rolls vary in price across London?",
    "summary": "Location is not just the only factor on why prices differ across London, as Anna O'Neill finds out.",
    "link": "https://www.bbc.co.uk/news/articles/cmgqw51gdnzyo?at_medium=RSS&at_campaign=rss",
@@ -216,47 +547,6 @@
     "finance"
    ],
    "date": "2026-11-05T15:19:36Z"
-  },
-  {
-   "title": "Six dead and others injured in fire at New York City building",
-   "summary": "The cause of the blaze is not yet clear, after 230 fire and emergency medical personnel went to the scene.",
-   "link": "https://www.bbc.co.uk/news/articles/c39wz44411w0o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-05T15:00:12Z"
-  },
-  {
-   "title": "Democrats to probe JPMorgan's relationship with Epstein when they take Senate control",
-   "summary": "Democrats are preparing to put a spotlight back on Epstein as part of sweeping investigations following their wipeout victories in Tuesday's midterm elections.",
-   "link": "https://www.cnbc.com/2026/11/05/jpmorgan-epstein-democrats-erdoes-midterm-election.html",
-   "source": "CNBC",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-05T14:58:26Z"
-  },
-  {
-   "title": "Nationwide strikes loom as French budget is unanimously rejected by lawmakers",
-   "summary": "The National Assembly unanimously voted against adopting the government's proposed 2027 budget.",
-   "link": "https://www.cnbc.com/2026/11/05/france-budget-debt-strikes.html",
-   "source": "CNBC",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-05T14:53:59Z"
-  },
-  {
-   "title": "STAT+: Pharmalittle: We’re reading about India’s new manufacturing rules, clinical trials in China, and more",
-   "summary": "India proposed rules requiring regulators to immediately suspend manufacturing licenses for drugs that fail quality standards in government testing",
-   "link": "https://www.statnews.com/pharmalot/2026/11/05/india-new-manufacturing-rules-china-clinical-trials/?utm_campaign=rss",
-   "source": "STAT News",
-   "cats": [
-    "biotech",
-    "china"
-   ],
-   "date": "2026-11-05T14:49:16Z"
   },
   {
    "title": "Here's what the Democratic election rout could mean for the U.S. economy",
@@ -289,16 +579,6 @@
    "date": "2026-11-05T14:30:00Z"
   },
   {
-   "title": "Democrat leads by just over 1,000 votes in surprisingly tight Mississippi Senate race",
-   "summary": "If Democrat Scott Colom wins the race, he could become the first black US senator elected in Mississippi since 1875.",
-   "link": "https://www.bbc.co.uk/news/articles/c6n9rwxlx992o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-05T14:08:50Z"
-  },
-  {
    "title": "What does the raise in interest rates mean?",
    "summary": "The BBC's cost of living correspondent Kevin Peachey explains what the change could mean for those saving for a holiday or to buying a house.",
    "link": "https://www.bbc.co.uk/news/videos/c9kgjvmn4vlno?at_medium=RSS&at_campaign=rss",
@@ -319,16 +599,6 @@
    "date": "2026-11-05T14:00:07Z"
   },
   {
-   "title": "STAT+: Beyond statins, one drug lowered heart attack risk by 20%",
-   "summary": "A new study could help doctors figure out what medicine to prescribe for cholesterol when statins don't cut it: It's “answering a really challenging clinical question.\"",
-   "link": "https://www.statnews.com/2026/11/05/repatha-vs-zetia-cholesterol-study-heart-attack-risk/?utm_campaign=rss",
-   "source": "STAT News",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-05T14:00:00Z"
-  },
-  {
    "title": "Joshua Wong, face of Hong Kong's pro-democracy protests, jailed for 10 years",
    "summary": "Wong, 30, is among hundreds of Hongkongers detained under the controversial national security law.",
    "link": "https://www.bbc.co.uk/news/articles/cwp9g3rlp8jlo?at_medium=RSS&at_campaign=rss",
@@ -339,46 +609,6 @@
    "date": "2026-11-05T13:51:03Z"
   },
   {
-   "title": "What Wall Street billionaires are saying about Democrats' midterm sweep",
-   "summary": "Billionaire political spending met criticism from ... billionaires in the wake of Tuesday's blue wave election.",
-   "link": "https://www.cnbc.com/2026/11/04/billionaires-musk-branson-democrats-midterms-ai-wall-street.html",
-   "source": "CNBC",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-05T13:44:27Z"
-  },
-  {
-   "title": "Faisal Islam: How high will interest rates go?",
-   "summary": "The BBC's economics editor views one more interest rate as likely, but thinks that will be all.",
-   "link": "https://www.bbc.co.uk/news/articles/ckr5y0y37gv3o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-05T13:17:10Z"
-  },
-  {
-   "title": "Three ways the interest rate rise could affect you",
-   "summary": "Job, loans and savings are all affected by the rise in interest rates announced by the Bank of England.",
-   "link": "https://www.bbc.co.uk/news/articles/cx4g1q3vlp62o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-05T13:08:30Z"
-  },
-  {
-   "title": "STAT+: Medicare delays controversial remote patient monitoring rule to 2029",
-   "summary": "Despite widespread opposition, Medicare will finalize a controversial proposal that will prevent providers, such as hospitals, from using third parties to deliver remote patient monitoring services.",
-   "link": "https://www.statnews.com/2026/11/05/health-tech-news-medicare-delays-controversial-rpm-rule-update/?utm_campaign=rss",
-   "source": "STAT News",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-05T13:04:15Z"
-  },
-  {
    "title": "Lithuania builds world’s biggest ultra-fast laser factory amid China tensions",
    "summary": "Amid tensions with China, a small European country is anchoring itself at the centre of the global semiconductor and artificial intelligence (AI) hardware supply chain as a laser powerhouse. The latest sign of…",
    "link": "https://www.scmp.com/news/china/science/article/3373418/lithuania-builds-worlds-biggest-ultra-fast-laser-factory-amid-china-tensions",
@@ -387,16 +617,6 @@
     "china"
    ],
    "date": "2026-11-05T13:00:10Z"
-  },
-  {
-   "title": "Voters rejected AI data centers over resource concerns. Here's why measuring water usage is hard",
-   "summary": "AI data centers are facing national outcry for draining local water and power supply. The truth about how they use water to stay cool is far more complicated.",
-   "link": "https://www.cnbc.com/2026/11/05/meta-spacex-ai-data-centers-use-millions-of-gallons-of-water-a-day.html",
-   "source": "CNBC",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-05T13:00:01Z"
   },
   {
    "title": "What the Democratic midterms sweep changes for U.S.-China relations",
@@ -441,16 +661,6 @@
    "date": "2026-11-05T12:30:07Z"
   },
   {
-   "title": "What's next for Democrats after the midterms. And, a look at the outstanding races",
-   "summary": "Democrats have regained control of Congress. They have a long list of investigations into Trump planned. And, not all races have been called. Here's a look at how they could affect the Dems' majority.",
-   "link": "https://www.npr.org/2026/11/05/g-s1-152046/up-first-newsletter-democrats-congress-control-house-senate-trump-reaction",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-05T12:02:24Z"
-  },
-  {
    "title": "China ready to expand US agricultural imports if Board of Trade tariff cuts take effect",
    "summary": "Beijing says it remains open to buying more agricultural products from the United States, but wants reciprocal tariff cuts covering US$30 billion worth of products on each side to be implemented first under the US-China…",
    "link": "https://www.scmp.com/economy/global-economy/article/3373412/china-ready-expand-us-agricultural-imports-if-board-trade-tariff-cuts-take-effect",
@@ -459,16 +669,6 @@
     "china"
    ],
    "date": "2026-11-05T12:00:21Z"
-  },
-  {
-   "title": "Sen. Gillibrand says Democrats must end Iran war, hold Trump accountable. But how?",
-   "summary": "Sen. Kirsten Gillibrand spoke with Morning Edition about Democrats' priorities, from lowering costs to ending the Iran war. But questions remain about how they'll deliver.",
-   "link": "https://www.npr.org/2026/11/05/nx-s1-6028837/kirsten-gillibrand-democrats-congress-priorities",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-05T11:45:30Z"
   },
   {
    "title": "Goodbye, cavities? Scientists create gel that could regrow tooth enamel",
@@ -481,16 +681,6 @@
    "date": "2026-11-05T11:37:26Z"
   },
   {
-   "title": "Midwives concerned over possible baby unit closures",
-   "summary": "The RCM union says possible closures in Norfolk would also affect patients in neighbouring counties.",
-   "link": "https://www.bbc.co.uk/news/articles/cqe9l7lv9j58o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-05T11:21:55Z"
-  },
-  {
    "title": "Facing 2 years as a lame duck, what can Trump do to stay in control?",
    "summary": "Following disastrous midterm elections that cost Republicans congressional control, US President Donald Trump could spend the rest of his term as a “lame duck” and battling constant resistance to his agenda. The loss is…",
    "link": "https://www.scmp.com/news/china/diplomacy/article/3373425/facing-two-years-lame-duck-what-can-trump-do-stay-control",
@@ -499,46 +689,6 @@
     "china"
    ],
    "date": "2026-11-05T11:18:26Z"
-  },
-  {
-   "title": "Scientists solve 30-year-old mystery and discover a hidden defense against inflammation",
-   "summary": "Scientists have solved a decades-old mystery and uncovered a hidden immune system defense that protects healthy cells from the very inflammation meant to fight infections. The surprising discovery could lead to new…",
-   "link": "https://www.sciencedaily.com/releases/2026/11/261101010554.htm",
-   "source": "ScienceDaily",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-05T11:05:46Z"
-  },
-  {
-   "title": "Welsh aviation firm AerFin bought in £475m deal",
-   "summary": "The company, which was majority owned by a private equity firm, said it was beginning a \"new chapter\".",
-   "link": "https://www.bbc.co.uk/news/articles/cq203vjxnln7o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-05T11:01:06Z"
-  },
-  {
-   "title": "Trump's arch is on the verge of federal approval. But a judge could block construction",
-   "summary": "A federal panel will meet to consider the arch for final approval on Thursday, and the government said it may begin construction later that same day. Critics hope a judge will intervene last-minute.",
-   "link": "https://www.npr.org/2026/11/05/nx-s1-6027301/trump-arch-federal-approval-judge-construction",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-05T10:02:00Z"
-  },
-  {
-   "title": "The South flexes political power in midterms, sets regional influence in 2028 election",
-   "summary": "Tuesday's dramatic midterm results have transformed the electoral map, ensuring the path to future power for Democrats and Republicans must run through the South and its diverse voting population.",
-   "link": "https://www.npr.org/2026/11/05/nx-s1-6029818/blue-wave-south-carolina-georgia-mississippi-texas",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-05T10:00:00Z"
   },
   {
    "title": "China proves a cut above with world-first precision laser experiment in space",
@@ -551,26 +701,6 @@
    "date": "2026-11-05T09:59:10Z"
   },
   {
-   "title": "Democrats will control Congress. Will it change Trump's approach to foreign policy?",
-   "summary": "NPR's Leila Fadel speaks with historian and journalist Anne Applebaum about how much a Democrat-led Congress can steer foreign policy.",
-   "link": "https://www.npr.org/2026/11/05/nx-s1-6028977/democrats-will-control-congress-will-it-change-trumps-approach-to-foreign-policy",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-05T09:50:34Z"
-  },
-  {
-   "title": "Second buyer makes rescue bid for Poundland as retailer faces collapse",
-   "summary": "A little-known investment group has made a bid to buy the business.",
-   "link": "https://www.bbc.co.uk/news/articles/c6lykq0kqwn7o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-05T09:46:32Z"
-  },
-  {
    "title": "Oil prices slump as Trump election rout eases Middle East conflict risks",
    "summary": "Oil is headed for its biggest weekly decline since the Covid-19 pandemic after a Democratic blue wave in US midterm elections eased concerns about President Donald Trump escalating conflict in the Middle East. The price…",
    "link": "https://www.scmp.com/plus/economy/china-economy/article/3373389/oil-prices-slump-trump-election-rout-eases-middle-east-conflict-risks",
@@ -581,16 +711,6 @@
    "date": "2026-11-05T09:12:27Z"
   },
   {
-   "title": "Chinese and North Korean officials step up diplomatic drive in wake of Kim Jong-un visit",
-   "summary": "Senior Chinese and North Korean officials met on Thursday in the wake of Kim Jong-un’s recent cross-border visit and a renewed drive by the two sides to deepen their relationship. China’s top diplomat Wang Yi struck an…",
-   "link": "https://www.scmp.com/news/china/diplomacy/article/3373385/chinese-and-north-korean-officials-step-diplomatic-drive-wake-kim-jong-un-visit",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-05T09:01:01Z"
-  },
-  {
    "title": "China sees nearly 10% decline in marriages in 2026 so far, foreshadowing lower birth rate",
    "summary": "China has witnessed a nearly 10 per cent drop in the number of marriages in the first three quarters of the year, signalling a possible full-year fall in 2026 after a rebound in 2025. The country recorded 4.648 million…",
    "link": "https://www.scmp.com/economy/economic-indicators/article/3373383/china-sees-nearly-10-decline-marriages-2026-so-far-foreshadowing-lower-birth-rate",
@@ -599,76 +719,6 @@
     "china"
    ],
    "date": "2026-11-05T09:00:24Z"
-  },
-  {
-   "title": "Alethio raises $90M to target rare blood cancers",
-   "summary": "The startup is working on a medicine one of its investors claimed could have a broader reach than other approved drugs for a group of conditions known as myeloproliferative neoplasms.",
-   "link": "https://www.biopharmadive.com/news/alethio-therapeutics-myeloproliferative-neoplasms-series-a/873775/",
-   "source": "BioPharma Dive",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-05T08:00:00Z"
-  },
-  {
-   "title": "China’s fifth plenum resolution",
-   "summary": "This article contains excerpts from the official English translation of the original Chinese document released by Xinhua.",
-   "link": "https://www.scmp.com/plus/news/china/politics/article/3373366/chinas-fifth-plenum-resolution",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-05T07:29:33Z"
-  },
-  {
-   "title": "China’s appliance queen on her firm’s quest for greener cooling, and going global",
-   "summary": "Dong Mingzhu chairs Gree Electric Appliances, a home-appliance giant based in southern China’s Guangdong province. Having worked her way up from a frontline sales job, she is one of China’s best-known figures in…",
-   "link": "https://www.scmp.com/plus/tech/big-tech/article/3373365/chinas-appliance-queen-her-firms-quest-greener-cooling-and-going-global",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-05T07:23:30Z"
-  },
-  {
-   "title": "Ex-Politburo member Ma Xingrui’s corruption charges extend to end of last century",
-   "summary": "Former Politburo member and Xinjiang Communist Party chief Ma Xingrui has been indicted on bribery charges dating back to the late 1990s, Chinese state media reported on Thursday. As one of the 24 members of one of the…",
-   "link": "https://www.scmp.com/news/china/politics/article/3373345/ex-politburo-member-ma-xingruis-corruption-charges-extend-end-last-century",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-05T06:50:02Z"
-  },
-  {
-   "title": "Scientists turn viruses into weapons against deadly superbugs",
-   "summary": "Scientists are advancing a promising new way to fight antibiotic-resistant infections by using viruses that specifically target and kill harmful bacteria. An international team has released the first coordinated…",
-   "link": "https://www.sciencedaily.com/releases/2026/11/261102202828.htm",
-   "source": "ScienceDaily",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-05T02:40:33Z"
-  },
-  {
-   "title": "Why a US-funded vaccine trial on babies was cancelled in Guinea-Bissau",
-   "summary": "The trial was condemned as \"unethical\" and \"neocolonial\" because half of the babies would not be given the vaccine.",
-   "link": "https://www.bbc.co.uk/news/articles/cm0rlxq08ejko?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-05T00:30:37Z"
-  },
-  {
-   "title": "The NHS is relying more on charities - and that might be creating problems for patients",
-   "summary": "Is it symptom a health service at breaking point - or a positive way of involving the public?",
-   "link": "https://www.bbc.co.uk/news/articles/c65yn75g9d18o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-05T00:12:30Z"
   },
   {
    "title": "Analysis: The Democrats have one chance to extract concessions from Trump. Markets will hate it",
@@ -682,26 +732,6 @@
    "date": "2026-11-04T22:46:43Z"
   },
   {
-   "title": "Beyond Outsourcing: Building Better CDMO Partnerships",
-   "summary": "Rose BioSolutions CEO David Enloe argues that advanced therapies demand deeper scientific collaboration, earlier problem-solving, and shared accountability The post Beyond Outsourcing: Building Better CDMO Partnerships…",
-   "link": "https://www.genengnews.com/sponsored/beyond-outsourcing-building-better-cdmo-partnerships/",
-   "source": "GEN",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-04T21:43:03Z"
-  },
-  {
-   "title": "Lonza Expanding U.S. CDMO Footprint with Purchase of Five Merck KGaA Sites",
-   "summary": "The deal would expand Lonza’s U.S. CDMO network from four to nine sites and grow the company’s U.S. workforce nearly 25% by adding approximately 1,100 employees, resulting in a combined headcount of more than 6,000…",
-   "link": "https://www.genengnews.com/topics/bioprocessing/lonza-expanding-u-s-cdmo-footprint-with-purchase-of-five-merck-kgaa-sites/",
-   "source": "GEN",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-04T21:34:47Z"
-  },
-  {
    "title": "10-year Treasury yield slides as traders mull over Democrats' midterm victories, oil prices drop",
    "summary": "Treasury yields were last little changed Wednesday as investors weighed big wins from Democrats in the U.S. midterm elections.",
    "link": "https://www.cnbc.com/2026/11/03/treasury-yields-fall-as-democrats-win-big-in-us-midterm-elections.html",
@@ -711,36 +741,6 @@
     "us"
    ],
    "date": "2026-11-04T21:18:44Z"
-  },
-  {
-   "title": "Private companies added 86,000 jobs in October, slightly higher than expected, ADP says",
-   "summary": "Private-sector job growth held steady in October, with gains spread across sectors",
-   "link": "https://www.cnbc.com/2026/11/04/private-companies-added-86000-jobs-in-october-slightly-higher-than-expected-adp-says.html",
-   "source": "CNBC",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-04T13:49:48Z"
-  },
-  {
-   "title": "Euro zone inflation hits 4% for first time in three years as interest rate hike looms",
-   "summary": "It was driven by energy inflation, which surged above 20% in October.",
-   "link": "https://www.cnbc.com/2026/11/04/euro-zone-cpi-inflation-october-ecb-rate-hike.html",
-   "source": "CNBC",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-04T10:47:30Z"
-  },
-  {
-   "title": "Job openings posted big September gain in positive sign for labor market ahead of payrolls report",
-   "summary": "The BLS reported job openings at 7.52 million, up 333,000 from August and well above the Dow Jones consensus outlook for 7.15 million",
-   "link": "https://www.cnbc.com/2026/11/03/job-openings-posted-big-september-gain-in-positive-sign-for-labor-market-ahead-of-payrolls-report.html",
-   "source": "CNBC",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-03T19:15:21Z"
   }
  ]
 }

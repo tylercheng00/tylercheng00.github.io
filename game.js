@@ -28,7 +28,7 @@
   var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, powerPreference: 'high-performance' });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, TOUCH ? 1.5 : 1.75));
   renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-  renderer.outputEncoding = THREE.sRGBEncoding; renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
+  renderer.outputEncoding = THREE.sRGBEncoding; renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 0.92;
   var scene = new THREE.Scene(); scene.background = new THREE.Color('#9fd0ee'); scene.fog = new THREE.Fog('#9fd0ee', 70, 240);
   var camera = new THREE.PerspectiveCamera(55, 1, 0.05, 1500);
   var hemi = new THREE.HemisphereLight(0xcfe8ff, 0x5d7a4a, 0.75); scene.add(hemi);
@@ -45,9 +45,41 @@
   var starPos = []; for (var s0 = 0; s0 < 1500; s0++) { var th = Math.random() * Math.PI * 2, ph = Math.acos(Math.random() * 1.6 - 0.6), r0 = 700; starPos.push(Math.sin(ph) * Math.cos(th) * r0, Math.cos(ph) * r0, Math.sin(ph) * Math.sin(th) * r0); }
   var starGeo = new THREE.BufferGeometry(); starGeo.setAttribute('position', new THREE.Float32BufferAttribute(starPos, 3));
   var starMat = new THREE.PointsMaterial({ color: '#ffffff', size: 1.6, sizeAttenuation: false, fog: false, transparent: true, opacity: 0 }); scene.add(new THREE.Points(starGeo, starMat));
-  var sea = K.mesh(new THREE.PlaneGeometry(1200, 1200, 70, 70), new THREE.MeshStandardMaterial({ color: '#2b7aa6', roughness: 0.18, metalness: 0.25 }), 0, -0.9, 0, scene, true);
-  sea.rotation.x = -Math.PI / 2; sea.receiveShadow = true; var seaPos = sea.geometry.attributes.position;
+  // the sea: a flat plane with moving ripples (normal map) that reflects the sky
+  var seaNormal = (function () {
+    var N = 256, c = document.createElement('canvas'); c.width = c.height = N; var g = c.getContext('2d'), img = g.createImageData(N, N), hgt = new Float32Array(N * N);
+    var waves = []; for (var w0 = 0; w0 < 14; w0++) waves.push([1 + Math.floor(Math.random() * 9), Math.floor(Math.random() * 9) - 4, Math.random() * 6, 0.6 / (1 + w0 * 0.35)]);
+    for (var y = 0; y < N; y++) for (var x = 0; x < N; x++) { var u = x / N * Math.PI * 2, v = y / N * Math.PI * 2, hv = 0; for (var q = 0; q < waves.length; q++) { var wv = waves[q]; hv += Math.sin(u * wv[0] + v * wv[1] + wv[2] + Math.sin(v * 2 + q) * 0.6) * wv[3]; } hgt[y * N + x] = hv; }
+    for (var y2 = 0; y2 < N; y2++) for (var x2 = 0; x2 < N; x2++) {
+      var dx = hgt[y2 * N + (x2 + 1) % N] - hgt[y2 * N + (x2 + N - 1) % N], dy = hgt[((y2 + 1) % N) * N + x2] - hgt[((y2 + N - 1) % N) * N + x2], l = Math.hypot(dx, dy, 0.25), i = (y2 * N + x2) * 4;
+      img.data[i] = (-dx / l * 0.5 + 0.5) * 255; img.data[i + 1] = (-dy / l * 0.5 + 0.5) * 255; img.data[i + 2] = (0.25 / l * 0.5 + 0.5) * 255; img.data[i + 3] = 255;
+    }
+    g.putImageData(img, 0, 0); var t = new THREE.CanvasTexture(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(36, 36); return t;
+  })();
+  var seaMat = new THREE.MeshStandardMaterial({ color: '#1b5679', roughness: 0.2, metalness: 0.1, normalMap: seaNormal, normalScale: new THREE.Vector2(0.22, 0.22) });
+  var sea = K.mesh(new THREE.PlaneGeometry(1600, 1600), seaMat, 0, -0.9, 0, scene, true);
+  sea.rotation.x = -Math.PI / 2; sea.receiveShadow = true;
   var dustP = null;
+
+  // reflections: an environment map rendered from a simple sky (with a bright sun), refreshed as the light changes
+  var pmrem = new THREE.PMREMGenerator(renderer), envRT = null, envKey = '';
+  var envScene = new THREE.Scene(), envGeo = new THREE.SphereGeometry(100, 24, 12), envCol = new Float32Array(envGeo.attributes.position.count * 3);
+  envGeo.setAttribute('color', new THREE.BufferAttribute(envCol, 3));
+  envScene.add(new THREE.Mesh(envGeo, new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.BackSide })));
+  var envSun = new THREE.Mesh(new THREE.SphereGeometry(9, 12, 8), new THREE.MeshBasicMaterial({ color: '#ffffff' })); envSun.position.set(53, 79, 32); envScene.add(envSun);
+  var envGround = new THREE.Mesh(new THREE.PlaneGeometry(400, 400), new THREE.MeshBasicMaterial({ color: '#4a4f57', side: THREE.DoubleSide })); envGround.rotation.x = -Math.PI / 2; envGround.position.y = -8; envScene.add(envGround);
+  function setEnv(topC, horC, groundC, sunC) {
+    var key = topC + horC + groundC + sunC; if (key === envKey) return; envKey = key;
+    var a = new THREE.Color(topC), b = new THREE.Color(horC), c = new THREE.Color();
+    for (var v = 0; v < envGeo.attributes.position.count; v++) { var y = envGeo.attributes.position.getY(v) / 100; c.copy(b).lerp(a, Math.max(0, Math.min(1, y * 1.6))); envCol[v * 3] = c.r; envCol[v * 3 + 1] = c.g; envCol[v * 3 + 2] = c.b; }
+    envGeo.attributes.color.needsUpdate = true; envGround.material.color.set(groundC); envSun.material.color.set(sunC); envSun.visible = sunC !== '#000000';
+    var rt = pmrem.fromScene(envScene, 0.04); if (envRT) envRT.dispose(); envRT = rt; scene.environment = rt.texture;
+  }
+  // sun disc and drifting clouds
+  function glowTex(inner, outer) { return K.canvasTex(128, 128, function (g) { var r = g.createRadialGradient(64, 64, 4, 64, 64, 63); r.addColorStop(0, inner); r.addColorStop(0.18, inner); r.addColorStop(1, outer); g.fillStyle = r; g.fillRect(0, 0, 128, 128); }); }
+  var sunSprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex('rgba(255,250,230,1)', 'rgba(255,220,150,0)'), fog: false, depthWrite: false, transparent: true })); sunSprite.scale.set(160, 160, 1); scene.add(sunSprite);
+  var cloudTex = K.canvasTex(256, 128, function (g) { for (var k = 0; k < 22; k++) { var x = 40 + Math.random() * 176, y = 50 + Math.random() * 40, r = 18 + Math.random() * 30, gr = g.createRadialGradient(x, y, 2, x, y, r); gr.addColorStop(0, 'rgba(255,255,255,.75)'); gr.addColorStop(1, 'rgba(255,255,255,0)'); g.fillStyle = gr; g.beginPath(); g.arc(x, y, r, 0, Math.PI * 2); g.fill(); } });
+  var clouds = []; for (var cl = 0; cl < 16; cl++) { var sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: cloudTex, fog: false, depthWrite: false, transparent: true, opacity: 0.85 })); var ca = cl / 16 * Math.PI * 2 + Math.random(); sp.position.set(Math.cos(ca) * (250 + Math.random() * 200), 110 + Math.random() * 60, Math.sin(ca) * (250 + Math.random() * 200)); sp.scale.set(170 + Math.random() * 120, 70 + Math.random() * 30, 1); scene.add(sp); clouds.push(sp); }
 
   /* ---------- worlds ---------- */
   var HK_FIXED = { home: [0, 0], school: [-1, 1], library: [1, -1], rooftop: [1, 1], restaurant: [-2, 0], tv: [-3, -1], university: [3, 1], airport: [0, 3] };
@@ -69,8 +101,13 @@
     var e = w.env, night = e.night || phase === 'title' || phase === 'end' && !w.interior;
     setSky(e.sky[0], e.sky[1]);
     scene.background.set(e.sky[1]); scene.fog.color.set(e.sky[1]); scene.fog.near = e.fog[0]; scene.fog.far = e.fog[1];
-    hemi.intensity = e.hemi; sun.intensity = e.sun; sun.visible = e.sun > 0;
+    hemi.intensity = e.hemi * 0.4; sun.intensity = e.sun; sun.visible = e.sun > 0;
     sea.visible = !!w.sea;
+    var outdoorSky = !w.interior && !e.space;
+    clouds.forEach(function (c) { c.visible = outdoorSky && !e.dust; });
+    sunSprite.visible = !w.interior && !e.night;
+    if (w.interior) setEnv('#e8e4dc', '#b9b0a2', '#6e655a', '#000000');
+    else setEnv(e.sky[0], e.sky[1], e.space ? '#777777' : e.dust ? '#9a5a3a' : '#4a4f57', e.night ? '#000000' : '#fff6e0');
     starMat.opacity = e.stars ? 1 : 0;
     wrap.classList.toggle('in-space', !!e.space);
     if (dustP) { scene.remove(dustP); dustP = null; }
@@ -538,13 +575,24 @@
       renderer.render(scene, camera); requestAnimationFrame(frame); return;
     }
     if (W.update) W.update(t, dt, player);
-    if (sea.visible) { for (var k = 0; k < seaPos.count; k++) { var x = seaPos.getX(k), y = seaPos.getY(k); seaPos.setZ(k, Math.sin(x * 0.15 + t * 1.1) * 0.12 + Math.cos(y * 0.18 + t * 0.9) * 0.12); } seaPos.needsUpdate = true; if (frameNo % 4 === 0) sea.geometry.computeVertexNormals(); }
+    if (sea.visible) { seaNormal.offset.set(t * 0.004, t * 0.0065); }
+    clouds.forEach(function (c, i) { c.position.x += dt * (1.5 + i % 3); if (c.position.x > 480) c.position.x = -480; });
     // day and night in the cities
     var n = 0;
     if (!W.interior && !W.env.space && !W.env.dust) n = phase === 'title' || phase === 'pick' || phase === 'end' ? 0.9 : Math.max(0, Math.min(1, Math.sin(t / 55) * 1.4 - 0.5));
     if (W.env.night) n = 1;
-    if (!W.interior && !W.env.space && !W.env.dust) { var e = W.env; var c1 = new THREE.Color(e.sky[1]).lerp(new THREE.Color('#0d1a33'), n); scene.background.copy(c1); scene.fog.color.copy(c1); skyMat.color.setScalar(1 - n * 0.85); sun.intensity = e.sun * (1 - n * 0.75); hemi.intensity = e.hemi - n * 0.4; starMat.opacity = n > 0.5 ? (n - 0.5) * 2 : 0; }
+    if (!W.interior && !W.env.space && !W.env.dust) {
+      // day → golden hour → night: warm the horizon and the sun on the way down
+      var e = W.env, dusk = n > 0.02 && n < 0.75 ? Math.sin(n / 0.75 * Math.PI) : 0;
+      var hor = new THREE.Color(e.sky[1]).lerp(new THREE.Color('#f2a66e'), dusk * 0.65).lerp(new THREE.Color('#0d1a33'), n);
+      scene.background.copy(hor); scene.fog.color.copy(hor); skyMat.color.setScalar(1 - n * 0.85);
+      sun.intensity = e.sun * (1 - n * 0.8); sun.color.setRGB(1, 0.94 - dusk * 0.2, 0.85 - dusk * 0.35); hemi.intensity = Math.max(0.05, (e.hemi - n * 0.4) * 0.4);
+      starMat.opacity = n > 0.5 ? (n - 0.5) * 2 : 0;
+      sunSprite.material.opacity = 1 - n; clouds.forEach(function (c) { c.material.opacity = 0.85 - n * 0.6; c.material.color.setRGB(1, 1 - dusk * 0.2, 1 - dusk * 0.35); });
+      if (frameNo % 30 === 0) { var q = Math.round(n * 6) / 6, top = new THREE.Color(e.sky[0]).lerp(new THREE.Color('#0d1a33'), q); setEnv('#' + top.getHexString(), '#' + new THREE.Color(e.sky[1]).lerp(new THREE.Color('#f2a66e'), (q > 0.02 && q < 0.75 ? Math.sin(q / 0.75 * Math.PI) : 0) * 0.65).lerp(new THREE.Color('#0d1a33'), q).getHexString(), '#4a4f57', q > 0.7 ? '#000000' : '#fff6e0'); }
+    }
     else skyMat.color.setScalar(1);
+    sunSprite.position.copy(camera.position).addScaledVector(sun.position.clone().sub(sun.target.position).normalize(), 700);
     K.nightMats.forEach(function (m) { m.emissiveIntensity = 0.12 + (W.interior ? 0.3 : n * 1.3); });
     plotMat.opacity = 0.3 + Math.sin(t * 4) * 0.18; beamMat.opacity = 0.25 + Math.sin(t * 4) * 0.1;
     if (phase !== 'title' && phase !== 'pick') movePlayer(dt);

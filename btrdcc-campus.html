@@ -723,13 +723,32 @@
   renderer.toneMappingExposure = 1.05;
 
   const scene = new THREE.Scene();
-  const DAY_BG = new THREE.Color(0xF4EFE4), NIGHT_BG = new THREE.Color(0x0a1719);
-  scene.background = DAY_BG.clone();
+  // sky: a vertical gradient (pale sky to warm horizon by day, deep blue with stars at night)
+  const SKY = { dayTop: new THREE.Color(0xcfe0e8), dayBottom: new THREE.Color(0xF4EFE4), nightTop: new THREE.Color(0x040b14), nightBottom: new THREE.Color(0x10252a) };
+  const skyCanvas = document.createElement('canvas'); skyCanvas.width = 512; skyCanvas.height = 256;
+  const skyCtx = skyCanvas.getContext('2d');
+  const skyTex = new THREE.CanvasTexture(skyCanvas); skyTex.encoding = THREE.sRGBEncoding;
+  const STARS = []; { let k = 3; const r = () => (k = (k * 16807) % 2147483647) / 2147483647; for (let i = 0; i < 140; i++) STARS.push([r() * 512, r() * 170, r() * 1.1 + 0.3, r()]); }
+  const tmpC1 = new THREE.Color(), tmpC2 = new THREE.Color();
+  function drawSky(t) {
+    tmpC1.copy(SKY.dayTop).lerp(SKY.nightTop, t); tmpC2.copy(SKY.dayBottom).lerp(SKY.nightBottom, t);
+    const g = skyCtx.createLinearGradient(0, 0, 0, 256);
+    g.addColorStop(0, '#' + tmpC1.getHexString()); g.addColorStop(0.75, '#' + tmpC2.getHexString()); g.addColorStop(1, '#' + tmpC2.getHexString());
+    skyCtx.fillStyle = g; skyCtx.fillRect(0, 0, 512, 256);
+    if (t > 0.05) STARS.forEach(st => { skyCtx.globalAlpha = t * (0.35 + st[3] * 0.65) * (1 - st[1] / 220); skyCtx.fillStyle = '#ffffff'; skyCtx.fillRect(st[0], st[1], st[2], st[2]); });
+    skyCtx.globalAlpha = 1;
+    skyTex.needsUpdate = true;
+  }
+  drawSky(0);
+  scene.background = skyTex;
+  // light haze on the far side of the campus (atmospheric depth)
+  const FOG_DAY = new THREE.Color(0xEFEBE2).convertSRGBToLinear(), FOG_NIGHT = new THREE.Color(0x0d1f23).convertSRGBToLinear();
+  scene.fog = new THREE.Fog(FOG_DAY.clone(), 340, 640);
 
   const VIEW = 118;
   const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 1, 2000);
 
-  const hemi = new THREE.HemisphereLight(0xfffaf0, 0xcfc4ad, 0.72);
+  const hemi = new THREE.HemisphereLight(0xfffaf0, 0xcfc4ad, 0.55);
   scene.add(hemi);
   const sun = new THREE.DirectionalLight(0xfff1dc, 1.6);
   sun.position.set(-70, 120, 55);
@@ -744,6 +763,34 @@
   const fill = new THREE.DirectionalLight(0xdfeeff, 0.32);
   fill.position.set(80, 60, -60);
   scene.add(fill);
+
+  // image-based lighting: a soft sky dome (with a sun hotspot) prefiltered for reflections,
+  // so glass, metal and water pick up the sky instead of looking flat
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  function skyEnv(top, horizon, ground, sunRGB) {
+    const es = new THREE.Scene();
+    const geo = new THREE.SphereGeometry(10, 32, 16);
+    const cTop = new THREE.Color(top).convertSRGBToLinear(), cHor = new THREE.Color(horizon).convertSRGBToLinear(), cGnd = new THREE.Color(ground).convertSRGBToLinear();
+    const pos = geo.attributes.position, cols = [];
+    const c = new THREE.Color();
+    for (let i = 0; i < pos.count; i++) {
+      const y = pos.getY(i) / 10;
+      if (y >= 0) c.copy(cHor).lerp(cTop, Math.pow(y, 0.6)); else c.copy(cHor).lerp(cGnd, Math.min(1, -y * 3));
+      cols.push(c.r, c.g, c.b);
+    }
+    geo.setAttribute('color', new THREE.Float32BufferAttribute(cols, 3));
+    es.add(new THREE.Mesh(geo, new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.BackSide })));
+    const sunM = new THREE.Mesh(new THREE.SphereGeometry(0.9, 12, 8), new THREE.MeshBasicMaterial());
+    sunM.material.color.setRGB(sunRGB[0], sunRGB[1], sunRGB[2]);
+    sunM.position.copy(sun.position).normalize().multiplyScalar(8.5);
+    es.add(sunM);
+    const rt = pmrem.fromScene(es, 0.03);
+    geo.dispose();
+    return rt.texture;
+  }
+  const ENV_DAY = skyEnv(0x8fb6cf, 0xf1ece2, 0xb9ae95, [9, 8.4, 7.4]);
+  const ENV_NIGHT = skyEnv(0x0a1522, 0x1b3036, 0x0a1214, [0.6, 0.7, 0.9]);
+  scene.environment = ENV_DAY;
 
   // ===========================================================================
   // Materials & helpers
@@ -779,6 +826,12 @@
 
   const EDGE = new THREE.LineBasicMaterial({ color: C.teal, transparent: true, opacity: 0.32 });
   dayNightColor.push({ mat: EDGE, day: new THREE.Color(C.teal), night: new THREE.Color(0x8a7a55) });
+
+  // things that move (only while 動態 Motion is on)
+  const anim = { emitters: [], jets: [], spinners: [], swayers: [], walkers: [], flags: [] };
+  M.palmTrunk = mat(0x8d7556);
+  M.palmLeaf = [mat(0x24804f), mat(0x35965b), mat(0x2b7a49)];
+  M.coconut = mat(0x6b5233);
 
   let seed = 11;
   function rnd() { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
@@ -962,6 +1015,44 @@
     g.add(crown);
     g.position.set(x, 0, z);
     (parent || scene).add(g);
+    anim.swayers.push({ o: crown, ph: rnd() * 6.28, amp: 0.03, base: crown.rotation.z });
+    return g;
+  }
+  // tropical palm: a gently curved, segmented trunk and drooping fronds
+  function palm(x, z, s, parent) {
+    s = s || (0.9 + rnd() * 0.35);
+    const g = new THREE.Group();
+    const lean = (0.15 + rnd() * 0.35) * s, dir = rnd() * Math.PI * 2, segs = 6, segH = 1.0 * s;
+    let y = 0;
+    for (let i = 0; i < segs; i++) {
+      const t = (i + 0.5) / segs, off = lean * t * t * 2.2, r0 = (0.2 - i * 0.014) * s;
+      const seg = new THREE.Mesh(new THREE.CylinderGeometry(r0 * 0.88, r0, segH * 1.02, 6), M.palmTrunk);
+      seg.position.set(Math.cos(dir) * off, y + segH / 2, Math.sin(dir) * off);
+      seg.castShadow = true; seg.userData.noEdge = true; g.add(seg);
+      y += segH;
+    }
+    const crown = new THREE.Group();
+    crown.position.set(Math.cos(dir) * lean * 2.2, y, Math.sin(dir) * lean * 2.2);
+    g.add(crown);
+    const inner = new THREE.BoxGeometry(0.62 * s, 0.05, 1.5 * s); inner.translate(0, 0, 0.75 * s);
+    const outer = new THREE.BoxGeometry(0.42 * s, 0.04, 1.4 * s); outer.translate(0, 0, 0.7 * s);
+    const n = 9;
+    for (let k = 0; k < n; k++) {
+      const yaw = new THREE.Group(); yaw.rotation.y = (k / n) * Math.PI * 2 + rnd() * 0.3; crown.add(yaw);
+      const leafM = M.palmLeaf[k % 3];
+      const a = new THREE.Mesh(inner, leafM); a.rotation.x = -0.25 + rnd() * 0.25; yaw.add(a);
+      const b = new THREE.Mesh(outer, leafM);
+      b.position.set(0, -Math.sin(a.rotation.x) * 1.5 * s, Math.cos(a.rotation.x) * 1.5 * s);
+      b.rotation.x = a.rotation.x + 0.55 + rnd() * 0.25; yaw.add(b);
+      [a, b].forEach(m => { m.castShadow = true; m.userData.noEdge = true; });
+    }
+    for (let k = 0; k < 3; k++) {
+      const c = new THREE.Mesh(new THREE.SphereGeometry(0.13 * s, 6, 4), M.coconut);
+      c.position.set(Math.cos(k * 2.1) * 0.22 * s, -0.18 * s, Math.sin(k * 2.1) * 0.22 * s); c.userData.noEdge = true; crown.add(c);
+    }
+    g.position.set(x, 0, z);
+    (parent || scene).add(g);
+    anim.swayers.push({ o: crown, ph: rnd() * 6.28, amp: 0.06, base: 0 });
     return g;
   }
   function shrub(x, z, parent) {
@@ -992,6 +1083,11 @@
     g.position.set(x, 0, z); g.rotation.y = rotY || 0;
     g.traverse(o => o.userData.noEdge = true);
     (parent || scene).add(g);
+  }
+  function fanBlades(g, x, y, z, r, sp) {
+    const b = new THREE.Group(); b.position.set(x, y, z);
+    [0, Math.PI / 2].forEach(a => { const m = new THREE.Mesh(new THREE.BoxGeometry(r * 2, 0.06, 0.22), M.steel); m.rotation.y = a; m.userData.noEdge = true; b.add(m); });
+    g.add(b); anim.spinners.push({ o: b, sp });
   }
   function lamp(x, z) {
     const g = new THREE.Group();
@@ -1223,6 +1319,7 @@
     [[2.2, -2.2], [2.2, 0], [2.2, 2.2]].forEach(p => {
       cyl(0.28, 0.32, 5, 8, M.steel, p[0], H + 0.6, p[1], g);
       cyl(0.36, 0.36, 0.3, 8, M.gold, p[0], H + 5.3, p[1], g);
+      anim.emitters.push({ x: 26 + p[0], y: H + 5.6, z: z + p[1], s: 0.4, sp: 0.22, faint: true });
     });
     // letter sign
     const s = signPlane(idx === 0 ? 'LAB A' : 'LAB B', 4, 0.9, { fg: '#17775A', size: 0.7, spacing: '14px', glow: 0.6 });
@@ -1271,10 +1368,11 @@
       const h = 7 + (i % 2) * 3;
       cyl(0.65, 0.75, h, 10, M.steel, p[0], H, p[1], g);
       cyl(0.8, 0.8, 0.5, 10, M.gold, p[0], H + h - 0.6, p[1], g);
+      anim.emitters.push({ x: -34 + p[0], y: H + h, z: -20 + p[1], s: 1.0, sp: 0.16 + (i % 3) * 0.03 });
       cyl(1.1, 1.1, 0.12, 10, M.darkSteel, p[0], H + h * 0.55, p[1], g);
     });
     // roof fans
-    [[-7, 2], [0, 4], [6, -2]].forEach(p => cyl(0.9, 0.9, 0.5, 10, M.darkSteel, p[0], H + 1.6, p[1], g));
+    [[-7, 2], [0, 4], [6, -2]].forEach((p, i) => { cyl(0.9, 0.9, 0.5, 10, M.darkSteel, p[0], H + 1.6, p[1], g); fanBlades(g, p[0], H + 2.12, p[1], 0.8, 2.2 + i * 0.4); });
     // loading docks + trucks (west)
     for (let i = 0; i < 4; i++) {
       box(0.4, 4, 3.2, M.gold, -W / 2 - 0.2, 0, -7 + i * 4.6, g);
@@ -1305,6 +1403,8 @@
     [10, 13].forEach(x => {
       box(2.6, 3.2, 2.6, M.louvre, x, 0, -D / 2 - 3.5, g);
       cyl(1, 1, 0.5, 12, M.darkSteel, x, 3.2, -D / 2 - 3.5, g);
+      fanBlades(g, x, 3.72, -D / 2 - 3.5, 0.9, 3.2);
+      anim.emitters.push({ x: -34 + x, y: 3.8, z: -20 - D / 2 - 3.5, s: 0.75, sp: 0.12 });
     });
     box(24, 0.35, 0.5, M.gold, 1, 5, -D / 2 - 1.1, g);
     box(24, 0.25, 0.4, M.green, 1, 4.4, -D / 2 - 1.1, g);
@@ -1501,7 +1601,9 @@
     // flagpoles
     [-12.5, -14, -15.5].forEach((fx, i) => {
       cyl(0.06, 0.08, 9, 6, M.steel, fx, 0, -1, g).userData.noEdge = true;
-      box(0.04, 1.1, 1.7, [M.green, M.gold, M.teal][i], fx, 7.6, -1 - 0.9, g).userData.noEdge = true;
+      const pv = new THREE.Group(); pv.position.set(fx, 7.6, -1); g.add(pv);
+      box(0.04, 1.1, 1.7, [M.green, M.gold, M.teal][i], 0, 0, -0.9, pv).userData.noEdge = true;
+      anim.flags.push({ o: pv, ph: i * 1.3 });
     });
     // planters flanking the gate
     [-1, 1].forEach(s => { box(3, 0.7, 1.4, M.concrete, s * 11.5, 0, -2.5, g); shrub(s * 11, -2.5, g).position.y = 0.9; shrub(s * 12.2, -2.5, g).position.y = 0.9; });
@@ -1571,10 +1673,11 @@
   for (let x = -70; x <= 62; x += 5) {
     [-0.6 - 1, 10.2, -45, -34.8].forEach(z => { const xx = x + (rnd() - 0.5) * 0.8; if (!avoid(xx, z) && z < 66) tree(xx, z + (rnd() - 0.5) * 0.6); });
   }
-  for (let z = 13; z <= 52; z += 5) [-7.2, 7.2].forEach(x => { if (!avoid(x, z)) tree(x, z, 1.0); else if (x > 0 && z < 23) tree(x, z, 1.0); });
+  for (let z = 13; z <= 52; z += 5) [-7.2, 7.2].forEach(x => { if (!avoid(x, z) || (x > 0 && z < 23)) palm(x, z, 1.05); });
+  [[26.5, 19.5], [48, 10], [48.6, 20.5], [27.5, 9.5]].forEach(p => palm(p[0], p[1], 1.1));
   for (let i = 0; i < 110; i++) {
     const x = -72 + rnd() * 134, z = -46 + rnd() * 116;
-    if (!avoid(x, z) && Math.abs(x + 4) < 69 && z > -53 && z < 67) { if (rnd() < 0.75) tree(x, z); else shrub(x, z); }
+    if (!avoid(x, z) && Math.abs(x + 4) < 69 && z > -53 && z < 67) { const r = rnd(); if (r < 0.22) palm(x, z); else if (r < 0.75) tree(x, z); else shrub(x, z); }
   }
   // hedge along the plant fence and north road
   for (let x = -68; x <= 60; x += 2.2) if (!avoid(x, -36)) shrub(x, -36);
@@ -1583,8 +1686,8 @@
   for (let x = -66; x <= 60; x += 11) if (Math.abs(x) > 7) lamp(x, 9.2);
   for (let x = -60; x <= 60; x += 15) lamp(x, -36.4);
   // pedestrians along the avenue sidewalks
-  for (let i = 0; i < 12; i++) person((rnd() < 0.5 ? -1 : 1) * 4.6, 12 + rnd() * 42);
-  for (let i = 0; i < 5; i++) person(-60 + rnd() * 110, 8.3);
+  for (let i = 0; i < 12; i++) anim.walkers.push({ o: person((rnd() < 0.5 ? -1 : 1) * 4.6, 12 + rnd() * 42), axis: 'z', min: 11, max: 57, v: (0.7 + rnd() * 0.6) * (rnd() < 0.5 ? -1 : 1), ph: rnd() * 6 });
+  for (let i = 0; i < 6; i++) anim.walkers.push({ o: person(-60 + rnd() * 110, 8.3), axis: 'x', min: -68, max: 60, v: (0.7 + rnd() * 0.6) * (rnd() < 0.5 ? -1 : 1), ph: rnd() * 6 });
 
   // ===========================================================================
   // Moving cars
@@ -1641,6 +1744,69 @@
 
   buildOutlines();
 
+  // ---------------------------------------------------------------------------
+  // living details: steam plumes, fountain jets, soft contact shadows
+  // ---------------------------------------------------------------------------
+  const puffTex = (function () {
+    const c = document.createElement('canvas'); c.width = c.height = 64;
+    const x = c.getContext('2d'), g = x.createRadialGradient(32, 32, 2, 32, 32, 31);
+    g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(0.45, 'rgba(255,255,255,0.55)'); g.addColorStop(1, 'rgba(255,255,255,0)');
+    x.fillStyle = g; x.fillRect(0, 0, 64, 64);
+    return new THREE.CanvasTexture(c);
+  })();
+  const PUFFS = 7;
+  anim.emitters.forEach(e => {
+    e.sprites = [];
+    for (let k = 0; k < PUFFS; k++) {
+      const m = new THREE.SpriteMaterial({ map: puffTex, color: 0xc9cfcf, transparent: true, depthWrite: false, opacity: 0 });
+      const sp = new THREE.Sprite(m); sp.renderOrder = 3; scene.add(sp); e.sprites.push(sp);
+    }
+  });
+  const JETS = 30, jetMat = new THREE.SpriteMaterial({ map: puffTex, color: 0x8fd0ea, transparent: true, depthWrite: false, opacity: 0.85 });
+  for (let k = 0; k < JETS; k++) { const sp = new THREE.Sprite(jetMat); sp.scale.setScalar(0.6); sp.renderOrder = 3; scene.add(sp); anim.jets.push({ o: sp, a: (k / JETS) * Math.PI * 2, ph: (k * 0.37) % 1 }); }
+
+  // soft dark halo under each building, like ambient occlusion where walls meet the ground
+  const aoTex = (function () {
+    const c = document.createElement('canvas'); c.width = c.height = 128;
+    const x = c.getContext('2d');
+    x.shadowColor = 'rgba(15,42,46,0.75)'; x.shadowBlur = 16; x.shadowOffsetX = 400;
+    x.fillStyle = '#000'; x.fillRect(24 - 400, 24, 80, 80);
+    return new THREE.CanvasTexture(c);
+  })();
+  const aoMat = new THREE.MeshBasicMaterial({ map: aoTex, transparent: true, depthWrite: false, opacity: 0.5 });
+  [[0, -20, 24, 16], [26, -27.5, 12, 10], [26, -12.5, 12, 10], [-34, -20, 30, 22], [44, 36, 13, 13], [-60, 16, 5, 14], [11.5, 64, 3.4, 3.4]].forEach(f => {
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(f[2] / 0.625, f[3] / 0.625), aoMat);
+    m.rotation.x = -Math.PI / 2; m.position.set(f[0], 0.13, f[1]); m.renderOrder = 1; m.raycast = () => {};
+    scene.add(m);
+  });
+
+  const WIND = new THREE.Vector3(1, 0, 0.35).normalize();
+  function updateAnim(time, dt) {
+    const nightDim = 1 - 0.55 * tNight;
+    anim.emitters.forEach(e => {
+      e.sprites.forEach((sp, k) => {
+        const a = (time * e.sp + k / PUFFS) % 1;
+        sp.position.set(e.x + WIND.x * a * 7 * e.s, e.y + a * 8 * e.s, e.z + WIND.z * a * 7 * e.s);
+        sp.scale.setScalar((1.2 + a * 4.2) * e.s * 1.7);
+        sp.material.opacity = (e.faint ? 0.4 : 0.72) * Math.pow(1 - a, 1.3) * Math.min(1, a * 5) * nightDim;
+      });
+    });
+    anim.jets.forEach(j => {
+      const a = (time * 0.55 + j.ph) % 1, r = 0.3 + a * 2.4;
+      j.o.position.set(Math.cos(j.a) * r, 2.0 + a * 3.2 - a * a * 4.6, -6 + Math.sin(j.a) * r);
+    });
+    jetMat.opacity = 0.75 * nightDim + 0.15;
+    anim.spinners.forEach(f => { f.o.rotation.y += f.sp * dt; });
+    anim.flags.forEach(f => { f.o.rotation.y = 0.12 + Math.sin(time * 2.3 + f.ph) * 0.25 + Math.sin(time * 5.1 + f.ph) * 0.06; });
+    anim.swayers.forEach(w => { w.o.rotation.z = w.base + Math.sin(time * 0.9 + w.ph) * w.amp; w.o.rotation.x = Math.sin(time * 0.7 + w.ph * 1.7) * w.amp * 0.6; });
+    anim.walkers.forEach(w => {
+      const p = w.o.position;
+      if (w.axis === 'z') { p.z += w.v * dt; if (p.z > w.max || p.z < w.min) { w.v = -w.v; p.z = THREE.MathUtils.clamp(p.z, w.min, w.max); } }
+      else { p.x += w.v * dt; if (p.x > w.max || p.x < w.min) { w.v = -w.v; p.x = THREE.MathUtils.clamp(p.x, w.min, w.max); } }
+      p.y = Math.abs(Math.sin(time * 7 + w.ph)) * 0.06;
+    });
+  }
+
   // sRGB → linear for authored hex colours
   const seenMats = new Set();
   function linearise(root) {
@@ -1650,6 +1816,8 @@
         if (seenMats.has(m)) return; seenMats.add(m);
         if (m.color && !m.map) m.color.convertSRGBToLinear();
         if (m.emissive && !m.emissiveMap) m.emissive.convertSRGBToLinear();
+        // sky reflections: strong on glass, metal and water, faint on matte surfaces so shadows keep their depth
+        if (m.isMeshStandardMaterial) m.envMapIntensity = m.roughness >= 0.6 ? 0.22 : m.map ? 0.32 : (m.transparent ? 0.9 : 0.7);
       });
     });
   }
@@ -2976,10 +3144,12 @@
     btnDN.setAttribute('aria-pressed', String(n));
   }
   function applyDayNight(t) {
-    scene.background.copy(DAY_BG).lerp(NIGHT_BG, t);
-    sun.intensity = THREE.MathUtils.lerp(1.6, 0.26, t);
+    drawSky(t);
+    scene.fog.color.copy(FOG_DAY).lerp(FOG_NIGHT, t);
+    scene.environment = t < 0.5 ? ENV_DAY : ENV_NIGHT;
+    sun.intensity = THREE.MathUtils.lerp(1.5, 0.26, t);
     sun.color.setHex(0xfff1dc).lerp(new THREE.Color(0x9fb8ff), t);
-    hemi.intensity = THREE.MathUtils.lerp(0.72, 0.22, t);
+    hemi.intensity = THREE.MathUtils.lerp(0.55, 0.18, t);
     hemi.color.setHex(0xfffaf0).lerp(new THREE.Color(0x6c86a8), t);
     hemi.groundColor.setHex(0xcfc4ad).lerp(new THREE.Color(0x1a2224), t);
     fill.intensity = THREE.MathUtils.lerp(0.32, 0.1, t);
@@ -2987,7 +3157,7 @@
     nightLights.forEach(n => n.light.intensity = n.intensity * t);
     dayNightColor.forEach(d => d.mat.color.copy(d.day).lerp(d.night, t));
     EDGE.opacity = THREE.MathUtils.lerp(0.32, 0.4, t);
-    renderer.toneMappingExposure = THREE.MathUtils.lerp(1.05, 1.25, t);
+    renderer.toneMappingExposure = THREE.MathUtils.lerp(1.0, 1.25, t);
   }
   btnDN.addEventListener('click', () => setNight(!night));
 
@@ -3052,7 +3222,7 @@
       if (Math.abs(target - tNight) < 0.002) tNight = target;
       applyDayNight(tNight);
     }
-    if (motion) updateCars(dt);
+    if (motion) { updateCars(dt); updateAnim(now / 1000, dt); }
     if (tour) {
       const k = (now - tour.t0) / TOUR_MS;
       tourProg.style.width = Math.min(100, k * 100) + '%';
@@ -3070,6 +3240,7 @@
     startTour, stopTour,
     enterInterior, exitInterior,
     camera: () => ({ zoom: view.zoom, polar: view.polar, target: view.target.toArray(), tweening: !!tween }),
+    lookAt: (x, y, z, zoom) => { tween = null; view.target.set(x, y, z); view.zoom = zoom; applyCamera(); },
     setFloor: i => setFloor(i === 'all' ? 'all' : interior.floors[i]),
     rooms: () => interior ? interior.rooms.filter(r => !r.isCore).map(r => r.id) : [],
     clickRoom: id => clickRoom(interior.rooms.find(r => r.id === id)),
@@ -3083,6 +3254,7 @@
   setNight(startNight);
   tNight = startNight ? 1 : 0;
   applyDayNight(tNight);
+  updateAnim(0, 0); // place steam and fountain spray even when motion is off
   requestAnimationFrame(frame);
 })();
 </script>

@@ -26,7 +26,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/fonts/fonts.css?v=1baa657b" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="assets/fonts/fonts.css?v=1baa657b"></noscript>
-  <link rel="stylesheet" href="styles.css?v=25cabfa2">
+  <link rel="stylesheet" href="styles.css?v=ad87e6cd">
 
   <!-- Language (before first paint, to avoid a flash of the wrong language) -->
   <script>
@@ -118,7 +118,7 @@
       <div class="container p-hero-inner">
         <p class="eyebrow reveal"><span class="dot" aria-hidden="true"></span><span lang="en">Free self-check</span><span lang="zh-Hant">免費自我評估</span></p>
         <h1 class="p-title reveal"><span lang="en">Is your company ready for a US listing?</span><span lang="zh-Hant">你的公司準備好赴美上市了嗎？</span></h1>
-        <p class="p-lede reveal"><span lang="en">Ten questions, two minutes. Your answers stay in your browser: nothing is sent or saved.</span><span lang="zh-Hant">十條問題，兩分鐘。答案只留在你的瀏覽器，不會傳送或儲存。</span></p>
+        <p class="p-lede reveal"><span lang="en">Ten questions, two minutes, free score. Your answers stay in your browser. Want the detail? Unlock a full report with an action plan, an 18-month timetable, a venue comparison and a document checklist.</span><span lang="zh-Hant">十條問題，兩分鐘，免費評分。答案只留在你的瀏覽器。想知更多？可解鎖完整報告：行動計劃、18 個月時間表、上市地點比較及文件清單。</span></p>
         <div class="hero-cta reveal">
           <a class="btn btn-gold" href="#check"><span lang="en">Start the check</span><span lang="zh-Hant">開始評估</span></a>
           <a class="btn btn-outline-light" href="https://wa.me/85298229572" target="_blank" rel="noopener"><span lang="en">WhatsApp me</span><span lang="zh-Hant">WhatsApp 聯絡</span></a>
@@ -134,6 +134,12 @@
           <p class="section-sub"><span lang="en">Since May 2026, Nasdaq requires companies mainly operating in mainland China, Hong Kong or Macau to raise at least US$25 million in a firm-commitment IPO. The questions below cover the rest of what usually decides the timetable.</span><span lang="zh-Hant">自 2026 年 5 月起，主要業務在中國內地、香港或澳門的公司，在納斯達克 IPO 須以全額包銷募資不少於 2,500 萬美元。以下問題涵蓋通常決定上市時間表的其他因素。</span></p>
         </div>
         <form class="rc-form" id="rc-form" novalidate>
+          <fieldset class="rc-profile">
+            <legend><span lang="en">About your company (optional, used to tailor the full report)</span><span lang="zh-Hant">公司資料（選填，用於度身編寫完整報告）</span></legend>
+            <label><span lang="en">Company name</span><span lang="zh-Hant">公司名稱</span><input type="text" name="company" maxlength="80" autocomplete="organization"></label>
+            <label><span lang="en">Sector</span><span lang="zh-Hant">行業</span><select name="sector" id="rc-sector"></select></label>
+            <label><span lang="en">Main operations</span><span lang="zh-Hant">主要業務所在地</span><select name="ops" id="rc-ops"></select></label>
+          </fieldset>
           <ol class="rc-list" id="rc-list"></ol>
           <div class="rc-actions">
             <button class="btn btn-gold" type="submit"><span lang="en">See my result</span><span lang="zh-Hant">查看結果</span></button>
@@ -141,7 +147,7 @@
           </div>
         </form>
         <div class="rc-result" id="rc-result" hidden aria-live="polite"></div>
-        <p class="rc-note"><span lang="en">General information only. This is not investment, legal or accounting advice and not an offer of any service; every company's situation is different.</span><span lang="zh-Hant">只供一般參考，不構成投資、法律或會計建議，亦非任何服務要約；每間公司情況不同。</span></p>
+        <p class="rc-note"><span lang="en">General information only, including the full report. It is not investment, legal or accounting advice and not a sponsor, underwriting or securities service; every company's situation is different, and listing rules change, so confirm the current rules with your advisers. Payments are handled by Stripe; your answers are never sent.</span><span lang="zh-Hant">所有內容（包括完整報告）只供一般參考，不構成投資、法律或會計建議，亦非保薦、承銷或證券服務；每間公司情況不同，上市規則亦會修訂，請向你的顧問確認最新規則。付款由 Stripe 處理；你的答案不會被傳送。</span></p>
       </div>
     </section>
   </main>

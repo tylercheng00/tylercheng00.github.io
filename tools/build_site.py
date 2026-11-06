@@ -525,6 +525,19 @@ def main():
         title="US listing readiness check · 赴美上市準備自我評估 | 鄭迪珉 Tyler Cheng",
         description="A free 10-question self-check for Hong Kong and mainland founders considering a US listing after Nasdaq's US$25 million threshold. Runs in your browser; nothing is sent.",
         og_type="website", scripts=("readiness.js",)), encoding="utf-8")
+    # Android app (Play Store, Trusted Web Activity): the free check only, no site menu, no payment
+    app = fragment_page(
+        "app",
+        title="Listing readiness · 上市準備度 | 鄭迪珉 Tyler Cheng",
+        description="A free listing-readiness self-check for founders: ten questions, a score by area and the gaps to fix first. Works offline.",
+        og_type="website", body_class="page-projects app-mode", scripts=("readiness.js",),
+        head_extra='\n  <meta name="robots" content="noindex">'
+                   '\n  <link rel="manifest" href="app.webmanifest">'
+                   '\n  <link rel="apple-touch-icon" href="assets/app/icon-192.png">'
+                   '\n  <script>window.RC_APP = true; try { sessionStorage.setItem("rc-app", "1"); } catch (e) {}</script>')
+    app = app.replace('<a class="brand" href="index.html"', '<a class="brand" href="app.html"', 1)
+    app = app.replace('</body>', '  <script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("app-sw.js", { scope: "/app" }).catch(function () {});</script>\n</body>', 1)
+    (ROOT / "app.html").write_text(app, encoding="utf-8")
     (ROOT / "privacy.html").write_text(fragment_page(
         "privacy",
         title="Privacy policy · 私隱政策 | 鄭迪珉 Tyler Tik Man Cheng",
@@ -590,7 +603,7 @@ def apply_hero_photos():
         f.write_text(s, encoding="utf-8")
 
 
-ASSETS = ("styles.css", "main.js", "game.css", "game.js", "game-data.js", "game-kit.js", "game-worlds.js", "news.js", "markets.js", "us-equities.js", "contact.js", "clock.js", "assets/fonts/fonts.css")
+ASSETS = ("styles.css", "main.js", "game.css", "game.js", "game-data.js", "game-kit.js", "game-worlds.js", "news.js", "markets.js", "us-equities.js", "contact.js", "clock.js", "readiness.js", "assets/fonts/fonts.css")
 
 
 def stamp_assets():

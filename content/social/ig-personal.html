@@ -1,0 +1,73 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<!-- Personal Instagram carousel for the website launch (3 slides, 1080x1350). Render: node tools/build_social.js content/social/ig-personal.html assets/social/ig-personal -->
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;background:#f4eee2}
+  .s{position:relative;width:1080px;height:1350px;overflow:hidden;color:#14233a;font-family:Inter,"Noto Sans TC",sans-serif;
+     background:radial-gradient(circle at 20% 10%,#fbf7ef,#f4eee2 55%,#ece3d2)}
+  .pol{position:absolute;background:#fff;padding:18px 18px 64px;box-shadow:0 30px 50px -24px rgba(40,30,10,.45),0 2px 6px rgba(0,0,0,.08)}
+  .pol img{display:block;width:100%;height:100%;object-fit:cover}
+  .pol span{position:absolute;left:0;right:0;bottom:16px;text-align:center;font-family:"Cormorant Garamond","Noto Serif TC",serif;font-style:italic;font-size:30px;color:#5a5141}
+  .tape{position:absolute;width:150px;height:40px;background:rgba(226,200,143,.6);top:-18px;left:50%;margin-left:-75px;transform:rotate(-4deg)}
+  .head{position:absolute;left:84px;right:84px}
+  .k{font-size:24px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#a8823d}
+  .h{font-family:"Noto Serif TC",serif;font-weight:700;font-size:78px;line-height:1.18;margin-top:18px}
+  .en{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:46px;color:#5a5141;margin-top:14px}
+  .url{position:absolute;left:84px;bottom:66px;font-size:30px;letter-spacing:.03em}
+  .url span{color:#a8823d}
+  .count{position:absolute;right:84px;bottom:68px;font-size:24px;letter-spacing:.2em;color:rgba(20,35,58,.45)}
+  .phone{position:absolute;left:96px;top:250px;width:450px;height:900px;border-radius:64px;background:#111;padding:16px;box-shadow:0 50px 80px -30px rgba(20,20,10,.55);transform:rotate(-3deg)}
+  .phone img{width:100%;height:100%;object-fit:cover;object-position:top;border-radius:50px;display:block}
+  .side{position:absolute;left:620px;right:84px;top:360px}
+  .side p{font-size:34px;line-height:1.55;margin:0 0 34px;color:#2a3850}
+  .side p small{display:block;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:32px;color:#7a6f5c;line-height:1.3;margin-top:6px}
+  .langs{display:flex;gap:14px}
+  .langs b{flex:1;text-align:center;padding:18px 0;border-radius:18px;border:2px solid #c9a35b;font-family:"Noto Serif TC",serif;font-size:40px;color:#a8823d;background:rgba(201,163,91,.08)}
+  .qr{position:absolute;left:50%;top:400px;width:420px;margin-left:-210px;background:#fff;padding:26px 26px 80px;box-shadow:0 30px 50px -24px rgba(40,30,10,.45);transform:rotate(1.5deg)}
+  .qr img{width:100%;display:block}
+  .qr span{position:absolute;left:0;right:0;bottom:22px;text-align:center;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:34px;color:#5a5141}
+  .center{text-align:center}
+</style></head><body>
+
+<section class="s">
+  <div class="head" style="top:96px">
+    <div class="k">New · 新開張</div>
+    <div class="h">整理了一個<br>屬於自己的網站</div>
+    <div class="en">Made myself a little corner of the internet</div>
+  </div>
+  <div class="pol" style="left:60px;top:600px;width:380px;height:500px;transform:rotate(-6deg)"><i class="tape"></i><img src="../../assets/media/moments/tyler-helicopter.jpg" alt=""><span>up in the air</span></div>
+  <div class="pol" style="left:360px;top:680px;width:370px;height:490px;transform:rotate(3deg);z-index:2"><i class="tape"></i><img src="../../assets/media/moments/tyler-koala.jpg" alt=""><span>Australia</span></div>
+  <div class="pol" style="left:650px;top:580px;width:370px;height:490px;transform:rotate(-2deg)"><i class="tape"></i><img src="../../assets/media/moments/tyler-sea-ice.jpg" alt=""><span>frozen sea</span></div>
+  <div class="url">tylercheng00<span>.github.io</span></div>
+  <div class="count">1 / 3</div>
+</section>
+
+<section class="s">
+  <div class="head" style="top:96px">
+    <div class="k">What's there · 裏面有甚麼</div>
+  </div>
+  <div class="phone"><img src="shot-home.jpg" alt=""></div>
+  <div class="side">
+    <p>這些年做過的事，終於放在同一個地方<small>Everything I've been working on, in one place</small></p>
+    <p>美股上市、生物科技、專利，還有一路走來的照片<small>Capital markets, science ventures &amp; photos along the way</small></p>
+    <div class="langs"><b>EN</b><b>繁</b><b>简</b></div>
+  </div>
+  <div class="url">tylercheng00<span>.github.io</span></div>
+  <div class="count">2 / 3</div>
+</section>
+
+<section class="s">
+  <div class="head center" style="top:110px">
+    <div class="k">Come say hi · 來逛逛</div>
+    <div class="h" style="font-size:72px">有空來看看</div>
+    <div class="en">Link in bio · 連結在個人簡介</div>
+  </div>
+  <div class="pol" style="left:60px;top:430px;width:290px;height:360px;transform:rotate(-8deg)"><i class="tape"></i><img src="../../assets/media/moments/rocket-garden.jpg" alt=""><span>rockets</span></div>
+  <div class="pol" style="left:720px;top:840px;width:290px;height:360px;transform:rotate(6deg);z-index:2"><i class="tape"></i><img src="../../assets/media/moments/tyler-ehang.jpg" alt=""><span>drone ride</span></div>
+  <div class="qr"><img src="qr.png" alt=""><span>scan me</span></div>
+  <div class="url">tylercheng00<span>.github.io</span></div>
+  <div class="count">3 / 3</div>
+</section>
+</body></html>

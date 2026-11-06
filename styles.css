@@ -216,6 +216,9 @@ html[data-lang="zh"] .contact-title { font-family: var(--serif-zh); letter-spaci
   font-family: var(--serif); font-weight: 600; font-style: italic;
   font-size: clamp(26px, 3.8vw, 42px); color: var(--gold-soft); letter-spacing: .01em;
 }
+/* English view: the English name is the headline, the Chinese name sits below it */
+html[data-lang="en"] .name-zh { font-family: var(--serif); font-weight: 700; letter-spacing: .01em; font-size: clamp(42px, 6.6vw, 80px); text-wrap: balance; }
+html[data-lang="en"] .name-en { font-family: var(--serif-zh); font-style: normal; font-weight: 700; letter-spacing: .12em; font-size: clamp(22px, 2.8vw, 32px); }
 .tagline { margin-top: 22px; font-size: clamp(15px, 1.8vw, 18px); font-weight: 500; letter-spacing: .06em; color: rgba(255, 255, 255, .88); }
 .tagline i { font-style: normal; color: var(--gold); margin: 0 .35em; }
 .hero-intro { margin-top: 18px; max-width: 560px; text-wrap: pretty; font-size: 17px; color: rgba(255, 255, 255, .66); }
@@ -480,7 +483,9 @@ html[data-lang="zh"] .hl-big { font-family: var(--serif-zh); font-size: 28px; }
   .container { padding: 0 18px; }
   .topbar-inner { height: 64px; gap: 12px; }
   .nav { inset: 64px 0 auto 0; }
-  .brand-sub { display: none; }
+  .brand { gap: 10px; min-width: 0; }
+  .brand-text { min-width: 0; }
+  .brand-sub { font-size: 11px; letter-spacing: 0; white-space: nowrap; }
   .hero-inner { padding-top: 112px; padding-bottom: 96px; }
   .hero-intro { font-size: 16px; }
   .hero-cta .btn { flex: 1 1 auto; }
@@ -1143,3 +1148,70 @@ html[data-script="sc"] {
 html.sc-pending body { visibility: hidden; }
 .lang-toggle button { min-width: 34px; padding: 5px 10px; }
 @media (max-width: 640px) { .lang-toggle button { min-width: 30px; padding: 5px 8px; font-size: 12.5px; } }
+
+/* Page photos behind the titles (assets/hero, see credits.json) */
+.p-hero .hero-photo img { opacity: .85; }
+.p-hero .hero-photo::after {
+  background:
+    linear-gradient(90deg, rgba(7, 19, 34, .92) 0%, rgba(7, 19, 34, .72) 40%, rgba(7, 19, 34, .25) 75%, rgba(7, 19, 34, .1) 100%),
+    linear-gradient(180deg, rgba(7, 19, 34, .55) 0%, transparent 30%, transparent 72%, rgba(7, 19, 34, .7) 100%);
+}
+@media (max-width: 760px) {
+  .p-hero .hero-photo::after { background: linear-gradient(180deg, rgba(7, 19, 34, .7) 0%, rgba(7, 19, 34, .78) 55%, rgba(7, 19, 34, .9) 100%); }
+}
+.hero-credit {
+  position: absolute; right: 16px; bottom: 10px; z-index: 1; max-width: calc(100% - 32px);
+  font-size: 11px; line-height: 1.4; color: rgba(255, 255, 255, .5); text-decoration: none;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.hero-credit:hover { color: rgba(255, 255, 255, .85); text-decoration: underline; }
+.pillar-media { position: relative; }
+.pillar-credit {
+  position: absolute; right: 8px; bottom: 6px; max-width: calc(100% - 16px); padding: 2px 7px; border-radius: 6px;
+  font-size: 10.5px; line-height: 1.4; color: rgba(255, 255, 255, .85); background: rgba(7, 19, 34, .55);
+  text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.pillar-credit:hover { text-decoration: underline; }
+
+/* ---------- Game entry points (home) ---------- */
+.hero-game {
+  display: inline-flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 22px; padding: 10px 16px 10px 10px;
+  border-radius: 999px; border: 1px solid rgba(226, 200, 143, .45); background: rgba(7, 19, 34, .55); backdrop-filter: blur(6px);
+  color: #fff; font-size: 14.5px; text-decoration: none; transition: border-color .2s, background .2s, transform .2s;
+}
+.hero-game:hover { border-color: var(--gold-soft); background: rgba(201, 163, 91, .18); transform: translateY(-1px); }
+.hero-game b { color: var(--gold-soft); font-weight: 600; }
+.hero-game-new { padding: 3px 8px; border-radius: 999px; background: var(--gold); color: var(--navy-950); font-size: 11px; font-weight: 800; letter-spacing: .08em; }
+.game-promo { background: linear-gradient(180deg, #0b1d33, #071322); color: #fff; }
+.game-promo-inner { display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center; }
+.game-promo-shot { display: block; border-radius: 22px; overflow: hidden; border: 1px solid rgba(226, 200, 143, .3); box-shadow: var(--shadow-lg); transition: transform .3s var(--ease); }
+.game-promo-shot:hover { transform: translateY(-4px) rotate(-.4deg); }
+.game-promo-shot img { display: block; width: 100%; height: auto; }
+.game-promo .kicker { color: var(--gold); }
+.game-promo .section-title { color: #fff; }
+.game-promo-text { color: rgba(255, 255, 255, .78); font-size: 17px; line-height: 1.75; margin: 0 0 28px; }
+@media (max-width: 860px) {
+  .game-promo-inner { grid-template-columns: 1fr; gap: 28px; }
+  .hero-game { font-size: 13.5px; }
+}
+
+/* ---------- Listing readiness check ---------- */
+.rc-form { max-width: 820px; margin: 0 auto; }
+.rc-list { list-style: decimal; padding-left: 1.4em; display: grid; gap: 18px; }
+.rc-q { padding: 18px 20px; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
+.rc-q::marker { color: var(--gold-ink); font-weight: 700; }
+.rc-text { font-weight: 600; color: var(--ink); }
+.rc-opts { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 10px; }
+.rc-opt { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px; cursor: pointer; font-size: 15px; }
+.rc-opt:has(input:checked) { border-color: var(--gold); background: rgba(201, 163, 91, .12); }
+.rc-actions { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
+.rc-reset { border-color: var(--line); color: var(--ink); background: transparent; }
+.rc-result { max-width: 820px; margin: 40px auto 0; padding: 28px; border-radius: 16px; border: 1px solid var(--gold); background: rgba(201, 163, 91, .06); }
+.rc-score { font-size: 56px; font-weight: 700; color: var(--ink); line-height: 1.1; margin-top: 8px; }
+.rc-score span { font-size: 22px; color: var(--muted); }
+.rc-level { margin-top: 8px; font-size: 18px; color: var(--ink-2); }
+.rc-miss { margin-top: 6px; color: var(--muted); font-size: 14px; }
+.rc-result h3 { margin-top: 22px; font-size: 18px; }
+.rc-result ul { margin-top: 10px; padding-left: 1.2em; display: grid; gap: 6px; }
+.rc-result .hero-cta { margin-top: 24px; }
+.rc-note { max-width: 820px; margin: 28px auto 0; font-size: 13px; color: var(--muted); }

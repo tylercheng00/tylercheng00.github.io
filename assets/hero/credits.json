@@ -1,0 +1,106 @@
+{
+ "markets.html": {
+  "file": "assets/hero/markets.jpg",
+  "position": "50% 35%",
+  "size": [
+   1920,
+   1280
+  ],
+  "title": "File:New York Stock Exchange 20170311.jpg",
+  "artist": "Suicasmo",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:New_York_Stock_Exchange_20170311.jpg"
+ },
+ "us-equities.html": {
+  "file": "assets/hero/capital.jpg",
+  "position": "50% 35%",
+  "size": [
+   1600,
+   1068
+  ],
+  "title": "File:Sign of the New York Stock Exchange, Broad Street.jpg",
+  "artist": "Billie Grace Ward",
+  "license": "CC0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Sign_of_the_New_York_Stock_Exchange,_Broad_Street.jpg"
+ },
+ "ventures.html": {
+  "file": "assets/hero/ventures.jpg",
+  "position": "62% 55%",
+  "size": [
+   1920,
+   1272
+  ],
+  "title": "File:Solo-mrna-vaccine-8.jpg",
+  "artist": "Spencerbdavis",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Solo-mrna-vaccine-8.jpg"
+ },
+ "projects.html": {
+  "file": "assets/hero/projects.jpg",
+  "position": "40% 50%",
+  "size": [
+   1920,
+   1281
+  ],
+  "title": "File:Close-up of the objective lenses of a microscope.jpg",
+  "artist": "Shixart1985",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Close-up_of_the_objective_lenses_of_a_microscope.jpg"
+ },
+ "about.html": {
+  "file": "assets/hero/about.jpg",
+  "position": "50% 55%",
+  "size": [
+   1600,
+   1063
+  ],
+  "title": "File:Victoria Harbour skyscrapers.jpg",
+  "artist": "Wilfredor",
+  "license": "CC0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source": "https://commons.wikimedia.org/wiki/File:Victoria_Harbour_skyscrapers.jpg"
+ },
+ "insights/index.html": {
+  "file": "assets/hero/insights.jpg",
+  "position": "50% 50%",
+  "size": [
+   1920,
+   1282
+  ],
+  "title": "File:Reading materials on a desk with glasses a pen and an apple nearby.jpg",
+  "artist": "Shixart1985",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Reading_materials_on_a_desk_with_glasses_a_pen_and_an_apple_nearby.jpg"
+ },
+ "news.html": {
+  "file": "assets/hero/news.jpg",
+  "position": "50% 50%",
+  "size": [
+   1920,
+   1440
+  ],
+  "title": "File:ASC Leiden - Library - South African newspaper stack of Die Burger - 2012.jpg",
+  "artist": "African Studies Centre Leiden",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:ASC_Leiden_-_Library_-_South_African_newspaper_stack_of_Die_Burger_-_2012.jpg"
+ },
+ "contact.html": {
+  "file": "assets/hero/contact.jpg",
+  "position": "50% 62%",
+  "size": [
+   1920,
+   1280
+  ],
+  "title": "File:2024-11-17-Lower Manhattan-0593.jpg",
+  "artist": "Superbass",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:2024-11-17-Lower_Manhattan-0593.jpg"
+ }
+}

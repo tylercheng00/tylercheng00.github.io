@@ -14,7 +14,7 @@
   <meta property="og:url" content="https://tylercheng00.github.io/about.html">
   <meta property="og:title" content="About · 關於 — 鄭迪珉 Tyler Tik Man Cheng">
   <meta property="og:description" content="Background, experience, education, media and recognition.">
-  <meta property="og:image" content="https://tylercheng00.github.io/assets/og-image.png">
+  <meta property="og:image" content="https://tylercheng00.github.io/assets/og-image-2026.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="en_US">
@@ -25,7 +25,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/fonts/fonts.css?v=1baa657b" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="assets/fonts/fonts.css?v=1baa657b"></noscript>
-  <link rel="stylesheet" href="styles.css?v=5ef10207">
+  <link rel="stylesheet" href="styles.css?v=25cabfa2">
   <script>
     (function () {
       var lang = null;
@@ -68,6 +68,7 @@
             <a href="#education"><span lang="en">Education</span><span lang="zh-Hant">學歷</span></a>
             <a href="#media"><span lang="en">Media &amp; recognition</span><span lang="zh-Hant">媒體及認可</span></a>
             <a href="index.html#vision"><span lang="en">Vision</span><span lang="zh-Hant">願景</span></a>
+            <a href="game.html"><span lang="en">🎮 My life game</span><span lang="zh-Hant">🎮 我的人生遊戲</span></a>
           </div>
         </div>
         <div class="nav-group">
@@ -80,12 +81,19 @@
           </div>
         </div>
         <a class="nav-link" href="us-equities.html"><span lang="en">Capital markets</span><span lang="zh-Hant">資本市場</span></a>
-        <a class="nav-link" href="markets.html"><span lang="en">Markets</span><span lang="zh-Hant">美股行情</span></a>
+        <div class="nav-group">
+          <button type="button" class="nav-top" aria-expanded="false" aria-controls="nav-markets"><span lang="en">US investing</span><span lang="zh-Hant">美股投資</span><svg class="nav-caret" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-menu" id="nav-markets">
+            <a href="markets.html"><span lang="en">US markets</span><span lang="zh-Hant">美股行情</span></a>
+            <a href="https://tylercheng00.github.io/asset-tracker/"><span lang="en">Asset Book</span><span lang="zh-Hant">資產簿</span></a>
+          </div>
+        </div>
         <div class="nav-group">
           <button type="button" class="nav-top" aria-expanded="false" aria-controls="nav-insights"><span lang="en">Insights</span><span lang="zh-Hant">觀點</span><svg class="nav-caret" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <div class="nav-menu" id="nav-insights">
             <a href="insights/"><span lang="en">Articles</span><span lang="zh-Hant">觀點文章</span></a>
             <a href="news.html"><span lang="en">News</span><span lang="zh-Hant">新聞</span></a>
+            <a href="listing-readiness.html"><span lang="en">Listing readiness check</span><span lang="zh-Hant">上市準備自我評估</span></a>
           </div>
         </div>
         <!-- nav:end -->
@@ -107,7 +115,8 @@
 
   <main id="main">
     <section class="p-hero" id="top">
-      <div class="hero-bg" aria-hidden="true"><span class="glow glow-1"></span><span class="glow glow-2"></span><span class="grid"></span></div>
+      <div class="hero-bg" aria-hidden="true">
+        <picture class="hero-photo" data-hero><img src="assets/hero/about.jpg" alt="" width="1600" height="1063" style="object-position: 50% 55%" fetchpriority="high"></picture><span class="glow glow-1"></span><span class="glow glow-2"></span><span class="grid"></span></div>
       <div class="container p-hero-inner">
         <p class="eyebrow reveal"><span class="dot" aria-hidden="true"></span><span lang="en">About</span><span lang="zh-Hant">關於</span></p>
         <h1 class="p-title reveal"><span lang="en">About me</span><span lang="zh-Hant">關於我</span></h1>
@@ -120,6 +129,7 @@
           <a class="btn btn-outline-light" href="contact.html"><span lang="en">Contact</span><span lang="zh-Hant">聯絡</span></a>
         </div>
       </div>
+      <a class="hero-credit" href="https://commons.wikimedia.org/wiki/File:Victoria_Harbour_skyscrapers.jpg" target="_blank" rel="noopener"><span lang="en">Photo</span><span lang="zh-Hant">相片</span>: Wilfredor · CC0 · Wikimedia Commons</a>
     </section>
 
     <!-- ============ About ============ -->
@@ -413,6 +423,7 @@
         <a href="insights/"><span lang="en">Insights</span><span lang="zh-Hant">觀點</span></a>
         <a href="news.html"><span lang="en">News</span><span lang="zh-Hant">新聞</span></a>
         <a href="markets.html"><span lang="en">Markets</span><span lang="zh-Hant">美股行情</span></a>
+        <a href="game.html"><span lang="en">Play: Crossroads</span><span lang="zh-Hant">遊戲：交叉點</span></a>
         <a href="contact.html"><span lang="en">Contact</span><span lang="zh-Hant">聯絡</span></a>
         <a href="privacy.html"><span lang="en">Privacy</span><span lang="zh-Hant">私隱政策</span></a>
       </nav>

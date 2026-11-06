@@ -124,11 +124,14 @@ NAV = [
     ("insights/", "Insights", "觀點", "insights"),
     ("news.html", "News", "新聞", "news"),
     ("markets.html", "Markets", "美股行情", "markets"),
+    ("game.html", "Play: Crossroads", "遊戲：交叉點", "game"),
 ]
 
 # Header menu: a few categories, each opening a small list of pages/sections.
 # Shared by every page; the static pages (index, projects, us-equities) get it
 # written between their <!-- nav:start --> / <!-- nav:end --> markers.
+# separate project (github.com/tylercheng00/asset-tracker), linked from the Markets menu
+ASSET_BOOK = "https://tylercheng00.github.io/asset-tracker/"
 NAV_GROUPS = [
     ("about", "About", "關於", [
         ("about.html#about", "About me", "簡介"),
@@ -136,6 +139,7 @@ NAV_GROUPS = [
         ("about.html#education", "Education", "學歷"),
         ("about.html#media", "Media & recognition", "媒體及認可"),
         ("index.html#vision", "Vision", "願景"),
+        ("game.html", "🎮 My life game", "🎮 我的人生遊戲"),
     ]),
     ("ventures", "Ventures", "創業", [
         ("ventures.html#entrepreneurship", "Entrepreneurship", "創業經歷"),
@@ -145,14 +149,18 @@ NAV_GROUPS = [
     ]),
     # a plain string instead of a list = a direct link with no dropdown
     ("capital", "Capital markets", "資本市場", "us-equities.html"),
-    ("markets", "Markets", "美股行情", "markets.html"),
+    ("markets", "US investing", "美股投資", [
+        ("markets.html", "US markets", "美股行情"),
+        (ASSET_BOOK, "Asset Book", "資產簿"),
+    ]),
     ("insights", "Insights", "觀點", [
         ("insights/", "Articles", "觀點文章"),
         ("news.html", "News", "新聞"),
+        ("listing-readiness.html", "Listing readiness check", "上市準備自我評估"),
     ]),
 ]
 # page key of the generated pages -> their file
-CURRENT = {"insights": "insights/", "news": "news.html", "markets": "markets.html"}
+CURRENT = {"insights": "insights/", "news": "news.html", "markets": "markets.html", "listing-readiness": "listing-readiness.html"}
 CARET = ('<svg class="nav-caret" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true">'
          '<path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" '
          'stroke-linecap="round" stroke-linejoin="round"/></svg>')
@@ -177,7 +185,7 @@ def nav_menu(prefix="", page=None):
             target, _, anchor = href.partition("#")
             same = target == page
             group_cur = group_cur or (same and target != "index.html")
-            url = "#" + anchor if same and anchor else prefix + href
+            url = href if href.startswith("https://") else "#" + anchor if same and anchor else prefix + href
             links.append(f'            <a href="{url}"{" aria-current=\"page\"" if same and not anchor else ""}>'
                          f'{bi(html.escape(ien), izh)}</a>')
         out.append(
@@ -223,7 +231,7 @@ def page(*, prefix, path, title, description, og_type, body, active,
   <meta property="og:url" content="{url}">
   <meta property="og:title" content="{html.escape(title)}">
   <meta property="og:description" content="{html.escape(description)}">
-  <meta property="og:image" content="{SITE}/assets/og-image.png">
+  <meta property="og:image" content="{SITE}/assets/og-image-2026.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="en_US">
@@ -388,7 +396,7 @@ def article_page(a, others):
         "inLanguage": ["en", "zh-Hant"],
         "author": {"@type": "Person", "name": "Tyler Tik Man Cheng", "alternateName": "鄭迪珉", "url": SITE + "/"},
         "mainEntityOfPage": f"{SITE}/insights/{a['slug']}.html",
-        "image": f"{SITE}/assets/og-image.png",
+        "image": f"{SITE}/assets/og-image-2026.jpg",
     }
     return page(
         prefix="../", path=f"insights/{a['slug']}.html",
@@ -495,8 +503,8 @@ def main():
 
     (ROOT / "news.html").write_text(fragment_page(
         "news",
-        title="News · 新聞 — Finance and US–China politics | 鄭迪珉 Tyler Cheng",
-        description="Headlines on markets, finance and US–China politics, gathered automatically from public news feeds. Links go to the original publishers.",
+        title="News · 新聞 — Markets, US–China and biotech | 鄭迪珉 Tyler Cheng",
+        description="Headlines on markets, US–China politics and international biotech and medical research, gathered automatically from public news feeds. Links go to the original publishers.",
         og_type="website", scripts=("news.js",)), encoding="utf-8")
     (ROOT / "markets.html").write_text(fragment_page(
         "markets",
@@ -506,6 +514,17 @@ def main():
         head_extra='\n  <link rel="preconnect" href="https://s3.tradingview.com">'
                    '\n  <link rel="preconnect" href="https://www.tradingview-widget.com">'
                    '\n  <link rel="dns-prefetch" href="https://www.tradingview.com">'), encoding="utf-8")
+    (ROOT / "game.html").write_text(fragment_page(
+        "game",
+        title="Crossroads · 交叉點 — a 3D life adventure | 鄭迪珉 Tyler Cheng",
+        description="A 3D life adventure from Hong Kong to New York, the Moon and Mars, based on Tyler Cheng's story: bullied at school, debt, being laughed at, and getting back up. Plays in the browser.",
+        og_type="website", body_class="page-game", scripts=("assets/vendor/three-r128.min.js", "game-data.js", "game-kit.js", "game-worlds.js", "game.js"),
+        head_extra='\n  <link rel="stylesheet" href="game.css">'), encoding="utf-8")
+    (ROOT / "listing-readiness.html").write_text(fragment_page(
+        "listing-readiness",
+        title="US listing readiness check · 赴美上市準備自我評估 | 鄭迪珉 Tyler Cheng",
+        description="A free 10-question self-check for Hong Kong and mainland founders considering a US listing after Nasdaq's US$25 million threshold. Runs in your browser; nothing is sent.",
+        og_type="website", scripts=("readiness.js",)), encoding="utf-8")
     (ROOT / "privacy.html").write_text(fragment_page(
         "privacy",
         title="Privacy policy · 私隱政策 | 鄭迪珉 Tyler Tik Man Cheng",
@@ -530,11 +549,48 @@ def main():
                                             ("insights/", "Insights", "觀點文章", "Read", "閱讀"),
                                             ("markets.html", "US markets", "美股行情", "Open", "前往")))
         + '</div></div></section>'), encoding="utf-8")
+    apply_hero_photos()
     stamp_assets()
     print(f"built {len(arts)} articles, insights index, news, markets, privacy and 404 pages")
 
 
-ASSETS = ("styles.css", "main.js", "news.js", "markets.js", "us-equities.js", "contact.js", "clock.js", "assets/fonts/fonts.css")
+def apply_hero_photos():
+    """Put each main page's photo behind its title, with a credit line.
+
+    The photos and their licence data are listed in assets/hero/credits.json
+    (Wikimedia Commons; CC0 / CC BY / CC BY-SA). Safe to run repeatedly."""
+    cfg = ROOT / "assets" / "hero" / "credits.json"
+    if not cfg.exists():
+        return
+    for page, c in json.loads(cfg.read_text(encoding="utf-8")).items():
+        f = ROOT / page
+        if not f.exists():
+            continue
+        prefix = "../" * page.count("/")
+        s = f.read_text(encoding="utf-8")
+        s = re.sub(r'\s*<picture class="hero-photo" data-hero>.*?</picture>', "", s, flags=re.S)
+        s = re.sub(r'\s*<a class="hero-credit"[^>]*>.*?</a>', "", s, flags=re.S)
+        i = s.find('<section class="p-hero"')
+        if i < 0:
+            continue
+        bg = '<div class="hero-bg" aria-hidden="true">'
+        j = s.find(bg, i)
+        end = s.find("</section>", i)
+        if j < 0 or j > end:
+            continue
+        w, h = c["size"]
+        pic = (f'\n        <picture class="hero-photo" data-hero><img src="{prefix}{c["file"]}" alt="" '
+               f'width="{w}" height="{h}" style="object-position: {c["position"]}" fetchpriority="high"></picture>')
+        s = s[:j + len(bg)] + pic + s[j + len(bg):]
+        end = s.find("</section>", i)
+        artist = c["artist"] if len(c["artist"]) <= 40 else c["artist"][:38] + "…"
+        credit = (f'  <a class="hero-credit" href="{html.escape(c["source"])}" target="_blank" rel="noopener">'
+                  f'{bi("Photo", "相片")}: {html.escape(artist)} · {html.escape(c["license"])} · Wikimedia Commons</a>\n    ')
+        s = s[:end] + credit + s[end:]
+        f.write_text(s, encoding="utf-8")
+
+
+ASSETS = ("styles.css", "main.js", "game.css", "game.js", "game-data.js", "game-kit.js", "game-worlds.js", "news.js", "markets.js", "us-equities.js", "contact.js", "clock.js", "assets/fonts/fonts.css")
 
 
 def stamp_assets():

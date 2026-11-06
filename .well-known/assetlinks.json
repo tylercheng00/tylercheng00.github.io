@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "io.github.tylercheng00.readiness",
+      "sha256_cert_fingerprints": [
+        "9E:74:C9:81:86:2B:14:8F:8D:55:28:0C:76:3A:17:11:7C:51:54:0C:AF:8A:7E:D2:7C:82:4E:07:F3:0F:6D:2C"
+      ]
+    }
+  }
+]

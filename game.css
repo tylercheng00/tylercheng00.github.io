@@ -172,3 +172,5 @@
   .game-jump { right: 14px; bottom: 60px; width: 58px; height: 58px; }
   .game-help { display: none; }
 }
+
+.game-goal[hidden], .game-tip[hidden] { display: none; }

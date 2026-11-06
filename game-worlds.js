@@ -692,7 +692,7 @@ window.DRW = (function () {
     W.bounds = function () { return { x0: -95, x1: 95, z0: -95, z1: 95 }; };
     W.solids = [];
     W.solid = function (x, z) { for (var k = 0; k < W.solids.length; k++) { var s = W.solids[k]; if (Math.hypot(x - s[0], z - s[1]) < s[2]) return true; } return false; };
-    W.camSolid = function (v) { return v.y < H(v.x, v.z) + 0.3; };
+    W.camSolid = function (v) { if (v.y < H(v.x, v.z) + 0.3) return true; for (var k = 0; k < W.solids.length; k++) { var s = W.solids[k]; if (Math.hypot(v.x - s[0], v.z - s[1]) < s[2] + 0.6 && v.y < H(s[0], s[1]) + s[2] + 1.5) return true; } return false; };
     W.places = {};
     W.place = function (type) { return W.places[type] || null; };
     W.update = function (t) { W.anims.forEach(function (f) { f(t); }); };

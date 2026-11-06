@@ -325,7 +325,13 @@
     var p = new THREE.Vector3(), l = new THREE.Vector3();
     if (spec === 'wide' || !actors[spec]) {
       if (w.interior && w.cams.wide) { var c = w.cams.wide; p.set(c[0], c[1], c[2]); l.set(c[3], c[4], c[5]); }
-      else { var ctr = new THREE.Vector3(), n = 0; Object.keys(actors).forEach(function (k) { ctr.add(actors[k].position); n++; }); ctr.divideScalar(Math.max(1, n)); var ry = player.rotation.y + Math.PI; p.set(ctr.x + Math.sin(ry + 0.6) * 8, ctr.y + 3.6, ctr.z + Math.cos(ry + 0.6) * 8); l.set(ctr.x, ctr.y + 1, ctr.z); }
+      else {
+        var ctr = new THREE.Vector3(), n = 0; Object.keys(actors).forEach(function (k) { ctr.add(actors[k].position); n++; }); ctr.divideScalar(Math.max(1, n));
+        l.set(ctr.x, ctr.y + 1, ctr.z);
+        // in a city, film from along the street in front of the place, so buildings don't block the view
+        var tries = place && w.lotOf ? [[8, 3.2, place.z + DW.P / 2 - ctr.z], [-8, 3.2, place.z + DW.P / 2 - ctr.z], [0, 7, 7]] : [[Math.sin(player.rotation.y + Math.PI + 0.6) * 8, 3.6, Math.cos(player.rotation.y + Math.PI + 0.6) * 8]];
+        for (var q = 0; q < tries.length; q++) { p.set(ctr.x + tries[q][0], ctr.y + tries[q][1], ctr.z + tries[q][2]); if (!(w.camSolid && w.camSolid(p))) break; }
+      }
     } else {
       var a = actors[spec], s = a.scale.x, f = a.rotation.y;
       var hy = a.position.y + 1.22 * s + (a.userData.pose === 'sit' || a.userData.pose === 'type' ? -0.3 : 0);
@@ -390,7 +396,7 @@
   /* ---------- travel ---------- */
   var travelScene = null;
   function travel(st) {
-    phase = 'travel'; beam.visible = false; render();
+    phase = 'travel'; beam.visible = false; goalEl.hidden = true; tip.hidden = true; render();
     var go = function () {
       var tw = DW.travel(st.via === 'flight' ? 'flight' : st.via);
       if (W.group.parent) scene.remove(W.group);
@@ -408,7 +414,8 @@
     };
     if (st.launch && W.rocket) { // lift off from the pad first
       var rk = W.rocket, t0 = performance.now();
-      cut = { cam: { p: new THREE.Vector3(rk.parent.parent.position.x + 14, 6, rk.parent.parent.position.z + 18), l: new THREE.Vector3(rk.parent.parent.position.x, 8, rk.parent.parent.position.z) } };
+      var lp = rk.parent.parent.position; // film from the street in front of the pad
+      cut = { cam: { p: new THREE.Vector3(lp.x + 13, 2.2, lp.z + DW.P / 2), l: new THREE.Vector3(lp.x, 8, lp.z) } };
       scene.remove(player);
       rk.userData.flame.visible = true;
       var tick = function () { var u = (performance.now() - t0) / 1000; rk.position.y = 0.5 + u * u * 2.4; cut.cam.l.y = 8 + rk.position.y * 0.8; if (u < 4.2) requestAnimationFrame(tick); else { rk.userData.flame.visible = false; rk.position.y = 0.5; cut = null; go(); } };
@@ -520,11 +527,13 @@
 
   /* ---------- per-frame ---------- */
   var last = performance.now(), frameNo = 0, nearNote = null, proj = new THREE.Vector3();
-  function frame(now) {
+  // one bad frame must never stop the game
+  function frame(now) { try { frameBody(now); } catch (e) { if (window.console) console.error(e); requestAnimationFrame(frame); } }
+  function frameBody(now) {
     var dt = Math.min(0.05, (now - last) / 1000); last = now; var t = now / 1000; frameNo++;
     if (travelScene) {
-      var tw = travelScene.w, el = (now - travelScene.t0) / 1000; tw.update(el);
-      var a = tw.actor.position, shots = tw.shots, si = Math.min(shots.length - 1, Math.floor(el / 2.6)), s0 = shots[si];
+      var tw = travelScene.w, el = Math.max(0, (now - travelScene.t0) / 1000); tw.update(el);
+      var a = tw.actor.position, shots = tw.shots, si = Math.max(0, Math.min(shots.length - 1, Math.floor(el / 2.6))), s0 = shots[si];
       camera.position.set(a.x + s0[0][0], a.y + s0[0][1], a.z + s0[0][2]); camera.lookAt(a.x + s0[1][0], a.y + s0[1][1], a.z + s0[1][2]);
       renderer.render(scene, camera); requestAnimationFrame(frame); return;
     }

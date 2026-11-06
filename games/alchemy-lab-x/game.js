@@ -91,6 +91,73 @@
     },
   };
 
+  /* ================= MUSIC (generated live, loops) ================= */
+  const Music = {
+    on: store.get('alx-music', true), playing: false, out: null, timer: 0, step: 0, next: 0, mel: [],
+    mtof: m => 440 * Math.pow(2, (m - 69) / 12),
+    CH: [[60, 64, 67, 71], [57, 60, 64, 67], [53, 57, 60, 64], [55, 59, 62, 65]],
+    ROOT: [36, 33, 29, 31],
+    SCALE: [72, 74, 76, 79, 81, 84, 86, 88],
+    start() {
+      Snd.ensure(); const c = Snd.ctx;
+      if (!c || this.playing || !this.on) return;
+      if (!this.out) {
+        this.out = c.createGain(); this.out.gain.value = 0;
+        const lp = c.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 2600;
+        this.out.connect(lp); lp.connect(c.destination);
+      }
+      this.playing = true;
+      this.out.gain.setTargetAtTime(.42, c.currentTime, 1.2);
+      this.next = c.currentTime + .15; this.step = 0; this.newMelody();
+      this.timer = setInterval(() => this.sched(), 90);
+    },
+    stop() {
+      if (!this.playing) return;
+      this.playing = false; clearInterval(this.timer);
+      this.out.gain.setTargetAtTime(0, Snd.ctx.currentTime, .25);
+    },
+    duck(sec) { if (!this.playing) return; const t = Snd.ctx.currentTime; this.out.gain.setTargetAtTime(.12, t, .1); this.out.gain.setTargetAtTime(.42, t + sec, .8); },
+    newMelody() {
+      let i = 2;
+      this.mel = Array.from({ length: 32 }, (_, s) => {
+        if (s % 8 === 7 || Math.random() < .38) return null;
+        i = clamp(i + pick([-2, -1, -1, 0, 1, 1, 2]), 0, this.SCALE.length - 1);
+        return this.SCALE[i];
+      });
+    },
+    voice(freq, t, dur, type, vol, attack = .01) {
+      const c = Snd.ctx, o = c.createOscillator(), g = c.createGain();
+      o.type = type; o.frequency.setValueAtTime(freq, t);
+      g.gain.setValueAtTime(0.0001, t); g.gain.linearRampToValueAtTime(vol, t + attack); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+      o.connect(g); g.connect(this.out); o.start(t); o.stop(t + dur + .05);
+    },
+    play(s, t, e) {
+      const bar = Math.floor(s / 8) % 4, b = s % 8;
+      if (b === 0) this.CH[bar].forEach((m, k) => { this.voice(this.mtof(m), t + k * .02, e * 8.4, 'triangle', .028, .35); });
+      if (b === 0 || b === 5) this.voice(this.mtof(this.ROOT[bar]), t, e * 2.6, 'sine', .14, .02);
+      if (b === 3) this.voice(this.mtof(this.ROOT[bar] + 7), t, e * 1.5, 'sine', .08, .02);
+      const m = this.mel[s];
+      if (m) { this.voice(this.mtof(m), t, e * 2.2, 'sine', .045); this.voice(this.mtof(m + 12), t, e * .8, 'triangle', .012); }
+      if (b === 0 || b === 4) { const c = Snd.ctx, o = c.createOscillator(), g = c.createGain(); o.frequency.setValueAtTime(130, t); o.frequency.exponentialRampToValueAtTime(45, t + .14); g.gain.setValueAtTime(.16, t); g.gain.exponentialRampToValueAtTime(.0001, t + .18); o.connect(g); g.connect(this.out); o.start(t); o.stop(t + .2); }
+      if (b % 2 === 1) {
+        const c = Snd.ctx, src = c.createBufferSource(), f = c.createBiquadFilter(), g = c.createGain();
+        src.buffer = Snd.noiseBuf(); f.type = 'highpass'; f.frequency.value = 7000;
+        g.gain.setValueAtTime(.025, t); g.gain.exponentialRampToValueAtTime(.0001, t + .05);
+        src.connect(f); f.connect(g); g.connect(this.out); src.start(t, Math.random()); src.stop(t + .06);
+      }
+    },
+    sched() {
+      const c = Snd.ctx, e = 60 / 92 / 2;
+      if (this.next < c.currentTime) this.next = c.currentTime + .05;
+      while (this.next < c.currentTime + .35) {
+        this.play(this.step, this.next, e);
+        this.next += e;
+        this.step = (this.step + 1) % 32;
+        if (this.step === 0 && Math.random() < .5) this.newMelody();
+      }
+    },
+  };
+
   /* ================= SCENE ================= */
   const svg = $('#svg');
   const world = el('g', { id: 'world' }, svg);
@@ -751,6 +818,7 @@
     const dur = fx.dur || 3;
     boardReaction(r);
     if (fx.sound) Snd.play(fx.sound, dur);
+    if (fx.boom || fx.flash === 2 || fx.foam === 3) Music.duck(dur);
     if (fx.bub) { const e = emitter(dur + 1.5, fx.bub * 14, () => bubble(fx.bub)); e.kind = 'bub'; }
     if (fx.flame) emitter(dur, 40, () => { const s = surfaceWorld(); spawn(L.fx, { x: s.x + rand(-34, 34), y: s.y, r: rand(6, 12), vy: -rand(70, 140), grow: -.7, fill: fx.flame, op: .9, fade: 1, life: rand(.4, .8), filter: 'url(#fBlur)' }); });
     if (fx.sparks) emitter(dur * .8, 30, () => { const s = surfaceWorld(); spawn(L.fx, { shape: 'line', x: s.x + rand(-20, 20), y: s.y, vx: rand(-220, 220), vy: -rand(180, 420), ay: 700, fill: fx.sparks, w: 2.5, life: rand(.5, .9), fade: 1 }); });
@@ -1311,8 +1379,8 @@
       const b = document.createElement('button');
       b.className = 'char' + (i === G.charIdx ? ' on' : '');
       b.dataset.i = i;
-      const s = document.createElementNS(NS, 'svg'); s.setAttribute('viewBox', '-75 -420 150 300');
-      const P = makePerson(st, s); P.update(0, 0);
+      const s = document.createElementNS(NS, 'svg'); s.setAttribute('viewBox', '-80 -428 160 436');
+      const P = makePerson(st, s); P.y = 0; P.setOutfit({ coat: true, goggles: false }); P.update(0, 0);
       b.appendChild(s);
       const n = document.createElement('span'); n.textContent = st.name; b.appendChild(n);
       wrap.appendChild(b);
@@ -1328,10 +1396,10 @@
     if (save && save.name) { G.charIdx = save.charIdx || 0; nm.value = save.name; nm.dataset.touched = 1; $$('.char').forEach((x, i) => x.classList.toggle('on', i === G.charIdx)); }
     else nm.value = STUDENTS[0].name;
     $('#resetBtn').hidden = !save;
-    $('#resetBtn').onclick = () => { if (confirm('確定要清除進度（圖鑑同任務）？')) { store.set('alx-save', null); location.reload(); } };
+    $('#resetBtn').onclick = e => { const b = e.currentTarget; if (b.dataset.armed) { store.set('alx-save', null); location.reload(); } else { b.dataset.armed = 1; b.textContent = '再撳一次確認清除所有進度'; } };
   }
   async function start() {
-    Snd.ensure();
+    Snd.ensure(); Music.start();
     G.name = ($('#nameIn').value || '').trim().slice(0, 12) || STUDENTS[G.charIdx].name;
     $('#startOv').hidden = true;
     const st = STUDENTS[G.charIdx];
@@ -1361,6 +1429,11 @@
   const syncSnd = () => { sndBtn.textContent = Snd.on ? '🔊' : '🔇'; sndBtn.setAttribute('aria-label', Snd.on ? '關閉聲音' : '開啟聲音'); };
   sndBtn.addEventListener('click', () => { Snd.on = !Snd.on; store.set('alx-sound', Snd.on); syncSnd(); Snd.ensure(); Snd.play('click'); });
   syncSnd();
+  const musBtn = $('#btnMusic');
+  const syncMus = () => { musBtn.classList.toggle('off', !Music.on); musBtn.setAttribute('aria-label', Music.on ? '關閉音樂' : '開啟音樂'); musBtn.title = Music.on ? '關閉音樂' : '開啟音樂'; };
+  musBtn.addEventListener('click', () => { Music.on = !Music.on; store.set('alx-music', Music.on); if (Music.on) Music.start(); else Music.stop(); syncMus(); });
+  syncMus();
+  document.addEventListener('visibilitychange', () => { if (document.hidden) Music.stop(); else if (player && Music.on) Music.start(); });
   $('#btnJournal').addEventListener('click', openJournal);
   $('#btnHelp').addEventListener('click', () => { $('#helpOv').hidden = false; });
   $$('.overlay .close').forEach(b => b.addEventListener('click', () => { b.closest('.overlay').hidden = true; }));

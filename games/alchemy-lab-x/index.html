@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alchemy Lab X｜化學實驗室</title>
+  <meta name="description" content="Alchemy Lab X — 一個模擬真實化學實驗室嘅遊戲：攞試劑、倒入燒杯、加熱、測試氣體，親眼睇住反應發生，收集超過 200 個化學反應。">
+  <meta name="theme-color" content="#0f1b2d">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M24 6h16v4h-3v14l15 26a6 6 0 0 1-5 9H17a6 6 0 0 1-5-9l15-26V10h-3z' fill='%23e8f3ff' stroke='%23234' stroke-width='3'/%3E%3Cpath d='M18 44h28l4 8a3 3 0 0 1-3 4H17a3 3 0 0 1-3-4z' fill='%233fb54a'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #0f1b2d; --panel: #16263d; --panel2: #1d3150; --line: #2c4467; --text: #eaf2ff; --muted: #9db0cc;
+      --accent: #4fd1a5; --accent2: #ffc94a; --danger: #ff6b6b;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: var(--bg); color: var(--text); font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", sans-serif; }
+    button { font: inherit; color: inherit; cursor: pointer; }
+    .svgt { font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif; user-select: none; }
+    .topbar { display: flex; align-items: center; gap: 12px; padding: 8px 16px; background: #0b1524; border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 30; }
+    .topbar a.back { color: var(--muted); text-decoration: none; font-size: 14px; white-space: nowrap; }
+    .topbar a.back:hover { color: var(--text); }
+    .brand { flex: 1; font-size: 17px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .brand span { color: var(--muted); font-size: 14px; margin-left: 6px; }
+    .top-actions { display: flex; gap: 8px; }
+    .top-actions button { background: var(--panel2); border: 1px solid var(--line); border-radius: 10px; padding: 6px 10px; font-size: 14px; white-space: nowrap; }
+    .top-actions button:hover { border-color: var(--accent); }
+    .top-actions button.off { opacity: .45; text-decoration: line-through; }
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 10px 16px 24px; }
+    .stage { position: relative; width: 100%; max-width: calc((100vh - 230px) * 16 / 9); min-width: min(100%, 560px); margin: 0 auto; aspect-ratio: 16 / 9; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,.45); background: #dfe8ee; }
+    #svg { display: block; width: 100%; height: 100%; touch-action: manipulation; }
+    .hot { cursor: pointer; outline: none; }
+    .hot:hover, .hot:focus-visible { filter: drop-shadow(0 0 6px rgba(79, 209, 165, .95)) brightness(1.06); }
+    .flicker { animation: flick .12s infinite alternate; transform-box: fill-box; transform-origin: 50% 100%; }
+    @keyframes flick { from { transform: scale(1, 1); } to { transform: scale(.9, 1.12); } }
+    .ember { animation: emb .6s infinite alternate; }
+    @keyframes emb { from { fill: #ff3a0a; } to { fill: #ffb21a; } }
+    .board { width: 100%; height: 100%; color: #1c2a3a; font-size: 15px; line-height: 1.45; padding: 4px 8px; overflow: hidden; }
+    .board .b-h { font-weight: 800; color: #1f6feb; font-size: 15px; border-bottom: 2px dashed #c8d6e5; padding-bottom: 3px; margin-bottom: 6px; }
+    .board .b-h span { color: #6b7d92; font-weight: 600; font-size: 13px; margin-left: 6px; }
+    .board .b-eq { font-size: 24px; font-weight: 800; color: #12233a; margin: 4px 0 6px; line-height: 1.3; }
+    .board .b-obs { font-size: 14px; color: #2b3d52; }
+    .board .b-foot { position: absolute; bottom: 4px; font-size: 12px; color: #6b7d92; }
+    .board sub, .card sub, .chip sub, .t-eq sub, .bubble sub, .bottle sub { font-size: .7em; }
+    .arr { display: inline-flex; flex-direction: column; align-items: center; line-height: 1; vertical-align: middle; }
+    .arr small { white-space: nowrap; font-size: 11px; font-weight: 600; color: #6b7d92; margin-top: -3px; }
+    #bubbles { position: absolute; inset: 0; pointer-events: none; }
+    .bubble { position: absolute; max-width: min(300px, 46%); background: #fff; color: #18222f; padding: 7px 11px; border-radius: 12px; font-size: clamp(11px, 1.35vw, 15px); line-height: 1.35; box-shadow: 0 4px 14px rgba(0,0,0,.25); transform-origin: bottom center; animation: pop .18s ease-out; transition: opacity .25s; }
+    .bubble::after { content: ""; position: absolute; left: var(--tail, 50%); bottom: -7px; margin-left: -7px; border: 7px solid transparent; border-bottom: 0; border-top-color: #fff; }
+    .bubble.teacher { background: #fff7e0; border: 2px solid #ffb648; }
+    .bubble.teacher::after { border-top-color: #ffb648; }
+    .bubble.out { opacity: 0; }
+    @keyframes pop { from { transform: scale(.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    #dialog { position: absolute; left: 50%; bottom: 3%; transform: translateX(-50%); width: min(92%, 720px); background: rgba(16, 28, 46, .96); border: 2px solid #ffb648; border-radius: 14px; padding: 12px 16px; display: flex; gap: 14px; align-items: flex-end; box-shadow: 0 10px 30px rgba(0,0,0,.4); z-index: 5; }
+    #dialog[hidden] { display: none; }
+    #dialog .d-who { font-weight: 800; color: #ffc94a; font-size: 14px; margin-bottom: 4px; }
+    #dialog .d-text { font-size: clamp(13px, 1.5vw, 16px); line-height: 1.55; }
+    #dialog .d-body { flex: 1; }
+    #dialog button { background: var(--accent); color: #062018; border: 0; border-radius: 10px; padding: 9px 16px; font-weight: 800; white-space: nowrap; }
+    #toast { position: absolute; top: 12px; left: 50%; transform: translate(-50%, -20px); opacity: 0; background: linear-gradient(135deg, #20365a, #172842); border: 2px solid var(--accent2); border-radius: 14px; padding: 10px 18px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,.45); transition: all .3s; z-index: 6; max-width: 92%; }
+    #toast.show { transform: translate(-50%, 0); opacity: 1; }
+    #toast .t-new { color: var(--accent2); font-weight: 800; font-size: 14px; }
+    #toast .t-big { color: var(--accent); font-weight: 900; font-size: 20px; }
+    #toast .t-title { font-size: 14px; color: var(--muted); }
+    #toast .t-eq { font-size: clamp(14px, 1.8vw, 20px); font-weight: 800; margin-top: 2px; }
+    #toast .arr small, .card .arr small { color: var(--muted); }
+
+    .panel { display: grid; grid-template-columns: minmax(220px, 1fr) minmax(200px, 1fr); gap: 10px; margin-top: 10px; }
+    .box { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; }
+    .mission .m-label, .contents .c-label { font-size: 12px; color: var(--muted); font-weight: 700; letter-spacing: .04em; }
+    #mTitle { font-weight: 800; font-size: 16px; margin: 2px 0; color: var(--accent2); }
+    #mTask { font-size: 14px; color: #cfe0f7; }
+    #chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+    .chip { background: #24406a; border: 1px solid #3a5f92; border-radius: 999px; padding: 2px 10px; font-size: 14px; font-weight: 700; }
+    .chip.gas { background: #3a2f12; border-color: #8a6a1a; color: #ffd36a; }
+    .muted { color: var(--muted); font-size: 14px; }
+    .tools { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: 8px; }
+    .tools button { background: var(--panel2); border: 1px solid var(--line); border-radius: 12px; padding: 8px 6px; font-size: 13px; line-height: 1.25; display: flex; flex-direction: column; align-items: center; gap: 2px; transition: transform .08s, border-color .15s; }
+    .tools button .ic { font-size: 22px; line-height: 1; }
+    .tools button:hover { border-color: var(--accent); }
+    .tools button:active { transform: scale(.96); }
+    .tools button.on { background: #1f4a3d; border-color: var(--accent); }
+    .tools button.busy { opacity: .55; }
+    .tools button.primary { background: #2a3f6b; border-color: #4f7bd1; }
+
+    .overlay { position: fixed; inset: 0; background: rgba(5, 10, 20, .78); display: flex; align-items: center; justify-content: center; z-index: 50; padding: 16px; }
+    .overlay[hidden] { display: none; }
+    .sheet { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; width: min(980px, 100%); max-height: 92vh; overflow: auto; padding: 18px 20px; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+    .sheet h2 { margin: 0 0 4px; font-size: 22px; }
+    .sheet .sub { color: var(--muted); margin: 0 0 12px; font-size: 14px; }
+    .close { position: absolute; top: 12px; right: 12px; background: var(--panel2); border: 1px solid var(--line); border-radius: 50%; width: 36px; height: 36px; font-size: 18px; }
+
+    #startOv { background: radial-gradient(ellipse at top, #1d3a63, #0a1220 70%); overflow-y: auto; align-items: flex-start; }
+    .start { text-align: center; max-width: 760px; margin: auto; padding-block: 8px; }
+    .start h1 { font-size: clamp(30px, 6vw, 52px); margin: 0; letter-spacing: .02em; background: linear-gradient(90deg, #4fd1a5, #6fb3ff, #c38cff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .start .tag { color: var(--muted); margin: 6px 0 16px; }
+    .start .eq { font-size: 20px; font-weight: 800; color: var(--accent2); margin-bottom: 14px; }
+    #chars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 8px 0 14px; }
+    .char { background: var(--panel2); border: 2px solid var(--line); border-radius: 14px; padding: 6px 4px 8px; display: flex; flex-direction: column; align-items: center; }
+    .char svg { width: 100%; max-width: 110px; aspect-ratio: 160 / 436; height: auto; }
+    .char.on { border-color: var(--accent); background: #1f4a3d; }
+    .char span { font-weight: 700; }
+    .namerow { display: flex; gap: 8px; justify-content: center; align-items: center; flex-wrap: wrap; }
+    .namerow label { color: var(--muted); }
+    #nameIn { background: #0d1828; border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; color: var(--text); font: inherit; width: 180px; }
+    .big { background: var(--accent); color: #062018; border: 0; border-radius: 12px; padding: 12px 28px; font-weight: 900; font-size: 18px; }
+    .big:hover { filter: brightness(1.08); }
+    .link { background: none; border: 0; color: var(--muted); text-decoration: underline; font-size: 13px; margin-top: 10px; }
+
+    .shelf { margin-bottom: 12px; }
+    .s-label { font-weight: 800; color: var(--accent2); font-size: 14px; margin-bottom: 6px; }
+    .s-row { display: flex; flex-wrap: wrap; gap: 10px; padding: 10px; background: linear-gradient(#20324f, #1a2a43); border-radius: 10px; border-bottom: 6px solid #6f4a2e; }
+    .bottle { background: none; border: 0; width: 92px; display: flex; flex-direction: column; align-items: center; padding: 4px; border-radius: 10px; position: relative; }
+    .bottle:hover, .bottle:focus-visible { background: rgba(79, 209, 165, .15); outline: 2px solid var(--accent); }
+    .b-neck { width: 18px; height: 12px; background: rgba(230, 242, 255, .55); border: 2px solid #8fa3b0; border-bottom: 0; border-radius: 3px 3px 0 0; }
+    .b-body { width: 64px; height: 62px; background: rgba(230, 242, 255, .35); border: 2px solid #8fa3b0; border-radius: 10px; position: relative; overflow: hidden; display: block; }
+    .jar .b-neck { width: 44px; height: 8px; background: #6b4a2e; border-color: #5a3d22; }
+    .jar .b-body { width: 64px; height: 52px; border-radius: 8px; }
+    .b-liq { position: absolute; left: 0; right: 0; bottom: 0; height: 60%; opacity: .9; }
+    .b-label { position: absolute; left: 2px; right: 2px; top: 30%; background: #fff; color: #111; font-size: 10px; letter-spacing: -.02em; border-radius: 3px; padding: 1px 0; text-align: center; white-space: nowrap; overflow: hidden; }
+    .b-name { font-size: 12px; margin-top: 4px; line-height: 1.2; text-align: center; }
+    .b-haz { display: flex; gap: 2px; margin-top: 2px; }
+    .b-haz i { font-style: normal; font-size: 10px; font-weight: 800; border: 1.5px solid; border-radius: 3px; padding: 0 2px; background: #fff; }
+
+    #jourTabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+    #jourTabs button { background: var(--panel2); border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; font-size: 13px; }
+    #jourTabs button.on { background: #1f4a3d; border-color: var(--accent); }
+    .jbar { height: 8px; background: #0d1828; border-radius: 99px; overflow: hidden; }
+    #jourBar { height: 100%; background: linear-gradient(90deg, var(--accent), #6fb3ff); width: 0; transition: width .4s; }
+    #jourList { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px; }
+    .card { background: var(--panel2); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; }
+    .card .c-cat { font-size: 11px; color: var(--muted); font-weight: 700; }
+    .card .c-title { font-weight: 800; font-size: 14px; margin: 2px 0 4px; }
+    .card .c-eq { font-size: 16px; font-weight: 700; color: var(--accent2); margin-bottom: 4px; }
+    .card .c-obs { font-size: 13px; color: #c3d3ea; line-height: 1.45; }
+    .card.locked { opacity: .55; border-style: dashed; }
+    .card.locked .c-eq { color: var(--muted); }
+    .hintrow { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 8px; }
+    .hintrow button { background: #3a2f12; border: 1px solid #8a6a1a; color: #ffd36a; border-radius: 10px; padding: 6px 12px; }
+    #hintBox { color: #ffe49a; font-size: 14px; }
+
+    #menu { position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); background: var(--panel); border: 2px solid var(--accent); border-radius: 14px; padding: 14px; z-index: 60; display: flex; flex-direction: column; gap: 8px; min-width: 260px; box-shadow: 0 20px 60px rgba(0,0,0,.6); }
+    #menu[hidden] { display: none; }
+    #menu .m-title { font-weight: 800; margin-bottom: 4px; }
+    #menu button { background: var(--panel2); border: 1px solid var(--line); border-radius: 10px; padding: 10px; text-align: left; }
+    #menu button:hover { border-color: var(--accent); }
+    #menu button.ghost { text-align: center; color: var(--muted); }
+    .help li { margin-bottom: 6px; line-height: 1.5; }
+    .help h3 { margin: 14px 0 6px; color: var(--accent2); font-size: 16px; }
+
+    @media (max-width: 720px) {
+      .wrap { padding: 8px 8px 20px; }
+      .stage { min-width: 0; border-radius: 10px; }
+      .panel { grid-template-columns: 1fr; }
+      .tools { grid-template-columns: repeat(4, 1fr); gap: 6px; }
+      .tools button { font-size: 11px; padding: 6px 2px; }
+      .tools button .ic { font-size: 20px; }
+      .brand span { display: none; }
+      #chars { grid-template-columns: repeat(2, 1fr); }
+      .char svg { max-width: 64px; }
+      #dialog { position: fixed; bottom: 12px; z-index: 40; flex-direction: column; align-items: stretch; padding: 10px 12px; }
+      #toast { position: fixed; top: 56px; }
+      .bottle { width: 76px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .bubble, #toast { animation: none; transition: none; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="back" href="../">← 遊戲</a>
+    <div class="brand">⚗️ <b>Alchemy Lab X</b><span>化學實驗室</span></div>
+    <div class="top-actions">
+      <button id="btnJournal" type="button" aria-label="反應圖鑑">📖 <span id="discCount">0/0</span></button>
+      <button id="btnMusic" type="button">🎵</button>
+      <button id="btnSound" type="button">🔊</button>
+      <button id="btnHelp" type="button" aria-label="玩法說明">❔</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div id="stage" class="stage">
+      <svg id="svg" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid meet" role="img" aria-label="化學實驗室"></svg>
+      <div id="bubbles"></div>
+      <div id="toast" hidden></div>
+      <div id="dialog" hidden><div class="d-body"><div class="d-who"></div><div class="d-text"></div></div><button type="button">明白！</button></div>
+    </div>
+
+    <section class="panel">
+      <div class="box mission"><div class="m-label">任務 <span id="mNum"></span></div><div id="mTitle"></div><div id="mTask"></div></div>
+      <div class="box contents"><div class="c-label">燒杯入面 / 燒杯口氣體</div><div id="chips"></div></div>
+      <div class="tools" id="tools">
+        <button type="button" class="primary" data-act="cabinet"><span class="ic">🧪</span>試劑櫃</button>
+        <button type="button" data-act="wear"><span class="ic">🥽</span>安全裝備</button>
+        <button type="button" data-act="burner"><span class="ic">🔥</span>本生燈</button>
+        <button type="button" data-act="screen"><span class="ic">🛡️</span>安全屏</button>
+        <button type="button" data-act="test-splint"><span class="ic">🪵</span>木條測試</button>
+        <button type="button" data-act="test-lime"><span class="ic">🥛</span>石灰水</button>
+        <button type="button" data-act="test-ph"><span class="ic">📄</span>pH 試紙</button>
+        <button type="button" data-act="test-flame"><span class="ic">🌈</span>焰色測試</button>
+        <button type="button" data-act="wash"><span class="ic">🚰</span>洗燒杯</button>
+        <button type="button" data-act="teacher"><span class="ic">👩‍🏫</span>叫老師監督</button>
+        <button type="button" data-act="journal"><span class="ic">📖</span>反應圖鑑</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- start -->
+  <div class="overlay" id="startOv">
+    <div class="start">
+      <h1>Alchemy Lab X</h1>
+      <p class="tag">化學實驗室 · 攞試劑、倒燒杯、加熱、測試氣體——親眼睇住反應發生！</p>
+      <div class="eq">2K + H₂SO₄ → K₂SO₄ + H₂↑</div>
+      <div id="chars"></div>
+      <div class="namerow"><label for="nameIn">你嘅名：</label><input id="nameIn" maxlength="12" autocomplete="off"><button class="big" id="startBtn" type="button">入實驗室 ▶</button></div>
+      <button class="link" id="resetBtn" type="button" hidden>清除進度，重新開始</button>
+    </div>
+  </div>
+
+  <!-- cabinet -->
+  <div class="overlay" id="cabOv" hidden>
+    <div class="sheet">
+      <button class="close" type="button" aria-label="關閉">✕</button>
+      <h2>🧪 試劑櫃</h2>
+      <p class="sub">揀一樽試劑，你嘅角色會攞去實驗枱倒入燒杯。標籤：<b style="color:#d22">腐</b>蝕性 <b style="color:#e67a00">燃</b>易燃 <b style="color:#7a1fa2">毒</b>有毒 <b style="color:#d2a000">氧</b>氧化劑 <b>刺</b>刺激性 <b>害</b>有害</p>
+      <div id="cabShelves"></div>
+    </div>
+  </div>
+
+  <!-- journal -->
+  <div class="overlay" id="jourOv" hidden>
+    <div class="sheet">
+      <button class="close" type="button" aria-label="關閉">✕</button>
+      <h2>📖 反應圖鑑</h2>
+      <p class="sub">每發現一個新反應、氣體測試或者焰色，都會記錄喺度。</p>
+      <div class="jbar"><div id="jourBar"></div></div>
+      <div class="hintrow"><button type="button" id="jourHint">💡 俾個提示</button><span id="hintBox"></span></div>
+      <div id="jourTabs"></div>
+      <div id="jourList"></div>
+    </div>
+  </div>
+
+  <!-- help -->
+  <div class="overlay" id="helpOv" hidden>
+    <div class="sheet help">
+      <button class="close" type="button" aria-label="關閉">✕</button>
+      <h2>❔ 點樣玩</h2>
+      <p class="sub">你係化學實驗室入面嘅學生。撳實驗室入面嘅物件（或者下面嘅按鈕），你嘅角色就會行過去做。</p>
+      <h3>基本操作</h3>
+      <ul>
+        <li><b>試劑櫃</b>：揀試劑 → 角色會攞去實驗枱，倒入燒杯。燒杯入面嘅物質會自動反應。</li>
+        <li><b>本生燈</b>：開/熄火。有啲反應要加熱先會發生（例如 鐵 + 硫、加熱鎂帶、硫酸銅晶體）。</li>
+        <li><b>洗手盆</b>：將燒杯拎去清洗，重新開始。</li>
+        <li><b>陳老師</b>：撳老師，佢會過嚟監督高危實驗。<b>拍檔</b>會俾你小貼士。</li>
+      </ul>
+      <h3>測試</h3>
+      <ul>
+        <li><b>燃著的木條</b>：有氫氣會「噗」一聲；有 CO₂ 會熄滅。</li>
+        <li><b>餘燼木條</b>：有氧氣會重新燃起。</li>
+        <li><b>石灰水</b>：有 CO₂ 會變奶白色。</li>
+        <li><b>濕潤 pH 試紙</b>：測氨氣（變藍）或者酸性氣體（變紅）；冇氣體就測溶液 pH。</li>
+        <li><b>焰色測試</b>：Na⁺ 黃、K⁺ 淡紫、Ca²⁺ 磚紅、Cu²⁺ 藍綠、Ba²⁺ 黃綠。</li>
+      </ul>
+      <h3>安全</h3>
+      <ul>
+        <li>未著實驗袍、戴護目鏡，老師唔會俾你做實驗。</li>
+        <li>危險反應（例如鈉/鉀 + 水或酸）要先擺好<b>安全屏</b>；最危險嘅仲要<b>叫老師監督</b>。</li>
+        <li>呢個係模擬遊戲——現實中請勿喺冇老師指導下嘗試任何實驗！</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="menu" hidden></div>
+
+  <script src="chem.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

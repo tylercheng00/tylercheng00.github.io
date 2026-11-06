@@ -142,3 +142,35 @@
 .game-talk { background: #13294a; color: #fff; border: 1px solid rgba(226, 200, 143, .6); }
 .game-talk b { color: #e2c88f; }
 .game-talk span { font-size: 14px; }
+
+/* v4: objective compass, jump button, dialogue, scene fades */
+.game-goal {
+  position: absolute; left: 50%; top: 52px; transform: translateX(-50%); display: flex; align-items: center; gap: 8px; max-width: calc(100% - 140px);
+  padding: 7px 14px; border-radius: 999px; background: rgba(7, 19, 34, .82); border: 1px solid rgba(226, 200, 143, .55); color: #fff; font-size: 13px; pointer-events: none; white-space: nowrap;
+}
+.game-goal span { overflow: hidden; text-overflow: ellipsis; }
+.game-goal i { font-style: normal; color: #e2c88f; display: inline-block; transition: transform .15s; }
+.game-goal b { color: #e2c88f; font-variant-numeric: tabular-nums; }
+.game-jump {
+  position: absolute; right: 18px; bottom: 64px; width: 64px; height: 64px; border-radius: 50%; display: none; touch-action: none;
+  border: 2px solid rgba(255, 255, 255, .5); background: rgba(201, 163, 91, .55); color: #fff; font-size: 26px; font-weight: 700;
+}
+@media (pointer: coarse) { .game.walking .game-jump { display: block; } }
+.game-fade { position: absolute; inset: 0; background: #000; opacity: 0; pointer-events: none; }
+.game-fade.on { animation: g-fade .7s ease-out; }
+@keyframes g-fade { 0% { opacity: 1; } 100% { opacity: 0; } }
+.g-say { padding: 14px 16px; border-radius: 14px; background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .12); margin-bottom: 12px; }
+.g-say b { display: block; color: #e2c88f; font-size: 13px; letter-spacing: .06em; margin-bottom: 4px; }
+.g-say p { margin: 0; font-size: 17px; line-height: 1.65; color: #fff; }
+.g-goal { margin: 0 0 12px; padding: 10px 14px; border-radius: 12px; background: rgba(201, 163, 91, .12); border: 1px solid rgba(201, 163, 91, .45); color: #fff; font-weight: 600; }
+.g-btn.small { padding: 8px 14px; font-size: 13px; }
+.game[data-step="cut"] .game-panel, .game[data-step="choice"] .game-panel, .game[data-step="reply"] .game-panel { background: linear-gradient(180deg, #13294a, #0b1d33); }
+.game.in-space .game-mini { box-shadow: 0 0 0 2px rgba(255, 255, 255, .3); }
+@media (max-width: 860px) {
+  .game[data-step="play"] .game-panel { max-height: 30svh; }
+  .game-goal { top: 46px; font-size: 12px; max-width: calc(100% - 110px); left: calc(50% - 46px); }
+  .game-jump { right: 14px; bottom: 60px; width: 58px; height: 58px; }
+  .game-help { display: none; }
+}
+
+.game-goal[hidden], .game-tip[hidden] { display: none; }

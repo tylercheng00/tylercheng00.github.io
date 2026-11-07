@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-07T00:06:11Z",
+ "updated": "2026-11-07T05:53:50Z",
  "sources": [
   "BBC News",
   "BioPharma Dive",
@@ -24,7 +24,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-07T00:06:11Z"
+   "date": "2026-11-07T05:53:50Z"
   },
   {
    "title": "Integrated health service delivery through medical mobile units helped to reduce deaths among individuals at risk for HIV who also inject drugs",
@@ -34,7 +34,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-07T00:06:11Z"
+   "date": "2026-11-07T05:53:50Z"
   },
   {
    "title": "An extra year of secondary school lowered dementia diagnoses later in life",
@@ -44,7 +44,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-07T00:06:11Z"
+   "date": "2026-11-07T05:53:50Z"
   },
   {
    "title": "A precision T-cell therapy stalls treatment-resistant cancers in clinical trial",
@@ -54,7 +54,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-07T00:06:11Z"
+   "date": "2026-11-07T05:53:50Z"
   },
   {
    "title": "A blood-pressure drug may activate health-promoting brown fat",
@@ -64,7 +64,57 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-07T00:06:11Z"
+   "date": "2026-11-07T05:53:50Z"
+  },
+  {
+   "title": "China to narrow scope of contentious detention and surveillance measure",
+   "summary": "Chinese lawmakers are proposing to restrict a contentious form of detention and police surveillance measure, among other changes to the country’s Criminal Procedure Law. Known as residential surveillance at a designated…",
+   "link": "https://www.scmp.com/news/china/politics/article/3373546/china-narrow-scope-contentious-designated-location-surveillance-measure",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-07T04:00:09Z"
+  },
+  {
+   "title": "Texas mayor instructs police to limit cooperation with ICE",
+   "summary": "The new policy, which comes after a Democratic sweep of the state, will limit the people it will inform the immigration agency about to those who have been arrested for jailable offences.",
+   "link": "https://www.bbc.co.uk/news/articles/c8dx33d22zkro?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-07T03:31:54Z"
+  },
+  {
+   "title": "Former Evergrande economist faces WeChat gag order after ‘buy the dip’ call",
+   "summary": "Amid a bear market in China’s stock exchanges, Ren Zeping, the high-profile independent economist famed for his prescient call on China’s A-share bull market, is once again in the spotlight for a “gag order” on his…",
+   "link": "https://www.scmp.com/economy/china-economy/article/3373565/former-evergrande-economist-faces-wechat-gag-order-after-buy-dip-call",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-07T03:00:10Z"
+  },
+  {
+   "title": "'My mortgage is going up £200': How rising interest rates are hitting people's pockets",
+   "summary": "With UK interest rates set to rise, mortgages, credit cards and loans could get more expensive for millions.",
+   "link": "https://www.bbc.co.uk/news/articles/c617kjqjvk12o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-07T01:41:36Z"
+  },
+  {
+   "title": "Sanae Takaichi slammed online for praising calligraphy without mentioning China",
+   "summary": "Japanese Prime Minister Sanae Takaichi has faced backlash online after writing a social media post celebrating Japan’s shodo calligraphy without mentioning its Chinese roots. On Thursday, Unesco released this year’s…",
+   "link": "https://www.scmp.com/news/china/diplomacy/article/3373580/sanae-takaichi-slammed-online-praising-calligraphy-without-mentioning-china",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-07T01:00:12Z"
   },
   {
    "title": "Cornell faculty pass no-confidence vote over leadership's handling of Jane Doe allegations",
@@ -177,7 +227,7 @@
    "date": "2026-11-06T22:05:39Z"
   },
   {
-   "title": "Will the US midterm ‘blue tsunami’ erode China’s faith in Trump and Xi’s relationship?",
+   "title": "Will the US midterm ‘blue tsunami’ erode China’s faith in Xi and Trump’s relationship?",
    "summary": "China may start looking for ways to make its deals with the United States less dependent on the personal relationship between presidents Xi Jinping and Donald Trump after the midterm elections left the US leader in a…",
    "link": "https://www.scmp.com/news/china/diplomacy/article/3373574/will-us-midterm-blue-tsunami-erode-chinas-faith-trump-and-xis-relationship",
    "source": "SCMP",
@@ -306,16 +356,6 @@
     "us"
    ],
    "date": "2026-11-06T20:21:13Z"
-  },
-  {
-   "title": "Trump names Stephen Miller as new White House chief of staff",
-   "summary": "Miller, considered the architect of Trump's hard-line immigration policy, will move into the role on Monday.",
-   "link": "https://www.bbc.co.uk/news/articles/cm9qzz5x9g5yo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-06T20:11:45Z"
   },
   {
    "title": "A disturbing employment trend is hiding beneath the latest strong job numbers",
@@ -499,16 +539,6 @@
    "date": "2026-11-06T15:25:43Z"
   },
   {
-   "title": "Workers' rights 'second place' to economic growth",
-   "summary": "Jersey's Economic Development Minister has told the BBC that workers' rights may have to take 'second place' to economic growth.",
-   "link": "https://www.bbc.co.uk/news/videos/cq369l9r634ro?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-06T14:52:49Z"
-  },
-  {
    "title": "Beijing calls for more efforts to stabilise stock market after renewed sell-off",
    "summary": "China’s State Council has pledged improved policy mechanisms to stabilise the country’s struggling stock market, after stocks slid again on Friday following a meltdown on the US markets. “We will enhance the inherent…",
    "link": "https://www.scmp.com/business/markets/article/3373602/beijing-calls-more-efforts-stabilise-stock-market-after-renewed-sell",
@@ -529,16 +559,6 @@
    "date": "2026-11-06T14:00:11Z"
   },
   {
-   "title": "Democratic Congress to guard US’ Taiwan policy and press Trump on arms sales",
-   "summary": "The Democratic US Congress may push for faster arms sales to Taiwan following the party’s resounding midterm election victories, but there will be no fundamental shifts in broader US policy towards the island, according…",
-   "link": "https://www.scmp.com/news/china/politics/article/3373517/democratic-congress-guard-us-taiwan-policy-and-press-trump-arms-sales",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-06T14:00:06Z"
-  },
-  {
    "title": "Why Glycosylation Control Is No Longer a Secondary Concern in the Development of Complex Biologics",
    "summary": "A priority shift is redefining expectations for contract development and manufacturing organizations (CDMOs). This article explains how CDMOs can efficiently move their glycosylation processes upstream using…",
    "link": "https://www.genengnews.com/topics/bioprocessing/why-glycosylation-control-is-no-longer-a-secondary-concern-in-the-development-of-complex-biologics/",
@@ -557,16 +577,6 @@
     "biotech"
    ],
    "date": "2026-11-06T13:13:00Z"
-  },
-  {
-   "title": "Trump left with ‘no good options’ to end Iran war after crushing US midterms defeat",
-   "summary": "As Republican losses in the US midterm elections highlight how unpopular the war in Iran is, all eyes are on Washington’s next moves and whether the election results could set the stage for a quicker end to the…",
-   "link": "https://www.scmp.com/news/china/diplomacy/article/3373596/trump-left-no-good-options-end-iran-war-following-crushing-us-midterms-defeat",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-06T13:12:30Z"
   },
   {
    "title": "Ahead of Shenzhen trade talks, US holds off blacklist rule that angered Beijing",
@@ -677,16 +687,6 @@
     "biotech"
    ],
    "date": "2026-11-06T00:42:05Z"
-  },
-  {
-   "title": "Is Lula’s upset win also a victory for Chinese firms in Brazil?",
-   "summary": "With domestic profits narrowing and production capacity expanding, China’s firms are continuing to widen their overseas footprints in search of new, more lucrative markets. In this series, we examine China Inc.’s next…",
-   "link": "https://www.scmp.com/economy/global-economy/article/3373387/lulas-upset-win-also-victory-chinese-firms-brazil",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-05T22:00:07Z"
   },
   {
    "title": "The October jobs report is out Friday. Here's everything to expect",

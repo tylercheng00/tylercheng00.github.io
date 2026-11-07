@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-07T14:52:44Z",
+ "updated": "2026-11-07T20:13:28Z",
  "sources": [
   "BBC News",
   "BioPharma Dive",
@@ -24,7 +24,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-07T14:52:44Z"
+   "date": "2026-11-07T20:13:28Z"
   },
   {
    "title": "Integrated health service delivery through medical mobile units helped to reduce deaths among individuals at risk for HIV who also inject drugs",
@@ -34,7 +34,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-07T14:52:44Z"
+   "date": "2026-11-07T20:13:28Z"
   },
   {
    "title": "An extra year of secondary school lowered dementia diagnoses later in life",
@@ -44,7 +44,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-07T14:52:44Z"
+   "date": "2026-11-07T20:13:28Z"
   },
   {
    "title": "A precision T-cell therapy stalls treatment-resistant cancers in clinical trial",
@@ -54,7 +54,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-07T14:52:44Z"
+   "date": "2026-11-07T20:13:28Z"
   },
   {
    "title": "A blood-pressure drug may activate health-promoting brown fat",
@@ -64,7 +64,78 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-07T14:52:44Z"
+   "date": "2026-11-07T20:13:28Z"
+  },
+  {
+   "title": "Trump offers UFC chief Dana White press secretary job",
+   "summary": "President Donald Trump offered the job of press secretary to UFC president and CEO Dana White on Saturday.",
+   "link": "https://www.cnbc.com/2026/11/07/trump-ufc-dana-white-press-secretary-offer.html",
+   "source": "CNBC",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-07T20:10:01Z"
+  },
+  {
+   "title": "'Dana, please take the job!' - Trump asks UFC boss to be White House press secretary",
+   "summary": "The BBC has asked the White House and TKO Holdings, the parent company of UFC, for comment.",
+   "link": "https://www.bbc.co.uk/news/articles/cvze47p9jeexo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-07T19:52:23Z"
+  },
+  {
+   "title": "US offers $20m reward for information about Iran's nuclear programme",
+   "summary": "Donald Trump has repeatedly raised the prospecting of renewing strikes against Iran's nuclear facilities.",
+   "link": "https://www.bbc.co.uk/news/articles/c6d091ev3p0jo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-07T18:14:38Z"
+  },
+  {
+   "title": "Ousted Paraguayan president appears before prosecutors",
+   "summary": "Paraguayan President Santiago Peña was removed from office and placed under house arrest Friday. The Senate voted on his impeachment after the collapse of a state-affiliated bank.",
+   "link": "https://www.npr.org/2026/11/07/nx-s1-6033373/paraguay-president-ousted-bank-collapse",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-07T17:14:36Z"
+  },
+  {
+   "title": "STAT+: BIO joins the legal fight against Medicare pilot that ties drug prices to peer countries",
+   "summary": "The model is a test of Trump's most-favored nation approach to drug pricing, though its impact is likely to be limited.",
+   "link": "https://www.statnews.com/2026/11/07/bio-sues-to-block-globe-drug-pricing-model/?utm_campaign=rss",
+   "source": "STAT News",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-07T16:57:13Z"
+  },
+  {
+   "title": "Why the prognosis for healthcare stocks is uncertain ahead of Congress’ new makeup",
+   "summary": "Healthcare stocks may struggle to find momentum as the Democrats get ready to take over Congress.",
+   "link": "https://www.cnbc.com/2026/11/07/healthcare-stocks-may-face-trouble-due-to-midterm-results.html",
+   "source": "CNBC",
+   "cats": [
+    "finance",
+    "us"
+   ],
+   "date": "2026-11-07T16:02:33Z"
+  },
+  {
+   "title": "Berkshire Hathaway more than doubles buybacks in third quarter as earnings decline",
+   "summary": "Berkshire Hathaway said Saturday it accelerated its share repurchases during the third quarter, as operating and overall profits took a hit.",
+   "link": "https://www.cnbc.com/2026/11/07/berkshire-hathaway-q3-2026-earnings-buybacks.html",
+   "source": "CNBC",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-07T15:23:46Z"
   },
   {
    "title": "STAT+: Failure of Novartis Lp(a) drug raises questions about cardiovascular strategy",
@@ -85,16 +156,6 @@
     "biotech"
    ],
    "date": "2026-11-07T14:35:00Z"
-  },
-  {
-   "title": "Berkshire Hathaway more than doubles buybacks in third quarter as earnings decline",
-   "summary": "Berkshire Hathaway said Saturday it accelerated its share repurchases during the third quarter, as operating and overall profits took a hit.",
-   "link": "https://www.cnbc.com/2026/11/07/berkshire-hathaway-q3-2026-earnings-buybacks.html",
-   "source": "CNBC",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-07T14:02:49Z"
   },
   {
    "title": "History repeats in Shenzhen? China hosts another lame-duck US president",
@@ -277,16 +338,6 @@
    "date": "2026-11-07T10:00:06Z"
   },
   {
-   "title": "An unexpected activist emerged to help block a $5 billion data center in Maryland",
-   "summary": "Thousands across the U.S. have gotten involved to oppose data centers. One is a Maryland woman who'd been evicted after a pay cut and became a leader of a community effort that blocked a vast project.",
-   "link": "https://www.npr.org/2026/11/07/nx-s1-6007770/data-centers-activist-moratorium",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-07T10:00:00Z"
-  },
-  {
    "title": "US and China must join hands to measure rising AI tide",
    "summary": "The next US-China talk on artificial intelligence should begin with a simple question: do the two governments actually understand how rapidly AI’s capabilities are improving? Before deciding what to do about the…",
    "link": "https://www.scmp.com/opinion/china-opinion/article/3373279/us-and-china-must-join-hands-measure-rising-ai-tide",
@@ -295,16 +346,6 @@
     "china"
    ],
    "date": "2026-11-07T08:30:05Z"
-  },
-  {
-   "title": "Texas mayor instructs police to limit co-operation with ICE",
-   "summary": "There has been months of public outcry in Houston after an Immigration and Customs Enforcement (ICE) officer fatally shot a man who was driving to work.",
-   "link": "https://www.bbc.co.uk/news/articles/c8dx33d22zkro?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-07T08:15:55Z"
   },
   {
    "title": "China’s EV safety push gives foreign brands from Tesla to GM an opening for a comeback",
@@ -335,26 +376,6 @@
     "biotech"
    ],
    "date": "2026-11-07T07:48:42Z"
-  },
-  {
-   "title": "Trump says U.S. carried out ‘minor strikes’ on Iran as missiles hit Qeshm Island",
-   "summary": "Trump said the U.S. carried out ‘minor strikes’ on Iran after Iranian media reported two missiles hit Qeshm Island near the Strait of Hormuz.",
-   "link": "https://www.cnbc.com/2026/11/07/trump-us-minor-strikes-iran-qeshm-island.html",
-   "source": "CNBC",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-07T07:37:36Z"
-  },
-  {
-   "title": "Meghan's father Thomas Markle under house arrest after child sex abuse material charge",
-   "summary": "The 82-year-old appeared in court in Florida after the FBI searched two Los Angeles-area storage units he rented.",
-   "link": "https://www.bbc.co.uk/news/articles/cqgkvv8m8pgyo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-07T07:27:44Z"
   },
   {
    "title": "Chinese consulate in Melbourne demands justice after fatal stabbing of delivery worker",
@@ -397,7 +418,7 @@
    "date": "2026-11-07T03:00:10Z"
   },
   {
-   "title": "'My mortgage is going up £200': How rising interest rates are hitting people's pockets",
+   "title": "'My mortgage is going up £200 a month': How rising interest rates are hitting people's pockets",
    "summary": "With UK interest rates set to rise, mortgages, credit cards and loans could get more expensive for millions.",
    "link": "https://www.bbc.co.uk/news/articles/c617kjqjvk12o?at_medium=RSS&at_campaign=rss",
    "source": "BBC News",
@@ -465,16 +486,6 @@
     "finance"
    ],
    "date": "2026-11-06T21:49:50Z"
-  },
-  {
-   "title": "Two incoming lawmakers plan to defend health equity from Trump administration cuts",
-   "summary": "Two newly elected lawmakers with science backgrounds hope to push back against Trump administration cuts to health equity programs.",
-   "link": "https://www.statnews.com/2026/11/06/abdul-el-sayed-jasmine-clark-defend-health-equity-from-cuts/?utm_campaign=rss",
-   "source": "STAT News",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-06T21:46:55Z"
   },
   {
    "title": "AI stocks climb after trillions wiped from market values",
@@ -727,17 +738,6 @@
     "finance"
    ],
    "date": "2026-11-05T16:34:33Z"
-  },
-  {
-   "title": "Voters say the economy drove them to the polls — and blame Trump for their troubles",
-   "summary": "Participants in the CNBC Voter Poll ranked the economy the most important issue facing the country, ahead of topics tied to democracy and immigration.",
-   "link": "https://www.cnbc.com/2026/11/04/2026-midterms-trump-economy-iran-war.html",
-   "source": "CNBC",
-   "cats": [
-    "finance",
-    "us"
-   ],
-   "date": "2026-11-05T16:07:59Z"
   }
  ]
 }

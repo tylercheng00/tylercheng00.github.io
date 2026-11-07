@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
-"""Manually draft one bilingual Insights article with Claude.
+"""Draft one bilingual Insights article with Claude.
 
-Not scheduled. The site publishes a pre-written note every day from
-content/daily/ via tools/publish_daily.py. This helper only writes a file
-under content/insights/ on the machine where it is run; it does not commit
-or publish.
+The daily workflow calls this when content/daily has nothing due, then
+commits the file straight to main. It can also be run by hand:
 
     ANTHROPIC_API_KEY=... python3 tools/draft_article.py [--topic "..."]
 

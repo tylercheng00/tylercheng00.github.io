@@ -1,9 +1,10 @@
 name: Daily insight
 
-# Every morning in Hong Kong, publish the pre-written note dated today
-# (and any earlier note still waiting in content/daily). Straight to main.
-# No model call and no pull request. Add the next note as a markdown file
-# in content/daily; this workflow does the rest.
+# Every morning in Hong Kong, publish one Insights article straight to main.
+# No pull request.
+# 1. If content/daily has a note dated today or earlier, publish that.
+# 2. When the queue is empty, draft the next note with Claude and publish it,
+#    if the ANTHROPIC_API_KEY secret is set. Otherwise stop quietly.
 
 on:
   schedule:
@@ -11,7 +12,11 @@ on:
   workflow_dispatch:
     inputs:
       date:
-        description: "Publish notes due on or before this date (YYYY-MM-DD). Empty = today in Hong Kong."
+        description: "Publish queued notes due on or before this date (YYYY-MM-DD). Empty = today in Hong Kong."
+        required: false
+        type: string
+      topic:
+        description: "Optional topic, used only when the queue is empty and a new note is drafted."
         required: false
         type: string
 
@@ -33,6 +38,8 @@ jobs:
       - name: Publish due notes and rebuild
         env:
           AS_OF: ${{ github.event.inputs.date }}
+          TOPIC: ${{ github.event.inputs.topic }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
           if [ -n "$AS_OF" ]; then
             python3 tools/publish_daily.py --date "$AS_OF"
@@ -40,8 +47,16 @@ jobs:
             python3 tools/publish_daily.py
           fi
           if [ -z "$(git status --porcelain content/insights content/daily sitemap.xml)" ]; then
-            echo "No article due."
-            exit 0
+            if [ -z "$ANTHROPIC_API_KEY" ]; then
+              echo "Queue empty and ANTHROPIC_API_KEY is not set; nothing to publish."
+              exit 0
+            fi
+            pip install --quiet anthropic
+            if [ -n "$TOPIC" ]; then
+              python3 tools/draft_article.py --topic "$TOPIC"
+            else
+              python3 tools/draft_article.py
+            fi
           fi
           python3 tools/build_site.py
           git config user.name "github-actions[bot]"

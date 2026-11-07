@@ -1,10 +1,10 @@
 name: Daily insight
 
-# Every morning in Hong Kong, publish one Insights article straight to main.
+# Every morning in Hong Kong, publish five Insights articles straight to main.
 # No pull request.
-# 1. If content/daily has a note dated today or earlier, publish that.
-# 2. When the queue is empty, draft the next note with Claude and publish it,
-#    if the ANTHROPIC_API_KEY secret is set. Otherwise stop quietly.
+# 1. Take up to five notes in content/daily dated today or earlier.
+# 2. If that is fewer than five, draft the rest with Claude and publish them,
+#    if the ANTHROPIC_API_KEY secret is set. Otherwise publish whatever was due.
 
 on:
   schedule:
@@ -42,21 +42,31 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
           if [ -n "$AS_OF" ]; then
-            python3 tools/publish_daily.py --date "$AS_OF"
+            python3 tools/publish_daily.py --date "$AS_OF" | tee /tmp/publish-daily.txt
           else
-            python3 tools/publish_daily.py
+            python3 tools/publish_daily.py | tee /tmp/publish-daily.txt
           fi
-          if [ -z "$(git status --porcelain content/insights content/daily sitemap.xml)" ]; then
-            if [ -z "$ANTHROPIC_API_KEY" ]; then
-              echo "Queue empty and ANTHROPIC_API_KEY is not set; nothing to publish."
+          n=$(sed -n 's/^published=//p' /tmp/publish-daily.txt | tail -1)
+          n=${n:-0}
+          need=$((5 - n))
+          if [ "$need" -le 0 ]; then
+            :
+          elif [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "Published $n from the queue. ANTHROPIC_API_KEY is not set, so no drafts."
+            if [ "$n" -eq 0 ]; then
               exit 0
             fi
+          else
             pip install --quiet anthropic
-            if [ -n "$TOPIC" ]; then
-              python3 tools/draft_article.py --topic "$TOPIC"
-            else
-              python3 tools/draft_article.py
-            fi
+            i=0
+            while [ "$i" -lt "$need" ]; do
+              if [ -n "$TOPIC" ] && [ "$i" -eq 0 ]; then
+                python3 tools/draft_article.py --topic "$TOPIC"
+              else
+                python3 tools/draft_article.py
+              fi
+              i=$((i + 1))
+            done
           fi
           python3 tools/build_site.py
           git config user.name "github-actions[bot]"

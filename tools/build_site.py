@@ -424,9 +424,9 @@ def index_page(arts):
     body = hero(
         bi("Insights · Personal views", "觀點 · 個人看法"),
         bi("Notes from two rooms", "兩個房間的筆記"),
-        bi("One short note a day on <b>US capital markets</b> and <b>biotech</b>, from the work I do in both. "
+        bi("Five short notes a day on <b>US capital markets</b> and <b>biotech</b>, from the work I do in both. "
            "Plain opinions, not research reports — and not investment advice.",
-           "每天一篇短文，談<b>美國資本市場</b>和<b>生物科技</b>，來自我在兩個領域的實際工作。"
+           "每天五篇短文，談<b>美國資本市場</b>和<b>生物科技</b>，來自我在兩個領域的實際工作。"
            "是個人看法，不是研究報告，亦不構成投資建議。"),
         extra,
     ) + f"""

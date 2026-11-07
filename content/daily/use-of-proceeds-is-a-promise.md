@@ -1,63 +1,39 @@
 ---
 slug: use-of-proceeds-is-a-promise
-date: 2026-11-11
+date: 2026-11-08
 tags: capital
-read: 4
+read: 3
 title_en: Use of proceeds is a promise, not a slide
 title_zh: 資金用途是一個承諾，不是一頁投影片
-summary_en: "Working capital and expansion" tells an investor nothing. A use of proceeds is a promise about what will be true when the money is gone.
-summary_zh: 「營運資金和擴張」等於沒說。資金用途是一個承諾：錢用完的時候，甚麼會變成真的。
+summary_en: "Hiring, product, working capital" adds up to a hundred and tells nobody what will be true when the money is gone.
+summary_zh: 「招聘、產品、營運資金」加起來是一百，錢用完的時候會變成甚麼，一句都沒說。
 ---
 ::: en
-Almost every deck has a slide called use of proceeds. Almost every version of that slide says the same three things: product, team, and working capital, with percentages that add up to a hundred. It looks finished. It is usually empty.
+Almost every deck has a use-of-proceeds slide, and almost every one says hiring, product, and working capital. The percentages are tidy. The slide is empty.
 
-A use of proceeds is not a picture of virtue. It is a promise. It says: when this money is gone, the following things will be true, and here is what each of them costs.
+What I want is a promise. When this money is gone, these things will be true, and here is what each one costs.
 
-### Name the state, not the category
+"Hiring" is a bucket. "A process engineer and a quality lead on payroll by month six" is a state of the company. People can argue with a state. They just discount a bucket. If you would be embarrassed to read the sentence back in a board pack eighteen months later, it is still a wish.
 
-"Hiring" is a category. "Four people — a process engineer, a quality lead, and two technicians — on payroll by month six" is a state of the company. Investors can argue with a state. They cannot argue with a category, so they discount it.
+Each line should also say which worry gets smaller. A batch that answers whether you can make the thing. A hire who means someone other than the founder can sell. Runway so you are not raising again before there is a result. If a line doesn't retire a worry, it might still belong in the round, but don't pretend it is the same as the thing the company dies without.
 
-I ask founders to rewrite each line as a sentence that would still make sense in a board pack eighteen months later. If the sentence would be embarrassing to read back, it is not yet a use of proceeds. It is a wish.
+Say what this round will not do. The factory you will not build. The second country you will not enter. A round that tries to finish the whole company usually finishes none of the risks.
 
-### Tie every dollar to a risk
+You will be wrong about at least one cost. Write down what you will cut first. An investor who can see the order of cuts can live with a miss. An investor who was shown a precise pie, and then watches the pie change with no note, starts wondering what else was only precise on the slide.
 
-Money is raised to retire risks, not to be busy. Each line should say which risk gets smaller if that money is spent well. A clinical batch that removes the question of whether you can make the product. A hire who removes the question of whether anyone besides the founder can sell. A year of runway that removes the question of whether you must raise again before a result exists.
-
-If a line does not retire a risk, ask why it is in the round. It may still belong. But you should know that you are choosing comfort, or optional work, and not pretend it is the same as the item the company dies without.
-
-### Show the remainder
-
-Say what you will not do with this round. The factory you will not build yet. The second country you will not enter. The trial you will not start. Restraint is more convincing than a slide on which the company becomes everything. A round that tries to finish the whole company usually finishes none of the risks.
-
-### Make it survivable when you are wrong
-
-You will be wrong about at least one cost. Say which assumptions the numbers rest on, and what you will cut first if they move. An investor who can see the order of cuts is more willing to live with a miss. An investor who was sold a precise pie chart, and then watches the pie change with no explanation, starts to wonder what else was precise only on the slide.
-
-Write the use of proceeds as if you will have to account for it. Because, if the round goes well, you will.
+Write it as if you will have to account for it. If the round goes well, you will.
 
 ::: zh
-幾乎每份簡報都有一頁叫資金用途。幾乎每一版都說同樣三件事：產品、團隊、營運資金，百分比加起來是一百。看起來完成了。通常是空的。
+幾乎每份簡報都有資金用途，幾乎都是招聘、產品、營運資金。百分比很整齊。那一頁是空的。
 
-資金用途不是一張品德圖。它是一個承諾。它說：這筆錢用完的時候，以下這些事情會是真的，而每一件要花多少。
+我要的是一個承諾。這筆錢用完，哪些事情會是真的，每一件多少錢。
 
-### 寫狀態，不要寫類別
+「招聘」是一個桶。「第六個月，一名製程工程師和一名品質負責人已經在職」是公司的一個狀態。人家可以跟狀態爭。桶，他們只能打折。如果十八個月後放進董事會文件會不好意思，它還是願望。
 
-「招聘」是一個類別。「第六個月前，四個人在職：一名製程工程師、一名品質負責人、兩名技術員」是公司的一個狀態。投資者可以跟一個狀態爭論。他們沒法和一個類別爭論，所以他們把它打折。
+每一行最好講得出哪個擔心會變小。一批生產，回答你做不做得出來。一個招聘，讓創辦人以外的人也能賣。一段跑道，讓你不用在結果出來之前又去融資。某行沒有退掉任何擔心，它也許仍然該花，但別把它說成跟「沒有它公司會停」是同一種東西。
 
-我會請創辦人把每一行改寫成一句話，十八個月後放在董事會文件裏仍然說得通。如果那句話回看會尷尬，它就還不是資金用途。它是一個願望。
+寫下這一輪不會做的事。還不建的廠。還不進的第二個國家。想用一輪把整家公司做完的，通常一個風險都做不完。
 
-### 每一塊錢都綁一個風險
+至少有一項成本你會估錯。先寫下你會先砍甚麼。看得到砍的次序，投資者比較受得住一次失誤。給過一張很準的圓餅，後來圓餅無聲地變了，他們會開始懷疑還有甚麼只在投影片上準。
 
-融資是為了退掉風險，不是為了看起來很忙。每一行都應該說明：這筆錢用得好，哪個風險會變小。一批臨床用的生產，去掉「你做不做得出產品」這個問題。一個招聘，去掉「除了創辦人沒有人能賣」這個問題。一年的跑道，去掉「結果出來之前就必須再融資」這個問題。
-
-如果一行沒有退掉任何風險，問它為甚麼在這一輪裏。它也許仍然該在。但你應該知道自己選擇的是舒適，或是可有可無的工作，不要假裝它和公司沒有它就會死的那一項是同一種東西。
-
-### 寫下你不會做的事
-
-說明這一輪不會做甚麼。還不會建的廠。還不會進的第二個國家。還不會開的試驗。克制比一頁「公司將變成一切」更有說服力。一輪想把整家公司做完的融資，通常一個風險都做不完。
-
-### 當你錯的時候，仍然站得住
-
-至少有一項成本你會估錯。寫下數字站在哪些假設上，如果假設動了，你先砍甚麼。看得到砍減次序的投資者，比較願意接受一次失誤。被賣了一張精確圓餅圖、然後看着圓餅無解釋地改變的投資者，會開始懷疑還有甚麼只在投影片上精確。
-
-把資金用途寫成你將來要交代的東西。因為如果這一輪走得好，你確實要交代。
+把它寫成你以後要交代的東西。這一輪若走得好，你確實要交代。

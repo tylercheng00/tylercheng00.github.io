@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
-"""Publish the day's pre-written Insights note straight onto the site.
+"""Publish today's pre-written Insights notes straight onto the site.
 
 Finished bilingual articles wait in content/daily/*.md. Each file carries the
-date it should go live. This moves every note dated today or earlier, in Hong
-Kong time (UTC+8), into content/insights/ and adds it to sitemap.xml.
-tools/build_site.py then builds the page. Nothing here calls a model or opens
+date it should go live. This moves up to five notes dated today or earlier,
+in Hong Kong time (UTC+8), into content/insights/ and adds them to sitemap.xml.
+tools/build_site.py then builds the pages. Nothing here calls a model or opens
 a pull request.
 
     python3 tools/publish_daily.py
     python3 tools/publish_daily.py --date 2026-11-08
 
-A missed morning catches up: every note already due is published, with the
-date written in the file. Notes dated in the future stay in content/daily.
+A missed morning does not dump the whole backlog: the next run still takes
+five. Notes dated in the future stay in content/daily.
 """
 import datetime as dt
 import re
@@ -24,6 +24,7 @@ INSIGHTS = ROOT / "content" / "insights"
 SITEMAP = ROOT / "sitemap.xml"
 SITE = "https://tylercheng00.github.io"
 HK = dt.timezone(dt.timedelta(hours=8))
+PER_DAY = 5
 
 sys.path.insert(0, str(ROOT / "tools"))
 from build_site import parse_article  # noqa: E402
@@ -73,7 +74,7 @@ def main():
     if not DAILY.exists():
         print(f"No queue ({DAILY.relative_to(ROOT)}).")
         return
-    moved = []
+    due = []
     for path in sorted(DAILY.glob("*.md")):
         try:
             article = parse_article(path)
@@ -89,12 +90,17 @@ def main():
         if dest.exists():
             print(f"skip {path.name}: {dest.name} already exists", file=sys.stderr)
             continue
+        due.append((path, article))
+    due.sort(key=lambda item: (item[1]["date"], item[0].name))
+    moved = []
+    for path, article in due[:PER_DAY]:
+        dest = INSIGHTS / f"{article['slug']}.md"
         path.rename(dest)
-        # Re-read from the published path so a bad move fails loudly.
         parse_article(dest)
         moved.append(article)
         print(dest.relative_to(ROOT))
     update_sitemap(moved)
+    print(f"published={len(moved)}")
     if not moved:
         print(f"No article due on or before {today.isoformat()} (Hong Kong).")
 

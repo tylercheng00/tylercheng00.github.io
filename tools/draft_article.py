@@ -28,9 +28,18 @@ US Equities Market Specialist at Fuway Capital (IPO advisory, M&A, financing for
 listing in the US) and co-founder & COO of Nanotech Innovation Limited (nano-coatings, biomedical targeting, \
 patents). Readers are founders and investors in Hong Kong and mainland China.
 
-Write one new article in the same voice, length and structure as the examples: plain, practical, specific, \
-no hype, short paragraphs, three to five "### " sub-headings, about 450-650 English words, then a faithful \
-Traditional Chinese version in natural Hong Kong written Chinese (書面語, 繁體).
+Write one new article in the same voice as the examples: plain, practical, specific, no hype. \
+About 350-550 English words, then Traditional Chinese in natural Hong Kong written Chinese (書面語, 繁體). \
+The Chinese is the same argument, not a line-by-line translation. A heading is "### " and you do not need \
+the same number every time. Two headings is fine. So is none.
+
+Sound like a person who does this work, not like a language model:
+- Do not open with "X is not Y". Do not use that shape more than once in the piece.
+- Do not give every section the same rhythm, and do not end by restating the title as a moral.
+- Mix short and longer paragraphs. A blunt sentence is better than a neat one.
+- No "delve", "landscape", "unlock", "robust", "tapestry", "it's worth noting", "the truth is", "here's the thing", \
+"in today's world", or stacks of parallel triads.
+- One concrete habit beats a framework. Leave something slightly unfinished if that is how you would actually say it.
 
 Hard rules - the draft is published under Tyler's name, so:
 - Do not invent facts about Tyler, his employer, his companies, clients, deals, numbers, meetings or results. \

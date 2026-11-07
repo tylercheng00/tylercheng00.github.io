@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-07T05:53:50Z",
+ "updated": "2026-11-07T14:52:44Z",
  "sources": [
   "BBC News",
   "BioPharma Dive",
@@ -24,7 +24,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-07T05:53:50Z"
+   "date": "2026-11-07T14:52:44Z"
   },
   {
    "title": "Integrated health service delivery through medical mobile units helped to reduce deaths among individuals at risk for HIV who also inject drugs",
@@ -34,7 +34,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-07T05:53:50Z"
+   "date": "2026-11-07T14:52:44Z"
   },
   {
    "title": "An extra year of secondary school lowered dementia diagnoses later in life",
@@ -44,7 +44,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-07T05:53:50Z"
+   "date": "2026-11-07T14:52:44Z"
   },
   {
    "title": "A precision T-cell therapy stalls treatment-resistant cancers in clinical trial",
@@ -54,7 +54,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-07T05:53:50Z"
+   "date": "2026-11-07T14:52:44Z"
   },
   {
    "title": "A blood-pressure drug may activate health-promoting brown fat",
@@ -64,27 +64,327 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-07T05:53:50Z"
+   "date": "2026-11-07T14:52:44Z"
   },
   {
-   "title": "China to narrow scope of contentious detention and surveillance measure",
-   "summary": "Chinese lawmakers are proposing to restrict a contentious form of detention and police surveillance measure, among other changes to the country’s Criminal Procedure Law. Known as residential surveillance at a designated…",
-   "link": "https://www.scmp.com/news/china/politics/article/3373546/china-narrow-scope-contentious-designated-location-surveillance-measure",
+   "title": "STAT+: Failure of Novartis Lp(a) drug raises questions about cardiovascular strategy",
+   "summary": "Medical mystery at the AHA conference: A Novartis drug lowered a risk marker for cardiovascular disease but did not lower chance of heart attack or stroke.",
+   "link": "https://www.statnews.com/2026/11/07/aha-conference-news-novartis-lp-a-pelacarsen-heart-disease-trial-mystery/?utm_campaign=rss",
+   "source": "STAT News",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-07T14:50:00Z"
+  },
+  {
+   "title": "STAT+: Despite Novo drug’s failure, cardiologists say they will still pursue anti-inflammatories",
+   "summary": "“These results, the fact that they're negative, does not invalidate that inflammation plays a very important role in cardiovascular disease.\"",
+   "link": "https://www.statnews.com/2026/11/07/aha-2026-conference-novo-nordisk-zeus-trial-ziltivekimab-results/?utm_campaign=rss",
+   "source": "STAT News",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-07T14:35:00Z"
+  },
+  {
+   "title": "Berkshire Hathaway more than doubles buybacks in third quarter as earnings decline",
+   "summary": "Berkshire Hathaway said Saturday it accelerated its share repurchases during the third quarter, as operating and overall profits took a hit.",
+   "link": "https://www.cnbc.com/2026/11/07/berkshire-hathaway-q3-2026-earnings-buybacks.html",
+   "source": "CNBC",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-07T14:02:49Z"
+  },
+  {
+   "title": "History repeats in Shenzhen? China hosts another lame-duck US president",
+   "summary": "A decade after hosting a politically hobbled Barack Obama at a Group of 20 (G20) summit in Hangzhou, China is preparing to welcome another “lame-duck” US president for a multilateral gathering: Donald Trump. Following…",
+   "link": "https://www.scmp.com/news/china/diplomacy/article/3373654/history-repeats-shenzhen-china-hosts-another-lame-duck-us-president",
    "source": "SCMP",
    "cats": [
     "china"
    ],
-   "date": "2026-11-07T04:00:09Z"
+   "date": "2026-11-07T14:00:08Z"
   },
   {
-   "title": "Texas mayor instructs police to limit cooperation with ICE",
-   "summary": "The new policy, which comes after a Democratic sweep of the state, will limit the people it will inform the immigration agency about to those who have been arrested for jailable offences.",
+   "title": "Will this week's blue wave election usher in a Democratic president in 2028?",
+   "summary": "A CNBC analysis of historical election data finds wave elections don't necessarily spell trouble for the party in power during the next presidential year.",
+   "link": "https://www.cnbc.com/2026/11/07/2026-midterm-election-blue-wave-2028-president.html",
+   "source": "CNBC",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-07T14:00:01Z"
+  },
+  {
+   "title": "Democrat shaping AI policy bought chip stocks despite backing congressional trading ban",
+   "summary": "Rep. Josh Gottheimer disclosed new AI-linked stock purchases months after voting for a congressional trading ban, as Democrats prepare to regulate the industry.",
+   "link": "https://www.cnbc.com/2026/11/07/josh-gottheimer-ai-stocks-congress-trading-ban.html",
+   "source": "CNBC",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-07T13:30:01Z"
+  },
+  {
+   "title": "China vows ‘zero tolerance’ for election meddling ahead of 21st party congress",
+   "summary": "China’s ruling Communist Party has warned of “zero tolerance” for bribery and other attempts at election interference as delegate selection begins for next year’s national congress, which is expected to feature a major…",
+   "link": "https://www.scmp.com/news/china/politics/article/3373658/chinas-communist-party-vows-zero-tolerance-election-meddling-ahead-key-congress",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-07T13:23:30Z"
+  },
+  {
+   "title": "America doesn't like socialism. So why are socialists winning?",
+   "summary": "Democratic socialists had their best showing yet at the polls. The problem: Most U.S. voters don't actually like socialism.",
+   "link": "https://www.cnbc.com/2026/11/07/socialism-elections-economy.html",
+   "source": "CNBC",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-07T13:01:01Z"
+  },
+  {
+   "title": "How the new Senate majority shifts control over the federal judiciary",
+   "summary": "The change in the Senate's majority party means that starting Jan. 3, Democrats will run federal judicial appointments and may continue to until at least 2030.",
+   "link": "https://www.npr.org/2026/11/07/nx-s1-6032757/how-the-new-senate-majority-shifts-control-over-the-federal-judiciary",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-07T12:41:11Z"
+  },
+  {
+   "title": "GOP's lame-duck clock is ticking",
+   "summary": "The current Congress, under its Republican majorities, must address the National Defense Authorization Act and a government funding bill as Democrats wait to take over.",
+   "link": "https://www.npr.org/2026/11/07/nx-s1-6032594/gops-lame-duck-clock-is-ticking",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-07T12:41:10Z"
+  },
+  {
+   "title": "Border shift: Hispanic voters drive Texas' historic flip to blue",
+   "summary": "Once reliably a red state, Texas will turn deep blue following this week's midterms. One of the most notable shifts was along the Texas-Mexico border, where Hispanic voters had a big influence.",
+   "link": "https://www.npr.org/2026/11/07/nx-s1-6030994/border-shift-hispanic-voters-drive-texas-historic-flip-to-blue",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-07T12:41:08Z"
+  },
+  {
+   "title": "Week in Politics: Trump taps Miller for chief of staff; doubles down on Trumpism",
+   "summary": "President Trump's decision to make Stephen Miller his new chief of staff is a rebuke of the midterm results and a doubling-down on Trumpism.",
+   "link": "https://www.npr.org/2026/11/07/nx-s1-6030908/week-in-politics-trump-taps-miller-for-chief-of-staff-doubles-down-on-trumpism",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-07T12:41:07Z"
+  },
+  {
+   "title": "Deb Haaland's New Mexico challenge",
+   "summary": "Deb Haaland is the first Native American governor of New Mexico. She faces big expectations and challenges, but also opportunities in a deep blue state with abundant petroleum revenue.",
+   "link": "https://www.npr.org/2026/11/07/nx-s1-5995646/deb-haalands-new-mexico-challenge",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-07T12:41:02Z"
+  },
+  {
+   "title": "Defiance Mayor Mike McCann on how Republicans can regroup after midterm losses",
+   "summary": "Republicans were routed in the midterm elections. NPR's Scott Simon talks to Mike McCann, the Mayor of Defiance, Ohio, about how the Republican party can win back support.",
+   "link": "https://www.npr.org/2026/11/07/nx-s1-6029755/defiance-mayor-mike-mccann-on-how-republicans-can-regroup-after-midterm-losses",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-07T12:41:01Z"
+  },
+  {
+   "title": "China-Switzerland trade partnership offers a model amid fraught EU ties",
+   "summary": "China has framed its relationship with Switzerland as a model of practical, mutually beneficial cooperation at a time when its broader ties with the European Union remain more complicated and politically charged. Just…",
+   "link": "https://www.scmp.com/opinion/china-opinion/article/3373312/china-switzerland-trade-partnership-offers-model-amid-fraught-eu-ties",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-07T12:30:05Z"
+  },
+  {
+   "title": "Four things we learned this week about 2028 White House race",
+   "summary": "The seismic Democratic gains in Congress could shape the presidential election, so who had a good night and who's making moves?",
+   "link": "https://www.bbc.co.uk/news/articles/cq1m41n3v7mmo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-07T12:23:28Z"
+  },
+  {
+   "title": "Top China university stops using AI to spot absent-minded students after backlash",
+   "summary": "A top university in China’s eastern Jiangsu province has rolled back a controversial feature of its AI-powered classroom tracking system following fierce public backlash. Students at Nanjing University were recently…",
+   "link": "https://www.scmp.com/news/china/science/article/3373599/top-china-university-stops-using-ai-spot-absent-minded-students-after-backlash",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-07T12:00:09Z"
+  },
+  {
+   "title": "Manila weighs second South China Sea legal case against Beijing: analyst",
+   "summary": "Manila is preparing for a potential second legal case against Beijing over the South China Sea, according to a Philippines-based security analyst. “Indeed, the Philippines is considering filing another case against…",
+   "link": "https://www.scmp.com/news/china/diplomacy/article/3373651/manila-weighs-second-south-china-sea-legal-case-against-beijing-analyst",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-07T11:10:52Z"
+  },
+  {
+   "title": "Trump’s war secretary Hegseth and Pacific Command chief Paparo may ‘soon visit China’",
+   "summary": "Pentagon chief Pete Hegseth and US Pacific Command head Admiral Samuel Paparo may visit China “soon”, according to a veteran China hand. Stephen Orlins, president of the non-profit organisation National Committee on…",
+   "link": "https://www.scmp.com/news/china/military/article/3373649/trumps-war-secretary-hegseth-and-pacific-command-chief-paparo-may-soon-visit-china",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-07T11:06:25Z"
+  },
+  {
+   "title": "Drinking 2–3 cups of coffee a day linked to dramatically lower dementia risk",
+   "summary": "Drinking two to three cups of caffeinated coffee daily was linked to a dramatically lower risk of dementia and better cognitive functioning in a study spanning up to 43 years. The benefits appeared regardless of genetic…",
+   "link": "https://www.sciencedaily.com/releases/2026/11/261105224550.htm",
+   "source": "ScienceDaily",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-07T10:16:19Z"
+  },
+  {
+   "title": "US buyers at China’s largest trade fair soar over 20% after Xi-Trump meeting",
+   "summary": "The number of European and American buyers attending China’s largest trade fair rose sharply this autumn, though exporters on the floor said economic headwinds in the West continued to act as a drag on deal making…",
+   "link": "https://www.scmp.com/economy/china-economy/article/3373554/us-buyers-chinas-largest-trade-fair-soar-over-20-after-xi-trump-meeting",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-07T10:00:06Z"
+  },
+  {
+   "title": "An unexpected activist emerged to help block a $5 billion data center in Maryland",
+   "summary": "Thousands across the U.S. have gotten involved to oppose data centers. One is a Maryland woman who'd been evicted after a pay cut and became a leader of a community effort that blocked a vast project.",
+   "link": "https://www.npr.org/2026/11/07/nx-s1-6007770/data-centers-activist-moratorium",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-07T10:00:00Z"
+  },
+  {
+   "title": "US and China must join hands to measure rising AI tide",
+   "summary": "The next US-China talk on artificial intelligence should begin with a simple question: do the two governments actually understand how rapidly AI’s capabilities are improving? Before deciding what to do about the…",
+   "link": "https://www.scmp.com/opinion/china-opinion/article/3373279/us-and-china-must-join-hands-measure-rising-ai-tide",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-07T08:30:05Z"
+  },
+  {
+   "title": "Texas mayor instructs police to limit co-operation with ICE",
+   "summary": "There has been months of public outcry in Houston after an Immigration and Customs Enforcement (ICE) officer fatally shot a man who was driving to work.",
    "link": "https://www.bbc.co.uk/news/articles/c8dx33d22zkro?at_medium=RSS&at_campaign=rss",
    "source": "BBC News",
    "cats": [
     "us"
    ],
-   "date": "2026-11-07T03:31:54Z"
+   "date": "2026-11-07T08:15:55Z"
+  },
+  {
+   "title": "China’s EV safety push gives foreign brands from Tesla to GM an opening for a comeback",
+   "summary": "International brands have become unlikely beneficiaries of Beijing’s clampdown on so-called rapidly developed vehicles as they step up efforts to convince Chinese consumers of their cars’ quality and reliability. About…",
+   "link": "https://www.scmp.com/business/china-business/article/3373588/chinas-ev-safety-push-gives-foreign-brands-tesla-gm-opening-comeback",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-07T08:00:11Z"
+  },
+  {
+   "title": "Why China is investing heavily in African push to bring mineral processing home",
+   "summary": "Chinese investors have backed mineral processing and manufacturing projects worth more than US$16 billion across Africa, a new report has concluded, amid an increasing push by countries to secure a greater share of the…",
+   "link": "https://www.scmp.com/news/china/diplomacy/article/3373514/why-china-investing-heavily-african-push-bring-mineral-processing-home",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-07T08:00:06Z"
+  },
+  {
+   "title": "Period products 'essential not optional'",
+   "summary": "Matt Tyrer is working on a scheme which will ensure access to free sanitary towels or tampons.",
+   "link": "https://www.bbc.co.uk/news/articles/c8r4y9rgqprzo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-07T07:48:42Z"
+  },
+  {
+   "title": "Trump says U.S. carried out ‘minor strikes’ on Iran as missiles hit Qeshm Island",
+   "summary": "Trump said the U.S. carried out ‘minor strikes’ on Iran after Iranian media reported two missiles hit Qeshm Island near the Strait of Hormuz.",
+   "link": "https://www.cnbc.com/2026/11/07/trump-us-minor-strikes-iran-qeshm-island.html",
+   "source": "CNBC",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-07T07:37:36Z"
+  },
+  {
+   "title": "Meghan's father Thomas Markle under house arrest after child sex abuse material charge",
+   "summary": "The 82-year-old appeared in court in Florida after the FBI searched two Los Angeles-area storage units he rented.",
+   "link": "https://www.bbc.co.uk/news/articles/cqgkvv8m8pgyo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-07T07:27:44Z"
+  },
+  {
+   "title": "Chinese consulate in Melbourne demands justice after fatal stabbing of delivery worker",
+   "summary": "The Chinese consulate in Melbourne has urged local authorities to “severely punish” the person responsible for killing a Chinese delivery rider on Friday – a tragedy that has sparked mounting online outrage over…",
+   "link": "https://www.scmp.com/news/china/diplomacy/article/3373640/chinese-consulate-melbourne-demands-justice-after-fatal-stabbing-delivery-worker",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-07T06:44:42Z"
+  },
+  {
+   "title": "'You feel that you're not alone' - the young people finding community in grief",
+   "summary": "Too Young to Grieve is an informal peer support community providing young people with a space to grieve.",
+   "link": "https://www.bbc.co.uk/news/articles/c20e32l61xko?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-07T06:36:47Z"
+  },
+  {
+   "title": "Chinese tourist arrivals in Thailand fall 13.6% in October after embassy safety warning",
+   "summary": "Chinese arrivals in Thailand, normally a popular tourist destination, declined in October partly because of a fresh embassy warning against dangers such as getting snared by the country’s ever-active fraud rings. The…",
+   "link": "https://www.scmp.com/economy/china-economy/article/3373566/chinese-tourist-arrivals-thailand-fall-136-october-after-embassy-safety-warning",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-07T06:00:23Z"
   },
   {
    "title": "Former Evergrande economist faces WeChat gag order after ‘buy the dip’ call",
@@ -107,74 +407,24 @@
    "date": "2026-11-07T01:41:36Z"
   },
   {
-   "title": "Sanae Takaichi slammed online for praising calligraphy without mentioning China",
-   "summary": "Japanese Prime Minister Sanae Takaichi has faced backlash online after writing a social media post celebrating Japan’s shodo calligraphy without mentioning its Chinese roots. On Thursday, Unesco released this year’s…",
-   "link": "https://www.scmp.com/news/china/diplomacy/article/3373580/sanae-takaichi-slammed-online-praising-calligraphy-without-mentioning-china",
-   "source": "SCMP",
+   "title": "Magic mushrooms rewire the brain in a way scientists didn't expect",
+   "summary": "A surprising discovery reveals how psilocybin, the active compound in magic mushrooms, rapidly reshapes the brain by creating new neural connections and strengthening them. Researchers found that the drug behaves…",
+   "link": "https://www.sciencedaily.com/releases/2026/11/261104012308.htm",
+   "source": "ScienceDaily",
    "cats": [
-    "china"
+    "biotech"
    ],
-   "date": "2026-11-07T01:00:12Z"
+   "date": "2026-11-07T00:33:47Z"
   },
   {
-   "title": "Cornell faculty pass no-confidence vote over leadership's handling of Jane Doe allegations",
-   "summary": "Friday's resolution by academic staff is largely symbolic as they do not have the power to remove those in charge of the university.",
-   "link": "https://www.bbc.co.uk/news/articles/c933xxl8yv0go?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
+   "title": "A compound hidden in broccoli could help fight a devastating genetic disease",
+   "summary": "A compound naturally found in broccoli could help fight Friedreich ataxia, a devastating genetic disease that progressively damages the nervous system, by boosting a vital protein and protecting nerve cells. Scientists…",
+   "link": "https://www.sciencedaily.com/releases/2026/11/261104012259.htm",
+   "source": "ScienceDaily",
    "cats": [
-    "us"
+    "biotech"
    ],
-   "date": "2026-11-06T23:46:08Z"
-  },
-  {
-   "title": "With Stephen Miller pick, Trump readies for a battle",
-   "summary": "The US president's promotion of Miller, a loyal partisan firebrand to be his new chief of staff sets up likely clashes with Congress.",
-   "link": "https://www.bbc.co.uk/news/articles/crp3gg2z171go?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-06T23:24:15Z"
-  },
-  {
-   "title": "Mississippi Senate: Colom increases lead over Hyde-Smith to nearly 2,500 votes",
-   "summary": "The Mississippi Senate election could be determined by the mail-in ballots received after Election Day, whose legality was upheld by the Supreme Court.",
-   "link": "https://www.cnbc.com/2026/11/05/mississippi-senate-election-scott-colom-hyde-smith.html",
-   "source": "CNBC",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-06T23:12:56Z"
-  },
-  {
-   "title": "Ted Lieu seeks Congress leadership post, aiming to break another glass ceiling",
-   "summary": "California Democratic Congressman Ted Lieu is seeking to become the next chairman of the House Democratic Caucus, one of the top leadership jobs in the US Congress, and potentially making history again as the…",
-   "link": "https://www.scmp.com/news/us/us-elections/article/3373620/ted-lieu-seeks-congress-leadership-post-aiming-break-another-glass-ceiling",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-06T23:01:56Z"
-  },
-  {
-   "title": "American democracy was a big winner in the midterms",
-   "summary": "Results are still outstanding House and Senate races but political scientists say one of the big winners in the mid-terms is American democracy itself.",
-   "link": "https://www.npr.org/2026/11/06/nx-s1-6029750/american-democracy-was-a-big-winner-in-the-midterms",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-06T22:33:11Z"
-  },
-  {
-   "title": "What to know about Gina Hinojosa, Texas' first Latina governor-elect",
-   "summary": "Gina Hinojosa, state representative from the Rio Grande Valley whose legislative priority has been boosting the public education system, will become the first Latina governor of Texas.",
-   "link": "https://www.npr.org/2026/11/06/nx-s1-6030822/what-to-know-about-gina-hinojosa-texas-first-latina-governor-elect",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-06T22:26:00Z"
+   "date": "2026-11-06T23:30:16Z"
   },
   {
    "title": "The Aging Proteome: Clocks, Cohorts, and Clinical Trials",
@@ -187,36 +437,6 @@
    "date": "2026-11-06T22:23:01Z"
   },
   {
-   "title": "Trump says Stephen Miller to replace Susie Wiles as White House chief of staff",
-   "summary": "Trump revealed the shake-up three days after Democrats' landslide victory in the midterm elections, winning majority control of the House and Senate.",
-   "link": "https://www.cnbc.com/2026/11/06/trump-stephen-miller-wiles-chief-of-staff.html",
-   "source": "CNBC",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-06T22:22:53Z"
-  },
-  {
-   "title": "Razor-tight Mississippi Senate race sparks ballot battle - could there be a recount?",
-   "summary": "Lawyers for both campaigns in Mississippi's US Senate race are preparing for a possible legal battle as the close count continues.",
-   "link": "https://www.bbc.co.uk/news/articles/cwj0llvqqm72o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-06T22:22:51Z"
-  },
-  {
-   "title": "Stephen Miller replaces Susie Wiles as White House chief of staff",
-   "summary": "White House chief of staff Susie Wiles is being replaced by Stephen Miller, President Trump said Friday. The change comes after Republicans were swept out of power in the midterm elections.",
-   "link": "https://www.npr.org/2026/11/06/nx-s1-6032810/stephen-miller-replaces-susie-wiles-as-white-house-chief-of-staff",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-06T22:21:35Z"
-  },
-  {
    "title": "STAT+: States sue Trump administration again to delay Medicaid work requirements",
    "summary": "The Trump administration is facing another lawsuit over its sweeping changes to Medicaid less than a week after a federal judge ruled that implementation of work requirements would cause “irreparable…",
    "link": "https://www.statnews.com/2026/11/06/states-sue-trump-delay-medicaid-work-requirements/?utm_campaign=rss",
@@ -227,16 +447,6 @@
    "date": "2026-11-06T22:05:39Z"
   },
   {
-   "title": "Will the US midterm ‘blue tsunami’ erode China’s faith in Xi and Trump’s relationship?",
-   "summary": "China may start looking for ways to make its deals with the United States less dependent on the personal relationship between presidents Xi Jinping and Donald Trump after the midterm elections left the US leader in a…",
-   "link": "https://www.scmp.com/news/china/diplomacy/article/3373574/will-us-midterm-blue-tsunami-erode-chinas-faith-trump-and-xis-relationship",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-06T22:00:09Z"
-  },
-  {
    "title": "STAT+: MAHA leader Calley Means castigates White House officials as bending to industry",
    "summary": "Calley Means, a MAHA leader who just resigned from the Trump administration, says Americans \"are being duped and gaslighted and lied to.\"",
    "link": "https://www.statnews.com/2026/11/06/calley-means-joe-rogan-trump-maha-agenda-derailed-by-corporate-influence/?utm_campaign=rss",
@@ -245,16 +455,6 @@
     "biotech"
    ],
    "date": "2026-11-06T21:55:21Z"
-  },
-  {
-   "title": "The economy propelled Democrats to victory. What can they actually do about it?",
-   "summary": "Democrats' resounding victory in the midterms can be boiled down to frustrations over the high cost of living and gas prices. But in divided government -- how much can Democrats do?",
-   "link": "https://www.npr.org/2026/11/06/nx-s1-6026662/the-economy-propelled-democrats-to-victory-what-can-they-actually-do-about-it",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-06T21:53:10Z"
   },
   {
    "title": "Elon Musk appears to signal the end of the road for Cybertruck",
@@ -277,46 +477,6 @@
    "date": "2026-11-06T21:46:55Z"
   },
   {
-   "title": "Sen. Chris Murphy released from hospital after stroke, will miss votes for 'several weeks' as he rehabs",
-   "summary": "The Connecticut Democrat Murphy has been discussed as a possible candidate for the White House in 2028.",
-   "link": "https://www.cnbc.com/2026/11/06/chris-murphy-stroke-hospital-senate.html",
-   "source": "CNBC",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-06T21:40:09Z"
-  },
-  {
-   "title": "Can China champion the Global South without speaking for it?",
-   "summary": "Travelling through South America earlier this year, I was repeatedly reminded of China’s growing importance. At Ezeiza International Airport in Buenos Aires, I spotted the logo of the Industrial and Commercial Bank of…",
-   "link": "https://www.scmp.com/opinion/china-opinion/article/3373154/can-china-champion-global-south-without-speaking-it",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-06T21:30:08Z"
-  },
-  {
-   "title": "Meghan's father Thomas Markle appears in court over child sex abuse material",
-   "summary": "The 82-year-old was arrested in Florida after the FBI searched two Los Angeles-area storage units he rented.",
-   "link": "https://www.bbc.co.uk/news/articles/cqgkvv8m8pgyo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-06T21:26:56Z"
-  },
-  {
-   "title": "OpenAI bugging suspect Alfozan pleads not guilty",
-   "summary": "Saudi national Abdulrahman Alfozan is charged with planting a recording device in a conference room at artificial intelligence giant OpenAI.",
-   "link": "https://www.cnbc.com/2026/11/06/openai-bugging-alfozan-saudi.html",
-   "source": "CNBC",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-06T21:15:47Z"
-  },
-  {
    "title": "AI stocks climb after trillions wiped from market values",
    "summary": "Investors had been selling off tech shares in part due to concerns the Democrat election victory would mean slower AI development.",
    "link": "https://www.bbc.co.uk/news/articles/c35ynnpzdq51o?at_medium=RSS&at_campaign=rss",
@@ -328,16 +488,6 @@
    "date": "2026-11-06T21:06:25Z"
   },
   {
-   "title": "California’s first Asian lieutenant governor traces roots to esteemed family in China",
-   "summary": "Amid a national Democratic wave in the midterm elections, a California Democrat has made history as the first Asian-American elected to the state’s second-highest executive office, with roots tracing back to a prominent…",
-   "link": "https://www.scmp.com/news/china/diplomacy/article/3373619/californias-first-asian-lieutenant-governor-has-ties-esteemed-chinese-military-family",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-06T21:02:10Z"
-  },
-  {
    "title": "Nasdaq drops into correction territory — here’s what typically happens next",
    "summary": "Nasdaq’s slide into correction territory puts its history of recoveries in focus. Here's what history shows.",
    "link": "https://www.cnbc.com/2026/11/05/nasdaq-drops-into-correction-territory-heres-what-typically-happens-next.html",
@@ -346,16 +496,6 @@
     "finance"
    ],
    "date": "2026-11-06T20:42:28Z"
-  },
-  {
-   "title": "The incoming class of U.S. senators is full of historic firsts",
-   "summary": "From the first Native American woman elected to the U.S. Senate and the first Muslim who will join the upper chamber to the Senate's first Paralympian, voters elected historic candidates on Tuesday.",
-   "link": "https://www.npr.org/2026/11/06/nx-s1-6032814/senate-history-election-pappas-andrews-el-sayed",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-06T20:21:13Z"
   },
   {
    "title": "A disturbing employment trend is hiding beneath the latest strong job numbers",
@@ -379,16 +519,6 @@
    "date": "2026-11-06T19:05:00Z"
   },
   {
-   "title": "US, China trade chiefs hold call ahead of Trump-Xi summit in Shenzhen",
-   "summary": "US Treasury Secretary Scott Bessent and Trade Representative Jamieson Greer held a video call with Chinese Vice-Premier He Lifeng on Friday, as both sides moved to finalise preparations for President Donald Trump’s…",
-   "link": "https://www.scmp.com/news/us/economy-trade-business/article/3373616/us-china-trade-chiefs-hold-call-ahead-trump-xi-summit-shenzhen",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-06T18:34:11Z"
-  },
-  {
    "title": "Why the US midterms sparked an AI stock selloff",
    "summary": "Fears of more AI regulation appear to have sparked fear among investors, but concerns about the industry have been growing for some time.",
    "link": "https://www.bbc.co.uk/news/articles/crlykkzwwpydo?at_medium=RSS&at_campaign=rss",
@@ -407,16 +537,6 @@
     "biotech"
    ],
    "date": "2026-11-06T18:17:42Z"
-  },
-  {
-   "title": "STAT+: Democrats’ midterm landslide spells relief for hospitals",
-   "summary": "Democrats are likely to focus on reversing Medicaid cuts and expanding insurance coverage, giving a boost to health care providers.",
-   "link": "https://www.statnews.com/2026/11/06/why-democrats-midterm-landslide-helps-hospital-industry/?utm_campaign=rss",
-   "source": "STAT News",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-06T17:46:16Z"
   },
   {
    "title": "Why smoky bacon crisps threaten to reignite rows over EU rules",
@@ -447,16 +567,6 @@
     "finance"
    ],
    "date": "2026-11-06T17:09:53Z"
-  },
-  {
-   "title": "Democrats’ midterm victory, and a questionable fertility procedure",
-   "summary": "How will the midterm results affect drug pricing policy? And why are women traveling to fertility clinics abroad? Find out on the new episode of \"The Readout LOUD\" podcast.",
-   "link": "https://www.statnews.com/2026/11/06/readout-loud-podcast-midterm-elections-fertility-ivf-mrt-therapy/?utm_campaign=rss",
-   "source": "STAT News",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-06T17:02:18Z"
   },
   {
    "title": "Novartis Confirms Nine Cases of Tumors in Children Treated with Gene Therapy Zolgensma",
@@ -519,16 +629,6 @@
    "date": "2026-11-06T16:06:59Z"
   },
   {
-   "title": "US and EU’s China talks channel comes back to life after stalling since Trump’s return",
-   "summary": "The European Union and the United States plan to revive talks about China after a two-year hiatus, according to multiple people familiar with the planning. The dialogue had stalled since Donald Trump’s return to the…",
-   "link": "https://www.scmp.com/news/china/diplomacy/article/3373614/us-and-eus-china-talks-channel-comes-back-life-after-stalling-trumps-return",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-06T16:05:58Z"
-  },
-  {
    "title": "PM tells firms to publish salaries in job adverts ahead of new law",
    "summary": "The government argues the change will help jobseekers and could help to prevent pay discrimination.",
    "link": "https://www.bbc.co.uk/news/articles/cmd9343z3zw2o?at_medium=RSS&at_campaign=rss",
@@ -547,16 +647,6 @@
     "china"
    ],
    "date": "2026-11-06T14:00:21Z"
-  },
-  {
-   "title": "After midterms upheaval, US ag exporters call for stability in China trade",
-   "summary": "As the midterm “blue wave” threatens to further complicate US-China relations, American agricultural exporters are calling on Washington to focus on delivering the trade deals already agreed with Beijing and ending a…",
-   "link": "https://www.scmp.com/economy/china-economy/article/3373595/after-midterms-upheaval-us-ag-exporters-call-stability-china-trade",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-06T14:00:11Z"
   },
   {
    "title": "Why Glycosylation Control Is No Longer a Secondary Concern in the Development of Complex Biologics",
@@ -579,16 +669,6 @@
    "date": "2026-11-06T13:13:00Z"
   },
   {
-   "title": "Ahead of Shenzhen trade talks, US holds off blacklist rule that angered Beijing",
-   "summary": "Ahead of a new round of bilateral trade talks, the US has extended the suspension of an expanded trade blacklist that helped inflame tensions with China last year and could subject overseas subsidiaries of Chinese…",
-   "link": "https://www.scmp.com/economy/policy/article/3373520/ahead-shenzhen-trade-talks-us-holds-blacklist-rule-angered-beijing",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-06T13:00:10Z"
-  },
-  {
    "title": "This week in charts: 3 drug launches Wall Street is watching",
    "summary": "The latest installment in BioPharma Dive’s visualization-focused series features a look at investors’ response to a trio of medicines highlighted in quarterly earnings this week.",
    "link": "https://www.biopharmadive.com/news/biotech-charts-drug-launches-sales-wegovy-rezdiffra-auvelity/873549/",
@@ -609,26 +689,6 @@
    "date": "2026-11-06T10:59:18Z"
   },
   {
-   "title": "China’s skyscraper expertise earns Shenzhen a place on global watch list",
-   "summary": "China’s construction expertise has gained fresh international recognition, with Shenzhen named among the top cities to watch for high-rise development in 2027 by a UK industry publication. A skyscraper originally…",
-   "link": "https://www.scmp.com/economy/china-economy/article/3373549/chinas-skyscraper-expertise-earns-shenzhen-place-global-watch-list",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-06T10:00:13Z"
-  },
-  {
-   "title": "AI bubble bursts, fifth plenum resolution, Singles’ Day",
-   "summary": "China’s stocks pared weekly gains and the benchmark 10-year bond hit a record low as the global artificial intelligence (AI) stock bubble burst following the US Democrats’ landslide win in midterm elections. The CSI 300…",
-   "link": "https://www.scmp.com/plus/business/markets/article/3373548/ai-bubble-bursts-fifth-plenum-resolution-singles-day",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-06T09:05:28Z"
-  },
-  {
    "title": "Health minister instructs trusts to pause cuts to Phone First service",
    "summary": "The triage line was scrapped in Belfast and was to close in the Northern Trust later this month.",
    "link": "https://www.bbc.co.uk/news/articles/crn8wnq05dyqo?at_medium=RSS&at_campaign=rss",
@@ -637,56 +697,6 @@
     "biotech"
    ],
    "date": "2026-11-06T06:22:07Z"
-  },
-  {
-   "title": "'The veil of shame around postnatal depression needs to go'",
-   "summary": "Mums are helping other parents to recognise the signs of postnatal depression and psychosis.",
-   "link": "https://www.bbc.co.uk/news/articles/cv62kel8wnp0o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-06T06:20:44Z"
-  },
-  {
-   "title": "For decades, we were told to avoid full-fat dairy. New research says otherwise",
-   "summary": "Full-fat dairy may not be the health villain it has long been portrayed as, according to a new study finding that three daily servings did not worsen weight, cholesterol, or insulin resistance over 12 weeks. Researchers…",
-   "link": "https://www.sciencedaily.com/releases/2026/11/261105081000.htm",
-   "source": "ScienceDaily",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-06T05:51:36Z"
-  },
-  {
-   "title": "Where DNA Copying Fails Can Decide How Cancer Cells Respond to PARP Inhibitors",
-   "summary": "NYU Grossman School of Medicine researchers found that DNA-copying problems at a small set of chromosome sites can determine how cancer cells respond to PARP inhibitors, pointing to possible biomarkers of drug…",
-   "link": "https://www.genengnews.com/topics/cancer/where-dna-copying-fails-can-decide-how-cancer-cells-respond-to-parp-inhibitors/",
-   "source": "GEN",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-06T03:46:43Z"
-  },
-  {
-   "title": "An anti-aging drug may help protect the brain before Alzheimer's symptoms begin",
-   "summary": "A surprising new study suggests that an anti-aging drug could help protect people genetically predisposed to Alzheimer's disease. Researchers found that just four weeks of low-dose rapamycin improved brain blood flow in…",
-   "link": "https://www.sciencedaily.com/releases/2026/11/261104084017.htm",
-   "source": "ScienceDaily",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-06T01:11:19Z"
-  },
-  {
-   "title": "Tempted by snacks before bed? Here's why - and what you can do about it",
-   "summary": "There are biological reasons why you may reach for sweet treats before bed, but you can change the habit.",
-   "link": "https://www.bbc.co.uk/news/articles/cq2e9v3030gyo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-06T00:42:05Z"
   },
   {
    "title": "The October jobs report is out Friday. Here's everything to expect",
@@ -728,16 +738,6 @@
     "us"
    ],
    "date": "2026-11-05T16:07:59Z"
-  },
-  {
-   "title": "Bank of England hikes interest rate for the first time since Iran war, warns inflation will near 5%",
-   "summary": "One policymaker voted to raise the bank's key interest rate to 4.25%.",
-   "link": "https://www.cnbc.com/2026/11/05/interest-rates-inflation-uk.html",
-   "source": "CNBC",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-05T16:01:47Z"
   }
  ]
 }

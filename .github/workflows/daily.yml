@@ -1,0 +1,52 @@
+name: Daily insight
+
+# Every morning in Hong Kong, publish the pre-written note dated today
+# (and any earlier note still waiting in content/daily). Straight to main.
+# No model call and no pull request. Add the next note as a markdown file
+# in content/daily; this workflow does the rest.
+
+on:
+  schedule:
+    - cron: "15 0 * * *"   # 08:15 Asia/Hong_Kong
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Publish notes due on or before this date (YYYY-MM-DD). Empty = today in Hong Kong."
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-commit
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Publish due notes and rebuild
+        env:
+          AS_OF: ${{ github.event.inputs.date }}
+        run: |
+          if [ -n "$AS_OF" ]; then
+            python3 tools/publish_daily.py --date "$AS_OF"
+          else
+            python3 tools/publish_daily.py
+          fi
+          if [ -z "$(git status --porcelain content/insights content/daily sitemap.xml)" ]; then
+            echo "No article due."
+            exit 0
+          fi
+          python3 tools/build_site.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/insights content/daily insights index.html sitemap.xml
+          git commit -m "insights: daily note"
+          git pull --rebase origin main
+          git push

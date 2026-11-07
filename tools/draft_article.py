@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-"""Draft one bilingual Insights article with Claude, for Tyler to review.
+"""Manually draft one bilingual Insights article with Claude.
 
-Run monthly by .github/workflows/monthly-draft.yml, which opens a pull request
-with the draft. Nothing is published until that pull request is merged.
+Not scheduled. The site publishes a pre-written note every day from
+content/daily/ via tools/publish_daily.py. This helper only writes a file
+under content/insights/ on the machine where it is run; it does not commit
+or publish.
 
     ANTHROPIC_API_KEY=... python3 tools/draft_article.py [--topic "..."]
 
-Writes content/insights/<slug>.md in the site's article format and prints the
-path. The draft must not invent facts about Tyler, his companies or clients;
-every draft still needs a human read before it goes live.
+Do not invent facts about Tyler, his companies or clients.
 """
 import datetime as dt
 import json

@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-08T15:08:46Z",
+ "updated": "2026-11-08T20:27:16Z",
  "sources": [
   "BBC News",
   "BioPharma Dive",
@@ -24,7 +24,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-08T15:08:46Z"
+   "date": "2026-11-08T20:27:16Z"
   },
   {
    "title": "Integrated health service delivery through medical mobile units helped to reduce deaths among individuals at risk for HIV who also inject drugs",
@@ -34,7 +34,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-08T15:08:46Z"
+   "date": "2026-11-08T20:27:16Z"
   },
   {
    "title": "An extra year of secondary school lowered dementia diagnoses later in life",
@@ -44,7 +44,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-08T15:08:46Z"
+   "date": "2026-11-08T20:27:16Z"
   },
   {
    "title": "A precision T-cell therapy stalls treatment-resistant cancers in clinical trial",
@@ -54,7 +54,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-08T15:08:46Z"
+   "date": "2026-11-08T20:27:16Z"
   },
   {
    "title": "A blood-pressure drug may activate health-promoting brown fat",
@@ -64,7 +64,88 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-08T15:08:46Z"
+   "date": "2026-11-08T20:27:16Z"
+  },
+  {
+   "title": "White House vows not to slow down immigration enforcement in wake of midterms defeat",
+   "summary": "The Department of Homeland Security also insists it is not backing away on the round-up.",
+   "link": "https://www.bbc.co.uk/news/articles/cmg476w7wnl2o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-08T20:23:58Z"
+  },
+  {
+   "title": "Top House Democrat 'a hard yes' on impeaching Hegseth",
+   "summary": "Democrats swept to power after historic midterm election success and are now eyeing the Trump administration for revenge.",
+   "link": "https://www.bbc.co.uk/news/articles/cj4g1nwx39wno?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-08T19:36:41Z"
+  },
+  {
+   "title": "Paramedic sustains multiple injuries in hospital assault",
+   "summary": "The NI Ambulance Service said the paramedic sustained injuries to the back of her head, neck, face, and hands during the incident.",
+   "link": "https://www.bbc.co.uk/news/articles/cxnv0487qpj3o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-08T19:19:26Z"
+  },
+  {
+   "title": "Democrats amp up Trump investigation threats, Blanche counters he may probe lawmakers",
+   "summary": "Democrats have vowed to investigate both President Donald Trump's White House and businesses that have worked with the administration.",
+   "link": "https://www.cnbc.com/2026/11/08/democrats-trump-oversight-blanche-doj-investigations.html",
+   "source": "CNBC",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-08T18:57:56Z"
+  },
+  {
+   "title": "Nvidia CEO Jensen Huang faces bipartisan congressional scrutiny over reported China spy link",
+   "summary": "Lawmakers want to question Nvidia CEO Jensen Huang following reports about his relationship with an alleged Chinese intelligence asset.",
+   "link": "https://www.cnbc.com/2026/11/08/jensen-huang-nvidia-china-spy-congress.html",
+   "source": "CNBC",
+   "cats": [
+    "china",
+    "us"
+   ],
+   "date": "2026-11-08T18:18:30Z"
+  },
+  {
+   "title": "No clear winner in New Zealand election, as leaders prepare for weeks of talks",
+   "summary": "Prime Minister Christopher Luxon, who will lead a caretaker government while negotiations take place, said: \"I think everyone's over politics so let's all have a bit of a break for the next three weeks\".",
+   "link": "https://www.npr.org/2026/11/08/nx-s1-6033999/no-clear-winner-in-new-zealand-election-as-leaders-prepare-for-weeks-of-talks",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-08T16:46:15Z"
+  },
+  {
+   "title": "Government 'looking seriously' at banning under-16s from Vinted and eBay",
+   "summary": "The culture secretary confirms reports they could be in the list of platforms set to be banned next March.",
+   "link": "https://www.bbc.co.uk/news/articles/cmzxjvpqrjxro?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-08T15:37:25Z"
+  },
+  {
+   "title": "How Democrats will try to end Trump's tariffs",
+   "summary": "Rep. Hakeem Jeffries, D-N.Y., who is likely the next House speaker, has made clear that ending President Trump's tariffs is one of Democrats' top priorities.",
+   "link": "https://www.cnbc.com/2026/11/08/trump-tariffs-democrats-congress-canada.html",
+   "source": "CNBC",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-08T15:36:39Z"
   },
   {
    "title": "Will China’s slow and steady moon landing plan be a safer bet than the US’?",
@@ -158,16 +239,6 @@
    "date": "2026-11-08T13:00:24Z"
   },
   {
-   "title": "How Democrats will try to end Trump's tariffs",
-   "summary": "Rep. Hakeem Jeffries, D-N.Y., who is likely the next House speaker, has made clear that ending President Trump's tariffs is one of Democrats' top priorities.",
-   "link": "https://www.cnbc.com/2026/11/08/trump-tariffs-democrats-congress-canada.html",
-   "source": "CNBC",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-08T13:00:01Z"
-  },
-  {
    "title": "China eyes gig workers and influencers as delegates for Communist Party congress",
    "summary": "For the first time, delivery couriers, ride-hailing drivers and influencers could become delegates to the Communist Party’s five-yearly national congress, as Beijing seeks to keep the group close to the official…",
    "link": "https://www.scmp.com/news/china/politics/article/3373702/china-eyes-gig-workers-and-influencers-delegates-communist-party-congress",
@@ -196,16 +267,6 @@
     "china"
    ],
    "date": "2026-11-08T12:00:25Z"
-  },
-  {
-   "title": "Government 'looking seriously' at banning under-16s from Vinted and eBay",
-   "summary": "The culture secretary confirms reports they could be in the list of platforms set to be banned next March.",
-   "link": "https://www.bbc.co.uk/news/articles/cmzxjvpqrjxro?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-08T11:25:32Z"
   },
   {
    "title": "A 24-hour fast triggers a surprising repair response in the gut",
@@ -358,26 +419,6 @@
    "date": "2026-11-08T00:52:39Z"
   },
   {
-   "title": "'Dana, please take the job!' - Trump asks UFC boss to be White House press secretary",
-   "summary": "It was unclear how genuine the president's offer was, although White later said he would travel to Washington for them to meet.",
-   "link": "https://www.bbc.co.uk/news/articles/cvze47p9jeexo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-08T00:31:53Z"
-  },
-  {
-   "title": "Trump offers UFC chief Dana White press secretary job",
-   "summary": "President Donald Trump offered the job of press secretary to UFC president and CEO Dana White on Saturday.",
-   "link": "https://www.cnbc.com/2026/11/07/trump-ufc-dana-white-press-secretary-offer.html",
-   "source": "CNBC",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-07T23:13:38Z"
-  },
-  {
    "title": "He spent $50,000 on Labubus but now the craze is dying",
    "summary": "Parent company Pop Mart's revenue has fallen as appetite for the quirky collectible monsters wanes.",
    "link": "https://www.bbc.co.uk/news/articles/cmvg652l927lo?at_medium=RSS&at_campaign=rss",
@@ -386,26 +427,6 @@
     "finance"
    ],
    "date": "2026-11-07T23:02:35Z"
-  },
-  {
-   "title": "Texas's 'Blue Tsunami' has former Texas congressman Beto O'Rourke 'over the moon'",
-   "summary": "NPR's Rob Schmitz speaks with former Texas congressman Beto O'Rourke about how past efforts by him and other Democrats helped the party win big in Texas in the midterms.",
-   "link": "https://www.npr.org/2026/11/07/nx-s1-6030966/texass-blue-tsunami-has-former-texas-congressman-beto-orourke-over-the-moon",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-07T22:12:08Z"
-  },
-  {
-   "title": "President of The Heritage Foundation looks ahead to the future of the GOP",
-   "summary": "Kevin Roberts, the president of the conservative think tank The Heritage Foundation, talks about the organization's priorities and hopes for the future of the Republican Party and its policies.",
-   "link": "https://www.npr.org/2026/11/07/nx-s1-6029779/president-of-the-heritage-foundation-looks-ahead-to-the-future-of-the-gop",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-07T22:12:03Z"
   },
   {
    "title": "Ipswich Town's new club shop 'here to stay'",
@@ -436,16 +457,6 @@
     "finance"
    ],
    "date": "2026-11-07T21:36:16Z"
-  },
-  {
-   "title": "US offers $20m reward for information about Iran's nuclear programme",
-   "summary": "Donald Trump has repeatedly raised the prospect of renewing strikes against Iran's nuclear facilities.",
-   "link": "https://www.bbc.co.uk/news/articles/c6d091ev3p0jo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-07T18:14:38Z"
   },
   {
    "title": "STAT+: BIO joins the legal fight against Medicare pilot that ties drug prices to peer countries",
@@ -629,16 +640,6 @@
     "us"
    ],
    "date": "2026-11-06T19:05:00Z"
-  },
-  {
-   "title": "Should energy drinks be banned for under-16s?",
-   "summary": "The Welsh government says it wants to ban children under 16 from buying high-caffeine energy drinks.",
-   "link": "https://www.bbc.co.uk/news/videos/c6wyrrvw22edo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-06T18:17:42Z"
   },
   {
    "title": "The AI ‘credit card’ is getting costlier as CoreWeave bond yield tops 16%",

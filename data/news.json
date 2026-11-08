@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-07T23:38:04Z",
+ "updated": "2026-11-08T05:55:56Z",
  "sources": [
   "BBC News",
   "BioPharma Dive",
@@ -24,7 +24,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-07T23:38:04Z"
+   "date": "2026-11-08T05:55:56Z"
   },
   {
    "title": "Integrated health service delivery through medical mobile units helped to reduce deaths among individuals at risk for HIV who also inject drugs",
@@ -34,7 +34,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-07T23:38:04Z"
+   "date": "2026-11-08T05:55:56Z"
   },
   {
    "title": "An extra year of secondary school lowered dementia diagnoses later in life",
@@ -44,7 +44,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-07T23:38:04Z"
+   "date": "2026-11-08T05:55:56Z"
   },
   {
    "title": "A precision T-cell therapy stalls treatment-resistant cancers in clinical trial",
@@ -54,7 +54,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-07T23:38:04Z"
+   "date": "2026-11-08T05:55:56Z"
   },
   {
    "title": "A blood-pressure drug may activate health-promoting brown fat",
@@ -64,7 +64,57 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-07T23:38:04Z"
+   "date": "2026-11-08T05:55:56Z"
+  },
+  {
+   "title": "Only a fraction of World Heritage sites are in Africa. China wants to fix that",
+   "summary": "Africa is home to ancient cities, rock art and striking natural landscapes, yet its sites are sorely under-represented on Unesco’s World Heritage List. According to data released by the UN body, of the 1,273 sites on…",
+   "link": "https://www.scmp.com/news/china/diplomacy/article/3373662/only-fraction-world-heritage-sites-are-africa-china-wants-fix",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-08T04:00:32Z"
+  },
+  {
+   "title": "Robots’ arrival set to give Chinese asparagus farmers a boost",
+   "summary": "In the flat, typhoon-prone fields of Lianshui county in eastern China’s Jiangsu province, a once-obscure vegetable has become a local economic engine. Greenhouses for growing asparagus now cover more than 1,333 hectares…",
+   "link": "https://www.scmp.com/economy/china-economy/article/3373576/robots-arrival-set-give-chinese-asparagus-farmers-boost",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-08T03:00:38Z"
+  },
+  {
+   "title": "Grief in China as rare snow leopard cub Ling Xiaohan loses 26-day fight for life",
+   "summary": "Millions of Chinese internet users grieved after beloved snow leopard cub Ling Xiaohan died last Sunday, following 26 days of medical treatment after he was found weak, injured and unable to move in the Qinghai Lake…",
+   "link": "https://www.scmp.com/news/china/politics/article/3373512/grief-china-rare-snow-leopard-cub-ling-xiaohan-loses-26-day-fight-life",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-08T01:00:24Z"
+  },
+  {
+   "title": "The Trump coalition is shattered - what will Republicans do now?",
+   "summary": "Republicans can stick with Trumpism or chart a new path, writes BBC Washington correspondent Daniel Bush.",
+   "link": "https://www.bbc.co.uk/news/articles/cm3r5gnxqz3jo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-08T00:52:39Z"
+  },
+  {
+   "title": "'Dana, please take the job!' - Trump asks UFC boss to be White House press secretary",
+   "summary": "It was unclear how genuine the president's offer was, although White later said he would travel to Washington for them to meet.",
+   "link": "https://www.bbc.co.uk/news/articles/cvze47p9jeexo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-08T00:31:53Z"
   },
   {
    "title": "Trump offers UFC chief Dana White press secretary job",
@@ -77,14 +127,14 @@
    "date": "2026-11-07T23:13:38Z"
   },
   {
-   "title": "'Dana, please take the job!' - Trump asks UFC boss to be White House press secretary",
-   "summary": "The BBC has asked the White House and UFC whether the president's job offer is genuine.",
-   "link": "https://www.bbc.co.uk/news/articles/cvze47p9jeexo?at_medium=RSS&at_campaign=rss",
+   "title": "Labubu hype seemed unstoppable, now the fluffy monster mania is dying",
+   "summary": "Parent company Pop Mart's revenue has fallen as appetite for the quirky collectible monsters wanes.",
+   "link": "https://www.bbc.co.uk/news/articles/cmvg652l927lo?at_medium=RSS&at_campaign=rss",
    "source": "BBC News",
    "cats": [
-    "us"
+    "finance"
    ],
-   "date": "2026-11-07T22:29:37Z"
+   "date": "2026-11-07T23:02:35Z"
   },
   {
    "title": "Texas's 'Blue Tsunami' has former Texas congressman Beto O'Rourke 'over the moon'",
@@ -157,8 +207,8 @@
    "date": "2026-11-07T21:39:02Z"
   },
   {
-   "title": "Can New Zealand's new government win over disillusioned voters?",
-   "summary": "The mood is low, and Kiwi's faith in politics even lower - with voters deserting the main parties at the polls.",
+   "title": "'Flat', 'tired', 'cynical': Unusually gloomy Kiwis deliver New Zealand's tightest election in years",
+   "summary": "The national mood is low, and faith in politics even lower - with voters deserting the major parties at the polls.",
    "link": "https://www.bbc.co.uk/news/articles/cxr5yyg2nj9eo?at_medium=RSS&at_campaign=rss",
    "source": "BBC News",
    "cats": [
@@ -168,7 +218,7 @@
   },
   {
    "title": "US offers $20m reward for information about Iran's nuclear programme",
-   "summary": "Donald Trump has repeatedly raised the prospecting of renewing strikes against Iran's nuclear facilities.",
+   "summary": "Donald Trump has repeatedly raised the prospect of renewing strikes against Iran's nuclear facilities.",
    "link": "https://www.bbc.co.uk/news/articles/c6d091ev3p0jo?at_medium=RSS&at_campaign=rss",
    "source": "BBC News",
    "cats": [
@@ -318,16 +368,6 @@
    "date": "2026-11-07T12:41:08Z"
   },
   {
-   "title": "Week in Politics: Trump taps Miller for chief of staff; doubles down on Trumpism",
-   "summary": "President Trump's decision to make Stephen Miller his new chief of staff is a rebuke of the midterm results and a doubling-down on Trumpism.",
-   "link": "https://www.npr.org/2026/11/07/nx-s1-6030908/week-in-politics-trump-taps-miller-for-chief-of-staff-doubles-down-on-trumpism",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-07T12:41:07Z"
-  },
-  {
    "title": "China-Switzerland trade partnership offers a model amid fraught EU ties",
    "summary": "China has framed its relationship with Switzerland as a model of practical, mutually beneficial cooperation at a time when its broader ties with the European Union remain more complicated and politically charged. Just…",
    "link": "https://www.scmp.com/opinion/china-opinion/article/3373312/china-switzerland-trade-partnership-offers-model-amid-fraught-eu-ties",
@@ -388,16 +428,6 @@
    "date": "2026-11-07T10:00:06Z"
   },
   {
-   "title": "US and China must join hands to measure rising AI tide",
-   "summary": "The next US-China talk on artificial intelligence should begin with a simple question: do the two governments actually understand how rapidly AI’s capabilities are improving? Before deciding what to do about the…",
-   "link": "https://www.scmp.com/opinion/china-opinion/article/3373279/us-and-china-must-join-hands-measure-rising-ai-tide",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-07T08:30:05Z"
-  },
-  {
    "title": "China’s EV safety push gives foreign brands from Tesla to GM an opening for a comeback",
    "summary": "International brands have become unlikely beneficiaries of Beijing’s clampdown on so-called rapidly developed vehicles as they step up efforts to convince Chinese consumers of their cars’ quality and reliability. About…",
    "link": "https://www.scmp.com/business/china-business/article/3373588/chinas-ev-safety-push-gives-foreign-brands-tesla-gm-opening-comeback",
@@ -406,16 +436,6 @@
     "china"
    ],
    "date": "2026-11-07T08:00:11Z"
-  },
-  {
-   "title": "Why China is investing heavily in African push to bring mineral processing home",
-   "summary": "Chinese investors have backed mineral processing and manufacturing projects worth more than US$16 billion across Africa, a new report has concluded, amid an increasing push by countries to secure a greater share of the…",
-   "link": "https://www.scmp.com/news/china/diplomacy/article/3373514/why-china-investing-heavily-african-push-bring-mineral-processing-home",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-07T08:00:06Z"
   },
   {
    "title": "Period products 'essential not optional'",
@@ -640,16 +660,6 @@
    "date": "2026-11-06T16:42:35Z"
   },
   {
-   "title": "Food bank to close amid rising costs",
-   "summary": "A food bank in Goole annouces it will close in January as costs rise and donations drop.",
-   "link": "https://www.bbc.co.uk/news/articles/cqrkyyj6rx7ro?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-06T16:42:23Z"
-  },
-  {
    "title": "U.S. economy added 165,000 jobs in October, way more than expected; unemployment rate slips to 4.1%",
    "summary": "Nonfarm payrolls were expected to increase by 59,000 in October as the unemployment rate was expected to hold steady at 4.2%.",
    "link": "https://www.cnbc.com/2026/11/06/jobs-report-october-2026.html",
@@ -658,16 +668,6 @@
     "finance"
    ],
    "date": "2026-11-06T16:06:59Z"
-  },
-  {
-   "title": "Beijing calls for more efforts to stabilise stock market after renewed sell-off",
-   "summary": "China’s State Council has pledged improved policy mechanisms to stabilise the country’s struggling stock market, after stocks slid again on Friday following a meltdown on the US markets. “We will enhance the inherent…",
-   "link": "https://www.scmp.com/business/markets/article/3373602/beijing-calls-more-efforts-stabilise-stock-market-after-renewed-sell",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-06T14:00:21Z"
   },
   {
    "title": "Why Glycosylation Control Is No Longer a Secondary Concern in the Development of Complex Biologics",

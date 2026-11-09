@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-08T20:27:16Z",
+ "updated": "2026-11-09T06:17:39Z",
  "sources": [
   "BBC News",
   "BioPharma Dive",
@@ -24,7 +24,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-08T20:27:16Z"
+   "date": "2026-11-09T06:17:39Z"
   },
   {
    "title": "Integrated health service delivery through medical mobile units helped to reduce deaths among individuals at risk for HIV who also inject drugs",
@@ -34,7 +34,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-08T20:27:16Z"
+   "date": "2026-11-09T06:17:39Z"
   },
   {
    "title": "An extra year of secondary school lowered dementia diagnoses later in life",
@@ -44,7 +44,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-08T20:27:16Z"
+   "date": "2026-11-09T06:17:39Z"
   },
   {
    "title": "A precision T-cell therapy stalls treatment-resistant cancers in clinical trial",
@@ -54,7 +54,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-08T20:27:16Z"
+   "date": "2026-11-09T06:17:39Z"
   },
   {
    "title": "A blood-pressure drug may activate health-promoting brown fat",
@@ -64,27 +64,240 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-08T20:27:16Z"
+   "date": "2026-11-09T06:17:39Z"
   },
   {
-   "title": "White House vows not to slow down immigration enforcement in wake of midterms defeat",
-   "summary": "The Department of Homeland Security also insists it is not backing away on the round-up.",
-   "link": "https://www.bbc.co.uk/news/articles/cmg476w7wnl2o?at_medium=RSS&at_campaign=rss",
+   "title": "How you can get council's £250 cost of living help",
+   "summary": "Applications for household grants of up to £250 are opening to some Surrey residents.",
+   "link": "https://www.bbc.co.uk/news/articles/cmd6dd3652zvo?at_medium=RSS&at_campaign=rss",
    "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-09T06:11:28Z"
+  },
+  {
+   "title": "Cancer survivor's battle for fertility funding",
+   "summary": "A woman who survived stage four blood cancer says she no longer has access to fertility treatment.",
+   "link": "https://www.bbc.co.uk/news/articles/cm8ez3e8yy9wo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-09T06:10:40Z"
+  },
+  {
+   "title": "Indoor soft play centres struggling to stay open",
+   "summary": "Jessica Harvey from Whitchurch said there were some days in the summer that no-one visited her centre.",
+   "link": "https://www.bbc.co.uk/news/articles/cm4g11exqqwvo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-09T06:10:03Z"
+  },
+  {
+   "title": "'Painful condition meant I had to leave my job'",
+   "summary": "A charity says women should not have to choose between work and health because of endometriosis.",
+   "link": "https://www.bbc.co.uk/news/articles/cm8xzkn9e4z7o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-09T06:01:58Z"
+  },
+  {
+   "title": "From supermarket fridges to passenger flights, a wave of threats is testing Europe's defenses",
+   "summary": "Cyberattacks on fridges in supermarkets and a wave of bomb threats are testing Europe’s ability to withstand disruption to crucial infrastructure.",
+   "link": "https://www.cnbc.com/2026/11/09/europe-fridge-hacks-bomb-threats-cyberattack.html",
+   "source": "CNBC",
    "cats": [
     "us"
    ],
-   "date": "2026-11-08T20:23:58Z"
+   "date": "2026-11-09T05:00:01Z"
+  },
+  {
+   "title": "Fire in northern China high-rise building kills 14, injures dozens more",
+   "summary": "Fourteen people have been killed and dozens more hospitalised after a fire broke out in a high-rise building in northern China. The fire broke out at around 5pm on Sunday in Taiyuan, the capital city of Shanxi province…",
+   "link": "https://www.scmp.com/news/china/politics/article/3373750/fire-northern-china-high-rise-building-kills-14-injures-dozens-more",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-09T04:44:16Z"
+  },
+  {
+   "title": "China’s torpedo tech, defects at Hong Kong MTR station: 5 weekend reads you missed",
+   "summary": "We have put together stories from our coverage last weekend to help you stay informed about news across Asia and beyond. If you would like to see more of our reporting, please consider subscribing. 1. Chinese engineers…",
+   "link": "https://www.scmp.com/news/world/article/3373731/chinas-torpedo-tech-defects-hong-kong-mtr-station-5-weekend-reads-you-missed",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-09T04:29:44Z"
+  },
+  {
+   "title": "Is the PLA rehearsing operations to keep US forces out of a Taiwan conflict?",
+   "summary": "Recent mainland Chinese naval deployments in the western Pacific and South China Sea have raised questions over whether Beijing is rehearsing operations to stop US and allied forces from intervening in a Taiwan…",
+   "link": "https://www.scmp.com/news/china/military/article/3373741/pla-rehearsing-operations-keep-us-forces-out-taiwan-conflict",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-09T03:59:01Z"
+  },
+  {
+   "title": "China wholesale inflation hits highest in more than four years as consumer measure slows",
+   "summary": "The PPI for October came in at 5.7%, compared to the 5.3% expected by economists polled by Reuters.",
+   "link": "https://www.cnbc.com/2026/11/09/china-wholesale-inflation-rises-consumer.html",
+   "source": "CNBC",
+   "cats": [
+    "china",
+    "finance"
+   ],
+   "date": "2026-11-09T02:50:22Z"
+  },
+  {
+   "title": "China’s factory gate inflation accelerates in October with highest increase since 2022",
+   "summary": "China’s factory-gate price growth continued to accelerate last month amid the ongoing US-Iran conflict that is fuelling uncertainties in the global energy market, while consumer inflation remained subdued. The producer…",
+   "link": "https://www.scmp.com/economy/economic-indicators/article/3373727/chinas-factory-gate-prices-continue-rise-ppi-most-2022-amid-iran-war",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-09T02:05:49Z"
+  },
+  {
+   "title": "China’s comfortable brain-reading device achieves 94% mind-typing accuracy in day-long use",
+   "summary": "Chinese researchers have created a comfortable electrode for non-invasive brain-computer interfaces (BCIs) that achieved over 94 per cent accuracy in visual mind-typing tests during day-long use. The gradient electrodes…",
+   "link": "https://www.scmp.com/news/china/science/article/3373477/chinas-comfortable-brain-reading-device-achieves-94-mind-typing-accuracy-day-long-use",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-09T02:00:33Z"
   },
   {
    "title": "Top House Democrat 'a hard yes' on impeaching Hegseth",
-   "summary": "Democrats swept to power after historic midterm election success and are now eyeing the Trump administration for revenge.",
+   "summary": "But the Pentagon said the US defence secretary would not be deterred by \"phony investigations\".",
    "link": "https://www.bbc.co.uk/news/articles/cj4g1nwx39wno?at_medium=RSS&at_campaign=rss",
    "source": "BBC News",
    "cats": [
     "us"
    ],
-   "date": "2026-11-08T19:36:41Z"
+   "date": "2026-11-09T01:53:48Z"
+  },
+  {
+   "title": "Trump says immigration crackdown was 'too tough' and played part in midterms defeat",
+   "summary": "The president tells the CBS programme 60 Minutes he had been politically \"hurt\" by sweeping deportations.",
+   "link": "https://www.bbc.co.uk/news/articles/cmg476w7wnl2o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-09T01:51:44Z"
+  },
+  {
+   "title": "StockWatch: Nurix Nosedives as Sanofi Halts Phase I Immunology Candidate",
+   "summary": "Sanofi halted development of an oral STAT6 degrader that had been under study in a Phase I first-in-human trial in Europe. STAT6, a key drug target in type 2 inflammation, is among the five targets identified by the…",
+   "link": "https://www.genengnews.com/topics/translational-medicine/stockwatch-nurix-nosedives-as-sanofi-halts-phase-i-immunology-candidate/",
+   "source": "GEN",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-09T01:26:46Z"
+  },
+  {
+   "title": "Nvidia launches investigation into CEO's affair with suspected Chinese spy",
+   "summary": "Jensen Huang also admitted to having been \"unfaithful\" to his wife and says he will cooperate with a security investigation.",
+   "link": "https://www.bbc.co.uk/news/articles/c3dxw10rjn9no?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "china",
+    "us"
+   ],
+   "date": "2026-11-09T00:50:06Z"
+  },
+  {
+   "title": "Doing these things now will help you save money at Christmas",
+   "summary": "Small decisions made now can make a big difference to your festive finances, charities say, so here are some tips.",
+   "link": "https://www.bbc.co.uk/news/articles/ck7vppll151mo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-09T00:09:14Z"
+  },
+  {
+   "title": "New contract will make it 'easier' to get GP appointments",
+   "summary": "The Department of Health (DoH) said it will give an additional £40m across two years for \"improvements in patient access and primary care activity\".",
+   "link": "https://www.bbc.co.uk/news/articles/cmd7q1w8q0e3o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-09T00:00:27Z"
+  },
+  {
+   "title": "Nvidia CEO Jensen Huang faces bipartisan congressional scrutiny over reported China spy link",
+   "summary": "Lawmakers want to question Nvidia CEO Jensen Huang following reports about his relationship with an alleged Chinese intelligence asset.",
+   "link": "https://www.cnbc.com/2026/11/08/jensen-huang-nvidia-china-spy-congress.html",
+   "source": "CNBC",
+   "cats": [
+    "china",
+    "us"
+   ],
+   "date": "2026-11-08T22:49:46Z"
+  },
+  {
+   "title": "Survival after sudden cardiac arrest didn’t improve despite training bystanders, emergency responders",
+   "summary": "A new study found survival after sudden cardiac arrest didn’t improve with advance training of responders — but researchers aren't ready to shut the door on the possibility.",
+   "link": "https://www.statnews.com/2026/11/08/sudden-cardiac-arrest-survival-cpr-defibrillation-training/?utm_campaign=rss",
+   "source": "STAT News",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-08T22:15:00Z"
+  },
+  {
+   "title": "Trump staffing changes post-midterms signal he's battle ready",
+   "summary": "President Trump is making changes to his inner circle that signal how he may approach divided government.",
+   "link": "https://www.npr.org/2026/11/08/nx-s1-6034003/trump-staffing-changes-post-midterms-signal-hes-battle-ready",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-08T22:04:17Z"
+  },
+  {
+   "title": "How will Democrats approach foreign policy after their midterm win?",
+   "summary": "NPR's Rob Schmitz speaks with Thomas Wright, senior fellow at the Brookings Institution, about his piece in Foreign Affairs titled The Fight for the Future of Democratic Foreign Policy.",
+   "link": "https://www.npr.org/2026/11/08/nx-s1-6030982/how-will-democrats-approach-foreign-policy-after-their-midterm-win",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-08T22:04:14Z"
+  },
+  {
+   "title": "How Dong Mingzhu, China’s manufacturing ‘iron lady’, is maintaining her cool in the AI era",
+   "summary": "Dong Mingzhu chairs Gree Electric Appliances, a home-appliance giant based in southern China’s Guangdong province. Having worked her way up from a frontline sales job, she is one of China’s best-known figures in…",
+   "link": "https://www.scmp.com/tech/article/3373325/how-dong-mingzhu-chinas-manufacturing-iron-lady-maintaining-her-cool-ai-era",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-08T22:00:12Z"
+  },
+  {
+   "title": "Trump says renewed Iran strikes ‘highly unlikely’ if talks progress but warns he could still strike",
+   "summary": "Trump tied avoiding renewed U.S. strikes to progress in talks over Iran’s nuclear program and the Strait of Hormuz.",
+   "link": "https://www.cnbc.com/2026/11/08/trump-iran-strikes-unlikely-talks-hormuz.html",
+   "source": "CNBC",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-08T21:53:02Z"
   },
   {
    "title": "Paramedic sustains multiple injuries in hospital assault",
@@ -105,17 +318,6 @@
     "us"
    ],
    "date": "2026-11-08T18:57:56Z"
-  },
-  {
-   "title": "Nvidia CEO Jensen Huang faces bipartisan congressional scrutiny over reported China spy link",
-   "summary": "Lawmakers want to question Nvidia CEO Jensen Huang following reports about his relationship with an alleged Chinese intelligence asset.",
-   "link": "https://www.cnbc.com/2026/11/08/jensen-huang-nvidia-china-spy-congress.html",
-   "source": "CNBC",
-   "cats": [
-    "china",
-    "us"
-   ],
-   "date": "2026-11-08T18:18:30Z"
   },
   {
    "title": "No clear winner in New Zealand election, as leaders prepare for weeks of talks",
@@ -209,26 +411,6 @@
    "date": "2026-11-08T13:22:23Z"
   },
   {
-   "title": "Historically red state legislatures have flipped. Here's what's on their agenda",
-   "summary": "Democrats made sweeping gains in state legislatures across the country. We look at North Carolina and Arizona to see what that could mean.",
-   "link": "https://www.npr.org/2026/11/08/nx-s1-6032600/historically-red-state-legislatures-have-flipped-heres-whats-on-their-agenda",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-08T13:16:08Z"
-  },
-  {
-   "title": "Week in politics: Democrats plan for the next Congress, Trump's new Chief of Staff",
-   "summary": "Democrats plans for the next Congress, where they'll hold significant majorities in both chambers. Meanwhile, President Trump signals his plans by promoting Stephen Miller as his new Chief of Staff.",
-   "link": "https://www.npr.org/2026/11/08/nx-s1-6030679/week-in-politics-democrats-plan-for-the-next-congress-trumps-new-chief-of-staff",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-08T13:16:05Z"
-  },
-  {
    "title": "Is China getting faster at integrating new nuclear missiles into its forces?",
    "summary": "China’s newest land-based intercontinental ballistic missile, the DF-61, has made its way into routine military training much faster than earlier ICBMs, according to state broadcaster CCTV. That raises the question of…",
    "link": "https://www.scmp.com/news/china/military/article/3373696/china-getting-faster-integrating-new-nuclear-missiles-its-forces",
@@ -237,76 +419,6 @@
     "china"
    ],
    "date": "2026-11-08T13:00:24Z"
-  },
-  {
-   "title": "China eyes gig workers and influencers as delegates for Communist Party congress",
-   "summary": "For the first time, delivery couriers, ride-hailing drivers and influencers could become delegates to the Communist Party’s five-yearly national congress, as Beijing seeks to keep the group close to the official…",
-   "link": "https://www.scmp.com/news/china/politics/article/3373702/china-eyes-gig-workers-and-influencers-delegates-communist-party-congress",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-08T12:30:19Z"
-  },
-  {
-   "title": "China’s focus on getting its house in order offers lessons in governance",
-   "summary": "The Communist Party’s call for “self-revolution” may be rooted in the pursuit of internal discipline, but its implications extend well beyond China. As the global order faces mounting challenges, Beijing’s emphasis on…",
-   "link": "https://www.scmp.com/opinion/china-opinion/article/3373416/chinas-focus-getting-its-house-order-offers-lessons-governance",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-08T12:30:11Z"
-  },
-  {
-   "title": "Chinese engineers reduce cargo ship fuel use by 5% with high-speed torpedo tech",
-   "summary": "Supercavitating torpedoes can reach extreme underwater speeds by travelling inside a gas-filled cavity that sharply reduces their contact with water. Beyond torpedoes, supercavitating projectiles can streak through the…",
-   "link": "https://www.scmp.com/news/china/science/article/3373333/chinese-engineers-reduce-cargo-ship-fuel-use-5-high-speed-torpedo-tech",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-08T12:00:25Z"
-  },
-  {
-   "title": "A 24-hour fast triggers a surprising repair response in the gut",
-   "summary": "Scientists have discovered that fasting for just 24 hours increases a beneficial gut bacterium that helps the intestines regenerate after radiation damage. The preclinical findings could pave the way for new treatments…",
-   "link": "https://www.sciencedaily.com/releases/2026/11/261104084024.htm",
-   "source": "ScienceDaily",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-08T11:06:30Z"
-  },
-  {
-   "title": "MIT scientists turn immune cells into cancer killers inside the body",
-   "summary": "MIT scientists have developed nanoparticles that reprogram immune cells directly inside the body to attack cancer and harmful immune cells, eliminating tumors and reversing liver damage in mouse experiments. The…",
-   "link": "https://www.sciencedaily.com/releases/2026/11/261104084015.htm",
-   "source": "ScienceDaily",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-08T10:52:31Z"
-  },
-  {
-   "title": "Low testosterone linked to 18% higher risk of dying from cancer",
-   "summary": "A major international study tracking more than 26,000 men found that very low testosterone levels were associated with an 18% higher risk of dying from cancer later in life. Surprisingly, testosterone itself showed no…",
-   "link": "https://www.sciencedaily.com/releases/2026/11/261104012301.htm",
-   "source": "ScienceDaily",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-08T10:10:50Z"
-  },
-  {
-   "title": "How Gen Z voters helped fuel a blue wave for Democrats",
-   "summary": "Republicans made gains with young voters in 2024, but in this year's midterms Americans under 30 issued a strong rebuke of President Trump and his party, voting decisively for Democrats instead.",
-   "link": "https://www.npr.org/2026/11/08/nx-s1-6032829/gen-z-voters-midterm-elections",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-08T10:00:00Z"
   },
   {
    "title": "STAT+: Why the latest heart drug failures should make us all more skeptical of AI hype",
@@ -329,26 +441,6 @@
    "date": "2026-11-08T09:17:32Z"
   },
   {
-   "title": "Plugged in, not locked in: middle powers navigate US-China AI rivalry",
-   "summary": "Middle powers navigating the US-China competition in artificial intelligence (AI) favour flexible partnerships over closed alliances, demanding a “plugged in, not locked in” approach, an AI governance panel heard on…",
-   "link": "https://www.scmp.com/news/china/diplomacy/article/3373682/plugged-not-locked-middle-powers-navigate-us-china-ai-rivalry",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-08T09:09:21Z"
-  },
-  {
-   "title": "UFC's Dana White says he will meet with Trump Monday over offer to be White House press secretary",
-   "summary": "President Donald Trump said Saturday that he has offered the job of White House press secretary to his friend and UFC boss Dana White.",
-   "link": "https://www.npr.org/2026/11/08/nx-s1-6033900/ufc-dana-white-trump-white-house-press-secretary",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-08T07:35:29Z"
-  },
-  {
    "title": "Traders 'priced out' of £12,000 Christmas market pitches",
    "summary": "Stall holders said they'd met the council leader to express their concerns at high costs since a new operator took over.",
    "link": "https://www.bbc.co.uk/news/articles/ckn8wew92xw1o?at_medium=RSS&at_campaign=rss",
@@ -357,16 +449,6 @@
     "finance"
    ],
    "date": "2026-11-08T07:11:02Z"
-  },
-  {
-   "title": "There's finally a treatment for my five-year-old's dementia - but it'll cost me £3m",
-   "summary": "The dementia treatment for children is available in the US, with funding for UK children unclear.",
-   "link": "https://www.bbc.co.uk/news/articles/c8046kdw56e2o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-08T07:04:36Z"
   },
   {
    "title": "China urged to target sugar-rich drinks during consumption tax overhaul",
@@ -379,16 +461,6 @@
    "date": "2026-11-08T07:00:25Z"
   },
   {
-   "title": "Scientists discover hidden brain changes linked to common sleep disorders",
-   "summary": "Scientists have discovered that sleep disorders are associated with structural changes in brain regions that control attention, decision-making, and emotions, potentially explaining why disrupted sleep can affect…",
-   "link": "https://www.sciencedaily.com/releases/2026/11/261104012303.htm",
-   "source": "ScienceDaily",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-08T04:47:52Z"
-  },
-  {
    "title": "Robots’ arrival set to give Chinese asparagus farmers a boost",
    "summary": "In the flat, typhoon-prone fields of Lianshui county in eastern China’s Jiangsu province, a once-obscure vegetable has become a local economic engine. Greenhouses for growing asparagus now cover more than 1,333 hectares…",
    "link": "https://www.scmp.com/economy/china-economy/article/3373576/robots-arrival-set-give-chinese-asparagus-farmers-boost",
@@ -397,26 +469,6 @@
     "china"
    ],
    "date": "2026-11-08T03:00:38Z"
-  },
-  {
-   "title": "Stronger flu shot linked to nearly 55% lower Alzheimer's risk",
-   "summary": "A surprising new study suggests that a stronger flu shot could offer older adults significantly greater protection against Alzheimer's disease. Researchers at UTHealth Houston analyzed nearly 200,000 adults ages 65 and…",
-   "link": "https://www.sciencedaily.com/releases/2026/11/261105224609.htm",
-   "source": "ScienceDaily",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-08T02:52:28Z"
-  },
-  {
-   "title": "The Trump coalition is shattered - what will Republicans do now?",
-   "summary": "Republicans can stick with Trumpism or chart a new path, writes BBC Washington correspondent Daniel Bush.",
-   "link": "https://www.bbc.co.uk/news/articles/cm3r5gnxqz3jo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-08T00:52:39Z"
   },
   {
    "title": "He spent $50,000 on Labubus but now the craze is dying",
@@ -500,16 +552,6 @@
    "date": "2026-11-07T14:50:00Z"
   },
   {
-   "title": "STAT+: Despite Novo drug’s failure, cardiologists say they will still pursue anti-inflammatories",
-   "summary": "“These results, the fact that they're negative, does not invalidate that inflammation plays a very important role in cardiovascular disease.\"",
-   "link": "https://www.statnews.com/2026/11/07/aha-2026-conference-novo-nordisk-zeus-trial-ziltivekimab-results/?utm_campaign=rss",
-   "source": "STAT News",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-07T14:35:00Z"
-  },
-  {
    "title": "China-Switzerland trade partnership offers a model amid fraught EU ties",
    "summary": "China has framed its relationship with Switzerland as a model of practical, mutually beneficial cooperation at a time when its broader ties with the European Union remain more complicated and politically charged. Just…",
    "link": "https://www.scmp.com/opinion/china-opinion/article/3373312/china-switzerland-trade-partnership-offers-model-amid-fraught-eu-ties",
@@ -530,56 +572,6 @@
    "date": "2026-11-07T10:00:06Z"
   },
   {
-   "title": "China’s EV safety push gives foreign brands from Tesla to GM an opening for a comeback",
-   "summary": "International brands have become unlikely beneficiaries of Beijing’s clampdown on so-called rapidly developed vehicles as they step up efforts to convince Chinese consumers of their cars’ quality and reliability. About…",
-   "link": "https://www.scmp.com/business/china-business/article/3373588/chinas-ev-safety-push-gives-foreign-brands-tesla-gm-opening-comeback",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-07T08:00:11Z"
-  },
-  {
-   "title": "Period products 'essential not optional'",
-   "summary": "Matt Tyrer is working on a scheme which will ensure access to free sanitary towels or tampons.",
-   "link": "https://www.bbc.co.uk/news/articles/c8r4y9rgqprzo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-07T07:48:42Z"
-  },
-  {
-   "title": "'You feel that you're not alone' - the young people finding community in grief",
-   "summary": "Too Young to Grieve is an informal peer support community providing young people with a space to grieve.",
-   "link": "https://www.bbc.co.uk/news/articles/c20e32l61xko?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-07T06:36:47Z"
-  },
-  {
-   "title": "Chinese tourist arrivals in Thailand fall 13.6% in October after embassy safety warning",
-   "summary": "Chinese arrivals in Thailand, normally a popular tourist destination, declined in October partly because of a fresh embassy warning against dangers such as getting snared by the country’s ever-active fraud rings. The…",
-   "link": "https://www.scmp.com/economy/china-economy/article/3373566/chinese-tourist-arrivals-thailand-fall-136-october-after-embassy-safety-warning",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-07T06:00:23Z"
-  },
-  {
-   "title": "'My mortgage is going up £200 a month': How rising interest rates are hitting people's pockets",
-   "summary": "With UK interest rates set to rise, mortgages, credit cards and loans could get more expensive for millions.",
-   "link": "https://www.bbc.co.uk/news/articles/c617kjqjvk12o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-07T01:41:36Z"
-  },
-  {
    "title": "The Aging Proteome: Clocks, Cohorts, and Clinical Trials",
    "summary": "In this GEN webinar, two experts will show how ultra-sensitive, multiplexed proteomics can measure both the pace of aging and the effects of interventions designed to change it. The post The Aging Proteome: Clocks…",
    "link": "https://www.genengnews.com/multimedia/webinars/the-aging-proteome-clocks-cohorts-and-clinical-trials/",
@@ -588,27 +580,6 @@
     "biotech"
    ],
    "date": "2026-11-06T22:23:01Z"
-  },
-  {
-   "title": "Elon Musk appears to signal the end of the road for Cybertruck",
-   "summary": "Musk said it was to make room for production of its Cybercabs - autonomous taxis without a driver.",
-   "link": "https://www.bbc.co.uk/news/articles/cq1j33w7d232o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-06T21:49:50Z"
-  },
-  {
-   "title": "AI stocks climb after trillions wiped from market values",
-   "summary": "Investors had been selling off tech shares in part due to concerns the Democrat election victory would mean slower AI development.",
-   "link": "https://www.bbc.co.uk/news/articles/c35ynnpzdq51o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "finance",
-    "us"
-   ],
-   "date": "2026-11-06T21:06:25Z"
   },
   {
    "title": "Nasdaq drops into correction territory — here’s what typically happens next",
@@ -712,6 +683,36 @@
    "date": "2026-11-06T13:13:00Z"
   },
   {
+   "title": "This week in charts: 3 drug launches Wall Street is watching",
+   "summary": "The latest installment in BioPharma Dive’s visualization-focused series features a look at investors’ response to a trio of medicines highlighted in quarterly earnings this week.",
+   "link": "https://www.biopharmadive.com/news/biotech-charts-drug-launches-sales-wegovy-rezdiffra-auvelity/873549/",
+   "source": "BioPharma Dive",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-06T12:00:00Z"
+  },
+  {
+   "title": "Cas12a-based combinatorial knockout screens define the genetic architecture of the DNA damage response",
+   "summary": "",
+   "link": "https://www.nature.com/articles/s41587-026-03339-2",
+   "source": "Nature Biotechnology",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-06T00:00:00Z"
+  },
+  {
+   "title": "FDA Grants Accelerated Approval to a New Treatment for Head and Neck Squamous Cell Carcinoma",
+   "summary": "The U.S. Food and Drug Administration today granted accelerated approval to Rybrevant Faspro (amivantamab and hyaluronidase-lpuj) for the treatment of adults with recurrent or metastatic head and neck squamous cell…",
+   "link": "http://www.fda.gov/news-events/press-announcements/fda-grants-accelerated-approval-new-treatment-head-and-neck-squamous-cell-carcinoma",
+   "source": "US FDA",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-05T22:30:38Z"
+  },
+  {
    "title": "The October jobs report is out Friday. Here's everything to expect",
    "summary": "The Bureau of Labor Statistics releases the October nonfarm payrolls report Friday at 8:30 a.m. ET.",
    "link": "https://www.cnbc.com/2026/11/05/october-jobs-report-preview.html",
@@ -722,6 +723,16 @@
    "date": "2026-11-05T21:32:52Z"
   },
   {
+   "title": "Medicare will cut billions from 340B, expand site-neutral payments in 2027",
+   "summary": "Regulators finalized a rule Wednesday that would slash payments for drugs in the controversial 340B program and equalize some payments between care sites. Hospitals railed against the rule.",
+   "link": "https://www.biopharmadive.com/news/medicare-will-cut-billions-from-340b-expand-site-neutral-payments-in-2027/873909/",
+   "source": "BioPharma Dive",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-05T21:06:00Z"
+  },
+  {
    "title": "Top Democrats call to rein in AI buildout after midterms sweep: 'National data center moratorium now'",
    "summary": "Democratic winners and progressive lawmakers are calling for tougher limits on AI and data centers after the 2026 midterm elections.",
    "link": "https://www.cnbc.com/2026/11/05/democrats-data-center-restrictions-midterms.html",
@@ -730,16 +741,6 @@
     "finance"
    ],
    "date": "2026-11-05T20:17:16Z"
-  },
-  {
-   "title": "Barkin sees interest rate hikes ahead, but at a gradual pace",
-   "summary": "In a CNBC interview, the policymaker expressed concern over inflation and said monetary policy will need to adjust.",
-   "link": "https://www.cnbc.com/2026/11/05/barkin-sees-interest-rate-hikes-ahead-but-at-a-gradual-pace.html",
-   "source": "CNBC",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-05T16:34:33Z"
   }
  ]
 }

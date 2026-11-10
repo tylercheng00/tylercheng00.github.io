@@ -1,6 +1,7 @@
 name: Daily insight
 
-# Every morning in Hong Kong, publish five Insights articles straight to main.
+# Publish five Insights articles straight to main.
+# This job runs on a GitHub-hosted runner. The author's computer can be off.
 # No pull request.
 # 1. Take up to five notes in content/daily dated today or earlier.
 # 2. If that is fewer than five, draft the rest with Claude and publish them,
@@ -8,14 +9,10 @@ name: Daily insight
 
 on:
   schedule:
-    # GitHub has been starting the single 08:15 job hours late, or not at all
-    # by noon. These five are 07:17, 08:23, 09:47, 11:17 and 13:23 in Hong Kong.
-    # publish_daily.py still releases at most five notes on one Hong Kong date.
-    - cron: "17 23 * * *"
-    - cron: "23 0 * * *"
-    - cron: "47 1 * * *"
-    - cron: "17 3 * * *"
-    - cron: "23 5 * * *"
+    # Once an hour. GitHub often delays or drops a single morning slot.
+    # Minute 17 avoids the crowded top of the hour. The stamp in
+    # data/publish-stamp.txt stops the day at five notes.
+    - cron: "17 * * * *"
   workflow_dispatch:
     inputs:
       date:

@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-10T12:34:42Z",
+ "updated": "2026-11-10T21:47:34Z",
  "sources": [
   "BBC News",
   "BioPharma Dive",
@@ -24,7 +24,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-10T12:34:42Z"
+   "date": "2026-11-10T21:47:34Z"
   },
   {
    "title": "Integrated health service delivery through medical mobile units helped to reduce deaths among individuals at risk for HIV who also inject drugs",
@@ -34,7 +34,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-10T12:34:42Z"
+   "date": "2026-11-10T21:47:34Z"
   },
   {
    "title": "An extra year of secondary school lowered dementia diagnoses later in life",
@@ -44,7 +44,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-10T12:34:42Z"
+   "date": "2026-11-10T21:47:34Z"
   },
   {
    "title": "A precision T-cell therapy stalls treatment-resistant cancers in clinical trial",
@@ -54,7 +54,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-10T12:34:42Z"
+   "date": "2026-11-10T21:47:34Z"
   },
   {
    "title": "A blood-pressure drug may activate health-promoting brown fat",
@@ -64,17 +64,432 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-10T12:34:42Z"
+   "date": "2026-11-10T21:47:34Z"
   },
   {
-   "title": "STAT+: PepGen says early trial for muscular dystrophy drug looks promising",
-   "summary": "PepGen says its candidate is correcting more of the genetic stutter found in myotonic dystrophy type 1.",
-   "link": "https://www.statnews.com/2026/11/10/muscular-dystrophy-dm1-pepgen-pgn-edodm1-early-results/?utm_campaign=rss",
+   "title": "White House vows to press ahead with tariffs despite midterm backlash over rising prices",
+   "summary": "Business executives warned at a Washington summit of rising costs and shifting supply chains as polls showed growing opposition to Trump's tariffs.",
+   "link": "https://www.cnbc.com/2026/11/10/trump-tariffs-midterms-gary-cohn-inflation.html",
+   "source": "CNBC",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-10T21:45:46Z"
+  },
+  {
+   "title": "House GOP report critical of Epstein investigation",
+   "summary": "The House Oversight Committee has released a report into its investigation into sex-offender, Jeffrey Epstein. They faulted the federal government for not holding the financier accountable.",
+   "link": "https://www.npr.org/2026/11/10/nx-s1-6035872/house-gop-report-critical-of-epstein-investigation",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-10T21:43:31Z"
+  },
+  {
+   "title": "China-Asean partnership is helping build common home and shared future",
+   "summary": "On November 22, 2021, President Xi Jinping and the leaders of the Association of Southeast Asian Nations (Asean) jointly announced the establishment of a China-Asean Comprehensive Strategic Partnership, marking a new…",
+   "link": "https://www.scmp.com/opinion/china-opinion/article/3373793/china-asean-partnership-helping-build-common-home-and-shared-future",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-10T21:30:07Z"
+  },
+  {
+   "title": "Law on 'holiday hunger' passed by Stormont assembly",
+   "summary": "A majority of 49 to 24 assembly members backed the legislation, which was proposed by Sinn Féin's Danny Baker and welcomed by some parents and charities.",
+   "link": "https://www.bbc.co.uk/news/articles/cmewewgvrwpqo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-10T21:24:06Z"
+  },
+  {
+   "title": "What we know so far about Jensen Huang's affair with suspected Chinese spy",
+   "summary": "The billionaire tech executive finds himself mired in a personal and national security scandal.",
+   "link": "https://www.bbc.co.uk/news/articles/ckgel338xql3o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "china",
+    "finance"
+   ],
+   "date": "2026-11-10T21:22:36Z"
+  },
+  {
+   "title": "Schumer accuses Trump of defending Nvidia CEO Jensen Huang at cost of national security",
+   "summary": "Rep. John Moolenaar, R-Mich., the Republican chairman of the Select Committee on China and told CNBC he expects answers about Jensen Huang's relationship.",
+   "link": "https://www.cnbc.com/2026/11/10/moolenaar-nvidia-jensen-huang-affair-chinese-spy.html",
+   "source": "CNBC",
+   "cats": [
+    "china",
+    "us"
+   ],
+   "date": "2026-11-10T21:11:36Z"
+  },
+  {
+   "title": "Nvidia hires major New York law firm to investigate Jensen Huang affair",
+   "summary": "The appointment was made after it emerged Jensen Huang had an affair with a woman believed to be a spy for China.",
+   "link": "https://www.bbc.co.uk/news/articles/ck1wvwwl3x0go?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "china",
+    "finance"
+   ],
+   "date": "2026-11-10T21:06:04Z"
+  },
+  {
+   "title": "China mocks US ‘congratulations’ over Dominican closure of Chinese-run factory",
+   "summary": "China’s embassy in Santo Domingo accused the United States on Monday evening of “sinister intentions” and mocked Washington for “congratulating” the Dominican Republic on closing a Chinese-run cardboard factory. The…",
+   "link": "https://www.scmp.com/news/china/diplomacy/article/3374000/china-mocks-us-congratulations-over-dominican-closure-chinese-run-factory",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-10T20:49:11Z"
+  },
+  {
+   "title": "Jim Jordan elected House GOP leader",
+   "summary": "House Speaker Mike Johnson, R-La., announced the day after Election Day he would not run for minority leader in the 120th Congress.",
+   "link": "https://www.cnbc.com/2026/11/10/jim-jordan-congress-republicans-midterm.html",
+   "source": "CNBC",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-10T20:24:45Z"
+  },
+  {
+   "title": "STAT+: Wyden, Sanders hand-in-hand on ‘Medicare for All’ initiative",
+   "summary": "Sen. Bernie Sanders said that he wants to lower the Medicare eligibility age by 10 years, among other initiatives.",
+   "link": "https://www.statnews.com/2026/11/10/dc-diagnosis-wyden-sanders-aligned-on-medicare-for-all/?utm_campaign=rss",
    "source": "STAT News",
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-10T12:05:00Z"
+   "date": "2026-11-10T20:05:20Z"
+  },
+  {
+   "title": "Deal agreed to end health visitor strike affecting baby appointments",
+   "summary": "Health visitors are set to return to work next week, ending a nine-month dispute over pay and grading.",
+   "link": "https://www.bbc.co.uk/news/articles/c317k7kn44nzo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-10T18:55:34Z"
+  },
+  {
+   "title": "STAT+: Former Eli Lilly rep claims she was fired for complaining about marketing of Mounjaro diabetes drug",
+   "summary": "A former Eli Lilly sales rep filed a lawsuit alleging she was fired after claiming the company was inappropriately promoting its Mounjaro diabetes drug to combat weight loss.",
+   "link": "https://www.statnews.com/pharmalot/2026/11/10/former-lilly-rep-claims-she-was-fired-for-complaining-about-marketing-of-mounjaro-diabetes-drug/?utm_campaign=rss",
+   "source": "STAT News",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-10T18:04:30Z"
+  },
+  {
+   "title": "Claude chatbot maker set for $1.3tn stock market debut despite 'catastrophic' AI warning",
+   "summary": "The AI company behind the Claude chatbot will offer its shares at between $70 and $78, which is lower than what was expected.",
+   "link": "https://www.bbc.co.uk/news/articles/crpdgd723x2zo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-10T17:56:12Z"
+  },
+  {
+   "title": "Pete Hegseth decries impeachment push, defends Iran war handling",
+   "summary": "GOP Rep. Thomas Massie, who has clashed with President Donald Trump, kicked off the Hegseth impeachment fight days after a blue wave midterm election.",
+   "link": "https://www.cnbc.com/2026/11/10/pete-hegseth-impeachment-massie-iran.html",
+   "source": "CNBC",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-10T17:48:47Z"
+  },
+  {
+   "title": "How Breast Cancer Chemotherapy May Impact Biological Aging and Loss of Healthy Life Years",
+   "summary": "Chemotherapy helps many women survive breast cancer, but the results of new research suggest that chemotherapy may also accelerate biological aging beyond chronological age and increase the risk of earlier death from…",
+   "link": "https://www.genengnews.com/topics/cancer/how-breast-cancer-chemotherapy-may-impact-biological-aging-and-loss-of-healthy-life-years/",
+   "source": "GEN",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-10T17:26:51Z"
+  },
+  {
+   "title": "STAT+: Men’s use of chatbots for therapy, and earnings season highlights",
+   "summary": "In this edition of STAT Health Tech: Growing optimism around chatbots and men who avoid therapy, and highlights from the earnings season.",
+   "link": "https://www.statnews.com/2026/11/10/chatbots-for-men-and-earnings-highlights-health-tech/?utm_campaign=rss",
+   "source": "STAT News",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-10T17:18:42Z"
+  },
+  {
+   "title": "STAT+: Oura to acquire Counsel Health for $625 million, placing a big bet on AI care",
+   "summary": "Oura, the smart ring maker that recently delayed plans to go public, said it will pay $625 million to acquire Counsel Health, a clinical AI startup.",
+   "link": "https://www.statnews.com/2026/11/10/oura-acquires-counsel-health-big-bet-ai-care/?utm_campaign=rss",
+   "source": "STAT News",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-10T17:14:42Z"
+  },
+  {
+   "title": "Fed Governor Waller sees December hike likely, opens door to possible half-point increase",
+   "summary": "The policymaker said he \"is leaning toward\" a rate increase in December and could support a half-point hike depending on inflation data.",
+   "link": "https://www.cnbc.com/2026/11/10/fed-governor-waller-sees-december-hike-likely.html",
+   "source": "CNBC",
+   "cats": [
+    "finance",
+    "us"
+   ],
+   "date": "2026-11-10T17:13:44Z"
+  },
+  {
+   "title": "Beam’s base editing therapy for sickle cell hits goal in pivotal trial",
+   "summary": "The result represents a scientific milestone and positions Beam to submit a first-of-its-kind FDA application as soon as the end of the year.",
+   "link": "https://www.biopharmadive.com/news/beam-sickle-cell-base-editing-risto-cel-results/874242/",
+   "source": "BioPharma Dive",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-10T17:06:00Z"
+  },
+  {
+   "title": "Kim Kardashian's Skims offers refunds for $148 advent calendar after backlash",
+   "summary": "The contents of the calendar, including hair clips and keychains, have been widely criticised on social media.",
+   "link": "https://www.bbc.co.uk/news/articles/cqp8g8p53x6ko?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-10T17:04:55Z"
+  },
+  {
+   "title": "From Farm Waste to Medical Nanoparticles",
+   "summary": "Fruit peels, rice husks, and other crop leftovers can yield biomedical nanoparticles, but variable feedstocks, scale-up hurdles, and thin safety data still stand between lab promise and reliable commercial…",
+   "link": "https://www.genengnews.com/topics/bioprocessing/from-farm-waste-to-medical-nanoparticles/",
+   "source": "GEN",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-10T17:00:31Z"
+  },
+  {
+   "title": "Hybrid Model Captures Lactate Run-Away and Back-Metabolism",
+   "summary": "A hybrid model provides hard-to-achieve insights into lactate performance during bioprocessing, creating conditions for more accurate predictions to better manage key batch parameters and variability. The post Hybrid…",
+   "link": "https://www.genengnews.com/topics/bioprocessing/hybrid-model-captures-lactate-run-away-and-back-metabolism/",
+   "source": "GEN",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-10T17:00:27Z"
+  },
+  {
+   "title": "Extracellular Vesicle Product Developer Creates Potency Assay",
+   "summary": "A company developing extracellular vesicle-based products has developed a potency assay for quality control. They hope to adapt it for future products and scale it to commercial manufacturing. The post Extracellular…",
+   "link": "https://www.genengnews.com/topics/bioprocessing/extracellular-vesicle-product-developer-creates-potency-assay/",
+   "source": "GEN",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-10T17:00:26Z"
+  },
+  {
+   "title": "Automation a Path to Lower Cell Therapy Costs",
+   "summary": "Australian developer Currus Bio predicts that automating the production of its candidate cancer cell therapy, CUR-001, using the Cocoon platform will reduce costs and enhance its ability to scale production as the…",
+   "link": "https://www.genengnews.com/topics/bioprocessing/automation-a-path-to-lower-cell-therapy-costs/",
+   "source": "GEN",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-10T17:00:23Z"
+  },
+  {
+   "title": "Consumer prices rose 0.4% in October, more than expected, complicating Fed's inflation fight",
+   "summary": "The report comes at a critical juncture for the Federal Reserve as it considers its next move regarding interest rates.",
+   "link": "https://www.cnbc.com/2026/11/10/cpi-inflation-report-october-2026.html",
+   "source": "CNBC",
+   "cats": [
+    "finance",
+    "us"
+   ],
+   "date": "2026-11-10T16:47:05Z"
+  },
+  {
+   "title": "Some pupils 'struggling just to get a hot meal'",
+   "summary": "Students speak out as school dinner prices are set to increase for the second time in a year.",
+   "link": "https://www.bbc.co.uk/news/articles/c9m262yv6yx8o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-10T16:46:21Z"
+  },
+  {
+   "title": "U.S. gas prices fall below $4 for the first time since July",
+   "summary": "Americans may finally find some relief at the pump.",
+   "link": "https://www.cnbc.com/2026/11/10/us-gas-prices-below-four-dollars.html",
+   "source": "CNBC",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-10T16:29:09Z"
+  },
+  {
+   "title": "Rare cancer discovered after mum underwent hysterectomy",
+   "summary": "Mum-of-four Donna Marklew, from Coventry, discovered she had cancer after a post-op biopsy.",
+   "link": "https://www.bbc.co.uk/news/articles/crq5n5w26lp5o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-10T16:22:18Z"
+  },
+  {
+   "title": "House Oversight calls on DOJ to interview key Epstein witnesses, says govt. ‘failed’ survivors",
+   "summary": "\"The federal government has failed the survivors of Jeffrey Epstein and Ghislaine Maxwell's horrific crimes for decades,\" Rep. James Comer, R-Ky., said.",
+   "link": "https://www.cnbc.com/2026/11/10/jeffrey-epstein-house-oversight-doj.html",
+   "source": "CNBC",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-10T16:17:20Z"
+  },
+  {
+   "title": "Thousands of 'off-grid' homes eligible for £250 to help with heating bills",
+   "summary": "Households dependent on either heating oil or LPG and are eligible for reduced council tax will benefit.",
+   "link": "https://www.bbc.co.uk/news/articles/cm70p050824po?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-10T16:03:46Z"
+  },
+  {
+   "title": "Needle-free allergy treatment in Guernsey?",
+   "summary": "Medics say an adrenaline nasal spray to treat allergic reactions \"could be a real step forward\" if approved in Guernsey",
+   "link": "https://www.bbc.co.uk/news/videos/cxq6n6n2y3pjo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-10T15:37:26Z"
+  },
+  {
+   "title": "Sales of tinned food and bottled water jump after 'Be Ready' campaign launch",
+   "summary": "Sales of essential goods such as hand sanitiser soar after the government called on households to be prepared for emergencies.",
+   "link": "https://www.bbc.co.uk/news/articles/cqev3vl4ek33o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-10T15:10:20Z"
+  },
+  {
+   "title": "Will Nvidia CEO Jensen Huang’s affair become another ‘spy balloon’ saga for US-China ties?",
+   "summary": "China hawks in Washington could weaponise allegations that Nvidia CEO Jensen Huang was targeted by Chinese intelligence, despite denials from Beijing, Chinese experts warn. They said controversy would give US hardliners…",
+   "link": "https://www.scmp.com/news/china/diplomacy/article/3373986/will-nvidia-ceo-jensen-huangs-affair-become-another-spy-balloon-saga-us-china-ties",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-10T15:00:11Z"
+  },
+  {
+   "title": "US inflation higher than expected in October - here's what is happening with prices",
+   "summary": "Prices rose by 0.4% over the month, driven by increases in shelter, food and energy costs.",
+   "link": "https://www.bbc.co.uk/news/articles/cwy8lx3pg4k2o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-10T14:45:46Z"
+  },
+  {
+   "title": "STAT+: GLP-1s are given an FDA warning for rare eye condition risk",
+   "summary": "The FDA warned that GLP-1 drugs carry a potential risk of a rare but serious eye condition sometimes referred to as an “eye stroke.”",
+   "link": "https://www.statnews.com/2026/11/10/biotech-news-glp-1-given-an-fda-warning-for-rare-eye-condition-risk/?utm_campaign=rss",
+   "source": "STAT News",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-10T14:38:29Z"
+  },
+  {
+   "title": "Xi and Trump set for Apec talks, but major deliverables expected to wait for G20",
+   "summary": "The presidents of the US and China are set to meet again at next week’s Apec summit, but observers expect few tangible bilateral deliverables to emerge from their talks. The face-to-face meeting between Donald Trump and…",
+   "link": "https://www.scmp.com/news/china/diplomacy/article/3373969/xi-and-trump-set-apec-talks-major-deliverables-expected-wait-g20",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-10T14:00:10Z"
+  },
+  {
+   "title": "France blames Iran for supermarket refrigerator cyberattacks, weighs sanctions",
+   "summary": "France said the cyber unit of Iran's Islamic Revolutionary Guard Corps carried out an \"unprecedented campaign\" that caused millions of euros in damage.",
+   "link": "https://www.cnbc.com/2026/11/10/iran-fridge-cyberattacks-france.html",
+   "source": "CNBC",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-10T13:43:38Z"
+  },
+  {
+   "title": "Before Xi and Trump’s Apec meeting, what’s on hold – and what’s on the table?",
+   "summary": "China has announced the extension of suspensions on a slew of trade measures against the United States on Monday, following a similar move by Washington days earlier, maintaining the bilateral trade truce ahead of a…",
+   "link": "https://www.scmp.com/economy/china-economy/article/3373904/xi-and-trumps-apec-meeting-whats-hold-and-whats-table",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-10T13:30:08Z"
+  },
+  {
+   "title": "Hegseth: Impeachment effort is 'farce' and 'stunt'",
+   "summary": "In his first news conference in six months, the defence secretary defended the US's \"lawful military operations\".",
+   "link": "https://www.bbc.co.uk/news/videos/cxj0l03ln8zpo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-10T13:28:07Z"
+  },
+  {
+   "title": "California police investigate after 27 fall ill at half-marathon running event",
+   "summary": "A local hospital says runners had \"unusual\" symptoms after racing on an atypically hot day.",
+   "link": "https://www.bbc.co.uk/news/articles/cq0ldlyd556go?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-10T13:22:12Z"
+  },
+  {
+   "title": "Data link trial: Chinese team finds hollow-core fibre cuts lag 30% across 1,000km",
+   "summary": "Light travels through conventional optical fibres at about 200,000km per second – about two-thirds the speed it travels in a vacuum – because the signals are passing through solid glass. When vast amounts of data are…",
+   "link": "https://www.scmp.com/news/china/science/article/3373956/data-link-trial-chinese-team-finds-hollow-core-fibre-cuts-lag-30-across-1000km",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-10T13:00:28Z"
+  },
+  {
+   "title": "Polymarket says annualized revenue has topped $1.8 billion",
+   "summary": "Amid growth of its U.S. exchange, the prediction market platform’s current annual run-rate is $1.8 billion.",
+   "link": "https://www.cnbc.com/2026/11/10/polymarket-annualized-revenue-us-growth.html",
+   "source": "CNBC",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-10T13:00:01Z"
   },
   {
    "title": "House set to vote to impeach Hegseth. And, SCOTUS allows border wall work to proceed",
@@ -117,16 +532,6 @@
    "date": "2026-11-10T11:52:24Z"
   },
   {
-   "title": "Sales of tinned food and bottled water jump after 'Be Ready' campaign launch",
-   "summary": "Sales of essential goods such as hand sanitiser soar after the government called on households to be prepared for emergencies.",
-   "link": "https://www.bbc.co.uk/news/articles/cqev3vl4ek33o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-10T11:43:06Z"
-  },
-  {
    "title": "Amber alert as Scotland faces blood donation shortages",
    "summary": "An amber alert has been issued after stockpiles of blood fell below target several times in recent months",
    "link": "https://www.bbc.co.uk/news/articles/c678p8yz0k38o?at_medium=RSS&at_campaign=rss",
@@ -167,16 +572,6 @@
    "date": "2026-11-10T11:00:08Z"
   },
   {
-   "title": "Trump's 2028 successors are already fighting over who to blame for GOP midterm wipeout",
-   "summary": "JD Vance, Marco Rubio and Ron DeSantis offer competing explanations for the GOP's midterm defeat as Trump keeps his potential successors guessing.",
-   "link": "https://www.cnbc.com/2026/11/10/trump-vance-rubio-republican-desantis-midterms.html",
-   "source": "CNBC",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-10T11:00:01Z"
-  },
-  {
    "title": "China’s top general targets PLA arms in call for joint military-civilian corruption watch",
    "summary": "China’s most senior general has called for joint efforts by military and civilian officials to combat corruption within the People’s Liberation Army, specifically targeting the development of major weapons systems…",
    "link": "https://www.scmp.com/news/china/politics/article/3373957/chinas-top-general-targets-pla-arms-call-joint-military-civilian-corruption-watch",
@@ -198,26 +593,6 @@
    "date": "2026-11-10T10:24:13Z"
   },
   {
-   "title": "House Republicans to elect a new leader as they look to rebuild from midterm defeat",
-   "summary": "After sweeping losses in the midterm elections, the House GOP will vote on Tuesday to elect a successor to Mike Johnson, who says he's stepping down as the chamber's top Republican.",
-   "link": "https://www.npr.org/2026/11/10/nx-s1-6030988/gop-leadership-election-steve-scalise-jim-jordan",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-10T10:01:00Z"
-  },
-  {
-   "title": "Could US Marines sustain a war with China? Officers warn of Pacific weaknesses",
-   "summary": "US Marines deployed across the western Pacific could struggle to sustain their forces, move missile batteries and secure permission to launch operations from allied territory in a conflict with China, according to…",
-   "link": "https://www.scmp.com/news/china/military/article/3373938/could-us-marines-sustain-war-china-officers-warn-pacific-weaknesses",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-10T10:00:11Z"
-  },
-  {
    "title": "Citigroup CEO Jane Fraser strikes bullish tone on China expansion after brokerage approval",
    "summary": "Citigroup CEO Jane Fraser has struck a confident and optimistic note that the US lender would become a leading investment bank in mainland China after it received approval to set up a wholly-owned securities firm in one…",
    "link": "https://www.scmp.com/business/banking-finance/article/3373914/citigroup-ceo-jane-fraser-strikes-bullish-tone-china-expansion-after-brokerage-approval",
@@ -226,16 +601,6 @@
     "china"
    ],
    "date": "2026-11-10T10:00:07Z"
-  },
-  {
-   "title": "The Democratic Party gained power across the country in the midterms. Now what?",
-   "summary": "Voters handed Democrats the keys to power across the country and expect them to drive in a different direction. Party leaders are now trying to figure out which way to go.",
-   "link": "https://www.npr.org/2026/11/10/nx-s1-6035008/democratic-party-blue-wave-midterm-congress",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-10T10:00:00Z"
   },
   {
    "title": "Inside Health",
@@ -248,118 +613,6 @@
    "date": "2026-11-10T10:00:00Z"
   },
   {
-   "title": "Kim Kardashian's Skims offers refunds for $148 advent calendar after backlash",
-   "summary": "The contents of the calendar, including hair clips and keychains, have been widely criticised on social media.",
-   "link": "https://www.bbc.co.uk/news/articles/cqp8g8p53x6ko?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-10T09:57:49Z"
-  },
-  {
-   "title": "Thousands of 'off-grid' homes eligible for £250 to help with heating bills",
-   "summary": "Households dependent on either heating oil or LPG and are eligible for reduced council tax will benefit.",
-   "link": "https://www.bbc.co.uk/news/articles/cm70p050824po?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-10T09:57:29Z"
-  },
-  {
-   "title": "Trump says more US attacks on Iran 'highly unlikely'",
-   "summary": "The president says the US is keeping \"status quo\" with Iran but remains “locked and loaded” should the situation change.",
-   "link": "https://www.bbc.co.uk/news/articles/cq5yny4nl2d3o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-10T09:40:31Z"
-  },
-  {
-   "title": "Trump's crypto profits raise alarms for transparency advocates",
-   "summary": "President Trump has made nearly $3 billion while in office, most of it in crypto ventures. And to the alarm of transparency advocates, much of the president's money comes from foreign sources.",
-   "link": "https://www.npr.org/2026/11/10/nx-s1-5983730/trumps-crypto-profits-raise-alarms-for-transparency-advocates",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-10T09:38:28Z"
-  },
-  {
-   "title": "Holiday hunger bill to face final Stormont hurdle",
-   "summary": "The new law would would help poorer families with food costs during school holidays.",
-   "link": "https://www.bbc.co.uk/news/articles/cmewewgvrwpqo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-10T09:35:03Z"
-  },
-  {
-   "title": "France blames Iran for supermarket refrigerator cyberattacks, weighs sanctions",
-   "summary": "France said the cyber unit of Iran's Islamic Revolutionary Guard Corps carried out an \"unprecedented campaign\" that caused millions of euros in damage.",
-   "link": "https://www.cnbc.com/2026/11/10/iran-fridge-cyberattacks-france.html",
-   "source": "CNBC",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-10T09:34:24Z"
-  },
-  {
-   "title": "STAT+: State Democratic wins make Medicaid expansion a possibility for more than a million people",
-   "summary": "Texas, Georgia, and Wisconsin may expand their Medicaid programs when Democrats take power.",
-   "link": "https://www.statnews.com/2026/11/10/medicaid-expansion-holdout-states-midterm-election-power-shift/?utm_campaign=rss",
-   "source": "STAT News",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-10T09:30:00Z"
-  },
-  {
-   "title": "Opinion: AI’s health advice can be accurate and still make us sicker",
-   "summary": "“Even a factually accurate health message can change behavior in ways that make people less healthy,” researchers write.",
-   "link": "https://www.statnews.com/2026/11/10/ai-health-advice-accuracy-messaging-risk-behavioral-benchmarking/?utm_campaign=rss",
-   "source": "STAT News",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-10T09:30:00Z"
-  },
-  {
-   "title": "Opinion: STAT+: BIO CEO: American biotech needs a coordinated plan to beat China — now",
-   "summary": "BIO CEO: “Today’s biotech race is our generation’s Space Race.”",
-   "link": "https://www.statnews.com/2026/11/10/china-biotech-bio-plan-space-race/?utm_campaign=rss",
-   "source": "STAT News",
-   "cats": [
-    "biotech",
-    "china"
-   ],
-   "date": "2026-11-10T09:30:00Z"
-  },
-  {
-   "title": "Faisal Islam: What the boss of US tech giant Nvidia told me about China and national security",
-   "summary": "Huang, who is now being investigated over an affair with an alleged Chinese spy, is far more important to the future of the world order than other tech bosses.",
-   "link": "https://www.bbc.co.uk/news/articles/c64g1gzy2vdzo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "china",
-    "finance"
-   ],
-   "date": "2026-11-10T09:23:55Z"
-  },
-  {
-   "title": "Headteachers say families will struggle after another rise in school dinner prices",
-   "summary": "The price of a school dinner in a primary school will have risen from £2.60 to £3.40 since the start of 2026.",
-   "link": "https://www.bbc.co.uk/news/articles/c9m262yv6yx8o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-10T09:13:30Z"
-  },
-  {
    "title": "China’s trade surplus tops US$1 trillion ahead of Xi-Trump talks",
    "summary": "China’s annual trade surplus surpassed US$1 trillion for the second time ever as an artificial intelligence (AI)-led export boom offset an unexpected surge in October imports. Exports jumped 35.2 per cent last month…",
    "link": "https://www.scmp.com/plus/economy/china-economy/article/3373936/chinas-trade-surplus-tops-us1-trillion-ahead-xi-trump-talks",
@@ -368,28 +621,6 @@
     "china"
    ],
    "date": "2026-11-10T09:02:53Z"
-  },
-  {
-   "title": "Fed Governor Waller sees December hike likely, opens door to possible half-point increase",
-   "summary": "The policymaker said he \"is leaning toward\" a rate increase in December and could support a half-point hike depending on inflation data.",
-   "link": "https://www.cnbc.com/2026/11/10/fed-governor-waller-sees-december-hike-likely.html",
-   "source": "CNBC",
-   "cats": [
-    "finance",
-    "us"
-   ],
-   "date": "2026-11-10T09:00:01Z"
-  },
-  {
-   "title": "Trump says Jensen Huang told him Monday he didn't know paramour 'was a spy'",
-   "summary": "President Donald Trump suggested he had only recently learned of allegations that Alice Huang was a Chinese spy.",
-   "link": "https://www.cnbc.com/2026/11/09/trump-jensen-huang-nvidia-chinese-spy.html",
-   "source": "CNBC",
-   "cats": [
-    "china",
-    "us"
-   ],
-   "date": "2026-11-10T08:56:30Z"
   },
   {
    "title": "As China extends pause on rare earth controls, pricing and financing hold back EU supply push",
@@ -412,28 +643,6 @@
    "date": "2026-11-10T08:30:09Z"
   },
   {
-   "title": "Trump says FBI investigating Nvidia boss's affair with alleged Chinese spy",
-   "summary": "The US president said he spoke with Jensen Huang on Monday and asked him about the affair with the alleged spy.",
-   "link": "https://www.bbc.co.uk/news/articles/cqg7x7dpvym8o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "china",
-    "finance",
-    "us"
-   ],
-   "date": "2026-11-10T08:23:21Z"
-  },
-  {
-   "title": "Trump says Iran war to end 'fairly soon,' plays down prospects of new strikes",
-   "summary": "“Iran militarily is effectively over,” Trump said, citing the destruction of its navy and surging inflation that he said has hollowed out Tehran's economy.",
-   "link": "https://www.cnbc.com/2026/11/10/trump-iran-war-hormuz-.html",
-   "source": "CNBC",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-10T07:00:02Z"
-  },
-  {
    "title": "London biotech Oyster harvests $60M for tau-targeting brain drugs",
    "summary": "Oyster says a tweak it's made to traditional protein degrading technology can help break down tau, which has long been a focus of Alzheimer’s drug research.",
    "link": "https://www.biopharmadive.com/news/oyster-venture-financing-tau-targeted-protein-degraders/874160/",
@@ -442,66 +651,6 @@
     "biotech"
    ],
    "date": "2026-11-10T07:00:00Z"
-  },
-  {
-   "title": "Final chapter for bookshop after rise in bills",
-   "summary": "The Chicken and Frog in Brentwood says business rates and electricity bills have risen dramatically.",
-   "link": "https://www.bbc.co.uk/news/articles/crx2dd92ne9yo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-10T06:22:52Z"
-  },
-  {
-   "title": "NHS boss received nearly £400,000 'redundancy' pay-off when she retired",
-   "summary": "The payment comes ahead of a planned major overhaul of Scotland's NHS which could see the number of health boards cut dramatically.",
-   "link": "https://www.bbc.co.uk/news/articles/cw4g11xkyj1jo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-10T06:20:31Z"
-  },
-  {
-   "title": "Trump’s C-SPAN call marks latest surprise post-midterm appearance",
-   "summary": "Trump called C-SPAN's new primetime show unannounced after a surprise White House briefing-room and ballroom appearances.",
-   "link": "https://www.cnbc.com/2026/11/10/trump-cspan-call-elections.html",
-   "source": "CNBC",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-10T06:19:09Z"
-  },
-  {
-   "title": "To the day I die, I will regret putting a cigarette in my mouth",
-   "summary": "Joan McConville is calling for a national screening programme in Northern Ireland, like there is in England and Wales.",
-   "link": "https://www.bbc.co.uk/news/articles/cke8r704e8l6o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-10T06:16:50Z"
-  },
-  {
-   "title": "Elon Musk and Michael Miebach to join Trump at Apec in Shenzhen. What about Jensen Huang?",
-   "summary": "Top US business leaders, including Tesla and SpaceX chief Elon Musk and Mastercard’s Michael Miebach, are expected to join Donald Trump’s delegation to China for next week’s Apec summit, the South China Morning Post…",
-   "link": "https://www.scmp.com/news/china/diplomacy/article/3373901/top-us-business-leaders-including-elon-musk-set-join-donald-trump-apec-china",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-10T06:16:04Z"
-  },
-  {
-   "title": "I almost died after a toothache led to sepsis and a rare heart condition",
-   "summary": "Doctors told Danny Ellis it was a \"miracle\" he was alive after his first heart surgery failed.",
-   "link": "https://www.bbc.co.uk/news/articles/ckr5ypqrjj32o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-10T05:59:20Z"
   },
   {
    "title": "BIO unveils plan for US to remain biotech’s ‘global leader’",
@@ -515,46 +664,6 @@
    "date": "2026-11-10T05:01:00Z"
   },
   {
-   "title": "Californians reject wealth tax for billionaires",
-   "summary": "Proposition 40 targeted Californian billionaires with a 5% tax on their total wealth, including assets such as shares as well as income.",
-   "link": "https://www.bbc.co.uk/news/articles/cq398em3032wo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-10T03:34:46Z"
-  },
-  {
-   "title": "Trump recounts pilots’ ‘very strange’ UFO stories but says he remains sceptical",
-   "summary": "US President Donald Trump has recounted stories from air force pilots who told him they encountered UFOs, adding that he remains sceptical and has seen no evidence of an alleged secret programme to study unidentified…",
-   "link": "https://www.scmp.com/news/china/diplomacy/article/3373863/trump-recounts-pilots-very-strange-ufo-stories-says-he-remains-sceptical",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-10T03:00:28Z"
-  },
-  {
-   "title": "China’s imports outpace exports in October amid efforts to address record imbalance",
-   "summary": "China’s trade momentum remained strong in October despite a strengthening of the yuan, sending its year-to-date trade surplus above US$1 trillion amid rising scrutiny from Western countries over the size of the gap…",
-   "link": "https://www.scmp.com/economy/economic-indicators/article/3373871/chinas-imports-outpace-exports-october-beijing-seeks-address-imbalance",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-10T02:43:24Z"
-  },
-  {
-   "title": "China uses military drones, heavy-lift and C909 planes in huge forest fire drill",
-   "summary": "Firefighters used military drones, heavy transport aircraft and seaplanes in a large-scale drill in southwest China on Monday, as part of efforts to bring the latest technologies into emergency response operations. The…",
-   "link": "https://www.scmp.com/news/china/military/article/3373864/china-uses-military-drones-heavy-lift-and-c909-planes-huge-forest-fire-drill",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-10T01:59:32Z"
-  },
-  {
    "title": "Alzheimer’s may have early warning signs outside the brain",
    "summary": "A surprising discovery suggests that some early signs of Alzheimer’s disease may begin outside the brain. Using miniature laboratory systems made from human cells, scientists found that genetic mutations associated with…",
    "link": "https://www.sciencedaily.com/releases/2026/11/261108233103.htm",
@@ -565,44 +674,25 @@
    "date": "2026-11-10T01:47:34Z"
   },
   {
-   "title": "STAT+: Ionis Pharmaceuticals shares plummet after slow rollout of biotech’s triglyceride-lowering drug",
-   "summary": "Ionis Pharmaceuticals lost more than $1 billion in market value on Monday after the company slashed sales projections for a triglyceride-lowering drug.",
-   "link": "https://www.statnews.com/2026/11/09/ionis-pharmaceuticals-shares-plummet-after-tryngolza-slow-rollout/?utm_campaign=rss",
-   "source": "STAT News",
+   "title": "China plans ban on biotech exports",
+   "summary": "",
+   "link": "https://www.nature.com/articles/s41587-026-03397-6",
+   "source": "Nature Biotechnology",
    "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-10T00:50:50Z"
-  },
-  {
-   "title": "Nvidia scandal may test fragile US-China truce, experts say",
-   "summary": "The fallout from the Nvidia scandal may test the fragile truce between the US and China, analysts say, as calls in Washington grow to tighten semiconductor export controls just days before US President Donald Trump is…",
-   "link": "https://www.scmp.com/news/china/diplomacy/article/3373859/nvidia-scandal-may-test-fragile-us-china-truce-experts-say",
-   "source": "SCMP",
-   "cats": [
+    "biotech",
     "china"
    ],
-   "date": "2026-11-10T00:32:25Z"
+   "date": "2026-11-10T00:00:00Z"
   },
   {
-   "title": "Illumina Offers Early Access to Duplex Sequencing for MRD, Tumor Evolution Research",
-   "summary": "Illumina has announced an early access program to a duplex sequencing workflow that reads both DNA strands to detect trace ctDNA in molecular residual disease and tumor evolution studies. Kits are expected in early…",
-   "link": "https://www.genengnews.com/topics/omics/illumina-offers-early-access-to-duplex-sequencing-for-mrd-tumor-evolution-research/",
-   "source": "GEN",
+   "title": "UK Biobank adds immune and brain health layers",
+   "summary": "",
+   "link": "https://www.nature.com/articles/s41587-026-03388-7",
+   "source": "Nature Biotechnology",
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-09T23:57:15Z"
-  },
-  {
-   "title": "Bayer wins FDA nod for a new kind of blood thinner",
-   "summary": "Sunharbo’s U.S. approval is the first for a “Factor XIa” inhibitor, an anticipated class of medicines seen as a possible step forward in stroke prevention.",
-   "link": "https://www.biopharmadive.com/news/bayer-sunharbo-asundexian-fda-approve-stroke-factor-xi/872837/",
-   "source": "BioPharma Dive",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-09T22:40:00Z"
+   "date": "2026-11-10T00:00:00Z"
   },
   {
    "title": "3 unexpected reasons the October jobs report was so strong",
@@ -613,26 +703,6 @@
     "finance"
    ],
    "date": "2026-11-09T22:23:56Z"
-  },
-  {
-   "title": "FDA Approves First Factor Xla Inhibitor to Help Prevent Stroke in Certain Adults at High Risk",
-   "summary": "FDA today approved Sunharbo (asundexian) 50 mg tablets, the first factor XIa (FXIa) inhibitor for use in combination with antiplatelet therapy to reduce the risk of stroke in adults following a recent mild-to-moderate…",
-   "link": "http://www.fda.gov/news-events/press-announcements/fda-approves-first-factor-xla-inhibitor-help-prevent-stroke-certain-adults-high-risk",
-   "source": "US FDA",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-09T22:15:46Z"
-  },
-  {
-   "title": "How Cancer-Associated Gene Triggers Cell Division Without Unpacking the Genome",
-   "summary": "A study showed how E2F1 can trigger cell division without having to unpack the cell’s genetic material. Instead, it takes a shortcut path by binding directly to a small area of the DNA that remains tightly packaged…",
-   "link": "https://www.genengnews.com/topics/cancer/how-cancer-associated-gene-triggers-cell-division-without-unpacking-the-genome/",
-   "source": "GEN",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-09T21:05:11Z"
   },
   {
    "title": "A key report for where inflation stood in October comes out Tuesday. Here's what to expect",
@@ -665,46 +735,6 @@
    "date": "2026-11-09T18:14:47Z"
   },
   {
-   "title": "Vir hepatitis D drug succeeds in first pivotal study",
-   "summary": "A program that’s survived Vir’s pivot away from infectious disease research hit all of its study objectives and appeared more potent than a rival drug also in late-stage development.",
-   "link": "https://www.biopharmadive.com/news/vir-chronic-hepatitis-d-drug-results-elebsiran-tobevibart/874089/",
-   "source": "BioPharma Dive",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-09T17:09:00Z"
-  },
-  {
-   "title": "Argenx to buy peptide platform in potentially billion-dollar deal",
-   "summary": "For $550 million up front, Argenx will take control of Unnatural Products’ “macrocyclic peptide” technology and direct it to develop oral, durable medicines for serious immune-mediated diseases.",
-   "link": "https://www.biopharmadive.com/news/argenx-unnatural-products-acquisition-deal-peptides-protein-macrocyclic-immune/874119/",
-   "source": "BioPharma Dive",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-09T16:27:00Z"
-  },
-  {
-   "title": "Childhood Cancers May Not Always Need Extra Mutations to Spread, Study Suggests",
-   "summary": "Childhood cancers may not always need extra mutations to spread, a new review study indicates. Instead, developmental plasticity may let tumor cells shape-shift into states that help them grow, resist treatment, and…",
-   "link": "https://www.genengnews.com/topics/cancer/childhood-cancers-may-not-always-need-extra-mutations-to-spread-study-suggests/",
-   "source": "GEN",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-09T14:00:17Z"
-  },
-  {
-   "title": "New AI Models Are Turbo-Charging Protein Design",
-   "summary": "Computer-designed protein therapeutics move from proof-of-concept to wet-lab validation and even clinical trials as the field heats up. The post New AI Models Are Turbo-Charging Protein Design appeared first on GEN -…",
-   "link": "https://www.genengnews.com/topics/artificial-intelligence/new-ai-models-are-turbo-charging-protein-design/",
-   "source": "GEN",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-09T13:55:53Z"
-  },
-  {
    "title": "China wholesale inflation hits highest in more than four years as consumer measure slows",
    "summary": "The PPI for October came in at 5.7%, compared to the 5.3% expected by economists polled by Reuters.",
    "link": "https://www.cnbc.com/2026/11/09/china-wholesale-inflation-rises-consumer.html",
@@ -714,37 +744,6 @@
     "finance"
    ],
    "date": "2026-11-09T02:50:22Z"
-  },
-  {
-   "title": "Why the prognosis for healthcare stocks is uncertain ahead of Congress’ new makeup",
-   "summary": "Healthcare stocks may struggle to find momentum as the Democrats get ready to take over Congress.",
-   "link": "https://www.cnbc.com/2026/11/07/healthcare-stocks-may-face-trouble-due-to-midterm-results.html",
-   "source": "CNBC",
-   "cats": [
-    "finance",
-    "us"
-   ],
-   "date": "2026-11-07T16:02:33Z"
-  },
-  {
-   "title": "Berkshire Hathaway more than doubles buybacks in third quarter as earnings decline",
-   "summary": "Berkshire Hathaway said Saturday it accelerated its share repurchases during the third quarter, as operating and overall profits took a hit.",
-   "link": "https://www.cnbc.com/2026/11/07/berkshire-hathaway-q3-2026-earnings-buybacks.html",
-   "source": "CNBC",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-07T15:23:46Z"
-  },
-  {
-   "title": "Nasdaq drops into correction territory — here’s what typically happens next",
-   "summary": "Nasdaq’s slide into correction territory puts its history of recoveries in focus. Here's what history shows.",
-   "link": "https://www.cnbc.com/2026/11/05/nasdaq-drops-into-correction-territory-heres-what-typically-happens-next.html",
-   "source": "CNBC",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-06T20:42:28Z"
   }
  ]
 }

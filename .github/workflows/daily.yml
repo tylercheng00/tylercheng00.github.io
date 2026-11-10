@@ -8,7 +8,14 @@ name: Daily insight
 
 on:
   schedule:
-    - cron: "15 0 * * *"   # 08:15 Asia/Hong_Kong
+    # GitHub has been starting the single 08:15 job hours late, or not at all
+    # by noon. These five are 07:17, 08:23, 09:47, 11:17 and 13:23 in Hong Kong.
+    # publish_daily.py still releases at most five notes on one Hong Kong date.
+    - cron: "17 23 * * *"
+    - cron: "23 0 * * *"
+    - cron: "47 1 * * *"
+    - cron: "17 3 * * *"
+    - cron: "23 5 * * *"
   workflow_dispatch:
     inputs:
       date:
@@ -48,6 +55,11 @@ jobs:
           fi
           n=$(sed -n 's/^published=//p' /tmp/publish-daily.txt | tail -1)
           n=${n:-0}
+          already=$(sed -n 's/^already=//p' /tmp/publish-daily.txt | tail -1)
+          if [ -n "$already" ]; then
+            echo "Already released $already today. Leaving the queue for tomorrow."
+            exit 0
+          fi
           need=$((5 - n))
           if [ "$need" -le 0 ]; then
             :
@@ -71,7 +83,7 @@ jobs:
           python3 tools/build_site.py
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add content/insights content/daily insights index.html sitemap.xml
+          git add content/insights content/daily insights index.html sitemap.xml data/publish-stamp.txt
           git commit -m "insights: daily note"
           git pull --rebase origin main
           git push

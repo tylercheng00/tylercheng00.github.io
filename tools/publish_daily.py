@@ -22,6 +22,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 DAILY = ROOT / "content" / "daily"
 INSIGHTS = ROOT / "content" / "insights"
 SITEMAP = ROOT / "sitemap.xml"
+STAMP = ROOT / "data" / "publish-stamp.txt"
 SITE = "https://tylercheng00.github.io"
 HK = dt.timezone(dt.timedelta(hours=8))
 PER_DAY = 5
@@ -69,8 +70,38 @@ def update_sitemap(moved):
         SITEMAP.write_text(text, encoding="utf-8")
 
 
+def released_today(today):
+    """How many notes this calendar day in Hong Kong has already released.
+
+    The morning job retries several times because GitHub starts scheduled
+    work late. The stamp stops a later retry from taking tomorrow's notes
+    when yesterday's are still sitting in the queue.
+    """
+    if not STAMP.exists():
+        return 0
+    parts = STAMP.read_text(encoding="utf-8").strip().split()
+    if len(parts) != 2 or parts[0] != today.isoformat():
+        return 0
+    try:
+        return int(parts[1])
+    except ValueError:
+        return 0
+
+
+def write_stamp(today, count):
+    STAMP.parent.mkdir(parents=True, exist_ok=True)
+    STAMP.write_text(f"{today.isoformat()} {count}\n", encoding="utf-8")
+
+
 def main():
     today = as_of(sys.argv)
+    done = released_today(today)
+    room = PER_DAY - done
+    if room <= 0:
+        print("published=0")
+        print(f"already={done}")
+        print(f"Already released {done} on {today.isoformat()} (Hong Kong).")
+        return
     if not DAILY.exists():
         print(f"No queue ({DAILY.relative_to(ROOT)}).")
         return
@@ -93,13 +124,15 @@ def main():
         due.append((path, article))
     due.sort(key=lambda item: (item[1]["date"], item[0].name))
     moved = []
-    for path, article in due[:PER_DAY]:
+    for path, article in due[:room]:
         dest = INSIGHTS / f"{article['slug']}.md"
         path.rename(dest)
         parse_article(dest)
         moved.append(article)
         print(dest.relative_to(ROOT))
     update_sitemap(moved)
+    if moved:
+        write_stamp(today, done + len(moved))
     print(f"published={len(moved)}")
     if not moved:
         print(f"No article due on or before {today.isoformat()} (Hong Kong).")

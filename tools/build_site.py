@@ -433,9 +433,10 @@ def index_page(arts):
 
     <section class="section">
       <div class="container">
-        <div class="ins-grid">
+        <div class="ins-grid" data-ins-grid>
 {chr(10).join(card(a) for a in arts)}
         </div>
+        <nav class="ins-pager" data-ins-pager aria-label="Insights pages" hidden></nav>
         <p class="ins-disclaimer">{DISCLAIMER}</p>
       </div>
     </section>"""

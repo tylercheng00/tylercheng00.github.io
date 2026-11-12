@@ -8,10 +8,13 @@
   var CONFIG = {
     // Web3Forms access key (https://web3forms.com). It is meant to be public.
     web3formsKey: '9a2c8e9a-6319-44d2-8fe8-fcd2d9c07a55',
-    // Cal.com booking link without the domain, e.g. 'tylercheng/30min'.
-    calLink: 'tik-man-cheng-4xumee/30min',
+    // Cal.com booking link without the domain, e.g. 'username/30min'.
+    // Leave empty until a working Cal.com event exists — the broken slug
+    // tik-man-cheng-4xumee/30min returns 404 and leaves the book section blank.
+    calLink: '',
     // Where messages go when the form falls back to e-mail.
-    email: 'info@tylerfuture.com'
+    email: 'info@tylerfuture.com',
+    whatsapp: 'https://wa.me/85298229572'
   };
 
   var root = document.documentElement;

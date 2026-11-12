@@ -801,6 +801,28 @@ html[data-lang="zh"] .path-detail h3 { font-family: var(--serif-zh); }
 .ins-card.hidden { display: none; }
 .ins-card h3 { font-size: 20px; font-weight: 600; line-height: 1.3; }
 .ins-card p:not(.ins-meta) { font-size: 15px; color: var(--ink-2); }
+.ins-pager {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  margin-top: 28px; padding-top: 8px;
+}
+.ins-pager[hidden] { display: none !important; }
+.ins-page-btn {
+  min-width: 40px; height: 40px; padding: 0 12px;
+  border: 1px solid rgba(15, 23, 42, .14); border-radius: 10px;
+  background: #fff; color: var(--ink); font: inherit; font-size: 14px; font-weight: 600;
+  cursor: pointer;
+}
+.ins-page-btn:hover:not(:disabled) { border-color: rgba(201, 163, 91, .65); color: #8d6a28; }
+.ins-page-btn.on, .ins-page-btn[aria-current="page"] {
+  background: #0b1d33; border-color: #0b1d33; color: #fff;
+}
+.ins-page-btn:disabled { opacity: .38; cursor: not-allowed; }
+.ins-page-status {
+  margin: 0 0 0 4px; font-size: 13px; color: var(--ink-2); width: 100%;
+}
+@media (min-width: 640px) {
+  .ins-page-status { width: auto; margin-left: auto; }
+}
 .ins-read { margin-top: auto; font-size: 14px; font-weight: 600; color: var(--gold-ink); }
 .ins-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; font-size: 13px; color: var(--muted); }
 .ins-tag { font-size: 11.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--gold-ink);
@@ -1060,6 +1082,7 @@ html[data-lang="zh"] .vision-quote p { font-family: var(--serif-zh); font-style:
 html[data-lang="zh"] .cal-note h3 { font-family: var(--serif-zh); font-size: 24px; }
 .cal-note p { margin: 12px auto 24px; max-width: 520px; color: var(--ink-2); }
 .cal-note a:not(.btn) { color: var(--gold-ink); }
+.cal-note-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
 
 .msg-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 64px; align-items: start; }
 .msg-grid .section-head { margin-bottom: 0; position: sticky; top: 110px; }

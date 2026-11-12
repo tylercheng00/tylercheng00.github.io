@@ -161,6 +161,8 @@ html[data-lang="zh"] .contact-title { font-family: var(--serif-zh); letter-spaci
 .btn:hover svg { transform: translateX(2px); }
 .btn-gold { background: var(--gold); color: var(--navy-950); box-shadow: 0 10px 30px -10px rgba(201, 163, 91, .6); }
 .btn-gold:hover { background: var(--gold-soft); }
+.btn-outline { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn-outline:hover { border-color: var(--ink); background: rgba(15, 23, 42, .04); }
 .btn-outline-light { background: rgba(255, 255, 255, .04); color: #fff; border-color: rgba(255, 255, 255, .28); }
 .btn-outline-light:hover { border-color: #fff; background: rgba(255, 255, 255, .1); }
 

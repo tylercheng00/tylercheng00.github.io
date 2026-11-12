@@ -190,19 +190,119 @@
     });
   });
 
-  /* ---------- Insights category filter ---------- */
-  var catBtns = document.querySelectorAll('[data-cat-filter]');
-  catBtns.forEach(function (b) {
-    b.addEventListener('click', function () {
-      var f = b.getAttribute('data-cat-filter');
-      catBtns.forEach(function (o) { var on = o === b; o.classList.toggle('on', on); o.setAttribute('aria-pressed', String(on)); });
-      document.querySelectorAll('.ins-card[data-cats]').forEach(function (c) {
-        var hide = f !== 'all' && c.getAttribute('data-cats').split(' ').indexOf(f) < 0;
-        c.classList.toggle('hidden', hide);
-        if (!hide) c.classList.add('in');
+  /* ---------- Insights category filter + 9-per-page pagination ---------- */
+  (function insightsPager() {
+    var grid = document.querySelector('[data-ins-grid]');
+    var pager = document.querySelector('[data-ins-pager]');
+    var catBtns = document.querySelectorAll('[data-cat-filter]');
+    if (!grid || !catBtns.length) return;
+
+    var PAGE_SIZE = 9;
+    var cards = Array.prototype.slice.call(grid.querySelectorAll('.ins-card[data-cats]'));
+    if (!cards.length) return;
+
+    function readParams() {
+      try {
+        var q = new URLSearchParams(location.search);
+        return { cat: q.get('cat') || 'all', page: Math.max(1, parseInt(q.get('page') || '1', 10) || 1) };
+      } catch (e) {
+        return { cat: 'all', page: 1 };
+      }
+    }
+    function writeParams(cat, page) {
+      try {
+        var u = new URL(location.href);
+        if (!cat || cat === 'all') u.searchParams.delete('cat');
+        else u.searchParams.set('cat', cat);
+        if (!page || page <= 1) u.searchParams.delete('page');
+        else u.searchParams.set('page', String(page));
+        history.replaceState(null, '', u.pathname + u.search + u.hash);
+      } catch (e) {}
+    }
+    function matching(cat) {
+      return cards.filter(function (c) {
+        return cat === 'all' || c.getAttribute('data-cats').split(' ').indexOf(cat) >= 0;
+      });
+    }
+    function render(cat, page) {
+      var list = matching(cat);
+      var pages = Math.max(1, Math.ceil(list.length / PAGE_SIZE));
+      if (page > pages) page = pages;
+      if (page < 1) page = 1;
+      var start = (page - 1) * PAGE_SIZE;
+      var end = start + PAGE_SIZE;
+      var visible = {};
+      list.slice(start, end).forEach(function (c) { visible[c.href] = true; });
+
+      cards.forEach(function (c) {
+        var show = !!visible[c.href];
+        c.classList.toggle('hidden', !show);
+        if (show) c.classList.add('in');
+      });
+
+      catBtns.forEach(function (b) {
+        var on = b.getAttribute('data-cat-filter') === cat;
+        b.classList.toggle('on', on);
+        b.setAttribute('aria-pressed', String(on));
+      });
+
+      if (pager) {
+        if (pages <= 1) {
+          pager.hidden = true;
+          pager.innerHTML = '';
+        } else {
+          pager.hidden = false;
+          var bits = [];
+          bits.push(
+            '<button type="button" class="ins-page-btn" data-ins-page="' + (page - 1) + '"' +
+            (page <= 1 ? ' disabled' : '') + '>' +
+            '<span lang="en">Prev</span><span lang="zh-Hant">上一頁</span></button>'
+          );
+          for (var i = 1; i <= pages; i++) {
+            bits.push(
+              '<button type="button" class="ins-page-btn' + (i === page ? ' on' : '') +
+              '" data-ins-page="' + i + '" aria-current="' + (i === page ? 'page' : 'false') + '">' + i + '</button>'
+            );
+          }
+          bits.push(
+            '<button type="button" class="ins-page-btn" data-ins-page="' + (page + 1) + '"' +
+            (page >= pages ? ' disabled' : '') + '>' +
+            '<span lang="en">Next</span><span lang="zh-Hant">下一頁</span></button>'
+          );
+          bits.push(
+            '<p class="ins-page-status"><span lang="en">Page ' + page + ' of ' + pages +
+            ' · ' + list.length + ' notes</span><span lang="zh-Hant">第 ' + page + ' / ' + pages +
+            ' 頁 · 共 ' + list.length + ' 篇</span></p>'
+          );
+          pager.innerHTML = bits.join('');
+        }
+      }
+      writeParams(cat, page);
+      return { cat: cat, page: page };
+    }
+
+    var state = readParams();
+    var known = {};
+    catBtns.forEach(function (b) { known[b.getAttribute('data-cat-filter')] = true; });
+    if (!known[state.cat]) state.cat = 'all';
+    state = render(state.cat, state.page);
+
+    catBtns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        state = render(b.getAttribute('data-cat-filter'), 1);
       });
     });
-  });
+    if (pager) {
+      pager.addEventListener('click', function (ev) {
+        var btn = ev.target.closest('[data-ins-page]');
+        if (!btn || btn.disabled) return;
+        var next = parseInt(btn.getAttribute('data-ins-page'), 10);
+        if (!next) return;
+        state = render(state.cat, next);
+        try { grid.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (e) {}
+      });
+    }
+  })();
 
   /* ---------- Patent filter ---------- */
   var ptBtns = document.querySelectorAll('[data-pt]');

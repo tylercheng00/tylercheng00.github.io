@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-14T17:57:54Z",
+ "updated": "2026-11-14T23:53:25Z",
  "sources": [
   "BBC News",
   "BioPharma Dive",
@@ -24,7 +24,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-14T17:57:54Z"
+   "date": "2026-11-14T23:53:25Z"
   },
   {
    "title": "Two ‘forever chemicals’ associated with higher risk of aggressive breast cancer in NIH analysis",
@@ -34,7 +34,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-14T17:57:54Z"
+   "date": "2026-11-14T23:53:25Z"
   },
   {
    "title": "Integrated health service delivery through medical mobile units helped to reduce deaths among individuals at risk for HIV who also inject drugs",
@@ -44,7 +44,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-14T17:57:54Z"
+   "date": "2026-11-14T23:53:25Z"
   },
   {
    "title": "An extra year of secondary school lowered dementia diagnoses later in life",
@@ -54,7 +54,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-14T17:57:54Z"
+   "date": "2026-11-14T23:53:25Z"
   },
   {
    "title": "A precision T-cell therapy stalls treatment-resistant cancers in clinical trial",
@@ -64,7 +64,97 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-14T17:57:54Z"
+   "date": "2026-11-14T23:53:25Z"
+  },
+  {
+   "title": "How telecoms upgrade work sparked US flight chaos",
+   "summary": "US officials say the disruption was caused by old equipment overloading and not a cyber-attack.",
+   "link": "https://www.bbc.co.uk/news/articles/cqx2wyvyr3zzo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-14T23:11:27Z"
+  },
+  {
+   "title": "'Root cause’ of nationwide ground stop is unknown, FAA says",
+   "summary": "Routers and networking equipment may be involved in the problems that led to the ground stop, but a definitive cause has not been established, officials said.",
+   "link": "https://www.cnbc.com/2026/11/14/root-cause-of-nationwide-ground-stop-is-unknown-faa-says.html",
+   "source": "CNBC",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-14T22:54:47Z"
+  },
+  {
+   "title": "New Orleans port sues tanker owners over cruise ship collision for $1m",
+   "summary": "All cruise ship passengers and crew were accounted for, though 32 people were left with non-serious injuries from Friday's collision.",
+   "link": "https://www.bbc.co.uk/news/articles/cwe89y2r5j20o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-14T22:27:06Z"
+  },
+  {
+   "title": "SpaceX successfully catches top of huge Starship rocket for first time",
+   "summary": "The rocket stage was caught mid air using huge mechanical arms nicknamed “chopsticks”.",
+   "link": "https://www.bbc.co.uk/news/articles/ckregdgnl0xpo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-14T22:15:52Z"
+  },
+  {
+   "title": "Apec forum set to shine spotlight on Shenzhen’s environmental credentials",
+   "summary": "A park with an extensive coastline, highway tunnel construction that minimises environmental damage, and roads lined with flowers year-round – after nearly 10 years in Shenzhen, Alfred Wu considers the city a green gem…",
+   "link": "https://www.scmp.com/economy/china-economy/article/3374350/apec-forum-set-shine-spotlight-shenzhens-environmental-credentials",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-14T22:00:12Z"
+  },
+  {
+   "title": "Amid the Xi-Trump clamour, can Apec revive the business of cooperation?",
+   "summary": "The 33rd Asia-Pacific Economic Cooperation (Apec) summit will be held in Shenzhen from November 18 to 19. The venue is not accidental. Forty years ago, this was a border town of rice fields and duck ponds; it is now…",
+   "link": "https://www.scmp.com/opinion/china-opinion/article/3374048/amid-xi-trump-clamour-can-apec-revive-business-cooperation",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-14T21:30:08Z"
+  },
+  {
+   "title": "'Miracle on Mississippi' - All passengers rescued after New Orleans cruise ship collision",
+   "summary": "The collision leaves 32 people in hospital with non-critical injuries, but no-one unaccounted for.",
+   "link": "https://www.bbc.co.uk/news/articles/cw20xmy0m5yyo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-14T20:23:06Z"
+  },
+  {
+   "title": "Watch: Cruise ship overturns after collision with tanker in New Orleans",
+   "summary": "Around 130 people were rescued from a cruise ship after it was struck by a tanker while docked in New Orleans, Louisiana on Friday.",
+   "link": "https://www.bbc.co.uk/news/videos/ck4gn4y77m40o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-14T19:14:33Z"
+  },
+  {
+   "title": "'We can't let them down' -- After midterm wins, Democrats turn to charting path ahead",
+   "summary": "Democrats from across the country descended on Denver for a two-day conference to chart the course of their party after sweeping victories in the midterm elections.",
+   "link": "https://www.npr.org/2026/11/14/nx-s1-6037777/democrats-midterms-whats-next-conference",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-14T19:13:54Z"
   },
   {
    "title": "How Nvidia turmoil and a Democratic Congress could reshape the AI trade, according to ETF experts",
@@ -87,26 +177,6 @@
     "us"
    ],
    "date": "2026-11-14T15:36:47Z"
-  },
-  {
-   "title": "What we know about the US ground stop and what to do if your flight is affected",
-   "summary": "US officials say the disruption was caused by old equipment overloading and not a cyber-attack.",
-   "link": "https://www.bbc.co.uk/news/articles/cqx2wyvyr3zzo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-14T14:20:57Z"
-  },
-  {
-   "title": "Second catch attempt for SpaceX Starship rocket",
-   "summary": "The attempt follows an unsuccessful effort to catch of the rocket’s booster which instead came down in the ocean.",
-   "link": "https://www.bbc.co.uk/news/articles/ckregdgnl0xpo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-14T14:18:41Z"
   },
   {
    "title": "Zero capital, 116 projects: AI spots the devils in the details of China corruption case",
@@ -230,16 +300,6 @@
    "date": "2026-11-14T11:45:11Z"
   },
   {
-   "title": "Watch: Cruise ship overturns after collision with tanker in New Orleans",
-   "summary": "Around 130 people were rescued from a cruise ship after it was struck by a tanker while docked in New Orleans, Louisiana on Friday.",
-   "link": "https://www.bbc.co.uk/news/videos/ck4gn4y77m40o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-14T11:30:10Z"
-  },
-  {
    "title": "Expanding Sino-foreign postgrad degrees lure working professionals back to the classroom",
    "summary": "Many Chinese working professionals are turning to postgraduate degrees jointly offered by local and overseas universities, seeking internationally recognised qualifications and technical skills that can boost their…",
    "link": "https://www.scmp.com/economy/global-economy/article/3374338/expanding-sino-foreign-postgrad-degrees-lure-working-professionals-back-classroom",
@@ -260,9 +320,9 @@
    "date": "2026-11-14T10:00:05Z"
   },
   {
-   "title": "As Democrats win big, thirst traps of male candidates take social media by storm",
-   "summary": "It's everywhere on social media: Democrats celebrating the attractive men voters elected in the midterms. But it's bigger than a meme and says a lot about politics of masculinity in the age of Trump.",
-   "link": "https://www.npr.org/2026/11/14/nx-s1-6040507/democrats-male-candidates-masculinity-trump",
+   "title": "Hegseth's failed impeachment was a warning to Democrats. Where will they go from here?",
+   "summary": "Democrats have been given a huge opportunity with majorities in both the House and Senate — but the balance of priorities, timing, messaging and discipline are all going to be major tests.",
+   "link": "https://www.npr.org/2026/11/14/nx-s1-6040299/hegseth-impeachment-democrats-house-test",
    "source": "NPR",
    "cats": [
     "us"
@@ -270,9 +330,9 @@
    "date": "2026-11-14T10:00:00Z"
   },
   {
-   "title": "Hegseth's failed impeachment was a warning to Democrats. Where will they go from here?",
-   "summary": "Democrats have been given a huge opportunity with majorities in both the House and Senate — but the balance of priorities, timing, messaging and discipline are all going to be major tests.",
-   "link": "https://www.npr.org/2026/11/14/nx-s1-6040299/hegseth-impeachment-democrats-house-test",
+   "title": "As Democrats win big, thirst traps of male candidates take social media by storm",
+   "summary": "It's everywhere on social media: Democrats celebrating the attractive men voters elected in the midterms. But it's bigger than a meme and says a lot about politics of masculinity in the age of Trump.",
+   "link": "https://www.npr.org/2026/11/14/nx-s1-6040507/democrats-male-candidates-masculinity-trump",
    "source": "NPR",
    "cats": [
     "us"
@@ -390,16 +450,6 @@
    "date": "2026-11-14T06:23:22Z"
   },
   {
-   "title": "Democrat Jonathan Kreiss-Tomkins wins race for Alaska governor, replaces a Republican",
-   "summary": "Kreiss-Tomkins, a former state legislator, ran a campaign emphasizing bipartisanship in the the state that usually votes Republican. At 37, he'll be the youngest governor in the state's history.",
-   "link": "https://www.npr.org/2026/11/14/g-s1-151719/midterms-alaska-governor-kreiss-tomkins",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-14T05:12:43Z"
-  },
-  {
    "title": "Yale scientists reveal what really slows aging and what doesn't",
    "summary": "Yale researchers have discovered that certain prescription drugs, healthy diets, and exercise can measurably slow biological aging, while popular anti-aging supplements appear largely ineffective. Their analysis of 51…",
    "link": "https://www.sciencedaily.com/releases/2026/11/261112230452.htm",
@@ -410,26 +460,6 @@
    "date": "2026-11-14T04:26:12Z"
   },
   {
-   "title": "Cleaner, smarter, big data: the PLA’s bet on ‘sunshine’ military recruitment",
-   "summary": "The Chinese military is mining big data to get better recruits and stamp out corruption in the march towards its centenary next year. As part of an overhaul called “end-to-end sunshine” recruitment, the People’s…",
-   "link": "https://www.scmp.com/news/china/military/article/3374390/cleaner-smarter-big-data-plas-bet-sunshine-military-recruitment",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-14T04:00:17Z"
-  },
-  {
-   "title": "Nvidia is done with Jensen Huang. The fallout in Washington is just beginning",
-   "summary": "The Republican-led Congress wants to see Jensen Huang in Washington before Democrats take control in January.",
-   "link": "https://www.cnbc.com/2026/11/13/nvidia-jensen-huang-washington-congress.html",
-   "source": "CNBC",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-13T23:54:36Z"
-  },
-  {
    "title": "Lutnick faces questions over Nvidia spy scandal. His sons' firm has deep ties to the chipmaker",
    "summary": "Jensen Huang’s resignation as Nvidia CEO has brought renewed scrutiny to Commerce Secretary Howard Lutnick and his family's financial ties to the chipmaker.",
    "link": "https://www.cnbc.com/2026/11/13/howard-lutnick-nvidia-jensen-huang-china-cantor-fitzgerald.html",
@@ -438,26 +468,6 @@
     "finance"
    ],
    "date": "2026-11-13T23:42:18Z"
-  },
-  {
-   "title": "'Miracle on Mississippi' - All passengers rescued after New Orleans cruise ship collision",
-   "summary": "The collision leaves 32 people in hospital with non-critical injuries, but no-one unaccounted for.",
-   "link": "https://www.bbc.co.uk/news/articles/cw20xmy0m5yyo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-13T23:40:45Z"
-  },
-  {
-   "title": "DHS head Markwayne Mullin says there is not a threat to the U.S. amid FAA ground stop",
-   "summary": "Department of Homeland Security Secretary Markwayne Mullin spoke to at the White House on Friday afternoon after the FAA issues a total ground stop. NPR was there for the briefing.",
-   "link": "https://www.npr.org/2026/11/13/nx-s1-6040418/dhs-head-markwayne-mullin-says-there-is-not-a-threat-to-the-u-s-amid-faa-ground-stop",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-13T22:36:46Z"
   },
   {
    "title": "STAT+: Enforcement of stringent Medicaid work requirements delayed for six months",
@@ -704,16 +714,6 @@
     "us"
    ],
    "date": "2026-11-13T02:56:35Z"
-  },
-  {
-   "title": "Chinese e-commerce sellers brace for Thai import duties. Will a 30% tariff threaten sales?",
-   "summary": "A new tariff of up to 30 per cent on e-commerce goods entering Thailand may squeeze Chinese vendors, but intense price competition and their ability to keep costs low are likely to limit its impact, analysts said…",
-   "link": "https://www.scmp.com/economy/global-economy/article/3374280/chinese-e-commerce-sellers-brace-thai-import-duties-will-30-tariff-threaten-sales",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-13T02:19:15Z"
   },
   {
    "title": "Windward prices $175M IPO to advance China-licensed lung drugs",

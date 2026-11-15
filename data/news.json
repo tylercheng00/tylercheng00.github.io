@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-14T23:53:25Z",
+ "updated": "2026-11-15T06:21:56Z",
  "sources": [
   "BBC News",
   "BioPharma Dive",
@@ -24,7 +24,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-14T23:53:25Z"
+   "date": "2026-11-15T06:21:56Z"
   },
   {
    "title": "Two ‘forever chemicals’ associated with higher risk of aggressive breast cancer in NIH analysis",
@@ -34,7 +34,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-14T23:53:25Z"
+   "date": "2026-11-15T06:21:56Z"
   },
   {
    "title": "Integrated health service delivery through medical mobile units helped to reduce deaths among individuals at risk for HIV who also inject drugs",
@@ -44,7 +44,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-14T23:53:25Z"
+   "date": "2026-11-15T06:21:56Z"
   },
   {
    "title": "An extra year of secondary school lowered dementia diagnoses later in life",
@@ -54,7 +54,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-14T23:53:25Z"
+   "date": "2026-11-15T06:21:56Z"
   },
   {
    "title": "A precision T-cell therapy stalls treatment-resistant cancers in clinical trial",
@@ -64,7 +64,97 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-14T23:53:25Z"
+   "date": "2026-11-15T06:21:56Z"
+  },
+  {
+   "title": "What a Beijing cafe dispute reveals about China’s struggling bookshops",
+   "summary": "China’s bricks-and-mortar bookstores are increasingly counting on coffee, merchandise and cultural events rather than books to stay afloat – a survival strategy whose tensions were laid bare after a major chain asked a…",
+   "link": "https://www.scmp.com/news/china/politics/article/3374469/what-beijing-cafe-dispute-reveals-about-chinas-struggling-bookshops",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-15T06:00:12Z"
+  },
+  {
+   "title": "No actors, no crew, no ticket sales: ‘So obviously AI’ film flops at China’s box office",
+   "summary": "China has ushered artificial intelligence into its cinemas, but the country’s first fully AI-generated feature film has flopped at the box office. Made with no human actors or camera crew, Sanxingdui: Future Past…",
+   "link": "https://www.scmp.com/economy/china-economy/article/3374358/no-actors-no-crew-no-ticket-sales-so-obviously-ai-film-flops-chinas-box-office",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-15T05:00:06Z"
+  },
+  {
+   "title": "Alzheimer’s may start shrinking two brain regions years before memory loss",
+   "summary": "Johns Hopkins scientists have uncovered hidden warning signs of Alzheimer’s disease that may appear up to a decade before memory loss begins. Brain scans revealed that two regions involved in memory and emotion start…",
+   "link": "https://www.sciencedaily.com/releases/2026/11/261114202130.htm",
+   "source": "ScienceDaily",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-15T04:31:56Z"
+  },
+  {
+   "title": "Judge temporarily blocks Trump from moving ahead on Washington public golf course redevelopment",
+   "summary": "A federal judge on Saturday ordered a two-week delay to any work at a historic Washington public golf course not far from the White House.",
+   "link": "https://www.npr.org/2026/11/14/nx-s1-6041152/judge-trump-golf-course-blocks",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-15T04:28:45Z"
+  },
+  {
+   "title": "Could Beijing’s HQ-17 air-defence system defend PLA amphibious forces from Taiwan strikes?",
+   "summary": "Before mainland Chinese troops could attempt a landing on Taiwan, they would first have to assemble vehicles, weapons and supplies along the coast – potentially exposing them to Taiwanese drone, rocket and missile…",
+   "link": "https://www.scmp.com/news/china/military/article/3374448/could-beijings-hq-17-air-defence-system-defend-pla-amphibious-forces-taiwan-strikes",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-15T04:00:11Z"
+  },
+  {
+   "title": "Chinese social media firms under fire as fake history spreads online",
+   "summary": "Pseudo-history about China is mushrooming online, spreading fake accounts of the past due in large part to platform algorithms, artificial intelligence (AI) and a lack of monitoring, according to a Chinese provincial…",
+   "link": "https://www.scmp.com/news/china/military/article/3374447/chinese-social-media-firms-under-fire-fake-history-spreads-online",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-15T02:00:13Z"
+  },
+  {
+   "title": "AI discovers a hidden heart signal that could predict sudden death",
+   "summary": "Scientists have uncovered a hidden warning sign in routine heart scans that could predict sudden cardiac death before it strikes. The AI-powered discovery outperformed conventional screening methods, potentially…",
+   "link": "https://www.sciencedaily.com/releases/2026/11/261112230456.htm",
+   "source": "ScienceDaily",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-15T01:05:10Z"
+  },
+  {
+   "title": "Florida city cancels St. Patrick's Day parade, citing new anti-DEI law",
+   "summary": "A new Florida law that prohibits taxpayer dollars from going toward diversity initiatives has prompted Delray Beach to cancel its St. Patrick's Day parade after a nearly 60-year run.",
+   "link": "https://www.npr.org/2026/11/14/nx-s1-6041093/st-patricks-day-parade-canceled-florida-dei",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-15T00:03:52Z"
+  },
+  {
+   "title": "Beauty advent calendars can cost hundreds - but are they value for money?",
+   "summary": "Beauty calendars have become a Christmas staple and have become particularly popular with female shoppers.",
+   "link": "https://www.bbc.co.uk/news/articles/cqn83l442724o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-15T00:01:07Z"
   },
   {
    "title": "How telecoms upgrade work sparked US flight chaos",
@@ -87,8 +177,8 @@
    "date": "2026-11-14T22:54:47Z"
   },
   {
-   "title": "New Orleans port sues tanker owners over cruise ship collision for $1m",
-   "summary": "All cruise ship passengers and crew were accounted for, though 32 people were left with non-serious injuries from Friday's collision.",
+   "title": "New Orleans port files $1m lawsuit over 'miracle on the Mississippi' tanker collision",
+   "summary": "The lawsuit filed by New Orleans officials also requests that the tanker involved in the collision with the cruise ship be seized and sold to pay for damages.",
    "link": "https://www.bbc.co.uk/news/articles/cwe89y2r5j20o?at_medium=RSS&at_campaign=rss",
    "source": "BBC News",
    "cats": [
@@ -155,6 +245,16 @@
     "us"
    ],
    "date": "2026-11-14T19:13:54Z"
+  },
+  {
+   "title": "Copper wire upgrade caused nationwide flight suspension, US transport secretary says",
+   "summary": "The US government is trying to find out whether the chaos was caused by \"incompetence\" or faulty equipment.",
+   "link": "https://www.bbc.co.uk/news/articles/c6wy9lynq4qno?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-14T19:12:25Z"
   },
   {
    "title": "How Nvidia turmoil and a Democratic Congress could reshape the AI trade, according to ETF experts",
@@ -229,16 +329,6 @@
    "date": "2026-11-14T12:40:25Z"
   },
   {
-   "title": "Trump faces bipartisan backlash over plan to sell public lands to states and tribes",
-   "summary": "The Trump administration wants to sell some federal public lands to states, local governments and tribes, a plan that's once again drawing swift bi-partisan opposition.",
-   "link": "https://www.npr.org/2026/11/14/nx-s1-6039155/trump-faces-bipartisan-backlash-over-plan-to-sell-public-lands-to-states-and-tribes",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-14T12:40:22Z"
-  },
-  {
    "title": "A new fiber supplement could help millions suffering from irritable bowel syndrome",
    "summary": "Scientists have developed a promising new fiber supplement that improves gut health in people with irritable bowel syndrome (IBS) without worsening bloating, pain, or other digestive symptoms. The specially designed…",
    "link": "https://www.sciencedaily.com/releases/2026/11/261112230450.htm",
@@ -257,16 +347,6 @@
     "biotech"
    ],
    "date": "2026-11-14T12:25:05Z"
-  },
-  {
-   "title": "Exercise after ACL surgery may protect knees from early osteoarthritis",
-   "summary": "A new study suggests that the right kind of exercise could help protect young adults from early knee osteoarthritis following ACL surgery. Researchers found that a four-month supervised rehabilitation program improved…",
-   "link": "https://www.sciencedaily.com/releases/2026/11/261112025538.htm",
-   "source": "ScienceDaily",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-14T12:14:57Z"
   },
   {
    "title": "As Apec looms, China’s Shenzhen wraps up preparations for its toughest stress test ever",
@@ -320,26 +400,6 @@
    "date": "2026-11-14T10:00:05Z"
   },
   {
-   "title": "Hegseth's failed impeachment was a warning to Democrats. Where will they go from here?",
-   "summary": "Democrats have been given a huge opportunity with majorities in both the House and Senate — but the balance of priorities, timing, messaging and discipline are all going to be major tests.",
-   "link": "https://www.npr.org/2026/11/14/nx-s1-6040299/hegseth-impeachment-democrats-house-test",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-14T10:00:00Z"
-  },
-  {
-   "title": "As Democrats win big, thirst traps of male candidates take social media by storm",
-   "summary": "It's everywhere on social media: Democrats celebrating the attractive men voters elected in the midterms. But it's bigger than a meme and says a lot about politics of masculinity in the age of Trump.",
-   "link": "https://www.npr.org/2026/11/14/nx-s1-6040507/democrats-male-candidates-masculinity-trump",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-14T10:00:00Z"
-  },
-  {
    "title": "China should share its renewable energy expertise",
    "summary": "China is updating a law that has underpinned one of the most remarkable industrial transformations of our time. After two decades of rapid renewable-energy development, China is preparing to rewrite the rules that have…",
    "link": "https://www.scmp.com/opinion/china-opinion/article/3374104/china-should-share-its-renewable-energy-expertise",
@@ -358,16 +418,6 @@
     "finance"
    ],
    "date": "2026-11-14T08:13:40Z"
-  },
-  {
-   "title": "Could major power politics stall the landmark High Seas Treaty?",
-   "summary": "Nearly a year after taking effect, the landmark High Seas Treaty risks becoming another geopolitical battleground among major powers, observers have warned. Ratified by 105 countries, including China but not the United…",
-   "link": "https://www.scmp.com/news/china/diplomacy/article/3374392/could-major-power-politics-stall-landmark-high-seas-treaty",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-14T08:00:10Z"
   },
   {
    "title": "Chinese entities sign multibillion-dollar deals with Oman in Middle East investment pivot",
@@ -440,26 +490,6 @@
    "date": "2026-11-14T06:33:06Z"
   },
   {
-   "title": "Chinese scientists fired after child dies in world’s first brain gene-editing attempt",
-   "summary": "The world’s first attempt to edit genes inside a child’s brain, which killed a six-year-old girl in Shanghai last year, has led to the firing of scientists following an official investigation that found they had broken…",
-   "link": "https://www.scmp.com/news/china/science/article/3374429/chinese-scientists-fired-after-child-dies-worlds-first-brain-gene-editing-attempt",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-14T06:23:22Z"
-  },
-  {
-   "title": "Yale scientists reveal what really slows aging and what doesn't",
-   "summary": "Yale researchers have discovered that certain prescription drugs, healthy diets, and exercise can measurably slow biological aging, while popular anti-aging supplements appear largely ineffective. Their analysis of 51…",
-   "link": "https://www.sciencedaily.com/releases/2026/11/261112230452.htm",
-   "source": "ScienceDaily",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-14T04:26:12Z"
-  },
-  {
    "title": "Lutnick faces questions over Nvidia spy scandal. His sons' firm has deep ties to the chipmaker",
    "summary": "Jensen Huang’s resignation as Nvidia CEO has brought renewed scrutiny to Commerce Secretary Howard Lutnick and his family's financial ties to the chipmaker.",
    "link": "https://www.cnbc.com/2026/11/13/howard-lutnick-nvidia-jensen-huang-china-cantor-fitzgerald.html",
@@ -468,6 +498,16 @@
     "finance"
    ],
    "date": "2026-11-13T23:42:18Z"
+  },
+  {
+   "title": "How the Jensen Huang scandal created a headache for business-friendly Singapore",
+   "summary": "The scandal has cast a spotlight on Singapore's success as a chip hub - and a location for alleged illicit trade.",
+   "link": "https://www.bbc.co.uk/news/articles/ck1exevgql4qo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-13T23:00:31Z"
   },
   {
    "title": "STAT+: Enforcement of stringent Medicaid work requirements delayed for six months",
@@ -540,26 +580,6 @@
     "us"
    ],
    "date": "2026-11-13T19:53:57Z"
-  },
-  {
-   "title": "Why is Microsoft's outage lasting so long and will emails be lost?",
-   "summary": "Microsoft says it is continuing to restore services including Outlook and Teams following a global outage.",
-   "link": "https://www.bbc.co.uk/news/articles/cwvg238zrnm5o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-13T18:36:57Z"
-  },
-  {
-   "title": "Are board games making a comeback this Christmas?",
-   "summary": "Are board games making a comeback this Christmas?",
-   "link": "https://www.bbc.co.uk/news/videos/ckp80l667rdjo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-13T18:00:40Z"
   },
   {
    "title": "STAT+: Doctors have questions about the Watchman. Boston Scientific has a sales pitch.",
@@ -682,26 +702,6 @@
     "china"
    ],
    "date": "2026-11-13T10:30:03Z"
-  },
-  {
-   "title": "Why Japan’s job market is attracting more Chinese university graduates",
-   "summary": "After graduating with a bachelor’s degree in China, Jessica Zhang chose to look for work in Japan. She is now studying Japanese at a language school in Kyoto on a student visa while working as a supermarket cashier. She…",
-   "link": "https://www.scmp.com/economy/china-economy/article/3374295/why-japans-job-market-attracting-more-chinese-university-graduates",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-13T06:00:11Z"
-  },
-  {
-   "title": "Premier pledges action on gaps in China’s social security net amid warnings of shortfalls",
-   "summary": "Premier Li Qiang has pledged to accelerate efforts to address gaps in China’s social security system and diversify its provision amid demographic changes, as a former banking official warned that the country’s pension…",
-   "link": "https://www.scmp.com/economy/china-economy/article/3374293/premier-pledges-action-gaps-chinas-social-security-net-amid-warnings-shortfalls",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-13T04:00:39Z"
   },
   {
    "title": "How the Jensen Huang affair changes the outlook for U.S.-China relations",

@@ -252,9 +252,8 @@ def collect(source, cat, got, now, seen, items):
         seen.update((key, g["link"]))
         text = g["title"] + " " + g["summary"]
         cats = {cat}
-        if cat == "zhpress":
-            cats.add("china")
-        elif CHINA_RE.search(text):
+        # China tab = English / foreign coverage only; zhpress stays in Chinese press.
+        if cat != "zhpress" and CHINA_RE.search(text):
             cats.add("china")
         if cat == "finance" and US_POL_RE.search(text):
             cats.add("us")

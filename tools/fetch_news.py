@@ -23,6 +23,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "news.json"
 
 # (source name, category, url)
+# zhpress = Chinese-language mainland official / establishment finance & politics press
 FEEDS = [
     ("CNBC", "finance", "https://www.cnbc.com/id/10000664/device/rss/rss.html"),          # Finance
     ("CNBC", "finance", "https://www.cnbc.com/id/20910258/device/rss/rss.html"),          # Economy
@@ -33,6 +34,14 @@ FEEDS = [
     ("BBC News", "china", "https://feeds.bbci.co.uk/news/world/asia/china/rss.xml"),
     ("SCMP", "china", "https://www.scmp.com/rss/4/feed"),                                 # China
     ("SCMP", "china", "https://www.scmp.com/rss/318421/feed"),                            # China economy
+    # Chinese-language official / financial-establishment press (People's Daily, China News Service, Xinhua)
+    ("人民日報", "zhpress", "http://www.people.com.cn/rss/finance.xml"),
+    ("人民日報", "zhpress", "http://www.people.com.cn/rss/politics.xml"),
+    ("中國新聞網", "zhpress", "https://www.chinanews.com.cn/rss/finance.xml"),
+    ("中國新聞網", "zhpress", "https://www.chinanews.com.cn/rss/china.xml"),
+    ("中國新聞網", "zhpress", "https://www.chinanews.com.cn/rss/importnews.xml"),
+    ("新華網", "zhpress", "http://www.news.cn/fortune/news_fortune.xml"),
+    ("新華網", "zhpress", "http://www.news.cn/politics/news_politics.xml"),
     # International biotech, pharma, medical research and public-health news
     ("STAT News", "biotech", "https://www.statnews.com/feed/"),
     ("Fierce Biotech", "biotech", "https://www.fiercebiotech.com/rss/xml"),
@@ -46,13 +55,43 @@ FEEDS = [
     ("WHO", "biotech", "https://www.who.int/rss-feeds/news-english.xml"),
 ]
 
-PER_FEED = {"biotech": 5}   # newest items kept from each feed (default 8)
-QUOTA = {"finance": 18, "us": 14, "china": 14, "biotech": 26}   # most items kept per feed category
-MAX_AGE_DAYS = {"biotech": 10}   # drop anything older (default 4); journals and agencies post less often
+# CCTV JSONP pages (official mainland headlines; not RSS — kept for freshness when RSS lags)
+JSONP_FEEDS = [
+    ("央視網", "zhpress", "https://news.cctv.com/2019/07/gaiban/cmsdatainterface/page/china_1.jsonp"),
+    ("央視網", "zhpress", "https://news.cctv.com/2019/07/gaiban/cmsdatainterface/page/news_1.jsonp"),
+]
+
+PER_FEED = {"biotech": 5, "zhpress": 6}   # newest items kept from each feed (default 8)
+QUOTA = {"finance": 18, "us": 14, "china": 14, "zhpress": 24, "biotech": 26}   # most items kept per feed category
+MAX_AGE_DAYS = {"biotech": 10, "zhpress": 5}   # drop anything older (default 4); journals and agencies post less often
 CHINA_RE = re.compile(r"\b(China|Chinese|Beijing|Xi Jinping|Hong Kong|Taiwan|Shanghai|Shenzhen|Yuan|PBOC)\b", re.I)
 BIO_RE = re.compile(r"\b(biotech\w*|pharma\w*|drug ?maker|FDA|vaccine\w*|clinical trial|gene therapy|oncology|Moderna|Pfizer|Eli Lilly|Novo Nordisk|AstraZeneca|Merck|GLP-1)\b", re.I)
 US_POL_RE = re.compile(r"\b(Trump|White House|Congress|Senate|Republican|Democrat|tariff|Fed\b|Federal Reserve|Treasury)\b", re.I)
 UA = "Mozilla/5.0 (compatible; tylercheng00-site-newsbot/1.0; +https://tylercheng00.github.io/news.html)"
+CCTV_JSONP_RE = re.compile(r"^[^(]+\((.*)\)\s*;?\s*$", re.S)
+
+def decode_feed(raw, headers):
+    """Decode RSS bytes; mainland feeds are often GB18030 rather than UTF-8."""
+    ctype = headers.get("Content-Type", "") if headers else ""
+    m = re.search(r"charset=([\w-]+)", ctype, re.I)
+    if m:
+        try:
+            return raw.decode(m.group(1))
+        except (LookupError, UnicodeDecodeError):
+            pass
+    head = raw[:240].decode("ascii", errors="ignore")
+    m = re.search(r"encoding=[\"']([\w-]+)[\"']", head, re.I)
+    if m:
+        try:
+            return raw.decode(m.group(1))
+        except (LookupError, UnicodeDecodeError):
+            pass
+    for enc in ("utf-8", "gb18030", "gbk", "big5"):
+        try:
+            return raw.decode(enc)
+        except UnicodeDecodeError:
+            continue
+    return raw.decode("utf-8", errors="replace")
 
 
 def clean(text, limit=None):
@@ -82,6 +121,24 @@ def parse_date(s):
     return d.astimezone(dt.timezone.utc)
 
 
+def date_from_link(url):
+    """Infer a publish day from common mainland CMS URL patterns."""
+    if not url:
+        return None
+    m = re.search(r"/(\d{4})-(\d{2})/(\d{2})/", url)
+    if not m:
+        m = re.search(r"/n\d+/(\d{4})/(\d{2})(\d{2})/", url)  # people.com.cn
+    if not m:
+        m = re.search(r"/(\d{4})/(\d{2})-(\d{2})/", url)  # chinanews.com.cn
+    if not m:
+        return None
+    try:
+        d = dt.date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
+    except ValueError:
+        return None
+    return dt.datetime(d.year, d.month, d.day, tzinfo=dt.timezone.utc)
+
+
 def local(tag):
     return tag.rsplit("}", 1)[-1]
 
@@ -94,7 +151,12 @@ def child(el, *names):
 
 
 def parse_feed(data):
-    root = ET.fromstring(data)
+    if isinstance(data, bytes):
+        text = decode_feed(data, {})
+    else:
+        text = data
+    text = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f]", "", text)
+    root = ET.fromstring(text)
     items = []
     for el in root.iter():
         name = local(el.tag)
@@ -114,19 +176,103 @@ def parse_feed(data):
         t = clean(title.text if title is not None else "")
         if not t or not href or not href.startswith("http"):
             continue
+        when = parse_date(date.text if date is not None else None) or date_from_link(href)
         items.append({
             "title": t,
             "link": href,
             "summary": clean(desc.text if desc is not None else "", 220),
-            "date": parse_date(date.text if date is not None else None),
+            "date": when,
         })
     return items
 
 
 def fetch(url):
-    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/rss+xml, application/xml, text/xml"})
+    req = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": UA,
+            "Accept": "application/rss+xml, application/xml, text/xml, */*",
+            "Referer": "https://news.cctv.com/" if "cctv.com" in url else "https://tylercheng00.github.io/",
+        },
+    )
+    with urllib.request.urlopen(req, timeout=20) as r:
+        return decode_feed(r.read(), r.headers)
+
+
+def fetch_bytes(url):
+    req = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": UA,
+            "Accept": "application/javascript, application/json, */*",
+            "Referer": "https://news.cctv.com/",
+        },
+    )
     with urllib.request.urlopen(req, timeout=20) as r:
         return r.read()
+
+
+def parse_cctv_jsonp(data):
+    """Parse CCTV cmsdatainterface JSONP pages into the same shape as parse_feed()."""
+    text = data.decode("utf-8", "replace") if isinstance(data, (bytes, bytearray)) else data
+    m = CCTV_JSONP_RE.match(text.strip())
+    if not m:
+        raise ValueError("not CCTV JSONP")
+    payload = json.loads(m.group(1))
+    rows = (payload.get("data") or {}).get("list") or []
+    items = []
+    for row in rows:
+        title = clean(row.get("title") or "")
+        href = (row.get("url") or "").strip()
+        if not title or not href.startswith("http"):
+            continue
+        raw = (row.get("focus_date") or "").strip()
+        if re.fullmatch(r"\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}", raw):
+            raw = raw.replace(" ", "T") + "+08:00"
+        when = parse_date(raw) or date_from_link(href)
+        items.append({
+            "title": title,
+            "link": href,
+            "summary": clean(row.get("brief") or "", 220),
+            "date": when,
+        })
+    return items
+
+
+def collect(source, cat, got, now, seen, items):
+    """Deduplicate, tag and append items from one feed; return count kept."""
+    cutoff = now - dt.timedelta(days=MAX_AGE_DAYS.get(cat, 4))
+    got = [g for g in got if g["date"] is None or g["date"] >= cutoff]
+    got.sort(key=lambda g: g["date"] or now, reverse=True)
+    n = 0
+    for g in got:
+        key = re.sub(r"\W+", "", g["title"].lower())[:80]
+        if key in seen or g["link"] in seen:
+            continue
+        seen.update((key, g["link"]))
+        text = g["title"] + " " + g["summary"]
+        cats = {cat}
+        if cat == "zhpress":
+            cats.add("china")
+        elif CHINA_RE.search(text):
+            cats.add("china")
+        if cat == "finance" and US_POL_RE.search(text):
+            cats.add("us")
+        if cat == "finance" and BIO_RE.search(text):
+            cats.add("biotech")
+        items.append({
+            "title": g["title"],
+            "summary": g["summary"],
+            "link": g["link"],
+            "source": source,
+            "cats": sorted(cats),
+            "date": (g["date"] or now).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "_feed": cat,
+        })
+        n += 1
+        if n >= PER_FEED.get(cat, 8):
+            break
+    return n
 
 
 def main():
@@ -144,35 +290,17 @@ def main():
         except Exception as e:  # noqa: BLE001 - any failure just skips the feed
             print(f"skip {url}: {e}", file=sys.stderr)
             continue
-        cutoff = now - dt.timedelta(days=MAX_AGE_DAYS.get(cat, 4))
-        got = [g for g in got if g["date"] is None or g["date"] >= cutoff]
-        got.sort(key=lambda g: g["date"] or now, reverse=True)
-        n = 0
-        for g in got:
-            key = re.sub(r"\W+", "", g["title"].lower())[:80]
-            if key in seen or g["link"] in seen:
-                continue
-            seen.update((key, g["link"]))
-            text = g["title"] + " " + g["summary"]
-            cats = {cat}
-            if CHINA_RE.search(text):
-                cats.add("china")
-            if cat == "finance" and US_POL_RE.search(text):
-                cats.add("us")
-            if cat == "finance" and BIO_RE.search(text):
-                cats.add("biotech")
-            items.append({
-                "title": g["title"],
-                "summary": g["summary"],
-                "link": g["link"],
-                "source": source,
-                "cats": sorted(cats),
-                "date": (g["date"] or now).strftime("%Y-%m-%dT%H:%M:%SZ"),
-                "_feed": cat,
-            })
-            n += 1
-            if n >= PER_FEED.get(cat, 8):
-                break
+        n = collect(source, cat, got, now, seen, items)
+        print(f"ok   {url}: {n} items", file=sys.stderr)
+
+    for source, cat, url in JSONP_FEEDS:
+        try:
+            got = parse_cctv_jsonp(fetch_bytes(url))
+            ok += 1
+        except Exception as e:  # noqa: BLE001
+            print(f"skip {url}: {e}", file=sys.stderr)
+            continue
+        n = collect(source, cat, got, now, seen, items)
         print(f"ok   {url}: {n} items", file=sys.stderr)
 
     if not ok or not items:
@@ -189,7 +317,7 @@ def main():
     kept.sort(key=lambda i: i["date"], reverse=True)
     out = {
         "updated": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "sources": sorted({s for s, _, _ in FEEDS}),
+        "sources": sorted({s for s, _, _ in FEEDS} | {s for s, _, _ in JSONP_FEEDS}),
         "items": kept,
     }
     OUT.parent.mkdir(exist_ok=True)

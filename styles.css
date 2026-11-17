@@ -1339,3 +1339,49 @@ html.sc-pending body { visibility: hidden; }
   .ms-stat-grid, .ms-tables, .ms-lanes, .ms-gate, .ms-ziwei-grid { grid-template-columns: 1fr; }
   .ms-pillars { grid-template-columns: repeat(2, minmax(0,1fr)); }
 }
+
+/* —— Sites showcase —— */
+.sites-list { display: grid; gap: 18px; margin-top: 28px; }
+.site-row {
+  padding: 28px 30px;
+  border-top: 1px solid var(--line);
+  background: linear-gradient(90deg, rgba(201,163,91,.06), transparent 42%);
+}
+.site-row:first-child { border-top: 0; }
+.site-kicker {
+  margin: 0 0 8px;
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold-ink);
+}
+.site-copy h3 { margin: 0; font-size: clamp(22px, 3vw, 30px); }
+.site-copy > p { margin-top: 10px; max-width: 62ch; color: var(--ink-2); }
+.site-url {
+  margin-top: 8px !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 13px;
+  color: var(--muted) !important;
+}
+.site-actions { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+.site-subs {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+}
+.site-subs a {
+  display: inline-block;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+.site-subs a:hover { border-color: var(--gold); color: var(--gold-ink); }
+@media (max-width: 720px) {
+  .site-row { padding: 22px 0; background: none; }
+}

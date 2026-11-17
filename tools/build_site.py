@@ -126,6 +126,7 @@ NAV = [
     ("markets.html", "Markets", "美股行情", "markets"),
     ("game.html", "Play: Crossroads", "遊戲：交叉點", "game"),
     ("marksix.html", "Quant analysis", "量化分析", "marksix"),
+    ("sites.html", "Sites", "網站", "sites"),
 ]
 
 # Header menu: a few categories, each opening a small list of pages/sections.
@@ -141,6 +142,7 @@ NAV_GROUPS = [
         ("about.html#media", "Media & recognition", "媒體及認可"),
         ("index.html#vision", "Vision", "願景"),
         ("game.html", "🎮 My life game", "🎮 我的人生遊戲"),
+        ("sites.html", "My sites", "我的網站"),
     ]),
     ("ventures", "Ventures", "創業", [
         ("ventures.html#entrepreneurship", "Entrepreneurship", "創業經歷"),
@@ -160,9 +162,10 @@ NAV_GROUPS = [
         ("listing-readiness.html", "Listing readiness check", "上市準備自我評估"),
     ]),
     ("marksix", "Quant analysis", "量化分析", "marksix.html"),
+    ("sites", "Sites", "網站", "sites.html"),
 ]
 # page key of the generated pages -> their file
-CURRENT = {"insights": "insights/", "news": "news.html", "markets": "markets.html", "listing-readiness": "listing-readiness.html", "marksix": "marksix.html"}
+CURRENT = {"insights": "insights/", "news": "news.html", "markets": "markets.html", "listing-readiness": "listing-readiness.html", "marksix": "marksix.html", "sites": "sites.html"}
 CARET = ('<svg class="nav-caret" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true">'
          '<path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" '
          'stroke-linecap="round" stroke-linejoin="round"/></svg>')
@@ -533,6 +536,11 @@ def main():
         title="Quant analysis · 量化分析 | 鄭迪珉 Tyler Cheng",
         description="Members-only quantitative research desk. Pay and unlock with a password to view analysis. Research only — not betting advice.",
         og_type="website", scripts=("marksix.js",)), encoding="utf-8")
+    (ROOT / "sites.html").write_text(fragment_page(
+        "sites",
+        title="Sites · 網站 — Personal site, Future City, Cheng Studio, Yuzu Meow, NudgePay | 鄭迪珉 Tyler Cheng",
+        description="A directory of Tyler Cheng's live sites: personal site, Tyler's Future City, Cheng Studio, Yuzu Meow and NudgePay.",
+        og_type="website"), encoding="utf-8")
     # Android app (Play Store, Trusted Web Activity): the free check only, no site menu, no payment
     app = fragment_page(
         "app",

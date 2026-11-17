@@ -530,7 +530,7 @@ def main():
     (ROOT / "marksix.html").write_text(fragment_page(
         "marksix",
         title="Mark Six quant desk · 六合彩量化分析 | 鄭迪珉 Tyler Cheng",
-        description="Hong Kong Mark Six research desk: walk-forward backtests, ganzhi and sky-chart tests, and a member next-draw plan refreshed after every draw. Not betting advice.",
+        description="Members-only Hong Kong Mark Six research desk. Pay and unlock with a password to view analysis. Research only — not betting advice.",
         og_type="website", scripts=("marksix.js",)), encoding="utf-8")
     # Android app (Play Store, Trusted Web Activity): the free check only, no site menu, no payment
     app = fragment_page(

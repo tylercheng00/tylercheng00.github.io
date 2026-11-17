@@ -1,10 +1,11 @@
-/* Mark Six quant desk — public backtest + member unlock.
+/* Mark Six quant desk — entire analysis behind member unlock.
  *
  * SETUP: create a Stripe Payment Link; After payment → redirect to
  *   https://tylercheng00.github.io/marksix.html?paid={CHECKOUT_SESSION_ID}
  * Paste the link into STRIPE_LINK. Until then the pay button opens WhatsApp.
  * Set MEMBER_PASSWORD to the password you send paying members.
  * Soft client gate only (static GitHub Pages) — check Stripe for real sales.
+ * JSON under data/marksix/ is only fetched after unlock.
  */
 (function () {
   var STRIPE_LINK = "";
@@ -78,6 +79,26 @@
   function renderBacktest(bt) {
     if (!bt) return;
     var s = bt.sample || {};
+    var verdict = document.getElementById("ms-verdict");
+    if (verdict) {
+      var lo = null, hi = null, models = (bt.backtest && bt.backtest.m) || {};
+      Object.keys(models).forEach(function (k) {
+        if (k.indexOf("隨機") >= 0) return;
+        var m = models[k].mean != null ? models[k].mean : models[k];
+        if (typeof m !== "number") return;
+        if (lo == null || m < lo) lo = m;
+        if (hi == null || m > hi) hi = m;
+      });
+      var exp = (bt.overallHits && bt.overallHits.expected) || 0.735;
+      verdict.innerHTML = '<p class="ms-verdict-k">' + bi("Verdict", "結論") + "</p><p>" + bi(
+        "No model stably beat random. Random six mains average <b>" + num(exp, 3) +
+          "</b> hits per draw. Walk-forward means sat between <b>" + num(lo, 3) + "</b> and <b>" +
+          num(hi, 3) + "</b> — inside sampling noise. Ganzhi and sky-chart tests found no number link that survived multiple-testing correction.",
+        "冇任何模型穩定跑贏隨機揀號。隨機揀六個正碼，理論上每期平均中 <b>" + num(exp, 3) +
+          "</b> 個。滾動回測均值都喺 <b>" + num(lo, 3) + "</b> 至 <b>" + num(hi, 3) +
+          "</b>，屬抽樣誤差範圍。干支與天象盤檢驗校正後都搵唔到同號碼有關嘅規律。"
+      ) + "</p>";
+    }
     var grid = document.getElementById("ms-bt-stats");
     if (grid) {
       grid.innerHTML = [
@@ -319,11 +340,31 @@
     var desk = document.getElementById("ms-desk");
     if (desk) desk.hidden = !on;
     if (locked) locked.hidden = !!on;
-    if (gate) gate.classList.toggle("is-open", !!on);
+    if (gate) gate.hidden = !!on;
+  }
+
+  var loading = false;
+  function loadDesk() {
+    if (loading) return;
+    loading = true;
+    showDesk(true);
+    Promise.all([
+      fetchJson("backtest.json").catch(function () { return null; }),
+      fetchJson("summary.json").catch(function () { return null; }),
+      fetchJson("latest-report.json").catch(function () { return null; }),
+      fetchJson("recent-draws.json").catch(function () { return null; }),
+      fetchJson("archive-index.json").catch(function () { return null; })
+    ]).then(function (all) {
+      var bt = all[0], sum = all[1], report = all[2], recent = all[3], archives = all[4];
+      renderBacktest(bt);
+      renderPublic(sum);
+      renderMember(bt, report, sum, recent, archives);
+    }).finally(function () { loading = false; });
   }
 
   function boot() {
     renderGate();
+    showDesk(false);
     var params = new URLSearchParams(location.search);
     if (params.get("paid")) {
       setUnlocked(true);
@@ -339,7 +380,7 @@
         if (val === MEMBER_PASSWORD) {
           setUnlocked(true);
           if (err) err.hidden = true;
-          showDesk(true);
+          loadDesk();
         } else if (err) {
           err.hidden = false;
           err.innerHTML = bi("Wrong password. Pay first, then ask me on WhatsApp.", "密碼不正確。請先付款，再 WhatsApp 向我索取。");
@@ -352,24 +393,7 @@
       showDesk(false);
     });
 
-    Promise.all([
-      fetchJson("backtest.json").catch(function () { return null; }),
-      fetchJson("summary.json").catch(function () { return null; }),
-      fetchJson("latest-report.json").catch(function () { return null; }),
-      fetchJson("recent-draws.json").catch(function () { return null; }),
-      fetchJson("archive-index.json").catch(function () { return null; })
-    ]).then(function (all) {
-      var bt = all[0], sum = all[1], report = all[2], recent = all[3], archives = all[4];
-      renderBacktest(bt);
-      renderPublic(sum);
-      window.__msRenderMember = function () { renderMember(bt, report, sum, recent, archives); };
-      if (unlocked()) {
-        showDesk(true);
-        window.__msRenderMember();
-      } else {
-        showDesk(false);
-      }
-    });
+    if (unlocked()) loadDesk();
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);

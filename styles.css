@@ -1294,6 +1294,9 @@ html.sc-pending body { visibility: hidden; }
 .ms-stat-k { margin: 0; font-size: 13px; color: var(--muted); }
 .ms-stat-v { margin: 6px 0 0; font-size: 20px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
 .ms-tables { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; margin-top: 22px; }
+.ms-tables-2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+.ms-desk .ms-verdict { margin-bottom: 18px; }
+.ms-desk .section-sub { margin: 0 0 14px; color: var(--muted); }
 .ms-table-wrap { padding: 16px 18px 18px; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
 .ms-table-wrap h3 { margin: 0 0 12px; font-size: 16px; }
 .ms-scroll { overflow-x: auto; }

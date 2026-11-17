@@ -40,7 +40,8 @@
                 <input id="ms-pass" name="password" type="password" maxlength="64" placeholder="••••••••" required>
                 <button class="btn btn-gold" type="submit"><span lang="en">Unlock</span><span lang="zh-Hant">解鎖</span></button>
               </div>
-              <p class="ms-pass-hint"><span lang="en">Pay first, then WhatsApp me for the password. Returning members unlock here.</span><span lang="zh-Hant">先付款，再 WhatsApp 聯絡我領取密碼；舊會員可直接在此解鎖。</span></p>
+              <p class="ms-pass-hint"><span lang="en">Pay first, then WhatsApp me for the password. Every visit needs the password again.</span><span lang="zh-Hant">先付款，再 WhatsApp 聯絡我領取密碼。每次重新進入都需要再輸入密碼。</span></p>
+              <p class="ms-pass-hint" id="ms-pass-hint-paid" hidden><span lang="en">Payment received — enter your member password below.</span><span lang="zh-Hant">已收到付款——請在下方輸入會員密碼。</span></p>
               <p class="ms-pass-err" id="ms-pass-err" hidden></p>
             </form>
           </div>
@@ -92,6 +93,6 @@
           <section class="ms-block"><h3><span lang="en">Desk archive</span><span lang="zh-Hant">方案存檔</span></h3><div id="ms-archive-body"></div></section>
         </div>
 
-        <p class="ms-note"><span lang="en">General research only. Not a prediction guarantee and not betting advice. Stripe (when configured) handles payment; I issue the password on WhatsApp. Unlock state is stored only in your browser localStorage.</span><span lang="zh-Hant">僅供一般研究，不是預測保證，亦非投注建議。付款（若已設定）由 Stripe 處理；密碼經 WhatsApp 發出。解鎖狀態只存在你瀏覽器的 localStorage。</span></p>
+        <p class="ms-note"><span lang="en">General research only. Not a prediction guarantee and not betting advice. Stripe (when configured) handles payment; I issue the password on WhatsApp. Leaving or refreshing the page locks the desk again.</span><span lang="zh-Hant">僅供一般研究，不是預測保證，亦非投注建議。付款（若已設定）由 Stripe 處理；密碼經 WhatsApp 發出。離開或重新整理頁面後會再次上鎖。</span></p>
       </div>
     </section>

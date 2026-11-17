@@ -6,14 +6,16 @@
  * Set MEMBER_PASSWORD to the password you send paying members.
  * Soft client gate only (static GitHub Pages) — check Stripe for real sales.
  * JSON under data/marksix/ is only fetched after unlock.
+ * Unlock is in-memory for this page load only: every revisit needs the password again.
  */
 (function () {
   var STRIPE_LINK = "";
   var PRICE = ["HK$198", "HK$198"];
   var WA = "85298229572";
   var MEMBER_PASSWORD = "TC-MarkSix-2026";
-  var KEY_PAID = "ms-paid";
+  var KEY_PAID = "ms-paid"; // legacy key — cleared on load; no longer used to stay unlocked
   var DATA = "data/marksix/";
+  var openNow = false;
 
   function bi(en, zh) {
     return '<span lang="en">' + en + '</span><span lang="zh-Hant">' + zh + '</span>';
@@ -52,13 +54,11 @@
     });
   }
   function unlocked() {
-    try { return localStorage.getItem(KEY_PAID) === "1"; } catch (e) { return false; }
+    return !!openNow;
   }
   function setUnlocked(on) {
-    try {
-      if (on) localStorage.setItem(KEY_PAID, "1");
-      else localStorage.removeItem(KEY_PAID);
-    } catch (e) {}
+    openNow = !!on;
+    try { localStorage.removeItem(KEY_PAID); } catch (e) {}
   }
 
   function renderGate() {
@@ -363,11 +363,16 @@
   }
 
   function boot() {
+    // Drop any older “remember me” unlock from previous versions.
+    try { localStorage.removeItem(KEY_PAID); } catch (e) {}
+    openNow = false;
     renderGate();
     showDesk(false);
+
     var params = new URLSearchParams(location.search);
     if (params.get("paid")) {
-      setUnlocked(true);
+      var hint = document.getElementById("ms-pass-hint-paid");
+      if (hint) hint.hidden = false;
       try { history.replaceState({}, "", "marksix.html"); } catch (e) {}
     }
 
@@ -391,9 +396,9 @@
     if (logout) logout.addEventListener("click", function () {
       setUnlocked(false);
       showDesk(false);
+      var pass = document.getElementById("ms-pass");
+      if (pass) pass.value = "";
     });
-
-    if (unlocked()) loadDesk();
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);

@@ -79,7 +79,7 @@
       natal.nameZh +
       " / " +
       natal.nameEn +
-      "</strong></p><p class="ms-natal-line">' +
+      '</strong></p><p class="ms-natal-line">' +
       natal.birthIso +
       " " +
       natal.birthTime +
@@ -200,7 +200,7 @@
         ev.preventDefault();
         var input = document.getElementById("ch-pass");
         var val = input ? String(input.value || "").trim() : "";
-        if (val === MEMBER_PASS) {
+        if (val.toLowerCase() === MEMBER_PASS.toLowerCase()) {
           setOpen(true);
           if (err) {
             err.hidden = true;

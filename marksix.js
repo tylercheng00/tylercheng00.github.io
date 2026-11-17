@@ -322,7 +322,7 @@
         ev.preventDefault();
         var input = document.getElementById("ms-pass");
         var val = input ? String(input.value || "").trim() : "";
-        if (val === MEMBER_PASS) {
+        if (val.toLowerCase() === MEMBER_PASS.toLowerCase()) {
           setOpen(true);
           if (err) {
             err.hidden = true;

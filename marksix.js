@@ -135,19 +135,29 @@
   function renderPublic(summary) {
     var s = summary || {};
     var latest = s.latest || {};
+    var range =
+      s.from && s.to
+        ? s.from + " → " + s.to
+        : latest.date || "—";
+    var latestLabel =
+      (latest.drawNo ? "#" + latest.drawNo + " " : "") + (latest.date || "—");
     var sub = document.getElementById("ms-pub-sub");
     if (sub)
       sub.textContent = t(
         (s.era || "Mark Six") +
           " · " +
           (s.historyCount || 0) +
-          " draws in book · latest in archive " +
-          (latest.date || "—"),
+          " draws · " +
+          range +
+          " · latest " +
+          latestLabel,
         (s.era || "六合彩") +
           " · 樣本 " +
           (s.historyCount || 0) +
-          " 期 · 檔內最新 " +
-          (latest.date || "—")
+          " 期 · " +
+          range +
+          " · 最新 " +
+          latestLabel
       );
     var grid = document.getElementById("ms-stat-grid");
     if (grid) {

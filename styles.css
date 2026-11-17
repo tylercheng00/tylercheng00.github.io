@@ -1283,3 +1283,56 @@ html.sc-pending body { visibility: hidden; }
   .rc-result { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .rc-has-report .rc-result { border: 0; margin: 0; padding: 0; background: #fff; }
 }
+
+/* —— Mark Six quant desk —— */
+.ms-hero-note { margin-top: 18px; max-width: 46rem; font-size: 14px; color: rgba(255,255,255,.72); }
+.ms-verdict { padding: 22px 24px; border: 1px solid var(--line); border-left: 3px solid var(--gold); background: #fff; border-radius: 4px 12px 12px 4px; }
+.ms-verdict-k { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-ink); margin: 0 0 8px; }
+.ms-verdict p { margin: 0; color: var(--ink-2); max-width: 70ch; }
+.ms-stat-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 14px; margin: 28px 0 8px; }
+.ms-stat { padding: 16px 18px; border: 1px solid var(--line); background: #fff; border-radius: 12px; }
+.ms-stat-k { margin: 0; font-size: 13px; color: var(--muted); }
+.ms-stat-v { margin: 6px 0 0; font-size: 20px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+.ms-tables { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; margin-top: 22px; }
+.ms-table-wrap { padding: 16px 18px 18px; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
+.ms-table-wrap h3 { margin: 0 0 12px; font-size: 16px; }
+.ms-scroll { overflow-x: auto; }
+.ms-table { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+.ms-table th, .ms-table td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: middle; }
+.ms-table th { color: var(--muted); font-weight: 600; font-size: 12px; }
+.ms-lanes { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
+.ms-lane, .ms-lane-card { padding: 18px 20px; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
+.ms-lane-k { margin: 0 0 8px; font-family: ui-monospace, Menlo, monospace; color: var(--gold-ink); }
+.ms-gate { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: linear-gradient(160deg, #fff 0%, #f7f4ec 100%); }
+.ms-gate ul { margin: 12px 0 0; padding-left: 1.2em; display: grid; gap: 6px; color: var(--ink-2); }
+.ms-price { margin-top: 16px; font-size: 22px; font-weight: 700; color: var(--ink); }
+.ms-pass-form { margin-top: 18px; display: grid; gap: 8px; }
+.ms-pass-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.ms-pass-row input { flex: 1 1 160px; min-width: 0; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; font: inherit; }
+.ms-pass-hint, .ms-pass-err, .ms-note { font-size: 13px; color: var(--muted); }
+.ms-pass-err { color: #8f2a2a; }
+.ms-locked { margin-top: 28px; }
+.ms-blur { position: relative; padding: 40px 24px; border-radius: 16px; border: 1px dashed var(--line); text-align: center; background: repeating-linear-gradient(-45deg, #fafafa, #fafafa 8px, #f3f3f3 8px, #f3f3f3 16px); }
+.ms-balls { display: inline-flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.ms-ball { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; font-size: 13px; font-weight: 700; color: #fff; background: #5a6a78; }
+.ms-ball.ms-red { background: #c0392b; }
+.ms-ball.ms-blue { background: #2471a3; }
+.ms-ball.ms-green { background: #1e8449; }
+.ms-balls.fake .ms-ball, .ms-balls.fake > span { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: #cfd6dc; color: #6a7782; font-weight: 700; }
+.ms-desk { margin-top: 28px; display: grid; gap: 22px; }
+.ms-desk-bar { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: center; }
+.ms-block { padding: 20px 22px; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
+.ms-block h3 { margin: 0 0 14px; font-size: 18px; }
+.ms-block h4 { margin: 16px 0 8px; font-size: 15px; }
+.ms-pillars { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 10px; margin: 12px 0; }
+.ms-pillars div, .ms-ziwei-grid div { padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: #fafafa; }
+.ms-pillars small, .ms-ziwei-grid small { display: block; color: var(--muted); font-size: 12px; }
+.ms-ziwei-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; margin-top: 12px; }
+.ms-live-card { margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.ms-live-h { font-weight: 700; margin: 0 0 8px; }
+.ms-arch-btn { margin: 0 8px 8px 0; padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px; background: #fff; cursor: pointer; font: inherit; }
+.ms-arch-btn:hover { border-color: var(--gold); }
+@media (max-width: 900px) {
+  .ms-stat-grid, .ms-tables, .ms-lanes, .ms-gate, .ms-ziwei-grid { grid-template-columns: 1fr; }
+  .ms-pillars { grid-template-columns: repeat(2, minmax(0,1fr)); }
+}

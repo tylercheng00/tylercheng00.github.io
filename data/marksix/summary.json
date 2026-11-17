@@ -1,0 +1,398 @@
+{
+  "historyCount": 3397,
+  "era": "49-ball since 2002",
+  "sourceNote": "",
+  "latest": {
+    "drawNo": "02/053",
+    "date": "2002-07-04",
+    "main": [
+      5,
+      32,
+      34,
+      38,
+      39,
+      49
+    ],
+    "special": 8
+  },
+  "oddPct": 50.43,
+  "evenPct": 49.57,
+  "zones": {
+    "mid": 35.12,
+    "large": 32.03,
+    "small": 32.85
+  },
+  "sumMean": 149.33,
+  "sumStd": 32.89,
+  "sumMin": 27,
+  "sumMax": 258,
+  "expectedFreqPerBall": 415.96,
+  "adjacentGapRatePct": 12.3,
+  "topFreq": [
+    {
+      "n": 49,
+      "count": 457,
+      "ratePct": 2.242,
+      "vsUniformPct": 9.87
+    },
+    {
+      "n": 30,
+      "count": 456,
+      "ratePct": 2.237,
+      "vsUniformPct": 9.63
+    },
+    {
+      "n": 28,
+      "count": 455,
+      "ratePct": 2.232,
+      "vsUniformPct": 9.39
+    },
+    {
+      "n": 22,
+      "count": 449,
+      "ratePct": 2.203,
+      "vsUniformPct": 7.94
+    },
+    {
+      "n": 9,
+      "count": 446,
+      "ratePct": 2.188,
+      "vsUniformPct": 7.22
+    },
+    {
+      "n": 24,
+      "count": 441,
+      "ratePct": 2.164,
+      "vsUniformPct": 6.02
+    },
+    {
+      "n": 21,
+      "count": 434,
+      "ratePct": 2.129,
+      "vsUniformPct": 4.34
+    },
+    {
+      "n": 32,
+      "count": 434,
+      "ratePct": 2.129,
+      "vsUniformPct": 4.34
+    },
+    {
+      "n": 18,
+      "count": 432,
+      "ratePct": 2.12,
+      "vsUniformPct": 3.86
+    },
+    {
+      "n": 34,
+      "count": 432,
+      "ratePct": 2.12,
+      "vsUniformPct": 3.86
+    },
+    {
+      "n": 1,
+      "count": 432,
+      "ratePct": 2.12,
+      "vsUniformPct": 3.86
+    },
+    {
+      "n": 35,
+      "count": 429,
+      "ratePct": 2.105,
+      "vsUniformPct": 3.14
+    },
+    {
+      "n": 33,
+      "count": 428,
+      "ratePct": 2.1,
+      "vsUniformPct": 2.89
+    },
+    {
+      "n": 12,
+      "count": 428,
+      "ratePct": 2.1,
+      "vsUniformPct": 2.89
+    },
+    {
+      "n": 20,
+      "count": 427,
+      "ratePct": 2.095,
+      "vsUniformPct": 2.65
+    }
+  ],
+  "bottomFreq": [
+    {
+      "n": 41,
+      "count": 378,
+      "ratePct": 1.855,
+      "vsUniformPct": -9.13
+    },
+    {
+      "n": 19,
+      "count": 379,
+      "ratePct": 1.859,
+      "vsUniformPct": -8.89
+    },
+    {
+      "n": 43,
+      "count": 389,
+      "ratePct": 1.909,
+      "vsUniformPct": -6.48
+    },
+    {
+      "n": 5,
+      "count": 392,
+      "ratePct": 1.923,
+      "vsUniformPct": -5.76
+    },
+    {
+      "n": 23,
+      "count": 392,
+      "ratePct": 1.923,
+      "vsUniformPct": -5.76
+    },
+    {
+      "n": 27,
+      "count": 394,
+      "ratePct": 1.933,
+      "vsUniformPct": -5.28
+    },
+    {
+      "n": 25,
+      "count": 399,
+      "ratePct": 1.958,
+      "vsUniformPct": -4.08
+    },
+    {
+      "n": 47,
+      "count": 400,
+      "ratePct": 1.963,
+      "vsUniformPct": -3.84
+    },
+    {
+      "n": 39,
+      "count": 400,
+      "ratePct": 1.963,
+      "vsUniformPct": -3.84
+    },
+    {
+      "n": 36,
+      "count": 401,
+      "ratePct": 1.967,
+      "vsUniformPct": -3.6
+    }
+  ],
+  "topHot50": [
+    {
+      "n": 25,
+      "count": 12,
+      "ratePct": 4.0
+    },
+    {
+      "n": 32,
+      "count": 11,
+      "ratePct": 3.67
+    },
+    {
+      "n": 5,
+      "count": 10,
+      "ratePct": 3.33
+    },
+    {
+      "n": 10,
+      "count": 10,
+      "ratePct": 3.33
+    },
+    {
+      "n": 44,
+      "count": 10,
+      "ratePct": 3.33
+    },
+    {
+      "n": 22,
+      "count": 9,
+      "ratePct": 3.0
+    },
+    {
+      "n": 46,
+      "count": 9,
+      "ratePct": 3.0
+    },
+    {
+      "n": 29,
+      "count": 8,
+      "ratePct": 2.67
+    },
+    {
+      "n": 23,
+      "count": 8,
+      "ratePct": 2.67
+    },
+    {
+      "n": 7,
+      "count": 8,
+      "ratePct": 2.67
+    },
+    {
+      "n": 1,
+      "count": 8,
+      "ratePct": 2.67
+    },
+    {
+      "n": 28,
+      "count": 8,
+      "ratePct": 2.67
+    },
+    {
+      "n": 36,
+      "count": 8,
+      "ratePct": 2.67
+    },
+    {
+      "n": 41,
+      "count": 7,
+      "ratePct": 2.33
+    },
+    {
+      "n": 3,
+      "count": 7,
+      "ratePct": 2.33
+    }
+  ],
+  "topOmission": [
+    {
+      "n": 18,
+      "missed": 37
+    },
+    {
+      "n": 30,
+      "missed": 36
+    },
+    {
+      "n": 37,
+      "missed": 26
+    },
+    {
+      "n": 42,
+      "missed": 26
+    },
+    {
+      "n": 8,
+      "missed": 21
+    },
+    {
+      "n": 2,
+      "missed": 20
+    },
+    {
+      "n": 16,
+      "missed": 20
+    },
+    {
+      "n": 17,
+      "missed": 19
+    },
+    {
+      "n": 47,
+      "missed": 19
+    },
+    {
+      "n": 4,
+      "missed": 18
+    },
+    {
+      "n": 41,
+      "missed": 17
+    },
+    {
+      "n": 15,
+      "missed": 13
+    },
+    {
+      "n": 3,
+      "missed": 12
+    },
+    {
+      "n": 45,
+      "missed": 11
+    },
+    {
+      "n": 6,
+      "missed": 9
+    }
+  ],
+  "topSpecial": [
+    {
+      "n": 13,
+      "count": 88,
+      "ratePct": 2.591
+    },
+    {
+      "n": 8,
+      "count": 85,
+      "ratePct": 2.502
+    },
+    {
+      "n": 7,
+      "count": 84,
+      "ratePct": 2.473
+    },
+    {
+      "n": 10,
+      "count": 84,
+      "ratePct": 2.473
+    },
+    {
+      "n": 38,
+      "count": 79,
+      "ratePct": 2.326
+    },
+    {
+      "n": 14,
+      "count": 79,
+      "ratePct": 2.326
+    },
+    {
+      "n": 42,
+      "count": 78,
+      "ratePct": 2.296
+    },
+    {
+      "n": 27,
+      "count": 78,
+      "ratePct": 2.296
+    },
+    {
+      "n": 24,
+      "count": 78,
+      "ratePct": 2.296
+    },
+    {
+      "n": 2,
+      "count": 78,
+      "ratePct": 2.296
+    },
+    {
+      "n": 6,
+      "count": 78,
+      "ratePct": 2.296
+    },
+    {
+      "n": 34,
+      "count": 75,
+      "ratePct": 2.208
+    }
+  ],
+  "colorWaves": {
+    "blue": 32.09,
+    "red": 34.95,
+    "green": 32.96
+  },
+  "decades": {
+    "1-10": 20.51,
+    "11-20": 20.43,
+    "21-30": 20.79,
+    "31-40": 20.32,
+    "41-49": 17.95
+  }
+}

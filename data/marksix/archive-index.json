@@ -1,0 +1,21 @@
+{
+  "latest": "latest-report.json",
+  "items": [
+    {
+      "date": "2026-11-10",
+      "file": "archive-2026-11-10.json"
+    },
+    {
+      "date": "2026-11-12",
+      "file": "archive-2026-11-12.json"
+    },
+    {
+      "date": "2026-11-14",
+      "file": "archive-2026-11-14.json"
+    },
+    {
+      "date": "2026-11-15",
+      "file": "archive-2026-11-15.json"
+    }
+  ]
+}

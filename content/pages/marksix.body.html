@@ -1,0 +1,117 @@
+    <section class="p-hero" id="top">
+      <div class="hero-bg" aria-hidden="true"><span class="glow glow-1"></span><span class="glow glow-2"></span><span class="grid"></span></div>
+      <div class="container p-hero-inner">
+        <p class="eyebrow reveal"><span class="dot" aria-hidden="true"></span><span lang="en">Quant interest · research desk</span><span lang="zh-Hant">量化興趣 · 研究桌面</span></p>
+        <h1 class="p-title reveal"><span lang="en">Mark Six quant desk</span><span lang="zh-Hant">六合彩量化分析</span></h1>
+        <p class="p-lede reveal"><span lang="en">Walk-forward backtests on the 49-ball era, ganzhi and sky-chart tests, then a member desk that refreshes after every draw for the next period.</span><span lang="zh-Hant">以 49 球時代做滾動回測、干支與天象盤檢驗；會員桌面於每期開獎後自動刷新，並分析下一期。</span></p>
+        <div class="hero-cta reveal">
+          <a class="btn btn-gold" href="#member"><span lang="en">Member unlock</span><span lang="zh-Hant">會員解鎖</span></a>
+          <a class="btn btn-outline-light" href="#backtest"><span lang="en">Read the backtest</span><span lang="zh-Hant">看回測結論</span></a>
+        </div>
+        <p class="ms-hero-note reveal"><span lang="en">Research only — not betting advice. No model here beat random after proper testing.</span><span lang="zh-Hant">僅供研究，不是投注建議。經嚴謹回測後，沒有模型穩定跑贏隨機。</span></p>
+      </div>
+    </section>
+
+    <section class="section" id="backtest">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">01 — <span lang="en">Backtest</span><span lang="zh-Hant">回測</span></p>
+          <h2 class="section-title"><span lang="en">Stats, ganzhi, sky chart, ensemble</span><span lang="zh-Hant">統計、干支、天象盤與集成</span></h2>
+          <p class="section-sub"><span lang="en">From the earlier desk: 16 models, train on the past only, score the next draw, compare with random picks of six.</span><span lang="zh-Hant">沿用先前桌面：16 個模型，只用過去預測下一期，並與隨機揀 6 個號碼比較。</span></p>
+        </div>
+        <div class="ms-verdict reveal" id="ms-verdict">
+          <p class="ms-verdict-k"><span lang="en">Verdict</span><span lang="zh-Hant">結論</span></p>
+          <p><span lang="en">No model stably beat random. Random six mains average <b>0.735</b> hits per draw. All walk-forward means sat between <b>0.699</b> and <b>0.761</b> — inside sampling noise. Seven ganzhi tests and twenty-two sky-chart tests found no number link that survived multiple-testing correction.</span><span lang="zh-Hant">冇任何模型穩定跑贏隨機揀號。隨機揀 6 個正碼，理論上每期平均中 <b>0.735</b> 個。所有滾動回測均值都喺 <b>0.699</b> 至 <b>0.761</b>，屬抽樣誤差範圍。天干地支 7 項、天象盤 22 項檢驗，校正後都搵唔到同號碼有關嘅規律。</span></p>
+        </div>
+        <div class="ms-stat-grid reveal" id="ms-bt-stats"></div>
+        <div class="ms-tables reveal">
+          <div class="ms-table-wrap">
+            <h3><span lang="en">Model means vs random</span><span lang="zh-Hant">模型均值 vs 隨機</span></h3>
+            <div id="ms-bt-models"></div>
+          </div>
+          <div class="ms-table-wrap">
+            <h3><span lang="en">Randomness check</span><span lang="zh-Hant">隨機性檢驗</span></h3>
+            <div id="ms-bt-chi"></div>
+          </div>
+        </div>
+        <p class="ms-note reveal"><span lang="en">49-ball era only (from 2002-07-04). Mixing older 45/47-ball eras creates fake “cold” numbers 46–49. Method groups: A frequency/hot/cold/Markov · B day-pillar/branch/zodiac · C logistic ensemble · D inner planets / retrograde / outer planets · E all-factor (overfit risk).</span><span lang="zh-Hant">只用 49 球時期（2002-07-04 起）。混入舊 45／47 球時代會令 46–49「假冷」。模型組別：A 頻率／熱／冷／馬可夫 · B 日柱／日支月支／生肖 · C 邏輯迴歸集成 · D 內行星／逆行／外行星 · E 全因子（易過度擬合）。</span></p>
+      </div>
+    </section>
+
+    <section class="section ms-pub" id="public">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">02 — <span lang="en">Public book</span><span lang="zh-Hant">公開樣本</span></p>
+          <h2 class="section-title"><span lang="en">Live history in percentages</span><span lang="zh-Hant">用百分比看最新歷史</span></h2>
+          <p class="section-sub" id="ms-pub-sub"><span lang="en">Loading long-run summary…</span><span lang="zh-Hant">正在載入長期摘要…</span></p>
+        </div>
+        <div class="ms-stat-grid reveal" id="ms-stat-grid"></div>
+        <div class="ms-tables reveal">
+          <div class="ms-table-wrap"><h3><span lang="en">Hottest long-run mains</span><span lang="zh-Hant">長期正碼偏熱</span></h3><div id="ms-top-freq"></div></div>
+          <div class="ms-table-wrap"><h3><span lang="en">Recent-50 heat</span><span lang="zh-Hant">近 50 期熱度</span></h3><div id="ms-top-hot"></div></div>
+          <div class="ms-table-wrap"><h3><span lang="en">Special-number leaders</span><span lang="zh-Hant">特別號領先</span></h3><div id="ms-top-sp"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="member">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">03 — <span lang="en">Members</span><span lang="zh-Hant">會員</span></p>
+          <h2 class="section-title"><span lang="en">Pay, receive a password, open the desk</span><span lang="zh-Hant">付費、領取密碼、打開桌面</span></h2>
+          <p class="section-sub"><span lang="en">Full backtest tables, ganzhi / sky-chart p-values, BaZi · natal chart · Zi Wei map, three-lane next-draw plan, live scorecard and last 40 official results. Desk refreshes after each Tue/Thu/Sat draw.</span><span lang="zh-Hant">完整回測表、干支／天象 p 值、八字·命盤·紫微對照、三軌下期方案、實盤對獎與最近 40 期官方結果。二／四／六開獎後自動刷新。</span></p>
+        </div>
+
+        <div class="ms-gate reveal" id="ms-gate">
+          <div class="ms-gate-copy">
+            <h3><span lang="en">Inside the lock</span><span lang="zh-Hant">鎖內內容</span></h3>
+            <ul>
+              <li><span lang="en">16-model walk-forward table + live scorecard</span><span lang="zh-Hant">16 模型滾動回測表 + 實盤對獎</span></li>
+              <li><span lang="en">Ganzhi &amp; NASA/JPL sky-chart hypothesis tests</span><span lang="zh-Hant">干支與 NASA／JPL 天象盤假設檢驗</span></li>
+              <li><span lang="en">BaZi / natal / Zi Wei symbolic map</span><span lang="zh-Hant">八字／命盤／紫微符號對照</span></li>
+              <li><span lang="en">Stats · natal+ganzhi · 55/45 combined picks</span><span lang="zh-Hant">純量化 · 本命干支 · 55／45 結合選號</span></li>
+              <li><span lang="en">Auto refresh after each draw → next period</span><span lang="zh-Hant">每期完結後自動更新 → 分析下一期</span></li>
+            </ul>
+            <p class="ms-price" id="ms-price"></p>
+          </div>
+          <div class="ms-gate-actions">
+            <div class="hero-cta" id="ms-pay-cta"></div>
+            <form class="ms-pass-form" id="ms-pass-form" autocomplete="off">
+              <label for="ms-pass"><span lang="en">Member password</span><span lang="zh-Hant">會員密碼</span></label>
+              <div class="ms-pass-row">
+                <input id="ms-pass" name="password" type="password" maxlength="64" placeholder="••••••••" required>
+                <button class="btn btn-gold" type="submit"><span lang="en">Unlock</span><span lang="zh-Hant">解鎖</span></button>
+              </div>
+              <p class="ms-pass-hint"><span lang="en">Pay first, then WhatsApp me for the password. Returning members unlock here.</span><span lang="zh-Hant">先付款，再 WhatsApp 聯絡我領取密碼；舊會員可直接在此解鎖。</span></p>
+              <p class="ms-pass-err" id="ms-pass-err" hidden></p>
+            </form>
+          </div>
+        </div>
+
+        <div class="ms-locked reveal" id="ms-locked">
+          <div class="ms-blur">
+            <div class="ms-balls fake" aria-hidden="true"><span>??</span><span>??</span><span>??</span><span>??</span><span>??</span><span>??</span><i>+</i><span>??</span></div>
+            <p><span lang="en">Member desk locked.</span><span lang="zh-Hant">會員桌面已鎖定。</span></p>
+          </div>
+        </div>
+
+        <div class="ms-desk" id="ms-desk" hidden>
+          <div class="ms-desk-bar">
+            <p id="ms-desk-meta"></p>
+            <button type="button" class="btn btn-outline-light sm" id="ms-logout"><span lang="en">Lock again</span><span lang="zh-Hant">重新上鎖</span></button>
+          </div>
+          <section class="ms-block"><h3><span lang="en">Walk-forward backtest table</span><span lang="zh-Hant">滾動回測總表</span></h3><div id="ms-full-bt"></div></section>
+          <section class="ms-block"><h3><span lang="en">Ganzhi &amp; sky-chart tests</span><span lang="zh-Hant">干支與天象盤檢驗</span></h3><div id="ms-tests"></div></section>
+          <section class="ms-block"><h3><span lang="en">Live scorecard</span><span lang="zh-Hant">實盤對獎紀錄</span></h3><div id="ms-live"></div></section>
+          <section class="ms-block"><h3><span lang="en">Natal BaZi · life chart</span><span lang="zh-Hant">本命八字 · 命盤</span></h3><div id="ms-natal-body"></div></section>
+          <section class="ms-block"><h3><span lang="en">Draw-day ganzhi · chart</span><span lang="zh-Hant">攪珠日干支 · 星盤</span></h3><div id="ms-day-body"></div></section>
+          <section class="ms-block"><h3><span lang="en">Zi Wei Dou Shu · map</span><span lang="zh-Hant">紫微斗數 · 符號對照</span></h3><div id="ms-ziwei-body"></div></section>
+          <section class="ms-block"><h3><span lang="en">Next-draw three lanes</span><span lang="zh-Hant">下期三軌方案</span></h3><div id="ms-lanes-body"></div></section>
+          <section class="ms-block"><h3><span lang="en">Omission leaders</span><span lang="zh-Hant">遺漏領先</span></h3><div id="ms-omit-body"></div></section>
+          <section class="ms-block"><h3><span lang="en">Last 40 official results</span><span lang="zh-Hant">最近 40 期官方結果</span></h3><div id="ms-history-body"></div></section>
+          <section class="ms-block"><h3><span lang="en">Desk archive</span><span lang="zh-Hant">方案存檔</span></h3><div id="ms-archive-body"></div></section>
+        </div>
+
+        <p class="ms-note"><span lang="en">General research only. Not a prediction guarantee and not betting advice. After each Mark Six draw (Tue/Thu/Sat), the desk refreshes history and rebuilds the next-period plan. Stripe (when configured) handles payment; I issue the password on WhatsApp. Unlock state is stored only in your browser localStorage.</span><span lang="zh-Hant">僅供一般研究，不是預測保證，亦非投注建議。每期六合彩（二／四／六）完結後，桌面會刷新歷史並重建下一期方案。付款（若已設定）由 Stripe 處理；密碼經 WhatsApp 發出。解鎖狀態只存在你瀏覽器的 localStorage。</span></p>
+      </div>
+    </section>

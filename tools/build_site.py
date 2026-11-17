@@ -140,6 +140,7 @@ NAV_GROUPS = [
         ("about.html#media", "Media & recognition", "媒體及認可"),
         ("index.html#vision", "Vision", "願景"),
         ("game.html", "🎮 My life game", "🎮 我的人生遊戲"),
+        ("marksix.html", "Mark Six quant", "六合彩量化"),
     ]),
     ("ventures", "Ventures", "創業", [
         ("ventures.html#entrepreneurship", "Entrepreneurship", "創業經歷"),
@@ -160,7 +161,7 @@ NAV_GROUPS = [
     ]),
 ]
 # page key of the generated pages -> their file
-CURRENT = {"insights": "insights/", "news": "news.html", "markets": "markets.html", "listing-readiness": "listing-readiness.html"}
+CURRENT = {"insights": "insights/", "news": "news.html", "markets": "markets.html", "listing-readiness": "listing-readiness.html", "marksix": "marksix.html"}
 CARET = ('<svg class="nav-caret" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true">'
          '<path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" '
          'stroke-linecap="round" stroke-linejoin="round"/></svg>')
@@ -526,6 +527,11 @@ def main():
         title="US listing readiness check · 赴美上市準備自我評估 | 鄭迪珉 Tyler Cheng",
         description="A free 10-question self-check for Hong Kong and mainland founders considering a US listing after Nasdaq's US$25 million threshold. Runs in your browser; nothing is sent.",
         og_type="website", scripts=("readiness.js",)), encoding="utf-8")
+    (ROOT / "marksix.html").write_text(fragment_page(
+        "marksix",
+        title="Mark Six quant desk · 六合彩量化分析 | 鄭迪珉 Tyler Cheng",
+        description="Hong Kong Mark Six research desk: walk-forward backtests, ganzhi and sky-chart tests, and a member next-draw plan refreshed after every draw. Not betting advice.",
+        og_type="website", scripts=("marksix.js",)), encoding="utf-8")
     # Android app (Play Store, Trusted Web Activity): the free check only, no site menu, no payment
     app = fragment_page(
         "app",
@@ -604,7 +610,7 @@ def apply_hero_photos():
         f.write_text(s, encoding="utf-8")
 
 
-ASSETS = ("styles.css", "main.js", "game.css", "game.js", "game-data.js", "game-kit.js", "game-worlds.js", "news.js", "markets.js", "us-equities.js", "contact.js", "clock.js", "readiness.js", "assets/fonts/fonts.css")
+ASSETS = ("styles.css", "main.js", "game.css", "game.js", "game-data.js", "game-kit.js", "game-worlds.js", "news.js", "markets.js", "us-equities.js", "contact.js", "clock.js", "readiness.js", "marksix.js", "assets/fonts/fonts.css")
 
 
 def stamp_assets():

@@ -125,6 +125,7 @@ NAV = [
     ("news.html", "News", "新聞", "news"),
     ("markets.html", "Markets", "美股行情", "markets"),
     ("game.html", "Play: Crossroads", "遊戲：交叉點", "game"),
+    ("marksix.html", "Mark Six", "六合彩量化", "marksix"),
 ]
 
 # Header menu: a few categories, each opening a small list of pages/sections.
@@ -140,7 +141,6 @@ NAV_GROUPS = [
         ("about.html#media", "Media & recognition", "媒體及認可"),
         ("index.html#vision", "Vision", "願景"),
         ("game.html", "🎮 My life game", "🎮 我的人生遊戲"),
-        ("marksix.html", "Mark Six quant", "六合彩量化"),
     ]),
     ("ventures", "Ventures", "創業", [
         ("ventures.html#entrepreneurship", "Entrepreneurship", "創業經歷"),
@@ -159,6 +159,7 @@ NAV_GROUPS = [
         ("news.html", "News", "新聞"),
         ("listing-readiness.html", "Listing readiness check", "上市準備自我評估"),
     ]),
+    ("marksix", "Mark Six", "六合彩量化", "marksix.html"),
 ]
 # page key of the generated pages -> their file
 CURRENT = {"insights": "insights/", "news": "news.html", "markets": "markets.html", "listing-readiness": "listing-readiness.html", "marksix": "marksix.html"}

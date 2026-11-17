@@ -1,0 +1,85 @@
+    <section class="p-hero" id="top">
+      <div class="hero-bg" aria-hidden="true"><span class="glow glow-1"></span><span class="glow glow-2"></span><span class="grid"></span></div>
+      <div class="container p-hero-inner">
+        <p class="eyebrow reveal"><span lang="en">Member services</span><span lang="zh-Hant">會員服務</span></p>
+        <h1 class="p-title reveal"><span lang="en">Personal chart</span><span lang="zh-Hant">個人排盤</span></h1>
+        <p class="p-lede reveal"><span lang="en">After unlock, enter your birth data for BaZi pillars, a natal sketch, and readings on personality, career, wealth, health and family.</span><span lang="zh-Hant">解鎖後輸入出生資料，排出八字四柱、星盤概覽，並解讀性格、事業、財運、健康與家庭。</span></p>
+        <div class="hero-cta reveal">
+          <a class="btn btn-gold" href="#member"><span lang="en">Member login</span><span lang="zh-Hant">會員登入</span></a>
+          <a class="btn btn-outline-light" href="marksix.html"><span lang="en">Mark Six quant</span><span lang="zh-Hant">六合彩量化分析</span></a>
+        </div>
+        <p class="ms-hero-note reveal"><span lang="en">Paid research reading — not medical, legal or financial advice.</span><span lang="zh-Hant">付費研究解讀——不是醫療、法律或投資建議。</span></p>
+      </div>
+    </section>
+
+    <section class="section" id="member">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker"><span lang="en">Access</span><span lang="zh-Hant">通行</span></p>
+          <h2 class="section-title"><span lang="en">Same member password as Mark Six quant</span><span lang="zh-Hant">與六合彩量化分析共用會員密碼</span></h2>
+          <p class="section-sub"><span lang="en">Password required on every visit.</span><span lang="zh-Hant">每次進入都需要再輸入密碼。</span></p>
+        </div>
+
+        <div class="ms-gate reveal" id="ch-gate">
+          <div class="ms-gate-copy">
+            <h3><span lang="en">Inside</span><span lang="zh-Hant">解鎖後</span></h3>
+            <ul>
+              <li><span lang="en">BaZi four pillars + day master</span><span lang="zh-Hant">八字四柱＋日主</span></li>
+              <li><span lang="en">Western natal sketch (signs &amp; houses)</span><span lang="zh-Hant">西洋星盤概覽（星座與宮位）</span></li>
+              <li><span lang="en">Personality, career, wealth, health, family, outlook</span><span lang="zh-Hant">性格、事業、財運、健康、家庭、走勢</span></li>
+            </ul>
+            <p class="ms-price" id="ch-price"></p>
+          </div>
+          <div class="ms-gate-actions">
+            <div class="hero-cta" id="ch-pay-cta"></div>
+            <form class="ms-pass-form" id="ch-pass-form" autocomplete="off">
+              <label for="ch-pass"><span lang="en">Member password</span><span lang="zh-Hant">會員密碼</span></label>
+              <div class="ms-pass-row">
+                <input id="ch-pass" name="password" type="password" maxlength="64" placeholder="••••••••" required>
+                <button class="btn btn-gold" type="submit"><span lang="en">Unlock</span><span lang="zh-Hant">解鎖</span></button>
+              </div>
+              <p class="ms-pass-hint"><span lang="en">Pay first, then WhatsApp me for the password.</span><span lang="zh-Hant">先付款，再 WhatsApp 聯絡我領取密碼。</span></p>
+              <p class="ms-pass-err" id="ch-pass-err" hidden></p>
+            </form>
+          </div>
+        </div>
+
+        <div class="ms-locked reveal" id="ch-locked">
+          <div class="ms-blur">
+            <p><span lang="en">Chart desk locked.</span><span lang="zh-Hant">排盤桌面已鎖定。</span></p>
+          </div>
+        </div>
+
+        <div class="ms-desk" id="ch-desk" hidden>
+          <div class="ms-desk-bar">
+            <p id="ch-desk-meta"></p>
+            <button type="button" class="btn btn-outline-light sm" id="ch-logout"><span lang="en">Lock again</span><span lang="zh-Hant">重新上鎖</span></button>
+          </div>
+
+          <section class="ms-block">
+            <h3><span lang="en">Your birth data</span><span lang="zh-Hant">你的出生資料</span></h3>
+            <form class="ms-natal-form" id="ch-natal-form">
+              <label><span lang="en">Name (Chinese)</span><span lang="zh-Hant">中文姓名</span><input name="nameZh" type="text" maxlength="40" required></label>
+              <label><span lang="en">Name (English)</span><span lang="zh-Hant">英文姓名</span><input name="nameEn" type="text" maxlength="60" required></label>
+              <label><span lang="en">Birth date</span><span lang="zh-Hant">出生年月日</span><input name="birthIso" type="date" required></label>
+              <label><span lang="en">Birth time</span><span lang="zh-Hant">出生時辰</span><input name="birthTime" type="time" value="08:00" required></label>
+              <label class="ms-span-2"><span lang="en">Birth place</span><span lang="zh-Hant">出生地址／地點</span><input name="birthPlace" type="text" maxlength="80" required placeholder="Hong Kong"></label>
+              <div class="ms-span-2 ms-form-actions">
+                <button class="btn btn-gold" type="submit"><span lang="en">Cast chart &amp; analyse</span><span lang="zh-Hant">排盤並分析</span></button>
+              </div>
+            </form>
+          </section>
+
+          <section class="ms-block" id="ch-out" hidden>
+            <h3><span lang="en">BaZi pillars</span><span lang="zh-Hant">八字四柱</span></h3>
+            <div id="ch-pillars"></div>
+            <h3 class="ms-subh"><span lang="en">Natal sketch</span><span lang="zh-Hant">星盤概覽</span></h3>
+            <div id="ch-astro"></div>
+            <h3 class="ms-subh"><span lang="en">Life reading</span><span lang="zh-Hant">人生解讀</span></h3>
+            <div id="ch-reading"></div>
+          </section>
+        </div>
+
+        <p class="ms-note"><span lang="en">Research reading only. Password required every visit.</span><span lang="zh-Hant">僅供研究解讀。每次進入都需要密碼。</span></p>
+      </div>
+    </section>

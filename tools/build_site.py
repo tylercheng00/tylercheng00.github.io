@@ -125,7 +125,7 @@ NAV = [
     ("news.html", "News", "新聞", "news"),
     ("markets.html", "Markets", "美股行情", "markets"),
     ("game.html", "Play: Crossroads", "遊戲：交叉點", "game"),
-    ("marksix.html", "Mark Six", "六合彩量化", "marksix"),
+    ("marksix.html", "Quant analysis", "量化分析", "marksix"),
 ]
 
 # Header menu: a few categories, each opening a small list of pages/sections.
@@ -159,7 +159,7 @@ NAV_GROUPS = [
         ("news.html", "News", "新聞"),
         ("listing-readiness.html", "Listing readiness check", "上市準備自我評估"),
     ]),
-    ("marksix", "Mark Six", "六合彩量化", "marksix.html"),
+    ("marksix", "Quant analysis", "量化分析", "marksix.html"),
 ]
 # page key of the generated pages -> their file
 CURRENT = {"insights": "insights/", "news": "news.html", "markets": "markets.html", "listing-readiness": "listing-readiness.html", "marksix": "marksix.html"}
@@ -530,8 +530,8 @@ def main():
         og_type="website", scripts=("readiness.js",)), encoding="utf-8")
     (ROOT / "marksix.html").write_text(fragment_page(
         "marksix",
-        title="Mark Six quant desk · 六合彩量化分析 | 鄭迪珉 Tyler Cheng",
-        description="Members-only Hong Kong Mark Six research desk. Pay and unlock with a password to view analysis. Research only — not betting advice.",
+        title="Quant analysis · 量化分析 | 鄭迪珉 Tyler Cheng",
+        description="Members-only quantitative research desk. Pay and unlock with a password to view analysis. Research only — not betting advice.",
         og_type="website", scripts=("marksix.js",)), encoding="utf-8")
     # Android app (Play Store, Trusted Web Activity): the free check only, no site menu, no payment
     app = fragment_page(

@@ -125,7 +125,8 @@ NAV = [
     ("news.html", "News", "新聞", "news"),
     ("markets.html", "Markets", "美股行情", "markets"),
     ("game.html", "Play: Crossroads", "遊戲：交叉點", "game"),
-    ("marksix.html", "Quant analysis", "量化分析", "marksix"),
+    ("marksix.html", "Mark Six quant", "六合彩量化分析", "marksix"),
+    ("chart.html", "Personal chart", "個人排盤", "chart"),
     ("sites.html", "Sites", "網站", "sites"),
 ]
 
@@ -161,11 +162,14 @@ NAV_GROUPS = [
         ("news.html", "News", "新聞"),
         ("listing-readiness.html", "Listing readiness check", "上市準備自我評估"),
     ]),
-    ("marksix", "Quant analysis", "量化分析", "marksix.html"),
+    ("members", "Member services", "會員服務", [
+        ("marksix.html", "Mark Six quant", "六合彩量化分析"),
+        ("chart.html", "Personal chart", "個人排盤"),
+    ]),
     ("sites", "Sites", "網站", "sites.html"),
 ]
 # page key of the generated pages -> their file
-CURRENT = {"insights": "insights/", "news": "news.html", "markets": "markets.html", "listing-readiness": "listing-readiness.html", "marksix": "marksix.html", "sites": "sites.html"}
+CURRENT = {"insights": "insights/", "news": "news.html", "markets": "markets.html", "listing-readiness": "listing-readiness.html", "marksix": "marksix.html", "chart": "chart.html", "sites": "sites.html"}
 CARET = ('<svg class="nav-caret" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true">'
          '<path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" '
          'stroke-linecap="round" stroke-linejoin="round"/></svg>')
@@ -533,9 +537,14 @@ def main():
         og_type="website", scripts=("readiness.js",)), encoding="utf-8")
     (ROOT / "marksix.html").write_text(fragment_page(
         "marksix",
-        title="Quant analysis · 量化分析 | 鄭迪珉 Tyler Cheng",
-        description="Members-only quantitative research desk. Pay and unlock with a password to view analysis. Research only — not betting advice.",
-        og_type="website", scripts=("marksix.js",)), encoding="utf-8")
+        title="Mark Six quant · 六合彩量化分析 | 鄭迪珉 Tyler Cheng",
+        description="Members-only Mark Six quant desk: enter your birth data for a personalised next-draw plan. Password required each visit. Research only — not betting advice.",
+        og_type="website", scripts=("member-bazi.js", "marksix.js")), encoding="utf-8")
+    (ROOT / "chart.html").write_text(fragment_page(
+        "chart",
+        title="Personal chart · 個人排盤 | 鄭迪珉 Tyler Cheng",
+        description="Members-only personal BaZi and natal chart reading: personality, career, wealth, health and family outlook. Password required each visit. Research only.",
+        og_type="website", scripts=("member-bazi.js", "chart.js")), encoding="utf-8")
     (ROOT / "sites.html").write_text(fragment_page(
         "sites",
         title="Sites · 網站 — Personal site, Future City, Cheng Studio, Yuzu Meow, NudgePay | 鄭迪珉 Tyler Cheng",
@@ -619,7 +628,7 @@ def apply_hero_photos():
         f.write_text(s, encoding="utf-8")
 
 
-ASSETS = ("styles.css", "main.js", "game.css", "game.js", "game-data.js", "game-kit.js", "game-worlds.js", "news.js", "markets.js", "us-equities.js", "contact.js", "clock.js", "readiness.js", "marksix.js", "assets/fonts/fonts.css")
+ASSETS = ("styles.css", "main.js", "game.css", "game.js", "game-data.js", "game-kit.js", "game-worlds.js", "news.js", "markets.js", "us-equities.js", "contact.js", "clock.js", "readiness.js", "marksix.js", "member-bazi.js", "chart.js", "assets/fonts/fonts.css")
 
 
 def stamp_assets():

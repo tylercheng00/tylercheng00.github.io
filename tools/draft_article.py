@@ -7,6 +7,10 @@ commits the file straight to main. It can also be run by hand:
     ANTHROPIC_API_KEY=... python3 tools/draft_article.py [--topic "..."]
 
 Do not invent facts about Tyler, his companies or clients.
+
+From 2026-11-19 (Hong Kong time) onward, every draft must be anchored to
+that calendar day's major news, summits, holidays or market events
+(e.g. APEC in Shenzhen → APEC / US–China–Russia / China's economic rise).
 """
 import datetime as dt
 import json
@@ -22,6 +26,9 @@ sys.path.insert(0, str(ROOT / "tools"))
 from build_site import CATS, parse_article  # noqa: E402
 
 MODEL = "claude-opus-5-5"
+HK = dt.timezone(dt.timedelta(hours=8))
+# User rule: event/holiday-tied topics start the next Hong Kong day after 2026-11-18.
+DAY_EVENT_FROM = dt.date(2026, 11, 19)
 
 SYSTEM = """You draft short articles for the personal website of 鄭迪珉 Tyler Tik Man Cheng, a Hong Kong-born \
 US Equities Market Specialist at Fuway Capital (IPO advisory, M&A, financing for China-based companies listed or \
@@ -40,6 +47,16 @@ Sound like a person who does this work, not like a language model:
 - No "delve", "landscape", "unlock", "robust", "tapestry", "it's worth noting", "the truth is", "here's the thing", \
 "in today's world", or stacks of parallel triads.
 - One concrete habit beats a framework. Leave something slightly unfinished if that is how you would actually say it.
+
+Day-event rule (mandatory when the user message says day-event mode is ON):
+- The piece MUST be clearly about something that matters on that Hong Kong calendar day: a major news story, \
+summit/forum (e.g. APEC), holiday, market open/close ritual, earnings season marker, or policy calendar item.
+- Prefer hooks from the "Today's day context" list in the user message. If several are listed, pick one and stay with it.
+- Tie it to Tyler's lane when you can (US listing / China companies / capital markets / biotech manufacturing), \
+but the day's event is the reason the piece exists — not a generic evergreen tip with a news name pasted on.
+- If the suggested topic conflicts with the day, follow the day.
+- Do not invent that an event happened if it is not in the day context or long-established calendar knowledge. \
+You may discuss implications and process without fabricating attendance, quotes, or unpublished outcomes.
 
 Hard rules - the draft is published under Tyler's name, so:
 - Do not invent facts about Tyler, his employer, his companies, clients, deals, numbers, meetings or results. \
@@ -69,11 +86,101 @@ summary_zh: <one sentence>
 """
 
 
+def hk_today():
+    return dt.datetime.now(HK).date()
+
+
+def known_calendar_hooks(day: dt.date):
+    """Lightweight recurring hooks. Prefer live news.json; these fill gaps."""
+    hooks = []
+    # Weekday market rhythm (Hong Kong / US overlap framing)
+    if day.weekday() < 5:
+        hooks.append(f"US–Hong Kong trading week in progress ({day.strftime('%A')})")
+    # Month markers
+    if day.day == 1:
+        hooks.append("Month-start calendar: boards and financing updates often reset here")
+    if day.day in (14, 15, 16):
+        hooks.append("Mid-month window: many China filings and board packs land around now")
+    # Fixed / well-known seasons (approximate; do not invent outcomes)
+    if day.month == 11 and 10 <= day.day <= 25:
+        hooks.append(
+            "November Asia-Pacific diplomacy / summit season (e.g. APEC-related coverage); "
+            "US–China–Russia and regional capital-market implications are in play"
+        )
+    if day.month == 1 and day.day <= 5:
+        hooks.append("New-year planning week for IPO calendars and board targets")
+    # Chinese New Year window varies; keep soft
+    if day.month in (1, 2):
+        hooks.append("Lunar New Year season nearby: liquidity, staffing and deal timing questions for China teams")
+    return hooks
+
+
+def news_hooks(limit=12):
+    path = ROOT / "data" / "news.json"
+    if not path.exists():
+        return []
+    try:
+        doc = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return []
+    items = doc.get("items") or []
+    out = []
+    for it in items[:limit]:
+        title = (it.get("title") or "").strip()
+        source = (it.get("source") or "").strip()
+        if not title:
+            continue
+        cats = ",".join(it.get("cats") or [])
+        bit = f"- {title}"
+        if source:
+            bit += f" ({source}"
+            if cats:
+                bit += f"; {cats}"
+            bit += ")"
+        elif cats:
+            bit += f" [{cats}]"
+        out.append(bit)
+    return out
+
+
+def day_context_block(day: dt.date, enabled: bool):
+    if not enabled:
+        return (
+            "Day-event mode: OFF (before 2026-11-19 HKT). You may choose a practical "
+            "capital-markets or biotech topic that is not a repeat of existing titles.\n"
+        )
+    lines = [
+        "Day-event mode: ON.",
+        f"Hong Kong calendar date: {day.isoformat()} ({day.strftime('%A')}).",
+        "Anchor the article to one major item for THIS day (news, summit, holiday, or market calendar).",
+        "Examples of the intended style: if APEC is in Shenzhen, write about APEC, a US–China–Russia meeting angle,",
+        "or how China's economic rise shows up in listing / financing work — not a generic evergreen note.",
+        "",
+        "Today's day context (use one; do not invent extra events):",
+    ]
+    cal = known_calendar_hooks(day)
+    news = news_hooks()
+    if cal:
+        lines.append("Calendar / season hooks:")
+        lines.extend(f"- {h}" for h in cal)
+    if news:
+        lines.append("Recent headlines from the site news desk (prefer those dated for this day when possible):")
+        lines.extend(news)
+    if not cal and not news:
+        lines.append(
+            "- No live headline file; pick a widely known same-day public calendar item "
+            "(markets open/close, a named summit week, or a public holiday) without inventing private facts."
+        )
+    return "\n".join(lines) + "\n"
+
+
 def main():
     topic = None
     if "--topic" in sys.argv:
         topic = sys.argv[sys.argv.index("--topic") + 1]
-    today = dt.date.today().isoformat()
+    day = hk_today()
+    today = day.isoformat()
+    event_mode = day >= DAY_EVENT_FROM
 
     arts = [parse_article(p) for p in sorted(INSIGHTS.glob("*.md"))]
     essays = [a for a in arts if "weekly" not in a["tags"]]
@@ -87,11 +194,19 @@ def main():
         rows = [f"{it['symbol']}: {it['price']} ({it['pct']:+.2f}% on the day)" for g in m["groups"] for it in g["items"]]
         data = f"Latest delayed market snapshot ({m['updated']}):\n" + "\n".join(rows)
 
-    user = (f"Date for the article: {today}\n"
-            f"{'Suggested topic: ' + topic if topic else 'Choose the topic yourself.'}\n\n"
-            f"Existing titles (do not repeat):\n{titles}\n\n"
-            f"{data}\n\n"
-            f"Example articles (format and voice to follow):\n\n{examples}")
+    topic_line = (
+        f"Suggested topic (still must fit today's event if day-event mode is ON): {topic}"
+        if topic
+        else "Choose the topic yourself from today's day context."
+    )
+    user = (
+        f"Date for the article: {today}\n"
+        f"{day_context_block(day, event_mode)}\n"
+        f"{topic_line}\n\n"
+        f"Existing titles (do not repeat):\n{titles}\n\n"
+        f"{data}\n\n"
+        f"Example articles (format and voice to follow):\n\n{examples}"
+    )
 
     client = anthropic.Anthropic()
     try:

@@ -6,6 +6,8 @@ name: Daily insight
 # 1. Take up to five notes in content/daily dated today or earlier.
 # 2. If that is fewer than five, draft the rest with Claude and publish them,
 #    if the ANTHROPIC_API_KEY secret is set. Otherwise publish whatever was due.
+# From 2026-11-19 HKT, Claude drafts must follow that day's major news /
+# summits / holidays (see tools/draft_article.py day-event mode).
 
 on:
   schedule:

@@ -74,6 +74,8 @@
     if (!pillars || !astro || !reading || !out) return;
     out.hidden = false;
 
+    var hidden = natal.hiddenStems || {};
+    var hiddenList = [hidden.year, hidden.month, hidden.day, hidden.hour];
     pillars.innerHTML =
       '<p class="ms-natal-line"><strong>' +
       natal.nameZh +
@@ -85,9 +87,13 @@
       natal.birthTime +
       " · " +
       natal.birthPlace +
+      (natal.geo && natal.geo.matched === false
+        ? t(" (coords default to Hong Kong)", "（經緯預設香港）")
+        : "") +
       '</p><div class="ch-pillar-grid">' +
       ["年", "月", "日", "時"]
         .map(function (lab, i) {
+          var hid = (hiddenList[i] || []).join("");
           return (
             '<div class="ch-pillar"><span class="ch-pillar-lab">' +
             t(
@@ -96,7 +102,14 @@
             ) +
             "</span><strong>" +
             natal.pillars[i] +
-            "</strong></div>"
+            "</strong>" +
+            (hid
+              ? '<span class="ch-pillar-hid">' +
+                t("Hidden ", "藏干 ") +
+                hid +
+                "</span>"
+              : "") +
+            "</div>"
           );
         })
         .join("") +
@@ -114,6 +127,10 @@
       t("Animal", "生肖") +
       " " +
       natal.animal +
+      '</p><p class="ms-natal-line ms-method-note">' +
+      (lang() === "zh"
+        ? natal.methodNoteZh || ""
+        : natal.methodNoteEn || "") +
       "</p>";
 
     astro.innerHTML =
@@ -122,13 +139,17 @@
       ": <strong>" +
       natal.sunSign +
       "</strong></li><li>" +
-      t("Moon (approx)", "月亮（近似）") +
+      t("Moon", "月亮") +
       ": <strong>" +
       natal.moonSign +
       "</strong></li><li>" +
-      t("Ascendant (approx)", "上升（近似）") +
+      t("Ascendant", "上升") +
       ": <strong>" +
       natal.ascSign +
+      "</strong></li><li>" +
+      t("Lunar phase", "月相") +
+      ": <strong>" +
+      (natal.lunar && natal.lunar.label ? natal.lunar.label : "—") +
       "</strong></li><li>" +
       t("Lucky numbers", "幸運號碼") +
       ": <strong>" +

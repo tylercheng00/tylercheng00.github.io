@@ -1364,6 +1364,8 @@ html.sc-pending body { visibility: hidden; }
 .ch-pillar-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 12px 0 16px; }
 .ch-pillar { padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: #fafafa; }
 .ch-pillar-lab { display: block; font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+.ch-pillar-hid { display: block; margin-top: 6px; font-size: 12px; color: var(--muted); }
+.ms-method-note { font-size: 13px; color: var(--muted); max-width: 70ch; }
 .ch-astro-list { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; color: var(--ink-2); }
 .ch-read-card { padding: 14px 0; border-bottom: 1px solid var(--line); }
 .ch-read-card:last-child { border-bottom: 0; }

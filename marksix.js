@@ -7,6 +7,7 @@
   var PRICE = "HK$198";
   var WA = "https://wa.me/85298229572";
   var DATA = "data/marksix/";
+  var DATA_VER = "20261117c";
 
   var lang = function () {
     return document.documentElement.getAttribute("lang") === "zh-Hant" ? "zh" : "en";
@@ -269,10 +270,10 @@
         "本次已解鎖 · 請在下方輸入出生資料"
       );
     Promise.all([
-      fetch(DATA + "summary.json").then(function (r) {
+      fetch(DATA + "summary.json?v=" + DATA_VER, { cache: "no-store" }).then(function (r) {
         return r.ok ? r.json() : {};
       }),
-      fetch(DATA + "recent-draws.json").then(function (r) {
+      fetch(DATA + "recent-draws.json?v=" + DATA_VER, { cache: "no-store" }).then(function (r) {
         return r.ok ? r.json() : [];
       }),
     ])

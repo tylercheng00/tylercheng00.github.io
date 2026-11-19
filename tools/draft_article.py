@@ -8,9 +8,10 @@ commits the file straight to main. It can also be run by hand:
 
 Do not invent facts about Tyler, his companies or clients.
 
-From 2026-11-19 (Hong Kong time) onward, every draft must be anchored to
+From 2026-11-14 (Hong Kong time) onward, every draft must be anchored to
 that calendar day's major news, summits, holidays or market events
-(e.g. APEC in Shenzhen → APEC / US–China–Russia / China's economic rise).
+(e.g. APEC in Shenzhen → APEC / US–China–Russia / China's economic rise;
+Jensen Huang / Nvidia chip-export politics when that story leads the day).
 """
 import datetime as dt
 import json
@@ -27,18 +28,19 @@ from build_site import CATS, parse_article  # noqa: E402
 
 MODEL = "claude-opus-5-5"
 HK = dt.timezone(dt.timedelta(hours=8))
-# User rule: event/holiday-tied topics start the next Hong Kong day after 2026-11-18.
-DAY_EVENT_FROM = dt.date(2026, 11, 19)
+# User rule: event/holiday-tied topics — apply from 2026-11-14 HKT (backfill + ongoing).
+DAY_EVENT_FROM = dt.date(2026, 11, 14)
 
-SYSTEM = """You draft short articles for the personal website of 鄭迪珉 Tyler Tik Man Cheng, a Hong Kong-born \
+SYSTEM = """You draft articles for the personal website of 鄭迪珉 Tyler Tik Man Cheng, a Hong Kong-born \
 US Equities Market Specialist at Fuway Capital (IPO advisory, M&A, financing for China-based companies listed or \
 listing in the US) and co-founder & COO of Nanotech Innovation Limited (nano-coatings, biomedical targeting, \
 patents). Readers are founders and investors in Hong Kong and mainland China.
 
 Write one new article in the same voice as the examples: plain, practical, specific, no hype. \
-About 350-550 English words, then Traditional Chinese in natural Hong Kong written Chinese (書面語, 繁體). \
-The Chinese is the same argument, not a line-by-line translation. A heading is "### " and you do not need \
-the same number every time. Two headings is fine. So is none.
+About 550-750 English words, then Traditional Chinese in natural Hong Kong written Chinese (書面語, 繁體) \
+of similar depth — not a thin gloss. The Chinese is the same argument, not a line-by-line translation. \
+A heading is "### " and you do not need the same number every time. Two headings is fine. So is none. \
+Set read: to 6–8 minutes.
 
 Sound like a person who does this work, not like a language model:
 - Do not open with "X is not Y". Do not use that shape more than once in the piece.
@@ -146,7 +148,7 @@ def news_hooks(limit=12):
 def day_context_block(day: dt.date, enabled: bool):
     if not enabled:
         return (
-            "Day-event mode: OFF (before 2026-11-19 HKT). You may choose a practical "
+            "Day-event mode: OFF (before 2026-11-14 HKT). You may choose a practical "
             "capital-markets or biotech topic that is not a repeat of existing titles.\n"
         )
     lines = [

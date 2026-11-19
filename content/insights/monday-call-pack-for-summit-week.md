@@ -4,9 +4,9 @@ date: 2026-11-15
 tags: capital
 read: 7
 title_en: A six-piece pack for summit-week calls
-title_zh: 峰會週電話前的六件套
+title_zh: 峰會週美國電話：建議先備齊的六件套
 summary_en: Before APEC business week opens, assemble a six-item pack so every US call starts from the same paper — map, tools, timing, related parties, runway, and asks.
-summary_zh: 峰會週美國電話前，先組好同一疊紙。
+summary_zh: 商務週開場前，同一疊紙、同一檔名，比每小時即興講一套中國故事更穩。
 ---
 ::: en
 Sunday is for assembly. Monday is for delivery. Ahead of an APEC business week centred on Shenzhen, the useful founder move is a small, identical pack for every serious US call. Six items. Same order. Same filenames in the data room. When summit coverage, chip-export politics, and memories of last week’s China ADR weakness and Nvidia swing all hit the same conversation, sameness keeps you from improvising a new company every hour.
@@ -32,13 +32,13 @@ Rehearse the pack once aloud. Time yourself. If any item needs a scavenger hunt 
 Measure success by consistency, not by cleverness. If three funds hear three different China stories by Wednesday, you failed the Sunday assembly. If three funds hear the same six items with the same nouns, you can still lose on merits, but you will not lose on fog. APEC business week will supply fog for free. Your Monday call pack is how you refuse to add more.
 
 ::: zh
-星期日用來組裝，星期一用來交付。在以深圳為中心的 APEC 商務週前，有用的創辦人動作，是為每通認真的美國電話準備一小份相同的六件套：同一順序，資料室同一檔名。當峰會報道、芯片出口政治，以及上週中概偏弱與英偉達波動的記憶打進同一場對話，一致性阻止你每小時即興發明一家新公司。
+星期日用來組裝，星期一用來交付。在以深圳為中心的APEC商務週前，較務實的創辦人動作，是為每通認真的美國電話準備一小份相同的六件套：同一順序，資料室同一檔名。當峰會報道、芯片出口政治，以及上週中概偏弱與英偉達波動的記憶打進同一場對話，一致性阻止你每小時即興發明一家新公司。
 
-第一件：中國營運圖。一頁。客戶、人、現金、知識產權、數據、許可。錢的箭嘴與所有權的箭嘴分開畫。這頁回答峰會週盡調開場的結構問題。若它仍只活在你腦子裏，就還沒就緒。
+第一件：中國營運圖。一頁。客戶、人、現金、知識產權、數據、許可。錢的箭嘴與所有權的箭嘴分開畫。這頁回答峰會週盡調開場的結構問題。若它仍只活在腦子裏，就還沒就緒。
 
 第二件：工具與算力附件。即使是否定確認也放這裏：你用甚麼、在哪裏跑、替代、牌照。這頁吸收黃仁勳與英偉達的政策天氣，而不要求你表演成貿易評論員。出口管制一出現，早點交出去。
 
-第三件：帶兩座鐘的時機段。鐘甲是你的——以星期計的跑道、檔案就緒分數、你控制的里程碑日期。鐘乙是天氣——APEC 注意力、公開中概調子、指數上升而中國相關名字沒跟上那週之後的銀行家謹慎。寫明若鐘乙持續嘈雜而鐘甲變短，你做甚麼。過橋要有結局；雙軌要有規則；沉默要有沉默結束的日期。
+第三件：帶兩座鐘的時機段。鐘甲是你的——以星期計的跑道、檔案就緒分數、你控制的里程碑日期。鐘乙是天氣——APEC注意力、公開中概調子、指數上升而中國相關名字沒跟上那週之後的銀行家謹慎。寫明若鐘乙持續嘈雜而鐘甲變短，你做甚麼。過橋要有結局；雙軌要有規則；沉默要有沉默結束的日期。
 
 第四件：帶解除說明的關聯方表。峰會週的政治關注，縮短對晚發現的耐心。在別人用發票重建之前，先出示表格。
 
@@ -46,10 +46,10 @@ Measure success by consistency, not by cleverness. If three funds hear three dif
 
 第六件：請求。一句話說明本週「答應」長甚麼樣子：流程開場、條款清單時間表、戰略決策論壇，或清楚的婉拒。峰會週很擠；含糊的請求會把日曆空位輸給更尖的人。
 
-生技包在相關時加第七件：藥品生產質量（CMC）與場地可達卡——誰主持質量電話、哪些記錄已在資料室、哪些穩定性日期不能因高管為 APEC 邊會出行而移動。純資本包可跳過；混合型公司不應跳過。
+生技包在相關時加第七件：化學、製造與管制（CMC）與場地可達卡——誰主持質量電話、哪些記錄已在資料室、哪些穩定性日期不能因高管為APEC邊會出行而移動。純資本包可跳過；混合型公司不應跳過。
 
 把包裝成固定資料夾路徑與固定電郵主旨。「峰會週電話六件套 —［公司］— 2026-11-15」勝過聊天軟件裏漂着的五份不同名字檔案。合夥人在機構內部轉發時，一致命名讓衛生活過轉發；不一致命名，會讓十月舊簡報星期四重現，並與星期一矛盾。
 
 把整包大聲彩排一次，計時。若任何一件要在電郵裏尋寶，星期一日出前尋完。把包的索引送給董事會，不是地緣政治論文。確認若深圳出行拆散管理層，誰上哪通電話；確認誰被禁止在投資者聊天裏即興峰會評論。每通電話後記下哪一件跟進最多，連夜加強那份附件——不要發明新的敘事弧線。
 
-用一致性衡量成功，不用機智。若星期三前三家基金聽到三個不同的中國故事，你的星期日組裝失敗了。若三家基金聽到同一六件、同一名詞，你仍可能因實質輸掉，但不會因霧輸掉。APEC 商務週會免費供應霧；你的星期一六件套，是拒絕再添霧的方法。
+用一致性衡量成功，不用機智。若星期三前三家基金聽到三個不同的中國故事，星期日組裝就失敗了。若三家基金聽到同一六件、同一名詞，你仍可能因實質輸掉，但不會因霧輸掉。APEC商務週會免費供應霧；星期一六件套，是拒絕再添霧的方法。

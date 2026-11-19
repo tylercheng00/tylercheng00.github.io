@@ -2,6 +2,11 @@
   "latest": "latest-report.json",
   "items": [
     {
+      "date": "2026-11-21",
+      "file": "archive-2026-11-21.json",
+      "drawNo": "26/123"
+    },
+    {
       "date": "2026-11-10",
       "file": "archive-2026-11-10.json"
     },

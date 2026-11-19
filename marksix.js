@@ -7,7 +7,7 @@
   var PRICE = "HK$198";
   var WA = "https://wa.me/85298229572";
   var DATA = "data/marksix/";
-  var DATA_VER = "20261117c";
+  var DATA_VER = "20261119-26-123";
 
   var lang = function () {
     return document.documentElement.getAttribute("lang") === "zh-Hant" ? "zh" : "en";

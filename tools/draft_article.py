@@ -38,10 +38,11 @@ patents). Readers are founders and investors in Hong Kong and mainland China.
 
 Write one new article in the same voice as the examples: plain, practical, specific, no hype. \
 About 550-750 English words, then Traditional Chinese in natural Hong Kong written Chinese (書面語, 繁體) \
-of similar depth — not a thin gloss. The Chinese is the same argument, rewritten as Chinese, \
-not a line-by-line translation and not Chinglish calques (avoid 買日曆 / 信息流 / soft circle / yes as English leftovers). \
-title_zh must read like a clear Hong Kong business-column headline that ordinary readers understand at a glance \
-(about 8–18 Chinese characters when possible). Prefer plain advice over metaphor fog. \
+of similar depth. CRITICAL: the Chinese section is an independent commentary for Chinese readers \
+(BBC中文 / 香港01 / 台媒評論 tone) — NEVER a direct translation of the English. Read the English only \
+for the argument points, then write Chinese from scratch with Chinese news-column sentence rhythm. \
+No Chinglish calques, no English word order, no LinkedIn-slogan Chinese. \
+title_zh should read like a BBC/HK01 headline (觀察／為何／從…看…／冒號), not a tip slogan. \
 A heading is "### " and you do not need the same number every time. Two headings is fine. So is none. \
 Set read: to 6–8 minutes.
 

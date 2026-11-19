@@ -1,303 +1,309 @@
 {
-  "historyCount": 3398,
+  "historyCount": 3400,
   "era": "49-ball since 2002",
   "sourceNote": "",
   "latest": {
-    "drawNo": "26/121",
-    "date": "2026-11-15",
+    "drawNo": "26/123",
+    "date": "2026-11-19",
     "main": [
-      2,
-      8,
-      11,
-      35,
-      43,
-      47
+      12,
+      18,
+      32,
+      45,
+      47,
+      49
     ],
-    "special": 48
+    "special": 41
   },
   "oddPct": 50.43,
   "evenPct": 49.57,
   "zones": {
-    "mid": 35.12,
-    "large": 32.03,
-    "small": 32.85
+    "small": 32.85,
+    "mid": 35.11,
+    "large": 32.04
   },
-  "sumMean": 149.33,
-  "sumStd": 32.89,
+  "sumMean": 149.3,
+  "sumStd": 32.9,
   "sumMin": 27,
   "sumMax": 258,
-  "expectedFreqPerBall": 415.96,
-  "adjacentGapRatePct": 12.3,
+  "expectedFreqPerBall": 416.33,
+  "adjacentGapRatePct": 12.29,
   "topFreq": [
     {
       "n": 49,
-      "count": 457,
-      "ratePct": 2.242,
-      "vsUniformPct": 9.87
+      "count": 458,
+      "ratePct": 2.245,
+      "vsUniformPct": 10.01
     },
     {
       "n": 30,
-      "count": 456,
-      "ratePct": 2.237,
-      "vsUniformPct": 9.63
+      "count": 457,
+      "ratePct": 2.24,
+      "vsUniformPct": 9.77
     },
     {
       "n": 28,
       "count": 455,
-      "ratePct": 2.232,
-      "vsUniformPct": 9.39
+      "ratePct": 2.23,
+      "vsUniformPct": 9.29
     },
     {
       "n": 22,
       "count": 449,
-      "ratePct": 2.203,
-      "vsUniformPct": 7.94
+      "ratePct": 2.201,
+      "vsUniformPct": 7.85
     },
     {
       "n": 9,
       "count": 446,
-      "ratePct": 2.188,
-      "vsUniformPct": 7.22
+      "ratePct": 2.186,
+      "vsUniformPct": 7.13
     },
     {
       "n": 24,
       "count": 441,
-      "ratePct": 2.164,
-      "vsUniformPct": 6.02
+      "ratePct": 2.162,
+      "vsUniformPct": 5.93
+    },
+    {
+      "n": 32,
+      "count": 435,
+      "ratePct": 2.132,
+      "vsUniformPct": 4.49
+    },
+    {
+      "n": 18,
+      "count": 434,
+      "ratePct": 2.127,
+      "vsUniformPct": 4.25
     },
     {
       "n": 21,
       "count": 434,
-      "ratePct": 2.129,
-      "vsUniformPct": 4.34
-    },
-    {
-      "n": 32,
-      "count": 434,
-      "ratePct": 2.129,
-      "vsUniformPct": 4.34
-    },
-    {
-      "n": 18,
-      "count": 432,
-      "ratePct": 2.12,
-      "vsUniformPct": 3.86
+      "ratePct": 2.127,
+      "vsUniformPct": 4.25
     },
     {
       "n": 34,
       "count": 432,
-      "ratePct": 2.12,
-      "vsUniformPct": 3.86
+      "ratePct": 2.118,
+      "vsUniformPct": 3.76
     },
     {
       "n": 1,
       "count": 432,
-      "ratePct": 2.12,
-      "vsUniformPct": 3.86
+      "ratePct": 2.118,
+      "vsUniformPct": 3.76
     },
     {
       "n": 35,
-      "count": 429,
-      "ratePct": 2.105,
-      "vsUniformPct": 3.14
-    },
-    {
-      "n": 33,
-      "count": 428,
-      "ratePct": 2.1,
-      "vsUniformPct": 2.89
+      "count": 430,
+      "ratePct": 2.108,
+      "vsUniformPct": 3.28
     },
     {
       "n": 12,
-      "count": 428,
-      "ratePct": 2.1,
-      "vsUniformPct": 2.89
+      "count": 429,
+      "ratePct": 2.103,
+      "vsUniformPct": 3.04
     },
     {
-      "n": 20,
-      "count": 427,
-      "ratePct": 2.095,
-      "vsUniformPct": 2.65
+      "n": 4,
+      "count": 428,
+      "ratePct": 2.098,
+      "vsUniformPct": 2.8
+    },
+    {
+      "n": 7,
+      "count": 428,
+      "ratePct": 2.098,
+      "vsUniformPct": 2.8
     }
   ],
   "bottomFreq": [
     {
       "n": 41,
       "count": 378,
-      "ratePct": 1.855,
-      "vsUniformPct": -9.13
+      "ratePct": 1.853,
+      "vsUniformPct": -9.21
     },
     {
       "n": 19,
       "count": 379,
-      "ratePct": 1.859,
-      "vsUniformPct": -8.89
+      "ratePct": 1.858,
+      "vsUniformPct": -8.97
     },
     {
       "n": 43,
-      "count": 389,
-      "ratePct": 1.909,
-      "vsUniformPct": -6.48
+      "count": 390,
+      "ratePct": 1.912,
+      "vsUniformPct": -6.32
     },
     {
       "n": 5,
       "count": 392,
-      "ratePct": 1.923,
-      "vsUniformPct": -5.76
+      "ratePct": 1.922,
+      "vsUniformPct": -5.84
     },
     {
       "n": 23,
       "count": 392,
-      "ratePct": 1.923,
-      "vsUniformPct": -5.76
+      "ratePct": 1.922,
+      "vsUniformPct": -5.84
     },
     {
       "n": 27,
       "count": 394,
-      "ratePct": 1.933,
-      "vsUniformPct": -5.28
+      "ratePct": 1.931,
+      "vsUniformPct": -5.36
     },
     {
       "n": 25,
       "count": 399,
-      "ratePct": 1.958,
-      "vsUniformPct": -4.08
-    },
-    {
-      "n": 47,
-      "count": 400,
-      "ratePct": 1.963,
-      "vsUniformPct": -3.84
+      "ratePct": 1.956,
+      "vsUniformPct": -4.16
     },
     {
       "n": 39,
       "count": 400,
-      "ratePct": 1.963,
-      "vsUniformPct": -3.84
+      "ratePct": 1.961,
+      "vsUniformPct": -3.92
     },
     {
       "n": 36,
       "count": 401,
-      "ratePct": 1.967,
-      "vsUniformPct": -3.6
+      "ratePct": 1.966,
+      "vsUniformPct": -3.68
+    },
+    {
+      "n": 47,
+      "count": 402,
+      "ratePct": 1.971,
+      "vsUniformPct": -3.44
+    },
+    {
+      "n": 38,
+      "count": 402,
+      "ratePct": 1.971,
+      "vsUniformPct": -3.44
+    },
+    {
+      "n": 40,
+      "count": 402,
+      "ratePct": 1.971,
+      "vsUniformPct": -3.44
+    },
+    {
+      "n": 42,
+      "count": 403,
+      "ratePct": 1.975,
+      "vsUniformPct": -3.2
+    },
+    {
+      "n": 8,
+      "count": 403,
+      "ratePct": 1.975,
+      "vsUniformPct": -3.2
+    },
+    {
+      "n": 37,
+      "count": 403,
+      "ratePct": 1.975,
+      "vsUniformPct": -3.2
     }
   ],
   "topHot50": [
     {
-      "n": 25,
+      "n": 7,
+      "count": 14,
+      "ratePct": 4.67
+    },
+    {
+      "n": 31,
       "count": 12,
       "ratePct": 4.0
     },
     {
-      "n": 32,
+      "n": 11,
       "count": 11,
       "ratePct": 3.67
     },
     {
-      "n": 5,
+      "n": 4,
       "count": 10,
       "ratePct": 3.33
-    },
-    {
-      "n": 10,
-      "count": 10,
-      "ratePct": 3.33
-    },
-    {
-      "n": 44,
-      "count": 10,
-      "ratePct": 3.33
-    },
-    {
-      "n": 22,
-      "count": 9,
-      "ratePct": 3.0
-    },
-    {
-      "n": 46,
-      "count": 9,
-      "ratePct": 3.0
     },
     {
       "n": 29,
+      "count": 10,
+      "ratePct": 3.33
+    },
+    {
+      "n": 9,
+      "count": 10,
+      "ratePct": 3.33
+    },
+    {
+      "n": 18,
+      "count": 9,
+      "ratePct": 3.0
+    },
+    {
+      "n": 47,
+      "count": 9,
+      "ratePct": 3.0
+    },
+    {
+      "n": 45,
       "count": 8,
       "ratePct": 2.67
     },
     {
-      "n": 23,
+      "n": 30,
       "count": 8,
       "ratePct": 2.67
     },
     {
-      "n": 7,
+      "n": 21,
       "count": 8,
       "ratePct": 2.67
     },
     {
-      "n": 1,
-      "count": 8,
-      "ratePct": 2.67
-    },
-    {
-      "n": 28,
-      "count": 8,
-      "ratePct": 2.67
-    },
-    {
-      "n": 36,
-      "count": 8,
-      "ratePct": 2.67
-    },
-    {
-      "n": 41,
+      "n": 2,
       "count": 7,
       "ratePct": 2.33
     },
     {
-      "n": 3,
+      "n": 8,
+      "count": 7,
+      "ratePct": 2.33
+    },
+    {
+      "n": 24,
+      "count": 7,
+      "ratePct": 2.33
+    },
+    {
+      "n": 33,
       "count": 7,
       "ratePct": 2.33
     }
   ],
   "topOmission": [
     {
-      "n": 18,
-      "missed": 37
+      "n": 39,
+      "missed": 33
     },
     {
-      "n": 30,
-      "missed": 36
+      "n": 1,
+      "missed": 30
     },
     {
-      "n": 37,
-      "missed": 26
+      "n": 6,
+      "missed": 23
     },
     {
-      "n": 42,
-      "missed": 26
-    },
-    {
-      "n": 8,
-      "missed": 21
-    },
-    {
-      "n": 2,
-      "missed": 20
-    },
-    {
-      "n": 16,
-      "missed": 20
-    },
-    {
-      "n": 17,
-      "missed": 19
-    },
-    {
-      "n": 47,
-      "missed": 19
-    },
-    {
-      "n": 4,
+      "n": 23,
       "missed": 18
     },
     {
@@ -305,19 +311,43 @@
       "missed": 17
     },
     {
-      "n": 15,
+      "n": 31,
+      "missed": 16
+    },
+    {
+      "n": 34,
+      "missed": 15
+    },
+    {
+      "n": 36,
       "missed": 13
     },
     {
-      "n": 3,
+      "n": 40,
       "missed": 12
     },
     {
-      "n": 45,
+      "n": 5,
       "missed": 11
     },
     {
-      "n": 6,
+      "n": 16,
+      "missed": 10
+    },
+    {
+      "n": 38,
+      "missed": 10
+    },
+    {
+      "n": 48,
+      "missed": 10
+    },
+    {
+      "n": 9,
+      "missed": 9
+    },
+    {
+      "n": 25,
       "missed": 9
     }
   ],
@@ -325,76 +355,91 @@
     {
       "n": 13,
       "count": 88,
-      "ratePct": 2.591
+      "ratePct": 2.588
     },
     {
       "n": 8,
       "count": 85,
-      "ratePct": 2.502
+      "ratePct": 2.5
     },
     {
       "n": 7,
       "count": 84,
-      "ratePct": 2.473
+      "ratePct": 2.471
     },
     {
       "n": 10,
       "count": 84,
-      "ratePct": 2.473
+      "ratePct": 2.471
     },
     {
       "n": 38,
       "count": 79,
-      "ratePct": 2.326
+      "ratePct": 2.324
     },
     {
       "n": 14,
       "count": 79,
-      "ratePct": 2.326
+      "ratePct": 2.324
     },
     {
       "n": 42,
       "count": 78,
-      "ratePct": 2.296
+      "ratePct": 2.294
     },
     {
       "n": 27,
       "count": 78,
-      "ratePct": 2.296
+      "ratePct": 2.294
     },
     {
       "n": 24,
       "count": 78,
-      "ratePct": 2.296
+      "ratePct": 2.294
     },
     {
       "n": 2,
       "count": 78,
-      "ratePct": 2.296
+      "ratePct": 2.294
     },
     {
       "n": 6,
       "count": 78,
-      "ratePct": 2.296
+      "ratePct": 2.294
     },
     {
       "n": 34,
       "count": 75,
-      "ratePct": 2.208
+      "ratePct": 2.206
+    },
+    {
+      "n": 41,
+      "count": 74,
+      "ratePct": 2.176
+    },
+    {
+      "n": 40,
+      "count": 74,
+      "ratePct": 2.176
+    },
+    {
+      "n": 4,
+      "count": 74,
+      "ratePct": 2.176
     }
   ],
   "colorWaves": {
-    "blue": 32.09,
-    "red": 34.95,
-    "green": 32.96
+    "blue": 32.08,
+    "red": 34.97,
+    "green": 32.95
   },
   "decades": {
     "1-10": 20.51,
     "11-20": 20.43,
-    "21-30": 20.79,
-    "31-40": 20.32,
-    "41-49": 17.95
+    "21-30": 20.77,
+    "31-40": 20.31,
+    "41-49": 17.97
   },
   "from": "2002-07-04",
-  "to": "2026-11-15"
+  "to": "2026-11-19"
 }

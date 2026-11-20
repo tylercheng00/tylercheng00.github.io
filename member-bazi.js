@@ -57,12 +57,20 @@
     [/上海|shanghai/i, 31.2304, 121.4737, 8],
     [/北京|beijing/i, 39.9042, 116.4074, 8],
     [/台北|taipei/i, 25.0330, 121.5654, 8],
+    [/台南|tainan/i, 22.9997, 120.2270, 8],
+    [/仙桃|xiantao/i, 30.3600, 113.4400, 8],
+    [/杭州|hangzhou/i, 30.2741, 120.1551, 8],
+    [/奧馬哈|omaha/i, 41.2565, -95.9345, -6],
+    [/武漢|wuhan/i, 30.5928, 114.3055, 8],
     [/新加坡|singapore/i, 1.3521, 103.8198, 8],
     [/東京|tokyo/i, 35.6762, 139.6503, 9],
     [/倫敦|london/i, 51.5074, -0.1278, 0],
-    [/紐約|new\s*york|nyc/i, 40.7128, -74.0060, -5],
+    [/queen'?s|紐約|new\s*york|nyc|brooklyn|manhattan/i, 40.7282, -73.7949, -5],
     [/洛杉磯|los\s*angeles|la\b/i, 34.0522, -118.2437, -8],
-    [/悉尼|sydney/i, -33.8688, 151.2093, 10]
+    [/三藩市|san\s*francisco|sf\b/i, 37.7749, -122.4194, -8],
+    [/悉尼|sydney/i, -33.8688, 151.2093, 10],
+    [/比勒陀利亞|pretoria|南非|south\s*africa/i, -25.7479, 28.2293, 2],
+    [/約翰尼斯堡|johannesburg/i, -26.2041, 28.0473, 2]
   ];
 
   function parseYmd(iso) {
@@ -88,6 +96,17 @@
       if (row[0].test(s)) return { lat: row[1], lng: row[2], tzHours: row[3], label: s, matched: true };
     }
     return { lat: 22.3193, lng: 114.1694, tzHours: 8, label: s, matched: false };
+  }
+
+
+  /** Rough civil DST for US/Canada zones (-5/-8 etc.): March–November → +1 hour (EDT/PDT). */
+  function tzOffsetHours(place, y, m, d) {
+    var tz = place.tzHours;
+    if (tz > -3 || tz < -9) return tz; // not US-style zone
+    if (m > 3 && m < 11) return tz + 1;
+    if (m === 3 && d >= 8) return tz + 1;
+    if (m === 11 && d <= 6) return tz + 1;
+    return tz;
   }
 
   /** Julian Day (UT), Meeus. */
@@ -119,19 +138,39 @@
   }
 
   function moonLongitude(jd) {
+    /* Meeus-style lunar longitude with extra periodic terms — fixes many sign-boundary misses. */
     var T = (jd - 2451545.0) / 36525;
-    var Lp = norm360(218.3164477 + 481267.88123421 * T);
-    var D = norm360(297.8501921 + 445267.1114034 * T);
-    var M = norm360(357.5291092 + 35999.0502909 * T);
-    var Mp = norm360(134.9633964 + 477198.8675055 * T);
-    var F = norm360(93.2720950 + 483202.0175233 * T);
+    var Lp = norm360(218.3164477 + 481267.88123421 * T - 0.0015786 * T * T);
+    var D = norm360(297.8501921 + 445267.1114034 * T - 0.0018819 * T * T);
+    var M = norm360(357.5291092 + 35999.0502909 * T - 0.0001536 * T * T);
+    var Mp = norm360(134.9633964 + 477198.8675055 * T + 0.0087414 * T * T);
+    var F = norm360(93.2720950 + 483202.0175233 * T - 0.0036539 * T * T);
+    function S(a) { return Math.sin(deg2rad(a)); }
     var lon = Lp
-      + 6.289 * Math.sin(deg2rad(Mp))
-      + 1.274 * Math.sin(deg2rad(2 * D - Mp))
-      + 0.658 * Math.sin(deg2rad(2 * D))
-      + 0.214 * Math.sin(deg2rad(2 * Mp))
-      - 0.186 * Math.sin(deg2rad(M))
-      - 0.114 * Math.sin(deg2rad(2 * F));
+      + 6.288774 * S(Mp)
+      + 1.274027 * S(2 * D - Mp)
+      + 0.658314 * S(2 * D)
+      + 0.213618 * S(2 * Mp)
+      - 0.185116 * S(M)
+      - 0.114332 * S(2 * F)
+      + 0.058793 * S(2 * D - 2 * Mp)
+      + 0.057066 * S(2 * D - M - Mp)
+      + 0.053322 * S(2 * D + Mp)
+      + 0.045758 * S(2 * D - M)
+      + 0.040986 * S(2 * D - Mp - M)
+      + 0.034718 * S(D)
+      + 0.030465 * S(Mp - M)
+      + 0.015326 * S(2 * D - 2 * F)
+      - 0.012528 * S(2 * F + Mp)
+      - 0.010980 * S(2 * F - Mp)
+      + 0.010674 * S(4 * D - Mp)
+      + 0.010034 * S(3 * Mp)
+      + 0.008548 * S(4 * D - 2 * Mp)
+      - 0.007910 * S(M - Mp + 2 * D)
+      - 0.006766 * S(2 * D + M)
+      + 0.005162 * S(Mp - D);
+    var Omega = norm360(125.04452 - 1934.136261 * T);
+    lon += -0.0124 * S(Omega) - 0.000145;
     return norm360(lon);
   }
 
@@ -148,13 +187,13 @@
   }
 
   function ascendant(jd, lat, lng) {
+    /* Ecliptic ascendant from RAMC (standard atan2 form — prior sign flip put charts 180° off). */
     var ramc = deg2rad(localSiderealTime(jd, lng));
     var eps = deg2rad(obliquity(jd));
     var phi = deg2rad(lat);
-    var y = -Math.cos(ramc);
-    var x = Math.sin(ramc) * Math.cos(eps) + Math.tan(phi) * Math.sin(eps);
-    var asc = rad2deg(Math.atan2(y, x));
-    return norm360(asc);
+    var y = Math.cos(ramc);
+    var x = -(Math.sin(ramc) * Math.cos(eps) + Math.tan(phi) * Math.sin(eps));
+    return norm360(rad2deg(Math.atan2(y, x)));
   }
 
   function signFromLon(lon) {
@@ -314,8 +353,10 @@
     var place = resolvePlace(input.birthPlace || "Hong Kong");
     var ymd = parseYmd(iso);
     var hm = parseHm(time);
-    var hourUT = hm.h + hm.mi / 60 - place.tzHours;
+    var tz = tzOffsetHours(place, ymd.y, ymd.m, ymd.d);
+    var hourUT = hm.h + hm.mi / 60 - tz;
     var jd = julianDayUT(ymd.y, ymd.m, ymd.d, hourUT);
+    place = Object.assign({}, place, { tzHoursUsed: tz });
     var sunLon = sunLongitude(jd);
     var moonLon = moonLongitude(jd);
     var ascLon = ascendant(jd, place.lat, place.lng);
@@ -393,6 +434,55 @@
     "癸": { trait: "細膩直覺、潛力深，像雨露泉源。", career: "研究、靈性諮詢、化驗、軟體、隱性知識工作。", wealth: "後期發力多；宜長期複利思維。", health: "腎精、內分泌、睡眠；忌思慮過甚。", family: "情感深但內斂，需安全感。" }
   };
 
+  function stemBranchOfCivilYear(y) {
+    var idx = ((y - 1984) % 60 + 60) % 60;
+    return { stem: STEMS[idx % 10], branch: BRANCHES[idx % 12], label: STEMS[idx % 10] + BRANCHES[idx % 12], animal: ANIMALS[idx % 12], index: idx };
+  }
+
+  function relationScore(dmEl, otherEl) {
+    if (otherEl === dmEl) return 1.1;
+    if (otherEl === generatedBy(dmEl)) return 1.35;
+    if (otherEl === generates(dmEl)) return 0.55;
+    if (otherEl === controlledBy(dmEl)) return 0.15;
+    if (otherEl === controls(dmEl)) return -1.25;
+    return 0;
+  }
+
+  /** Research-style luck windows: score civil years by stem/branch vs day master. */
+  function luckYears(natal, fromYear, span) {
+    var dmEl = natal.dayMasterElement;
+    var favor = natal.favorElements || [];
+    var avoid = natal.avoidElements || [];
+    var rows = [];
+    var y, sb, stemEl, branchEl, score, tier, noteZh, noteEn;
+    for (y = fromYear; y < fromYear + span; y++) {
+      sb = stemBranchOfCivilYear(y);
+      stemEl = elOfStem(sb.stem);
+      branchEl = BRANCH_EL[BRANCHES.indexOf(sb.branch)];
+      score = relationScore(dmEl, stemEl) + relationScore(dmEl, branchEl) * 0.85;
+      if (favor.indexOf(stemEl) >= 0) score += 0.45;
+      if (favor.indexOf(branchEl) >= 0) score += 0.35;
+      if (avoid.indexOf(stemEl) >= 0) score -= 0.9;
+      if (avoid.indexOf(branchEl) >= 0) score -= 0.7;
+      if (sb.animal === natal.yearAnimal) score += 0.25;
+      if (score >= 1.35) {
+        tier = "good";
+        noteZh = "流年" + sb.label + "（" + sb.animal + "）對日主" + natal.dayMaster + "偏幫扶／生扶，宜推進事業、簽約、公開曝光；仍要看當月細節。";
+        noteEn = "Year " + sb.label + " (" + sb.animal + ") supports day master " + natal.dayMaster + " — better for launches, contracts, visibility. Still check the month.";
+      } else if (score <= -0.55) {
+        tier = "hard";
+        noteZh = "流年" + sb.label + "偏耗洩或克制喜用，宜守成、控槓桿、少開大仗；健康與現金流要預留緩衝。";
+        noteEn = "Year " + sb.label + " drains or clashes favour elements — consolidate, control leverage, avoid oversized bets; keep health and cash buffers.";
+      } else {
+        tier = "caution";
+        noteZh = "流年" + sb.label + "平穩偏震盪，適合練內功、補流程與人脈，不宜把命運押在單一賭注。";
+        noteEn = "Year " + sb.label + " is mixed — build systems and relationships; do not stake everything on one bet.";
+      }
+      rows.push({ year: y, pillar: sb.label, animal: sb.animal, score: Math.round(score * 100) / 100, tier: tier, zh: noteZh, en: noteEn });
+    }
+    return rows;
+  }
+
   function chartAnalysis(natal) {
     var dm = natal.dayMaster;
     var persona = DM_PERSONA[dm] || DM_PERSONA["甲"];
@@ -400,24 +490,38 @@
     var dayPill = natal.pillarsMap.day;
     var counts = elementCounts([natal.year, natal.month, natal.day, natal.hour]);
     var strong = Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a]; });
+    var weak = strong.slice().reverse();
     var sunZh = natal.sunSignObj.zh;
     var sunEn = natal.sunSignObj.en;
-    var hiddenDay = (natal.hiddenStems.day || []).join("");
+    var moonZh = natal.moonSignObj.zh;
+    var moonEn = natal.moonSignObj.en;
+    var ascZh = natal.ascSignObj.zh;
+    var ascEn = natal.ascSignObj.en;
+    var hiddenDay = (natal.hiddenStems.day || []).join("、");
+    var hiddenAll = ["年", "月", "日", "時"].map(function (lab, i) {
+      var k = ["year", "month", "day", "hour"][i];
+      return lab + "柱藏干" + ((natal.hiddenStems[k] || []).join("") || "—");
+    }).join("；");
+    var birthY = parseYmd(natal.birthIso).y;
+    var nowY = new Date().getUTCFullYear();
+    var years = luckYears(natal, Math.max(nowY - 1, birthY + 18), 12);
+    var goodYears = years.filter(function (r) { return r.tier === "good"; }).map(function (r) { return String(r.year); });
+    var hardYears = years.filter(function (r) { return r.tier === "hard"; }).map(function (r) { return String(r.year); });
     var zh = {
-      personality: persona.trait + " 日主" + dm + el + "，日支藏干「" + hiddenDay + "」。盤面五行偏旺：" + strong.slice(0, 2).join("、") + "；喜用偏" + natal.favorElements.join("、") + "，壓力位偏" + natal.avoidElements.join("、") + "。",
-      career: persona.career + " 生肖" + natal.yearAnimal + "，太陽" + sunZh + "（" + sunEn + "），上升" + natal.ascSignObj.zh + "——對外形象與起盤宮位宜一併看。",
-      wealth: persona.wealth + " 財星思路：順「" + generates(el) + "／" + controlledBy(el) + "」流動，少硬碰忌神「" + natal.avoidElements.join("、") + "」。",
-      health: persona.health,
-      family: persona.family + " " + natal.housesHintZh,
-      outlook: "以日柱" + dayPill + "為軸，月相「" + natal.lunar.label + "」、當日主星「" + natal.weekdayPlanet + "」。宜順喜用（" + natal.favorElements.join("、") + "）。" + natal.methodNoteZh
+      personality: "日主「" + dm + el + "」（" + (STEM_EN[dm] || dm) + "）。四柱 " + natal.pillars.join(" · ") + "。" + hiddenAll + "。盤面五行能量排序：" + strong.map(function (k) { return k + counts[k].toFixed(1); }).join("、") + "——偏旺「" + strong.slice(0, 2).join("、") + "」，偏弱「" + weak.slice(0, 2).join("、") + "」。喜用神方向偏「" + natal.favorElements.join("、") + "」，壓力／忌神偏「" + natal.avoidElements.join("、") + "」。" + persona.trait + " 西洋盤輔助：太陽" + sunZh + "（" + natal.sunSignObj.deg.toFixed(1) + "°）、月亮" + moonZh + "（" + natal.moonSignObj.deg.toFixed(1) + "°）、上升" + ascZh + "（" + natal.ascSignObj.deg.toFixed(1) + "°）；月相「" + natal.lunar.label + "」。月亮代表情緒節奏與內在安全感，上升是第一印象與起盤宮位——解讀時先日主，再月亮，再上升。",
+      career: persona.career + " 結合生肖「" + natal.yearAnimal + "」、日柱「" + dayPill + "」、太陽" + sunZh + "與上升" + ascZh + "：" + natal.housesHintZh + " 實務上，喜用年／月適合對外談判、融資、換跑道；忌神年宜把流程、合規與現金跑道寫死，再談擴張。若盤面土／金偏重，管理與制度崗較順；水／木偏重，內容、貿易與國際線較順；火偏重，品牌與公開表達較順——仍要以你實際履歷校正，不是命運判決。",
+      wealth: persona.wealth + " 財的讀法分三層：（1）正財——工資、客戶續約、可審計收入；（2）偏財——投資、一次性項目、機會型現金；（3）資源——人脈、知識產權、時間。喜用「" + natal.favorElements.join("、") + "」的年份，較適合開源與談條款；忌神「" + natal.avoidElements.join("、") + "」年份，優先降槓桿、鎖成本、延遲非必要投機。把「賺不賺錢」拆成毛利、經營現金與股本稀釋三句話，比只看感覺準。",
+      health: persona.health + " 五行對身體的提示僅供作息參考：木→肝膽筋眼；火→心神血壓；土→脾胃濕；金→肺鼻皮；水→腎與睡眠。你盤面偏旺「" + strong[0] + "」、偏弱「" + weak[0] + "」，日常用睡眠、飲食與運動平衡，而不是用焦慮替代醫療。重大不適請看醫生。",
+      family: persona.family + " 感情／合夥上，上升" + ascZh + "與月亮" + moonZh + "常決定「別人怎麼感覺你」與「你半夜在想什麼」。月相「" + natal.lunar.label + "」時出生的人，情緒起伏節奏不同——溝通時先說事實再說情緒，減少誤會。家庭決策遇忌神年，宜少翻舊帳、多寫共同日曆。",
+      outlook: "以日柱「" + dayPill + "」為軸，未來約十二年流年（研究用，非鐵口直斷）：偏利年份包括 " + (goodYears.join("、") || "（本段較平均）") + "；需小心／守成的年份包括 " + (hardYears.join("、") || "（本段未見極端）") + "。細節見下方「流年表」。整體原則：喜用年敢推項目，忌神年修系統；任何年份都不取代盡職調查與現金管理。" + natal.methodNoteZh
     };
     var en = {
-      personality: "Day master " + dm + " (" + el + "); day-branch hidden stems " + hiddenDay + ". Stronger elements in chart: " + strong.slice(0, 2).join(", ") + ". Favour " + natal.favorElements.join(", ") + "; pressure around " + natal.avoidElements.join(", ") + ".",
-      career: "Paths lean " + persona.career + " Animal " + natal.yearAnimal + "; Sun " + sunEn + ", Asc " + natal.ascSignObj.en + ".",
-      wealth: "Wealth style tracks skill and credit; lean with favour elements, ease off " + natal.avoidElements.join(", ") + ".",
-      health: "Health focus tracks " + el + " imbalance — keep sleep, motion and diet rhythmic.",
-      family: "Family / bonds: clarity and warmth. " + natal.housesHintZh,
-      outlook: "Axis " + dayPill + "; lunar 「" + natal.lunar.label + "」; weekday " + natal.weekdayPlanet + ". " + natal.methodNoteEn
+      personality: "Day master " + dm + " (" + el + "). Pillars " + natal.pillars.join(" · ") + ". Element weights favour " + strong.slice(0, 2).join(", ") + "; lighter " + weak.slice(0, 2).join(", ") + ". Favour " + natal.favorElements.join(", ") + "; pressure around " + natal.avoidElements.join(", ") + ". " + persona.trait + " Western overlay: Sun " + sunEn + " " + natal.sunSignObj.deg.toFixed(1) + "°, Moon " + moonEn + " " + natal.moonSignObj.deg.toFixed(1) + "°, Asc " + ascEn + " " + natal.ascSignObj.deg.toFixed(1) + "°; lunar phase " + natal.lunar.label + ". Read day master first, then Moon (pace/security), then Asc (first impression).",
+      career: "Career lean: " + persona.career + " Animal " + natal.yearAnimal + "; day pillar " + dayPill + "; Sun " + sunEn + ", Asc " + ascEn + ". Push launches in favour years; lock process, compliance and runway in pressure years. Match to your real CV — this is research framing, not destiny.",
+      wealth: "Wealth in three layers: earned income, opportunity cash, and resources (network/IP/time). Favour-element years suit opening terms; avoid-element years suit cutting leverage. Separate gross margin, operating cash and dilution when you ask whether a venture “makes money.”",
+      health: "Health notes track " + el + " symbolism — keep sleep, food and movement rhythmic. Stronger " + strong[0] + ", lighter " + weak[0] + " in this chart sketch. Not medical advice.",
+      family: "Bonds: " + persona.family + " Asc " + ascEn + " and Moon " + moonEn + " colour how others meet you and how you self-soothe. In harder years, write shared calendars instead of replaying old arguments.",
+      outlook: "Axis " + dayPill + ". Favourable windows in the next ~12 civil years include " + (goodYears.join(", ") || "(mostly mixed)") + "; caution/defence years include " + (hardYears.join(", ") || "(none extreme in this slice)") + ". See the year table below. " + natal.methodNoteEn
     };
     return {
       personality: { zh: zh.personality, en: en.personality },
@@ -426,7 +530,8 @@
       health: { zh: zh.health, en: en.health },
       family: { zh: zh.family, en: en.family },
       outlook: { zh: zh.outlook, en: en.outlook },
-      elementCounts: counts
+      elementCounts: counts,
+      luckYears: years
     };
   }
 
@@ -507,6 +612,8 @@
     NUMBER_ELEMENT: NUMBER_ELEMENT, HIDDEN_STEMS: HIDDEN_STEMS,
     buildNatal: buildNatal,
     chartAnalysis: chartAnalysis,
+    luckYears: luckYears,
+    stemBranchOfCivilYear: stemBranchOfCivilYear,
     scoreMarkSixForNatal: scoreMarkSixForNatal,
     animalOfNumber: animalOfNumber,
     dayPillar: dayPillar,

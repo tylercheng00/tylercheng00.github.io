@@ -551,7 +551,7 @@ def main():
         "filings",
         title="Filings & financials academy · 財報公告學堂 | 鄭迪珉 Tyler Cheng",
         description="Paid member course on reading listed-company announcements and financial statements: balance sheets, P&L, cash flow, K-line charts, and case studies with live charts. Separate password; required again after every refresh. Education only — not investment advice.",
-        og_type="website", scripts=("filings.js",),
+        og_type="website", scripts=("filings-course.js", "filings.js"),
         head_extra='\n  <link rel="preconnect" href="https://s3.tradingview.com">'
                    '\n  <link rel="preconnect" href="https://www.tradingview-widget.com">'
                    '\n  <link rel="dns-prefetch" href="https://www.tradingview.com">'), encoding="utf-8")
@@ -638,7 +638,7 @@ def apply_hero_photos():
         f.write_text(s, encoding="utf-8")
 
 
-ASSETS = ("styles.css", "main.js", "game.css", "game.js", "game-data.js", "game-kit.js", "game-worlds.js", "news.js", "markets.js", "us-equities.js", "contact.js", "clock.js", "readiness.js", "marksix.js", "member-bazi.js", "chart.js", "filings.js", "assets/fonts/fonts.css")
+ASSETS = ("styles.css", "main.js", "game.css", "game.js", "game-data.js", "game-kit.js", "game-worlds.js", "news.js", "markets.js", "us-equities.js", "contact.js", "clock.js", "readiness.js", "marksix.js", "member-bazi.js", "chart.js", "filings-course.js", "filings.js", "assets/fonts/fonts.css")
 
 
 def stamp_assets():

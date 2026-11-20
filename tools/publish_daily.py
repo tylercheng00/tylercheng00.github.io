@@ -29,6 +29,7 @@ PER_DAY = 5
 
 sys.path.insert(0, str(ROOT / "tools"))
 from build_site import parse_article  # noqa: E402
+from insights_quality import check_file  # noqa: E402
 
 
 def as_of(argv):
@@ -120,6 +121,12 @@ def main():
         dest = INSIGHTS / f"{article['slug']}.md"
         if dest.exists():
             print(f"skip {path.name}: {dest.name} already exists", file=sys.stderr)
+            continue
+        # From 2026-11-14 HKT: refuse short tip / calqued queue notes.
+        # Leave them in content/daily so Claude drafts can fill today's slots.
+        issues = check_file(path, require_day_hook=False)
+        if issues:
+            print(f"skip {path.name}: quality gate — " + "; ".join(issues), file=sys.stderr)
             continue
         due.append((path, article))
     due.sort(key=lambda item: (item[1]["date"], item[0].name))

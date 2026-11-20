@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  var STORE = "tc_ai_desk_v1";
+  var STORE = "tc_ai_desk_v2";
   var WEBLLM = "https://esm.sh/@mlc-ai/web-llm@0.2.79";
   var PROVIDERS = {
     openai: { base: "https://api.openai.com/v1", model: "gpt-4o-mini" },
@@ -11,7 +11,7 @@
     custom: { base: "", model: "gpt-4o-mini" },
   };
 
-  var mode = "online";
+  var mode = "offline";
   var history = [];
   var busy = false;
   var offlineEngine = null;
@@ -207,23 +207,23 @@
     if (el) {
       el.innerHTML = formatText(
         t(
-          "Ready. This desk knows Tyler’s public bio and projects (Nanotech, BTRDCC, patents, Future City, member desks…). Online = your API key; Offline = browser model.",
-          "就緒。本台已載入鄭迪珉的公開簡介與專案（納米科研、BTRDCC、專利、Future City、會員桌面等）。線上＝你的 API 金鑰；離線＝瀏覽器模型。"
+          "Ready — Offline by default. Press「Load model in browser」, wait for the download, then ask about Tyler / projects. No API key needed.",
+          "就緒——預設離線。先按「在瀏覽器載入模型」，等下載完成，再問 Tyler／專案。不需 API 金鑰。"
         )
       );
     }
     var foot = document.getElementById("ai-footnote");
     if (foot) {
       foot.textContent = t(
-        "Answers about Tyler use the site knowledge pack. Keys stay on this device. Replies can still be wrong. Education only.",
-        "關於 Tyler 的答案以本站知識庫為準。金鑰只留本機。回覆仍可能出錯。僅供教育參考。"
+        "Offline runs a small open model in your browser (first load downloads weights). Answers about Tyler use the site knowledge pack. Education only.",
+        "離線會在瀏覽器跑小型開源模型（首次需下載）。關於 Tyler 的答案以本站知識庫為準。僅供教育參考。"
       );
     }
     var input = document.getElementById("ai-input");
     if (input) {
       input.placeholder = t(
-        "Ask about Tyler, Nanotech, patents, BTRDCC, Future City…",
-        "可問 Tyler、納米科研、專利、BTRDCC、Future City……"
+        "Ask about Tyler, Nanotech, patents, BTRDCC… (offline)",
+        "可問 Tyler、納米科研、專利、BTRDCC……（離線）"
       );
     }
   }
@@ -265,7 +265,8 @@
 
   function restore() {
     var c = loadCfg();
-    if (c.mode) setMode(c.mode);
+    // Default offline; only switch to online if the visitor explicitly saved that.
+    setMode(c.mode === "online" ? "online" : "offline");
     var sel = document.getElementById("ai-provider");
     if (sel && c.provider) sel.value = c.provider;
     applyProviderDefaults();
@@ -424,10 +425,25 @@
     busy = true;
     var send = document.getElementById("ai-send");
     if (send) send.disabled = true;
-    setStatus(t("Thinking…", "思考中…"));
     try {
-      if (mode === "offline") await chatOffline(text);
-      else await chatOnline(text);
+      if (mode === "offline") {
+        if (!offlineEngine) {
+          setStatus(t("Loading offline model first…", "先載入離線模型…"));
+          appendMsg(
+            "system",
+            t(
+              "No API key needed — downloading the offline model into this browser (first time only).",
+              "不需 API 金鑰——正在把離線模型下載到本瀏覽器（僅首次）。"
+            )
+          );
+        } else {
+          setStatus(t("Thinking…", "思考中…"));
+        }
+        await chatOffline(text);
+      } else {
+        setStatus(t("Thinking…", "思考中…"));
+        await chatOnline(text);
+      }
       setStatus(
         mode === "offline"
           ? t("Offline · ready", "離線 · 就緒")

@@ -1436,7 +1436,42 @@ html.sc-pending body { visibility: hidden; }
 .fa-figure { margin: 18px 0; padding: 12px; border: 1px solid var(--line); border-radius: 14px; background: #fff; overflow-x: auto; }
 .fa-figure svg { display: block; width: 100%; max-width: 640px; height: auto; margin: 0 auto; }
 .fa-figure figcaption { margin-top: 8px; font-size: 13px; color: var(--muted); text-align: center; }
-.fa-tv { margin: 16px 0; min-height: 480px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: #fff; }
+.fa-tv { margin: 16px 0; min-height: 720px; height: min(78vh, 820px); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: #fff; }
+.fa-tv .tradingview-widget-container,
+.fa-tv .tradingview-widget-container__widget { height: 100% !important; min-height: 720px; }
+
+/* —— Paper trading desk —— */
+.pp-summary { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 8px 0 18px; }
+.pp-kpi { padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
+.pp-kpi span { display: block; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+.pp-kpi strong { font-size: 20px; }
+.pp-kpi.up strong { color: #1e7a4a; }
+.pp-kpi.down strong { color: #a33; }
+.pp-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
+.pp-chip { padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; background: #fff; cursor: pointer; font: inherit; font-size: 13px; }
+.pp-chip:hover { border-color: var(--gold); }
+.pp-trade-form { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; align-items: end; }
+.pp-trade-form label { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
+.pp-trade-form input, .pp-trade-form select { padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; font: inherit; color: var(--ink); background: #fff; }
+.pp-trade-form .ms-form-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.pp-tv { margin-top: 8px; min-height: 640px; height: min(70vh, 760px); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: #fff; }
+.pp-tv .tradingview-widget-container,
+.pp-tv .tradingview-widget-container__widget { height: 100% !important; min-height: 640px; }
+.pp-table-wrap { overflow-x: auto; }
+.pp-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.pp-table th, .pp-table td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.pp-table th { color: var(--muted); font-weight: 600; font-size: 12px; }
+.pp-table .up { color: #1e7a4a; }
+.pp-table .down { color: #a33; }
+@media (max-width: 900px) {
+  .pp-summary, .pp-trade-form { grid-template-columns: 1fr 1fr; }
+  .fa-tv, .pp-tv { min-height: 520px; height: 62vh; }
+  .fa-tv .tradingview-widget-container__widget,
+  .pp-tv .tradingview-widget-container__widget { min-height: 520px; }
+}
+@media (max-width: 560px) {
+  .pp-summary, .pp-trade-form { grid-template-columns: 1fr; }
+}
 @media (max-width: 900px) {
   .fa-layout, .fa-grid-2 { grid-template-columns: 1fr; }
   .fa-toc { position: static; grid-template-columns: 1fr 1fr; }

@@ -127,6 +127,7 @@ NAV = [
     ("game.html", "Play: Crossroads", "遊戲：交叉點", "game"),
     ("marksix.html", "Mark Six quant", "六合彩量化分析", "marksix"),
     ("chart.html", "Personal chart", "個人排盤", "chart"),
+    ("filings.html", "Filings academy", "財報公告學堂", "filings"),
     ("sites.html", "Sites", "網站", "sites"),
 ]
 
@@ -165,11 +166,12 @@ NAV_GROUPS = [
     ("members", "Member services", "會員服務", [
         ("marksix.html", "Mark Six quant", "六合彩量化分析"),
         ("chart.html", "Personal chart", "個人排盤"),
+        ("filings.html", "Filings academy", "財報公告學堂"),
     ]),
     ("sites", "Sites", "網站", "sites.html"),
 ]
 # page key of the generated pages -> their file
-CURRENT = {"insights": "insights/", "news": "news.html", "markets": "markets.html", "listing-readiness": "listing-readiness.html", "marksix": "marksix.html", "chart": "chart.html", "sites": "sites.html"}
+CURRENT = {"insights": "insights/", "news": "news.html", "markets": "markets.html", "listing-readiness": "listing-readiness.html", "marksix": "marksix.html", "chart": "chart.html", "filings": "filings.html", "sites": "sites.html"}
 CARET = ('<svg class="nav-caret" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true">'
          '<path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" '
          'stroke-linecap="round" stroke-linejoin="round"/></svg>')
@@ -538,13 +540,21 @@ def main():
     (ROOT / "marksix.html").write_text(fragment_page(
         "marksix",
         title="Mark Six quant · 六合彩量化分析 | 鄭迪珉 Tyler Cheng",
-        description="Members-only Mark Six quant desk: enter your birth data for a personalised next-draw plan. Password required each visit. Research only — not betting advice.",
+        description="Members-only Mark Six quant desk: enter your birth data for a personalised next-draw plan. Separate password from other member pages; required again after every refresh. Research only — not betting advice.",
         og_type="website", scripts=("member-bazi.js", "marksix.js")), encoding="utf-8")
     (ROOT / "chart.html").write_text(fragment_page(
         "chart",
         title="Personal chart · 個人排盤 | 鄭迪珉 Tyler Cheng",
-        description="Members-only personal BaZi and natal chart reading: personality, career, wealth, health and family outlook. Password required each visit. Research only.",
+        description="Members-only personal BaZi and natal chart reading: personality, career, wealth, health and family outlook. Separate password; required again after every refresh. Research only.",
         og_type="website", scripts=("member-bazi.js", "chart.js")), encoding="utf-8")
+    (ROOT / "filings.html").write_text(fragment_page(
+        "filings",
+        title="Filings & financials academy · 財報公告學堂 | 鄭迪珉 Tyler Cheng",
+        description="Paid member course on reading listed-company announcements and financial statements: balance sheets, P&L, cash flow, K-line charts, and case studies with live charts. Separate password; required again after every refresh. Education only — not investment advice.",
+        og_type="website", scripts=("filings.js",),
+        head_extra='\n  <link rel="preconnect" href="https://s3.tradingview.com">'
+                   '\n  <link rel="preconnect" href="https://www.tradingview-widget.com">'
+                   '\n  <link rel="dns-prefetch" href="https://www.tradingview.com">'), encoding="utf-8")
     (ROOT / "sites.html").write_text(fragment_page(
         "sites",
         title="Sites · 網站 — Personal site, Future City, Cheng Studio, Yuzu Meow, NudgePay | 鄭迪珉 Tyler Cheng",
@@ -628,7 +638,7 @@ def apply_hero_photos():
         f.write_text(s, encoding="utf-8")
 
 
-ASSETS = ("styles.css", "main.js", "game.css", "game.js", "game-data.js", "game-kit.js", "game-worlds.js", "news.js", "markets.js", "us-equities.js", "contact.js", "clock.js", "readiness.js", "marksix.js", "member-bazi.js", "chart.js", "assets/fonts/fonts.css")
+ASSETS = ("styles.css", "main.js", "game.css", "game.js", "game-data.js", "game-kit.js", "game-worlds.js", "news.js", "markets.js", "us-equities.js", "contact.js", "clock.js", "readiness.js", "marksix.js", "member-bazi.js", "chart.js", "filings.js", "assets/fonts/fonts.css")
 
 
 def stamp_assets():

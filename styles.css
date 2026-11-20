@@ -1323,7 +1323,48 @@ html.sc-pending body { visibility: hidden; }
 .ms-ball.ms-green { background: #1e8449; }
 .ms-balls.fake .ms-ball, .ms-balls.fake > span { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: #cfd6dc; color: #6a7782; font-weight: 700; }
 .ms-desk { margin-top: 28px; display: grid; gap: 22px; }
+/* Prefer attribute hide over .ms-desk { display:grid } so gated content stays invisible until unlock */
+.ms-desk[hidden],
+.ms-locked[hidden],
+.ms-gate[hidden],
+.fa-mod[hidden],
+#ch-out[hidden],
+.ch-loading[hidden] {
+  display: none !important;
+}
 .ms-desk-bar { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: center; }
+.ch-loading {
+  margin: 18px 0;
+  padding: 28px 22px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: linear-gradient(160deg, #0b1d33 0%, #1a334f 100%);
+  color: #f7f4ec;
+  text-align: center;
+}
+.ch-loading-spin {
+  width: 42px; height: 42px; margin: 0 auto 14px;
+  border: 3px solid rgba(247,244,236,.25);
+  border-top-color: #c9a35b;
+  border-radius: 50%;
+  animation: ch-spin 0.85s linear infinite;
+}
+@keyframes ch-spin { to { transform: rotate(360deg); } }
+.ch-loading-title { margin: 0 0 8px; font-size: 18px; }
+.ch-loading-steps { margin: 12px auto 0; max-width: 46ch; text-align: left; font-size: 13px; color: rgba(247,244,236,.78); display: grid; gap: 6px; list-style: none; padding: 0; }
+.ch-loading-steps li.is-on { color: #f7f4ec; font-weight: 600; }
+.ch-years { display: grid; gap: 10px; margin-top: 10px; }
+.ch-year-row { display: grid; grid-template-columns: 96px 1fr; gap: 10px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+.ch-year-row.good { border-color: #9bbfad; background: #f3faf6; }
+.ch-year-row.caution { border-color: #d4b48a; background: #fbf6ee; }
+.ch-year-row.hard { border-color: #d2a0a0; background: #fbf3f3; }
+.ch-celeb-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 12px; }
+.ch-celeb-btn { text-align: left; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: #fff; cursor: pointer; font: inherit; }
+.ch-celeb-btn:hover { border-color: var(--gold); }
+.ch-celeb-btn small { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; }
+@media (max-width: 700px) {
+  .ch-celeb-grid, .ch-year-row { grid-template-columns: 1fr; }
+}
 .ms-block { padding: 20px 22px; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
 .ms-block h3 { margin: 0 0 14px; font-size: 18px; }
 .ms-block h4 { margin: 16px 0 8px; font-size: 15px; }

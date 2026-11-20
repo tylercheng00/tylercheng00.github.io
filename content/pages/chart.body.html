@@ -58,6 +58,12 @@
           </div>
 
           <section class="ms-block">
+            <h3><span lang="en">Celebrity study charts</span><span lang="zh-Hant">名人排盤研讀</span></h3>
+            <p class="section-sub"><span lang="en">Public birth data (times sometimes estimated). Tap one to run the same professional analysis pipeline — research only.</span><span lang="zh-Hant">公開出生資料（部分時辰為常見估計）。點選後走同一套專業分析流程——僅供研究。</span></p>
+            <div class="ch-celeb-grid" id="ch-celeb-grid"></div>
+          </section>
+
+          <section class="ms-block">
             <h3><span lang="en">Your birth data</span><span lang="zh-Hant">你的出生資料</span></h3>
             <form class="ms-natal-form" id="ch-natal-form">
               <label><span lang="en">Name (Chinese)</span><span lang="zh-Hant">中文姓名</span><input name="nameZh" type="text" maxlength="40" required></label>
@@ -66,18 +72,26 @@
               <label><span lang="en">Birth time</span><span lang="zh-Hant">出生時辰</span><input name="birthTime" type="time" value="08:00" required></label>
               <label class="ms-span-2"><span lang="en">Birth place</span><span lang="zh-Hant">出生地址／地點</span><input name="birthPlace" type="text" maxlength="80" required placeholder="Hong Kong"></label>
               <div class="ms-span-2 ms-form-actions">
-                <button class="btn btn-gold" type="submit"><span lang="en">Cast chart &amp; analyse</span><span lang="zh-Hant">排盤並分析</span></button>
+                <button class="btn btn-gold" type="submit" id="ch-submit"><span lang="en">Cast chart &amp; analyse</span><span lang="zh-Hant">排盤並分析</span></button>
               </div>
             </form>
+            <div class="ch-loading" id="ch-loading" hidden>
+              <div class="ch-loading-spin" aria-hidden="true"></div>
+              <p class="ch-loading-title" id="ch-loading-title"></p>
+              <ol class="ch-loading-steps" id="ch-loading-steps"></ol>
+            </div>
           </section>
 
           <section class="ms-block" id="ch-out" hidden>
             <h3><span lang="en">BaZi pillars</span><span lang="zh-Hant">八字四柱</span></h3>
             <div id="ch-pillars"></div>
-            <h3 class="ms-subh"><span lang="en">Natal sketch</span><span lang="zh-Hant">星盤概覽</span></h3>
+            <h3 class="ms-subh"><span lang="en">Natal sketch (tropical)</span><span lang="zh-Hant">星盤概覽（黃道）</span></h3>
             <div id="ch-astro"></div>
-            <h3 class="ms-subh"><span lang="en">Life reading</span><span lang="zh-Hant">人生解讀</span></h3>
+            <h3 class="ms-subh"><span lang="en">Detailed life reading</span><span lang="zh-Hant">詳細人生解讀</span></h3>
             <div id="ch-reading"></div>
+            <h3 class="ms-subh"><span lang="en">Year-by-year windows</span><span lang="zh-Hant">流年利害一覽</span></h3>
+            <div class="ch-years" id="ch-years"></div>
+            <p class="ms-note"><span lang="en">Moon / Asc use birth-place timezone (with US DST when applicable). Unknown birth times are labelled. Not a substitute for a professional 道長 reading; not medical, legal or investment advice.</span><span lang="zh-Hant">月亮／上升按出生地時區推算（美國地區含夏令時近似）。未知時辰會標註。不能替代道長面診；亦非醫療、法律或投資建議。</span></p>
           </section>
         </div>
 

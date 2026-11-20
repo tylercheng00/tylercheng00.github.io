@@ -26,7 +26,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/fonts/fonts.css?v=1baa657b" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="assets/fonts/fonts.css?v=1baa657b"></noscript>
-  <link rel="stylesheet" href="styles.css?v=2979ae9e">
+  <link rel="stylesheet" href="styles.css?v=4047a6e4">
   <link rel="preconnect" href="https://s3.tradingview.com">
   <link rel="preconnect" href="https://www.tradingview-widget.com">
   <link rel="dns-prefetch" href="https://www.tradingview.com">
@@ -187,255 +187,12 @@
           </div>
 
           <div class="fa-layout">
-            <nav class="fa-toc" aria-label="Course modules">
+            <nav class="fa-toc" id="fa-toc" aria-label="Course modules">
               <p class="fa-toc-title"><span lang="en">Modules</span><span lang="zh-Hant">課程目錄</span></p>
-              <button type="button" class="fa-toc-btn is-active" data-mod="m0"><span lang="en">0 · How to use this course</span><span lang="zh-Hant">0 · 如何用這門課</span></button>
-              <button type="button" class="fa-toc-btn" data-mod="m1"><span lang="en">1 · Announcements</span><span lang="zh-Hant">1 · 讀懂公告</span></button>
-              <button type="button" class="fa-toc-btn" data-mod="m2"><span lang="en">2 · Three statements</span><span lang="zh-Hant">2 · 三大報表</span></button>
-              <button type="button" class="fa-toc-btn" data-mod="m3"><span lang="en">3 · Balance sheet</span><span lang="zh-Hant">3 · 資產負債表</span></button>
-              <button type="button" class="fa-toc-btn" data-mod="m4"><span lang="en">4 · Making money?</span><span lang="zh-Hant">4 · 公司賺不賺錢</span></button>
-              <button type="button" class="fa-toc-btn" data-mod="m5"><span lang="en">5 · Cash flow</span><span lang="zh-Hant">5 · 現金流量表</span></button>
-              <button type="button" class="fa-toc-btn" data-mod="m6"><span lang="en">6 · K-line anatomy</span><span lang="zh-Hant">6 · K線圖拆解</span></button>
-              <button type="button" class="fa-toc-btn" data-mod="m7"><span lang="en">7 · Chart toolkit</span><span lang="zh-Hant">7 · 看圖工具箱</span></button>
-              <button type="button" class="fa-toc-btn" data-mod="m8"><span lang="en">8 · Case: BABA</span><span lang="zh-Hant">8 · 個案：阿里巴巴</span></button>
-              <button type="button" class="fa-toc-btn" data-mod="m9"><span lang="en">9 · Case: NVDA</span><span lang="zh-Hant">9 · 個案：英偉達</span></button>
-              <button type="button" class="fa-toc-btn" data-mod="m10"><span lang="en">10 · Field checklist</span><span lang="zh-Hant">10 · 實戰清單</span></button>
             </nav>
 
-            <div class="fa-modules">
-              <article class="fa-mod" id="m0" data-mod="m0">
-                <h3><span lang="en">0 · How to use this course</span><span lang="zh-Hant">0 · 如何用這門課</span></h3>
-                <p><span lang="en">Read modules in order the first time. Each module has one job: a filing habit, a statement line, or a chart skill. Case studies use live TradingView charts so you practise on real prices — still education, not a buy/sell call.</span><span lang="zh-Hant">第一次請按順序讀。每課只做一件事：一個公告習慣、一條報表科目，或一項看圖技能。個案用 TradingView 真實行情練習——仍是教育，不是買賣建議。</span></p>
-                <ul class="fa-list">
-                  <li><span lang="en">Keep a notebook: company ticker, filing date, three numbers you trust, one risk you still do not understand.</span><span lang="zh-Hant">備一本筆記：代碼、公告日期、三個你信得過的數字、一個你仍不懂的風險。</span></li>
-                  <li><span lang="en">Open the issuer’s IR / HKEX / SEC page beside this course.</span><span lang="zh-Hant">旁邊打開公司投資者關係／港交所／SEC 頁面對照。</span></li>
-                  <li><span lang="en">If a refresh locks you out, that is intentional — re-enter the academy password.</span><span lang="zh-Hant">重新整理後要再輸入密碼，是刻意設計。</span></li>
-                </ul>
-              </article>
-
-              <article class="fa-mod" id="m1" data-mod="m1" hidden>
-                <h3><span lang="en">1 · How to read listed-company announcements</span><span lang="zh-Hant">1 · 如何讀上市公司公告</span></h3>
-                <p><span lang="en">Announcements are the calendar of the company. Financials are the scoreboard. Start with the headline type, then the date, then who signed it.</span><span lang="zh-Hant">公告是公司的日曆，財報是計分板。先看公告類型，再看日期，再看誰簽署。</span></p>
-                <h4><span lang="en">Common HKEX types</span><span lang="zh-Hant">港交所常見類型</span></h4>
-                <div class="fa-grid-2">
-                  <div class="fa-card">
-                    <h5><span lang="en">Results / interim / annual</span><span lang="zh-Hant">業績／中期／全年</span></h5>
-                    <p><span lang="en">Numbers land here. Read revenue, gross profit, operating profit, net profit, EPS, and the “outlook” paragraph last — after the numbers.</span><span lang="zh-Hant">數字在這裏。先讀收入、毛利、經營溢利、淨利、每股盈利，最後才讀「展望」——數字之後再說故事。</span></p>
-                  </div>
-                  <div class="fa-card">
-                    <h5><span lang="en">Inside information / profit warning</span><span lang="zh-Hant">內幕消息／盈利警告</span></h5>
-                    <p><span lang="en">Treat as a stop sign. Ask: what changed vs last guidance? Cash or accounting? One-off or run-rate?</span><span lang="zh-Hant">當作停車標誌。問：相對上次指引變了什麼？現金還是會計？一次性還是常態？</span></p>
-                  </div>
-                  <div class="fa-card">
-                    <h5><span lang="en">Connected transactions / placings</span><span lang="zh-Hant">關連交易／配售</span></h5>
-                    <p><span lang="en">Dilution and related-party risk. Note issue price vs last close, use of proceeds, and who is buying.</span><span lang="zh-Hant">攤薄與關連風險。記發行價對上日收市、資金用途、誰在買。</span></p>
-                  </div>
-                  <div class="fa-card">
-                    <h5><span lang="en">SEC 6-K / 10-Q / 10-K / 20-F</span><span lang="zh-Hant">SEC 6-K／10-Q／10-K／20-F</span></h5>
-                    <p><span lang="en">US filers and many ADRs. 10-K / 20-F = annual depth; 10-Q = quarterly; 6-K often carries HK/China news into the US file.</span><span lang="zh-Hant">美股及多數 ADR。年報深度在 10-K／20-F；季報在 10-Q；6-K 常把港／中消息帶進美國檔案。</span></p>
-                  </div>
-                </div>
-                <h4><span lang="en">A 10-minute announcement ritual</span><span lang="zh-Hant">十分鐘讀公告儀式</span></h4>
-                <ol class="fa-list">
-                  <li><span lang="en">Title + type + time stamp.</span><span lang="zh-Hant">標題＋類型＋時間戳。</span></li>
-                  <li><span lang="en">Any number in the first page? Copy it into your notebook with units (HK$m / US$m).</span><span lang="zh-Hant">首頁有沒有數字？連單位抄進筆記（百萬港元／百萬美元）。</span></li>
-                  <li><span lang="en">Find “use of proceeds”, “going concern”, “material uncertainty”, or “non-IFRS / non-GAAP”.</span><span lang="zh-Hant">搜尋「所得款項用途」「持續經營」「重大不確定性」「非國際財務報告準則／非公認會計原則」。</span></li>
-                  <li><span lang="en">Only then read management’s narrative.</span><span lang="zh-Hant">然後才讀管理層敘事。</span></li>
-                </ol>
-              </article>
-
-              <article class="fa-mod" id="m2" data-mod="m2" hidden>
-                <h3><span lang="en">2 · The three financial statements</span><span lang="zh-Hant">2 · 三大財務報表</span></h3>
-                <p><span lang="en">One company, three cameras. Balance sheet = photo at a date. Income statement = movie over a period. Cash flow = which scenes actually moved cash.</span><span lang="zh-Hant">同一間公司，三個鏡頭。資產負債表＝某一日的定格；損益表＝一段時間的電影；現金流量表＝哪些鏡頭真的動了現金。</span></p>
-                <figure class="fa-figure">
-                  <svg viewBox="0 0 640 220" role="img" aria-label="Three statements diagram">
-                    <rect x="20" y="40" width="180" height="140" rx="12" fill="#f7f4ec" stroke="#0b1d33"/>
-                    <text x="110" y="75" text-anchor="middle" font-size="14" fill="#0b1d33">Balance sheet</text>
-                    <text x="110" y="100" text-anchor="middle" font-size="12" fill="#5a6570">Assets = Liabilities</text>
-                    <text x="110" y="120" text-anchor="middle" font-size="12" fill="#5a6570">+ Equity</text>
-                    <text x="110" y="150" text-anchor="middle" font-size="11" fill="#8a7350">as of a date</text>
-                    <rect x="230" y="40" width="180" height="140" rx="12" fill="#eef6f2" stroke="#0b1d33"/>
-                    <text x="320" y="75" text-anchor="middle" font-size="14" fill="#0b1d33">Income statement</text>
-                    <text x="320" y="100" text-anchor="middle" font-size="12" fill="#5a6570">Revenue → Costs</text>
-                    <text x="320" y="120" text-anchor="middle" font-size="12" fill="#5a6570">→ Profit / Loss</text>
-                    <text x="320" y="150" text-anchor="middle" font-size="11" fill="#8a7350">over a period</text>
-                    <rect x="440" y="40" width="180" height="140" rx="12" fill="#eef2f8" stroke="#0b1d33"/>
-                    <text x="530" y="75" text-anchor="middle" font-size="14" fill="#0b1d33">Cash flow</text>
-                    <text x="530" y="100" text-anchor="middle" font-size="12" fill="#5a6570">Operating</text>
-                    <text x="530" y="120" text-anchor="middle" font-size="12" fill="#5a6570">Investing · Financing</text>
-                    <text x="530" y="150" text-anchor="middle" font-size="11" fill="#8a7350">cash in / out</text>
-                  </svg>
-                  <figcaption><span lang="en">Figure · Three cameras on one company</span><span lang="zh-Hant">圖 · 同一公司的三個鏡頭</span></figcaption>
-                </figure>
-                <p><span lang="en">Rule of thumb: if profit rises but operating cash falls for several periods, dig into receivables, inventory, and one-offs before you celebrate.</span><span lang="zh-Hant">經驗法則：利潤上升但經營現金連續下滑，先查應收款、存貨與一次性項目，再慶祝。</span></p>
-              </article>
-
-              <article class="fa-mod" id="m3" data-mod="m3" hidden>
-                <h3><span lang="en">3 · Balance sheet — how to read it</span><span lang="zh-Hant">3 · 資產負債表——怎麼看</span></h3>
-                <p><span lang="en">Assets are what the company controls. Liabilities are what it owes. Equity is the residual claim. Always check units and whether figures are consolidated.</span><span lang="zh-Hant">資產是公司控制的資源，負債是欠別人的，權益是剩餘權益。先確認單位，以及是否綜合報表。</span></p>
-                <figure class="fa-figure">
-                  <svg viewBox="0 0 640 280" role="img" aria-label="Balance sheet stacked bars">
-                    <text x="20" y="28" font-size="14" fill="#0b1d33">Illustrative balance sheet (US$m)</text>
-                    <rect x="40" y="50" width="120" height="50" fill="#3d7a5a"/><text x="100" y="80" text-anchor="middle" fill="#fff" font-size="12">Cash 420</text>
-                    <rect x="40" y="100" width="120" height="70" fill="#5a8f6e"/><text x="100" y="140" text-anchor="middle" fill="#fff" font-size="12">Receivables 310</text>
-                    <rect x="40" y="170" width="120" height="60" fill="#7aa88a"/><text x="100" y="205" text-anchor="middle" fill="#fff" font-size="12">PPE 540</text>
-                    <text x="100" y="255" text-anchor="middle" font-size="12" fill="#0b1d33">Assets 1,270</text>
-                    <rect x="280" y="50" width="120" height="55" fill="#8f4a4a"/><text x="340" y="82" text-anchor="middle" fill="#fff" font-size="12">ST debt 180</text>
-                    <rect x="280" y="105" width="120" height="50" fill="#a66"/><text x="340" y="135" text-anchor="middle" fill="#fff" font-size="12">Payables 220</text>
-                    <rect x="280" y="155" width="120" height="75" fill="#c48a5a"/><text x="340" y="198" text-anchor="middle" fill="#fff" font-size="12">LT debt 390</text>
-                    <text x="340" y="255" text-anchor="middle" font-size="12" fill="#0b1d33">Liab. 790</text>
-                    <rect x="480" y="50" width="120" height="180" fill="#0b1d33"/><text x="540" y="145" text-anchor="middle" fill="#f7f4ec" font-size="12">Equity</text>
-                    <text x="540" y="165" text-anchor="middle" fill="#f7f4ec" font-size="12">480</text>
-                    <text x="540" y="255" text-anchor="middle" font-size="12" fill="#0b1d33">A = L + E</text>
-                  </svg>
-                  <figcaption><span lang="en">Figure · Assets must equal liabilities + equity (illustrative numbers)</span><span lang="zh-Hant">圖 · 資產＝負債＋權益（示意數字）</span></figcaption>
-                </figure>
-                <h4><span lang="en">Lines that matter first</span><span lang="zh-Hant">先看這些科目</span></h4>
-                <ul class="fa-list">
-                  <li><span lang="en"><strong>Cash &amp; equivalents</strong> — runway before you believe the story.</span><span lang="zh-Hant"><strong>現金及等價物</strong>——相信故事之前，先看跑道。</span></li>
-                  <li><span lang="en"><strong>Trade receivables</strong> — growing faster than revenue? Collection risk.</span><span lang="zh-Hant"><strong>應收賬款</strong>——增速快過收入？收款風險。</span></li>
-                  <li><span lang="en"><strong>Inventory</strong> — rising with flat sales can mean products stuck.</span><span lang="zh-Hant"><strong>存貨</strong>——銷售持平卻上升，可能貨壓倉。</span></li>
-                  <li><span lang="en"><strong>Short-term debt vs cash</strong> — refinance pressure in the next 12 months.</span><span lang="zh-Hant"><strong>短期借款對現金</strong>——未來十二個月再融資壓力。</span></li>
-                  <li><span lang="en"><strong>Goodwill / intangibles</strong> — acquisition optimism; check impairment notes.</span><span lang="zh-Hant"><strong>商譽／無形資產</strong>——併購樂觀；查減值附註。</span></li>
-                </ul>
-                <p><span lang="en">Current ratio ≈ current assets ÷ current liabilities. Quick ratio removes inventory. Neither is a scorecard alone — pair with cash flow.</span><span lang="zh-Hant">流動比率≈流動資產÷流動負債；速動比率剔除存貨。單獨看不夠——要配現金流。</span></p>
-              </article>
-
-              <article class="fa-mod" id="m4" data-mod="m4" hidden>
-                <h3><span lang="en">4 · Is the company making money?</span><span lang="zh-Hant">4 · 公司賺不賺錢？</span></h3>
-                <p><span lang="en">Start with revenue quality, then margins, then whether profit is cash-backed.</span><span lang="zh-Hant">先看收入質量，再看利潤率，再看利潤有沒有現金撐腰。</span></p>
-                <div class="fa-grid-2">
-                  <div class="fa-card">
-                    <h5><span lang="en">Gross margin</span><span lang="zh-Hant">毛利率</span></h5>
-                    <p><span lang="en">(Revenue − COGS) ÷ Revenue. Falling margin with rising sales can still destroy value.</span><span lang="zh-Hant">（收入−銷售成本）÷收入。銷售上升但毛利率下滑，仍可能在毀價值。</span></p>
-                  </div>
-                  <div class="fa-card">
-                    <h5><span lang="en">Operating margin</span><span lang="zh-Hant">經營利潤率</span></h5>
-                    <p><span lang="en">After R&amp;D, sales &amp; marketing, G&amp;A. Shows the machine before interest and tax games.</span><span lang="zh-Hant">扣研發、銷售及市場推廣、行政開支後。看利息與稅項「遊戲」之前的機器。</span></p>
-                  </div>
-                  <div class="fa-card">
-                    <h5><span lang="en">Net profit vs adjusted profit</span><span lang="zh-Hant">淨利 vs 經調整溢利</span></h5>
-                    <p><span lang="en">Non-IFRS / non-GAAP adds back SBC, impairments, “one-offs”. Read the bridge table every time.</span><span lang="zh-Hant">非準則溢利常加回股權激勵、減值、「一次性」。每次都要讀調節表。</span></p>
-                  </div>
-                  <div class="fa-card">
-                    <h5><span lang="en">EPS &amp; share count</span><span lang="zh-Hant">每股盈利與股本</span></h5>
-                    <p><span lang="en">Profit up but diluted EPS flat? Check placings, convertibles, and option overhang.</span><span lang="zh-Hant">溢利升但攤薄每股盈利不動？查配售、可換股與期權潛在攤薄。</span></p>
-                  </div>
-                </div>
-                <figure class="fa-figure">
-                  <svg viewBox="0 0 640 240" role="img" aria-label="Margin waterfall">
-                    <text x="20" y="28" font-size="14" fill="#0b1d33">Illustrative margin bridge (US$m)</text>
-                    <rect x="40" y="60" width="70" height="140" fill="#3d7a5a"/><text x="75" y="130" text-anchor="middle" fill="#fff" font-size="11">Rev</text><text x="75" y="148" text-anchor="middle" fill="#fff" font-size="11">1000</text>
-                    <rect x="130" y="100" width="70" height="100" fill="#8f4a4a"/><text x="165" y="150" text-anchor="middle" fill="#fff" font-size="11">COGS</text><text x="165" y="168" text-anchor="middle" fill="#fff" font-size="11">-580</text>
-                    <rect x="220" y="80" width="70" height="120" fill="#5a8f6e"/><text x="255" y="140" text-anchor="middle" fill="#fff" font-size="11">Gross</text><text x="255" y="158" text-anchor="middle" fill="#fff" font-size="11">420</text>
-                    <rect x="310" y="120" width="70" height="80" fill="#8f4a4a"/><text x="345" y="160" text-anchor="middle" fill="#fff" font-size="11">Opex</text><text x="345" y="178" text-anchor="middle" fill="#fff" font-size="11">-260</text>
-                    <rect x="400" y="100" width="70" height="100" fill="#0b1d33"/><text x="435" y="148" text-anchor="middle" fill="#f7f4ec" font-size="11">Op.</text><text x="435" y="166" text-anchor="middle" fill="#f7f4ec" font-size="11">160</text>
-                    <rect x="490" y="115" width="70" height="85" fill="#c48a5a"/><text x="525" y="155" text-anchor="middle" fill="#fff" font-size="11">Tax+</text><text x="525" y="173" text-anchor="middle" fill="#fff" font-size="11">Net 110</text>
-                  </svg>
-                  <figcaption><span lang="en">Figure · From revenue to net profit (illustrative)</span><span lang="zh-Hant">圖 · 從收入走到淨利（示意）</span></figcaption>
-                </figure>
-              </article>
-
-              <article class="fa-mod" id="m5" data-mod="m5" hidden>
-                <h3><span lang="en">5 · Cash flow statement</span><span lang="zh-Hant">5 · 現金流量表</span></h3>
-                <p><span lang="en">Operating cash flow answers “did the business generate cash?” Investing answers “what did they buy or sell?” Financing answers “debt, equity, dividends, buybacks.”</span><span lang="zh-Hant">經營現金流回答「生意有沒有產生現金？」投資回答「買了／賣了什麼？」融資回答「借貸、股本、股息、回購」。</span></p>
-                <ul class="fa-list">
-                  <li><span lang="en"><strong>OCF &gt; 0 and rising with profit</strong> — healthier story.</span><span lang="zh-Hant"><strong>經營現金流為正且隨溢利上升</strong>——故事較健康。</span></li>
-                  <li><span lang="en"><strong>Capex</strong> — growth vs maintenance. Heavy growth capex can be fine if returns show up later; say so with dates.</span><span lang="zh-Hant"><strong>資本開支</strong>——增長還是維修。高增長資本開支可以成立，但要用日期說清回報何時出現。</span></li>
-                  <li><span lang="en"><strong>Free cash flow ≈ OCF − capex</strong> (simplified). Still read footnotes for leases and working capital.</span><span lang="zh-Hant"><strong>自由現金流≈經營現金流−資本開支</strong>（簡化）。仍要讀租賃與營運資金附註。</span></li>
-                </ul>
-              </article>
-
-              <article class="fa-mod" id="m6" data-mod="m6" hidden>
-                <h3><span lang="en">6 · Candlestick / K-line anatomy</span><span lang="zh-Hant">6 · K線圖結構</span></h3>
-                <p><span lang="en">Each candle is one period (day, week, hour). Body = open→close. Wicks = high/low. Colour conventions vary; here green = close ≥ open, red = close &lt; open.</span><span lang="zh-Hant">每根 K 線是一個時段（日／週／小時）。實體＝開→收；影線＝最高／最低。顏色慣例不一；此處綠＝收≥開，紅＝收&lt;開。</span></p>
-                <figure class="fa-figure">
-                  <svg viewBox="0 0 640 260" role="img" aria-label="Candlestick anatomy">
-                    <line x1="120" y1="40" x2="120" y2="220" stroke="#0b1d33" stroke-width="2"/>
-                    <rect x="95" y="80" width="50" height="90" fill="#3d7a5a"/>
-                    <text x="170" y="50" font-size="12" fill="#0b1d33">High</text>
-                    <line x1="130" y1="40" x2="165" y2="48" stroke="#8a7350"/>
-                    <text x="170" y="95" font-size="12" fill="#0b1d33">Close</text>
-                    <text x="170" y="160" font-size="12" fill="#0b1d33">Open</text>
-                    <text x="170" y="225" font-size="12" fill="#0b1d33">Low</text>
-                    <line x1="320" y1="50" x2="320" y2="210" stroke="#0b1d33" stroke-width="2"/>
-                    <rect x="295" y="70" width="50" height="100" fill="#8f4a4a"/>
-                    <text x="370" y="60" font-size="12" fill="#0b1d33">High</text>
-                    <text x="370" y="85" font-size="12" fill="#0b1d33">Open</text>
-                    <text x="370" y="160" font-size="12" fill="#0b1d33">Close</text>
-                    <text x="370" y="215" font-size="12" fill="#0b1d33">Low</text>
-                    <text x="100" y="250" text-anchor="middle" font-size="13" fill="#3d7a5a">Bullish candle</text>
-                    <text x="320" y="250" text-anchor="middle" font-size="13" fill="#8f4a4a">Bearish candle</text>
-                    <text x="520" y="120" text-anchor="middle" font-size="12" fill="#5a6570">Body =</text>
-                    <text x="520" y="140" text-anchor="middle" font-size="12" fill="#5a6570">open → close</text>
-                    <text x="520" y="170" text-anchor="middle" font-size="12" fill="#5a6570">Wick = extreme</text>
-                  </svg>
-                  <figcaption><span lang="en">Figure · Labelled K-line anatomy</span><span lang="zh-Hant">圖 · K線結構標註</span></figcaption>
-                </figure>
-                <ul class="fa-list">
-                  <li><span lang="en"><strong>Long lower wick</strong> — sellers pushed down, buyers recovered into the close.</span><span lang="zh-Hant"><strong>長下影</strong>——賣盤壓低後，買盤在收市前回補。</span></li>
-                  <li><span lang="en"><strong>Long upper wick</strong> — rally failed into the close.</span><span lang="zh-Hant"><strong>長上影</strong>——冲高後收市回落。</span></li>
-                  <li><span lang="en"><strong>Doji</strong> — open≈close; indecision, not a signal alone.</span><span lang="zh-Hant"><strong>十字星</strong>——開≈收；猶豫，單獨不是訊號。</span></li>
-                </ul>
-              </article>
-
-              <article class="fa-mod" id="m7" data-mod="m7" hidden>
-                <h3><span lang="en">7 · Chart toolkit (MA, volume, levels)</span><span lang="zh-Hant">7 · 看圖工具箱（均線、成交量、位置）</span></h3>
-                <ul class="fa-list">
-                  <li><span lang="en"><strong>Moving averages (MA20 / MA50 / MA200)</strong> — context, not magic. Price far above MA200 after a vertical run is often crowded; far below after panic can be oversold — still not a trade ticket.</span><span lang="zh-Hant"><strong>移動平均線（20／50／200）</strong>——是語境不是魔法。價格遠高於 MA200 的直綫拉升常擁擠；恐慌後遠低於可能超賣——仍不是買賣票。</span></li>
-                  <li><span lang="en"><strong>Volume</strong> — breakouts on thin volume are weaker than the same move on heavy volume.</span><span lang="zh-Hant"><strong>成交量</strong>——縮量突破弱於放量同幅走勢。</span></li>
-                  <li><span lang="en"><strong>Support / resistance</strong> — prior swing highs/lows and round numbers. Mark them before you narrate.</span><span lang="zh-Hant"><strong>支持／阻力</strong>——前高前低與整數位。先標位置，再講故事。</span></li>
-                </ul>
-                <figure class="fa-figure">
-                  <svg viewBox="0 0 640 220" role="img" aria-label="Price with MA and volume">
-                    <polyline points="40,160 80,150 120,155 160,120 200,125 240,90 280,95 320,70 360,80 400,55 440,60 480,45 520,50 560,40" fill="none" stroke="#0b1d33" stroke-width="2"/>
-                    <polyline points="40,150 80,148 120,146 160,140 200,135 240,125 280,118 320,110 360,105 400,98 440,95 480,90 520,88 560,85" fill="none" stroke="#c48a5a" stroke-width="2" stroke-dasharray="6 4"/>
-                    <text x="570" y="40" font-size="11" fill="#0b1d33">Price</text>
-                    <text x="570" y="85" font-size="11" fill="#c48a5a">MA</text>
-                    <rect x="70" y="180" width="12" height="25" fill="#8aa"/><rect x="150" y="175" width="12" height="30" fill="#8aa"/><rect x="230" y="170" width="12" height="35" fill="#3d7a5a"/><rect x="310" y="165" width="12" height="40" fill="#3d7a5a"/><rect x="390" y="172" width="12" height="33" fill="#8aa"/><rect x="470" y="160" width="12" height="45" fill="#3d7a5a"/><rect x="550" y="168" width="12" height="37" fill="#8aa"/>
-                    <text x="40" y="215" font-size="11" fill="#5a6570">Volume bars under the price</text>
-                  </svg>
-                  <figcaption><span lang="en">Figure · Price, moving average, volume (schematic)</span><span lang="zh-Hant">圖 · 價格、均線、成交量（示意）</span></figcaption>
-                </figure>
-              </article>
-
-              <article class="fa-mod" id="m8" data-mod="m8" hidden>
-                <h3><span lang="en">8 · Case study · Alibaba (BABA) — filings meet the chart</span><span lang="zh-Hant">8 · 個案 · 阿里巴巴（BABA）——公告遇上圖表</span></h3>
-                <p><span lang="en">Practice path: open the latest 20-F / 6-K or HK filings, write three numbers (revenue, operating margin, cash), then look at the live chart below. Ask whether the price move matches the filing surprise or a sector tape.</span><span lang="zh-Hant">練習路徑：打開最新 20-F／6-K 或港股公告，寫下三個數字（收入、經營利潤率、現金），再看下方真實圖表。問：價格波動是對齊公告驚喜，還是板塊行情？</span></p>
-                <ol class="fa-list">
-                  <li><span lang="en">Find cloud / commerce split if disclosed — mix shift matters more than one headline.</span><span lang="zh-Hant">若有披露，分開雲與電商——結構變化比一個標題重要。</span></li>
-                  <li><span lang="en">Check buyback / dividend language vs capex and investment losses.</span><span lang="zh-Hant">對照回購／派息用語與資本開支、投資虧損。</span></li>
-                  <li><span lang="en">On the chart: mark the earnings date mentally, then see if the candle that day had unusual volume.</span><span lang="zh-Hant">在圖上心里標業績日，看當日 K 線成交量是否異常。</span></li>
-                </ol>
-                <div class="fa-tv" data-fa-tv="BABA" data-tv-symbol="NYSE:BABA" aria-label="Live BABA chart"></div>
-                <p class="ms-note"><span lang="en">Live chart by TradingView. Delayed data possible. Education only — not a recommendation on BABA.</span><span lang="zh-Hant">真實圖表由 TradingView 提供，或有延遲。僅供教育——不是對阿里巴巴的推薦。</span></p>
-              </article>
-
-              <article class="fa-mod" id="m9" data-mod="m9" hidden>
-                <h3><span lang="en">9 · Case study · NVIDIA (NVDA) — margins, cycle, K-lines</span><span lang="zh-Hant">9 · 個案 · 英偉達（NVDA）——利潤率、周期與 K 線</span></h3>
-                <p><span lang="en">NVDA filings often hinge on data-centre revenue, gross margin, and supply commentary. Pair the 10-K / 10-Q language with the live chart: vertical runs, consolidations, and volume spikes around results.</span><span lang="zh-Hant">英偉達公告常圍繞數據中心收入、毛利率與供應評論。把 10-K／10-Q 用語對上真實圖表：直綫拉升、整固、業績附近的放量。</span></p>
-                <ul class="fa-list">
-                  <li><span lang="en">Track gross margin vs management guidance — small misses move this name hard.</span><span lang="zh-Hant">追蹤毛利率對管理層指引——輕微不及預期也會大幅波動。</span></li>
-                  <li><span lang="en">Read customer concentration and export-control risk factors before you narrate “AI forever”.</span><span lang="zh-Hant">講「人工智能永遠」之前，先讀客戶集中與出口管制風險因素。</span></li>
-                  <li><span lang="en">On K-lines: after a gap-up on earnings, study the next five sessions’ wicks — follow-through or give-back?</span><span lang="zh-Hant">業績跳空後，看隨後五個交易日影線——是延續還是回吐？</span></li>
-                </ul>
-                <div class="fa-tv" data-fa-tv="NVDA" data-tv-symbol="NASDAQ:NVDA" aria-label="Live NVDA chart"></div>
-                <p class="ms-note"><span lang="en">Live chart by TradingView. Education only — not a recommendation on NVDA.</span><span lang="zh-Hant">真實圖表由 TradingView 提供。僅供教育——不是對英偉達的推薦。</span></p>
-              </article>
-
-              <article class="fa-mod" id="m10" data-mod="m10" hidden>
-                <h3><span lang="en">10 · Field checklist before you claim you “get” a company</span><span lang="zh-Hant">10 · 說「我看懂這間公司」之前的實戰清單</span></h3>
-                <ol class="fa-list">
-                  <li><span lang="en">Latest annual + latest interim / quarter opened; units noted.</span><span lang="zh-Hant">已打開最新年報＋最新中期／季度；單位已註明。</span></li>
-                  <li><span lang="en">Cash, short-term debt, receivables, inventory copied with dates.</span><span lang="zh-Hant">現金、短期債、應收、存貨已連日期抄下。</span></li>
-                  <li><span lang="en">Gross / operating / net margins for three periods.</span><span lang="zh-Hant">三個期間的毛／經營／淨利率。</span></li>
-                  <li><span lang="en">Operating cash vs net profit direction.</span><span lang="zh-Hant">經營現金與淨利方向是否一致。</span></li>
-                  <li><span lang="en">One announcement risk (dilution, lawsuit, going concern, related party).</span><span lang="zh-Hant">一項公告風險（攤薄、訴訟、持續經營、關連方）。</span></li>
-                  <li><span lang="en">Chart: timeframe named, one support, one resistance, volume note.</span><span lang="zh-Hant">圖表：時框已寫、一個支持、一個阻力、成交量一句。</span></li>
-                  <li><span lang="en">Still unknown: write it. Unknowns are part of diligence.</span><span lang="zh-Hant">仍不懂的寫下來。未知是盡調的一部分。</span></li>
-                </ol>
-                <p class="ms-note"><span lang="en">Nothing here is investment advice or an offer to buy or sell securities.</span><span lang="zh-Hant">以上皆非投資建議，亦非買賣任何證券的要約。</span></p>
-              </article>
+                        <div class="fa-modules" id="fa-modules-root">
+              <p class="ms-note" id="fa-modules-placeholder"><span lang="en">Course modules load only after unlock.</span><span lang="zh-Hant">解鎖後才載入課程內容。</span></p>
             </div>
           </div>
         </div>
@@ -474,6 +231,7 @@
   </a>
 
   <script src="main.js?v=9a99cc64"></script>
-  <script src="filings.js?v=faebb504"></script>
+  <script src="filings-course.js?v=7fadb1db"></script>
+  <script src="filings.js?v=8b6be2db"></script>
 </body>
 </html>

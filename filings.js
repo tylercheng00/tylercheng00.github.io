@@ -1,13 +1,12 @@
-/* Filings & financials academy — password gate + course nav + TradingView case charts. */
+/* Filings & financials academy — password gate; course HTML injected only after unlock. */
 (function () {
   "use strict";
 
-  // Separate password from Mark Six quant / Personal chart.
-  // Unlock is memory-only: every refresh / reload must re-enter the password.
   var MEMBER_PASS = "TC-Filings-2026";
   var PRICE = "HK$398";
   var WA = "https://wa.me/85298229572";
   var unlocked = false;
+  var courseLoaded = false;
   var TV_BASE = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
 
   try {
@@ -22,9 +21,6 @@
     return lang() === "zh" ? zh : en;
   };
 
-  function openNow() {
-    return unlocked;
-  }
   function setOpen(v) {
     unlocked = !!v;
   }
@@ -67,6 +63,51 @@
     if (desk) desk.hidden = !on;
   }
 
+  function injectCourse() {
+    if (courseLoaded) return;
+    if (!window.FilingsCourse) {
+      var root = document.getElementById("fa-modules-root");
+      if (root)
+        root.innerHTML =
+          '<p class="ms-pass-err">' +
+          t("Course pack failed to load. Refresh.", "課程包載入失敗，請重新整理。") +
+          "</p>";
+      return;
+    }
+    var toc = document.getElementById("fa-toc");
+    var root = document.getElementById("fa-modules-root");
+    if (toc) {
+      var title = toc.querySelector(".fa-toc-title");
+      toc.innerHTML = "";
+      if (title) toc.appendChild(title);
+      else {
+        var p = document.createElement("p");
+        p.className = "fa-toc-title";
+        p.innerHTML =
+          '<span lang="en">Modules</span><span lang="zh-Hant">課程目錄</span>';
+        toc.appendChild(p);
+      }
+      toc.insertAdjacentHTML("beforeend", window.FilingsCourse.buildToc());
+    }
+    if (root) root.innerHTML = window.FilingsCourse.buildModules();
+    courseLoaded = true;
+    wireToc();
+    showModule("m0");
+  }
+
+  function clearCourse() {
+    courseLoaded = false;
+    var root = document.getElementById("fa-modules-root");
+    if (root)
+      root.innerHTML =
+        '<p class="ms-note"><span lang="en">Course modules load only after unlock.</span><span lang="zh-Hant">解鎖後才載入課程內容。</span></p>';
+    var toc = document.getElementById("fa-toc");
+    if (toc) {
+      toc.innerHTML =
+        '<p class="fa-toc-title"><span lang="en">Modules</span><span lang="zh-Hant">課程目錄</span></p>';
+    }
+  }
+
   function showModule(id) {
     var mods = document.querySelectorAll(".fa-mod");
     var btns = document.querySelectorAll(".fa-toc-btn");
@@ -93,9 +134,6 @@
     if (!host || host.getAttribute("data-ready") === "1") return;
     var symbol = host.getAttribute("data-tv-symbol") || "NASDAQ:NVDA";
     var loc = locale();
-    var key = symbol + "|" + loc;
-    if (host.getAttribute("data-key") === key) return;
-    host.setAttribute("data-key", key);
     host.setAttribute("data-ready", "1");
     host.textContent = "";
     var wrap = document.createElement("div");
@@ -125,9 +163,6 @@
       allow_symbol_change: true,
       calendar: false,
       support_host: "https://www.tradingview.com",
-      hide_top_toolbar: false,
-      hide_legend: false,
-      save_image: false,
       studies: ["STD;SMA"],
     });
     wrap.appendChild(s);
@@ -164,7 +199,7 @@
             err.textContent = "";
           }
           showDesk(true);
-          showModule("m0");
+          injectCourse();
           if (meta)
             meta.textContent = t(
               "Unlocked this page load only · refresh locks again",
@@ -185,25 +220,16 @@
       logout.addEventListener("click", function () {
         setOpen(false);
         showDesk(false);
-        document.querySelectorAll(".fa-tv").forEach(function (el) {
-          el.textContent = "";
-          el.removeAttribute("data-ready");
-          el.removeAttribute("data-key");
-        });
+        clearCourse();
       });
     }
-    // Always start locked after load/refresh — never restore from storage.
     showDesk(false);
-  }
-
-  function boot() {
-    wireGate();
-    wireToc();
+    clearCourse();
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", boot);
+    document.addEventListener("DOMContentLoaded", wireGate);
   } else {
-    boot();
+    wireGate();
   }
 })();

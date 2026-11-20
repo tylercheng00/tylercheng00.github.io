@@ -572,7 +572,7 @@ def main():
         "ai",
         title="AI desk · AI 問答台 | 鄭迪珉 Tyler Cheng",
         description="Chat board on Tyler Cheng's site: ask online with your own API key, or offline with a browser model. Education only — not investment, legal or professional advice.",
-        og_type="website", scripts=("ai.js",),
+        og_type="website", scripts=("ai-knowledge.js", "ai.js"),
         head_extra='\n  <link rel="dns-prefetch" href="https://esm.sh">'
                    '\n  <link rel="dns-prefetch" href="https://api.openai.com">'), encoding="utf-8")
     (ROOT / "sites.html").write_text(fragment_page(
@@ -658,7 +658,7 @@ def apply_hero_photos():
         f.write_text(s, encoding="utf-8")
 
 
-ASSETS = ("styles.css", "main.js", "game.css", "game.js", "game-data.js", "game-kit.js", "game-worlds.js", "news.js", "markets.js", "us-equities.js", "contact.js", "clock.js", "readiness.js", "marksix.js", "member-bazi.js", "chart.js", "filings-course.js", "filings.js", "paper.js", "ai.js", "assets/fonts/fonts.css")
+ASSETS = ("styles.css", "main.js", "game.css", "game.js", "game-data.js", "game-kit.js", "game-worlds.js", "news.js", "markets.js", "us-equities.js", "contact.js", "clock.js", "readiness.js", "marksix.js", "member-bazi.js", "chart.js", "filings-course.js", "filings.js", "paper.js", "ai-knowledge.js", "ai.js", "assets/fonts/fonts.css")
 
 
 def stamp_assets():

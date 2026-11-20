@@ -28,15 +28,120 @@
     return lang() === "zh" ? zh : en;
   }
 
-  function systemPrompt() {
+  function knowledge() {
+    return window.TC_AI_KNOWLEDGE || null;
+  }
+
+  function coreBioBlock() {
+    var k = knowledge();
+    if (!k) return "";
+    var p = k.person || {};
+    var lines = [
+      "PRIMARY SUBJECT — answer questions about this person and his projects using the facts below (do not invent).",
+      "Name: " + (p.name_zh || "") + " / " + (p.name_en || ""),
+      "EN: " + (p.summary_en || ""),
+      "ZH: " + (p.summary_zh || ""),
+      "Education: " + ((k.education || []).join("; ")),
+      "Patents: " + ((k.patents && k.patents.summary_en) || "") +
+        " Numbers: " + (((k.patents && k.patents.hk_numbers) || []).join(", ")),
+      "Recognition: " + ((k.recognition || []).join(" | ")),
+      "Contact: email " + ((k.contact && k.contact.email) || "") +
+        "; work " + ((k.contact && k.contact.work_email) || "") +
+        "; site " + ((k.contact && k.contact.site) || "") +
+        "; LinkedIn " + ((k.contact && k.contact.linkedin) || "") +
+        "; WhatsApp " + ((k.contact && k.contact.whatsapp) || "") +
+        "; WeChat/X/Xiaohongshu handle " + ((k.contact && k.contact.wechat_x_xhs) || ""),
+      "Sites: " +
+        ((k.sites || [])
+          .map(function (s) {
+            return s.name + " (" + s.url + ") — " + s.note;
+          })
+          .join(" · ")),
+      "Page map: " + (k.site_map_hint || ""),
+    ];
+    (k.experience || []).forEach(function (x) {
+      lines.push(
+        "Role: " +
+          x.role_en +
+          " / " +
+          x.role_zh +
+          " @ " +
+          x.org_en +
+          " [" +
+          (x.when || "") +
+          "] — " +
+          x.detail_en
+      );
+    });
+    return lines.join("\n");
+  }
+
+  function retrieveProjectContext(userText) {
+    var k = knowledge();
+    if (!k || !k.projects) return "";
+    var q = String(userText || "").toLowerCase();
+    var scored = [];
+    k.projects.forEach(function (proj) {
+      var score = 0;
+      (proj.keys || []).forEach(function (key) {
+        if (q.indexOf(String(key).toLowerCase()) >= 0) score += 2;
+      });
+      if (q.indexOf(String(proj.title || "").toLowerCase()) >= 0) score += 3;
+      if (score > 0) scored.push({ score: score, proj: proj });
+    });
+    var index =
+      "PROJECT INDEX: " +
+      k.projects
+        .map(function (p) {
+          return p.title;
+        })
+        .join("; ");
+    if (!scored.length) {
+      if (
+        /tyler|cheng|鄭|迪珉|你|本人|about|簡介|經歷|project|專案|項目|venture|創業|patent|專利|company|公司/.test(
+          q
+        )
+      ) {
+        scored = k.projects.slice(0, 6).map(function (proj, i) {
+          return { score: 6 - i, proj: proj };
+        });
+      } else {
+        return index;
+      }
+    }
+    scored.sort(function (a, b) {
+      return b.score - a.score;
+    });
+    var picked = scored.slice(0, 5).map(function (s) {
+      var p = s.proj;
+      return (
+        "## " +
+        p.title +
+        "\n" +
+        p.detail_en +
+        "\n" +
+        p.detail_zh +
+        "\nLinks: " +
+        (p.links || []).join(" ")
+      );
+    });
+    return index + "\n\nRELEVANT PROJECT DETAILS:\n" + picked.join("\n\n");
+  }
+
+  function systemPrompt(userText) {
     return (
-      "You are the AI desk on Tyler Tik Man Cheng's personal site (tylercheng00.github.io). " +
+      "You are the AI desk on 鄭迪珉 Tyler Tik Man Cheng's personal site (tylercheng00.github.io). " +
+      "Your main job is to answer questions about Tyler himself, his career, patents, companies, and personal projects — using the AUTHORITATIVE FACTS in this prompt. " +
+      "Prefer those facts over general web knowledge when they conflict. If something is not in the facts, say you do not have that private detail and point to contact.html or WhatsApp. " +
       "Answer clearly in the user's language (English or Traditional Chinese). " +
-      "You can discuss markets, listing readiness, startups, and general knowledge. " +
+      "You may also help with general markets / listing / startup questions, but stay grounded when the topic is Tyler or his work. " +
       "You are not a licensed advisor; remind users when decisions need professionals. " +
-      "Refuse requests that seek help with crime, fraud, money laundering, theft of client funds, " +
-      "or converting other people's / institutional money into personal assets. " +
-      "Do not claim to be Cursor, OpenAI, or Tyler himself."
+      "Refuse crime, fraud, money laundering, theft of client funds, or converting other people's money into personal assets. " +
+      "Do not claim to be Cursor Inc., OpenAI, or Tyler himself — you are his site's AI desk.\n\n" +
+      "=== AUTHORITATIVE BIO ===\n" +
+      coreBioBlock() +
+      "\n\n=== RETRIEVED FOR THIS TURN ===\n" +
+      retrieveProjectContext(userText || "")
     );
   }
 
@@ -102,23 +207,23 @@
     if (el) {
       el.innerHTML = formatText(
         t(
-          "Ready. Pick Online (your API key) or Offline (browser model), then ask.",
-          "就緒。選擇「線上」（你的 API 金鑰）或「離線」（瀏覽器模型），然後提問。"
+          "Ready. This desk knows Tyler’s public bio and projects (Nanotech, BTRDCC, patents, Future City, member desks…). Online = your API key; Offline = browser model.",
+          "就緒。本台已載入鄭迪珉的公開簡介與專案（納米科研、BTRDCC、專利、Future City、會員桌面等）。線上＝你的 API 金鑰；離線＝瀏覽器模型。"
         )
       );
     }
     var foot = document.getElementById("ai-footnote");
     if (foot) {
       foot.textContent = t(
-        "Keys never leave this device to Tyler’s servers. Replies can be wrong. Education only.",
-        "金鑰不會送到 Tyler 的伺服器。回覆可能出錯。僅供教育參考。"
+        "Answers about Tyler use the site knowledge pack. Keys stay on this device. Replies can still be wrong. Education only.",
+        "關於 Tyler 的答案以本站知識庫為準。金鑰只留本機。回覆仍可能出錯。僅供教育參考。"
       );
     }
     var input = document.getElementById("ai-input");
     if (input) {
       input.placeholder = t(
-        "Ask about markets, listings, this site…",
-        "可問行情、上市、本站……"
+        "Ask about Tyler, Nanotech, patents, BTRDCC, Future City…",
+        "可問 Tyler、納米科研、專利、BTRDCC、Future City……"
       );
     }
   }
@@ -185,8 +290,8 @@
     });
   }
 
-  function messagesForApi() {
-    return [{ role: "system", content: systemPrompt() }].concat(history);
+  function messagesForApi(userText) {
+    return [{ role: "system", content: systemPrompt(userText) }].concat(history);
   }
 
   async function chatOnline(userText) {
@@ -210,7 +315,7 @@
       body: JSON.stringify({
         model: model,
         stream: true,
-        messages: messagesForApi().concat([{ role: "user", content: userText }]),
+        messages: messagesForApi(userText).concat([{ role: "user", content: userText }]),
       }),
     });
     if (!res.ok) {
@@ -288,7 +393,7 @@
     appendMsg("assistant", "…", streamId);
     var full = "";
     var chunks = await engine.chat.completions.create({
-      messages: messagesForApi().concat([{ role: "user", content: userText }]),
+      messages: messagesForApi(userText).concat([{ role: "user", content: userText }]),
       stream: true,
       temperature: 0.7,
     });

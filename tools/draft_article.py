@@ -25,6 +25,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 INSIGHTS = ROOT / "content" / "insights"
 sys.path.insert(0, str(ROOT / "tools"))
 from build_site import CATS, parse_article  # noqa: E402
+from insights_quality import check_text  # noqa: E402
 
 MODEL = "claude-opus-5-5"
 HK = dt.timezone(dt.timedelta(hours=8))
@@ -36,13 +37,15 @@ US Equities Market Specialist at Fuway Capital (IPO advisory, M&A, financing for
 listing in the US) and co-founder & COO of Nanotech Innovation Limited (nano-coatings, biomedical targeting, \
 patents). Readers are founders and investors in Hong Kong and mainland China.
 
-Write one new article in the same voice as the examples: plain, practical, specific, no hype. \
-About 550-750 English words, then Traditional Chinese in natural Hong Kong written Chinese (書面語, 繁體) \
-of similar depth. CRITICAL: the Chinese section is an independent commentary for Chinese readers \
-(BBC中文 / 香港01 / 台媒評論 tone) — NEVER a direct translation of the English. Read the English only \
-for the argument points, then write Chinese from scratch with Chinese news-column sentence rhythm. \
-No Chinglish calques, no English word order, no LinkedIn-slogan Chinese. \
-title_zh should read like a BBC/HK01 headline (觀察／為何／從…看…／冒號), not a tip slogan. \
+Write one new article in the same voice as the 2026-11-20 gold-standard notes: plain, practical, \
+specific, no hype. About 550-750 English words (never under 520), then Traditional Chinese in natural \
+Hong Kong written Chinese (書面語, 繁體) of similar depth (≥ ~700 Han characters). CRITICAL: the Chinese \
+section is an independent commentary for Chinese readers (BBC中文 / 香港01 / 台媒評論 tone) — NEVER a \
+direct translation of the English. Read the English only for the argument points, then write Chinese \
+from scratch with Chinese news-column sentence rhythm. No Chinglish calques, no English word order, \
+no LinkedIn-slogan Chinese, no slogan endings like「動能有用；懸崖沒用」or「最好的那個星期二」. \
+title_zh should read like a BBC/HK01 headline (觀察／為何／從…看…／冒號／之後), not a tip slogan. \
+Open the Chinese body on the day's news hook in the first paragraph. \
 A heading is "### " and you do not need the same number every time. Two headings is fine. So is none. \
 Set read: to 6–8 minutes.
 
@@ -254,6 +257,10 @@ def main():
         bad = [t for t in a["tags"] if t not in CATS or t == "weekly"]
         if bad:
             raise SystemExit(f"bad tags {bad}")
+        # Permanent publish standard from DAY_EVENT_FROM (length + native ZH + day hook).
+        issues = check_text(text, require_day_hook=event_mode)
+        if issues:
+            raise SystemExit("quality gate failed:\n- " + "\n- ".join(issues))
     except SystemExit:
         out.unlink()
         raise

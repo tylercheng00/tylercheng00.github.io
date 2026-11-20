@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-19T23:01:40Z",
+ "updated": "2026-11-20T07:07:11Z",
  "sources": [
   "BBC News",
   "BioPharma Dive",
@@ -28,7 +28,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-19T23:01:40Z"
+   "date": "2026-11-20T07:07:11Z"
   },
   {
    "title": "Dr. John H. Powers III to serve as director of NIH’s National Institute of Allergy and Infectious Diseases",
@@ -38,7 +38,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-19T23:01:40Z"
+   "date": "2026-11-20T07:07:11Z"
   },
   {
    "title": "For the first time, researchers map out the brain’s behavioral gatekeeper",
@@ -48,7 +48,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-19T23:01:40Z"
+   "date": "2026-11-20T07:07:11Z"
   },
   {
    "title": "Two ‘forever chemicals’ associated with higher risk of aggressive breast cancer in NIH analysis",
@@ -58,7 +58,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-19T23:01:40Z"
+   "date": "2026-11-20T07:07:11Z"
   },
   {
    "title": "Integrated health service delivery through medical mobile units helped to reduce deaths among individuals at risk for HIV who also inject drugs",
@@ -68,7 +68,581 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-19T23:01:40Z"
+   "date": "2026-11-20T07:07:11Z"
+  },
+  {
+   "title": "习近平会见泰国总理阿努廷",
+   "summary": "新华社深圳11月20日电(记者马卓言、印朋)11月20日上午，国家主席习近平在深圳会见来华出席亚太经合组织领导人非正式会议的泰国总理阿努廷。",
+   "link": "https://www.chinanews.com.cn/gn/2026/11-20/10735235.shtml",
+   "source": "中國新聞網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-20T07:02:05Z"
+  },
+  {
+   "title": "可循环、轻量化……快递包装迎“新”逐“绿”不停步 全链条实践获双赢",
+   "summary": "邮政行业寄递量增长的同时，在今年网购的旺季，快递包装也发生了新的变化，变得更绿色、更轻量化。连续两年，记者都探访了中国邮政绿色包装创新实验室，今年实验室又研发了什么新产品呢？",
+   "link": "https://news.cctv.com/2026/11/20/ARTIrVh58gCyFGTxCxULcIKj261120.shtml",
+   "source": "央視網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-20T07:00:57Z"
+  },
+  {
+   "title": "China’s university graduates to hit record 13 million in 2027 amid jobs strain",
+   "summary": "The number of Chinese university graduates is expected to hit a record 13 million next summer, adding pressure on a labour market already strained by slowing economic growth. The 2027 cohort is estimated to be 2.4 per…",
+   "link": "https://www.scmp.com/economy/china-economy/article/3375183/chinas-university-graduates-hit-record-13-million-2027-amid-jobs-strain",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-20T07:00:18Z"
+  },
+  {
+   "title": "11-second handshake: Takaichi adopts more proactive approach with Xi at Apec, experts say",
+   "summary": "Exchanges between top Chinese and Japanese leaders show Prime Minister Sanae Takaichi adopting a far more proactive approach to assert control and seek direct communication, according to body language experts. Over the…",
+   "link": "https://www.scmp.com/news/china/diplomacy/article/3375179/11-second-handshake-takaichi-adopts-more-proactive-approach-xi-apec-say-experts",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-20T07:00:13Z"
+  },
+  {
+   "title": "五角大楼官员：美国已为伊朗战事花费超480亿美元",
+   "summary": "美国国防部官员19日在国会听证会上说，截至11月13日的评估显示，美国已为伊朗战事花费483亿美元，且不包含中东地区美军基地遇袭的损失。",
+   "link": "https://news.cctv.com/2026/11/20/ARTIaS4DFK9inda1ChS9Lbyy261120.shtml",
+   "source": "央視網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-20T06:52:05Z"
+  },
+  {
+   "title": "国家公园每五年开展一次“生态体检”",
+   "summary": "家林业和草原局等五部门日前制定印发国家公园自然资源和生态环境状况评估办法，根据《办法》，国家公园每五年将开展一次“生态体检”。",
+   "link": "https://news.cctv.com/2026/11/20/ARTIuAs7ddvX2WpygTAKJrDe261120.shtml",
+   "source": "央視網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-20T06:51:47Z"
+  },
+  {
+   "title": "数字平台、新能源货车进入运输场景 公路货运迎来新变化",
+   "summary": "中国物流与采购联合会在2026物流平台与运力发展推进会上发布的最新报告显示，今年以来我国公路货运行业运行环境出现一些新的变化。",
+   "link": "https://news.cctv.com/2026/11/20/ARTIVWb1cFAxQAfZx945D3Fc261120.shtml",
+   "source": "央視網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-20T06:51:33Z"
+  },
+  {
+   "title": "江苏提出到2030年基本实现交通运输现代化",
+   "summary": "中新网南京11月20日电 (记者 徐珊珊)11月19日，江苏省政府召开新闻发布会，解读近日印发的《江苏省“十五五”综合交通运输体系发展规划》(简称《规划》)。《规划》明确，到2030年，江苏基本实现交通运输现代化，总体发展水平居全国前列；到2035年，总体达到世界发达国家水平。",
+   "link": "https://www.chinanews.com.cn/gn/2026/11-20/10735232.shtml",
+   "source": "中國新聞網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-20T06:49:30Z"
+  },
+  {
+   "title": "前10月中国快递收入增速“跑赢”业务量",
+   "summary": "中新社北京11月20日电 (记者 王梦瑶)据中国国家邮政局20日消息，今年前10个月，中国快递业务收入累计完成12981.5亿元人民币，同比增长6.6%；同期快递业务量累计完成1688.2亿件，同比增长3.8%。快递业务收入增速“跑赢”业务量增速。",
+   "link": "https://www.chinanews.com.cn/cj/2026/11-20/10735226.shtml",
+   "source": "中國新聞網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-20T06:48:16Z"
+  },
+  {
+   "title": "百万重奖寻创作者！2027宁波银行·天e网络文学大赛全球启幕",
+   "summary": "2026年11月19日，2027宁波银行·天e网络文学大赛正式向全球创作者发出“英雄帖”。本届大赛旨在构建“网文原创+AI短剧可视化+海内外全域传播”的全链条孵化平台，面向全球征集优质网络文学作品，以单部作品最高50万元的奖金，刷新国内网络文学赛事单项奖金纪录。",
+   "link": "https://www.chinanews.com.cn/cj/2026/11-20/10735227.shtml",
+   "source": "中國新聞網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-20T06:47:40Z"
+  },
+  {
+   "title": "中国电动汽车充电枪总数超2500万个",
+   "summary": "中新社北京11月20日电 (记者 王梦瑶)中国国家能源局20日发布的数据显示，截至2026年10月底，中国电动汽车充电基础设施(枪)总数达到2539.1万个，同比增长36.2%。",
+   "link": "https://www.chinanews.com.cn/cj/2026/11-20/10735224.shtml",
+   "source": "中國新聞網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-20T06:47:18Z"
+  },
+  {
+   "title": "湖南省永州市委原常委、秘书长唐能武被开除党籍",
+   "summary": "中央纪委国家监委网站11月20日通报，据湖南省纪委监委消息：经湖南省委批准，湖南省纪委监委对永州市委原常委、秘书长唐能武严重违纪违法问题进行了立案审查调查。",
+   "link": "https://news.cctv.com/2026/11/20/ARTIaaDIvVCKoEyjBSfjWNtK261120.shtml",
+   "source": "央視網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-20T06:46:42Z"
+  },
+  {
+   "title": "武汉商学院原党委书记刘志辉被“双开”",
+   "summary": "中央纪委国家监委网站11月20日通报，据湖北省纪委监委消息：经湖北省委批准，湖北省纪委监委对武汉商学院原党委书记刘志辉严重违纪违法问题进行了立案审查调查。",
+   "link": "https://news.cctv.com/2026/11/20/ARTIBM5TlB5gVVFPcnJFpe5G261120.shtml",
+   "source": "央視網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-20T06:42:39Z"
+  },
+  {
+   "title": "金融街证券董事长祝艳辉被查",
+   "summary": "中新网北京11月20日电(记者 谢艺观)11月20日，金融街证券发布公告，根据北京市西城区监察委员会通知，公司董事长祝艳辉目前正接受调查并被实施留置措施。",
+   "link": "https://www.chinanews.com.cn/cj/2026/11-20/10735202.shtml",
+   "source": "中國新聞網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-20T06:40:06Z"
+  },
+  {
+   "title": "延榆高铁王家坪隧道顺利贯通",
+   "summary": "中新网延安11月20日电(记者 张远)记者20日从西安铁路局获悉，延榆高铁王家坪隧道18日顺利贯通，这是延榆高铁贯通的第2座4千米以上隧道，全线隧道累计掘进量超90%。",
+   "link": "https://www.chinanews.com.cn/cj/2026/11-20/10735220.shtml",
+   "source": "中國新聞網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-20T06:38:54Z"
+  },
+  {
+   "title": "做好冬季电煤保供运输“加减法” 守护万家冬日暖意",
+   "summary": "眼下，全国多地遭遇大风降温天气，各地采暖、生产用能需求加大。我国西煤东运主要通道大秦铁路全力保障冬季电煤运输顺畅，日运量保持在120万吨以上。",
+   "link": "https://news.cctv.com/2026/11/20/ARTIbYRjwliNsvrVdMzptCIt261120.shtml",
+   "source": "央視網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-20T06:32:34Z"
+  },
+  {
+   "title": "Xi Jinping urges trust-based partnership with Australia in Shenzhen bilateral talks",
+   "summary": "China and Australia should be “partners that trust each other”, President Xi Jinping told Australian Prime Minister Anthony Albanese in Shenzhen on Friday. Xi struck an upbeat tone on Beijing’s relationship with…",
+   "link": "https://www.scmp.com/news/china/diplomacy/article/3375180/xi-jinping-urges-trust-based-partnership-australia-shenzhen-bilateral-talks",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-20T06:31:13Z"
+  },
+  {
+   "title": "新华图讯丨习近平会见马来西亚总理安瓦尔",
+   "summary": "11月20日，国家主席习近平在深圳会见马来西亚总理安瓦尔。",
+   "link": "https://www.chinanews.com.cn/gn/2026/11-20/10735207.shtml",
+   "source": "中國新聞網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-20T06:24:47Z"
+  },
+  {
+   "title": "新华图讯丨习近平会见泰国总理阿努廷",
+   "summary": "11月20日，国家主席习近平在深圳会见泰国总理阿努廷。",
+   "link": "https://www.chinanews.com.cn/gn/2026/11-20/10735198.shtml",
+   "source": "中國新聞網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-20T06:24:35Z"
+  },
+  {
+   "title": "广西梧州厚植营商沃土助企扬帆拓市 释放民营新活力",
+   "summary": "中新网梧州11月20日电 题：广西梧州厚植营商沃土助企扬帆拓市 释放民营新活力",
+   "link": "https://www.chinanews.com.cn/cj/2026/11-20/10735201.shtml",
+   "source": "中國新聞網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-20T06:21:57Z"
+  },
+  {
+   "title": "Social poker with £5 stake is booming, says dealer",
+   "summary": "A poker league in Fenland sees a 35% rise in players since 2022.",
+   "link": "https://www.bbc.co.uk/news/articles/cm8947dy3kg9o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-20T06:19:25Z"
+  },
+  {
+   "title": "铜陵化学工业集团有限公司原党委委员、副总经理李霞严重违纪违法被开除党籍",
+   "summary": "中新网11月20日电 据“铜陵廉镜”微信公众号消息，日前，经中共铜陵市委批准，铜陵市纪委监委对铜陵化学工业集团有限公司原党委委员、副总经理李霞严重违纪违法问题进行了立案审查调查。",
+   "link": "https://www.chinanews.com.cn/gn/2026/11-20/10735179.shtml",
+   "source": "中國新聞網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-20T06:16:43Z"
+  },
+  {
+   "title": "APEC参会外企高管：亚太产业协同让互补红利加速释放",
+   "summary": "中新网深圳11月20日电(记者 宫宏宇)“亚太地区各经济体各有所长，应深化跨境投资与产业协同，将比较优势转化为区域整体竞争力，促进亚太产业发展与共同繁荣。”",
+   "link": "https://www.chinanews.com.cn/cj/2026/11-20/10735193.shtml",
+   "source": "中國新聞網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-20T06:14:55Z"
+  },
+  {
+   "title": "深圳企业把“共赢”写进亚太产业链",
+   "summary": "一件毛衣扎不扎人，得等消费者穿上身之后才知道。但是在秘鲁，一只羊驼的毛做出来的毛衣扎不扎，在它出生前，牧民们心里就有底了。",
+   "link": "https://www.chinanews.com.cn/cj/2026/11-20/10735195.shtml",
+   "source": "中國新聞網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-20T06:13:04Z"
+  },
+  {
+   "title": "Survey reveals 'major increase' in cost of living",
+   "summary": "More than two thirds of respondents reported noticing rises in the cost of living.",
+   "link": "https://www.bbc.co.uk/news/articles/cq772r7kk315o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-20T06:12:28Z"
+  },
+  {
+   "title": "'When I found out about Breast Friends it was the best thing ever'",
+   "summary": "The King's Award for Voluntary Service is the highest award given to voluntary groups in the UK.",
+   "link": "https://www.bbc.co.uk/news/articles/c862p6v3wx43o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-20T06:10:40Z"
+  },
+  {
+   "title": "Community hub to close citing financial challenges",
+   "summary": "Lisa Green, who works in the cafe, says the team is like a \"family\" and people rely on the hub.",
+   "link": "https://www.bbc.co.uk/news/articles/cv0l31g4n1weo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-20T06:09:33Z"
+  },
+  {
+   "title": "Mouldy, infested housing for vulnerable people sold as ethical investments abroad",
+   "summary": "The properties are marketed at premium prices with claims of “government-backed” returns, the BBC finds.",
+   "link": "https://www.bbc.co.uk/news/articles/c6evre8j12vno?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-20T06:00:33Z"
+  },
+  {
+   "title": "（深圳APEC）海外侨胞关注APEC会议：凝聚合作共识 共促亚太繁荣",
+   "summary": "中新社深圳11月20日电 (记者 门睿 吴侃)2026年亚太经合组织(APEC)领导人会议周受到世界瞩目。多位海外侨胞接受中新社记者连线采访时表示，APEC会议为建设亚太共同体汇聚合力，期待各方以务实合作促进共同繁荣。",
+   "link": "https://www.chinanews.com.cn/gn/2026/11-20/10735124.shtml",
+   "source": "中國新聞網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-20T05:56:50Z"
+  },
+  {
+   "title": "（深圳APEC）烟火气和安全感，是深圳最高级的“素颜”",
+   "summary": "中新社深圳11月19日电 题：烟火气和安全感，是深圳最高级的“素颜”",
+   "link": "https://www.chinanews.com.cn/gn/2026/11-20/10735182.shtml",
+   "source": "中國新聞網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-20T05:55:19Z"
+  },
+  {
+   "title": "从产品“出海”到品牌“出圈” 非遗国潮打开文化新空间",
+   "summary": "2026年APEC会议周期间，深圳掀起非遗国潮消费热。不少海外游客走进千年古巷，体验掐丝珐琅等传统技艺、选购国风文创。从非遗手作到绿色原创产品，深圳自主品牌加快从“产品出海”迈向“品牌出海”，持续收获海外市场认可。",
+   "link": "https://news.cctv.com/2026/11/20/ARTIhutWndowDyVlE0ETCj9M261120.shtml",
+   "source": "央視網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-20T05:48:25Z"
+  },
+  {
+   "title": "大国外交最前线丨APEC会议闭幕后 习近平主席继续会见多国领导人",
+   "summary": "11月20日，习近平主席在深圳密集会见印度尼西亚、澳大利亚、新加坡、泰国、马来西亚五国领导人。",
+   "link": "https://news.cctv.com/2026/11/20/ARTI7qr4LMvq0sLaRZfeVA7h261120.shtml",
+   "source": "央視網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-20T05:30:48Z"
+  },
+  {
+   "title": "Comb restores hair growth; Kim Jong-un daughter’s luxury ski gear: SCMP’s 7 highlights",
+   "summary": "We have selected seven stories from this week’s news across Hong Kong, mainland China, the wider Asia region and beyond that resonated with our readers and shed light on topical issues. If you would like to see more of…",
+   "link": "https://www.scmp.com/news/world/article/3375020/comb-restores-hair-growth-kim-jong-un-daughters-luxury-ski-gear-scmps-7-highlights",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-20T04:15:08Z"
+  },
+  {
+   "title": "Why the ball is in Kim Jong-un’s court on a meeting with Donald Trump",
+   "summary": "North Korean leader Kim Jong-un’s absence from the Asia-Pacific Economic Cooperation gathering in Shenzhen could indicate that a meeting with Donald Trump will not take place in the foreseeable future. Analysts said it…",
+   "link": "https://www.scmp.com/news/china/diplomacy/article/3375160/why-ball-kim-jong-uns-court-meeting-donald-trump",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-20T04:07:56Z"
+  },
+  {
+   "title": "Innovation stagnation: why China keeps buying less from Europe amid overall import surge",
+   "summary": "China’s imports grew faster than its exports in October, but while its East Asian neighbours benefited from the surge, Europe missed out. The split in China’s latest trade figures partly reflected European industry’s…",
+   "link": "https://www.scmp.com/economy/global-economy/article/3375158/innovation-stagnation-why-china-keeps-buying-less-europe-amid-overall-import-surge",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-20T04:00:23Z"
+  },
+  {
+   "title": "Senate passes BAAJA permitting reform bill backed by AI, energy sectors",
+   "summary": "The permitting bill's Senate passage is a key step to it becoming law, but it would also need to clear the House before heading to President Trump's desk.",
+   "link": "https://www.cnbc.com/2026/11/20/baaja-bill-senate-passes-permitting-reform.html",
+   "source": "CNBC",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-20T03:56:17Z"
+  },
+  {
+   "title": "China-Russia-US trilateral summit declaration towards peace",
+   "summary": "Chinese President Xi Jinping, US President Donald Trump and Russian President Vladimir Putin held a trilateral summit in Shenzhen on November 19, 2026. Following the summit, the three sides issued a joint declaration…",
+   "link": "https://www.scmp.com/plus/news/china/article/3375154/china-russia-us-trilateral-summit-declaration-towards-peace",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-20T03:16:47Z"
+  },
+  {
+   "title": "GTA 6 breaks records as estimated sales top $2.3bn",
+   "summary": "Rockstar Games ended a 13-year wait with what is expected to be the biggest entertainment launch ever.",
+   "link": "https://www.bbc.co.uk/news/articles/c9zr5nyv5dj2o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-20T02:54:40Z"
+  },
+  {
+   "title": "Japan core inflation soars to highest this year as energy subsidy expiry pushes up consumer prices",
+   "summary": "The core inflation figure — which strips out prices of food — was lower than the 2.3% expected by Reuters-polled economists.",
+   "link": "https://www.cnbc.com/2026/11/20/japan-inflation-cpi-october.html",
+   "source": "CNBC",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-20T01:49:03Z"
+  },
+  {
+   "title": "Does our ethnicity change how we experience dying?",
+   "summary": "Death is the one certainty we all share - but could our ethnicity change how we go through it?",
+   "link": "https://www.bbc.co.uk/news/articles/cv7028g0j3yxo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-20T01:29:43Z"
+  },
+  {
+   "title": "US army warns detonation of unstable explosives will create toxic plume",
+   "summary": "The Army has delayed the controlled explosion of unstable lead azide in eastern Iowa to Monday after concerns from residents and lawmakers.",
+   "link": "https://www.bbc.co.uk/news/articles/cmlye2334wlyo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-20T01:27:27Z"
+  },
+  {
+   "title": "Commerce approved sales of more than 879,000 AI chips to Chinese companies, Rep. Mast says",
+   "summary": "Members of Congress have pushed in the wake of the Jensen Huang scandal for legislation to tighten export controls on chip sales to China.",
+   "link": "https://www.cnbc.com/2026/11/19/nvidia-amd-china-chip-sales-congress.html",
+   "source": "CNBC",
+   "cats": [
+    "china",
+    "us"
+   ],
+   "date": "2026-11-20T00:53:55Z"
+  },
+  {
+   "title": "Experimental compound burns fat without sacrificing muscle",
+   "summary": "Researchers at UC Berkeley have identified a compound that could transform weight-loss treatment by helping the body burn more energy instead of suppressing appetite like Ozempic and Wegovy. In mice, the compound…",
+   "link": "https://www.sciencedaily.com/releases/2026/11/261118073918.htm",
+   "source": "ScienceDaily",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-20T00:19:49Z"
+  },
+  {
+   "title": "Why Canada is embracing AI data centres while the US pushes back",
+   "summary": "Shark Tank's Kevin O'Leary is among the big investors looking to Canada as a data centre development destination, while his US project faces local opposition.",
+   "link": "https://www.bbc.co.uk/news/articles/cmx2q223z1jlo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-20T00:13:24Z"
+  },
+  {
+   "title": "Airbnb's divisive new house rules come into force",
+   "summary": "New rules on what Airbnb hosts can reasonably ask guests to do could mean fewer chores but higher costs for customers.",
+   "link": "https://www.bbc.co.uk/news/articles/cmx278n2genyo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-20T00:12:28Z"
+  },
+  {
+   "title": "Fish and eggs al desko? The dos and don'ts of the lunch break",
+   "summary": "What is acceptable to eat at your desk, without annoying your colleagues?",
+   "link": "https://www.bbc.co.uk/news/articles/cwp8g4092zglo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-20T00:08:37Z"
+  },
+  {
+   "title": "Massive hope for pancreatic cancer pill after trial saw tumours vanish",
+   "summary": "Daily pill daraxonrasib appears to shrink and possibly even eliminate tumours in some patients with one of the deadliest cancers.",
+   "link": "https://www.bbc.co.uk/news/articles/cqrmgjnzz9l0o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-20T00:08:22Z"
+  },
+  {
+   "title": "Tens of thousands of UK fridges secured from hackers in secret nationwide operation",
+   "summary": "Supermarkets, warehouses, restaurants and stadiums have been scrambling to make their devices safe.",
+   "link": "https://www.bbc.co.uk/news/articles/c6eq49zyx7p4o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-20T00:02:07Z"
+  },
+  {
+   "title": "Resident doctors to begin 24-hour strike over pay",
+   "summary": "A full 24-hour strike begins at 07:00 GMT - the second such action taken by doctors this year.",
+   "link": "https://www.bbc.co.uk/news/articles/cm3vgwxyxgk5o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-20T00:02:03Z"
+  },
+  {
+   "title": "STAT+: Big drugmakers tell House committee they will halt clinical trials at some hospitals in China",
+   "summary": "Big drugmakers tell U.S. House committee they will halt clinical trials at some hospitals in China.",
+   "link": "https://www.statnews.com/pharmalot/2026/11/19/china-pharma-biotech-clinical-trials-security-risk-patents-drug-development/?utm_campaign=rss",
+   "source": "STAT News",
+   "cats": [
+    "biotech",
+    "china"
+   ],
+   "date": "2026-11-20T00:00:00Z"
+  },
+  {
+   "title": "How did Anthropic's stock market debut unfold?",
+   "summary": "The BBC's Samira Hussain breaks down the AI company's first day as a publicly traded company, as shares closed up 17%.",
+   "link": "https://www.bbc.co.uk/news/videos/cwg7l01vg081o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-19T23:52:25Z"
+  },
+  {
+   "title": "Trump posthumously pardons US baseball legend Pete Rose",
+   "summary": "Rose, who died in 2024, was given a lifetime ban from the sport for betting on games but was reinstated last year.",
+   "link": "https://www.bbc.co.uk/news/articles/cx1l0pm7l9jmo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-19T23:51:50Z"
+  },
+  {
+   "title": "US Congress releases list of Chinese firms seeking Nvidia chips",
+   "summary": "A US House committee on Thursday released confidential licence applications from Chinese companies seeking to buy advanced artificial intelligence chips from Nvidia and AMD, information normally protected under US…",
+   "link": "https://www.scmp.com/news/china/diplomacy/article/3375135/us-congress-releases-list-chinese-firms-seeking-nvidia-chips",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-19T23:46:10Z"
+  },
+  {
+   "title": "Fiona the hippo dies after swallowing a hat at Cincinnati Zoo",
+   "summary": "Fiona, who became an internet star after her premature birth in 2017, \"fought until she couldn’t anymore\", the zoo says.",
+   "link": "https://www.bbc.co.uk/news/articles/cwz0k3172xzko?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-19T23:40:29Z"
+  },
+  {
+   "title": "Anthropic becomes one of world's most valuable public companies in stock market debut",
+   "summary": "Anthropic is the first purely AI company to be publicly listed, creating a test for the entire industry.",
+   "link": "https://www.bbc.co.uk/news/articles/c3x29ggenz12o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-19T23:33:51Z"
+  },
+  {
+   "title": "California attorney general issues Nvidia subpoena in probe of China chip diversion",
+   "summary": "The investigation by California Attorney General Rob Bonta comes on the heels of the resignation of Nvidia CEO Jensen Huang.",
+   "link": "https://www.cnbc.com/2026/11/19/nvidia-california-bonta-subpoena-china-chips.html",
+   "source": "CNBC",
+   "cats": [
+    "china",
+    "us"
+   ],
+   "date": "2026-11-19T23:21:23Z"
+  },
+  {
+   "title": "California targets Nvidia in China AI chip probe",
+   "summary": "The probe by California, where the AI chipmaker has its global headquarters, follows former CEO Jensen Huang's departure.",
+   "link": "https://www.bbc.co.uk/news/articles/cqn70vxp5p4no?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "china",
+    "us"
+   ],
+   "date": "2026-11-19T23:04:30Z"
   },
   {
    "title": "Opinion: The U.S. lost measles elimination status. The next Congress should help restore it",
@@ -91,26 +665,6 @@
    "date": "2026-11-19T22:54:03Z"
   },
   {
-   "title": "AI给古人装上了“监控”？网友：我当时就在保安室",
-   "summary": "网友生成“司马光砸瓮”的视频进行科普。有风君采访到了“古人监控”系列视频创作者之一的老王。有风君注意到，这些“古代监控”大多数还是打上AI创作标识的，只有少数几个创作者存在“漏标”的情况。",
-   "link": "https://news.cctv.com/2026/11/20/ARTIQyVDNCM26L5avJDzZhwH261120.shtml",
-   "source": "央視網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-19T22:53:42Z"
-  },
-  {
-   "title": "明年起职称评审新规将施行 进一步深化职称制度改革",
-   "summary": "记者11月19日获悉，人力资源社会保障部近日印发关于修改《职称评审管理暂行规定》的决定，进一步深化职称制度改革。信用管理方面，决定明确人力资源社会保障行政部门建立健全职称信用管理制度，评审单位落实失信行为认定、处理、记录等具体实施工作。",
-   "link": "https://news.cctv.com/2026/11/20/ARTIBBIkgzRcbxk8b5RO0Vxg261120.shtml",
-   "source": "央視網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-19T22:51:17Z"
-  },
-  {
    "title": "Judge finds Thomas Markle mentally fit to stand trial on child abuse charges",
    "summary": "Markle, who has denied possessing images of child sex abuse was deemed competent after an evaluation by a court-appointed psychiatrist.",
    "link": "https://www.bbc.co.uk/news/articles/crgj35ldz2zxo?at_medium=RSS&at_campaign=rss",
@@ -119,76 +673,6 @@
     "us"
    ],
    "date": "2026-11-19T22:48:22Z"
-  },
-  {
-   "title": "美发店突然闭店 7万余元预付款谁来退？法院这样判",
-   "summary": "“先充值、后消费”的预付模式是常见的消费选择，但也暗藏纠纷隐患。一旦商家突然关门停业，极易催生“退费难”问题。",
-   "link": "https://news.cctv.com/2026/11/20/ARTIx8tGbL9l0ILZPbGH4oSo261120.shtml",
-   "source": "央視網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-19T22:47:44Z"
-  },
-  {
-   "title": "人口结构变化 多地幼儿园等闲置校舍改造成养老机构",
-   "summary": "10月底的一天，清晨7点，浙江金华北苑小区，89岁的李婆婆拄着拐杖走到老伴遗像前，像往常一样说了一句：“老伴，我去上幼儿园了！”说完，她出门来到小区里的“润年之家”——这里曾是开办了25年的幼儿园，如今已改成养老院。滑梯还在，钢琴还在，教室变成了卧室，儿歌换成了老人们唱的老歌。",
-   "link": "https://news.cctv.com/2026/11/20/ARTIXdJBl07Q7q6WGArLV6CN261120.shtml",
-   "source": "央視網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-19T22:47:15Z"
-  },
-  {
-   "title": "美媒：特朗普称不会在新年前“仓促”决定对伊行动",
-   "summary": "中新网11月20日电 据美国阿克西奥斯新闻网站报道，美国总统特朗普19日表示，在新年到来之前，他不会就伊朗问题的下一步行动“仓促”作出决定。",
-   "link": "https://www.chinanews.com.cn/gj/2026/11-20/10734989.shtml",
-   "source": "中國新聞網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-19T22:45:16Z"
-  },
-  {
-   "title": "普京：克里米亚大桥遭袭后 俄方不会再讨论海上停火",
-   "summary": "俄罗斯总统普京19日表示，在克里米亚大桥遭袭后，俄方不会就海上停火或停止攻击能源设施与有关方面进行谈判。",
-   "link": "https://news.cctv.com/2026/11/20/ARTIEQmlEDhF1MKnmzezTZsR261120.shtml",
-   "source": "央視網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-19T22:34:22Z"
-  },
-  {
-   "title": "特朗普表示不会在新年前“仓促”决定对伊朗行动",
-   "summary": "美国总统特朗普19日表示，在新年到来之前，他不会就伊朗问题的下一步行动“仓促”作出决定。特朗普当天接受采访时说，他不会就伊朗问题“仓促”作出任何决定，“我们要看看新年之后局势如何发展”。",
-   "link": "https://news.cctv.com/2026/11/20/ARTIAOhvv6E5F2iU5vIQhSZ2261120.shtml",
-   "source": "央視網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-19T22:30:22Z"
-  },
-  {
-   "title": "北京多所高校提供免费“算力福利” 加速AI创新应用",
-   "summary": "图为北大智能学院宣讲团为校内教职工开展AI办公智能体应用培训。” 如今，李鸿泽和智能学院“智能青年”学生宣讲团的同学们，正在利用课余时间面向校内师生开展关于AI智能体使用的系列培训。",
-   "link": "https://news.cctv.com/2026/11/20/ARTISuy07HTWxGI234Z2LnVp261120.shtml",
-   "source": "央視網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-19T22:25:01Z"
-  },
-  {
-   "title": "锤炼坚强党性 保持政治本色（深入学习贯彻习近平新时代中国特色社会主义思想）",
-   "summary": "党的二十届五中全会通过的《中共中央关于持之以恒推进全面从严治党若干重大问题的决定》（以下简称《决定》），全面贯彻习近平党建思想，对持之以恒推进全面从严治党作出系统部署，把“增强共产党人的党性”摆在各项战略任务和重大举措的首位，明确提出“增强党性是全面从严治党的根本性任务”，强调必须推动全体党员干部把加强党性修养作为终身课题。",
-   "link": "https://news.cctv.com/2026/11/20/ARTICGMFlrHhd3SIXQfBgHFY261120.shtml",
-   "source": "央視網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-19T22:22:08Z"
   },
   {
    "title": "Study raises doubts about combining vaccine, monoclonal antibody to protect against malaria",
@@ -201,26 +685,6 @@
    "date": "2026-11-19T22:20:00Z"
   },
   {
-   "title": "王毅介绍亚太经合组织第三十三次领导人非正式会议及相关活动成果",
-   "summary": "11月19日，中共中央政治局委员、外交部长王毅在深圳向中外记者介绍亚太经合组织第三十三次领导人非正式会议及相关活动成果，并回答记者提问。",
-   "link": "https://news.cctv.com/2026/11/20/ARTINtxSogscjFOH09SeIkMX261120.shtml",
-   "source": "央視網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-19T22:17:40Z"
-  },
-  {
-   "title": "Fiona the hippo dies after swallowing a hat at Cincinnati Zoo",
-   "summary": "Fiona, who became an internet star after her premature birth in 2017, \"fought until she couldn’t anymore\", the zoo says.",
-   "link": "https://www.bbc.co.uk/news/articles/cwz0k3172xzko?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-19T22:09:04Z"
-  },
-  {
    "title": "US crackdown on scam networks connected to Chinese-born tycoon Chen Zhi ramps up",
    "summary": "The United States sanctioned three individuals and two companies on Thursday over their alleged links to scam centre compounds in Southeast Asia, in the latest US crackdown on networks connected to Chinese-born tycoon…",
    "link": "https://www.scmp.com/news/china/diplomacy/article/3375133/us-crackdown-scam-networks-connected-chinese-born-tycoon-chen-zhi-ramps",
@@ -229,26 +693,6 @@
     "china"
    ],
    "date": "2026-11-19T22:07:55Z"
-  },
-  {
-   "title": "钱凯港运营两周年 为中秘双边贸易带来哪些改变？",
-   "summary": "钱凯港，是2024年11月中秘共建“一带一路”的重点项目。“从钱凯到上海”是钱凯港极具代表性的发展标识。历经两年运营，这座现代化港口建设运营成效如何？为中秘双边贸易带来哪些改变？",
-   "link": "https://www.chinanews.com.cn/cj/2026/11-20/10734988.shtml",
-   "source": "中國新聞網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-19T22:06:26Z"
-  },
-  {
-   "title": "普京：克里米亚大桥遭袭后 不再讨论海上停火",
-   "summary": "新华社莫斯科11月19日电 俄罗斯总统普京19日表示，在克里米亚大桥遭袭后，俄方不会就海上停火或停止攻击能源设施与有关方面进行谈判。",
-   "link": "https://www.chinanews.com.cn/gj/2026/11-20/10734987.shtml",
-   "source": "中國新聞網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-19T22:05:38Z"
   },
   {
    "title": "New rail links would bring Asean even closer to China. Will Beijing pay to make it happen?",
@@ -269,27 +713,6 @@
     "biotech"
    ],
    "date": "2026-11-19T21:45:24Z"
-  },
-  {
-   "title": "Commerce approved sales of more than 879,000 AI chips to Chinese companies, Rep. Mast says",
-   "summary": "Members of Congress have pushed in the wake of the Jensen Huang scandal for legislation to tighten export controls on chip sales to China.",
-   "link": "https://www.cnbc.com/2026/11/19/nvidia-amd-china-chip-sales-congress.html",
-   "source": "CNBC",
-   "cats": [
-    "china",
-    "us"
-   ],
-   "date": "2026-11-19T21:43:30Z"
-  },
-  {
-   "title": "Anthropic becomes one of world's most valuable public companies in stock market debut",
-   "summary": "Anthropic is the first purely AI company to be publicly listed, creating a test for the entire industry.",
-   "link": "https://www.bbc.co.uk/news/articles/c3x29ggenz12o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-19T21:38:42Z"
   },
   {
    "title": "Peterson: Nvidia’s leadership crisis tests the chipmaker’s role as the ‘central bank of AI’",
@@ -333,16 +756,6 @@
    "date": "2026-11-19T19:58:18Z"
   },
   {
-   "title": "Xi, Trump and Putin ‘peace declaration’ suggests summit is more than a photo op",
-   "summary": "What was teased for weeks as an unprecedented three-way photo opportunity ended up rattling the geopolitical landscape on Thursday with the release of a China-US-Russia joint “peace declaration” outlining areas of…",
-   "link": "https://www.scmp.com/news/china/diplomacy/article/3375130/xi-trump-and-putin-peace-declaration-suggests-summit-more-photo-op",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-19T19:51:48Z"
-  },
-  {
    "title": "Judges have put Trump's arch and golf course on hold, but only for a matter of days",
    "summary": "A federal judge has twice delayed construction of Trump's arch. Another is keeping East Potomac Park open. The proposed golf course redesign got mixed feedback from a federal arts panel on Thursday.",
    "link": "https://www.npr.org/2026/11/19/nx-s1-6047151/trump-arch-golf-course-judge-orders",
@@ -373,76 +786,6 @@
    "date": "2026-11-19T18:44:34Z"
   },
   {
-   "title": "US acts against Chinese telecoms firms hours after Trump-Xi meeting",
-   "summary": "The United States on Thursday banned Chinese telecoms operators from directly accessing US phone numbers on national security grounds, just hours after President Donald Trump held talks with Chinese leader Xi Jinping in…",
-   "link": "https://www.scmp.com/news/china/diplomacy/article/3375128/fcc-votes-ban-chinese-telecoms-direct-access-us-phone-numbers",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-19T18:21:18Z"
-  },
-  {
-   "title": "Analysis: Trilateral summit high on spectacle, short on substance",
-   "summary": "The visuals of the historic trilateral meeting may be the only lasting impression left by the summit.",
-   "link": "https://www.bbc.co.uk/news/articles/cwn70vrjlg8ro?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-19T17:55:15Z"
-  },
-  {
-   "title": "'Dad was deteriorating': Two-hour ambulance target missed more than 2,000 times",
-   "summary": "The Release to Rescue initiative was introduced this year to cut ambulance delays and speed up handover times.",
-   "link": "https://www.bbc.co.uk/news/articles/cm752zx62n62o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-19T17:31:34Z"
-  },
-  {
-   "title": "我国将加快推进流域水风光一体化基地建设",
-   "summary": "记者从国家能源局了解到，“十五五”时期，我国将加快推进雅砻江等流域水风光一体化基地建设，到2030年，要形成一批促进新能源就近就地消纳的“水风光+”新业态新模式。",
-   "link": "https://news.cctv.com/2026/11/20/ARTIuaJ5DtBgQFECeDkdi39u261120.shtml",
-   "source": "央視網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-19T17:28:10Z"
-  },
-  {
-   "title": "Susan Smith denied parole again 32 years after drowning her two sons",
-   "summary": "At a hearing on the possibility of parole, Smith said she wished she could change the past, and her two children \"did not deserve to die\".",
-   "link": "https://www.bbc.co.uk/news/articles/ckdd1y09eqjmo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-19T17:23:34Z"
-  },
-  {
-   "title": "BBC correspondents discuss what Trump, Xi and Putin got out of historic talks",
-   "summary": "Trump, Putin and Xi have issued a \"joint declaration of peace\" after historical trilateral talks, but what did they get out of meeting?",
-   "link": "https://www.bbc.co.uk/news/videos/c63rgnq05pdwo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-19T17:23:29Z"
-  },
-  {
-   "title": "“中国造”商品车出口专列累计开行1万列",
-   "summary": "11月19日，一列满载203辆国产新能源汽车的列车从郑州国际陆港驶出，标志着铁路商品车运输专用车承运的国产商品车出口专列开行量达到1万列。",
-   "link": "https://news.cctv.com/2026/11/20/ARTIUcGrBJnR9iD8aNBV2mfA261120.shtml",
-   "source": "央視網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-19T17:22:09Z"
-  },
-  {
    "title": "Sanofi gains FDA clearance for Gaucher disease pill",
    "summary": "The approval culminates a winding development journey for Infilbray, and provides Sanofi with a new source of income ahead of Dupixent’s looming patent expiration.",
    "link": "https://www.biopharmadive.com/news/sanofi-fda-infilbray-venglustat-approve-gaucher/875167/",
@@ -451,16 +794,6 @@
     "biotech"
    ],
    "date": "2026-11-19T17:17:00Z"
-  },
-  {
-   "title": "让水库大坝更好赋能水利高质量发展",
-   "summary": "近日，水利部印发《关于推进安全大坝、生态大坝、智能大坝建设的指导意见》和配套实施方案。意见有哪些主要内容？如何推动我国水库大坝建设运行管理迈向更高水平？水利部19日举行新闻发布会，介绍相关情况。",
-   "link": "https://news.cctv.com/2026/11/20/ARTIavbDxppwQywVNGbJbSm7261120.shtml",
-   "source": "央視網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-19T17:10:39Z"
   },
   {
    "title": "STAT+: Lawmakers want U.S. biotech to outcompete China",
@@ -474,27 +807,6 @@
    "date": "2026-11-19T17:04:46Z"
   },
   {
-   "title": "'Bigger than Barack Obama's election': Scholars reflect on Mississippi Senate race",
-   "summary": "Scott Colom is now this Southern state's first Black U.S. senator in nearly 150 years. Scholars and Mississippi natives Eddie Glaude and Kiese Laymon discuss the historic significance of his victory.",
-   "link": "https://www.npr.org/2026/11/19/nx-s1-6047338/bigger-than-barack-obamas-election-scholars-reflect-on-mississippi-senate-race",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-19T17:03:11Z"
-  },
-  {
-   "title": "Trump, Xi, Putin said they plan to boost oil production, revamp UN after trilateral talks",
-   "summary": "The leaders of the U.S., China and Russia met in Shenzhen, China on Thursday for a rare trilateral gathering.",
-   "link": "https://www.cnbc.com/2026/11/19/trump-xi-putin-trilateral-meeting-china.html",
-   "source": "CNBC",
-   "cats": [
-    "china",
-    "us"
-   ],
-   "date": "2026-11-19T17:01:41Z"
-  },
-  {
    "title": "STAT+: Peptide market poised to explode with new Hims and Noom launches",
    "summary": "Two telehealth giants rolled out peptide programs this week after HHS made it easier for compounding pharmacies to offer drugs like BPC-157.",
    "link": "https://www.statnews.com/2026/11/19/hims-noom-enter-peptide-market-mainstream-products-health-risks/?utm_campaign=rss",
@@ -505,7 +817,7 @@
    "date": "2026-11-19T16:59:47Z"
   },
   {
-   "title": "China could ‘corner’ biopharmaceutical sector with new plan, US panel warns",
+   "title": "China could ‘corner’ biopharma sector with new plan, US panel warns",
    "summary": "A commission called on U.S. lawmakers to act quickly to prevent an “overdependence” on China that could leave American patients “vulnerable to supply chain weaponization.”",
    "link": "https://www.biopharmadive.com/news/us-china-biotech-report-commission-supply-chain-2026/875170/",
    "source": "BioPharma Dive",
@@ -514,136 +826,6 @@
     "china"
    ],
    "date": "2026-11-19T16:42:00Z"
-  },
-  {
-   "title": "STAT+: MAHA PAC’s steakhouse spend",
-   "summary": "MAHA PAC's curious spending decisions, and a close look at what's next for the FDA.",
-   "link": "https://www.statnews.com/2026/11/19/maha-pac-midterm-election-spending-fda-questions-after-heidi-overton/?utm_campaign=rss",
-   "source": "STAT News",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-19T16:30:07Z"
-  },
-  {
-   "title": "习近平：大国和则世界安，大国斗则世界乱",
-   "summary": "11月19日下午，国家主席习近平在深圳同俄罗斯总统普京、美国总统特朗普举行中俄美元首会晤。习近平指出——",
-   "link": "https://www.chinanews.com.cn/gn/2026/11-20/10734985.shtml",
-   "source": "中國新聞網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-19T16:13:45Z"
-  },
-  {
-   "title": "Two-hour ambulance target missed more than 2,000 times",
-   "summary": "The Release to Rescue initiative was introduced earlier this year",
-   "link": "https://www.bbc.co.uk/news/videos/cjr4g2r6r5pvo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-19T16:07:16Z"
-  },
-  {
-   "title": "Anthropic raises $81bn in record-breaking stock market debut",
-   "summary": "The company behind the Claude chatbot will become one of the most valuable firms in the world.",
-   "link": "https://www.bbc.co.uk/news/articles/c6742m39xgzxo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-19T15:58:58Z"
-  },
-  {
-   "title": "（深圳APEC）亚太经合组织互联互通蓝图发布",
-   "summary": "中新社深圳11月19日电 亚太经合组织互联互通蓝图19日发布。蓝图强调，互联互通促进本地区商品、服务、资金和人员流动，有助于密切经济联系、推动长期经济增长；以《2040年亚太经合组织布特拉加亚愿景》为指引，朝着建设开放、活力、强韧、和平的亚太共同体迈进，实现亚太人民和子孙后代的共同繁荣。",
-   "link": "https://www.chinanews.com.cn/gn/2026/11-19/10734984.shtml",
-   "source": "中國新聞網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-19T15:57:46Z"
-  },
-  {
-   "title": "The midterms were the largest win for either party in 50 years",
-   "summary": "Some 56% of people cast votes for Democrats in House races, compared to 42% who voted Republican. That 14-point spread is the widest win for either party in 50 years, since after Watergate.",
-   "link": "https://www.npr.org/2026/11/19/nx-s1-6045916/democrats-midterm-house-majority",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-19T15:55:05Z"
-  },
-  {
-   "title": "Nuclear arms, energy supplies - but no Kim: the main takeaways from a historic Apec summit",
-   "summary": "Thursday’s Asia-Pacific Economic Cooperation (Apec) summit in Shenzhen saw unprecedented three-way talks between Xi Jinping, Donald Trump and Vladimir Putin as well as separate bilateral meetings between the presidents…",
-   "link": "https://www.scmp.com/news/china/diplomacy/article/3375124/nuclear-arms-energy-supplies-no-kim-main-takeaways-historic-apec-summit",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-19T15:47:38Z"
-  },
-  {
-   "title": "Surgeon calls for corporate homicide probe over claims patients unnecessarily bled to death",
-   "summary": "Dr Mohammed Habib said he had been raising concerns about NHS Grampian for a decade, including with government ministers and police.",
-   "link": "https://www.bbc.co.uk/news/articles/crjeqxexyq05o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-19T15:30:48Z"
-  },
-  {
-   "title": "China, Russia and US at Apec: 3 presidents, 3 nuclear powers and 1 historic precedent",
-   "summary": "When the leaders of the world’s three biggest nuclear powers sat down for talks in the southern Chinese city of Shenzhen on Thursday, they not only made history, they were likely setting a precedent. The presidents of…",
-   "link": "https://www.scmp.com/news/china/diplomacy/article/3375114/china-russia-and-us-3-presidents-3-nuclear-powers-and-1-historic-precedent",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-19T15:25:32Z"
-  },
-  {
-   "title": "More support for households reliant on heating oil",
-   "summary": "North Northamptonshire Council is encouraging eligible residents to apply for more support.",
-   "link": "https://www.bbc.co.uk/news/articles/cwm2mj7vezr3o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-19T15:22:31Z"
-  },
-  {
-   "title": "Power plays, verbal displays, Xi-Trump-Putin talk: historic Apec summit explained",
-   "summary": "We have put together the top 12 stories from our coverage of the 2026 Apec summit held in Shenzhen, China. If you would like to see more of our reporting, please consider subscribing. 1. China, Russia and US: 3…",
-   "link": "https://www.scmp.com/news/china/diplomacy/article/3375122/power-plays-verbal-displays-xi-trump-putin-talk-historic-apec-summit-explained",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-19T15:13:57Z"
-  },
-  {
-   "title": "中国担任2026年亚太经合组织东道主主办会议和活动清单",
-   "summary": "(共321场)",
-   "link": "https://www.chinanews.com.cn/gn/2026/11-19/10734979.shtml",
-   "source": "中國新聞網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-19T15:13:55Z"
-  },
-  {
-   "title": "中国担任2026年亚太经合组织东道主成果清单",
-   "summary": "(共75项)",
-   "link": "https://www.chinanews.com.cn/gn/2026/11-19/10734978.shtml",
-   "source": "中國新聞網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-19T15:11:55Z"
   },
   {
    "title": "With FDA nod, Regeneron brings an RNAi drug to autoimmune disease",
@@ -656,106 +838,6 @@
    "date": "2026-11-19T15:10:00Z"
   },
   {
-   "title": "Covid inquiry urges UK–Ireland pandemic co-ordination in future",
-   "summary": "In its latest report into the programme of test and trace, it said cooperation was needed \"to ensure that border control measures are effective and operable in practice\".",
-   "link": "https://www.bbc.co.uk/news/articles/c6x280lqrxpgo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-19T15:07:43Z"
-  },
-  {
-   "title": "亚太经合组织互联互通蓝图",
-   "summary": "新华社深圳11月19日电",
-   "link": "https://www.chinanews.com.cn/gn/2026/11-19/10734972.shtml",
-   "source": "中國新聞網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-19T14:51:24Z"
-  },
-  {
-   "title": "（深圳APEC）外媒镜头里的深圳：机器人群舞、无人机送餐，科幻走进现实",
-   "summary": "中新网北京11月19日电 题：外媒镜头里的深圳：机器人群舞、无人机送餐，科幻走进现实",
-   "link": "https://www.chinanews.com.cn/cj/2026/11-19/10734970.shtml",
-   "source": "中國新聞網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-19T14:50:46Z"
-  },
-  {
-   "title": "学者：中美建构建设性战略稳定关系 不支持“台独”表态具积极意义",
-   "summary": "中新社北京11月19日电 (记者 张杨彬 刘大炜)围绕中美元首19日深圳会晤涉台表述，多位学者当天接受中新社采访时指出，相关对话反映出双方建构中美建设性战略稳定关系的积极意愿，美方表态释放出对台政策更趋审慎的信号。",
-   "link": "https://www.chinanews.com.cn/gn/2026/11-19/10734968.shtml",
-   "source": "中國新聞網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-19T14:50:08Z"
-  },
-  {
-   "title": "浙江文旅观察：秀山丽水缘何看重“疗休养”？",
-   "summary": "中新网丽水11月19日电(周健)初冬时节，浙江丽水空气清新、阳光明媚。19日，云和梯田旁的民宿内，一批来自江苏的职工赏山水、品香茶，享受疗休养的惬意时光。而在相隔10多公里的云和县城，“我在丽水疗休养”第七届秀山丽水疗休养区域协作暨丽水全域旅游联盟资源对接活动启幕，氛围火热。",
-   "link": "https://www.chinanews.com.cn/sh/2026/11-19/10734966.shtml",
-   "source": "中國新聞網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-19T14:41:33Z"
-  },
-  {
-   "title": "深圳APEC开启亚太合作新篇章",
-   "summary": "深圳APEC期间，有三件事，连在一起看，颇有“深”意。",
-   "link": "https://www.chinanews.com.cn/cj/2026/11-19/10734957.shtml",
-   "source": "中國新聞網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-19T14:38:47Z"
-  },
-  {
-   "title": "Asia watches from the outside waiting to see if Xi-Trump-Putin talks bear fruit",
-   "summary": "When the leaders of China, the United States and Russia sat down in Shenzhen, the rest of Asia watched with a mix of cautious optimism and wary anticipation – knowing that any deal struck behind closed doors might…",
-   "link": "https://www.scmp.com/news/china/diplomacy/article/3375116/asia-watches-outside-waiting-see-if-xi-trump-putin-talks-bear-fruit",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-19T14:21:20Z"
-  },
-  {
-   "title": "Kash Patel skips House hearing after Mar-a-Lago gala with $50,000 access",
-   "summary": "Kash Patel missed a congressional hearing after appearing the night before at a Mar-a-Lago gala offering donors of $50,000 access to top officials.",
-   "link": "https://www.cnbc.com/2026/11/18/kash-patel-hearing-mar-a-lago-gala.html",
-   "source": "CNBC",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-19T14:15:18Z"
-  },
-  {
-   "title": "Welsh NHS in strongest pre-winter position ever, says health minister",
-   "summary": "It comes as the number waiting for planned NHS treatment in Wales increases for the sixth month.",
-   "link": "https://www.bbc.co.uk/news/articles/cq702e33el83o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-19T13:52:35Z"
-  },
-  {
-   "title": "Viagogo may have broken law on hidden fees, watchdog provisionally finds",
-   "summary": "The UK's competition body says initial findings suggest the ticket-reselling website used drip pricing.",
-   "link": "https://www.bbc.co.uk/news/articles/cmvg2ex7j30lo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-19T13:35:52Z"
-  },
-  {
    "title": "China’s abundant electricity is not yet a decisive AI edge",
    "summary": "As Washington continues to tighten controls over advanced chip exports, China faces greater obstacles to accessing high-performance processors. The fall of Nvidia CEO Jensen Huang, a prominent advocate for selling chips…",
    "link": "https://www.scmp.com/opinion/china-opinion/article/3374771/chinas-abundant-electricity-not-yet-decisive-ai-edge",
@@ -764,16 +846,6 @@
     "china"
    ],
    "date": "2026-11-19T12:30:07Z"
-  },
-  {
-   "title": "Indian driver wins $1.3m in life-changing lottery prize",
-   "summary": "A truck driver's fortunes have changed overnight after he won a Diwali lottery in the northern Indian state of Punjab.",
-   "link": "https://www.bbc.co.uk/news/videos/cke89vdn75gyo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-19T11:38:09Z"
   },
   {
    "title": "Scientists tested 212 plant-based foods. Every single one contained fungal toxins",
@@ -828,56 +900,6 @@
    "date": "2026-11-19T08:43:56Z"
   },
   {
-   "title": "Danny Quah on Asean’s middle course and a prisoner’s dilemma for US, China",
-   "summary": "Danny Quah is an economics professor at the National University of Singapore’s Lee Kuan Yew School of Public Policy. He served as the school’s dean between 2018 and 2025, and has consulted for, among others, the World…",
-   "link": "https://www.scmp.com/plus/economy/china-economy/article/3375048/danny-quah-aseans-middle-course-and-prisoners-dilemma-us-china",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-19T08:07:28Z"
-  },
-  {
-   "title": "China, South Korea ‘substantively conclude’ 8 years of talks on expanding free-trade deal",
-   "summary": "China and South Korea have “substantively concluded” eight years of negotiations to expand their free-trade agreement to cover services and investment, officials said, with China set to grant South Korean businesses…",
-   "link": "https://www.scmp.com/economy/global-economy/article/3375027/china-south-korea-substantively-conclude-8-years-talks-expanding-free-trade-deal",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-19T07:00:06Z"
-  },
-  {
-   "title": "Increase in direct cremations since pandemic",
-   "summary": "A 2026 Cost of Dying Report found direct cremation was now chosen for about one in five funerals.",
-   "link": "https://www.bbc.co.uk/news/articles/ck5ywnr59z85o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-19T06:23:22Z"
-  },
-  {
-   "title": "Gilts v kilts: What is happening with Scottish government bonds?",
-   "summary": "MSPs have heard both the pros and cons of the government's plan to launch its first ever bond to the market.",
-   "link": "https://www.bbc.co.uk/news/articles/cmwy8pgj2z8vo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-19T06:15:57Z"
-  },
-  {
-   "title": "Leftover pumpkins help deliver 1,000th free meal",
-   "summary": "\"It's a really tough time for a lot of people,\" a sustainable food organisation says.",
-   "link": "https://www.bbc.co.uk/news/articles/c6x29jxgkjpno?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-19T06:04:30Z"
-  },
-  {
    "title": "Scientists discover a hidden hereditary form of aggressive prostate cancer",
    "summary": "Scientists have discovered a rare inherited mutation in the CDK12 gene linked to aggressive prostate cancer, with all five identified carriers developing metastatic disease between ages 44 and 62. The finding could lead…",
    "link": "https://www.sciencedaily.com/releases/2026/11/261117033911.htm",
@@ -906,16 +928,6 @@
     "biotech"
    ],
    "date": "2026-11-18T22:50:25Z"
-  },
-  {
-   "title": "Too much exercise could leave your brain stuck in overdrive",
-   "summary": "Exercising too much without adequate recovery may disrupt brain chemistry in surprising ways. Scientists found that mice subjected to prolonged, intense training had elevated dopamine levels in a brain region linked to…",
-   "link": "https://www.sciencedaily.com/releases/2026/11/261117033923.htm",
-   "source": "ScienceDaily",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-18T21:28:29Z"
   },
   {
    "title": "I watched Trump, Xi and Putin gather in China. Here are my top takeaways",
@@ -982,16 +994,6 @@
     "us"
    ],
    "date": "2026-11-18T08:29:35Z"
-  },
-  {
-   "title": "Record diesel prices drive UK inflation to 1-year high of 3.6%",
-   "summary": "It put the U.K.'s annual inflation rate at a 1-year high.",
-   "link": "https://www.cnbc.com/2026/11/18/uk-inflation-cpi-fuel-prices.html",
-   "source": "CNBC",
-   "cats": [
-    "finance"
-   ],
-   "date": "2026-11-18T07:57:37Z"
   }
  ]
 }

@@ -1,0 +1,86 @@
+    <section class="p-hero" id="top">
+      <div class="hero-bg" aria-hidden="true"><span class="glow glow-1"></span><span class="glow glow-2"></span><span class="grid"></span></div>
+      <div class="container p-hero-inner">
+        <p class="eyebrow reveal"><span class="dot" aria-hidden="true"></span><span lang="en">Ask board</span><span lang="zh-Hant">問答台</span></p>
+        <h1 class="p-title reveal"><span lang="en">AI desk</span><span lang="zh-Hant">AI 問答台</span></h1>
+        <p class="p-lede reveal"><span lang="en">A chat board grounded in Tyler’s public bio and projects — Nanotech, BTRDCC, patents, Future City, member desks and more. Online with your API key, or offline in the browser.</span><span lang="zh-Hant">以鄭迪珉公開簡介與專案為知識的對話板——納米科研、BTRDCC、專利、Future City、會員桌面等。線上用你的 API 金鑰，或離線在瀏覽器跑。</span></p>
+        <div class="hero-cta reveal">
+          <a class="btn btn-gold" href="#board"><span lang="en">Open the board</span><span lang="zh-Hant">打開問答板</span></a>
+          <a class="btn btn-outline-light" href="contact.html"><span lang="en">Contact Tyler</span><span lang="zh-Hant">聯絡 Tyler</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="board">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker"><span lang="en">Board</span><span lang="zh-Hant">問答板</span></p>
+          <h2 class="section-title"><span lang="en">Ask about Tyler &amp; his projects</span><span lang="zh-Hant">問 Tyler 本人與他的專案</span></h2>
+          <p class="section-sub"><span lang="en">Each turn injects his bio plus matching project notes (BTRDCC, patents, Fuway, Yuzu Meow…). API keys stay local; offline downloads a small model once.</span><span lang="zh-Hant">每輪對話會注入他的簡介，並按問題檢索專案筆記（BTRDCC、專利、富輝、柚汁喵等）。API 金鑰只留本機；離線會下載一次小型模型。</span></p>
+        </div>
+
+        <div class="ai-shell reveal" id="ai-shell">
+          <div class="ai-toolbar">
+            <div class="ai-mode" role="tablist" aria-label="Mode">
+              <button type="button" class="ai-mode-btn is-on" data-mode="online" id="ai-mode-online"><span lang="en">Online</span><span lang="zh-Hant">線上</span></button>
+              <button type="button" class="ai-mode-btn" data-mode="offline" id="ai-mode-offline"><span lang="en">Offline</span><span lang="zh-Hant">離線</span></button>
+            </div>
+            <div class="ai-status" id="ai-status" aria-live="polite"></div>
+          </div>
+
+          <div class="ai-settings" id="ai-settings-online">
+            <label><span lang="en">Provider</span><span lang="zh-Hant">供應商</span>
+              <select id="ai-provider">
+                <option value="openai">OpenAI</option>
+                <option value="openrouter">OpenRouter</option>
+                <option value="groq">Groq</option>
+                <option value="custom">Custom base URL</option>
+              </select>
+            </label>
+            <label class="ai-span-2" id="ai-base-wrap" hidden><span lang="en">Base URL</span><span lang="zh-Hant">Base URL</span>
+              <input id="ai-base" type="url" placeholder="https://api.openai.com/v1" autocomplete="off">
+            </label>
+            <label><span lang="en">Model</span><span lang="zh-Hant">模型</span>
+              <input id="ai-model" type="text" value="gpt-4o-mini" autocomplete="off">
+            </label>
+            <label class="ai-span-2"><span lang="en">API key (local only)</span><span lang="zh-Hant">API 金鑰（只存本機）</span>
+              <input id="ai-key" type="password" maxlength="256" placeholder="sk-…" autocomplete="off">
+            </label>
+          </div>
+
+          <div class="ai-settings" id="ai-settings-offline" hidden>
+            <label class="ai-span-2"><span lang="en">Offline model</span><span lang="zh-Hant">離線模型</span>
+              <select id="ai-offline-model">
+                <option value="Qwen2.5-0.5B-Instruct-q4f16_1">Qwen2.5 0.5B (small / faster)</option>
+                <option value="Llama-3.2-1B-Instruct-q4f16_1">Llama 3.2 1B</option>
+                <option value="Phi-3.5-mini-instruct-q4f16_1">Phi-3.5 mini (better / heavier)</option>
+              </select>
+            </label>
+            <div class="ai-span-2 ai-offline-actions">
+              <button type="button" class="btn btn-gold sm" id="ai-load-offline"><span lang="en">Load model in browser</span><span lang="zh-Hant">在瀏覽器載入模型</span></button>
+              <div class="ai-progress" id="ai-progress" hidden>
+                <div class="ai-progress-bar" id="ai-progress-bar"></div>
+                <span id="ai-progress-text"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ai-board" id="ai-board" aria-live="polite">
+            <div class="ai-msg ai-msg-sys">
+              <span class="ai-role">system</span>
+              <div class="ai-bubble" id="ai-welcome"></div>
+            </div>
+          </div>
+
+          <form class="ai-composer" id="ai-form" autocomplete="off">
+            <label class="sr-only" for="ai-input"><span lang="en">Message</span><span lang="zh-Hant">訊息</span></label>
+            <textarea id="ai-input" rows="3" maxlength="8000" placeholder="Ask anything about markets, listings, this site…" required></textarea>
+            <div class="ai-composer-actions">
+              <button type="button" class="btn btn-outline-light sm" id="ai-clear"><span lang="en">Clear chat</span><span lang="zh-Hant">清空對話</span></button>
+              <button type="submit" class="btn btn-gold" id="ai-send"><span lang="en">Send</span><span lang="zh-Hant">送出</span></button>
+            </div>
+          </form>
+          <p class="ms-note" id="ai-footnote"></p>
+        </div>
+      </div>
+    </section>

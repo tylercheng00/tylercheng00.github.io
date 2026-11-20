@@ -138,10 +138,12 @@
     host.textContent = "";
     var wrap = document.createElement("div");
     wrap.className = "tradingview-widget-container";
-    wrap.style.height = "480px";
+    wrap.style.height = "100%";
+    wrap.style.minHeight = "720px";
     var inner = document.createElement("div");
     inner.className = "tradingview-widget-container__widget";
     inner.style.height = "100%";
+    inner.style.minHeight = "720px";
     wrap.appendChild(inner);
     var cr = document.createElement("div");
     cr.className = "tradingview-widget-copyright";
@@ -170,7 +172,10 @@
   }
 
   function mountVisibleCharts() {
-    document.querySelectorAll(".fa-mod:not([hidden]) .fa-tv").forEach(mountChart);
+    document.querySelectorAll(".fa-mod:not([hidden]) .fa-tv").forEach(function (host) {
+      host.removeAttribute("data-ready");
+      mountChart(host);
+    });
   }
 
   function wireToc() {

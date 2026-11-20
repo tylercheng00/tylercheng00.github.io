@@ -1,0 +1,105 @@
+    <section class="p-hero" id="top">
+      <div class="hero-bg" aria-hidden="true"><span class="glow glow-1"></span><span class="glow glow-2"></span><span class="grid"></span></div>
+      <div class="container p-hero-inner">
+        <p class="eyebrow reveal"><span lang="en">Member services</span><span lang="zh-Hant">會員服務</span></p>
+        <h1 class="p-title reveal"><span lang="en">Paper trading desk</span><span lang="zh-Hant">模擬倉</span></h1>
+        <p class="p-lede reveal"><span lang="en">Practice buying and selling listed stocks with fake cash. Prices follow live market quotes; nothing here is a real order.</span><span lang="zh-Hant">用假錢練習買賣上市公司股票。價格跟真實市況浮動；這裏不會下真實訂單。</span></p>
+        <div class="hero-cta reveal">
+          <a class="btn btn-gold" href="#member"><span lang="en">Member login</span><span lang="zh-Hant">會員登入</span></a>
+          <a class="btn btn-outline-light" href="filings.html"><span lang="en">Filings academy</span><span lang="zh-Hant">財報公告學堂</span></a>
+          <a class="btn btn-outline-light" href="markets.html"><span lang="en">US markets</span><span lang="zh-Hant">美股行情</span></a>
+        </div>
+        <p class="ms-hero-note reveal"><span lang="en">Education / simulation only — not investment advice. Separate password; required again after every refresh.</span><span lang="zh-Hant">僅供教育／模擬，不是投資建議。專用密碼；每次重新整理都要再輸入。</span></p>
+      </div>
+    </section>
+
+    <section class="section" id="member">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker"><span lang="en">Access</span><span lang="zh-Hant">通行</span></p>
+          <h2 class="section-title"><span lang="en">Paper-desk password (paid members)</span><span lang="zh-Hant">模擬倉專用密碼（付費會員）</span></h2>
+          <p class="section-sub"><span lang="en">Different from Mark Six, Personal chart and Filings academy. Portfolio positions can stay in this browser; the desk itself locks again on refresh.</span><span lang="zh-Hant">與六合彩、個人排盤、財報學堂密碼不同。持倉可留在本瀏覽器；桌面本身在重新整理後會再上鎖。</span></p>
+        </div>
+
+        <div class="ms-gate reveal" id="pp-gate">
+          <div class="ms-gate-copy">
+            <h3><span lang="en">Inside the desk</span><span lang="zh-Hant">解鎖後</span></h3>
+            <ul>
+              <li><span lang="en">Fake starting cash (USD)</span><span lang="zh-Hant">假想起始資金（美元）</span></li>
+              <li><span lang="en">Live quotes for US / Hong Kong tickers</span><span lang="zh-Hant">美股／港股代碼實時報價</span></li>
+              <li><span lang="en">Buy / sell, mark-to-market P&amp;L</span><span lang="zh-Hant">買入／賣出、按市價計算盈虧</span></li>
+              <li><span lang="en">Live chart for the symbol you pick</span><span lang="zh-Hant">所選代碼的實時圖表</span></li>
+            </ul>
+            <p class="ms-price" id="pp-price"></p>
+          </div>
+          <div class="ms-gate-actions">
+            <div class="hero-cta" id="pp-pay-cta"></div>
+            <form class="ms-pass-form" id="pp-pass-form" autocomplete="off">
+              <label for="pp-pass"><span lang="en">Paper-desk password</span><span lang="zh-Hant">模擬倉密碼</span></label>
+              <div class="ms-pass-row">
+                <input id="pp-pass" name="password" type="password" maxlength="64" placeholder="••••••••" required>
+                <button class="btn btn-gold" type="submit"><span lang="en">Unlock</span><span lang="zh-Hant">解鎖</span></button>
+              </div>
+              <p class="ms-pass-hint"><span lang="en">Pay first, then WhatsApp me for the password.</span><span lang="zh-Hant">先付款，再 WhatsApp 聯絡我領取密碼。</span></p>
+              <p class="ms-pass-err" id="pp-pass-err" hidden></p>
+            </form>
+          </div>
+        </div>
+
+        <div class="ms-locked reveal" id="pp-locked">
+          <div class="ms-blur">
+            <p><span lang="en">Paper desk locked.</span><span lang="zh-Hant">模擬倉已鎖定。</span></p>
+          </div>
+        </div>
+
+        <div class="ms-desk" id="pp-desk" hidden>
+          <div class="ms-desk-bar">
+            <p id="pp-desk-meta"></p>
+            <button type="button" class="btn btn-outline-light sm" id="pp-logout"><span lang="en">Lock again</span><span lang="zh-Hant">重新上鎖</span></button>
+          </div>
+
+          <div class="pp-summary" id="pp-summary"></div>
+
+          <section class="ms-block">
+            <h3><span lang="en">Trade ticket</span><span lang="zh-Hant">下單區</span></h3>
+            <p class="section-sub"><span lang="en">Enter a ticker (e.g. AAPL, NVDA, BABA, 0700). Quotes refresh from live market data.</span><span lang="zh-Hant">輸入代碼（如 AAPL、NVDA、BABA、0700）。報價按市況實時刷新。</span></p>
+            <div class="pp-chips" id="pp-chips"></div>
+            <form class="pp-trade-form" id="pp-trade-form">
+              <label><span lang="en">Symbol</span><span lang="zh-Hant">代碼</span><input name="symbol" id="pp-symbol" type="text" maxlength="24" required placeholder="AAPL" autocomplete="off"></label>
+              <label><span lang="en">Side</span><span lang="zh-Hant">方向</span>
+                <select name="side" id="pp-side">
+                  <option value="buy">Buy · 買入</option>
+                  <option value="sell">Sell · 賣出</option>
+                </select>
+              </label>
+              <label><span lang="en">Shares</span><span lang="zh-Hant">股數</span><input name="shares" id="pp-shares" type="number" min="1" step="1" value="10" required></label>
+              <label><span lang="en">Live price</span><span lang="zh-Hant">實時價</span><input name="price" id="pp-price-view" type="text" readonly placeholder="—"></label>
+              <div class="ms-span-2 ms-form-actions">
+                <button class="btn btn-gold" type="submit" id="pp-submit"><span lang="en">Submit simulated order</span><span lang="zh-Hant">送出模擬訂單</span></button>
+                <button class="btn btn-outline-light" type="button" id="pp-refresh"><span lang="en">Refresh quotes</span><span lang="zh-Hant">刷新報價</span></button>
+                <button class="btn btn-outline-light" type="button" id="pp-reset"><span lang="en">Reset fake account</span><span lang="zh-Hant">重置假想戶口</span></button>
+              </div>
+            </form>
+            <p class="ms-pass-err" id="pp-trade-err" hidden></p>
+            <p class="ms-note" id="pp-quote-note"></p>
+          </section>
+
+          <section class="ms-block">
+            <h3><span lang="en">Live chart</span><span lang="zh-Hant">實時圖表</span></h3>
+            <div class="pp-tv" id="pp-tv" data-tv-symbol="NASDAQ:AAPL"></div>
+          </section>
+
+          <section class="ms-block">
+            <h3><span lang="en">Positions</span><span lang="zh-Hant">持倉</span></h3>
+            <div class="pp-table-wrap" id="pp-positions"></div>
+          </section>
+
+          <section class="ms-block">
+            <h3><span lang="en">Trade blotter</span><span lang="zh-Hant">成交紀錄</span></h3>
+            <div class="pp-table-wrap" id="pp-blotter"></div>
+          </section>
+
+          <p class="ms-note"><span lang="en">Fake cash only. Quotes may be delayed. Not investment advice and not a broker.</span><span lang="zh-Hant">只有假錢。報價或有延遲。不是投資建議，亦非券商。</span></p>
+        </div>
+      </div>
+    </section>

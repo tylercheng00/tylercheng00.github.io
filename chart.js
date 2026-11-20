@@ -1,11 +1,16 @@
 (function () {
   "use strict";
 
-  var PASS_KEY = "tc_member_session";
-  var PASS_OK = "marksix-desk-open";
-  var MEMBER_PASS = "TC-MarkSix-2026";
+  // Separate password from Mark Six quant / Filings academy.
+  // Unlock is memory-only: every refresh / reload must re-enter the password.
+  var MEMBER_PASS = "TC-Chart-2026";
   var PRICE = "HK$198";
   var WA = "https://wa.me/85298229572";
+  var unlocked = false;
+  try {
+    sessionStorage.removeItem("tc_member_session");
+    sessionStorage.removeItem("tc_chart_session");
+  } catch (e) {}
 
   var lang = function () {
     return document.documentElement.getAttribute("lang") === "zh-Hant" ? "zh" : "en";
@@ -15,17 +20,10 @@
   };
 
   function openNow() {
-    try {
-      return sessionStorage.getItem(PASS_KEY) === PASS_OK;
-    } catch (e) {
-      return false;
-    }
+    return unlocked;
   }
   function setOpen(v) {
-    try {
-      if (v) sessionStorage.setItem(PASS_KEY, PASS_OK);
-      else sessionStorage.removeItem(PASS_KEY);
-    } catch (e) {}
+    unlocked = !!v;
   }
 
   function payLinks() {

@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-21T12:35:30Z",
+ "updated": "2026-11-21T21:38:01Z",
  "sources": [
   "BBC News",
   "BioPharma Dive",
@@ -28,7 +28,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-21T12:35:30Z"
+   "date": "2026-11-21T21:38:01Z"
   },
   {
    "title": "NIH research team lays groundwork for new treatment of Niemann-Pick Type C in infants",
@@ -38,7 +38,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-21T12:35:30Z"
+   "date": "2026-11-21T21:38:01Z"
   },
   {
    "title": "Dr. John H. Powers III to serve as director of NIH’s National Institute of Allergy and Infectious Diseases",
@@ -48,7 +48,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-21T12:35:30Z"
+   "date": "2026-11-21T21:38:01Z"
   },
   {
    "title": "For the first time, researchers map out the brain’s behavioral gatekeeper",
@@ -58,7 +58,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-21T12:35:30Z"
+   "date": "2026-11-21T21:38:01Z"
   },
   {
    "title": "Two ‘forever chemicals’ associated with higher risk of aggressive breast cancer in NIH analysis",
@@ -68,27 +68,377 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-21T12:35:30Z"
+   "date": "2026-11-21T21:38:01Z"
   },
   {
-   "title": "为推动亚太合作行稳致远指明方向——国际人士高度评价习近平主席重要讲话",
-   "summary": "国际人士表示，习近平主席在亚太经合组织工商领导人峰会上的主旨演讲以及在亚太经合组织第三十三次领导人非正式会议上的重要讲话，为推动亚太合作行稳致远指明了方向，不仅对亚太共同体建设有重大意义，也将对全球发展产生深远影响。",
-   "link": "https://news.cctv.com/2026/11/21/ARTI4dn9FgnNREpESkmhpHsY261121.shtml",
+   "title": "'It gives me the ick': Can you cheat on someone with a video game?",
+   "summary": "Grand Theft Auto VI lets you build and nurture a romantic relationship but some say dates with a fictional character are a step too far.",
+   "link": "https://www.bbc.co.uk/news/articles/ckn9wrr75dyeo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-21T21:21:57Z"
+  },
+  {
+   "title": "Mexican drug lord on FBI's 10 most wanted list arrested in shoot-out",
+   "summary": "Fausto Isidro \"Chapo Idisro\" Meza Flores, who is accused of drug trafficking and torture, is detained after gun fight with authorities.",
+   "link": "https://www.bbc.co.uk/news/articles/ckz749ey0r75o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-21T21:05:29Z"
+  },
+  {
+   "title": "FDA again turns back Capricor Duchenne cell therapy",
+   "summary": "In an unusual statement, the FDA accused Capricor of “serious data integrity violations” that compromised its study findings and led to deramiocel’s second rejection since 2025.",
+   "link": "https://www.biopharmadive.com/news/capricor-fda-duchenne-cell-therapy-deramiocel/875384/",
+   "source": "BioPharma Dive",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-21T20:46:00Z"
+  },
+  {
+   "title": "国产120kV冷冻透射电子显微镜发布",
+   "summary": "11月21日，国产120kV冷冻透射电子显微镜TH-F120C在广州发布，这是我国推进高端科学仪器自主可控的一项突破，将为科研人员提供解析生物大分子结构、研究先进材料微观特性的重要工具。",
+   "link": "https://news.cctv.com/2026/11/22/ARTIC62jMxV3wWW2bqjYImzn261121.shtml",
    "source": "央視網",
    "cats": [
     "zhpress"
    ],
-   "date": "2026-11-21T12:29:03Z"
+   "date": "2026-11-21T20:15:39Z"
   },
   {
-   "title": "国际人士表示中俄美元首会晤凝聚共识推动建设更美好世界",
-   "summary": "国际人士表示，中俄美元首会晤释放了坚持对话、管控分歧的信号，凝聚起共同建设更美好世界的共识与信心。",
-   "link": "https://news.cctv.com/2026/11/21/ARTIlLR9tJgDVPOADyKxmMoW261121.shtml",
+   "title": "14日面试13日出结果？长安大学回应",
+   "summary": "通报显示，长安大学给予人事处负责此项工作的科长停职检查的组织处理，给予人事处分管此项工作的副处长调整职务的组织处理，给予人事处处长诫勉处理。",
+   "link": "https://news.cctv.com/2026/11/22/ARTIMBeMCGO4NundF6QVRbAM261122.shtml",
    "source": "央視網",
    "cats": [
     "zhpress"
    ],
-   "date": "2026-11-21T12:28:51Z"
+   "date": "2026-11-21T19:06:26Z"
+  },
+  {
+   "title": "美军中央司令部否认有F-16战机被伊朗击中",
+   "summary": "当地时间11月21日，美军中央司令部发表声明称，伊朗伊斯兰革命卫队称其20日击伤一架美军F-16战机并迫使其紧急降落的说法不实。",
+   "link": "https://news.cctv.com/2026/11/22/ARTIJ4wiHhCm3GN2ZrD90PGE261122.shtml",
+   "source": "央視網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-21T19:01:55Z"
+  },
+  {
+   "title": "【中国第43次南极考察】“雪龙”号完成物资补给 前往南极中山站",
+   "summary": "当地时间11月20日，“雪龙”号科考船在澳大利亚霍巴特港完成停靠补给，出发前往南极中山站。",
+   "link": "https://news.cctv.com/2026/11/21/ARTIkmKN9a2B0qpf9jFcsI6C261121.shtml",
+   "source": "央視網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-21T18:20:44Z"
+  },
+  {
+   "title": "伊朗称在波斯湾上空拦截并击中一架美军F-16战机",
+   "summary": "当地时间21日，伊朗军队表示，20日晚间，部署在伊朗南部、隶属于军队的防空系统在波斯湾上空成功探测到一架美军F-16战机。",
+   "link": "https://news.cctv.com/2026/11/22/ARTI9OGq3zZmdI15kdvDcssi261121.shtml",
+   "source": "央視網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-21T17:20:03Z"
+  },
+  {
+   "title": "Trump says there could be a 'positive spin' from the latest FBI database hack",
+   "summary": "This would make the second recent intrusion into the FBI system.",
+   "link": "https://www.cnbc.com/2026/11/21/trump-fbi-database-hack.html",
+   "source": "CNBC",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-21T16:57:34Z"
+  },
+  {
+   "title": "投资境外上市公司权益受损 投资者如何维权？",
+   "summary": "符合条件的境外公司可以在港交所上市，如果内地投资者遭遇境外上市公司违规，导致投资损失，该如何维护自己的合法权益呢？来看具体案例。",
+   "link": "https://news.cctv.com/2026/11/22/ARTIg7TRMDWuHGPwmjdu8O1z261121.shtml",
+   "source": "央視網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-21T16:57:23Z"
+  },
+  {
+   "title": "“沙泉共生”守护记 如何让月牙泉“胖”回来？",
+   "summary": "月牙泉“止跌”之后，如何让水位“回升”？怎样补水？如何才能让月牙真正“胖”回来呢？",
+   "link": "https://news.cctv.com/2026/11/22/ARTII89vYr0YgOq0AQBa4rHp261121.shtml",
+   "source": "央視網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-21T16:52:49Z"
+  },
+  {
+   "title": "FBI reportedly investigating apparent hack of its criminal database",
+   "summary": "The National Crime Information Center database is used by federal and local law enforcement to share information.",
+   "link": "https://www.bbc.co.uk/news/articles/cvze7de86pk3o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-21T16:35:15Z"
+  },
+  {
+   "title": "重大工程有序推进 助力经济民生发展",
+   "summary": "这几天，一批重大工程建设有序推进，未来将推动经济民生发展。",
+   "link": "https://news.cctv.com/2026/11/22/ARTI97n0dyAABoqQlJ06F9hG261121.shtml",
+   "source": "央視網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-21T16:13:40Z"
+  },
+  {
+   "title": "【神舟二十四号载人飞行任务】进行发射场区合练 近日择机发射",
+   "summary": "神舟二十四号船箭组合体于本月17日转运至发射区，计划于近日择机发射。11月21日，发射场区组织各单位展开全系统合练。",
+   "link": "https://news.cctv.com/2026/11/22/ARTI0s342RnU1w8ZieTnpLZJ261121.shtml",
+   "source": "央視網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-21T16:08:36Z"
+  },
+  {
+   "title": "Independent review ordered into surgery carried out by NHS Grampian",
+   "summary": "It follows a whistleblower's leaking of a document which shows there were 19 avoidable deaths at the health board.",
+   "link": "https://www.bbc.co.uk/news/articles/cr62pxzyql1jo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-21T15:15:29Z"
+  },
+  {
+   "title": "Tech outages are fueling a new doomsday economy",
+   "summary": "Recent technology outages have left some worried about AI cyberattacks and the U.S. electricity grid. The doomsday economy is heating up as a result.",
+   "link": "https://www.cnbc.com/2026/11/21/emergency-prep-spending-tech-outages.html",
+   "source": "CNBC",
+   "cats": [
+    "finance"
+   ],
+   "date": "2026-11-21T15:04:56Z"
+  },
+  {
+   "title": "Judge approves $7.25bn settlement for Roundup weedkiller cancer claims",
+   "summary": "The settlement will be paid by Bayer to users who already have non-Hodgkin lymphoma and those who fall ill in the future.",
+   "link": "https://www.bbc.co.uk/news/articles/cwvg21gyl650o?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-21T14:02:03Z"
+  },
+  {
+   "title": "Why a slow-paced show about broken friendships is China’s antidote to AI fatigue",
+   "summary": "A slow-paced Chinese reality show about fractured friendships has proved an unexpected cultural phenomenon, sparking a nationwide reckoning over huorengan – the messy, unscripted sense of being alive – as AI companions…",
+   "link": "https://www.scmp.com/news/china/politics/article/3375328/why-slow-paced-show-about-broken-friendships-chinas-antidote-ai-fatigue",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-21T14:00:05Z"
+  },
+  {
+   "title": "第七届世界海洋生物多样性大会在比利时举行",
+   "summary": "中新社比利时布鲁日11月21日电 (记者 德永健)第七届世界海洋生物多样性大会于11月17日至20日在比利时西北部城市布鲁日举行，围绕全球海洋生物现状、建立“数字海洋”体系等展开研讨。中国南海研究院和厦门大学派代表参会。",
+   "link": "https://www.chinanews.com.cn/gn/2026/11-21/10735916.shtml",
+   "source": "中國新聞網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-21T13:52:52Z"
+  },
+  {
+   "title": "焦点访谈｜提产能、控损耗 “一加一减”算好粮食丰收账",
+   "summary": "秋粮是全年粮食生产的基本盘。据农业农村部最新农情调度，全国秋粮收获正在扫尾，丰收已成定局。本期节目从秋粮管护、病虫防控、抵御旱涝、减少损耗等方面，展示如何做好向单产要潜力的“加”法，向减损要收成的“减”法，守护粮食安全。",
+   "link": "https://news.cctv.com/2026/11/21/ARTIorzJXb88GKwdQx9l5txT261121.shtml",
+   "source": "央視網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-21T13:31:27Z"
+  },
+  {
+   "title": "长安大学回应14号面试13号出结果",
+   "summary": "长安大学11月21日发布情况通报：针对近日网络关于长安大学辅导员招聘工作的有关反映，学校高度重视，迅速成立由纪委牵头的专项调查组开展调查。 #8203;#8203;#8203;#8203;",
+   "link": "https://www.chinanews.com.cn/sh/2026/11-21/10735917.shtml",
+   "source": "中國新聞網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-21T13:28:19Z"
+  },
+  {
+   "title": "“拖堂”的气候大会给全世界算了笔账",
+   "summary": "气候大会又“拖堂”了。",
+   "link": "https://www.chinanews.com.cn/cj/2026/11-21/10735906.shtml",
+   "source": "中國新聞網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-21T13:15:16Z"
+  },
+  {
+   "title": "结构向优、动能向新 我国消费市场潜能不断释放",
+   "summary": "“经”彩新图景丨结构向优、动能向新 我国消费市场潜能不断释放",
+   "link": "https://www.chinanews.com.cn/cj/2026/11-21/10735914.shtml",
+   "source": "中國新聞網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-21T13:14:40Z"
+  },
+  {
+   "title": "习近平新时代中国特色社会主义思想海外研究国际论坛（2026）在北京举行 李书磊出席开幕式并发表主旨演讲",
+   "summary": "新华社北京11月21日电 习近平新时代中国特色社会主义思想海外研究国际论坛(2026)21日在北京开幕。中共中央政治局委员、中宣部部长李书磊出席开幕式并发表主旨演讲。",
+   "link": "https://www.chinanews.com.cn/gn/2026/11-21/10735898.shtml",
+   "source": "中國新聞網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-21T13:11:12Z"
+  },
+  {
+   "title": "数万家智能工厂背后，AI到底改变了什么？",
+   "summary": "新华社南京11月20日电(记者沈汝发)“过去靠看风口亮度、听异响、摸水温来判断炉况，现在，我们给高炉装上了‘透视眼’。”南钢人工智能研究院院长李瑾彦说，高炉周边布设了上千个传感器，实时采集温度、压力、图像等多维数据，铁水一级品率提升了10个百分点，217个产品和技术达到国际领先水平。",
+   "link": "https://www.chinanews.com.cn/cj/2026/11-21/10735913.shtml",
+   "source": "中國新聞網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-21T13:11:08Z"
+  },
+  {
+   "title": "李强同新加坡总理黄循财会谈",
+   "summary": "中新社北京11月21日电 11月21日上午，中国国务院总理李强在北京钓鱼台国宾馆同新加坡总理黄循财举行会谈。",
+   "link": "https://www.chinanews.com.cn/gn/2026/11-21/10735896.shtml",
+   "source": "中國新聞網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-21T13:10:24Z"
+  },
+  {
+   "title": "秋假+赏秋热潮叠加 地方文旅消费迎来新机遇",
+   "summary": "亲子游、家庭游是秋假期间旅游市场一大亮点。眼下，安徽黄山正值赏秋时节，秋假与赏秋热潮叠加，让当地不少景区人气持续走高。孩子们来到黄山，除了饱览风光，还能体验哪些特色活动？",
+   "link": "https://www.chinanews.com.cn/cj/2026/11-21/10735912.shtml",
+   "source": "中國新聞網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-21T13:09:24Z"
+  },
+  {
+   "title": "经济日报：“温差”待消弭 信心不可失",
+   "summary": "今年以来，我国经济顶压前行，继续保持总体平稳、向新向优发展态势，展现出强大韧性和活力，借用国家统计局新闻发言人的话概括，就是“‘稳’的特质明显、‘稳’的底气增强”。这从前10个月外贸增速、规模以上工业增加值、高技术制造业增长等数据中可见一斑。",
+   "link": "https://www.chinanews.com.cn/cj/2026/11-21/10735911.shtml",
+   "source": "中國新聞網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-21T13:06:55Z"
+  },
+  {
+   "title": "《创新职普融通》年度报告上海发布 AI时代职普融通成教育创新战略选择",
+   "summary": "中新网上海11月21日电(记者 陈静)长三角教育发展研究院《创新职普融通》年度报告(下称：报告)21日“出炉”。报告认为，人工智能时代的到来为破解教育困境带来重大契机，推进职业教育与普通教育的融合，引导学生“像科学家一样思考、像工程师一样实践”，坚持手脑并重、做学合一，已成为教育创新的必然战略选择。",
+   "link": "https://www.chinanews.com.cn/cj/2026/11-21/10735892.shtml",
+   "source": "中國新聞網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-21T13:06:55Z"
+  },
+  {
+   "title": "“不是因为开APEC会议，是一直都很漂亮”，这句话为啥火了",
+   "summary": "APEC会议期间，有媒体记者在深圳深南大道采访环卫工田大姐，问这条路是不是因为开会才这么漂亮。田大姐回了一句：“不是因为开APEC会议这条路才很美，它一直都这么漂亮。”说起自己的活儿，她又打了个比方：“把它打扮得漂漂亮亮，像打了一场胜仗。”",
+   "link": "https://www.chinanews.com.cn/gn/2026/11-21/10735910.shtml",
+   "source": "中國新聞網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-21T13:05:05Z"
+  },
+  {
+   "title": "与中国有一种真挚连接——访兰花奖得主勒克莱齐奥",
+   "summary": "新华社巴黎11月21日电 专访｜与中国有一种真挚连接——访兰花奖得主勒克莱齐奥",
+   "link": "https://www.chinanews.com.cn/gn/2026/11-21/10735908.shtml",
+   "source": "中國新聞網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-21T13:02:25Z"
+  },
+  {
+   "title": "习近平主席的深圳APEC时间",
+   "summary": "南海之滨，鹏城深圳，历史把笔落在了这片沃土。",
+   "link": "https://news.cctv.com/2026/11/21/ARTIHvDB8lno2BGL88LrAQo9261121.shtml",
+   "source": "央視網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-21T13:00:06Z"
+  },
+  {
+   "title": "Reporter’s notebook: boom time for road-borne exports transforms childhood haunt",
+   "summary": "A family wedding that took me back to western China’s Xinjiang Uygur autonomous region early this month gave me another opportunity to visit Khorgos, a border city I have known since childhood. On China’s border with…",
+   "link": "https://www.scmp.com/economy/china-economy/article/3375254/reporters-notebook-boom-time-road-borne-exports-transforms-childhood-haunt",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-21T13:00:05Z"
+  },
+  {
+   "title": "外媒记者看深圳：一座实至名归的“APEC之城”",
+   "summary": "国际在线消息(记者 谢诗佳 冯启坤)：亚太经合组织第三十三次领导人非正式会议日前圆满落下帷幕。在外媒记者眼中，APEC会议既是记录亚太合作进程的现场，也是观察中国改革开放、科技创新与城市发展的窗口。他们认为，深圳作为APEC举办城市实至名归。深圳现代化的城市风貌、随处可见的科技应用、便捷的交通和友善的市民，都给他们留下了深刻印象。有记者表示，希望把深圳在科技创新和城市长远规划方面的经验介绍给本国读者。",
+   "link": "https://www.chinanews.com.cn/gn/2026/11-21/10735905.shtml",
+   "source": "中國新聞網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-21T12:59:23Z"
+  },
+  {
+   "title": "How a GOP redistricting 'dummymander' in North Carolina backfired by 2 seats",
+   "summary": "In North Carolina, Republican lawmakers redrew voting maps, aiming to gain one seat in Congress. Instead, they lost two seats, in a classic example of what political scientists call a \"dummymander.\"",
+   "link": "https://www.npr.org/2026/11/21/nx-s1-6044778/how-a-gop-redistricting-dummymander-in-north-carolina-backfired-by-2-seats",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-21T12:40:21Z"
+  },
+  {
+   "title": "The New Yorker's Jason Zengerle on Hakeem Jeffries' rise to first Black House speaker",
+   "summary": "Hakeem Jeffries is set to become the first-ever African American speaker of the U.S. House of Representatives. NPR's Scott Simon talks to Jason Zengerle of The New Yorker about the rise of Jeffries.",
+   "link": "https://www.npr.org/2026/11/21/nx-s1-6047580/the-new-yorkers-jason-zengerle-on-hakeem-jeffries-rise-to-first-black-house-speaker",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-21T12:40:19Z"
+  },
+  {
+   "title": "Week in Politics: Trump returns from Asia; hails trip as one of best in history",
+   "summary": "President Trump returned from his trip to Asia, saying it was one of the most successful presidential visits to that continent -- or anywhere else -- in American history.",
+   "link": "https://www.npr.org/2026/11/21/nx-s1-6047376/week-in-politics-trump-returns-from-asia-hails-trip-as-one-of-best-in-history",
+   "source": "NPR",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-21T12:40:15Z"
   },
   {
    "title": "How China showcased the ‘Shenzhen miracle’ in Apec cooperation push",
@@ -99,86 +449,6 @@
     "china"
    ],
    "date": "2026-11-21T12:28:34Z"
-  },
-  {
-   "title": "伊朗伊斯兰革命卫队总司令视察“导弹城”",
-   "summary": "据伊朗方面当地时间21日公布的消息，伊朗伊斯兰革命卫队总司令瓦希迪日前视察了一座“导弹城”。",
-   "link": "https://news.cctv.com/2026/11/21/ARTILxULHpy66kicS25mto5g261121.shtml",
-   "source": "央視網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-21T12:28:12Z"
-  },
-  {
-   "title": "北京丰台亮出9处优质体育资源 邀“城市合伙人”共创运动新空间",
-   "summary": "中新网北京11月21日电 11月中旬开始，北京市丰台区陆续举办系列专场推介发布会，亮出政府合作诚意，全程公开透明，持续释放优质投资机会。“遇见丰台·众汇京彩”——2026丰台区体育资源发布会作为第二场系列发布20日举办。会上，丰台亮出体育资源“家底”，集中推出9处体育“留白空间”，包括5宗体育用地、1处体育存量设施和3处可做气膜场馆用地，面向社会公开征集运营主体，所有体育设施、地块信息全部向社会公开、全程接受社会监督。",
-   "link": "https://www.chinanews.com.cn/cj/2026/11-21/10735873.shtml",
-   "source": "中國新聞網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-21T12:26:57Z"
-  },
-  {
-   "title": "俄方称克里米亚大桥铁路运输已全面恢复",
-   "summary": "总台记者11月21日从俄罗斯方面获悉，俄罗斯副总理尼基京称，克里米亚大桥铁路运输已全面恢复。",
-   "link": "https://news.cctv.com/2026/11/21/ARTIFlLY2pLqkq6x8TjvrYRd261121.shtml",
-   "source": "央視網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-21T12:25:53Z"
-  },
-  {
-   "title": "天津通报正风肃纪反腐“成绩单” 部署深化“三不腐”",
-   "summary": "中新网天津11月21日电 (记者 周亚强)记者从中共天津市委21日举行的新闻发布会上获悉，市第十二次党代会以来，全市纪检监察机关共查处“四风”问题1万余起，批评教育和处理1.3万余人；同期共立案2.4万余件，处分2.2万余人，其中处分市管干部235人。",
-   "link": "https://www.chinanews.com.cn/gn/2026/11-21/10735863.shtml",
-   "source": "中國新聞網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-21T12:20:05Z"
-  },
-  {
-   "title": "投资额约14亿元 重庆发布市属国企第四批“四链”融合创新项目",
-   "summary": "中新网重庆11月21日电 (梁钦卿)重庆国际人才交流大会·“科学家·创业者·投资人”创投对接活动21日在重庆举办。活动现场发布了重庆市属国企第四批“四链”融合创新项目共65个，投资额约14亿元，主要覆盖智能网联新能源汽车、先进材料与绿色化工、智能装备与制造等6大方向。",
-   "link": "https://www.chinanews.com.cn/cj/2026/11-21/10735871.shtml",
-   "source": "中國新聞網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-21T12:19:59Z"
-  },
-  {
-   "title": "江苏扬州发布2026年新型光储产业场景清单 开放50项供需场景",
-   "summary": "中新网扬州11月21日电 (徐珊珊 房曾强)11月21日下午，在2026年“光储融智·科创未来”新型光储产业融创对接活动分会场上，《2026年扬州市新型光储产业场景清单》正式发布。清单共发布50项，包括15项场景机会和35项场景能力，旨在以场景开放为纽带，畅通供需对接，推动更多技术找到用武之地、更多项目找到合作伙伴。",
-   "link": "https://www.chinanews.com.cn/cj/2026/11-21/10735860.shtml",
-   "source": "中國新聞網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-21T12:18:29Z"
-  },
-  {
-   "title": "天津市城市民族工作品牌“津石榴”形象标识设计投入使用",
-   "summary": "中新网天津11月21日电 (田孟轩)中新网记者近日从天津市民族和宗教事务委员会了解到，其牵头指导天津科技大学艺术设计学院孙立团队完成“津石榴”形象标识设计，并撰写了《关于打造“津石榴”天津市民族工作品牌形象的对策建议》，目前，该设计成果已在天津市首个民族团结进步宣传周、京津冀铸牢中华民族共同体意识研讨会和有关主题研学活动中应用。",
-   "link": "https://www.chinanews.com.cn/gn/2026/11-21/10735858.shtml",
-   "source": "中國新聞網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-21T12:16:03Z"
-  },
-  {
-   "title": "中部六省“论道”崛起新路径 外国客商看好中部市场",
-   "summary": "中新社郑州11月21日电 (记者 阚力)第十四届中国中部投资贸易博览会(以下简称中博会)21日在河南郑州启幕，中部六省政商界人士与会“论道”中部崛起新路径，组团前来寻觅合作机遇的外国客商看好中部地区市场。",
-   "link": "https://www.chinanews.com.cn/cj/2026/11-21/10735856.shtml",
-   "source": "中國新聞網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-21T12:12:12Z"
   },
   {
    "title": "Sessions offer advice on rising energy costs",
@@ -211,126 +481,6 @@
    "date": "2026-11-21T12:00:00Z"
   },
   {
-   "title": "北京警方抓获一名为电诈架设虚拟拨号设备嫌疑人",
-   "summary": "男子网上求职，因追求高薪回报，成为境外电信网络诈骗分子帮凶，专门选择老年群体家中座机安装虚拟拨号设备，导致事主被骗18万元。近日，北京通州警方依托平安行动“冬季攻势”，成功抓获一名涉嫌帮信罪的犯罪嫌疑人。",
-   "link": "https://news.cctv.com/2026/11/21/ARTIk2WIk88MChG8znao0dV9261121.shtml",
-   "source": "央視網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-21T11:52:06Z"
-  },
-  {
-   "title": "【新思想引领新征程】努力让老年人的生活更加幸福美满",
-   "summary": "习近平总书记指出，我国已经进入老龄社会，让老年人老有所养、生活幸福、健康长寿是我们的共同愿望。",
-   "link": "https://news.cctv.com/2026/11/21/ARTIigtGCMXhxUZjNrob8Tje261121.shtml",
-   "source": "央視網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-21T11:50:48Z"
-  },
-  {
-   "title": "中国科研团队给植物定制专属“光配方”",
-   "summary": "中新网合肥11月21日电 (记者 张俊)在中国科学技术大学先进技术研究院的农业光学实验室里，生菜、辣椒等蔬菜排满栽培架。没有阳光，也没有土壤，叶子在人工光的照射下一层层往外长。",
-   "link": "https://www.chinanews.com.cn/gn/2026/11-21/10735847.shtml",
-   "source": "中國新聞網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-21T11:50:43Z"
-  },
-  {
-   "title": "浙江义乌办“校招”：530余家企业提供近1.6万个岗位",
-   "summary": "中新网义乌11月21日电(董易鑫)“我来应聘主播岗，现在不少企业采用AI主播与真人主播相结合的模式，我也想借这次机会集中了解一下市场最新的招聘条件、薪资水平。”11月20日，应届毕业生张靓在浙江义乌说。",
-   "link": "https://www.chinanews.com.cn/cj/2026/11-21/10735844.shtml",
-   "source": "中國新聞網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-21T11:47:57Z"
-  },
-  {
-   "title": "青海德令哈市发生5.6级地震 前突小队正在震中附近排查",
-   "summary": "11月21日，青海海西州德令哈市发生5.6级地震。记者从青海消防救援总队了解到，目前前突小队正在震中附近进行排查，暂未发现房屋倒塌和人员伤亡情况。",
-   "link": "https://news.cctv.com/2026/11/21/ARTIwNCNmtCuCpQ9voip6bHC261121.shtml",
-   "source": "央視網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-21T11:41:27Z"
-  },
-  {
-   "title": "中外高校围绕“产学研用”达成19项合作",
-   "summary": "中新社重庆11月21日电 (记者 钟旖)2026国际产学研用合作会议(西南三省一市一区)21日在重庆召开。",
-   "link": "https://www.chinanews.com.cn/gn/2026/11-21/10735837.shtml",
-   "source": "中國新聞網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-21T11:29:20Z"
-  },
-  {
-   "title": "大国的历史主动，落笔即成新章",
-   "summary": "11月19日下午，国家主席习近平在深圳同俄罗斯总统普京、美国总统特朗普举行中俄美元首会晤。",
-   "link": "https://news.cctv.com/2026/11/21/ARTIFkw04VQXx5ggBXyABdt9261121.shtml",
-   "source": "央視網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-21T11:18:30Z"
-  },
-  {
-   "title": "青海海西州德令哈市发生5.6级地震 震源深度10千米",
-   "summary": "中新网11月21日电 据中国地震台网微博消息，中国地震台网正式测定：11月21日18时45分在青海海西州德令哈市(北纬37.14度，东经96.62度)发生5.6级地震，震源深度10千米。",
-   "link": "https://www.chinanews.com.cn/sh/2026/11-21/10735833.shtml",
-   "source": "中國新聞網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-21T10:57:36Z"
-  },
-  {
-   "title": "松原首批氢能试点超亿元奖励资金拨付到企",
-   "summary": "中新网长春11月21日电 (记者 郭佳)吉林省松原市官方21日披露，国家氢能综合应用试点城市奖励资金已完成企业端拨付，1.0024亿元奖励资金按程序直达中能建松原氢能产业园(绿色氢氨醇一体化)、松原天楹风光储氢氨醇一体化项目等试点承接主体，标志着松原氢能试点从获批阶段，迈入企业落地受益的实质性实施阶段。",
-   "link": "https://www.chinanews.com.cn/cj/2026/11-21/10735829.shtml",
-   "source": "中國新聞網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-21T10:49:08Z"
-  },
-  {
-   "title": "2026文化抗战学术研讨会在桂林召开",
-   "summary": "中新网桂林11月21日电(张广权 欧惠兰)11月21日，“烽火中的民族精神与文化中国”2026文化抗战学术研讨会在广西桂林召开。会议旨在挖掘文化抗战的历史资源及其当代价值，传承弘扬伟大抗战精神，进一步凝聚学术研究力量，推动文化抗战资源保护传承和活化利用。",
-   "link": "https://www.chinanews.com.cn/gn/2026/11-21/10735828.shtml",
-   "source": "中國新聞網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-21T10:48:36Z"
-  },
-  {
-   "title": "第五届长江大保护司法论坛在武汉开幕",
-   "summary": "中新网武汉11月21日电 (记者 武一力)第五届长江大保护司法论坛21日在武汉开幕，来自学界、业界与实务界的专家学者齐聚武汉，共同探寻在法治轨道上推进长江流域治理现代化的实践路径。",
-   "link": "https://www.chinanews.com.cn/gn/2026/11-21/10735827.shtml",
-   "source": "中國新聞網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-21T10:47:42Z"
-  },
-  {
-   "title": "开塞露能“平替面霜”？ 医生提醒切勿盲目尝试网络偏方",
-   "summary": "中新网成都11月21日电(何美锟)近日，“开塞露涂脸护肤”引发热议。不少人因其含有甘油，将其奉为“干皮救星”，认为“几块钱就能平替面霜”。对此，成都市第五人民医院皮肤科医学美容中心主治医师何泳洁在接受采访时表示，开塞露属于药品，并不适合直接涂抹面部，盲目跟风使用存在多重皮肤风险。",
-   "link": "https://www.chinanews.com.cn/sh/2026/11-21/10735815.shtml",
-   "source": "中國新聞網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-21T10:34:49Z"
-  },
-  {
    "title": "An effort to circumvent the Electoral College may be within reach. But hurdles remain",
    "summary": "A national effort to ensure that only winners of the popular vote become president could reach a critical milestone soon.",
    "link": "https://www.npr.org/2026/11/21/nx-s1-6044237/electoral-college-national-popular-vote-interstate-compact",
@@ -341,16 +491,6 @@
    "date": "2026-11-21T10:00:00Z"
   },
   {
-   "title": "解锁农业大棚里的“新”力量 蔬菜产业实现“智慧蝶变”",
-   "summary": "在“蔬菜之乡”山东潍坊寿光市，当地依靠物联网智慧管控、标准化种植体系，稳产、保供、稳价，全力保障全国蔬菜市场供应。",
-   "link": "https://news.cctv.com/2026/11/21/ARTIxV2KL7c0yglvm6PEGYIv261121.shtml",
-   "source": "央視網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-21T09:31:43Z"
-  },
-  {
    "title": "Opinion: How Kennedy and MAHA could help stop measles",
    "summary": "Kennedy and MAHA say they aren’t anti-vaccine. They can prove it by promoting the MMR vaccine, writes Brinda Adhikari.",
    "link": "https://www.statnews.com/2026/11/21/rfk-jr-maha-measles-outbreak-elimination-status-promote-mmr-vaccine/?utm_campaign=rss",
@@ -359,16 +499,6 @@
     "biotech"
    ],
    "date": "2026-11-21T09:30:00Z"
-  },
-  {
-   "title": "埋土防寒 银川酿酒葡萄“盖被”越冬",
-   "summary": "眼下，宁夏银川市各酿酒葡萄种植基地正抓紧开展葡萄藤越冬埋土作业，为葡萄藤安全越冬、来年顺利萌芽生长提供保障。",
-   "link": "https://news.cctv.com/2026/11/21/ARTIiE72qwuNyvM5ea8Yw0PE261121.shtml",
-   "source": "央視網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-21T09:15:23Z"
   },
   {
    "title": "China has real economic troubles, ‘Japanification’ not among them",
@@ -452,14 +582,14 @@
    "date": "2026-11-21T04:00:12Z"
   },
   {
-   "title": "Judge approves $7.25bn settlement for Roundup weedkiller cancer claims",
-   "summary": "The settlement will be paid by Bayer to users who already have non-Hodgkin lymphoma and those who fall ill in the future.",
-   "link": "https://www.bbc.co.uk/news/articles/cwvg21gyl650o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
+   "title": "Microplastics may be more dangerous than we thought. Scientists just discovered why",
+   "summary": "Microplastics may be doing something far more dangerous than simply accumulating in our bodies. Scientists have discovered that tiny plastic particles can interact with water to generate highly reactive molecules…",
+   "link": "https://www.sciencedaily.com/releases/2026/11/261120075549.htm",
+   "source": "ScienceDaily",
    "cats": [
-    "us"
+    "biotech"
    ],
-   "date": "2026-11-21T03:49:09Z"
+   "date": "2026-11-21T02:35:26Z"
   },
   {
    "title": "China’s top intelligence agency touts ‘common international security’ after summit",
@@ -552,26 +682,6 @@
    "date": "2026-11-20T23:15:20Z"
   },
   {
-   "title": "In a year of AI solving maths problems, an Anthropic worker says he may have cracked the biggest",
-   "summary": "A mathematician at Anthropic says he used an AI to prove the famed Riemann hypothesis, though verification will take some time.",
-   "link": "https://www.bbc.co.uk/news/articles/c6pqr2g7w059o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-20T23:08:57Z"
-  },
-  {
-   "title": "Birds killed in blaze at one of the largest foie gras farms in the US",
-   "summary": "Hundreds of young birds were also rescued from the fire, which comes as foie gras is under renewed scrutiny over animal welfare concerns.",
-   "link": "https://www.bbc.co.uk/news/articles/cq4gn0dg9194o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-20T22:57:26Z"
-  },
-  {
    "title": "GTA 6 sales hit $3.8bn in a single day - the biggest entertainment launch in history",
    "summary": "The mammoth figure surpasses every video game launch and single-day film box office record.",
    "link": "https://www.bbc.co.uk/news/articles/c9zr5nyv5dj2o?at_medium=RSS&at_campaign=rss",
@@ -592,16 +702,6 @@
    "date": "2026-11-20T22:42:47Z"
   },
   {
-   "title": "Princeton PhD student from China detained by ICE after US academic conference",
-   "summary": "A Chinese PhD student at Princeton University, New Jersey, was detained by US Immigration and Customs Enforcement (ICE) on Thursday after presenting her research at a neuroscience conference in Washington, the South…",
-   "link": "https://www.scmp.com/news/china/diplomacy/article/3375301/princeton-phd-student-china-detained-ice-after-academic-conference",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-20T22:35:43Z"
-  },
-  {
    "title": "Trump says he discussed Jensen Huang with Xi; Bessent tells CNBC Nvidia chip export policy is unchanged",
    "summary": "Trump said he discussed Jensen Huang with China's Xi. Bessent said the ousted Nvidia CEO didn't come up in talks he had while in China.",
    "link": "https://www.cnbc.com/2026/11/20/treasury-secretary-scott-bessent.html",
@@ -611,17 +711,6 @@
     "us"
    ],
    "date": "2026-11-20T22:08:41Z"
-  },
-  {
-   "title": "The latest from Trump's press conference",
-   "summary": "President Trump gave a wide-ranging press conference following his historic trip to Asia where he met with Chinese President Xi and Russian President Putin.",
-   "link": "https://www.npr.org/2026/11/20/nx-s1-6047636/trump-presser",
-   "source": "NPR",
-   "cats": [
-    "china",
-    "us"
-   ],
-   "date": "2026-11-20T21:38:21Z"
   },
   {
    "title": "ICE detention of Princeton scientist rattles academia",
@@ -667,27 +756,6 @@
    "date": "2026-11-20T20:54:12Z"
   },
   {
-   "title": "Trump says he still has confidence in Lutnick",
-   "summary": "President Donald Trump, when asked by CNBC's Eamon Javers, said he has not lost confidence in Commerce Secretary Howard Lutnick.",
-   "link": "https://www.cnbc.com/2026/11/20/trump-lutnick-commerce-china-ai.html",
-   "source": "CNBC",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-20T20:52:08Z"
-  },
-  {
-   "title": "Trump vows to stop U.S. companies from building data centers abroad, threatens 'tremendous tax'",
-   "summary": "Trump spoke at the White House after meeting with Chinese President Xi Jinping and Russian President Vladimir Putin for a historic trilateral summit in China.",
-   "link": "https://www.cnbc.com/2026/11/20/trump-data-centers-ai-companies-tax.html",
-   "source": "CNBC",
-   "cats": [
-    "china",
-    "us"
-   ],
-   "date": "2026-11-20T20:47:58Z"
-  },
-  {
    "title": "STAT+: Is MAHA’s think tank in the tank? Tax filings show low reserves",
    "summary": "Tax filings show the MAHA Institute spent more than $1 million in 2025, ending its first year with just $171,000 as events and overhead drained its cash.",
    "link": "https://www.statnews.com/2026/11/20/maha-institute-tax-filings-rfk-jr-health-agenda-spending/?utm_campaign=rss",
@@ -716,17 +784,6 @@
     "biotech"
    ],
    "date": "2026-11-20T19:53:09Z"
-  },
-  {
-   "title": "Jensen Huang to testify publicly before Senate banking panel, Chairman Scott says",
-   "summary": "Former Nvidia CEO Jensen Huang has faced a flurry of criticism on Capitol Hill in the wake of his involvement with a suspected Chinese spy.",
-   "link": "https://www.cnbc.com/2026/11/20/jensen-huang-nvidia-senate-testimony.html",
-   "source": "CNBC",
-   "cats": [
-    "china",
-    "us"
-   ],
-   "date": "2026-11-20T19:42:53Z"
   },
   {
    "title": "PTSD Brain DNA Methylation Patterns Linked to Age of Trauma Exposure, Sex, and Ethnicity",
@@ -809,16 +866,6 @@
    "date": "2026-11-20T15:40:40Z"
   },
   {
-   "title": "'Isla was let down and hopefully this will save other families'",
-   "summary": "Isla Sneddon's name has been adopted in a set of national guidelines for medics treating young patients",
-   "link": "https://www.bbc.co.uk/news/videos/cqg7l03725glo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-20T15:06:08Z"
-  },
-  {
    "title": "The bull market has a new problem. The 'smart money' is selling",
    "summary": "Companies are shifting from share buybacks to stock issuance, adding new supply. Anthropic’s $81 billion IPO puts that demand to the test.",
    "link": "https://www.cnbc.com/2026/11/20/equity-issuance-bull-market-problem.html",
@@ -871,16 +918,6 @@
    "date": "2026-11-20T12:44:39Z"
   },
   {
-   "title": "Striking doctors warn staff will leave NI for better pay",
-   "summary": "A full 24-hour strike began at 07:00 GMT - the second such action taken by doctors this year.",
-   "link": "https://www.bbc.co.uk/news/articles/cm3vgwxyxgk5o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-20T12:37:33Z"
-  },
-  {
    "title": "This simple habit is linked to a 33% lower risk of Alzheimer's",
    "summary": "Reading for pleasure may have surprisingly powerful benefits for the brain, with studies linking it to better memory, reduced stress, improved mental health, and a lower risk of dementia. Researchers highlight findings…",
    "link": "https://www.sciencedaily.com/releases/2026/11/261118065536.htm",
@@ -922,36 +959,6 @@
    "date": "2026-11-20T11:00:06Z"
   },
   {
-   "title": "For better mental health, how often you exercise may matter more than how hard",
-   "summary": "A study of more than 10,000 college students found that exercising regularly may be more important for mental health than pushing yourself through intense or lengthy workouts. Students who exercised less frequently were…",
-   "link": "https://www.sciencedaily.com/releases/2026/11/261119194601.htm",
-   "source": "ScienceDaily",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-20T09:09:17Z"
-  },
-  {
-   "title": "China-US-Russia talks, economy concerns, Auto Guangzhou",
-   "summary": "An unprecedented trilateral meeting between the leaders of China, the United States and Russia produced a pledge “to increase the production and supply of refined petroleum products for the benefit of all nations”…",
-   "link": "https://www.scmp.com/plus/economy/china-economy/article/3375227/china-us-russia-talks-economy-concerns-auto-guangzhou",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-20T09:04:05Z"
-  },
-  {
-   "title": "Powerful new weight-loss drug helps patients cut knee pain in half",
-   "summary": "A powerful experimental weight-loss drug helped people with knee osteoarthritis lose about 25% of their body weight at the highest dose, while roughly two-thirds experienced at least a 50% reduction in knee pain. The…",
-   "link": "https://www.sciencedaily.com/releases/2026/11/261118065534.htm",
-   "source": "ScienceDaily",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-20T04:31:15Z"
-  },
-  {
    "title": "Japan core inflation soars to highest this year as energy subsidy expiry pushes up consumer prices",
    "summary": "The core inflation figure — which strips out prices of food — was lower than the 2.3% expected by Reuters-polled economists.",
    "link": "https://www.cnbc.com/2026/11/20/japan-inflation-cpi-october.html",
@@ -982,18 +989,6 @@
     "us"
    ],
    "date": "2026-11-19T09:02:00Z"
-  },
-  {
-   "title": "I watched Trump, Xi and Putin gather in China. Here are my top takeaways",
-   "summary": "U.S. President Donald Trump, Chinese President Xi Jinping and Russian President Vladimir Putin are expected to hold a rare trilateral meeting on Thursday.",
-   "link": "https://www.cnbc.com/2026/11/18/trump-xi-putin-apec-shenzhen-china.html",
-   "source": "CNBC",
-   "cats": [
-    "china",
-    "finance",
-    "us"
-   ],
-   "date": "2026-11-18T19:47:05Z"
   }
  ]
 }

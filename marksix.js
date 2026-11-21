@@ -7,7 +7,7 @@
   var PRICE = "HK$198";
   var WA = "https://wa.me/85298229572";
   var DATA = "data/marksix/";
-  var DATA_VER = "20261119-26-123";
+  var DATA_VER = "20261121-next-1124";
   var unlocked = false;
   try {
     sessionStorage.removeItem("tc_member_session");

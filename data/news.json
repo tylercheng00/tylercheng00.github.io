@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-22T16:14:01Z",
+ "updated": "2026-11-22T21:45:02Z",
  "sources": [
   "BBC News",
   "BioPharma Dive",
@@ -28,7 +28,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-22T16:14:01Z"
+   "date": "2026-11-22T21:45:02Z"
   },
   {
    "title": "NIH research team lays groundwork for new treatment of Niemann-Pick Type C in infants",
@@ -38,7 +38,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-22T16:14:01Z"
+   "date": "2026-11-22T21:45:02Z"
   },
   {
    "title": "Dr. John H. Powers III to serve as director of NIH’s National Institute of Allergy and Infectious Diseases",
@@ -48,7 +48,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-22T16:14:01Z"
+   "date": "2026-11-22T21:45:02Z"
   },
   {
    "title": "For the first time, researchers map out the brain’s behavioral gatekeeper",
@@ -58,7 +58,7 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-22T16:14:01Z"
+   "date": "2026-11-22T21:45:02Z"
   },
   {
    "title": "Two ‘forever chemicals’ associated with higher risk of aggressive breast cancer in NIH analysis",
@@ -68,7 +68,188 @@
    "cats": [
     "biotech"
    ],
-   "date": "2026-11-22T16:14:01Z"
+   "date": "2026-11-22T21:45:02Z"
+  },
+  {
+   "title": "Common medications may secretly rewire your gut, with effects lasting for years",
+   "summary": "Medications taken years or even long ago may leave lasting changes in your gut microbiome, according to a study of more than 2,500 people. Researchers discovered that common drugs, including antidepressants, blood…",
+   "link": "https://www.sciencedaily.com/releases/2026/11/261120071501.htm",
+   "source": "ScienceDaily",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-22T21:35:19Z"
+  },
+  {
+   "title": "Miley Cyrus marries Maxx Morando in California ceremony",
+   "summary": "The couple have been together for four years and were engaged in 2025.",
+   "link": "https://www.bbc.co.uk/news/articles/cq8e0p87l89lo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-22T21:22:40Z"
+  },
+  {
+   "title": "Type 2 diabetes linked to 53% higher Alzheimer’s risk, major review finds",
+   "summary": "People with type 2 diabetes face a 53% higher risk of developing Alzheimer’s disease, according to a major new review of 40 studies. Researchers estimate that nearly five out of every 1,000 people with type 2 diabetes…",
+   "link": "https://www.sciencedaily.com/releases/2026/11/261121221124.htm",
+   "source": "ScienceDaily",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-22T20:57:35Z"
+  },
+  {
+   "title": "山西一工地挖出炮弹紧急排爆 警方提示",
+   "summary": "近日，在山西晋城沁水县十里乡的一处工地，施工人员挖土时发现一枚炮弹，第一时间报警。",
+   "link": "https://news.cctv.com/2026/11/23/ARTIiDdfU3RdXQQaZoBGHBjg261122.shtml",
+   "source": "央視網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-22T20:48:52Z"
+  },
+  {
+   "title": "重庆国才会引进硕博士等3955名 12省份发布人才需求清单",
+   "summary": "2026重庆国际人才交流大会统筹举办主题活动15场，配套创业大赛、创投对接等活动22场。围绕重庆“33618”现代制造业集群体系，现场发布标志性成果12项，技术需求185项、项目人才需求超630名。",
+   "link": "https://news.cctv.com/2026/11/23/ARTIPohIo9dUgjbv7GlW0pdF261122.shtml",
+   "source": "央視網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-22T20:36:49Z"
+  },
+  {
+   "title": "警惕“吃出”胃石 这些冬令果品怎么吃才安全",
+   "summary": "冬季，柿子、山楂、黑枣集中上市，酸甜可口很受人欢迎。",
+   "link": "https://news.cctv.com/2026/11/23/ARTIOaN9AiKMNk00QZPngiJi261123.shtml",
+   "source": "央視網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-22T20:35:59Z"
+  },
+  {
+   "title": "US seeks answers on Nvidia’s sale of chips to China, Bessent says",
+   "summary": "The US ⁠is seeking answers from Nvidia on ⁠its chip sales to China and will find out who was in charge of compliance at the company formerly led by Jensen Huang, who resigned following an affair with a suspected Chinese…",
+   "link": "https://www.scmp.com/news/world/united-states-canada/article/3375404/us-seeks-answers-nvidias-sale-chips-china-bessent-says",
+   "source": "SCMP",
+   "cats": [
+    "china"
+   ],
+   "date": "2026-11-22T20:03:17Z"
+  },
+  {
+   "title": "上山国家考古遗址公园暨上山博物馆开放",
+   "summary": "11月21日，位于浙江金华市浦江县黄宅镇的上山国家考古遗址公园暨上山博物馆正式开放。",
+   "link": "https://news.cctv.com/2026/11/23/ARTIQIUFOBe7K7LWUFVmsl8k261123.shtml",
+   "source": "央視網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-22T20:01:25Z"
+  },
+  {
+   "title": "达美航空在亚特兰大国际机场数百个航班出现延误",
+   "summary": "美国福克斯新闻频道22日报道，美国达美航空公司在亚特兰大国际机场的364个航班因系统故障出现延误。",
+   "link": "https://news.cctv.com/2026/11/23/ARTIBCQ1CBRpBcQHJ0O5nE0M261123.shtml",
+   "source": "央視網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-22T20:00:56Z"
+  },
+  {
+   "title": "打造15分钟老年友好生活圈 “邻里相帮”互助养老",
+   "summary": "通过前期摸排调研，根据老年人分层分类的需求，将物业提供的养老服务分成公益、普惠、增值三类，养老服务的结余可以抵扣物业费。",
+   "link": "https://news.cctv.com/2026/11/23/ARTIHKrV4ptG9tpb6EKUlIXm261123.shtml",
+   "source": "央視網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-22T19:51:40Z"
+  },
+  {
+   "title": "印尼糖果厂火灾现场整理出24个尸袋 约30人失联",
+   "summary": "印度尼西亚警方22日表示，救援人员已从该国21日晚发生火灾的糖果厂现场整理出24个尸袋，另有约30人失联。",
+   "link": "https://news.cctv.com/2026/11/23/ARTIR094zUTCzDBHosMObb3B261122.shtml",
+   "source": "央視網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-22T19:46:12Z"
+  },
+  {
+   "title": "国产大型邮轮“爱达·花城号”开启商业首航",
+   "summary": "22日，第二艘国产大型邮轮“爱达·花城号”从广州南沙国际邮轮母港启航，正式开启商业首航。",
+   "link": "https://jingji.cctv.com/2026/11/23/ARTIQu0B83Ow4GOeLOV3BkPm261122.shtml",
+   "source": "央視網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-22T19:05:23Z"
+  },
+  {
+   "title": "Employees at Eric Trump-backed robot startup lose health benefits as company's cash crunch deepens",
+   "summary": "Foundation is pursuing an emergency bridge loan and has been in talks with VC firms as it waits for a $150 million investment from South Korea's Base Group.",
+   "link": "https://www.cnbc.com/2026/11/22/foundation-future-industries-health-benefits-payroll-base-group.html",
+   "source": "CNBC",
+   "cats": [
+    "finance",
+    "us"
+   ],
+   "date": "2026-11-22T18:55:05Z"
+  },
+  {
+   "title": "StockWatch: Insmed Jumps on Report of Takeover Interest by Sanofi, as Analysts Conclude a Deal Would Make Sense",
+   "summary": "Bloomberg News cited unnamed sources in reporting that Sanofi (Euronext Paris: SAN and Nasdaq: SNY) was weighing whether to acquire Insmed, in a potential blockbuster deal that the news outlet and others speculated…",
+   "link": "https://www.genengnews.com/topics/translational-medicine/stockwatch-insmed-jumps-on-report-of-takeover-interest-by-sanofi-as-analysts-conclude-a-deal-would-make-sense/",
+   "source": "GEN",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-22T18:52:58Z"
+  },
+  {
+   "title": "城市观鸟地图上新 江苏南京、徐州等地迎来越冬候鸟",
+   "summary": "近期，江苏南京市进入观鸟季，各观鸟点迎来不少观鸟爱好者和市民游客。",
+   "link": "https://news.cctv.com/2026/11/23/ARTIcTOdHRSAj6UYNcqydhPr261123.shtml",
+   "source": "央視網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-22T18:47:32Z"
+  },
+  {
+   "title": "US Army to detonate tonnes of unstable explosives in Iowa despite court order",
+   "summary": "The Army says \"swift action\" is necessary to protect its personnel and nearby communities around its ammunition plant in Iowa.",
+   "link": "https://www.bbc.co.uk/news/articles/cvglrx764gdxo?at_medium=RSS&at_campaign=rss",
+   "source": "BBC News",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-22T18:29:46Z"
+  },
+  {
+   "title": "第二艘国产大型邮轮首航 激发海洋消费新活力",
+   "summary": "中国第二艘国产大型邮轮“爱达·花城号”22日搭载3800余名宾客从广州南沙国际邮轮母港出发，开启前往香港、越南顺化6天5晚首航之旅。",
+   "link": "https://news.cctv.com/2026/11/23/ARTIp0hMLpTdCibIikn5p9Ti261122.shtml",
+   "source": "央視網",
+   "cats": [
+    "zhpress"
+   ],
+   "date": "2026-11-22T17:55:04Z"
+  },
+  {
+   "title": "Director of National Intelligence Jay Clayton warns Americans of 'bumps in the road' after tech outages",
+   "summary": "Clayton’s warning comes ahead of Thanksgiving travel, after separate outages disrupted air travel, Microsoft 365 and some bank transactions.",
+   "link": "https://www.cnbc.com/2026/11/22/jay-clayton-tech-outages-faa-microsoft-thanksgiving.html",
+   "source": "CNBC",
+   "cats": [
+    "us"
+   ],
+   "date": "2026-11-22T17:14:03Z"
   },
   {
    "title": "Has AI solved the Riemann hypothesis? Claim makes waves at 200th birthday event in China",
@@ -99,16 +280,6 @@
     "zhpress"
    ],
    "date": "2026-11-22T15:57:11Z"
-  },
-  {
-   "title": "US Army to detonate tonnes of unstable explosives in Iowa despite court order",
-   "summary": "The Army says \"swift action\" is necessary to protect its personnel and nearby communities around its ammunition plant in Iowa.",
-   "link": "https://www.bbc.co.uk/news/articles/cvglrx764gdxo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-22T15:50:28Z"
   },
   {
    "title": "创14个月新低 国际金价走势与地缘政治局势变化有何关联？",
@@ -151,26 +322,6 @@
    "date": "2026-11-22T13:54:05Z"
   },
   {
-   "title": "法治守护“夕阳红” 让老年人生活更幸福",
-   "summary": "11月18日至19日，全国老龄工作会议在京召开。会上传达了习近平总书记重要指示。",
-   "link": "https://news.cctv.com/2026/11/22/ARTI4eH5IaW6iPbOYe23nIjD261122.shtml",
-   "source": "央視網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-22T13:53:47Z"
-  },
-  {
-   "title": "新疆阿克苏地区拜城县发生3.7级地震，震源深度14千米",
-   "summary": "中国地震台网正式测定：11月22日21时43分在新疆阿克苏地区拜城县（北纬41.94度，东经82.46度）发生3.7级地震，震源深度14千米。",
-   "link": "https://news.cctv.com/2026/11/22/ARTIr3SLQHy0iVpwsmjMK9EA261122.shtml",
-   "source": "央視網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-22T13:53:20Z"
-  },
-  {
    "title": "中国经济看“新”丨从“尝鲜”到“潮流”，智能穿戴打开消费新空间",
    "summary": "新华社北京11月22日电 题：从“尝鲜”到“潮流”，智能穿戴打开消费新空间",
    "link": "https://www.chinanews.com.cn/cj/2026/11-22/10736203.shtml",
@@ -211,16 +362,6 @@
    "date": "2026-11-22T13:49:42Z"
   },
   {
-   "title": "找家政不再“开盲盒” 细分服务匹配多元需求",
-   "summary": "作为国民经济第一大产业，服务业在拉动经济增长、带动就业等方面发挥了重要作用。2025年，我国服务业增加值首次突破80万亿元，占国内生产总值比重达57.7%，对国民经济增长的贡献率达61.4%。",
-   "link": "https://news.cctv.com/2026/11/22/ARTIV4ZzBFN7oLyQ6q1hATut261122.shtml",
-   "source": "央視網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-22T13:49:28Z"
-  },
-  {
    "title": "多方协同发力 保障冬季“菜篮子”量足价稳",
    "summary": "玉溪市通海县是云南省的露地蔬菜基地之一，也是我国“南菜北运”的重要枢纽。入冬后，这里的10万亩蔬菜陆续进入采收高峰，每天都发送供应到全国各地市场。",
    "link": "https://www.chinanews.com.cn/cj/2026/11-22/10736204.shtml",
@@ -231,16 +372,6 @@
    "date": "2026-11-22T13:48:50Z"
   },
   {
-   "title": "黄土高原上，苹果正在长成现代化大产业",
-   "summary": "北纬35度至40度，联合国粮农组织认定的苹果最佳适生区。陕西、甘肃正处黄金带，海拔优、光照足、温差大、土层厚。",
-   "link": "https://news.cctv.com/2026/11/22/ARTIUuDAVA1ncCIU0d54K2ar261122.shtml",
-   "source": "央視網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-22T13:48:13Z"
-  },
-  {
    "title": "Saudi Arabia, Bahrain report new attacks as Iran says it remains open to a deal with U.S.",
    "summary": "Saudi Arabia said it destroyed a drone launched by Iran-backed Houthis, while Bahrain said an industrial facility was hit by Iranian projectiles.",
    "link": "https://www.cnbc.com/2026/11/22/saudi-houthi-bahrain-iran-attacks-araghchi-talks.html",
@@ -249,16 +380,6 @@
     "us"
    ],
    "date": "2026-11-22T13:25:47Z"
-  },
-  {
-   "title": "近镜头｜跨越山海 亚太扬帆",
-   "summary": "本次APEC盛会期间，习近平主席同各方共商亚太合作大计、共襄亚太发展大业，为建设亚太共同体、续写“亚太奇迹”新篇章贡献中国方案和中国智慧。",
-   "link": "https://news.cctv.com/2026/11/22/ARTIllec6QGanZHvHu1lX8f3261122.shtml",
-   "source": "央視網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-22T13:19:29Z"
   },
   {
    "title": "Politics chat: Lawmakers step up with only weeks to Democrats' control of Congress",
@@ -301,46 +422,6 @@
    "date": "2026-11-22T13:00:08Z"
   },
   {
-   "title": "【文化中国行】福建嵩口古镇留住最美乡愁",
-   "summary": "中国历史文化名镇——福建永泰嵩口镇。这里不搞大拆大建，以“最小干预”的“针灸式”改造理念，守住百年古厝的历史风貌，让原居民安居乐业，让浓浓的乡愁在这片绿水青山间生生不息。",
-   "link": "https://news.cctv.com/2026/11/22/ARTIVJGGmpDOH6lb9yd2z8zT261122.shtml",
-   "source": "央視網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-22T12:58:31Z"
-  },
-  {
-   "title": "加强能源保供 全力保障群众温暖过冬",
-   "summary": "我国北方地区已经全面开启冬季供暖，煤炭、天然气以及清洁电能等能源供应协同发力，全力保障群众温暖过冬。",
-   "link": "https://news.cctv.com/2026/11/22/ARTIJQSQj5yTzzhncZYuFXM5261122.shtml",
-   "source": "央視網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-22T12:58:20Z"
-  },
-  {
-   "title": "为共创亚太美好未来汇聚力量——习近平主席在亚太经合组织会议期间发表的重要讲话引发热烈反响",
-   "summary": "国际人士表示，习近平主席在亚太经合组织第三十三次领导人非正式会议及相关活动中发表的一系列重要讲话，围绕亚太共同体建设提出中国方案、指明发展方向，为共创亚太美好未来汇聚力量，也对全世界具有深远意义。",
-   "link": "https://news.cctv.com/2026/11/22/ARTIz1ba0060zIlT0E7vViMd261122.shtml",
-   "source": "央視網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-22T12:58:11Z"
-  },
-  {
-   "title": "服务消费升温带动服务业加速提质扩容",
-   "summary": "今年以来，文旅体育等服务消费持续火热，各类消费新场景新业态加速涌现，带动服务业提质扩容，内需潜力不断释放。",
-   "link": "https://news.cctv.com/2026/11/22/ARTIKAhMt4VpUxjU9FaWxBwT261122.shtml",
-   "source": "央視網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-22T12:58:01Z"
-  },
-  {
    "title": "毕马威发布能源转型新书 助企业明确自身角色",
    "summary": "中新网北京11月22日电 (记者 张素)近日发布的能源转型新书提出“定位—路径—资产重估—能力—底线”五层决策框架，旨在帮助企业明确自身在能源转型中的角色。",
    "link": "https://www.chinanews.com.cn/cj/2026/11-22/10736198.shtml",
@@ -349,16 +430,6 @@
     "zhpress"
    ],
    "date": "2026-11-22T12:57:55Z"
-  },
-  {
-   "title": "【权威访谈】增强党性是全面从严治党的根本性任务",
-   "summary": "党性，是党的性质宗旨、理想信念、初心使命、作风纪律等对党员提出的根本要求。《决定》把“增强共产党人的党性”摆在战略任务部署的第一部分。",
-   "link": "https://news.cctv.com/2026/11/22/ARTIjXq3HmIEYogjiaxbJFTT261122.shtml",
-   "source": "央視網",
-   "cats": [
-    "zhpress"
-   ],
-   "date": "2026-11-22T12:52:22Z"
   },
   {
    "title": "内蒙古医科大学党委原书记赵云山被开除党籍和公职",
@@ -441,6 +512,26 @@
    "date": "2026-11-22T11:30:09Z"
   },
   {
+   "title": "A 194-year-old tortoise has a remarkable anti-aging secret hidden in its DNA",
+   "summary": "At an astonishing 194 years old, Jonathan the giant tortoise is the world's oldest living land animal, and scientists may have finally uncovered the secrets behind his extraordinary lifespan. Researchers identified 287…",
+   "link": "https://www.sciencedaily.com/releases/2026/11/261121221130.htm",
+   "source": "ScienceDaily",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-22T11:04:06Z"
+  },
+  {
+   "title": "Scientists discover a hidden eye disease that slowly steals night vision",
+   "summary": "Scientists have discovered a new genetic eye disease that can silently damage peripheral and night vision while leaving central sight largely unaffected for years. The condition may be detectable through an unusual…",
+   "link": "https://www.sciencedaily.com/releases/2026/11/261119194547.htm",
+   "source": "ScienceDaily",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-22T10:48:36Z"
+  },
+  {
    "title": "Despite Serbia’s political earthquake, China hopes ties will stay rock solid",
    "summary": "Beijing has signalled its readiness to maintain close ties with Serbia’s new government, as the victorious Student List prepares to take power and scrutinise major public projects, including those involving Chinese…",
    "link": "https://www.scmp.com/news/china/diplomacy/article/3375340/despite-serbias-political-earthquake-china-hopes-ties-will-stay-rock-solid",
@@ -469,26 +560,6 @@
     "biotech"
    ],
    "date": "2026-11-22T09:28:24Z"
-  },
-  {
-   "title": "PLA anti-submarine ships conduct South China Sea patrol with Vietnamese navy",
-   "summary": "China and Vietnam completed their latest joint naval patrol in the Gulf of Tonkin on Saturday, according to the official newspaper of the People’s Liberation Army. The two-day exercise, which included formation…",
-   "link": "https://www.scmp.com/news/china/military/article/3375372/pla-anti-submarine-ships-conduct-south-china-sea-patrol-vietnamese-navy",
-   "source": "SCMP",
-   "cats": [
-    "china"
-   ],
-   "date": "2026-11-22T08:56:25Z"
-  },
-  {
-   "title": "Miley Cyrus marries Maxx Morando in California ceremony",
-   "summary": "The couple have been together for four years and were engaged in 2025.",
-   "link": "https://www.bbc.co.uk/news/articles/cq8e0p87l89lo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC News",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-22T08:46:28Z"
   },
   {
    "title": "Men's fishing group is the hook to better mental health",
@@ -539,6 +610,16 @@
     "china"
    ],
    "date": "2026-11-22T07:00:08Z"
+  },
+  {
+   "title": "AI uncovers hidden bladder cancer warning signs years before diagnosis",
+   "summary": "Scientists have developed an AI tool that can uncover hidden warning signs of bladder cancer up to five years before diagnosis, identifying 85% of cases in a major study involving nearly 70,000 patients. By revealing…",
+   "link": "https://www.sciencedaily.com/releases/2026/11/261120075604.htm",
+   "source": "ScienceDaily",
+   "cats": [
+    "biotech"
+   ],
+   "date": "2026-11-22T03:43:18Z"
   },
   {
    "title": "Recovery at last? Analysts divided on China’s home market outlook",
@@ -671,16 +752,6 @@
    "date": "2026-11-21T12:40:21Z"
   },
   {
-   "title": "The New Yorker's Jason Zengerle on Hakeem Jeffries' rise to first Black House speaker",
-   "summary": "Hakeem Jeffries is set to become the first-ever African American speaker of the U.S. House of Representatives. NPR's Scott Simon talks to Jason Zengerle of The New Yorker about the rise of Jeffries.",
-   "link": "https://www.npr.org/2026/11/21/nx-s1-6047580/the-new-yorkers-jason-zengerle-on-hakeem-jeffries-rise-to-first-black-house-speaker",
-   "source": "NPR",
-   "cats": [
-    "us"
-   ],
-   "date": "2026-11-21T12:40:19Z"
-  },
-  {
    "title": "Sessions offer advice on rising energy costs",
    "summary": "A council is urging people to seek support with rising energy costs on heating this winter.",
    "link": "https://www.bbc.co.uk/news/articles/cmy49l3x893jo?at_medium=RSS&at_campaign=rss",
@@ -740,16 +811,6 @@
     "finance"
    ],
    "date": "2026-11-21T06:00:02Z"
-  },
-  {
-   "title": "Microplastics may be more dangerous than we thought. Scientists just discovered why",
-   "summary": "Microplastics may be doing something far more dangerous than simply accumulating in our bodies. Scientists have discovered that tiny plastic particles can interact with water to generate highly reactive molecules…",
-   "link": "https://www.sciencedaily.com/releases/2026/11/261120075549.htm",
-   "source": "ScienceDaily",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-21T02:35:26Z"
   },
   {
    "title": "Can AI really help spot Black Friday deals? We put it to the test",
@@ -906,57 +967,6 @@
    "date": "2026-11-20T13:29:50Z"
   },
   {
-   "title": "Celldex drug stumbles in eczema; Epigenetic editing startup cuts staff",
-   "summary": "Wall Street analysts rushed to Celldex’s defense following the setback. Elsewhere, Isomorphic Labs cut a cancer-focused deal with Merck and Teva’s research chief accepted a new job.",
-   "link": "https://www.biopharmadive.com/news/celldex-eczema-nchroma-layoffs-isomorphic-merck-teva-vitrivax/875241/",
-   "source": "BioPharma Dive",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-20T13:03:00Z"
-  },
-  {
-   "title": "Keto diet slashes liver fat by 67% in just 4 months",
-   "summary": "A new clinical trial found that the ketogenic diet dramatically outperformed Mediterranean and low-fat diets in reducing liver fat and improving metabolic health, even when participants lost similar amounts of weight…",
-   "link": "https://www.sciencedaily.com/releases/2026/11/261120070904.htm",
-   "source": "ScienceDaily",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-20T12:44:39Z"
-  },
-  {
-   "title": "This simple habit is linked to a 33% lower risk of Alzheimer's",
-   "summary": "Reading for pleasure may have surprisingly powerful benefits for the brain, with studies linking it to better memory, reduced stress, improved mental health, and a lower risk of dementia. Researchers highlight findings…",
-   "link": "https://www.sciencedaily.com/releases/2026/11/261118065536.htm",
-   "source": "ScienceDaily",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-20T12:06:07Z"
-  },
-  {
-   "title": "Genome Writing Inserts Human X-Linked Disease DNA Into Mice",
-   "summary": "By swapping 78 kilobases of human DNA into mice, researchers recreated key features of X-linked dystonia-parkinsonism and showed that boosting TAF1 expression may counter some cellular effects. The post Genome Writing…",
-   "link": "https://www.genengnews.com/topics/genome-editing/genome-writing-inserts-human-x-linked-disease-dna-into-mice/",
-   "source": "GEN",
-   "cats": [
-    "biotech"
-   ],
-   "date": "2026-11-20T12:03:02Z"
-  },
-  {
-   "title": "This week in charts: Biotech investors’ China bets are already paying off",
-   "summary": "This year, companies built around medicines from China have sped toward acquisitions or IPOs. Meanwhile, Summit is no longer the Wall Street darling it was in 2024.",
-   "link": "https://www.biopharmadive.com/news/biotech-china-deals-venture-returns-summit-stock/874912/",
-   "source": "BioPharma Dive",
-   "cats": [
-    "biotech",
-    "china"
-   ],
-   "date": "2026-11-20T12:00:00Z"
-  },
-  {
    "title": "Japan core inflation soars to highest this year as energy subsidy expiry pushes up consumer prices",
    "summary": "The core inflation figure — which strips out prices of food — was lower than the 2.3% expected by Reuters-polled economists.",
    "link": "https://www.cnbc.com/2026/11/20/japan-inflation-cpi-october.html",
@@ -975,18 +985,6 @@
     "finance"
    ],
    "date": "2026-11-19T20:21:10Z"
-  },
-  {
-   "title": "Trump praises ‘great relationship’ with Putin after meeting, as Ukraine war takes center stage",
-   "summary": "U.S. President Donald Trump met individually on Thursday with Russian President Vladimir Putin, as well as Chinese President Xi Jinping.",
-   "link": "https://www.cnbc.com/2026/11/19/trump-xi-putin-china-apec-.html",
-   "source": "CNBC",
-   "cats": [
-    "china",
-    "finance",
-    "us"
-   ],
-   "date": "2026-11-19T09:02:00Z"
   }
  ]
 }

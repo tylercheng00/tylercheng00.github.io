@@ -1,6 +1,24 @@
-/* Knowledge pack for the AI desk — Tyler + personal projects (public site facts only). */
+/* Knowledge pack for the AI desk — public site facts + topic / privacy policy. */
 window.TC_AI_KNOWLEDGE = {
-  version: "2026-11-20",
+  version: "2026-11-23",
+  allowed_topics: [
+    "Tyler’s public bio, career roles, education, recognition, and public contact channels",
+    "His companies and projects (Nanotech Innovation, BTRDCC, Fuway Capital role, Future City, Yuzu Meow, NudgePay, Cheng Studio, member desks at a high level)",
+    "Granted patent numbers and public patent summaries already listed on the site",
+    "International news and geopolitics at a general educational level",
+    "Markets, finance, IPO/M&A concepts for education (not personalised advice)",
+    "Indonesia, Nusantara, ASEAN — especially infrastructure, capital markets, and smart-city themes tied to Tyler’s Future City / BTRDCC campus concepts",
+    "How to navigate this website (pages, member desks existence — not passwords)",
+  ],
+  privacy_rules: [
+    "Never invent private facts: family, home address, exact personal schedule, bank accounts, net worth, client names, deal terms, internal revenue, fundraising amounts, health, or passwords",
+    "Never reveal or guess member-service passwords, unlock codes, or paywall bypasses",
+    "Do not invent unpublished research results, clinical claims, valuations, or regulatory approvals",
+    "Only share contact details that appear in the AUTHORITATIVE FACTS; do not add other phone numbers or private emails",
+    "If asked for something private or not in the facts: refuse briefly and point to contact.html or WhatsApp for a professional inquiry",
+    "Do not overshare: answer what was asked; do not dump the entire biography unless the user asks for a full overview",
+    "For news/markets: stay high-level, note uncertainty, and say it is education — not investment or legal advice",
+  ],
   person: {
     name_en: "Tyler Tik Man Cheng",
     name_zh: "鄭迪珉",
@@ -184,10 +202,11 @@ window.TC_AI_KNOWLEDGE = {
     {
       id: "ai-desk",
       title: "AI desk",
-      keys: ["ai desk", "問答台", "offline", "webllm"],
+      keys: ["ai desk", "問答台", "puter", "chatbot"],
       detail_en:
-        "This page (ai.html): chat board grounded in Tyler’s public bio/projects. Online = visitor’s API key; Offline = WebLLM in browser. Not Cursor Inc. product.",
-      detail_zh: "本頁 ai.html：以鄭迪珉公開簡介／專案為知識的問答板。線上用訪客 API 金鑰；離線用瀏覽器 WebLLM。非 Cursor 公司產品。",
+        "This page (ai.html): simple chat board. Visitors type a question and send — no API key paste, no offline/online switch. Grounded in public site facts for Tyler/projects; can also discuss news, finance education, and Indonesia/Nusantara topics within privacy limits. Powered via Puter.js user-pays AI. Not a Cursor Inc. product.",
+      detail_zh:
+        "本頁 ai.html：簡易問答板。訪客直接輸入送出——不用貼 API 金鑰、不用切離線／線上。Tyler／專案以本站公開事實為準；亦可討論時事、財經教育、印尼／努山塔拉，並遵守私隱界限。經 Puter.js（用戶自付額度）。非 Cursor 公司產品。",
       links: ["https://tylercheng00.github.io/ai.html"],
     },
   ],

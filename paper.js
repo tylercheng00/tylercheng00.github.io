@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  var MEMBER_PASS = "TC-Paper-2026";
+  var MEMBER_PASS = "TC-Paper-QMvS2TbtW6";
   var PRICE = "HK$198";
   var WA = "https://wa.me/85298229572";
   var START_CASH = 100000;

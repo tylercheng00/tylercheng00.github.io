@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  var MEMBER_PASS = "TC-Filings-2026";
+  var MEMBER_PASS = "TC-Filings-Elp5XWTcIp";
   var PRICE = "HK$398";
   var WA = "https://wa.me/85298229572";
   var unlocked = false;

@@ -3,7 +3,7 @@
 
   // Separate password from Personal chart / Filings academy.
   // Unlock is memory-only: every refresh / reload must re-enter the password.
-  var MEMBER_PASS = "TC-MarkSix-2026";
+  var MEMBER_PASS = "TC-MarkSix-IB1wu9Y3My";
   var PRICE = "HK$198";
   var WA = "https://wa.me/85298229572";
   var DATA = "data/marksix/";

@@ -1,4 +1,7 @@
-/* Stock markets desk: multi-region TradingView embeds + delayed snapshot. */
+/* Stock markets desk: multi-region TradingView embeds + delayed snapshot.
+ * Every region exposes the same five panels. US keeps TradingView heatmap /
+ * hotlists; other desks use a local breadth board and movers built from
+ * data/markets.json so info density stays comparable. */
 (function () {
   var root = document.documentElement;
   var BASE = 'https://s3.tradingview.com/external-embedding/embed-widget-';
@@ -11,7 +14,7 @@
   var REGIONS = {
     us: {
       en: 'United States', zh: '美國', short_en: 'US', short_zh: '美股',
-      heat: true, heatSource: 'SPX500', exchange: 'US',
+      heatMode: 'tv', moversMode: 'tv', heatSource: 'SPX500', exchange: 'US',
       tape: [
         { proName: 'FOREXCOM:SPXUSD', title: 'S&P 500' },
         { proName: 'FOREXCOM:NSXUSD', title: 'Nasdaq 100' },
@@ -49,14 +52,14 @@
     },
     hk: {
       en: 'Hong Kong', zh: '香港', short_en: 'HK', short_zh: '港股',
-      heat: false, exchange: 'HKEX',
+      heatMode: 'local', moversMode: 'local', exchange: 'HKEX',
       tape: [
         { proName: 'HSI:HSI', title: 'Hang Seng' },
         { proName: 'HKEX:0700', title: 'Tencent' },
         { proName: 'HKEX:9988', title: 'Alibaba-SW' },
         { proName: 'HKEX:3690', title: 'Meituan' },
         { proName: 'HKEX:1810', title: 'Xiaomi' },
-        { proName: 'HKEX:9618', title: 'JD-SW' },
+        { proName: 'HKEX:0005', title: 'HSBC' },
         { proName: 'HKEX:0388', title: 'HKEX' },
         { proName: 'HKEX:1299', title: 'AIA' }
       ],
@@ -66,6 +69,10 @@
       ],
       quotes: function (zh) {
         return [
+          { name: zh ? '市場龍頭' : 'Market leaders', theme: 'all', symbols: [
+            q('HKEX:0005', 'HSBC'), q('HKEX:0700', 'Tencent'), q('HKEX:0941', 'China Mobile'),
+            q('HKEX:1299', 'AIA'), q('HKEX:0388', 'HKEX'), q('HKEX:2318', 'Ping An')
+          ] },
           { name: zh ? '人工智能' : 'Artificial intelligence', theme: 'ai', symbols: [
             q('HKEX:0700', 'Tencent'), q('HKEX:9988', 'Alibaba-SW'), q('HKEX:3690', 'Meituan'),
             q('HKEX:1810', 'Xiaomi'), q('HKEX:1024', 'Kuaishou'), q('HKEX:9618', 'JD-SW')
@@ -74,16 +81,16 @@
             q('HKEX:0981', 'SMIC'), q('HKEX:1347', 'Hua Hong'), q('HKEX:2577', 'Innoscience'),
             q('HKEX:2382', 'Sunny Optical'), q('HKEX:6869', 'Yangtze Optical')
           ] },
-          { name: zh ? '航天' : 'Aerospace', theme: 'aero', symbols: [
-            q('HKEX:2357', 'AVIC'), q('HKEX:2329', 'Guizhou Aviation'),
-            q('HKEX:0317', 'COSCO Shipping'), q('HKEX:0753', 'Air China')
+          { name: zh ? '航天及運輸' : 'Aerospace & transport', theme: 'aero', symbols: [
+            q('HKEX:0753', 'Air China'), q('HKEX:0670', 'China Eastern'),
+            q('HKEX:0293', 'Cathay Pacific'), q('HKEX:0317', 'COSCO Shipping')
           ] }
         ];
       }
     },
     cn: {
       en: 'A-shares', zh: 'A股', short_en: 'A-shares', short_zh: 'A股',
-      heat: false, exchange: 'SSE',
+      heatMode: 'local', moversMode: 'local', exchange: 'SSE',
       tape: [
         { proName: 'SSE:000001', title: 'SSE Composite' },
         { proName: 'SZSE:399001', title: 'SZSE Component' },
@@ -98,6 +105,10 @@
       ],
       quotes: function (zh) {
         return [
+          { name: zh ? '市場龍頭' : 'Market leaders', theme: 'all', symbols: [
+            q('SSE:600519', 'Kweichow Moutai'), q('SZSE:300750', 'CATL'), q('SSE:601318', 'Ping An'),
+            q('SZSE:000858', 'Wuliangye'), q('SSE:601012', 'LONGi')
+          ] },
           { name: zh ? '人工智能' : 'Artificial intelligence', theme: 'ai', symbols: [
             q('SSE:688111', 'Kingsoft Office'), q('SZSE:002230', 'iFlytek'),
             q('SZSE:300418', 'Kunlun Tech'), q('SSE:603019', 'Dawning'), q('SZSE:002415', 'Hikvision')
@@ -115,7 +126,7 @@
     },
     tw: {
       en: 'Taiwan', zh: '台灣', short_en: 'Taiwan', short_zh: '台股',
-      heat: false, exchange: 'TWSE',
+      heatMode: 'local', moversMode: 'local', exchange: 'TWSE',
       tape: [
         { proName: 'TVC:TAIEX', title: 'TAIEX' },
         { proName: 'TWSE:2330', title: 'TSMC' },
@@ -130,6 +141,10 @@
       ],
       quotes: function (zh) {
         return [
+          { name: zh ? '市場龍頭' : 'Market leaders', theme: 'all', symbols: [
+            q('TWSE:2330', 'TSMC'), q('TWSE:2317', 'Hon Hai'), q('TWSE:2308', 'Delta'),
+            q('TWSE:2881', 'Fubon'), q('TWSE:2412', 'Chunghwa Telecom')
+          ] },
           { name: zh ? '人工智能' : 'Artificial intelligence', theme: 'ai', symbols: [
             q('TWSE:2330', 'TSMC'), q('TWSE:2454', 'MediaTek'), q('TWSE:2382', 'Quanta'),
             q('TWSE:3231', 'Wistron'), q('TWSE:2356', 'Inventec')
@@ -138,16 +153,15 @@
             q('TWSE:2330', 'TSMC'), q('TWSE:2303', 'UMC'), q('TWSE:3711', 'ASE'),
             q('TWSE:3034', 'Novatek'), q('TWSE:2379', 'Realtek'), q('TWSE:2454', 'MediaTek')
           ] },
-          { name: zh ? '航天' : 'Aerospace', theme: 'aero', symbols: [
-            q('TWSE:2634', 'Aerospace Industrial'), q('TWSE:2630', 'AIDC'),
-            q('TWSE:2545', 'Huang Hsiang'), q('TWSE:2637', 'Wisdom Marine')
+          { name: zh ? '航天及航運' : 'Aerospace & shipping', theme: 'aero', symbols: [
+            q('TWSE:2634', 'AIDC'), q('TWSE:2637', 'Wisdom Marine'), q('TWSE:2603', 'Evergreen')
           ] }
         ];
       }
     },
     jp: {
       en: 'Japan', zh: '日本', short_en: 'Japan', short_zh: '日股',
-      heat: false, exchange: 'TSE',
+      heatMode: 'local', moversMode: 'local', exchange: 'TSE',
       tape: [
         { proName: 'TVC:NI225', title: 'Nikkei 225' },
         { proName: 'TSE:7203', title: 'Toyota' },
@@ -162,6 +176,10 @@
       ],
       quotes: function (zh) {
         return [
+          { name: zh ? '市場龍頭' : 'Market leaders', theme: 'all', symbols: [
+            q('TSE:7203', 'Toyota'), q('TSE:6758', 'Sony'), q('TSE:6861', 'Keyence'),
+            q('TSE:8306', 'MUFG'), q('TSE:4063', 'Shin-Etsu')
+          ] },
           { name: zh ? '人工智能' : 'Artificial intelligence', theme: 'ai', symbols: [
             q('TSE:9984', 'SoftBank'), q('TSE:6758', 'Sony'), q('TSE:6861', 'Keyence'),
             q('TSE:4063', 'Shin-Etsu'), q('TSE:6501', 'Hitachi')
@@ -170,7 +188,7 @@
             q('TSE:8035', 'Tokyo Electron'), q('TSE:6857', 'Advantest'), q('TSE:6920', 'Lasertec'),
             q('TSE:7735', 'SCREEN'), q('TSE:4063', 'Shin-Etsu')
           ] },
-          { name: zh ? '航天' : 'Aerospace', theme: 'aero', symbols: [
+          { name: zh ? '航天及航空' : 'Aerospace & airlines', theme: 'aero', symbols: [
             q('TSE:7011', 'Mitsubishi Heavy'), q('TSE:9202', 'ANA'),
             q('TSE:9201', 'JAL'), q('TSE:7013', 'IHI')
           ] }
@@ -179,7 +197,7 @@
     },
     kr: {
       en: 'Korea', zh: '韓國', short_en: 'Korea', short_zh: '韓股',
-      heat: false, exchange: 'KRX',
+      heatMode: 'local', moversMode: 'local', exchange: 'KRX',
       tape: [
         { proName: 'KRX:KOSPI', title: 'KOSPI' },
         { proName: 'KRX:005930', title: 'Samsung Elec' },
@@ -194,6 +212,10 @@
       ],
       quotes: function (zh) {
         return [
+          { name: zh ? '市場龍頭' : 'Market leaders', theme: 'all', symbols: [
+            q('KRX:005930', 'Samsung Elec'), q('KRX:000660', 'SK Hynix'), q('KRX:005380', 'Hyundai'),
+            q('KRX:051910', 'LG Chem'), q('KRX:006400', 'Samsung SDI')
+          ] },
           { name: zh ? '人工智能' : 'Artificial intelligence', theme: 'ai', symbols: [
             q('KRX:005930', 'Samsung Elec'), q('KRX:035420', 'Naver'), q('KRX:035720', 'Kakao'),
             q('KRX:035900', 'JYP Ent'), q('KRX:259960', 'Krafton')
@@ -211,7 +233,7 @@
     },
     au: {
       en: 'Australia', zh: '澳洲', short_en: 'Australia', short_zh: '澳洲股',
-      heat: false, exchange: 'ASX',
+      heatMode: 'local', moversMode: 'local', exchange: 'ASX',
       tape: [
         { proName: 'ASX:XJO', title: 'ASX 200' },
         { proName: 'ASX:BHP', title: 'BHP' },
@@ -226,17 +248,20 @@
       ],
       quotes: function (zh) {
         return [
+          { name: zh ? '市場龍頭' : 'Market leaders', theme: 'all', symbols: [
+            q('ASX:BHP', 'BHP'), q('ASX:CBA', 'CBA'), q('ASX:CSL', 'CSL'),
+            q('ASX:WBC', 'Westpac'), q('ASX:RIO', 'Rio Tinto')
+          ] },
           { name: zh ? '人工智能' : 'Artificial intelligence', theme: 'ai', symbols: [
             q('ASX:XRO', 'Xero'), q('ASX:WTC', 'WiseTech'), q('ASX:APX', 'Appen'),
             q('ASX:CPU', 'Computershare'), q('ASX:TNE', 'Technology One')
           ] },
-          { name: zh ? '晶片' : 'Semiconductors', theme: 'chip', symbols: [
+          { name: zh ? '科技硬件' : 'Tech hardware', theme: 'chip', symbols: [
             q('ASX:DDR', 'Dicker Data'), q('ASX:ALU', 'Altium'), q('ASX:NVX', 'Novonix'),
-            q('ASX:4DS', '4DS Memory'), q('ASX:BRE', 'Brazilian Rare Earths')
+            q('ASX:4DS', '4DS Memory')
           ] },
-          { name: zh ? '航天' : 'Aerospace', theme: 'aero', symbols: [
-            q('ASX:DRO', 'DroneShield'), q('ASX:EOS', 'Electro Optic'),
-            q('ASX:QAN', 'Qantas'), q('ASX:AIA', 'Auckland Airport')
+          { name: zh ? '航天及航空' : 'Aerospace & airlines', theme: 'aero', symbols: [
+            q('ASX:DRO', 'DroneShield'), q('ASX:EOS', 'Electro Optic'), q('ASX:QAN', 'Qantas')
           ] }
         ];
       }
@@ -263,11 +288,9 @@
     var r = REGIONS[region];
     var zh = locale.indexOf('zh') === 0;
     var common = { colorTheme: theme, isTransparent: true, locale: locale };
-    var groups = r.quotes(zh).filter(function (g) {
-      return themeFilter === 'all' || g.theme === themeFilter || g.theme === 'bio';
-    });
+    var groups = r.quotes(zh);
     if (themeFilter !== 'all') {
-      groups = r.quotes(zh).filter(function (g) { return g.theme === themeFilter; });
+      groups = groups.filter(function (g) { return g.theme === themeFilter; });
     }
     if (!groups.length) groups = r.quotes(zh);
     return {
@@ -296,19 +319,100 @@
     };
   }
 
+  function bi(en, zh) {
+    return '<span lang="en">' + en + '</span><span lang="zh-Hant">' + zh + '</span>';
+  }
+  function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function num(v) {
+    var d = Math.abs(v) >= 1000 ? 0 : 2;
+    return v.toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d });
+  }
+
+  function flatItems(pack) {
+    if (!pack || !pack.groups) return [];
+    var seen = {}, out = [];
+    pack.groups.forEach(function (g) {
+      if (themeFilter !== 'all' && g.id !== 'indices' && g.theme !== themeFilter && g.id !== themeFilter) return;
+      (g.items || []).forEach(function (it) {
+        if (seen[it.symbol]) return;
+        seen[it.symbol] = 1;
+        out.push(it);
+      });
+    });
+    return out;
+  }
+
+  function heatColor(pct) {
+    var a = Math.min(Math.abs(pct) / 4, 1);
+    if (pct >= 0) return 'rgba(46, 160, 98, ' + (0.22 + a * 0.7).toFixed(2) + ')';
+    return 'rgba(200, 70, 70, ' + (0.22 + a * 0.7).toFixed(2) + ')';
+  }
+
+  function renderLocalBreadth(host) {
+    var pack = regionPayload();
+    var items = flatItems(pack).filter(function (it) { return typeof it.pct === 'number'; });
+    host.classList.add('ready', 'mk-local');
+    if (!items.length) {
+      host.innerHTML = '<div class="mk-heat-note"><p>' + bi('Breadth board will fill once this market’s snapshot is ready.', '此市場快照就緒後會顯示廣度板。') + '</p></div>';
+      return;
+    }
+    items.sort(function (a, b) { return Math.abs(b.pct) - Math.abs(a.pct); });
+    var cells = items.slice(0, 24).map(function (it) {
+      var sign = it.pct >= 0 ? '+' : '';
+      return '<button type="button" class="mk-heat-cell" style="background:' + heatColor(it.pct) + '" title="' + esc(it.name) + '">' +
+        '<b>' + esc(it.symbol) + '</b><span>' + sign + it.pct.toFixed(2) + '%</span></button>';
+    }).join('');
+    host.innerHTML = '<div class="mk-heatboard" role="list">' + cells + '</div>' +
+      '<p class="mk-local-note">' + bi('Local breadth board from delayed snapshot (TradingView sector heatmap is US-only).', '本地廣度板，取自延遲快照（TradingView 板塊熱力圖僅支援美股）。') + '</p>';
+  }
+
+  function renderLocalMovers(host) {
+    var pack = regionPayload();
+    var items = flatItems(pack).filter(function (it) { return typeof it.pct === 'number' && !it.stale; });
+    host.classList.add('ready', 'mk-local');
+    if (!items.length) {
+      host.innerHTML = '<div class="mk-heat-note"><p>' + bi('Movers will appear once quotes load.', '報價載入後會顯示升跌榜。') + '</p></div>';
+      return;
+    }
+    var sorted = items.slice().sort(function (a, b) { return b.pct - a.pct; });
+    var gainers = sorted.slice(0, 6);
+    var losers = sorted.slice(-6).reverse();
+    function rows(list) {
+      return list.map(function (it) {
+        var up = it.pct >= 0;
+        var sign = up ? '+' : '';
+        return '<tr><th scope="row"><b>' + esc(it.symbol) + '</b><small>' + esc(it.name) + '</small></th>' +
+          '<td class="snap-px">' + num(it.price) + '</td>' +
+          '<td><span class="snap-pct ' + (up ? 'up' : 'down') + '">' + sign + it.pct.toFixed(2) + '%</span></td></tr>';
+      }).join('');
+    }
+    host.innerHTML =
+      '<div class="mk-movers-local">' +
+        '<div><h3>' + bi('Gainers', '升幅') + '</h3><table class="snap-table"><tbody>' + rows(gainers) + '</tbody></table></div>' +
+        '<div><h3>' + bi('Losers', '跌幅') + '</h3><table class="snap-table"><tbody>' + rows(losers) + '</tbody></table></div>' +
+      '</div>' +
+      '<p class="mk-local-note">' + bi('From this desk’s delayed snapshot — works offline from TradingView.', '取自此桌面延遲快照，不倚賴 TradingView 升跌榜。') + '</p>';
+  }
+
   function mount(host, forceEn) {
     var st = settings();
     if (forceEn) st.locale = 'en';
-    var key = region + '|' + themeFilter + '|' + st.locale + st.theme;
+    var r = REGIONS[region];
+    var kind = host.getAttribute('data-tv');
+    var key = region + '|' + themeFilter + '|' + st.locale + st.theme + '|' + kind;
     if (host.getAttribute('data-key') === key) return;
     host.setAttribute('data-key', key);
-    host.classList.remove('ready');
-    var kind = host.getAttribute('data-tv');
-    if (kind === 'stock-heatmap' && !REGIONS[region].heat) {
-      host.innerHTML = '<div class="mk-heat-note"><p><span lang="en">Heatmap is shown for the US desk. This market uses the thematic lists and movers panels instead — cleaner on mobile.</span><span lang="zh-Hant">熱力圖主要用於美股桌面。此市場改以主題名單與升跌榜呈現，手機上更整齊。</span></p></div>';
-      host.classList.add('ready');
+    host.classList.remove('ready', 'mk-local');
+
+    if (kind === 'stock-heatmap' && r.heatMode !== 'tv') {
+      renderLocalBreadth(host);
       return;
     }
+    if (kind === 'hotlists' && r.moversMode !== 'tv') {
+      renderLocalMovers(host);
+      return;
+    }
+
     var cfg = configs(st.locale, st.theme)[kind];
     host.textContent = '';
     var wrap = document.createElement('div');
@@ -325,7 +429,7 @@
     s.src = BASE + kind + '.js';
     s.async = true;
     s.text = JSON.stringify(cfg);
-    s.onerror = function () { fail(host); };
+    s.onerror = function () { fail(host, kind); };
     wrap.appendChild(s);
     host.appendChild(wrap);
 
@@ -354,7 +458,7 @@
       var f = host.querySelector('iframe');
       if (f && f.offsetHeight && loaded) return;
       if (loaded && f && !f.offsetHeight && st.locale !== 'en') { host.removeAttribute('data-key'); mount(host, true); return; }
-      if (!f || !loaded) fail(host);
+      if (!f || !loaded) fail(host, kind);
     }, 25000);
   }
 
@@ -376,8 +480,10 @@
     });
   }
 
-  function fail(host) {
+  function fail(host, kind) {
     if (host.classList.contains('mk-tape')) { host.style.display = 'none'; return; }
+    if (kind === 'stock-heatmap') { renderLocalBreadth(host); return; }
+    if (kind === 'hotlists') { renderLocalMovers(host); return; }
     if (host.querySelector('.mk-fail')) return;
     var box = document.createElement('div');
     box.className = 'mk-fail';
@@ -386,9 +492,7 @@
     host.appendChild(box);
   }
 
-  /* ---------- Region + theme chrome ---------- */
   function paintChrome() {
-    var zh = settings().zh;
     var r = REGIONS[region];
     var regBox = document.getElementById('mkRegions');
     if (regBox) {
@@ -421,8 +525,26 @@
     }
     var st = document.getElementById('mkSnapTitle');
     if (st) st.innerHTML = '<span lang="en">' + r.en + ' snapshot</span><span lang="zh-Hant">' + r.zh + '快照</span>';
+    var heatTitle = document.getElementById('mkHeatTitle');
+    if (heatTitle) {
+      heatTitle.innerHTML = r.heatMode === 'tv'
+        ? '<span lang="en">S&P 500 heatmap</span><span lang="zh-Hant">標普 500 熱力圖</span>'
+        : '<span lang="en">' + r.en + ' breadth board</span><span lang="zh-Hant">' + r.zh + '廣度板</span>';
+    }
+    var heatLede = document.getElementById('mkHeatLede');
+    if (heatLede) {
+      heatLede.innerHTML = r.heatMode === 'tv'
+        ? bi('Blocks sized by weight and coloured by today’s move.', '方塊按權重定大小、按當日升跌上色。')
+        : bi('Tiles from this market’s delayed watchlist, coloured by today’s % move — same role as the US heatmap.', '以此市場延遲觀察名單繪製色塊，按當日升跌%上色，作用與美股熱力圖相同。');
+    }
+    var moversLede = document.getElementById('mkMoversLede');
+    if (moversLede) {
+      moversLede.innerHTML = r.moversMode === 'tv'
+        ? bi('Live hotlist from TradingView for the US exchange.', 'TradingView 美股即時熱門榜。')
+        : bi('Largest gains and losses on this desk’s delayed snapshot.', '此桌面延遲快照中升跌最大的名稱。');
+    }
     var heatWrap = document.getElementById('mkHeatWrap');
-    if (heatWrap) heatWrap.hidden = !r.heat;
+    if (heatWrap) heatWrap.hidden = false;
   }
 
   /* ---------- Snapshot ---------- */
@@ -430,14 +552,6 @@
   var snapUpdated = document.getElementById('snapUpdated');
   var snapAll = null;
 
-  function bi(en, zh) {
-    return '<span lang="en">' + en + '</span><span lang="zh-Hant">' + zh + '</span>';
-  }
-  function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
-  function num(v) {
-    var d = Math.abs(v) >= 1000 ? 0 : 2;
-    return v.toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d });
-  }
   function spark(vals, up) {
     if (!vals || vals.length < 2) return '';
     var w = 84, h = 26, min = Math.min.apply(null, vals), max = Math.max.apply(null, vals), r = max - min || 1;
@@ -464,10 +578,7 @@
     }
     var groups = pack.groups.filter(function (g) {
       if (themeFilter === 'all') return true;
-      return (g.theme || g.id) === themeFilter || (themeFilter === 'ai' && (g.id === 'ai' || g.theme === 'ai')) ||
-        (themeFilter === 'chip' && (g.id === 'chip' || g.theme === 'chip')) ||
-        (themeFilter === 'aero' && (g.id === 'aero' || g.theme === 'aero')) ||
-        g.id === 'indices';
+      return (g.theme || g.id) === themeFilter || g.id === 'indices' || g.id === 'leaders' || g.id === 'finance';
     });
     if (!groups.length) groups = pack.groups;
     snapGrid.innerHTML = groups.map(function (g) {
@@ -489,7 +600,6 @@
       '更新時間：' + stamp(updated) + ' · 延遲報價 · 來源：' + esc(src));
   }
 
-  // URL ?r=
   try {
     var m = /[?&]r=([a-z]+)/.exec(location.search);
     if (m && REGIONS[m[1]]) region = m[1];
@@ -502,11 +612,12 @@
       .then(function (j) {
         snapAll = j;
         renderSnap();
+        renderAll();
       })
       .catch(function () {
         snapGrid.innerHTML = '<p class="news-empty">' + bi('The snapshot is not available yet. Please check back later.', '快照暫時未有資料，請稍後再看。') + '</p>';
       });
-    document.addEventListener('langchange', renderSnap);
+    document.addEventListener('langchange', function () { renderSnap(); renderAll(); });
   }
 
   if (io) hosts.forEach(function (h) { io.observe(h); }); else renderAll();

@@ -26,7 +26,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/fonts/fonts.css?v=1baa657b" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="assets/fonts/fonts.css?v=1baa657b"></noscript>
-  <link rel="stylesheet" href="styles.css?v=0fb8cdfd">
+  <link rel="stylesheet" href="styles.css?v=bda2ce33">
   <link rel="preconnect" href="https://s3.tradingview.com">
   <link rel="preconnect" href="https://www.tradingview-widget.com">
   <link rel="dns-prefetch" href="https://www.tradingview.com">
@@ -134,7 +134,7 @@
       <div class="container p-hero-inner">
         <p class="eyebrow reveal"><span class="dot" aria-hidden="true"></span><span lang="en">Stock markets · Live data by TradingView</span><span lang="zh-Hant">股票市場 · TradingView 即時數據</span></p>
         <h1 class="p-title reveal"><span lang="en">Stock markets</span><span lang="zh-Hant">股票市場</span></h1>
-        <p class="p-lede reveal"><span lang="en">One tidy desk for <b>US</b>, <b>Hong Kong</b>, <b>A-shares</b>, <b>Taiwan</b>, <b>Japan</b>, <b>Korea</b> and <b>Australia</b> — indices first, then thematic lists for <b>AI</b>, <b>semiconductors</b> and <b>aerospace</b>.</span><span lang="zh-Hant">同一個整齊版面涵蓋<b>美股</b>、<b>港股</b>、<b>A股</b>、<b>台股</b>、<b>日股</b>、<b>韓股</b>與<b>澳洲股</b>：先看指數，再按<b>人工智能</b>、<b>晶片</b>、<b>航天</b>分類觀察。</span></p>
+        <p class="p-lede reveal"><span lang="en">One tidy desk for <b>US</b>, <b>Hong Kong</b>, <b>A-shares</b>, <b>Taiwan</b>, <b>Japan</b>, <b>Korea</b> and <b>Australia</b>. Every region gets the same five panels: snapshot, indices, breadth board, movers, and thematic lists for <b>AI</b>, <b>semiconductors</b> and <b>aerospace</b> — plus local leaders and financials.</span><span lang="zh-Hant">同一個整齊版面涵蓋<b>美股</b>、<b>港股</b>、<b>A股</b>、<b>台股</b>、<b>日股</b>、<b>韓股</b>與<b>澳洲股</b>。每個市場都有五個區塊：快照、指數、廣度板、升跌榜，以及<b>人工智能</b>、<b>晶片</b>、<b>航天</b>主題名單，再加當地龍頭與金融股。</span></p>
         <div class="mk-regions reveal" role="tablist" aria-label="Market region" id="mkRegions"></div>
         <p class="mk-status reveal" data-market-status><span class="mk-dot" aria-hidden="true"></span><b class="mk-status-label"></b><span class="mk-status-times"></span></p>
       </div>
@@ -174,9 +174,9 @@
         <div class="section-head reveal">
           <p class="kicker">03 — <span lang="en">Breadth</span><span lang="zh-Hant">市場廣度</span></p>
           <h2 class="section-title" id="mkHeatTitle"><span lang="en">Heatmap</span><span lang="zh-Hant">熱力圖</span></h2>
-          <p class="p-lede dark" id="mkHeatLede"><span lang="en">Blocks sized by weight and coloured by today’s move.</span><span lang="zh-Hant">方塊按權重定大小、按當日升跌上色。</span></p>
+          <p class="p-lede dark" id="mkHeatLede"><span lang="en">Coloured by today’s move across this market’s watchlist.</span><span lang="zh-Hant">按此市場觀察名單當日升跌上色。</span></p>
         </div>
-        <div class="mk-card heat" data-tv="stock-heatmap"></div>
+        <div class="mk-card heat" id="mkBreadthCard" data-tv="stock-heatmap"></div>
       </div>
     </section>
 
@@ -186,9 +186,10 @@
           <div>
             <div class="section-head reveal">
               <p class="kicker">04 — <span lang="en">Movers</span><span lang="zh-Hant">升跌榜</span></p>
-              <h2 class="section-title"><span lang="en">Top movers</span><span lang="zh-Hant">當日異動</span></h2>
+              <h2 class="section-title" id="mkMoversTitle"><span lang="en">Top movers</span><span lang="zh-Hant">當日異動</span></h2>
+              <p class="p-lede dark" id="mkMoversLede"><span lang="en">Largest gains and losses on this desk’s delayed snapshot.</span><span lang="zh-Hant">此桌面延遲快照中升跌最大的名稱。</span></p>
             </div>
-            <div class="mk-card mid" data-tv="hotlists"></div>
+            <div class="mk-card mid" id="mkMoversCard" data-tv="hotlists"></div>
           </div>
           <div>
             <div class="section-head reveal">
@@ -238,6 +239,6 @@
 
   <script src="main.js?v=9a99cc64"></script>
   <script src="clock.js?v=a172ae9d"></script>
-  <script src="markets.js?v=df033618"></script>
+  <script src="markets.js?v=50ccc9c2"></script>
 </body>
 </html>

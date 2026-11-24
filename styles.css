@@ -882,6 +882,28 @@ html[data-lang="zh"] .prose { font-size: 17.5px; line-height: 1.95; }
   display: flex; align-items: center; justify-content: center; height: 100%; min-height: 180px;
   padding: 28px; text-align: center; color: var(--muted); font-size: 15px; line-height: 1.55;
 }
+.mk-card.mk-local { padding: 14px 16px 10px; overflow: auto; }
+.mk-heatboard {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 8px;
+  min-height: 420px; align-content: start;
+}
+.mk-heat-cell {
+  appearance: none; border: 0; border-radius: 10px; padding: 14px 10px; text-align: left;
+  color: var(--ink); cursor: default; min-height: 72px; display: flex; flex-direction: column;
+  justify-content: space-between; gap: 6px; font: inherit;
+}
+.mk-heat-cell b { font-size: 13px; font-weight: 700; letter-spacing: .02em; }
+.mk-heat-cell span { font-size: 15px; font-variant-numeric: tabular-nums; font-weight: 600; }
+.mk-movers-local { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.mk-movers-local h3 {
+  font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--gold-ink); margin: 0 0 6px;
+}
+.mk-local-note { margin: 10px 2px 0; font-size: 12px; color: var(--muted); line-height: 1.45; }
+@media (max-width: 760px) {
+  .mk-heatboard { grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); min-height: 320px; }
+  .mk-movers-local { grid-template-columns: 1fr; }
+}
 @media (max-width: 760px) {
   .mk-regions, .mk-themes { gap: 6px; }
   .mk-chip { font-size: 12.5px; padding: 6px 10px; }

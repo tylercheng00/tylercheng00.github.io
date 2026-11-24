@@ -22,21 +22,34 @@ import xml.etree.ElementTree as ET
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "news.json"
 
-# (source name, category, url, lean)
-# lean is only for US politics balancing (left|right|center|None). It is NEVER written
-# into news.json and never shown on the site — curation only.
+# (source name, category, url, outlet_bucket)
+#
+# US politics balancing (outlet_bucket) — HOW IT WORKS
+# ----------------------------------------------------
+# We do NOT classify individual articles by NLP or keywords.
+# We only tag the *publisher* into one of three outlet buckets, then
+# interleave those buckets when building the US politics quota so one
+# newsroom style cannot dominate the list.
+#
+#   prog  — progressive / centre-left English newsrooms (NPR, Guardian, BBC US)
+#   biz   — business / markets desk politics (CNBC Politics)
+#   cons  — conservative English newsrooms (Fox News, Washington Examiner)
+#
+# outlet_bucket is stripped before writing news.json and is NEVER shown
+# on the site. Public items keep only title, summary, link, source, cats, date.
+#
 # zhpress = Chinese-language mainland official / establishment finance & politics press
 FEEDS = [
     ("CNBC", "finance", "https://www.cnbc.com/id/10000664/device/rss/rss.html", None),
     ("CNBC", "finance", "https://www.cnbc.com/id/20910258/device/rss/rss.html", None),
     ("BBC News", "finance", "https://feeds.bbci.co.uk/news/business/rss.xml", None),
-    # US politics — left / right / center behind the scenes
-    ("NPR", "us", "https://feeds.npr.org/1014/rss.xml", "left"),
-    ("BBC News", "us", "https://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml", "left"),
-    ("The Guardian", "us", "https://www.theguardian.com/us-news/rss", "left"),
-    ("CNBC", "us", "https://www.cnbc.com/id/10000113/device/rss/rss.html", "center"),
-    ("Fox News", "us", "https://moxie.foxnews.com/google-publisher/politics.xml", "right"),
-    ("Washington Examiner", "us", "https://www.washingtonexaminer.com/section/news/feed", "right"),
+    # US politics — publisher buckets only (see header comment)
+    ("NPR", "us", "https://feeds.npr.org/1014/rss.xml", "prog"),
+    ("BBC News", "us", "https://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml", "prog"),
+    ("The Guardian", "us", "https://www.theguardian.com/us-news/rss", "prog"),
+    ("CNBC", "us", "https://www.cnbc.com/id/10000113/device/rss/rss.html", "biz"),
+    ("Fox News", "us", "https://moxie.foxnews.com/google-publisher/politics.xml", "cons"),
+    ("Washington Examiner", "us", "https://www.washingtonexaminer.com/section/news/feed", "cons"),
     ("BBC News", "china", "https://feeds.bbci.co.uk/news/world/asia/china/rss.xml", None),
     ("SCMP", "china", "https://www.scmp.com/rss/4/feed", None),
     ("SCMP", "china", "https://www.scmp.com/rss/318421/feed", None),
@@ -243,7 +256,7 @@ def parse_cctv_jsonp(data):
     return items
 
 
-def collect(source, cat, got, now, seen, items, lean=None):
+def collect(source, cat, got, now, seen, items, outlet_bucket=None):
     """Deduplicate, tag and append items from one feed; return count kept."""
     cutoff = now - dt.timedelta(days=MAX_AGE_DAYS.get(cat, 4))
     got = [g for g in got if g["date"] is None or g["date"] >= cutoff]
@@ -273,8 +286,8 @@ def collect(source, cat, got, now, seen, items, lean=None):
             "_feed": cat,
         }
         # Internal only — stripped before writing news.json
-        if lean and cat == "us":
-            row["_lean"] = lean
+        if outlet_bucket and cat == "us":
+            row["_bucket"] = outlet_bucket
         items.append(row)
         n += 1
         if n >= PER_FEED.get(cat, 8):
@@ -283,16 +296,18 @@ def collect(source, cat, got, now, seen, items, lean=None):
 
 
 def balance_us(mine, n):
-    """Interleave left / right / center US items so the pool is not one-sided.
+    """Rotate prog / cons / biz outlet buckets so the US politics pool is mixed.
 
-    Lean tags stay internal and are removed before public JSON is written.
+    Classification is by publisher (see FEEDS header), not by article text.
+    Bucket tags are removed before public JSON is written.
     """
-    buckets = {"left": [], "right": [], "center": [], "other": []}
+    buckets = {"prog": [], "cons": [], "biz": [], "other": []}
     for i in mine:
-        buckets.get(i.get("_lean") or "other", buckets["other"]).append(i)
+        buckets.get(i.get("_bucket") or "other", buckets["other"]).append(i)
     for b in buckets.values():
         b.sort(key=lambda i: i["date"], reverse=True)
-    order = ("left", "right", "center", "other")
+    # Alternate progressive and conservative first, then business, then leftovers
+    order = ("prog", "cons", "biz", "other")
     out, idx = [], {k: 0 for k in order}
     while len(out) < n:
         progressed = False
@@ -316,14 +331,14 @@ def main():
 
     now = dt.datetime.now(dt.timezone.utc)
     seen, items, ok = set(), [], 0
-    for source, cat, url, lean in FEEDS:
+    for source, cat, url, outlet_bucket in FEEDS:
         try:
             got = parse_feed(fetch(url))
             ok += 1
         except Exception as e:  # noqa: BLE001 - any failure just skips the feed
             print(f"skip {url}: {e}", file=sys.stderr)
             continue
-        n = collect(source, cat, got, now, seen, items, lean=lean)
+        n = collect(source, cat, got, now, seen, items, outlet_bucket=outlet_bucket)
         print(f"ok   {url}: {n} items", file=sys.stderr)
 
     for source, cat, url in JSONP_FEEDS:
@@ -351,7 +366,7 @@ def main():
             kept += mine[:n]
     for i in kept:
         i.pop("_feed", None)
-        i.pop("_lean", None)  # never publish lean labels
+        i.pop("_bucket", None)  # never publish outlet-bucket labels
     kept.sort(key=lambda i: i["date"], reverse=True)
     out = {
         "updated": now.strftime("%Y-%m-%dT%H:%M:%SZ"),

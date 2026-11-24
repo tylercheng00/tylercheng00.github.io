@@ -123,7 +123,7 @@ NAV = [
     ("projects.html", "Projects", "項目", "projects"),
     ("insights/", "Insights", "觀點", "insights"),
     ("news.html", "News", "新聞", "news"),
-    ("markets.html", "Markets", "美股行情", "markets"),
+    ("markets.html", "Stock markets", "股票市場", "markets"),
     ("game.html", "Play: Crossroads", "遊戲：交叉點", "game"),
     ("marksix.html", "Mark Six quant", "六合彩量化分析", "marksix"),
     ("chart.html", "Personal chart", "個人排盤", "chart"),
@@ -156,8 +156,8 @@ NAV_GROUPS = [
     ]),
     # a plain string instead of a list = a direct link with no dropdown
     ("capital", "Capital markets", "資本市場", "us-equities.html"),
-    ("markets", "US investing", "美股投資", [
-        ("markets.html", "US markets", "美股行情"),
+    ("markets", "Stock markets", "股票市場", [
+        ("markets.html", "Stock markets", "股票市場"),
         (ASSET_BOOK, "Asset Book", "資產簿"),
     ]),
     ("insights", "Insights", "觀點", [
@@ -524,8 +524,8 @@ def main():
         og_type="website", scripts=("news.js",)), encoding="utf-8")
     (ROOT / "markets.html").write_text(fragment_page(
         "markets",
-        title="Markets · 美股行情 — Live US stock market overview | 鄭迪珉 Tyler Cheng",
-        description="Live US market overview: major indices, S&P 500 heatmap, top movers, biotech and China ADR watchlists. Data by TradingView; not investment advice.",
+        title="Stock markets · 股票市場 — US, HK, A-shares, Taiwan, Japan, Korea, Australia | 鄭迪珉 Tyler Cheng",
+        description="Multi-region stock desk: US, Hong Kong, A-shares, Taiwan, Japan, Korea and Australia — indices, AI / semiconductor / aerospace themes, heatmap and movers. Data by TradingView; not investment advice.",
         og_type="website", scripts=("clock.js", "markets.js"),
         head_extra='\n  <link rel="preconnect" href="https://s3.tradingview.com">'
                    '\n  <link rel="preconnect" href="https://www.tradingview-widget.com">'
@@ -615,7 +615,7 @@ def main():
         + "".join(f'<a class="engage reveal" href="/{u}"><h3>{bi(en, zh)}</h3><span class="engage-link">{bi(ce, cz)} →</span></a>'
                   for u, en, zh, ce, cz in (("ventures.html", "Ventures &amp; patents", "創業與專利", "Open", "前往"),
                                             ("insights/", "Insights", "觀點文章", "Read", "閱讀"),
-                                            ("markets.html", "US markets", "美股行情", "Open", "前往")))
+                                            ("markets.html", "Stock markets", "股票市場", "Open", "前往")))
         + '</div></div></section>'), encoding="utf-8")
     apply_hero_photos()
     stamp_assets()

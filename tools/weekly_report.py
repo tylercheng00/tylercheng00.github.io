@@ -138,7 +138,7 @@ def main():
     zh += ["", "### 觀察名單中變動最大"]
     zh += [f"- 上升：" + "、".join(f"**{s}**（{NAMES[s]}）{fmt(p)}" for s, p in up)] if up else []
     zh += [f"- 下跌：" + "、".join(f"**{s}**（{NAMES[s]}）{fmt(p)}" for s, p in down)] if down else []
-    zh += ["", "即時圖表及今日數字見[美股行情](/markets.html)頁。"]
+    zh += ["", "即時圖表及今日數字見[股票市場](/markets.html)頁。"]
 
     summary_en = "; ".join(f"{s} {fmt(p)}" for s, p, _ in idx[:3]) + f". Data for {span_en}, generated automatically."
     summary_zh = "；".join(f"{ZH_NAME[s]} {fmt(p)}" for s, p, _ in idx[:3]) + f"。{span_zh}數據，自動生成。"

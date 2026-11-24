@@ -22,37 +22,41 @@ import xml.etree.ElementTree as ET
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "news.json"
 
-# (source name, category, url)
+# (source name, category, url, lean)
+# lean is only for US politics balancing (left|right|center|None). It is NEVER written
+# into news.json and never shown on the site — curation only.
 # zhpress = Chinese-language mainland official / establishment finance & politics press
 FEEDS = [
-    ("CNBC", "finance", "https://www.cnbc.com/id/10000664/device/rss/rss.html"),          # Finance
-    ("CNBC", "finance", "https://www.cnbc.com/id/20910258/device/rss/rss.html"),          # Economy
-    ("BBC News", "finance", "https://feeds.bbci.co.uk/news/business/rss.xml"),
-    ("CNBC", "us", "https://www.cnbc.com/id/10000113/device/rss/rss.html"),               # Politics
-    ("NPR", "us", "https://feeds.npr.org/1014/rss.xml"),                                  # Politics
-    ("BBC News", "us", "https://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml"),
-    ("BBC News", "china", "https://feeds.bbci.co.uk/news/world/asia/china/rss.xml"),
-    ("SCMP", "china", "https://www.scmp.com/rss/4/feed"),                                 # China
-    ("SCMP", "china", "https://www.scmp.com/rss/318421/feed"),                            # China economy
-    # Chinese-language official / financial-establishment press (People's Daily, China News Service, Xinhua)
-    ("人民日報", "zhpress", "http://www.people.com.cn/rss/finance.xml"),
-    ("人民日報", "zhpress", "http://www.people.com.cn/rss/politics.xml"),
-    ("中國新聞網", "zhpress", "https://www.chinanews.com.cn/rss/finance.xml"),
-    ("中國新聞網", "zhpress", "https://www.chinanews.com.cn/rss/china.xml"),
-    ("中國新聞網", "zhpress", "https://www.chinanews.com.cn/rss/importnews.xml"),
-    ("新華網", "zhpress", "http://www.news.cn/fortune/news_fortune.xml"),
-    ("新華網", "zhpress", "http://www.news.cn/politics/news_politics.xml"),
-    # International biotech, pharma, medical research and public-health news
-    ("STAT News", "biotech", "https://www.statnews.com/feed/"),
-    ("Fierce Biotech", "biotech", "https://www.fiercebiotech.com/rss/xml"),
-    ("BioPharma Dive", "biotech", "https://www.biopharmadive.com/feeds/news/"),
-    ("GEN", "biotech", "https://www.genengnews.com/feed/"),                              # Genetic Engineering & Biotechnology News
-    ("Nature Biotechnology", "biotech", "https://www.nature.com/nbt.rss"),
-    ("ScienceDaily", "biotech", "https://www.sciencedaily.com/rss/health_medicine.xml"), # new research findings
-    ("BBC News", "biotech", "https://feeds.bbci.co.uk/news/health/rss.xml"),
-    ("NIH", "biotech", "https://www.nih.gov/news-releases/feed.xml"),
-    ("US FDA", "biotech", "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/press-releases/rss.xml"),
-    ("WHO", "biotech", "https://www.who.int/rss-feeds/news-english.xml"),
+    ("CNBC", "finance", "https://www.cnbc.com/id/10000664/device/rss/rss.html", None),
+    ("CNBC", "finance", "https://www.cnbc.com/id/20910258/device/rss/rss.html", None),
+    ("BBC News", "finance", "https://feeds.bbci.co.uk/news/business/rss.xml", None),
+    # US politics — left / right / center behind the scenes
+    ("NPR", "us", "https://feeds.npr.org/1014/rss.xml", "left"),
+    ("BBC News", "us", "https://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml", "left"),
+    ("The Guardian", "us", "https://www.theguardian.com/us-news/rss", "left"),
+    ("CNBC", "us", "https://www.cnbc.com/id/10000113/device/rss/rss.html", "center"),
+    ("Fox News", "us", "https://moxie.foxnews.com/google-publisher/politics.xml", "right"),
+    ("Washington Examiner", "us", "https://www.washingtonexaminer.com/section/news/feed", "right"),
+    ("BBC News", "china", "https://feeds.bbci.co.uk/news/world/asia/china/rss.xml", None),
+    ("SCMP", "china", "https://www.scmp.com/rss/4/feed", None),
+    ("SCMP", "china", "https://www.scmp.com/rss/318421/feed", None),
+    ("人民日報", "zhpress", "http://www.people.com.cn/rss/finance.xml", None),
+    ("人民日報", "zhpress", "http://www.people.com.cn/rss/politics.xml", None),
+    ("中國新聞網", "zhpress", "https://www.chinanews.com.cn/rss/finance.xml", None),
+    ("中國新聞網", "zhpress", "https://www.chinanews.com.cn/rss/china.xml", None),
+    ("中國新聞網", "zhpress", "https://www.chinanews.com.cn/rss/importnews.xml", None),
+    ("新華網", "zhpress", "http://www.news.cn/fortune/news_fortune.xml", None),
+    ("新華網", "zhpress", "http://www.news.cn/politics/news_politics.xml", None),
+    ("STAT News", "biotech", "https://www.statnews.com/feed/", None),
+    ("Fierce Biotech", "biotech", "https://www.fiercebiotech.com/rss/xml", None),
+    ("BioPharma Dive", "biotech", "https://www.biopharmadive.com/feeds/news/", None),
+    ("GEN", "biotech", "https://www.genengnews.com/feed/", None),
+    ("Nature Biotechnology", "biotech", "https://www.nature.com/nbt.rss", None),
+    ("ScienceDaily", "biotech", "https://www.sciencedaily.com/rss/health_medicine.xml", None),
+    ("BBC News", "biotech", "https://feeds.bbci.co.uk/news/health/rss.xml", None),
+    ("NIH", "biotech", "https://www.nih.gov/news-releases/feed.xml", None),
+    ("US FDA", "biotech", "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/press-releases/rss.xml", None),
+    ("WHO", "biotech", "https://www.who.int/rss-feeds/news-english.xml", None),
 ]
 
 # CCTV JSONP pages (official mainland headlines; not RSS — kept for freshness when RSS lags)
@@ -239,7 +243,7 @@ def parse_cctv_jsonp(data):
     return items
 
 
-def collect(source, cat, got, now, seen, items):
+def collect(source, cat, got, now, seen, items, lean=None):
     """Deduplicate, tag and append items from one feed; return count kept."""
     cutoff = now - dt.timedelta(days=MAX_AGE_DAYS.get(cat, 4))
     got = [g for g in got if g["date"] is None or g["date"] >= cutoff]
@@ -259,7 +263,7 @@ def collect(source, cat, got, now, seen, items):
             cats.add("us")
         if cat == "finance" and BIO_RE.search(text):
             cats.add("biotech")
-        items.append({
+        row = {
             "title": g["title"],
             "summary": g["summary"],
             "link": g["link"],
@@ -267,11 +271,41 @@ def collect(source, cat, got, now, seen, items):
             "cats": sorted(cats),
             "date": (g["date"] or now).strftime("%Y-%m-%dT%H:%M:%SZ"),
             "_feed": cat,
-        })
+        }
+        # Internal only — stripped before writing news.json
+        if lean and cat == "us":
+            row["_lean"] = lean
+        items.append(row)
         n += 1
         if n >= PER_FEED.get(cat, 8):
             break
     return n
+
+
+def balance_us(mine, n):
+    """Interleave left / right / center US items so the pool is not one-sided.
+
+    Lean tags stay internal and are removed before public JSON is written.
+    """
+    buckets = {"left": [], "right": [], "center": [], "other": []}
+    for i in mine:
+        buckets.get(i.get("_lean") or "other", buckets["other"]).append(i)
+    for b in buckets.values():
+        b.sort(key=lambda i: i["date"], reverse=True)
+    order = ("left", "right", "center", "other")
+    out, idx = [], {k: 0 for k in order}
+    while len(out) < n:
+        progressed = False
+        for k in order:
+            if idx[k] < len(buckets[k]):
+                out.append(buckets[k][idx[k]])
+                idx[k] += 1
+                progressed = True
+                if len(out) >= n:
+                    break
+        if not progressed:
+            break
+    return out
 
 
 def main():
@@ -282,14 +316,14 @@ def main():
 
     now = dt.datetime.now(dt.timezone.utc)
     seen, items, ok = set(), [], 0
-    for source, cat, url in FEEDS:
+    for source, cat, url, lean in FEEDS:
         try:
             got = parse_feed(fetch(url))
             ok += 1
         except Exception as e:  # noqa: BLE001 - any failure just skips the feed
             print(f"skip {url}: {e}", file=sys.stderr)
             continue
-        n = collect(source, cat, got, now, seen, items)
+        n = collect(source, cat, got, now, seen, items, lean=lean)
         print(f"ok   {url}: {n} items", file=sys.stderr)
 
     for source, cat, url in JSONP_FEEDS:
@@ -309,14 +343,19 @@ def main():
     # newest first within each feed category, up to its quota, then merge
     kept = []
     for cat, n in QUOTA.items():
-        mine = sorted((i for i in items if i["_feed"] == cat), key=lambda i: i["date"], reverse=True)
-        kept += mine[:n]
+        mine = [i for i in items if i["_feed"] == cat]
+        if cat == "us":
+            kept += balance_us(mine, n)
+        else:
+            mine.sort(key=lambda i: i["date"], reverse=True)
+            kept += mine[:n]
     for i in kept:
-        del i["_feed"]
+        i.pop("_feed", None)
+        i.pop("_lean", None)  # never publish lean labels
     kept.sort(key=lambda i: i["date"], reverse=True)
     out = {
         "updated": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "sources": sorted({s for s, _, _ in FEEDS} | {s for s, _, _ in JSONP_FEEDS}),
+        "sources": sorted({s for s, _, _, _ in FEEDS} | {s for s, _, _ in JSONP_FEEDS}),
         "items": kept,
     }
     OUT.parent.mkdir(exist_ok=True)

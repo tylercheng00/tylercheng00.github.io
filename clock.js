@@ -1,10 +1,9 @@
 /* Live clocks: the contact page's time-zone strip and the markets page's
- * "US market open / closed" badge. Updates every 20 seconds, follows EN/中. */
+ * session badge (follows the selected region). Updates every 20 seconds. */
 (function () {
   var root = document.documentElement;
   function zh() { return root.getAttribute('data-lang') === 'zh'; }
 
-  // Wall-clock parts of `date` in time zone `tz`
   function parts(date, tz) {
     var o = {};
     new Intl.DateTimeFormat('en-US', {
@@ -39,7 +38,6 @@
       var place = card.querySelector('[data-auto]');
       if (place) place.textContent = tz.split('/').pop().replace(/_/g, ' ');
     });
-    // hide "your time" if the visitor is already in one of the listed zones
     var mine = strip.querySelector('[data-tz=""]');
     if (mine) {
       var same = ['America/New_York', 'Asia/Hong_Kong', 'Asia/Shanghai'].some(function (z) {
@@ -47,12 +45,10 @@
       });
       mine.hidden = !visitorTz || same;
     }
-    // good meeting windows: New York 08:00–09:30 and 20:00–22:00, shown in Hong Kong time
     var tip = strip.querySelector('.tz-tip-times');
     if (tip) {
       var base = new Date(now.getTime());
       function nyTo(h, m, from) {
-        // the next instant (in 15-min steps, within 48 h of `from`) when New York reads h:m
         var start = Math.ceil(from.getTime() / 900000) * 900000;
         for (var i = 0; i < 192; i++) {
           var d = new Date(start + i * 900000);
@@ -71,8 +67,7 @@
     }
   }
 
-  /* ---------- markets page: US market status ---------- */
-  // NYSE full-day holidays and 1 p.m. early closes (New York dates)
+  /* ---------- markets page: session badge by region ---------- */
   var HOLIDAYS = {
     '2026-01-01': 1, '2026-01-19': 1, '2026-02-16': 1, '2026-04-03': 1, '2026-05-25': 1, '2026-06-19': 1,
     '2026-07-03': 1, '2026-09-07': 1, '2026-11-26': 1, '2026-12-25': 1,
@@ -80,34 +75,80 @@
     '2027-07-05': 1, '2027-09-06': 1, '2027-11-25': 1, '2027-12-24': 1
   };
   var EARLY = { '2026-11-27': 1, '2026-12-24': 1, '2027-11-26': 1 };
+
+  // Regular cash session only (local TZ). Holidays other than US are treated as weekday hours.
+  var SESSIONS = {
+    us: { tz: 'America/New_York', open: [9, 30], close: [16, 0], pre: [4, 0], post: [20, 0],
+      en: 'US', zh: '美股', place_en: 'New York', place_zh: '紐約' },
+    hk: { tz: 'Asia/Hong_Kong', open: [9, 30], close: [16, 0], lunch: [12, 0, 13, 0],
+      en: 'HK', zh: '港股', place_en: 'Hong Kong', place_zh: '香港' },
+    cn: { tz: 'Asia/Shanghai', open: [9, 30], close: [15, 0], lunch: [11, 30, 13, 0],
+      en: 'A-shares', zh: 'A股', place_en: 'Shanghai', place_zh: '上海' },
+    tw: { tz: 'Asia/Taipei', open: [9, 0], close: [13, 30],
+      en: 'Taiwan', zh: '台股', place_en: 'Taipei', place_zh: '台北' },
+    jp: { tz: 'Asia/Tokyo', open: [9, 0], close: [15, 0], lunch: [11, 30, 12, 30],
+      en: 'Japan', zh: '日股', place_en: 'Tokyo', place_zh: '東京' },
+    kr: { tz: 'Asia/Seoul', open: [9, 0], close: [15, 30],
+      en: 'Korea', zh: '韓股', place_en: 'Seoul', place_zh: '首爾' },
+    au: { tz: 'Australia/Sydney', open: [10, 0], close: [16, 0],
+      en: 'Australia', zh: '澳洲股', place_en: 'Sydney', place_zh: '悉尼' }
+  };
+
+  var region = 'us';
+  try {
+    var m = /[?&]r=([a-z]+)/.exec(location.search);
+    if (m && SESSIONS[m[1]]) region = m[1];
+  } catch (e) {}
+
   var badge = document.querySelector('[data-market-status]');
+
+  function minsOf(h, m) { return h * 60 + m; }
+
   function marketState(now) {
-    var p = parts(now, 'America/New_York');
-    var mins = p.h * 60 + p.m;
+    var s = SESSIONS[region] || SESSIONS.us;
+    var p = parts(now, s.tz);
+    var mins = minsOf(p.h, p.m);
     var weekend = p.wd === 'Sat' || p.wd === 'Sun';
-    var close = EARLY[p.ymd] ? 13 * 60 : 16 * 60;
-    if (weekend || HOLIDAYS[p.ymd]) return { k: 'closed', holiday: !weekend };
-    if (mins >= 9 * 60 + 30 && mins < close) return { k: 'open', early: !!EARLY[p.ymd] };
-    if (mins >= 4 * 60 && mins < 9 * 60 + 30) return { k: 'pre' };
-    if (mins >= close && mins < 20 * 60) return { k: 'post' };
-    return { k: 'closed' };
+    if (weekend) return { k: 'closed', holiday: false, sess: s };
+    if (region === 'us' && HOLIDAYS[p.ymd]) return { k: 'closed', holiday: true, sess: s };
+    var open = minsOf(s.open[0], s.open[1]);
+    var close = region === 'us' && EARLY[p.ymd] ? 13 * 60 : minsOf(s.close[0], s.close[1]);
+    if (s.lunch) {
+      var ls = minsOf(s.lunch[0], s.lunch[1]), le = minsOf(s.lunch[2], s.lunch[3]);
+      if (mins >= ls && mins < le) return { k: 'lunch', sess: s };
+    }
+    if (mins >= open && mins < close) return { k: 'open', early: !!(region === 'us' && EARLY[p.ymd]), sess: s };
+    if (region === 'us') {
+      if (mins >= minsOf(s.pre[0], s.pre[1]) && mins < open) return { k: 'pre', sess: s };
+      if (mins >= close && mins < minsOf(s.post[0], s.post[1])) return { k: 'post', sess: s };
+    }
+    return { k: 'closed', holiday: false, sess: s };
   }
+
   function renderBadge(now) {
-    var s = marketState(now);
+    var st = marketState(now);
+    var s = st.sess;
+    var name = zh() ? s.zh : s.en;
     var label = {
-      open: zh() ? '美股交易中' : 'US market open',
+      open: zh() ? (name + '交易中') : (name + ' open'),
+      lunch: zh() ? (name + '午休') : (name + ' lunch break'),
       pre: zh() ? '盤前交易' : 'Pre-market',
       post: zh() ? '盤後交易' : 'After hours',
-      closed: zh() ? (s.holiday ? '美股假期休市' : '美股休市') : (s.holiday ? 'Closed for a holiday' : 'US market closed')
-    }[s.k];
-    if (s.early) label += zh() ? '（今日提早收市）' : ' (early close today)';
-    badge.className = 'mk-status is-' + s.k;
+      closed: zh()
+        ? (st.holiday ? (name + '假期休市') : (name + '休市'))
+        : (st.holiday ? (name + ' closed for a holiday') : (name + ' closed'))
+    }[st.k];
+    if (st.early) label += zh() ? '（今日提早收市）' : ' (early close today)';
+    badge.className = 'mk-status is-' + st.k;
     badge.querySelector('.mk-status-label').textContent = label;
-    badge.querySelector('.mk-status-times').textContent =
-      (zh() ? '紐約 ' : 'New York ') + fmtTime(now, 'America/New_York') + ' · ' +
-      (zh() ? '香港／北京 ' : 'Hong Kong / Beijing ') + fmtTime(now, 'Asia/Hong_Kong') +
-      (visitorTz && offsetLabel(now, visitorTz) !== offsetLabel(now, 'America/New_York') && offsetLabel(now, visitorTz) !== offsetLabel(now, 'Asia/Hong_Kong')
-        ? ' · ' + (zh() ? '你的時間 ' : 'Your time ') + fmtTime(now, visitorTz) : '');
+    var place = zh() ? s.place_zh : s.place_en;
+    var line = place + ' ' + fmtTime(now, s.tz) + ' · ' +
+      (zh() ? '香港／北京 ' : 'Hong Kong / Beijing ') + fmtTime(now, 'Asia/Hong_Kong');
+    if (visitorTz && offsetLabel(now, visitorTz) !== offsetLabel(now, s.tz) &&
+        offsetLabel(now, visitorTz) !== offsetLabel(now, 'Asia/Hong_Kong')) {
+      line += ' · ' + (zh() ? '你的時間 ' : 'Your time ') + fmtTime(now, visitorTz);
+    }
+    badge.querySelector('.mk-status-times').textContent = line;
   }
 
   function tick() {
@@ -119,4 +160,8 @@
   tick();
   setInterval(tick, 20000);
   document.addEventListener('langchange', tick);
+  document.addEventListener('marketregion', function (ev) {
+    if (ev && ev.detail && SESSIONS[ev.detail]) region = ev.detail;
+    tick();
+  });
 })();

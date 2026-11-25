@@ -14,7 +14,8 @@
   var REGIONS = {
     us: {
       en: 'United States', zh: '美國', short_en: 'US', short_zh: '美股',
-      heatMode: 'tv', moversMode: 'tv', heatSource: 'SPX500', exchange: 'US',
+      /* Local boards list every snapshot name; TradingView heatmap/hotlists clip or block. */
+      heatMode: 'local', moversMode: 'local', heatSource: 'SPX500', exchange: 'US',
       tape: [
         { proName: 'FOREXCOM:SPXUSD', title: 'S&P 500' },
         { proName: 'FOREXCOM:NSXUSD', title: 'Nasdaq 100' },
@@ -348,6 +349,20 @@
     return 'rgba(200, 70, 70, ' + (0.22 + a * 0.7).toFixed(2) + ')';
   }
 
+  function itemRow(it) {
+    var up = (typeof it.pct === 'number' ? it.pct : it.change) >= 0;
+    var pct = typeof it.pct === 'number' ? it.pct : 0;
+    var sign = up ? '+' : '';
+    var px = typeof it.price === 'number' ? num(it.price) : '—';
+    var pctHtml = typeof it.pct === 'number'
+      ? '<span class="snap-pct ' + (up ? 'up' : 'down') + '">' + sign + pct.toFixed(2) + '%</span>'
+      : '<span class="snap-pct">—</span>';
+    return '<tr' + (it.stale ? ' class="stale"' : '') + '><th scope="row"><b>' + esc(it.symbol) + '</b><small>' + esc(it.name) + '</small></th>' +
+      '<td class="snap-chart">' + spark(it.spark, up) + '</td>' +
+      '<td class="snap-px">' + px + '</td>' +
+      '<td>' + pctHtml + '</td></tr>';
+  }
+
   function renderLocalBreadth(host) {
     var pack = regionPayload();
     var items = flatItems(pack).filter(function (it) { return typeof it.pct === 'number'; });
@@ -357,13 +372,14 @@
       return;
     }
     items.sort(function (a, b) { return Math.abs(b.pct) - Math.abs(a.pct); });
-    var cells = items.slice(0, 24).map(function (it) {
+    // Show every watchlist name — no slice — so tiles are never clipped out of the desk.
+    var cells = items.map(function (it) {
       var sign = it.pct >= 0 ? '+' : '';
-      return '<button type="button" class="mk-heat-cell" style="background:' + heatColor(it.pct) + '" title="' + esc(it.name) + '">' +
-        '<b>' + esc(it.symbol) + '</b><span>' + sign + it.pct.toFixed(2) + '%</span></button>';
+      return '<button type="button" class="mk-heat-cell" style="background:' + heatColor(it.pct) + '" title="' + esc(it.name) + ' · ' + esc(it.symbol) + '">' +
+        '<b>' + esc(it.symbol) + '</b><span class="mk-heat-name">' + esc(it.name) + '</span><span>' + sign + it.pct.toFixed(2) + '%</span></button>';
     }).join('');
     host.innerHTML = '<div class="mk-heatboard" role="list">' + cells + '</div>' +
-      '<p class="mk-local-note">' + bi('Local breadth board from delayed snapshot (TradingView sector heatmap is US-only).', '本地廣度板，取自延遲快照（TradingView 板塊熱力圖僅支援美股）。') + '</p>';
+      '<p class="mk-local-note">' + bi('All ' + items.length + ' names from this desk’s delayed snapshot (TradingView sector heatmap is US-only).', '此桌面延遲快照全部 ' + items.length + ' 個名稱（TradingView 板塊熱力圖僅支援美股）。') + '</p>';
   }
 
   function renderLocalMovers(host) {
@@ -375,23 +391,71 @@
       return;
     }
     var sorted = items.slice().sort(function (a, b) { return b.pct - a.pct; });
-    var gainers = sorted.slice(0, 6);
-    var losers = sorted.slice(-6).reverse();
-    function rows(list) {
-      return list.map(function (it) {
-        var up = it.pct >= 0;
-        var sign = up ? '+' : '';
-        return '<tr><th scope="row"><b>' + esc(it.symbol) + '</b><small>' + esc(it.name) + '</small></th>' +
-          '<td class="snap-px">' + num(it.price) + '</td>' +
-          '<td><span class="snap-pct ' + (up ? 'up' : 'down') + '">' + sign + it.pct.toFixed(2) + '%</span></td></tr>';
-      }).join('');
-    }
+    // Split the full desk: top half gainers, bottom half losers (every name listed once).
+    var mid = Math.ceil(sorted.length / 2);
+    var gainers = sorted.slice(0, mid);
+    var losers = sorted.slice(mid).reverse();
     host.innerHTML =
       '<div class="mk-movers-local">' +
-        '<div><h3>' + bi('Gainers', '升幅') + '</h3><table class="snap-table"><tbody>' + rows(gainers) + '</tbody></table></div>' +
-        '<div><h3>' + bi('Losers', '跌幅') + '</h3><table class="snap-table"><tbody>' + rows(losers) + '</tbody></table></div>' +
+        '<div><h3>' + bi('Gainers', '升幅') + ' · ' + gainers.length + '</h3><table class="snap-table"><tbody>' + gainers.map(itemRow).join('') + '</tbody></table></div>' +
+        '<div><h3>' + bi('Losers', '跌幅') + ' · ' + losers.length + '</h3><table class="snap-table"><tbody>' + losers.map(itemRow).join('') + '</tbody></table></div>' +
       '</div>' +
-      '<p class="mk-local-note">' + bi('From this desk’s delayed snapshot — works offline from TradingView.', '取自此桌面延遲快照，不倚賴 TradingView 升跌榜。') + '</p>';
+      '<p class="mk-local-note">' + bi('Every name on this desk’s delayed snapshot — works without TradingView.', '此桌面延遲快照全部名稱，不倚賴 TradingView。') + '</p>';
+  }
+
+  function renderLocalThemes(host) {
+    var pack = regionPayload();
+    var st = settings();
+    host.classList.add('ready', 'mk-local');
+    var groups = [];
+    if (pack && pack.groups && pack.groups.length) {
+      groups = pack.groups.filter(function (g) {
+        if (g.id === 'indices') return false;
+        if (themeFilter === 'all') return true;
+        return (g.theme || g.id) === themeFilter;
+      });
+    }
+    if (!groups.length) {
+      // Fall back to configured quote lists without prices.
+      var cfgGroups = REGIONS[region].quotes(st.zh).filter(function (g) {
+        return themeFilter === 'all' || g.theme === themeFilter || g.theme === 'all';
+      });
+      groups = cfgGroups.map(function (g) {
+        return {
+          name_en: g.name, name_zh: g.name,
+          items: (g.symbols || []).map(function (s) {
+            return { symbol: s.s, name: s.d, price: null, pct: null, stale: true };
+          })
+        };
+      });
+    }
+    if (!groups.length) {
+      host.innerHTML = '<div class="mk-heat-note"><p>' + bi('Theme lists will appear once this market’s snapshot is ready.', '此市場快照就緒後會顯示主題名單。') + '</p></div>';
+      return;
+    }
+    host.innerHTML =
+      '<div class="mk-themes-local">' + groups.map(function (g) {
+        var title = g.name_en && g.name_zh && g.name_en !== g.name_zh
+          ? bi(esc(g.name_en), esc(g.name_zh))
+          : esc(g.name_en || g.name_zh || g.id || '');
+        return '<div class="mk-theme-block"><h3>' + title + ' · ' + (g.items || []).length + '</h3>' +
+          '<table class="snap-table"><tbody>' + (g.items || []).map(itemRow).join('') + '</tbody></table></div>';
+      }).join('') + '</div>' +
+      '<p class="mk-local-note">' + bi('Full theme lists from the delayed snapshot — every row stays on the page.', '主題名單取自延遲快照，每一列都留在頁面上。') + '</p>';
+  }
+
+  function renderLocalBenchmarks(host) {
+    var pack = regionPayload();
+    host.classList.add('ready', 'mk-local');
+    var g = pack && pack.groups ? pack.groups.filter(function (x) { return x.id === 'indices'; })[0] : null;
+    if (!g || !g.items || !g.items.length) {
+      host.innerHTML = '<div class="mk-heat-note"><p>' + bi('Benchmark snapshot will fill once quotes load.', '指數快照載入後會顯示。') + '</p></div>';
+      return;
+    }
+    host.innerHTML =
+      '<div class="mk-bench-local"><h3>' + bi(esc(g.name_en || 'Indices'), esc(g.name_zh || '指數')) + ' · ' + g.items.length + '</h3>' +
+        '<table class="snap-table"><tbody>' + g.items.map(itemRow).join('') + '</tbody></table></div>' +
+      '<p class="mk-local-note">' + bi('Local index table while TradingView chart is blocked or still loading.', 'TradingView 圖表被擋或仍在載入時，改顯示本地指數表。') + '</p>';
   }
 
   function mount(host, forceEn) {
@@ -410,6 +474,12 @@
     }
     if (kind === 'hotlists' && r.moversMode !== 'tv') {
       renderLocalMovers(host);
+      return;
+    }
+    // Theme lists always use the delayed snapshot so every row is on-page
+    // (TradingView market-quotes clips groups inside a fixed iframe).
+    if (kind === 'market-quotes') {
+      renderLocalThemes(host);
       return;
     }
 
@@ -459,7 +529,7 @@
       if (f && f.offsetHeight && loaded) return;
       if (loaded && f && !f.offsetHeight && st.locale !== 'en') { host.removeAttribute('data-key'); mount(host, true); return; }
       if (!f || !loaded) fail(host, kind);
-    }, 25000);
+    }, 12000);
   }
 
   var hosts = Array.prototype.slice.call(document.querySelectorAll('[data-tv]'));
@@ -484,6 +554,8 @@
     if (host.classList.contains('mk-tape')) { host.style.display = 'none'; return; }
     if (kind === 'stock-heatmap') { renderLocalBreadth(host); return; }
     if (kind === 'hotlists') { renderLocalMovers(host); return; }
+    if (kind === 'market-quotes') { renderLocalThemes(host); return; }
+    if (kind === 'symbol-overview') { renderLocalBenchmarks(host); return; }
     if (host.querySelector('.mk-fail')) return;
     var box = document.createElement('div');
     box.className = 'mk-fail';
@@ -527,21 +599,15 @@
     if (st) st.innerHTML = '<span lang="en">' + r.en + ' snapshot</span><span lang="zh-Hant">' + r.zh + '快照</span>';
     var heatTitle = document.getElementById('mkHeatTitle');
     if (heatTitle) {
-      heatTitle.innerHTML = r.heatMode === 'tv'
-        ? '<span lang="en">S&P 500 heatmap</span><span lang="zh-Hant">標普 500 熱力圖</span>'
-        : '<span lang="en">' + r.en + ' breadth board</span><span lang="zh-Hant">' + r.zh + '廣度板</span>';
+      heatTitle.innerHTML = '<span lang="en">' + r.en + ' breadth board</span><span lang="zh-Hant">' + r.zh + '廣度板</span>';
     }
     var heatLede = document.getElementById('mkHeatLede');
     if (heatLede) {
-      heatLede.innerHTML = r.heatMode === 'tv'
-        ? bi('Blocks sized by weight and coloured by today’s move.', '方塊按權重定大小、按當日升跌上色。')
-        : bi('Tiles from this market’s delayed watchlist, coloured by today’s % move — same role as the US heatmap.', '以此市場延遲觀察名單繪製色塊，按當日升跌%上色，作用與美股熱力圖相同。');
+      heatLede.innerHTML = bi('Every name on this desk’s delayed watchlist, coloured by today’s % move.', '此桌面延遲觀察名單全部名稱，按當日升跌%上色。');
     }
     var moversLede = document.getElementById('mkMoversLede');
     if (moversLede) {
-      moversLede.innerHTML = r.moversMode === 'tv'
-        ? bi('Live hotlist from TradingView for the US exchange.', 'TradingView 美股即時熱門榜。')
-        : bi('Largest gains and losses on this desk’s delayed snapshot.', '此桌面延遲快照中升跌最大的名稱。');
+      moversLede.innerHTML = bi('Full gainers and losers from this desk’s delayed snapshot — every name listed.', '此桌面延遲快照完整升跌名單，每個名稱都列出。');
     }
     var heatWrap = document.getElementById('mkHeatWrap');
     if (heatWrap) heatWrap.hidden = false;

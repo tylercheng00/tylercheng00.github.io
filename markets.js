@@ -14,8 +14,8 @@
   var REGIONS = {
     us: {
       en: 'United States', zh: '美國', short_en: 'US', short_zh: '美股',
-      /* Local boards list every snapshot name; TradingView heatmap/hotlists clip or block. */
-      heatMode: 'local', moversMode: 'local', heatSource: 'SPX500', exchange: 'US',
+      /* US heatmap: original TradingView S&P widget; movers stay local so every desk name lists. */
+      heatMode: 'tv', moversMode: 'local', heatSource: 'SPX500', exchange: 'US',
       tape: [
         { proName: 'FOREXCOM:SPXUSD', title: 'S&P 500' },
         { proName: 'FOREXCOM:NSXUSD', title: 'Nasdaq 100' },
@@ -599,11 +599,15 @@
     if (st) st.innerHTML = '<span lang="en">' + r.en + ' snapshot</span><span lang="zh-Hant">' + r.zh + '快照</span>';
     var heatTitle = document.getElementById('mkHeatTitle');
     if (heatTitle) {
-      heatTitle.innerHTML = '<span lang="en">' + r.en + ' breadth board</span><span lang="zh-Hant">' + r.zh + '廣度板</span>';
+      heatTitle.innerHTML = r.heatMode === 'tv'
+        ? '<span lang="en">S&P 500 heatmap</span><span lang="zh-Hant">標普 500 熱力圖</span>'
+        : '<span lang="en">' + r.en + ' breadth board</span><span lang="zh-Hant">' + r.zh + '廣度板</span>';
     }
     var heatLede = document.getElementById('mkHeatLede');
     if (heatLede) {
-      heatLede.innerHTML = bi('Every name on this desk’s delayed watchlist, coloured by today’s % move.', '此桌面延遲觀察名單全部名稱，按當日升跌%上色。');
+      heatLede.innerHTML = r.heatMode === 'tv'
+        ? bi('TradingView S&P 500 sector heatmap — blocks sized by weight, coloured by today’s move.', 'TradingView 標普 500 板塊熱力圖：方塊按權重定大小、按當日升跌上色。')
+        : bi('Every name on this desk’s delayed watchlist, coloured by today’s % move.', '此桌面延遲觀察名單全部名稱，按當日升跌%上色。');
     }
     var moversLede = document.getElementById('mkMoversLede');
     if (moversLede) {

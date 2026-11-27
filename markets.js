@@ -363,6 +363,54 @@
       '<td>' + pctHtml + '</td></tr>';
   }
 
+  function snapTable(rowsHtml) {
+    return '<table class="snap-table"><colgroup>' +
+      '<col class="snap-col-name"><col class="snap-col-chart"><col class="snap-col-px"><col class="snap-col-pct">' +
+      '</colgroup><tbody>' + rowsHtml + '</tbody></table>';
+  }
+
+  function renderLocalTape(host) {
+    var pack = regionPayload();
+    var items = flatItems(pack).filter(function (it) { return typeof it.pct === 'number'; });
+    host.classList.add('ready', 'mk-local');
+    host.style.display = '';
+    if (!items.length) {
+      host.innerHTML = '';
+      host.style.display = 'none';
+      return;
+    }
+    // Prefer indices first, then largest absolute moves — keeps the strip readable.
+    var idx = [];
+    var rest = [];
+    (pack.groups || []).forEach(function (g) {
+      (g.items || []).forEach(function (it) {
+        if (typeof it.pct !== 'number') return;
+        if (g.id === 'indices') idx.push(it);
+        else rest.push(it);
+      });
+    });
+    rest.sort(function (a, b) { return Math.abs(b.pct) - Math.abs(a.pct); });
+    var seen = {};
+    var strip = [];
+    idx.concat(rest).forEach(function (it) {
+      var k = String(it.symbol);
+      if (seen[k]) return;
+      seen[k] = 1;
+      strip.push(it);
+    });
+    strip = strip.slice(0, 14);
+    host.innerHTML = '<div class="mk-tape-local" role="list">' + strip.map(function (it) {
+      var up = it.pct >= 0;
+      var sign = up ? '+' : '';
+      var px = typeof it.price === 'number' ? num(it.price) : '—';
+      return '<div class="mk-tape-item" role="listitem">' +
+        '<span class="mk-tape-sym">' + esc(it.symbol) + '</span>' +
+        '<span class="mk-tape-px">' + px + '</span>' +
+        '<span class="mk-tape-pct ' + (up ? 'up' : 'down') + '">' + sign + it.pct.toFixed(2) + '%</span>' +
+        '</div>';
+    }).join('') + '</div>';
+  }
+
   function renderLocalBreadth(host) {
     var pack = regionPayload();
     var items = flatItems(pack).filter(function (it) { return typeof it.pct === 'number'; });
@@ -397,8 +445,8 @@
     var losers = sorted.slice(mid).reverse();
     host.innerHTML =
       '<div class="mk-movers-local">' +
-        '<div><h3>' + bi('Gainers', '升幅') + ' · ' + gainers.length + '</h3><table class="snap-table"><tbody>' + gainers.map(itemRow).join('') + '</tbody></table></div>' +
-        '<div><h3>' + bi('Losers', '跌幅') + ' · ' + losers.length + '</h3><table class="snap-table"><tbody>' + losers.map(itemRow).join('') + '</tbody></table></div>' +
+        '<div><h3>' + bi('Gainers', '升幅') + ' · ' + gainers.length + '</h3>' + snapTable(gainers.map(itemRow).join('')) + '</div>' +
+        '<div><h3>' + bi('Losers', '跌幅') + ' · ' + losers.length + '</h3>' + snapTable(losers.map(itemRow).join('')) + '</div>' +
       '</div>' +
       '<p class="mk-local-note">' + bi('Every name on this desk’s delayed snapshot — works without TradingView.', '此桌面延遲快照全部名稱，不倚賴 TradingView。') + '</p>';
   }
@@ -439,7 +487,7 @@
           ? bi(esc(g.name_en), esc(g.name_zh))
           : esc(g.name_en || g.name_zh || g.id || '');
         return '<div class="mk-theme-block"><h3>' + title + ' · ' + (g.items || []).length + '</h3>' +
-          '<table class="snap-table"><tbody>' + (g.items || []).map(itemRow).join('') + '</tbody></table></div>';
+          snapTable((g.items || []).map(itemRow).join('')) + '</div>';
       }).join('') + '</div>' +
       '<p class="mk-local-note">' + bi('Full theme lists from the delayed snapshot — every row stays on the page.', '主題名單取自延遲快照，每一列都留在頁面上。') + '</p>';
   }
@@ -454,7 +502,7 @@
     }
     host.innerHTML =
       '<div class="mk-bench-local"><h3>' + bi(esc(g.name_en || 'Indices'), esc(g.name_zh || '指數')) + ' · ' + g.items.length + '</h3>' +
-        '<table class="snap-table"><tbody>' + g.items.map(itemRow).join('') + '</tbody></table></div>' +
+        snapTable(g.items.map(itemRow).join('')) + '</div>' +
       '<p class="mk-local-note">' + bi('Local index table while TradingView chart is blocked or still loading.', 'TradingView 圖表被擋或仍在載入時，改顯示本地指數表。') + '</p>';
   }
 
@@ -468,6 +516,11 @@
     host.setAttribute('data-key', key);
     host.classList.remove('ready', 'mk-local');
 
+    if (kind === 'ticker-tape') {
+      // Local strip always — TradingView tape often shows red "!" with no move %.
+      renderLocalTape(host);
+      return;
+    }
     if (kind === 'stock-heatmap' && r.heatMode !== 'tv') {
       renderLocalBreadth(host);
       return;
@@ -551,7 +604,7 @@
   }
 
   function fail(host, kind) {
-    if (host.classList.contains('mk-tape')) { host.style.display = 'none'; return; }
+    if (kind === 'ticker-tape' || host.classList.contains('mk-tape')) { renderLocalTape(host); return; }
     if (kind === 'stock-heatmap') { renderLocalBreadth(host); return; }
     if (kind === 'hotlists') { renderLocalMovers(host); return; }
     if (kind === 'market-quotes') { renderLocalThemes(host); return; }
@@ -607,7 +660,7 @@
     }
     var moversLede = document.getElementById('mkMoversLede');
     if (moversLede) {
-      moversLede.innerHTML = bi('Full gainers and losers from this desk’s delayed snapshot — every name listed.', '此桌面延遲快照完整升跌名單，每個名稱都列出。');
+      moversLede.innerHTML = bi('Full gainers and losers from this desk’s delayed snapshot — every name listed, every % visible.', '此桌面延遲快照完整升跌名單，每個名稱與升跌%都顯示。');
     }
     var heatWrap = document.getElementById('mkHeatWrap');
     if (heatWrap) heatWrap.hidden = false;
@@ -620,7 +673,7 @@
 
   function spark(vals, up) {
     if (!vals || vals.length < 2) return '';
-    var w = 84, h = 26, min = Math.min.apply(null, vals), max = Math.max.apply(null, vals), r = max - min || 1;
+    var w = 72, h = 24, min = Math.min.apply(null, vals), max = Math.max.apply(null, vals), r = max - min || 1;
     var pts = vals.map(function (v, i) { return (i / (vals.length - 1) * w).toFixed(1) + ',' + (h - 2 - (v - min) / r * (h - 4)).toFixed(1); }).join(' ');
     return '<svg class="snap-spark ' + (up ? 'up' : 'down') + '" viewBox="0 0 ' + w + ' ' + h + '" width="' + w + '" height="' + h + '" aria-hidden="true"><polyline points="' + pts + '" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></svg>';
   }
@@ -648,15 +701,10 @@
     });
     if (!groups.length) groups = pack.groups;
     snapGrid.innerHTML = groups.map(function (g) {
-      return '<div class="snap-card"><h3>' + bi(esc(g.name_en), esc(g.name_zh)) + '</h3><table class="snap-table"><tbody>' +
-        g.items.map(function (it) {
-          var up = it.change >= 0;
-          var sign = up ? '+' : '';
-          return '<tr' + (it.stale ? ' class="stale"' : '') + '><th scope="row"><b>' + esc(it.symbol) + '</b><small>' + esc(it.name) + '</small></th>' +
-            '<td class="snap-chart">' + spark(it.spark, up) + '</td>' +
-            '<td class="snap-px">' + num(it.price) + '</td>' +
-            '<td><span class="snap-pct ' + (up ? 'up' : 'down') + '">' + sign + it.pct.toFixed(2) + '%</span></td></tr>';
-        }).join('') + '</tbody></table></div>';
+      return '<div class="snap-card"><h3>' + bi(esc(g.name_en), esc(g.name_zh)) + '</h3>' +
+        snapTable(g.items.map(function (it) {
+          return itemRow(it);
+        }).join('')) + '</div>';
     }).join('');
     var srcs = {};
     groups.forEach(function (g) { g.items.forEach(function (it) { if (it.src) srcs[it.src] = 1; }); });

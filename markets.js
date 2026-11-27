@@ -14,8 +14,9 @@
   var REGIONS = {
     us: {
       en: 'United States', zh: '美國', short_en: 'US', short_zh: '美股',
-      /* Local boards list every snapshot name; TradingView heatmap/hotlists clip or block. */
-      heatMode: 'local', moversMode: 'local', heatSource: 'SPX500', exchange: 'US',
+      /* US heatmap: original TradingView S&P widget; movers stay local so every desk name lists. */
+      heatMode: 'tv', moversMode: 'local', heatSource: 'SPX500', exchange: 'US',
+      live: 'AMEX:SPY',
       tape: [
         { proName: 'FOREXCOM:SPXUSD', title: 'S&P 500' },
         { proName: 'FOREXCOM:NSXUSD', title: 'Nasdaq 100' },
@@ -54,6 +55,7 @@
     hk: {
       en: 'Hong Kong', zh: '香港', short_en: 'HK', short_zh: '港股',
       heatMode: 'local', moversMode: 'local', exchange: 'HKEX',
+      live: 'HSI:HSI',
       tape: [
         { proName: 'HSI:HSI', title: 'Hang Seng' },
         { proName: 'HKEX:0700', title: 'Tencent' },
@@ -92,6 +94,7 @@
     cn: {
       en: 'A-shares', zh: 'A股', short_en: 'A-shares', short_zh: 'A股',
       heatMode: 'local', moversMode: 'local', exchange: 'SSE',
+      live: 'SSE:000001',
       tape: [
         { proName: 'SSE:000001', title: 'SSE Composite' },
         { proName: 'SZSE:399001', title: 'SZSE Component' },
@@ -128,17 +131,18 @@
     tw: {
       en: 'Taiwan', zh: '台灣', short_en: 'Taiwan', short_zh: '台股',
       heatMode: 'local', moversMode: 'local', exchange: 'TWSE',
+      live: 'TWSE:2330',
       tape: [
-        { proName: 'TVC:TAIEX', title: 'TAIEX' },
         { proName: 'TWSE:2330', title: 'TSMC' },
         { proName: 'TWSE:2317', title: 'Hon Hai' },
         { proName: 'TWSE:2454', title: 'MediaTek' },
         { proName: 'TWSE:2303', title: 'UMC' },
-        { proName: 'TWSE:2382', title: 'Quanta' }
+        { proName: 'TWSE:2382', title: 'Quanta' },
+        { proName: 'TWSE:2308', title: 'Delta' }
       ],
       benchmarks: [
-        ['TAIEX', 'TVC:TAIEX|1D'], ['TSMC', 'TWSE:2330|1D'],
-        ['Hon Hai', 'TWSE:2317|1D'], ['MediaTek', 'TWSE:2454|1D']
+        ['TSMC', 'TWSE:2330|1D'], ['Hon Hai', 'TWSE:2317|1D'],
+        ['MediaTek', 'TWSE:2454|1D'], ['UMC', 'TWSE:2303|1D']
       ],
       quotes: function (zh) {
         return [
@@ -163,8 +167,10 @@
     jp: {
       en: 'Japan', zh: '日本', short_en: 'Japan', short_zh: '日股',
       heatMode: 'local', moversMode: 'local', exchange: 'TSE',
+      /* TVC:NI225 / TOPX are blocked in embed widgets (“only available on TradingView”). Use listed ETFs + blue-chips. */
+      live: 'TSE:1321',
       tape: [
-        { proName: 'TVC:NI225', title: 'Nikkei 225' },
+        { proName: 'TSE:1321', title: 'Nikkei ETF' },
         { proName: 'TSE:7203', title: 'Toyota' },
         { proName: 'TSE:6758', title: 'Sony' },
         { proName: 'TSE:9984', title: 'SoftBank' },
@@ -172,7 +178,7 @@
         { proName: 'TSE:8035', title: 'Tokyo Electron' }
       ],
       benchmarks: [
-        ['Nikkei 225', 'TVC:NI225|1D'], ['TOPIX', 'TVC:TOPX|1D'],
+        ['Nikkei ETF · 1321', 'TSE:1321|1D'], ['TOPIX ETF · 1306', 'TSE:1306|1D'],
         ['SoftBank', 'TSE:9984|1D'], ['Tokyo Electron', 'TSE:8035|1D']
       ],
       quotes: function (zh) {
@@ -199,6 +205,7 @@
     kr: {
       en: 'Korea', zh: '韓國', short_en: 'Korea', short_zh: '韓股',
       heatMode: 'local', moversMode: 'local', exchange: 'KRX',
+      live: 'KRX:005930',
       tape: [
         { proName: 'KRX:KOSPI', title: 'KOSPI' },
         { proName: 'KRX:005930', title: 'Samsung Elec' },
@@ -235,6 +242,7 @@
     au: {
       en: 'Australia', zh: '澳洲', short_en: 'Australia', short_zh: '澳洲股',
       heatMode: 'local', moversMode: 'local', exchange: 'ASX',
+      live: 'ASX:XJO',
       tape: [
         { proName: 'ASX:XJO', title: 'ASX 200' },
         { proName: 'ASX:BHP', title: 'BHP' },
@@ -289,6 +297,7 @@
     var r = REGIONS[region];
     var zh = locale.indexOf('zh') === 0;
     var common = { colorTheme: theme, isTransparent: true, locale: locale };
+    var live = r.live || (r.benchmarks && r.benchmarks[0] ? String(r.benchmarks[0][1]).split('|')[0] : 'AMEX:SPY');
     var groups = r.quotes(zh);
     if (themeFilter !== 'all') {
       groups = groups.filter(function (g) { return g.theme === themeFilter; });
@@ -300,6 +309,26 @@
         symbols: r.benchmarks, chartOnly: false, width: '100%', height: '100%', autosize: true,
         showVolume: false, hideDateRanges: false, scalePosition: 'right', scaleMode: 'Normal',
         chartType: 'area', lineWidth: 2, dateRanges: ['1d|1', '1m|30', '3m|60', '12m|1D', '60m|1W', 'all|1M']
+      }),
+      'advanced-chart': {
+        autosize: true, symbol: live, interval: '60', timezone: 'exchange',
+        theme: theme, style: '1', locale: locale, backgroundColor: theme === 'dark' ? 'rgba(19, 23, 34, 1)' : 'rgba(255, 255, 255, 1)',
+        allow_symbol_change: true, calendar: false, hide_top_toolbar: false, hide_legend: false,
+        save_image: false, withdateranges: true, hide_side_toolbar: false,
+        studies: ['STD;SMA', 'Volume@tv-basicstudies'],
+        support_host: 'https://www.tradingview.com'
+      },
+      'technical-analysis': Object.assign({}, common, {
+        interval: '1h', width: '100%', height: '100%', symbol: live,
+        showIntervalTabs: true, displayMode: 'single'
+      }),
+      'symbol-info': Object.assign({}, common, {
+        symbol: live, width: '100%'
+      }),
+      'mini-symbol-overview': Object.assign({}, common, {
+        symbol: live, width: '100%', height: '100%', dateRange: '1D',
+        trendLineColor: 'rgba(41, 98, 255, 1)', underLineColor: 'rgba(41, 98, 255, 0.18)',
+        underLineBottomColor: 'rgba(41, 98, 255, 0)', chartOnly: false
       }),
       'stock-heatmap': Object.assign({}, common, {
         exchanges: [], dataSource: r.heatSource || 'SPX500', grouping: 'sector', blockSize: 'market_cap_basic',
@@ -399,7 +428,7 @@
       strip.push(it);
     });
     strip = strip.slice(0, 14);
-    host.innerHTML = '<div class="mk-tape-local" role="list">' + strip.map(function (it) {
+    function itemHtml(it) {
       var up = it.pct >= 0;
       var sign = up ? '+' : '';
       var px = typeof it.price === 'number' ? num(it.price) : '—';
@@ -408,7 +437,13 @@
         '<span class="mk-tape-px">' + px + '</span>' +
         '<span class="mk-tape-pct ' + (up ? 'up' : 'down') + '">' + sign + it.pct.toFixed(2) + '%</span>' +
         '</div>';
-    }).join('') + '</div>';
+    }
+    // Duplicate the row so CSS can loop a continuous marquee (移動報價帶).
+    var row = strip.map(itemHtml).join('');
+    host.innerHTML =
+      '<div class="mk-tape-marquee" aria-hidden="false">' +
+        '<div class="mk-tape-track">' + row + row + '</div>' +
+      '</div>';
   }
 
   function renderLocalBreadth(host) {
@@ -506,21 +541,90 @@
       '<p class="mk-local-note">' + bi('Local index table while TradingView chart is blocked or still loading.', 'TradingView 圖表被擋或仍在載入時，改顯示本地指數表。') + '</p>';
   }
 
+  function renderDeskPulse() {
+    var host = document.getElementById('mkPulse');
+    if (!host) return;
+    var pack = regionPayload();
+    var items = flatItems(pack).filter(function (it) { return typeof it.pct === 'number' && !it.stale; });
+    host.classList.add('ready', 'mk-local');
+    if (!items.length) {
+      host.innerHTML = '<div class="mk-heat-note"><p>' + bi('Desk pulse will fill once quotes load.', '報價載入後會顯示桌面脈搏。') + '</p></div>';
+      return;
+    }
+    var up = 0, down = 0, flat = 0, sum = 0;
+    items.forEach(function (it) {
+      sum += it.pct;
+      if (it.pct > 0.05) up += 1;
+      else if (it.pct < -0.05) down += 1;
+      else flat += 1;
+    });
+    var n = items.length;
+    var avg = sum / n;
+    var buckets = [
+      { k: '≤-3%', lo: -Infinity, hi: -3, c: 0 },
+      { k: '-3~-1', lo: -3, hi: -1, c: 0 },
+      { k: '-1~0', lo: -1, hi: 0, c: 0 },
+      { k: '0~1', lo: 0, hi: 1, c: 0 },
+      { k: '1~3', lo: 1, hi: 3, c: 0 },
+      { k: '≥3%', lo: 3, hi: Infinity, c: 0 }
+    ];
+    items.forEach(function (it) {
+      for (var i = 0; i < buckets.length; i++) {
+        if (it.pct >= buckets[i].lo && it.pct < buckets[i].hi) { buckets[i].c += 1; break; }
+        if (i === buckets.length - 1 && it.pct >= buckets[i].lo) buckets[i].c += 1;
+      }
+    });
+    var maxB = Math.max.apply(null, buckets.map(function (b) { return b.c; })) || 1;
+    var ranked = items.slice().sort(function (a, b) { return Math.abs(b.pct) - Math.abs(a.pct); }).slice(0, 8);
+    var maxAbs = Math.max.apply(null, ranked.map(function (it) { return Math.abs(it.pct); })) || 1;
+    var adPct = Math.round((up / n) * 100);
+    host.innerHTML =
+      '<div class="mk-pulse">' +
+        '<div class="mk-pulse-stats">' +
+          '<div class="mk-pulse-stat"><span class="mk-pulse-k">' + bi('Advancers', '上升') + '</span><b class="up">' + up + '</b></div>' +
+          '<div class="mk-pulse-stat"><span class="mk-pulse-k">' + bi('Decliners', '下跌') + '</span><b class="down">' + down + '</b></div>' +
+          '<div class="mk-pulse-stat"><span class="mk-pulse-k">' + bi('Unchanged', '平市') + '</span><b>' + flat + '</b></div>' +
+          '<div class="mk-pulse-stat"><span class="mk-pulse-k">' + bi('Avg move', '平均升跌') + '</span><b class="' + (avg >= 0 ? 'up' : 'down') + '">' + (avg >= 0 ? '+' : '') + avg.toFixed(2) + '%</b></div>' +
+        '</div>' +
+        '<div class="mk-pulse-ad" role="img" aria-label="advance decline">' +
+          '<div class="mk-pulse-ad-fill up" style="width:' + adPct + '%"></div>' +
+          '<div class="mk-pulse-ad-fill down" style="width:' + (100 - adPct) + '%"></div>' +
+        '</div>' +
+        '<p class="mk-pulse-ad-label">' + bi(up + ' up · ' + down + ' down · ' + n + ' names', up + ' 升 · ' + down + ' 跌 · 共 ' + n + ' 個') + '</p>' +
+        '<div class="mk-pulse-split">' +
+          '<div><h3>' + bi('Move distribution', '升跌分布') + '</h3><div class="mk-pulse-hist">' +
+            buckets.map(function (b) {
+              var h = Math.max(8, Math.round((b.c / maxB) * 100));
+              var cls = b.hi <= 0 ? 'down' : (b.lo >= 0 ? 'up' : '');
+              return '<div class="mk-pulse-bar-wrap"><div class="mk-pulse-bar ' + cls + '" style="--h:' + h + '%" title="' + b.k + ': ' + b.c + '"></div><span>' + b.k + '</span><small>' + b.c + '</small></div>';
+            }).join('') +
+          '</div></div>' +
+          '<div><h3>' + bi('Largest |%| moves', '最大絕對波幅') + '</h3><div class="mk-pulse-ranks">' +
+            ranked.map(function (it) {
+              var w = Math.round((Math.abs(it.pct) / maxAbs) * 100);
+              var upn = it.pct >= 0;
+              return '<div class="mk-pulse-rank"><span class="mk-pulse-rank-sym">' + esc(it.symbol) + '</span>' +
+                '<div class="mk-pulse-rank-track"><span class="mk-pulse-rank-fill ' + (upn ? 'up' : 'down') + '" style="--w:' + w + '%"></span></div>' +
+                '<span class="mk-pulse-rank-pct ' + (upn ? 'up' : 'down') + '">' + (upn ? '+' : '') + it.pct.toFixed(2) + '%</span></div>';
+            }).join('') +
+          '</div></div>' +
+        '</div>' +
+        '<p class="mk-local-note">' + bi('Delayed desk snapshot — research view only, not investment advice.', '延遲桌面快照，僅供研究，不構成投資建議。') + '</p>' +
+      '</div>';
+  }
+
   function mount(host, forceEn) {
     var st = settings();
     if (forceEn) st.locale = 'en';
     var r = REGIONS[region];
     var kind = host.getAttribute('data-tv');
-    var key = region + '|' + themeFilter + '|' + st.locale + st.theme + '|' + kind;
+    var slot = host.getAttribute('data-slot') || '';
+    var key = region + '|' + themeFilter + '|' + st.locale + st.theme + '|' + kind + '|' + slot;
     if (host.getAttribute('data-key') === key) return;
     host.setAttribute('data-key', key);
     host.classList.remove('ready', 'mk-local');
 
-    if (kind === 'ticker-tape') {
-      // Local strip always — TradingView tape often shows red "!" with no move %.
-      renderLocalTape(host);
-      return;
-    }
+    // ticker-tape: prefer TradingView scrolling tape; fail() falls back to a local marquee.
     if (kind === 'stock-heatmap' && r.heatMode !== 'tv') {
       renderLocalBreadth(host);
       return;
@@ -537,6 +641,14 @@
     }
 
     var cfg = configs(st.locale, st.theme)[kind];
+    if (!cfg) { fail(host, kind); return; }
+    if (kind === 'mini-symbol-overview') {
+      var tape = r.tape || [];
+      var ix = parseInt(slot, 10);
+      if (isNaN(ix)) ix = 0;
+      var pick = tape[ix] || tape[0];
+      cfg = Object.assign({}, cfg, { symbol: pick ? pick.proName : (r.live || 'AMEX:SPY') });
+    }
     host.textContent = '';
     var wrap = document.createElement('div');
     wrap.className = 'tradingview-widget-container';
@@ -608,7 +720,10 @@
     if (kind === 'stock-heatmap') { renderLocalBreadth(host); return; }
     if (kind === 'hotlists') { renderLocalMovers(host); return; }
     if (kind === 'market-quotes') { renderLocalThemes(host); return; }
-    if (kind === 'symbol-overview') { renderLocalBenchmarks(host); return; }
+    if (kind === 'symbol-overview' || kind === 'advanced-chart' || kind === 'mini-symbol-overview') {
+      renderLocalBenchmarks(host);
+      return;
+    }
     if (host.querySelector('.mk-fail')) return;
     var box = document.createElement('div');
     box.className = 'mk-fail';
@@ -631,7 +746,7 @@
           region = b.getAttribute('data-region');
           try { history.replaceState(null, '', '?r=' + region); } catch (e) {}
           document.dispatchEvent(new CustomEvent('marketregion', { detail: region }));
-          paintChrome(); renderSnap(); renderAll();
+          paintChrome(); renderSnap(); renderDeskPulse(); renderAll();
         });
       });
     }
@@ -644,7 +759,7 @@
       Array.prototype.forEach.call(thBox.querySelectorAll('[data-theme]'), function (b) {
         b.addEventListener('click', function () {
           themeFilter = b.getAttribute('data-theme');
-          paintChrome(); renderSnap(); renderAll();
+          paintChrome(); renderSnap(); renderDeskPulse(); renderAll();
         });
       });
     }
@@ -726,15 +841,16 @@
       .then(function (j) {
         snapAll = j;
         renderSnap();
+        renderDeskPulse();
         renderAll();
       })
       .catch(function () {
         snapGrid.innerHTML = '<p class="news-empty">' + bi('The snapshot is not available yet. Please check back later.', '快照暫時未有資料，請稍後再看。') + '</p>';
       });
-    document.addEventListener('langchange', function () { renderSnap(); renderAll(); });
+    document.addEventListener('langchange', function () { renderSnap(); renderDeskPulse(); renderAll(); });
   }
 
   if (io) hosts.forEach(function (h) { io.observe(h); }); else renderAll();
-  document.addEventListener('langchange', renderAll);
+  document.addEventListener('langchange', function () { renderDeskPulse(); renderAll(); });
   if (dark && dark.addEventListener) dark.addEventListener('change', renderAll);
 })();

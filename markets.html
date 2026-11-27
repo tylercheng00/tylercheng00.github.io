@@ -26,7 +26,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/fonts/fonts.css?v=1baa657b" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="assets/fonts/fonts.css?v=1baa657b"></noscript>
-  <link rel="stylesheet" href="styles.css?v=978b57ed">
+  <link rel="stylesheet" href="styles.css?v=4b6be795">
   <link rel="preconnect" href="https://s3.tradingview.com">
   <link rel="preconnect" href="https://www.tradingview-widget.com">
   <link rel="dns-prefetch" href="https://www.tradingview.com">
@@ -134,7 +134,7 @@
       <div class="container p-hero-inner">
         <p class="eyebrow reveal"><span class="dot" aria-hidden="true"></span><span lang="en">Stock markets · Live data by TradingView</span><span lang="zh-Hant">股票市場 · TradingView 即時數據</span></p>
         <h1 class="p-title reveal"><span lang="en">Stock markets</span><span lang="zh-Hant">股票市場</span></h1>
-        <p class="p-lede reveal"><span lang="en">One tidy desk for <b>US</b>, <b>Hong Kong</b>, <b>A-shares</b>, <b>Taiwan</b>, <b>Japan</b>, <b>Korea</b> and <b>Australia</b>. Every region gets the same five panels: snapshot, indices, breadth board, movers, and thematic lists for <b>AI</b>, <b>semiconductors</b> and <b>aerospace</b> — plus local leaders and financials.</span><span lang="zh-Hant">同一個整齊版面涵蓋<b>美股</b>、<b>港股</b>、<b>A股</b>、<b>台股</b>、<b>日股</b>、<b>韓股</b>與<b>澳洲股</b>。每個市場都有五個區塊：快照、指數、廣度板、升跌榜，以及<b>人工智能</b>、<b>晶片</b>、<b>航天</b>主題名單，再加當地龍頭與金融股。</span></p>
+        <p class="p-lede reveal"><span lang="en">One tidy desk for <b>US</b>, <b>Hong Kong</b>, <b>A-shares</b>, <b>Taiwan</b>, <b>Japan</b>, <b>Korea</b> and <b>Australia</b>. Live TradingView charts, scrolling tape, technical gauges, mini trend panels, breadth, movers and thematic lists for <b>AI</b>, <b>semiconductors</b> and <b>aerospace</b>.</span><span lang="zh-Hant">同一個整齊版面涵蓋<b>美股</b>、<b>港股</b>、<b>A股</b>、<b>台股</b>、<b>日股</b>、<b>韓股</b>與<b>澳洲股</b>。含 TradingView 即時圖、移動報價帶、技術評級、迷你走勢、廣度板、升跌榜，以及<b>人工智能</b>、<b>晶片</b>、<b>航天</b>主題名單。</span></p>
         <div class="mk-regions reveal" role="tablist" aria-label="Market region" id="mkRegions"></div>
         <p class="mk-status reveal" data-market-status><span class="mk-dot" aria-hidden="true"></span><b class="mk-status-label"></b><span class="mk-status-times"></span></p>
       </div>
@@ -161,7 +161,48 @@
     <section class="section alt mk">
       <div class="container">
         <div class="section-head reveal">
-          <p class="kicker">02 — <span lang="en">Indices</span><span lang="zh-Hant">指數</span></p>
+          <p class="kicker">02 — <span lang="en">Live chart</span><span lang="zh-Hant">即時圖表</span></p>
+          <h2 class="section-title" id="mkLiveTitle"><span lang="en">Intraday desk chart</span><span lang="zh-Hant">盤中專業圖表</span></h2>
+          <p class="p-lede dark" id="mkLiveLede"><span lang="en">TradingView advanced chart for this market’s lead symbol — change the ticker inside the widget.</span><span lang="zh-Hant">此市場主要標的的 TradingView 進階圖；可在圖表內切換代號。</span></p>
+        </div>
+        <div class="mk-card chart" data-tv="advanced-chart"></div>
+      </div>
+    </section>
+
+    <section class="section mk">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">03 — <span lang="en">Signals</span><span lang="zh-Hant">技術訊號</span></p>
+          <h2 class="section-title"><span lang="en">Technical gauge · Symbol card</span><span lang="zh-Hant">技術評級 · 標的卡片</span></h2>
+          <p class="p-lede dark"><span lang="en">Live oscillator / moving-average readout beside a compact symbol summary.</span><span lang="zh-Hant">即時震盪指標與移動平均評級，旁邊是標的摘要卡。</span></p>
+        </div>
+        <div class="mk-two">
+          <div class="mk-card mid" data-tv="technical-analysis"></div>
+          <div class="mk-card mid mk-card-fit" data-tv="symbol-info"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt mk">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">04 — <span lang="en">Mini trends</span><span lang="zh-Hant">迷你走勢</span></p>
+          <h2 class="section-title" id="mkMiniTitle"><span lang="en">Moving mini charts</span><span lang="zh-Hant">會動的迷你圖</span></h2>
+          <p class="p-lede dark"><span lang="en">Four lead names for this desk — each panel updates as the session moves.</span><span lang="zh-Hant">此桌面四個主要名稱，每個小圖隨盤中變動。</span></p>
+        </div>
+        <div class="mk-mini-grid" id="mkMiniGrid">
+          <div class="mk-card mini" data-tv="mini-symbol-overview" data-slot="0"></div>
+          <div class="mk-card mini" data-tv="mini-symbol-overview" data-slot="1"></div>
+          <div class="mk-card mini" data-tv="mini-symbol-overview" data-slot="2"></div>
+          <div class="mk-card mini" data-tv="mini-symbol-overview" data-slot="3"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section mk">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">05 — <span lang="en">Indices</span><span lang="zh-Hant">指數</span></p>
           <h2 class="section-title" id="mkIdxTitle"><span lang="en">Benchmarks</span><span lang="zh-Hant">大市基準</span></h2>
           <p class="p-lede dark" id="mkIdxLede"><span lang="en">Switch tabs to compare the main gauges for this market.</span><span lang="zh-Hant">可切換分頁，比較此市場主要基準。</span></p>
         </div>
@@ -169,10 +210,10 @@
       </div>
     </section>
 
-    <section class="section mk" id="mkHeatWrap">
+    <section class="section alt mk" id="mkHeatWrap">
       <div class="container">
         <div class="section-head reveal">
-          <p class="kicker">03 — <span lang="en">Breadth</span><span lang="zh-Hant">市場廣度</span></p>
+          <p class="kicker">06 — <span lang="en">Breadth</span><span lang="zh-Hant">市場廣度</span></p>
           <h2 class="section-title" id="mkHeatTitle"><span lang="en">Heatmap</span><span lang="zh-Hant">熱力圖</span></h2>
           <p class="p-lede dark" id="mkHeatLede"><span lang="en">Every name on this desk’s delayed watchlist, coloured by today’s % move.</span><span lang="zh-Hant">此桌面延遲觀察名單全部名稱，按當日升跌%上色。</span></p>
         </div>
@@ -180,10 +221,21 @@
       </div>
     </section>
 
+    <section class="section mk">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">07 — <span lang="en">Desk pulse</span><span lang="zh-Hant">桌面脈搏</span></p>
+          <h2 class="section-title"><span lang="en">Advance / decline · Move distribution</span><span lang="zh-Hant">升跌家數 · 升跌分布</span></h2>
+          <p class="p-lede dark"><span lang="en">Always-on analytics from the delayed snapshot — works even when TradingView is blocked.</span><span lang="zh-Hant">延遲快照的常駐分析；TradingView 被擋時仍可用。</span></p>
+        </div>
+        <div class="mk-card mk-local" id="mkPulse" aria-live="polite"></div>
+      </div>
+    </section>
+
     <section class="section alt mk">
       <div class="container">
         <div class="section-head reveal">
-          <p class="kicker">04 — <span lang="en">Movers</span><span lang="zh-Hant">升跌榜</span></p>
+          <p class="kicker">08 — <span lang="en">Movers</span><span lang="zh-Hant">升跌榜</span></p>
           <h2 class="section-title" id="mkMoversTitle"><span lang="en">Top movers</span><span lang="zh-Hant">當日異動</span></h2>
           <p class="p-lede dark" id="mkMoversLede"><span lang="en">Full gainers and losers from this desk’s delayed snapshot — every name listed, every % visible.</span><span lang="zh-Hant">此桌面延遲快照完整升跌名單，每個名稱與升跌%都顯示。</span></p>
         </div>
@@ -194,7 +246,7 @@
     <section class="section mk">
       <div class="container">
         <div class="section-head reveal">
-          <p class="kicker">05 — <span lang="en">Themes</span><span lang="zh-Hant">主題觀察</span></p>
+          <p class="kicker">09 — <span lang="en">Themes</span><span lang="zh-Hant">主題觀察</span></p>
           <h2 class="section-title"><span lang="en">AI · Chips · Aerospace</span><span lang="zh-Hant">人工智能 · 晶片 · 航天</span></h2>
           <p class="p-lede dark"><span lang="en">Full delayed lists for this desk — every name stays on the page.</span><span lang="zh-Hant">此桌面完整延遲名單，每個名稱都留在頁面上。</span></p>
         </div>
@@ -239,6 +291,6 @@
 
   <script src="main.js?v=9a99cc64"></script>
   <script src="clock.js?v=a172ae9d"></script>
-  <script src="markets.js?v=a21c189a"></script>
+  <script src="markets.js?v=eb0ec370"></script>
 </body>
 </html>

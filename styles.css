@@ -909,18 +909,27 @@ html[data-lang="zh"] .prose { font-size: 17.5px; line-height: 1.95; }
   color: var(--gold-ink); margin: 0 0 6px;
 }
 .mk-local-note { margin: 10px 2px 0; font-size: 12px; color: var(--muted); line-height: 1.45; }
-/* Local ticker strip — replaces TradingView tape when symbols fail or are blocked. */
-.mk-tape.mk-local { min-height: 0; overflow: visible; }
-.mk-tape-local {
-  display: flex; flex-wrap: nowrap; gap: 0; overflow-x: auto; scrollbar-width: thin;
-  -webkit-overflow-scrolling: touch; padding: 8px 4px;
+/* Local ticker marquee — fallback when TradingView scrolling tape fails. */
+.mk-tape.mk-local { min-height: 46px; overflow: hidden; }
+.mk-tape-marquee { overflow: hidden; width: 100%; padding: 8px 0; }
+.mk-tape-track {
+  display: flex; flex-wrap: nowrap; width: max-content;
+  animation: mk-tape-scroll 48s linear infinite;
+}
+.mk-tape-marquee:hover .mk-tape-track { animation-play-state: paused; }
+@keyframes mk-tape-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mk-tape-track { animation: none; }
+  .mk-tape-marquee { overflow-x: auto; }
 }
 .mk-tape-item {
   flex: 0 0 auto; display: flex; align-items: baseline; gap: 10px;
-  padding: 4px 16px; border-right: 1px solid var(--line); white-space: nowrap;
+  padding: 4px 18px; border-right: 1px solid var(--line); white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
-.mk-tape-item:last-child { border-right: 0; }
 .mk-tape-sym { font-size: 13.5px; font-weight: 700; color: var(--ink); }
 .mk-tape-px { font-size: 13.5px; font-weight: 500; color: var(--ink); }
 .mk-tape-pct { font-size: 13px; font-weight: 600; }
@@ -946,17 +955,78 @@ html[data-lang="zh"] .prose { font-size: 17.5px; line-height: 1.95; }
 .mk-card.tall { height: 460px; }
 .mk-card.heat { height: 560px; }
 .mk-card.mid { height: 560px; }
+.mk-card.chart { height: min(72vh, 640px); min-height: 480px; }
+.mk-card.mini { height: 240px; }
+.mk-card.mk-card-fit { height: auto !important; min-height: 280px; }
+.mk-mini-grid {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px;
+}
 .mk-two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
 .mk-more { display: flex; gap: 24px; margin-top: 18px; }
+.mk-pulse { padding: 8px 6px 4px; }
+.mk-pulse-stats {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 14px;
+}
+.mk-pulse-stat {
+  padding: 12px 14px; border-radius: 12px; background: var(--bg-alt, #f6f4ef); border: 1px solid var(--line);
+}
+.mk-pulse-k { display: block; font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.mk-pulse-stat b { font-size: 22px; font-variant-numeric: tabular-nums; }
+.mk-pulse-stat b.up, .mk-pulse-rank-pct.up, .mk-tape-pct.up { color: #2e9d62; }
+.mk-pulse-stat b.down, .mk-pulse-rank-pct.down, .mk-tape-pct.down { color: #d0473f; }
+.mk-pulse-ad { display: flex; height: 10px; border-radius: 999px; overflow: hidden; background: var(--line); }
+.mk-pulse-ad-fill { height: 100%; transition: width .6s ease; }
+.mk-pulse-ad-fill.up { background: #2e9d62; }
+.mk-pulse-ad-fill.down { background: #d0473f; }
+.mk-pulse-ad-label { margin: 8px 0 16px; font-size: 12.5px; color: var(--muted); }
+.mk-pulse-split { display: grid; grid-template-columns: 1.1fr 1fr; gap: 22px; }
+.mk-pulse-split h3 {
+  font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--gold-ink); margin: 0 0 10px;
+}
+.mk-pulse-hist { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; align-items: end; min-height: 140px; }
+.mk-pulse-bar-wrap { display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 0; }
+.mk-pulse-bar {
+  width: 100%; max-width: 36px; height: var(--h, 20%); min-height: 8px; border-radius: 8px 8px 4px 4px;
+  background: #8a8f98; transform-origin: bottom;
+  animation: mk-pulse-grow .55s ease both;
+}
+.mk-pulse-bar.up { background: #2e9d62; }
+.mk-pulse-bar.down { background: #d0473f; }
+.mk-pulse-bar-wrap span { font-size: 10.5px; color: var(--muted); text-align: center; line-height: 1.2; }
+.mk-pulse-bar-wrap small { font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.mk-pulse-ranks { display: flex; flex-direction: column; gap: 8px; }
+.mk-pulse-rank { display: grid; grid-template-columns: 88px 1fr 64px; gap: 10px; align-items: center; }
+.mk-pulse-rank-sym { font-size: 13px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mk-pulse-rank-track { height: 8px; border-radius: 999px; background: var(--line); overflow: hidden; }
+.mk-pulse-rank-fill {
+  display: block; height: 100%; width: var(--w, 0%); border-radius: inherit;
+  animation: mk-pulse-fill .55s ease both;
+}
+.mk-pulse-rank-fill.up { background: #2e9d62; }
+.mk-pulse-rank-fill.down { background: #d0473f; }
+.mk-pulse-rank-pct { text-align: right; font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; }
+@keyframes mk-pulse-grow { from { transform: scaleY(0.15); opacity: .4; } to { transform: scaleY(1); opacity: 1; } }
+@keyframes mk-pulse-fill { from { width: 0; } to { width: var(--w, 0%); } }
+@media (prefers-reduced-motion: reduce) {
+  .mk-pulse-bar, .mk-pulse-rank-fill, .mk-pulse-ad-fill { animation: none; transition: none; }
+}
 
 /* homepage insights teaser */
 .home-ins .ins-grid { margin-top: 8px; }
 
 @media (max-width: 1020px) { .ins-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 1100px) {
+  .mk-mini-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mk-pulse-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mk-pulse-split { grid-template-columns: 1fr; }
+}
 @media (max-width: 760px) {
   .ins-grid, .news-list, .mk-two { grid-template-columns: minmax(0, 1fr); }
   .prose { font-size: 17px; }
   .mk-card.heat { height: 460px; }
+  .mk-card.chart { height: 420px; min-height: 360px; }
+  .mk-mini-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 1100px) and (min-width: 861px) { .nav a { padding: 8px 8px; font-size: 13.5px; } }
 .mk-card, .mk-tape { position: relative; }

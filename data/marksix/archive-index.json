@@ -2,29 +2,40 @@
   "latest": "latest-report.json",
   "items": [
     {
+      "date": "2026-11-28",
+      "file": "archive-2026-11-28.json",
+      "drawNo": "26/124",
+      "note": "next-draw desk: 26/125 on Sat 2026-11-28 (11-26 draw not held)"
+    },
+    {
+      "date": "2026-11-24",
+      "file": "archive-2026-11-24.json",
+      "drawNo": "26/124"
+    },
+    {
       "date": "2026-11-21",
       "file": "archive-2026-11-21.json",
       "drawNo": "26/123"
     },
     {
-      "date": "2026-11-10",
-      "file": "archive-2026-11-10.json"
-    },
-    {
-      "date": "2026-11-12",
-      "file": "archive-2026-11-12.json"
-    },
-    {
-      "date": "2026-11-14",
-      "file": "archive-2026-11-14.json"
+      "date": "2026-11-17",
+      "file": "archive-2026-11-17.json"
     },
     {
       "date": "2026-11-15",
       "file": "archive-2026-11-15.json"
     },
     {
-      "date": "2026-11-17",
-      "file": "archive-2026-11-17.json"
+      "date": "2026-11-14",
+      "file": "archive-2026-11-14.json"
+    },
+    {
+      "date": "2026-11-12",
+      "file": "archive-2026-11-12.json"
+    },
+    {
+      "date": "2026-11-10",
+      "file": "archive-2026-11-10.json"
     }
   ]
 }

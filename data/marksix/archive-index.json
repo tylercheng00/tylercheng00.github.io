@@ -2,6 +2,12 @@
   "latest": "latest-report.json",
   "items": [
     {
+      "date": "2026-12-01",
+      "file": "archive-2026-12-01.json",
+      "drawNo": "26/125",
+      "note": "next-draw desk after 26/125 (Tue 2026-12-01)"
+    },
+    {
       "date": "2026-11-28",
       "file": "archive-2026-11-28.json",
       "drawNo": "26/124",
